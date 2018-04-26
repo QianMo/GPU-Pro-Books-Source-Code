@@ -1,0 +1,273 @@
+//////////////////////////////////////////////////////////////
+//Quadtree Displacement Mapping with Height Blending
+//ShaderX 8 Sample
+//@Michal Drobot
+//hello@drobot.org
+//www.drobot.org
+//
+//Following sample shows simple QDMHB for fast and accurate
+//displacement mapping of blended surfaces. Code is NON optimal.
+//Uncomment #define for advanced tweaking
+//USE_QDM_ASCEND - interval quadtree ascend mode
+//USE_QDM_ASCEND_CONST - constant quadtree ascend mode
+//Code presents a simple sample showing only depth of displacement blend
+//Blending is NON optimal as well as the code
+//Possible options is to add:
+//-diffuse height blending (as discussed in the article)
+//-AO and Soft Shadow Calculation
+//-use QDM composite instead of sampling two QDMs
+//For additional info see QDM.cgfx // QDM_Material
+//////////////////////////////////////////////////////////////
+#define TEXTURE_MIP_LEVELS 8
+#define TEXTURE_PIX_COUNT  256 //pow(2,TEXTURE_MIP_LEVELS)
+#define BINARY_SEARCH_COUNT 10
+#define BILINEAR_SMOOTH_FACTOR 2.0
+
+//#define USE_QDM_ASCEND
+//#define USE_QDM_ASCEND_CONST
+
+
+texture gTexQDM1
+<
+	string ResourceType = "2D";
+>;
+
+texture gTexQDM2
+<
+	string ResourceType = "2D";
+>;
+
+texture gTexQDMBlend
+<
+	string ResourceType = "2D";
+>;
+
+texture gTexIterationVis
+<
+    string ResourceType = "2D";
+>;
+
+int gIterationCap
+<
+	string UIName = "Iteration Cap";
+	string UIWidget = "slider";
+	int UIMin = 1;
+	int UIStep = 5;
+	int UIMax = 256;
+> = 64;
+
+float gDepthScale
+<
+	string UIName = "Depth Scaling";
+	string UIWidget = "slider";
+	float UIMin = 0.01f;
+	float UIStep = 0.01f;
+	float UIMax = 0.80f;
+> = 0.5;
+
+float gTileFactor
+<
+	string UIName = "Tile Repeat";
+	string UIWidget = "slider";
+	float UIMin = 1.0;
+	float UIStep = 1.0;
+	float UIMax = 16.0;
+> = 1;
+
+float gLodLevel
+<
+	string UIName = "LOD Level";
+	string UIWidget = "slider";
+	float UIMin = 0;
+	float UIStep = 1;
+	float UIMax = 4;
+> = 0;
+
+bool gDisplayIterations
+<
+	string UIName = "Display Iterations";
+	string UIWidget = "checkbox";
+> = false;
+
+sampler2D gSamplerQDM1 = sampler_state
+{
+	Texture = <gTexQDM1>;
+	
+	MinFilter = NearestMipMapNearest;
+	MagFilter = Linear;	
+	MipFilter = Linear;
+};
+
+sampler2D gSamplerQDM2 = sampler_state
+{
+	Texture = <gTexQDM2>;
+	
+	MinFilter = NearestMipMapNearest;
+	MagFilter = Linear;	
+	MipFilter = Linear;
+};
+
+sampler2D gSamplerQDMBlend = sampler_state
+{
+	Texture = <gTexQDMBlend>;
+	
+	MinFilter = NearestMipMapNearest;
+	MagFilter = Linear;	
+	MipFilter = Linear;
+};
+
+sampler2D gSamplerIterationVis = sampler_state
+{
+	Texture = <gTexIterationVis>;
+	
+	MinFilter = Point;
+	MagFilter = Point;	
+	MipFilter = None;
+};
+
+struct VS_DATA
+{
+	float4 P	: POSITION;
+	float3 N    : NORMAL;
+	float2 UV   : TEXCOORD0;
+	float3 T    : TANGENT0;
+	float3 B    : BINORMAL0;
+};
+
+struct PS_DATA
+{
+	float4 H	: POSITION;
+	float3 E    : TEXCOORD0;
+	float2 UV   : TEXCOORD2;
+};
+
+float4x4 WVPMatrix  : WorldViewProjection <string UIWidget = "none";>;
+float4x4 WVMatrix   : WorldView <string UIWidget = "none";>;
+float4x4 VMatrix    : View <string UIWidget = "none";>;
+int GlobalIterationCount = 0;
+
+PS_DATA LightBaseVS(VS_DATA IN)
+{
+PS_DATA OUT;
+
+	float4 Pos = float4(IN.P.xyz,1.0);
+
+	OUT.H = mul(WVPMatrix, Pos);
+ 		
+	OUT.UV = IN.UV * gTileFactor;
+
+	float3 Tn = mul(WVMatrix, float4(IN.T,0.0)).xyz;
+	float3 Bn = mul(WVMatrix, float4(IN.B,0.0)).xyz;
+	float3 Nn = mul(WVMatrix, float4(IN.N,0.0)).xyz;
+
+	float3 VPos = mul(WVMatrix, Pos).xyz;	
+	OUT.E = float3(dot(VPos, Tn), dot(VPos, Bn), dot(VPos, Nn)).xyz;	
+
+	return OUT;
+}
+
+void PrepareRay(PS_DATA IN, out float3 p, out float3 v)
+{
+	p = float3(IN.UV, 0);
+	v = normalize(IN.E);	
+	v.z = abs(v.z);
+	v.xy *= gDepthScale;
+	v /= v.z;	
+}
+
+#define EPSILON 0.00001
+
+void QDM(inout float3 p, inout float3 v, sampler2D PDMSampler)
+{	
+	
+	const int MAX_LEVEL = TEXTURE_MIP_LEVELS;
+	const float NODE_COUNT = TEXTURE_PIX_COUNT;
+	const float TEXEL_SPAN_HALF = 1.0 / NODE_COUNT / 2.0;	
+	
+	float fDeltaNC = TEXEL_SPAN_HALF * gDepthScale;
+  	
+	float3 p2 = p;
+	float level = MAX_LEVEL;
+    float2 dirSign = (sign(v.xy) + 1.0) * 0.5;
+  GlobalIterationCount = 0;
+  float d = 0;
+  
+	while (level >= gLodLevel && GlobalIterationCount < gIterationCap)
+	{
+		float4 uv = float4(p2.xyz, level);		
+        //QDM min blend
+		d = tex2Dlod(gSamplerQDM1, uv).w;
+        float d2 = tex2Dlod(gSamplerQDM2, uv).w;
+		float2 blend = tex2Dlod(gSamplerQDMBlend, uv).rg;		
+
+		d  = 1.0 - d;
+		d *= 1.0 - blend.g;
+		d  = 1.0 - d;
+		
+		d2  = 1.0 - d2;
+		d2 *= 1.0 - blend.r;
+		d2  = 1.0 - d2;
+		
+		d = min(d,d2);
+
+		if (d > p2.z)
+		{	
+			float3 tmpP2 = p + v * d;
+
+			float nodeCount = pow(2.0, (MAX_LEVEL - level));
+			float4 nodeID = floor(float4(p2.xy, tmpP2.xy)*nodeCount);
+
+			if (nodeID.x != nodeID.z || nodeID.y != nodeID.w)
+			{       
+				float2 a = p2.xy - p.xy;
+				float2 p3 = (nodeID.xy + dirSign) / nodeCount;
+				float2 b = p3.xy - p.xy;
+
+				float2 dNC = (b.xy * p2.z) / a.xy;                
+				d = min(d,min(dNC.x, dNC.y))+fDeltaNC;
+				
+				level++;
+
+	            #ifdef USE_QDM_ASCEND_INTERVAL
+			    if(frac(level*0.5) > EPSILON)
+				  level++;
+				#elseif USE_QDM_ASCEND_CONST
+				 level++;
+				#endif
+			}
+			p2 = p + v * d;
+		}
+		level--;
+		GlobalIterationCount++;
+	}
+
+	p = p2;
+}
+
+float4 finalRender(inout float3 p,inout float3 v,PS_DATA IN)
+{
+  float4 finalColor;	
+  finalColor = p.z;  
+  if (gDisplayIterations)
+    finalColor = float4(tex2D(gSamplerIterationVis, float2(float(GlobalIterationCount) / 256.0, 0.5)).xyz, 1);
+	
+  return finalColor;
+}
+
+float4 QDM_Rendering(PS_DATA IN) : COLOR
+{
+	float3 p,v;
+	PrepareRay(IN,p.xyz,v);
+	QDM(p,v,gSamplerQDM1);
+  
+ return finalRender(p,v,IN);
+}
+
+technique QDM
+{
+    pass p0 
+    {
+        VertexProgram = compile vp40 LightBaseVS();
+    	FragmentProgram = compile fp40 QDM_Rendering();
+    }
+}

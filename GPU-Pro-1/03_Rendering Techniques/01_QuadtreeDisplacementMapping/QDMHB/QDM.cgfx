@@ -1,0 +1,576 @@
+//////////////////////////////////////////////////////////////
+//Quadtree Displacement Mapping with Height Blending
+//ShaderX 8 Sample
+//@Michal Drobot
+//hello@drobot.org
+//www.drobot.org
+//
+//Following sample shows simple QDM for fast and accurate
+//displacement mapping. Code is NON optimal.
+//Uncomment #define for advanced tweaking
+//USE_QDM_ASCEND - interval quadtree ascend mode
+//USE_QDM_ASCEND_CONST - constant quadtree ascend mode
+//USE_OPTIMIZED_QDM_SM3 - Shader model 3.0 optimized version
+//All versions use AO and Soft Shadow calculation by horizon approximation
+//Possible optimization is to use integer math with SM 4.0
+//For QDMHB see QDMHB.cgfx/QDMHB_Material
+//////////////////////////////////////////////////////////////
+
+
+#define TEXTURE_MIP_LEVELS 8
+#define TEXTURE_PIX_COUNT  256 //pow(2,TEXTURE_MIP_LEVELS)
+#define BINARY_SEARCH_COUNT 10
+#define BILINEAR_SMOOTH_FACTOR 2.0
+
+//#define USE_QDM_ASCEND
+//#define USE_QDM_ASCEND_CONST
+
+//#define USE_OPTIMIZED_QDM_SM3
+
+texture gTexDiffuse : DIFFUSE
+<
+    string ResourceType = "2D";
+>;
+
+texture gTexNMH : NORMAL
+<
+	string ResourceType = "2D";
+>;
+
+texture gTexQDM1
+<
+	string ResourceType = "2D";
+>;
+
+texture gTexQDMLinear
+<
+	string ResourceType = "2D";
+>;
+
+texture gTexIterationVis
+<
+    string ResourceType = "2D";
+>;
+
+int gIterationCap
+<
+	string UIName = "Iteration Cap";
+	string UIWidget = "slider";
+	int UIMin = 1;
+	int UIStep = 5;
+	int UIMax = 256;
+> = 64;
+
+float gDepthScale
+<
+	string UIName = "Depth Scaling";
+	string UIWidget = "slider";
+	float UIMin = 0.01f;
+	float UIStep = 0.01f;
+	float UIMax = 0.80f;
+> = 0.5;
+
+float gTileFactor
+<
+	string UIName = "Tile Repeat";
+	string UIWidget = "slider";
+	float UIMin = 1.0;
+	float UIStep = 1.0;
+	float UIMax = 16.0;
+> = 1;
+
+float gLodLevel
+<
+	string UIName = "LOD Level";
+	string UIWidget = "slider";
+	float UIMin = 0;
+	float UIStep = 1;
+	float UIMax = 4;
+> = 0;
+
+bool gDisplayDepth
+<
+	string UIName = "Display Depth";
+	string UIWidget = "checkbox";
+> = false;
+
+bool gDisplayIterations
+<
+	string UIName = "Display Iterations";
+	string UIWidget = "checkbox";
+> = false;
+
+bool gCalculateShadows
+<
+	string UIName = "Calculate Shadows";
+	string UIWidget = "checkbox";
+> = true;
+
+bool gCalculateAO
+<
+	string UIName = "Calculate AO";
+	string UIWidget = "checkbox";
+> = true;
+
+float gShadowScale
+<
+	string UIName = "Shadow Scale";
+	string UIWidget = "slider";
+	float UIMin = 0.01f;
+	float UIStep = 0.01f;
+	float UIMax = 25.0f;
+> = 1.0;
+
+float gShadowStrength
+<
+	string UIName = "Shadow Strength";
+	string UIWidget = "slider";
+	float UIMin = 0.01f;
+	float UIStep = 0.01f;
+	float UIMax = 1.0f;
+> = 1.0;
+
+float gShadowDistanceFalloff
+<
+	string UIName = "Shadow Distance Falloff";
+	string UIWidget = "slider";
+	float UIMin = 0.01f;
+	float UIStep = 0.01f;
+	float UIMax = 1.0f;
+> = 0.33;
+
+float3 gLightPos : Position <
+    string Object = "PointLight0";
+    string UIName =  "Lamp 0 Position";
+    string Space = "World";
+> = {-0.5f,2.0f,1.25f};
+
+float3 gAmbientColor
+<
+	string UIName = "Ambient";
+	string UIWidget = "color";
+> = {0.1,0.1,0.1};
+
+float3 gDiffuseColor
+<
+	string UIName = "Diffuse";
+	string UIWidget = "color";
+> = {1.0,1.0,1.0};
+
+float3 gSpecularColor
+<
+	string UIName = "Specular";
+	string UIWidget = "color";
+> = {1.0,1.0,1.0};
+
+float gShineCoef
+<
+    string UIName = "Shiness";
+	string UIWidget = "slider";
+	float UIMin = 8.0f;
+	float UIStep = 8;
+	float UIMax = 256.0f;
+> = 32.0;
+
+sampler2D gSamplerDiffuse = sampler_state
+{
+	Texture = <gTexDiffuse>;
+	
+	MinFilter = Linear;
+	MagFilter = Linear;
+	MipFilter = Linear;
+};
+
+sampler2D gSamplerNMH = sampler_state
+{
+	Texture = <gTexNMH>;
+
+	MinFilter = Linear;
+	MagFilter = Linear;
+	MipFilter = Linear;
+};
+
+sampler2D gSamplerQDM1 = sampler_state
+{
+	Texture = <gTexQDM1>;
+	
+	MinFilter = NearestMipMapNearest;
+	MagFilter = Linear;	
+	MipFilter = Linear;
+};
+
+sampler2D gSamplerQDMLinearSampler = sampler_state
+{
+	Texture = <gTexQDMLinear>;
+	
+	MinFilter = LinearMipMapLinear;
+	MagFilter = Linear;	
+	MipFilter = Linear;
+};
+
+sampler2D gSamplerIterationVis = sampler_state
+{
+	Texture = <gTexIterationVis>;
+	
+	MinFilter = Point;
+	MagFilter = Point;	
+	MipFilter = None;
+};
+
+struct VS_DATA
+{
+	float4 P	: POSITION;
+	float3 N    : NORMAL;
+	float2 UV   : TEXCOORD0;
+	float3 T    : TANGENT0;
+	float3 B    : BINORMAL0;
+};
+
+struct PS_DATA
+{
+	float4 H	: POSITION;
+	float3 E    : TEXCOORD0;
+	float3 L    : TEXCOORD1;
+	float2 UV   : TEXCOORD2;
+};
+
+float4x4 WVPMatrix  : WorldViewProjection <string UIWidget = "none";>;
+float4x4 WVMatrix   : WorldView <string UIWidget = "none";>;
+float4x4 VMatrix    : View <string UIWidget = "none";>;
+int GlobalIterationCount = 0;
+
+//Perform typical VS for normal mapping
+PS_DATA LightBaseVS(VS_DATA IN)
+{
+PS_DATA OUT;
+
+	float4 Pos = float4(IN.P.xyz,1.0);
+
+	OUT.H = mul(WVPMatrix, Pos);
+ 		
+	OUT.UV = IN.UV * gTileFactor;
+
+	//Tangent base
+	float3 Tn = mul(WVMatrix, float4(IN.T,0.0)).xyz;
+	float3 Bn = mul(WVMatrix, float4(IN.B,0.0)).xyz;
+	float3 Nn = mul(WVMatrix, float4(IN.N,0.0)).xyz;
+
+	float3 VPos = mul(WVMatrix, Pos).xyz;
+	//Eye vector in tangent space
+	OUT.E = float3(dot(VPos, Tn), dot(VPos, Bn), dot(VPos, Nn)).xyz;	
+
+	//Light vector in tangent space
+	float4 L = float4(gLightPos.xyz, 1.0);
+	L.xyz = mul(VMatrix, L).xyz-VPos;
+	L.xyz = float3(dot(L.xyz, Tn), dot(L.xyz, Bn), dot(L.xyz, Nn)).xyz;
+	OUT.L = L.xyz;
+
+	return OUT;
+}
+
+//View ray normalization and scaling
+void PrepareRay(PS_DATA IN, out float3 p, out float3 v)
+{
+	p = float3(IN.UV, 0);
+	v = normalize(IN.E);	
+	v.z = abs(v.z);
+	v.xy *= gDepthScale;
+	v /= v.z;	
+}
+
+float getQDMHorizonApproximation(sampler QDMSampler, float3 l, float2 searchPoint, float dScale, float selfShadowStrength)
+{
+    float2 lDir = (float2(l.x, l.y)) * dScale / (float)TEXTURE_PIX_COUNT;
+      
+    float h0 = tex2Dlod(QDMSampler, float4(searchPoint,0,0)).w;
+    float h = h0;
+	
+	//Take n-1 weightened samples along light direction to evaluate horizon
+	h = min(1.0, tex2Dlod(QDMSampler, float4(searchPoint + lDir,0,0)).w); 
+    
+	for(int i = 1; i < TEXTURE_MIP_LEVELS-1; i++)
+	{
+		float tH = tex2Dlod(QDMSampler, float4(searchPoint + lDir * pow(2.0,i),0,i)).w;
+		//Distance weight function
+		tH = lerp( tH, 1.0 , gShadowDistanceFalloff*(float)i/(float)(TEXTURE_MIP_LEVELS-1));
+		h = min(h, tH); 
+	}		
+  
+	//Shadow term evaluation
+    float shadow = 1.0 - clamp((h0 - h) * selfShadowStrength,0.0,1.0);
+	shadow *= shadow;
+      
+	return shadow;
+}
+
+float getAOTerm(sampler QDMSampler, float2 searchPoint, float dScale, float selfShadowStrength)
+{
+	float AO = 0.0;
+	
+	//Use horizon approximation in several directions
+	//May use jittering and direction number 4-8
+	AO += getQDMHorizonApproximation(QDMSampler, float3(1.0,1.0,0.5), searchPoint, dScale, selfShadowStrength);
+	AO += getQDMHorizonApproximation(QDMSampler, float3(-1.0,-1.0,0.5), searchPoint, dScale, selfShadowStrength);
+	AO += getQDMHorizonApproximation(QDMSampler, float3(1.0,-1.0,0.5), searchPoint, dScale, selfShadowStrength);
+	AO += getQDMHorizonApproximation(QDMSampler, float3(-1.0,1.0,0.5), searchPoint, dScale, selfShadowStrength);
+	
+	AO *= 0.25;
+	
+	return AO;
+}
+//Standard normal mapping
+float4 NormalMappingPS(PS_DATA IN, float2 UV)
+{
+	float4 DiffuseColor = tex2D(gSamplerDiffuse, UV);
+	
+	float4 N = tex2D(gSamplerNMH, UV);
+	N.xy = 2.0 * N.xy - 1.0;
+	N.y = N.y;
+	N.z = sqrt(1.0 - dot(N.xy, N.xy));
+
+	float3 L = normalize(IN.L);
+	float3 E = normalize(IN.E);
+
+	float Diffuse  = saturate(dot(L, N.xyz));
+	float Specular = saturate(dot(normalize(L - E), N.xyz));
+
+	if ((UV.x < 0)||(UV.y < 0)||(UV.x > gTileFactor)||(UV.y > gTileFactor))
+		discard;
+	
+	float shadowCoef = 1.0;
+	float AOTerm = 1.0;
+	
+	if(gCalculateShadows)
+		shadowCoef = getQDMHorizonApproximation(gSamplerQDMLinearSampler, L, UV, gShadowScale, gShadowStrength);
+	if(gCalculateAO)
+		AOTerm     = getAOTerm(gSamplerQDMLinearSampler, UV, gShadowScale, gShadowStrength);
+	
+	float4 Result;
+	Result.xyz = AOTerm * gAmbientColor + 
+	                 shadowCoef * Diffuse * (gDiffuseColor.xyz +
+					 gSpecularColor * pow(Specular, gShineCoef));
+	Result.xyz *= DiffuseColor.rgb;
+	Result.w = 1;
+	return Result;
+}
+
+#define EPSILON 0.00001
+
+#ifndef USE_OPTIMIZED_QDM_SM3
+void QDM(inout float3 p, inout float3 v, sampler2D PDMSampler)
+{		
+	const int MAX_LEVEL = TEXTURE_MIP_LEVELS;
+	const float NODE_COUNT = TEXTURE_PIX_COUNT;
+	const float TEXEL_SPAN_HALF = 1.0 / NODE_COUNT / 2.0;	
+	
+	float fDeltaNC = TEXEL_SPAN_HALF * gDepthScale;
+  	
+	float3 p2 = p;
+	float level = MAX_LEVEL;
+    float2 dirSign = (sign(v.xy) + 1.0) * 0.5;
+    GlobalIterationCount = 0;
+    float d = 0;
+  
+	while (level >= gLodLevel && GlobalIterationCount < gIterationCap)
+	{
+		float4 uv = float4(p2.xyz, level);
+		d = tex2Dlod(gSamplerQDM1, uv).w;
+
+		if (d > p2.z)
+		{	
+			//predictive point of ray traversal
+			float3 tmpP2 = p + v * d;
+
+			//current node count
+			float nodeCount = pow(2.0, (MAX_LEVEL - level));
+			//current and predictive node ID
+			float4 nodeID = floor(float4(p2.xy, tmpP2.xy)*nodeCount);
+
+			//check if we are crossing the current cell
+			if (nodeID.x != nodeID.z || nodeID.y != nodeID.w)
+			{    
+				//calculate distance to nearest bound
+				float2 a = p2.xy - p.xy;
+				float2 p3 = (nodeID.xy + dirSign) / nodeCount;
+				float2 b = p3.xy - p.xy;
+
+				float2 dNC = (b.xy * p2.z) / a.xy; 
+				//take the nearest cell
+				d = min(d,min(dNC.x, dNC.y))+fDeltaNC;
+				
+				level++;
+
+				//use additional convergence speed-up
+	            #ifdef USE_QDM_ASCEND_INTERVAL
+			    if(frac(level*0.5) > EPSILON)
+				  level++;
+				#elseif USE_QDM_ASCEND_CONST
+				 level++;
+				#endif
+			}
+			p2 = p + v * d;
+		}
+		level--;
+		GlobalIterationCount++;
+	}
+
+	//
+	// Manual Bilinear filtering
+	//
+	float rayLength =  length(p2.xy - p.xy) + fDeltaNC;
+	    
+	float dA = p2.z * (rayLength - BILINEAR_SMOOTH_FACTOR * TEXEL_SPAN_HALF) / rayLength;
+	float dB = p2.z * (rayLength + BILINEAR_SMOOTH_FACTOR * TEXEL_SPAN_HALF) / rayLength;
+	
+	float4 p2a = float4(p + v * dA, gLodLevel);
+	float4 p2b = float4(p + v * dB, gLodLevel);
+	dA = tex2Dlod(gSamplerNMH, p2a).w;
+	dB = tex2Dlod(gSamplerNMH, p2b).w;
+		
+	dA = abs(p2a.z - dA);
+	dB = abs(p2b.z - dB);
+
+	p2 = lerp(p2a.xyz, p2b.xyz, dA / (dA + dB));
+
+	p = p2;
+}
+#else // USE SM3 OPTIMIED QDM FOR LOW ITERATION COUNT (<64) - GAME USAGE
+void QDM(inout float3 p, inout float3 v, sampler2D PDMSampler)
+{	
+	const int MAX_LEVEL = TEXTURE_MIP_LEVELS;
+	const float NODE_COUNT = TEXTURE_PIX_COUNT;
+	const float TEXEL_SPAN_HALF = 1.0 / NODE_COUNT / 2.0;	
+	
+	float fDeltaNC = TEXEL_SPAN_HALF * gDepthScale;
+  	
+	float3 p2 = p;
+	float level = MAX_LEVEL;
+    float2 dirSign = (sign(v.xy) + 1.0) * 0.5;
+    GlobalIterationCount = 0;
+    float d = 0;
+	float nodeCount = 1;
+  
+	while (level >= gLodLevel && GlobalIterationCount < gIterationCap)
+	{
+		float4 uv = float4(p2.xyz, level);
+		d = tex2Dlod(gSamplerQDM1, uv).w;
+
+		if (d > p2.z)
+		{	
+			float3 tmpP2 = p + v * d;
+			float4 nodeID = floor(float4(p2.xy, tmpP2.xy)*nodeCount);
+
+			//if predicate should be vectorized on older hardware
+			if (nodeID.x != nodeID.z || nodeID.y != nodeID.w)
+			{       
+				float2 a = p2.xy - p.xy;
+				float2 p3 = (nodeID.xy + dirSign) / nodeCount;
+				float2 b = p3.xy - p.xy;
+
+				float2 dNC = (b.xy * p2.z) / a.xy;                
+				d = min(dNC.x, dNC.y)+fDeltaNC;
+				
+				level++;
+				nodeCount*=0.5;
+			}
+			p2 = p + v * d;
+		}
+		level--;
+		//Use nodeCount mul instead of expensive POW
+		nodeCount*=2;
+		GlobalIterationCount++;
+	}
+
+	p = p2;
+}
+#endif
+//Standard Relief Mapping by Policarpo
+void Relief(inout float3 p, inout float3 v)
+{  
+    v /= v.z * gIterationCap;
+		
+	for(int i = 0; i < gIterationCap; i++ )
+	{
+		float4 tex = tex2D(gSamplerNMH, p.xy);
+		if (p.z < tex.w)
+    		{
+				p += v;
+      			GlobalIterationCount++;
+    		}
+	}
+	
+	for(int i = 0; i < BINARY_SEARCH_COUNT; i++ )
+	{
+		v *= 0.5;
+		float4 tex = tex2D(gSamplerNMH, p.xy);
+		if (p.z < tex.w)
+			p += v;
+		else
+			p -= v;
+	}
+    
+  GlobalIterationCount += BINARY_SEARCH_COUNT;
+}
+
+float4 finalRender(inout float3 p,inout float3 v,PS_DATA IN)
+{
+  float4 finalColor;	
+  if (gDisplayDepth)
+    finalColor = p.z;  
+  else if (gDisplayIterations)
+    finalColor = float4(tex2D(gSamplerIterationVis, float2(float(GlobalIterationCount) / 256.0, 0.5)).xyz, 1);
+  else
+    finalColor = NormalMappingPS(IN, p.xy);
+	
+  return finalColor;
+}
+
+float4 Normal_Rendering(PS_DATA IN) : COLOR
+{
+  return NormalMappingPS(IN, IN.UV);
+}
+
+float4 Relief_Rendering(PS_DATA IN) : COLOR
+{
+  float3 p,v;	
+  PrepareRay(IN,p,v);
+  Relief(p.xyz,v);     
+
+  return finalRender(p,v,IN);
+}
+
+float4 QDM_Rendering(PS_DATA IN) : COLOR
+{
+	float3 p,v;
+	PrepareRay(IN,p.xyz,v);
+	QDM(p,v,gSamplerQDM1);
+  
+ return finalRender(p,v,IN);
+}
+
+technique NORMAL
+{
+  pass p0 
+    {
+		    VertexProgram = compile vp40 LightBaseVS();
+		    FragmentProgram = compile fp40 Normal_Rendering();
+    }
+}
+
+technique RELIEF
+{
+    pass p0 
+    {
+		    VertexProgram = compile vp40 LightBaseVS();
+		    FragmentProgram = compile fp40  Relief_Rendering();
+    }
+}
+
+technique QDM
+{
+    pass p0 
+    {
+        VertexProgram = compile vp40 LightBaseVS();
+    		FragmentProgram = compile fp40 QDM_Rendering();
+    }
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+	<asset>
+		<contributor>
+			<author>kap00ch</author>
+			<authoring_tool>NVIDIA FX Composer 2.5</authoring_tool>
+			<comments/>
+			<copyright/>
+		</contributor>
+		<created>2009-09-15T01:20:53Z</created>
+		<keywords>FXComposer, NVIDIA</keywords>
+		<modified>2009-09-15T01:27:42Z</modified>
+		<subject/>
+		<title/>
+		<unit/>
+		<up_axis>Y_UP</up_axis>
+	</asset>
+	<library_visual_scenes>
+		<visual_scene id="DefaultScene" name="DefaultScene">
+			<node sid="__fxc_remove_node"/>
+			<extra type="evaluatescene_enables">
+				<technique profile="NVIDIA_FXCOMPOSER"/>
+			</extra>
+		</visual_scene>
+	</library_visual_scenes>
+	<scene>
+		<instance_visual_scene url="#DefaultScene"/>
+	</scene>
+</COLLADA>

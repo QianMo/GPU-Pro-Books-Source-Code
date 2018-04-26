@@ -1,0 +1,127 @@
+<project>
+  <current_configuration value="Debug" />
+  <configurations>
+    <configuration name="Debug">
+      <settings category="Project\Direct3D\HLSL Compiler">
+        <CompilerOptions value="" />
+      </settings>
+      <settings category="Project\OpenGL\CgCompiler">
+        <CompilerOptions value="" />
+      </settings>
+      <settings category="Project\Paths">
+        <Includes value="" />
+        <Models value="" />
+        <Scripts value="" />
+        <Shaders value="" />
+        <Textures value="" />
+      </settings>
+      <settings category="Project\Settings">
+        <BindLightToUnboundMaterials value="False" />
+      </settings>
+      <settings category="Project\COLLADA Common Profile">
+        <EnvironmentMap value="" />
+        <DisableCommonProfileTransparency value="False" />
+      </settings>
+    </configuration>
+    <configuration name="Release">
+      <settings category="Project\Direct3D\HLSL Compiler">
+        <CompilerOptions value="" />
+      </settings>
+      <settings category="Project\OpenGL\CgCompiler">
+        <CompilerOptions value="" />
+      </settings>
+      <settings category="Project\Paths">
+        <Includes value="" />
+        <Models value="" />
+        <Scripts value="" />
+        <Shaders value="" />
+        <Textures value="" />
+      </settings>
+      <settings category="Project\Settings">
+        <BindLightToUnboundMaterials value="False" />
+      </settings>
+      <settings category="Project\COLLADA Common Profile">
+        <EnvironmentMap value="" />
+        <DisableCommonProfileTransparency value="False" />
+      </settings>
+    </configuration>
+  </configurations>
+  <assetFile uri="Document1.dae" referenced="False" />
+  <assetFile uri="QDMHB.dae" referenced="False" />
+  <activeAssetCollection uri="QDMHB.dae" />
+  <customConfigurations>
+    <FXComposer.Scene.Services.FXRenderPortService>
+      <defaultScene sceneUri="QDMHB.dae#Scene" />
+      <camera type="Top" scene="Document1.dae#DefaultScene">
+        <focallength>14.51285</focallength>
+        <fov>40</fov>
+        <zoomrect>0 0 1 1</zoomrect>
+        <viewtransform>1 0 0 0 0 5.960464E-08 -0.9999998 0 0 0.9999998 5.960464E-08 0 0 14.51285 0 1 </viewtransform>
+      </camera>
+      <camera type="Front" scene="Document1.dae#DefaultScene">
+        <focallength>14.51285</focallength>
+        <fov>40</fov>
+        <zoomrect>0 0 1 1</zoomrect>
+        <viewtransform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 14.51285 1 </viewtransform>
+      </camera>
+      <camera type="Right" scene="Document1.dae#DefaultScene">
+        <focallength>14.51285</focallength>
+        <fov>40</fov>
+        <zoomrect>0 0 1 1</zoomrect>
+        <viewtransform>5.960464E-08 0 -0.9999998 0 0 1 0 0 0.9999998 0 5.960464E-08 0 14.51285 0 0 1 </viewtransform>
+      </camera>
+      <camera type="Perspective" scene="Document1.dae#DefaultScene">
+        <focallength>39.87372</focallength>
+        <fov>40</fov>
+        <zoomrect>0 0 1 1</zoomrect>
+        <viewtransform>0.7071065 -6.811516E-08 -0.7071069 0 -0.4082483 0.8164964 -0.4082482 0 0.5773504 0.5773503 0.57735 0 23.0211 23.0211 23.0211 1 </viewtransform>
+      </camera>
+      <camera type="Top" scene="QDMHB.dae#Scene">
+        <focallength>3.937063</focallength>
+        <fov>40</fov>
+        <zoomrect>0 0 1 1</zoomrect>
+        <viewtransform>0.9999999 3.346766E-09 1.871739E-12 0 -1.871406E-12 1.78814E-07 -0.9999998 0 3.78524E-10 0.9999999 1.788138E-07 0 -0.165746 5.020196 -0.09805751 1 </viewtransform>
+      </camera>
+      <camera type="Front" scene="QDMHB.dae#Scene">
+        <focallength>3.937063</focallength>
+        <fov>40</fov>
+        <zoomrect>0 0 1 1</zoomrect>
+        <viewtransform>1 0 0 0 0 1 -1.994667E-07 0 0 2.065273E-08 1 0 -0.165746 1.083133 3.839005 1 </viewtransform>
+      </camera>
+      <camera type="Right" scene="QDMHB.dae#Scene">
+        <focallength>3.937063</focallength>
+        <fov>40</fov>
+        <zoomrect>0 0 1 1</zoomrect>
+        <viewtransform>5.960464E-08 4.440892E-16 -0.9999998 0 8.559311E-09 1 -4.440892E-16 0 0.9999998 -8.559311E-09 5.960464E-08 0 3.771317 1.083133 -0.09805751 1 </viewtransform>
+      </camera>
+      <camera type="Perspective" scene="QDMHB.dae#Scene">
+        <focallength>3.187326</focallength>
+        <fov>40</fov>
+        <zoomrect>0 0 1 1</zoomrect>
+        <viewtransform>-0.9930053 6.994E-07 -0.1180716 0 -0.05816058 0.8702606 0.4891463 0 0.1027534 0.492592 -0.8641731 0 0.1617683 2.653176 -2.852474 1 </viewtransform>
+      </camera>
+      <renderPort name="Render" />
+    </FXComposer.Scene.Services.FXRenderPortService>
+    <FXComposer.Scene.Services.FXSceneService>
+      <grid_settings sceneUri="Document1.dae#DefaultScene">
+        <show_grid value="True" />
+        <axes_color value="0, 0, 0, 1" />
+        <size value="0" />
+        <major_ticks_color value="0.25, 0.25, 0.25, 1" />
+        <major_tick_every_nth value="10" />
+        <ticks_color value="0.425, 0.425, 0.425, 1" />
+        <ticks_interval_in_units value="0" />
+      </grid_settings>
+      <grid_settings sceneUri="QDMHB.dae#Scene">
+        <show_grid value="True" />
+        <axes_color value="0, 0, 0, 1" />
+        <size value="4.698729" />
+        <major_ticks_color value="0.25, 0.25, 0.25, 1" />
+        <major_tick_every_nth value="10" />
+        <ticks_color value="0.425, 0.425, 0.425, 1" />
+        <ticks_interval_in_units value="0.09397458" />
+      </grid_settings>
+      <background_color color="0.5 0.5 0.5 0" />
+    </FXComposer.Scene.Services.FXSceneService>
+  </customConfigurations>
+</project>
