@@ -1,0 +1,43 @@
+#include "DXUT.h"
+#include "Role.h"
+#include "RenderContext.h"
+#include "Theatre.h"
+
+Role::Role()
+{
+}
+
+Role::~Role(void)
+{
+	std::vector<Material*>::iterator i = materials.begin();
+	while(i != materials.end())
+	{
+		delete *i;
+		i++;
+	}
+}
+
+
+void Role::render(const RenderContext& context, ID3DX10Mesh* mesh)
+{
+	unsigned int nSubsets = (unsigned int)materials.size();
+	for(unsigned int i=0; i<nSubsets; i++)
+	{
+		ID3D10EffectTechnique* technique = materials[i]->apply(context.theatre->getDevice());
+		D3D10_TECHNIQUE_DESC techniqueDesc;
+		technique->GetDesc( &techniqueDesc );
+	    for(unsigned int p=0; p < techniqueDesc.Passes; p++)
+	    {
+			technique->GetPassByIndex(p)->Apply(0);
+			if(context.instanceCount < 2)
+				mesh->DrawSubset(0);
+			else
+				mesh->DrawSubsetInstanced(0, context.instanceCount, 0);
+        }
+	}
+}
+
+void Role::addMaterial(Material* material)
+{
+	materials.push_back(material);
+}

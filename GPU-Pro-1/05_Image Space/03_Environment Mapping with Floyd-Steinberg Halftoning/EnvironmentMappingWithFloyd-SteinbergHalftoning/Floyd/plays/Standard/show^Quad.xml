@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Quad>
+  <use repertoire="show" />
+  <overrides>
+    <Texture effect="standard" name="showMap" file="null" />
+  </overrides>
+</Quad>

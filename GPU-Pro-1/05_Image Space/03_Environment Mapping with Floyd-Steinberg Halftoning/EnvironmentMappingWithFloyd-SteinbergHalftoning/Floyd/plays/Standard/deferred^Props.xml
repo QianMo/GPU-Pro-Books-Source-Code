@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<props>
+  <Repertoire name="deferring">
+    <Rendition role="basic" effect="textured" technique="basic">
+      <Texture effect="pool" name="kdMap" file="media/uvGrid.png" />
+    </Rendition>
+    <Rendition role="deferring" effect="deferring" technique="deferring">
+      <Texture effect="pool" name="kdMap" file="media/uvGrid.png" />
+    </Rendition>
+  </Repertoire>
+  <Repertoire name="deferred">
+    <Rendition role="deferred" effect="deferred" technique="deferred">
+    </Rendition>
+  </Repertoire>
+</props>

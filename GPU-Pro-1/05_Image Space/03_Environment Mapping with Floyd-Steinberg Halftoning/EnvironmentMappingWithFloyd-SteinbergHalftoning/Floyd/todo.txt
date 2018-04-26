@@ -1,0 +1,204 @@
+why is raytracing.fx included in the pool?
+
+put spotlights back in Test^Play
+
+unified XML hierarchy, file include on any tag
+e.g:
+<Quad cue="quad" T...file="environment^Quad.xml" />
+<CharacterAnimator name="orc" T...file="media\\orc^CharacterAnimator.xml" />
+
+handle name clashes within a resourcebuilder
+
+project editor
+	- dgbMaker
+	- .x -> .dgb, .dds (texture array)
+	- Mesh and ShadedMesh definitions into prop xml
+
+file search when processing filename references in XML	- OK
+rewrite xml files
+reformulate KRS mirrors
+
+anonymous repertoire definition?
+	it is clumsy to add a repertoire to a props file then reference it from e.g. a Quad
+
+OccluderSphereSet, KdTree: no not rebuild mesh data for every entity
+
+OccluderSphereSet: parametrize number of spheres
+- OccluderSphereSetEntity
+
+model scaling
+- transformed model raycasting/area sampling revisit
+
+ErrorDiffusionPhotonShootingScene::ErrorDiffusionPhotonShootingScene
+	kdtreescene secure cast: how?
+
+remove from dxut.h :
+	// Direct3D9 includes
+	#include <d3d9.h>
+	#include <d3dx9.h>
+
+delete DefineVariable (done at script loading time in TaskBlock, not script exec time)
+var defined in multiple acts ? --- seems OK the way it is now
+
+script variable redefinition (or new swapchain)
+
+move Task management from Act to ResourceOwner
+- does Play remain a resourceowner? - yes
+
+generic method invocation from script to cueables
+- Camera as script variable
+- merge render/control/animate/message	OK/ / /OK
+- Task takes all				OK
+- invoke implements Task		OK
+
+TaskBlock::loadTasks should get resource owner as parameter
+
+merge Heap.hpp and Delaunay/Heap.h
+
+allow anonymous SceneDecorators - delete them after Scene construction
+
+migrate affect, interact to some entity decorator? - bzw controllers?
+
+plug-in: SceneManager, EntityDecorator
+- Play::loadSceneDecorators  name -> class
+- EntityClass extendability
+
+clean rollback on errors
+- during rendering:	DXUTShutDown!
+- loading?
+	- exception
+	- retval checking for/in
+		loadPlay
+		loadEffectPool
+		loadChildEffect
+		OnD3D10CreateDevice returns fail
+	- in xml parser
+		XMLNode::openFileHelper
+
+Cueable extends ResourceOwner ?
+
+scene's raytracing effect variables set when required by others ?
+- variable system in render scripts						OK
+- new variable types in resource manager?
+remove randomization hack for texture1Ds
+
+initial data specification for resources
+initalization script for all resourcebuilders <render...>
+
+fix: two ResourceBuilders on the same level&event
+
+InputLayoutManager: add debug mode for checking every elements/sig pair for validity before looking for a compatible layout
+
+------------ DONE
+
+EggERR - trace XML node file/line						- OK
+change appropriate EggERRs too EggXMLERRs				- OK
+
+warn if entity decorator is not parsed by any scene manager - OK
+
+
+emit error on name clashes (e.g. two repertoires of the same name)	- OK
+
+Cueables: harder render roles									wtf???
+
+InputLayout sharing													OK
+implement InputLayoutManager::InputConfiguration::isCompatible		OK
+
+merge Role into Rendition - rename RoleType to Role				OK
+Archetypes?														discarded
+- parametrizable											
+overrides for effect vars can be defined in ShadingMaterial		OK
+repertoire inheritace - instead of archetypes					OK
+
+Scene: lazy repertoire/rendition creation (not for all descriptors in props) - CANCELLED (Rendition/ShadingMaterial separation and InputLayoutManager serve these purposes already)
+
+Scene::loadNxScene	load settings from XML		OK
+
+fix StaticEntity::getRotationMatrixInverse		OK
+
+CharacterModel::getBoneIndexByBoneName : handle not found
+
+error if technique not found
+
+clearRTV, clearDSV: do not store string (but: swapchain binding???) - fixed by script variables
+
+put back occluder spheres and ray traing resources, handle if none required - fixed by SceneManager
+fix: do not create textures for raytracing/balls when not necessary - fixed by SceneManager
+
+common interface for Entity-bound resources (RaytracingMesh, OccluderSphereSet) [Scene should not be touched when adding a new one] - fixed by EntityDecorators
+
+
+message if fx not found
+
+lazy load effects, on demand (pool?) - CANCELLED
+
+loading renditions: warn if technique or variable not found in fx file
+
+PropsMaster::getShadedMesh	warning if not found
+PropsMaster::getPhysicsModel	warning if not found
+
+
+Act, Mesh, ShadedMesh, Entity extend ResourceOwner
+Play, Act, Mesh, ShadedMesh maintain ResourceBuilders for subordinate ResourceOwners
+(e.g. Play has resourcesToBeBuiltForAllMeshes)
+ResourceBuilder might later be changed to a hierarchy of classes providing different resources (e.g. ray tracing mesh)
+instead: CustomResourceDesc, CustomResource, (CustomResourceDescLoader, CustomResourceLoader) interfaces
+Play has CustomResourceLoader directory
+ResourceBuilder has a CustomResourceDescDirectory, loaded with specified loader
+the custom resource has to be cast 
+
+
+Task: clear render target
+switch Act
+
+Play::animate.. etc. iterate through acts rather than cue every scene
+
+EntityCamera: fix
+
+camera aspect ratio
+
+ControlStatus & ControlContext
+
+MessageContext
+
+?AnimationContext
+AnimationTask
+MessageTasks
+ControlTasks
+
+warn / fallback if cameraCue is not given (avoid camera NULL segfault)
+
+/*{
+			float4(0, -0.48, 0.87, 2),
+			float4(0, -0.48, 0.87, 4),
+			float4(0, -0.48, 0.87, 8),
+			float4(0, -0.48, 0.87, 16),
+			float4(0, -0.48, 0.87, 32),
+			float4(0, -0.48, 0.87, 64),
+			float4(0, -0.48, 0.87, 128),
+			float4(0, -0.48, 0.87, 256)};*/
+{float4(0,	-0.7071,	0.7071,	0.8400018),
+float4(0,	0,	-1,	0),
+float4(0,	-1,	0,	1.549911),
+float4(-0.0056086,	-0.9998953,	0.01333377,	2.279911),
+float4(-0.662774,	0.7488155,	0.002557443,	-0.5000876),
+float4(-0.5725421,	0.3768018,	0.7281597,	2.56991),
+float4(0.6998335,	-0.6349732,	0.3271725,	3.479863),
+float4(0.194077,	0.1138829,	-0.9743529,	2.599818)};
+/*{
+float4(0.0, -0.55, 1.0, 0.0),
+float4(-0.866, -0.35, -0.5, 0.0),
+float4(0.866, -0.35, -0.5, 0.0),
+float4(0.0, -0.55, 1.0, 0.0),
+float4(-0.866, -0.35, -0.5, 0.0),
+float4(0.866, -0.35, -0.5, 0.0),
+float4(0.0, -0.55, 1.0, 0.0),
+float4(-0.866, -0.35, -0.5, 0.0) };*/
+
+
+smoke&mirrors:
+paremetrizable:
+-primitive type
+-primitive parameters
+-brdf
+texturing

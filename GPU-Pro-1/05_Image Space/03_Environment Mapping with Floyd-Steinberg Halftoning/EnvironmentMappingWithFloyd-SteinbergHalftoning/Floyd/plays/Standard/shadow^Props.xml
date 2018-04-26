@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<props>
+  <Repertoire name="shadowCasterAndReceiver">
+    <Rendition role="basic" effect="textured" technique="basic">
+      <Texture effect="pool" name="kdMap" file="media/uvGrid.png" />
+    </Rendition>
+    <Rendition role="toShadowMap" effect="shadow" technique="toShadowMap">
+    </Rendition>
+    <Rendition role="toDirectionalShadowMap" effect="shadow" technique="toDirectionalShadowMap">
+    </Rendition>
+    <Rendition role="shadowed" effect="shadow" technique="shadowed">
+      <Texture effect="pool" name="kdMap" file="media/uvGrid.png" />
+    </Rendition>
+    <Rendition role="environmentLighted" effect="shadow" technique="environmentLighted">
+      <Texture effect="pool" name="kdMap" file="media/uvGrid.png" />
+    </Rendition>
+  </Repertoire>
+</props>

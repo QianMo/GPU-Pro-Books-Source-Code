@@ -1,0 +1,5 @@
+
+#: Material name: MatBasicWall
+newmtl MatBasicWall
+SName=MatBasicWall
+# Success...

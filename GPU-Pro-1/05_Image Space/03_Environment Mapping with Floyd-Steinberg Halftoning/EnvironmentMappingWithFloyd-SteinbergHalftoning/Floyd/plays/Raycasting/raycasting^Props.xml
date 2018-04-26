@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<props>
+  <Repertoire name="raycasting">
+    <Rendition role="raycasting" effect="raycasting" technique="raycasting">
+      <Texture effect="raycasting" name="rayScramblerMap" file="media/cpav-normal.jpg" />
+    </Rendition>
+  </Repertoire>
+</props>

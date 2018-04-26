@@ -1,0 +1,452 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Screen-Space Subsurface Scattering</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+html, body, div, span,
+applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dd, dl, dt, li, ol, ul,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    line-height: 1;
+    font-family: inherit;
+    text-align: left;
+    vertical-align: baseline;
+}
+a img, :link img, :visited img {border: 0}
+table {border-collapse: collapse; border-spacing: 0}
+ul {list-style: none}
+q:before, q:after,
+blockquote:before, blockquote:after {content: ""}
+
+body {font-size:20px; font-family:Garamond,Times,"Times New Roman",serif; color:#555; background-color:#f4f3f3}
+h1 {font-size:34px; margin-top:30px}
+h2 {font-size:24px; margin-top:30px}
+p, ul, ol {margin:15px 0}
+a {color:#545976; text-decoration:none}
+a:hover {color:#9a9cb5; text-decoration:underline}
+
+.wrapper {width:825px; margin:0 auto}
+.header h1 {font-size:52px; color:#272e4a; text-align:center; letter-spacing:3px}
+.navigation {margin-top:40px; font-size:20px; text-align:center; margin-right:-45px; letter-spacing:1px}
+.navigation li {display:inline; text-transform:uppercase; margin-right:45px}
+.content h1 a {color: #543628; letter-spacing:3px}
+.content h2 {color: #543628; letter-spacing:3px; font-style:italic}
+.content p {line-height:1.25em; text-align:justify}
+.content ul {margin-left:25px; list-style-type:disc}
+.content ol {margin-left:25px}
+.content li {margin:10px 0; text-align:justify}
+.code {font-family:"Courier",monospace; white-space:pre; font-size:17px}
+div.code {background-color: #eeeceb; padding: 15px; font-size:17px}
+.bold {font-weight:bold}
+.italic {font-style:italic}
+.footer {padding:40px 0 30px 0; font-size:18px; font-style:italic; color:gray}
+</style>
+<!--[if !IE]>-->
+<script type="text/javascript">
+//<!--
+/* Smooth scrolling
+   Changes links that link to other parts of this page to scroll
+   smoothly to those links rather than jump to them directly, which
+   can be a little disorienting.
+   
+   sil, http://www.kryogenix.org/
+   
+   v1.0 2003-11-11
+   v1.1 2005-06-16 wrap it up in an object
+*/
+
+var ss = {
+  fixAllLinks: function() {
+    // Get a list of all links in the page
+    var allLinks = document.getElementsByTagName('a');
+    // Walk through the list
+    for (var i=0;i<allLinks.length;i++) {
+      var lnk = allLinks[i];
+      if ((lnk.href && lnk.href.indexOf('#') != -1) && 
+          ( (lnk.pathname == location.pathname) ||
+	    ('/'+lnk.pathname == location.pathname) ) && 
+          (lnk.search == location.search)) {
+        // If the link is internal to the page (begins in #)
+        // then attach the smoothScroll function as an onclick
+        // event handler
+        ss.addEvent(lnk,'click',ss.smoothScroll);
+      }
+    }
+  },
+
+  smoothScroll: function(e) {
+    // This is an event handler; get the clicked on element,
+    // in a cross-browser fashion
+    if (window.event) {
+      target = window.event.srcElement;
+    } else if (e) {
+      target = e.target;
+    } else return;
+
+    // Make sure that the target is an element, not a text node
+    // within an element
+    if (target.nodeName.toLowerCase() != 'a') {
+      target = target.parentNode;
+    }
+  
+    // Paranoia; check this is an A tag
+    if (target.nodeName.toLowerCase() != 'a') return;
+  
+    // Find the <a name> tag corresponding to this href
+    // First strip off the hash (first character)
+    anchor = target.hash.substr(1);
+    // Now loop all A tags until we find one with that name
+    var allLinks = document.getElementsByTagName('a');
+    var destinationLink = null;
+    for (var i=0;i<allLinks.length;i++) {
+      var lnk = allLinks[i];
+      if (lnk.name && (lnk.name == anchor)) {
+        destinationLink = lnk;
+        break;
+      }
+    }
+    if (!destinationLink) destinationLink = document.getElementById(anchor);
+
+    // If we didn't find a destination, give up and let the browser do
+    // its thing
+    if (!destinationLink) return true;
+  
+    // Find the destination's position
+    var destx = destinationLink.offsetLeft; 
+    var desty = destinationLink.offsetTop;
+    var thisNode = destinationLink;
+    while (thisNode.offsetParent && 
+          (thisNode.offsetParent != document.body)) {
+      thisNode = thisNode.offsetParent;
+      destx += thisNode.offsetLeft;
+      desty += thisNode.offsetTop;
+    }
+  
+    // Stop any current scrolling
+    clearInterval(ss.INTERVAL);
+  
+    cypos = ss.getCurrentYPos();
+  
+    ss_stepsize = parseInt((desty-cypos)/ss.STEPS);
+    ss.INTERVAL =
+setInterval('ss.scrollWindow('+ss_stepsize+','+desty+',"'+anchor+'")',10);
+  
+    // And stop the actual click happening
+    if (window.event) {
+      window.event.cancelBubble = true;
+      window.event.returnValue = false;
+    }
+    if (e && e.preventDefault && e.stopPropagation) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  },
+
+  scrollWindow: function(scramount,dest,anchor) {
+    wascypos = ss.getCurrentYPos();
+    isAbove = (wascypos < dest);
+    window.scrollTo(0,wascypos + scramount);
+    iscypos = ss.getCurrentYPos();
+    isAboveNow = (iscypos < dest);
+    if ((isAbove != isAboveNow) || (wascypos == iscypos)) {
+      // if we've just scrolled past the destination, or
+      // we haven't moved from the last scroll (i.e., we're at the
+      // bottom of the page) then scroll exactly to the link
+      window.scrollTo(0,dest);
+      // cancel the repeating timer
+      clearInterval(ss.INTERVAL);
+      // and jump to the link directly so the URL's right
+      location.hash = anchor;
+    }
+  },
+
+  getCurrentYPos: function() {
+    if (document.body && document.body.scrollTop)
+      return document.body.scrollTop;
+    if (document.documentElement && document.documentElement.scrollTop)
+      return document.documentElement.scrollTop;
+    if (window.pageYOffset)
+      return window.pageYOffset;
+    return 0;
+  },
+
+  addEvent: function(elm, evType, fn, useCapture) {
+    // addEvent and removeEvent
+    // cross-browser event handling for IE5+,  NS6 and Mozilla
+    // By Scott Andrew
+    if (elm.addEventListener){
+      elm.addEventListener(evType, fn, useCapture);
+      return true;
+    } else if (elm.attachEvent){
+      var r = elm.attachEvent("on"+evType, fn);
+      return r;
+    } else {
+      alert("Handler could not be removed");
+    }
+  } 
+}
+
+ss.STEPS = 25;
+
+ss.addEvent(window,"load",ss.fixAllLinks);
+//-->
+</script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="wrapper">
+<a id="top"></a>
+<div class="header">
+<h1>Screen-Space Subsurface Scattering</h1>
+<h2 style="text-align: center; margin-top: 0px"><a href="http://www.iryokufx.com/s5">www.iryokufx.com/s5</a></h2>
+<ul class="navigation">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#tutorial">Tutorial</a></li>
+<li><a href="#license">License</a></li>
+<li><a href="#contact">Contact</a></li>                 
+</ul>
+<img src="images/figure2a.png" alt="Teaser" style="width: 825px"/>
+</div>
+<div class="content">
+<h1><a id="overview" href="#top">Overview</a></h1>
+<p>Welcome to our CD content! In this document you will find the compilation and runtime <a href="#requirements">requirements</a>, a
+<a href="#tutorial">tutorial</a> with step-by-step instructions that will enable you to quickly integrate our algorithm into your application, the
+<a href="#license">license</a> of the <span class="code">src</span> code and the
+<a href="#contact">contact</a> info.</p> 
+
+<p>The following material is bundled:</p>
+<ol>
+<li><span class="code">demo.exe</span>: pre-compiled binary of our Screen-Space Subsurface Scattering Demo.</li>
+<li><span class="code">demo.1080p.mp4</span>: movie of the demo (1920x1080p).</li>
+<li><span class="code">demo.720p.mp4</span>: movie of the demo (1280x720p; for viewing on older hardware).</li>
+<li><span class="code">src</span>: C++ source code of our demo.</li>
+<li><span class="code">images</span>: several high-res figures of the article, and images showing comparisons between our algorithm and other texture-space approaches:
+<ul>
+<li><span class="code">[hable et al. 09] fleshiness</span>: images showing how our approach manages to maintain the full fleshiness that [Hable et al. 09] loses as result of using a small jittered kernel.</li>
+<li><span class="code">[hable et al. 09] stretching artifacts</span>: images showing the stretching artifacts produced by texture-space algorithms, specially by the [hable et al. 09] approach.</li>
+<li><span class="code">separate specular</span>: images that compare applying subsurface scattering to both specular and diffuse channels (when you only have one render target for both channels, as done in our implementation), and to the diffuse channel only (when you have separated diffuse and specular render targets).</li>
+</ul>
+</li>
+<li><span class="code">scripts</span>: support scripts that calculate gaussian fits.
+<ul>
+<li><span class="code">marble.py</span>: this python script calculates a 4-gaussian fit of the marble profile described in [Jensen et al. 01]. It can be easily modified to find profiles for other materials.</li>
+<li><span class="code">skin.py</span>: this python script calculates a 4-gaussian fit of the three-layer skin profile described in [d'Eon and Luebke 07] as a sum of six gaussians (we don't use the original profile as input, but the fit found in this work).</li>
+</ul>
+</li>
+</ol>
+<p>The precompiled binary contains two additional XYZRGB models, not available in the source code version of the demo because of license issues. The supplied model in the source code is as simple teapot, that comes without diffuse and normal maps.</p>
+
+<h1><a id="requirements" href="#top">Requirements</a></h1>
+
+<ol>
+<li>For compiling the source code:
+<ul>
+<li>Visual C++ 2008 Express Edition</li>
+<li>Microsoft DirectX SDK (March 2009)</li>
+</ul>
+</li>
+<li>For running the demo: a DirectX 10 compatible GPU.</li>
+<li>For running the scripts:
+<ul>
+<li>python 2.5.2</li>
+<li>numpy 1.3.0</li>
+<li>scipy 0.7.1</li>
+<li>matplotlib 0.91.4</li>
+</ul>
+</li>
+</ol>
+
+<p>Note that compiling the source code <span class="bold">does not</span> require running the scripts.</p>
+
+<h1><a id="tutorial" href="#top">Tutorial</a></h1>
+
+<h2>Overview</h2>
+
+<p>In this section we will explain the workflow required to use our class. Copy pasting from this section into your application will allow you to have subsurface scattering up and running in no time.</p>
+
+<p>We encapsulated all subsurface scattering code in two C++ classes named
+<span class="code">SubsurfaceScatteringPass</span> and 
+<span class="code">Gaussian</span>, both found in
+<span class="code">SubsurfaceScatteringPass.h</span>. This file depends on
+<span class="code">RenderTarget.h</span>, that is used to ease render target usage inside of our classes. All shader code is located in the file <span class="code">SubsurfaceScattering.fx</span>, for which precompiled versions are provided (<span class="code">fxo</span>). These precompiled files must be included in the binary using the resource compiler under the names <span class="code">SubsurfaceScatteringN.fxo</span>, where N is the multisample count used for rendering the scene (see <span class="code">demo.rc</span> for an example). You will need to edit the source code if you want to load it from a file or shader cache.</p> 
+
+<h2>Rendering skin or marble</h2>
+
+<p>We are going to begin rendering with the bundled profiles, skin and marble, to simplify the explanation. Later on we will explain how to create your own profiles. In the following paragraphs we will assume that DXUT will be used for window management.</p>
+
+<p>The first task is constructing the <span class="code">SubsurfaceScatteringPass</span> object (in the DXUT callback <span class="code">SwapChainResized</span>, as it depends on the size of the backbuffer):</p>
+
+<div class="code">pass = new SubsurfaceScatteringPass(device,
+                                    width, height, // Of the backbuffer.
+                                    
+                                    // This format is heavily recommended:
+                                    DXGI_FORMAT_R8G8B8A8_UNORM_SRGB, 
+
+                                    // Projection matrix used to render the
+                                    // scene:
+                                    projectionMatrix,
+
+                                    // Parameters of our algorithm (sssLevel,
+                                    // correction and maxdd, see header or
+                                    // article for more info):
+                                    31.5f, 800.0f, 0.001f); 
+</div>
+
+<p>The <span class="code">sssLevel</span> and <span class="code">maxdd</span> parameters need to be changed depending on the object scale used. The values used here (31.5 and 0.001 respectively) work well for a head 1.0 units tall. As the purpose of <span class="code">maxdd</span> is to remove a very subtle artifact, we recommend setting it to a very high value in order to disable its effect, and decrease it only if you see significant artifacts at depth boundaries.</p>
+
+<p>Then, inside the frame render code we begin rendering the scene as usual. If you want to locally disable subsurface scattering in places like hair or beard, you can write to the alpha channel of the main render target; this alpha channel
+will be used by our shader to modulate the SSS level in a local way. When using MSAA you will need to resolve the final MSAA render target and downsample the depth-stencil buffer (see <a href="#downsampling"> <span class="italic">Downsampling the depth-stencil buffer</span></a> for more details), as our render function expects no-multisample render targets.</p> 
+
+<div class="code">renderScene(); // Into 'mainRenderTarget' using the depth-stencil buffer
+               // 'depthStencil', and writing linear depth into
+               // 'depthRenderTarget' (for which you can use MRT to output to
+               // both 'mainRenderTarget' and 'depthRenderTarget').
+               // 'depthStencil' should contain standard non-linear depth
+               // values.
+               // Objects that need subsurface scattering must be written with
+               // a stencil value of 1.
+</div>
+
+<p>After rendering the scene, we are ready for applying subsurface scattering:</p>
+
+<div class="code">pass->render(mainRenderTargetView, // of 'mainRenderTarget'
+             mainShaderResourceView, // of 'mainRenderTarget'
+             depthShaderResourceView, // of 'depthRenderTarget'
+             depthStencilView, // of 'depthStencil'
+             Gaussian::SKIN, // Or Gaussian::MARBLE.
+             1); // Stencil value used to render the objects we want to process.
+</div>
+
+<p>And that's all. Just don't forget to delete the object in the callback
+<span class="code">SwapChainReleasing</span>:</p>
+
+<div class="code">delete pass;
+</div>
+
+<h2><a id="downsampling"></a>Downsampling the depth-stencil buffer</h2>
+
+<p>For downsampling the depth-stencil buffer the function <span class="code">SubsurfaceScatteringPass::downsample</span> can be used as follows:</p>
+
+<div class="code">pass->downsample(depth1XRenderTargetView, // of 'depth1XRenderTarget'
+                 depthShaderResourceView, // of 'depthRenderTarget'
+                 stencilShaderResourceView, // of 'stencilRenderTarget'
+                 depthStencil1XView); // of 'depthStencil1X'
+</div>
+
+<p>Which downsamples the input render targets <span class="code">depthRenderTarget</span> and <span class="code">stencilRenderTarget</span> into <span class="code">depth1XRenderTarget</span> (a depth map) and <span class="code">depthStencil1X</span> (a depth-stencil buffer). Both input render targets can be generated in the main pass using MRT.</p>
+
+<p>Then we just have to call <span class="code">SubsurfaceScatteringPass::render</span> using the downsampled depth map (<span class="code">depth1XRenderTarget</span>) and depth-stencil buffer (<span class="code">depthStencil1X</span>):</p>
+
+<div class="code">pass->render(mainRenderTargetView, // of 'mainRenderTarget'
+             mainShaderResourceView, // of 'mainRenderTarget'
+             depth1XRenderTargetView, // of 'depth1XRenderTarget'
+             depthStencil1XView, // of 'depthStencil1X'
+             Gaussian::SKIN, // Or Gaussian::MARBLE.
+             1); // Stencil value used to render the objects we want to process.
+</div>
+
+<h2>Rendering other materials</h2>
+
+<p>If you need to render other materials, you will need to modify the bundled script <span class="code">marble.py</span>, and modify it to obtain a gaussian-sum fit. You could also tweak the gaussians manually to find the look you want. There are some rules of how <span class="code">Gaussian::gaussianSum</span> works that you may need to know:</p>
+
+<ul>
+<li>It will substract the previous variance to current one, so there is no need to do it manually (this is done because each gaussian is applied on top of previous one).</li>
+<li>Because of optimization reasons, the first variance is implicitely 0. So you must supply <span class="italic">n</span> variances and <span class="italic">n + 1</span> weights. If the sum of gaussians of  your profile does not include a gaussian with this variance, you can set the first weight to zero. This implicit variance is useful for sum of gaussians that have a very narrow gaussian that can be approximated with the unblurred image (that is equal to 0 variance).</li>
+</ul>
+  
+<p>For example, for skin it would be called in this way:</p> 
+
+<div class="code">// We use the unblurred image as an aproximation of the first gaussian because
+// it is too narrow to be noticeable. The weight of the unblurred image is the
+// first one in 'weights'.
+D3DXVECTOR3 weights[] = {
+    D3DXVECTOR3(0.240516183695f, 0.447403391891f, 0.615796108321f),
+    D3DXVECTOR3(0.115857499765f, 0.366176401412f, 0.343917471552f),
+    D3DXVECTOR3(0.183619017698f, 0.186420206697f, 0.0f),
+    D3DXVECTOR3(0.460007298842f, 0.0f, 0.0402864201267f),
+};
+float variances[] = { 0.0516500425655f, 0.271928080903f, 2.00626388153f }; 
+gaussians = Gaussian::gaussianSum(variances, weights, 3);
+</div>
+
+<p>Now for the case of marble:</p>
+
+<div class="code">// In this case the first gaussian is wide and thus we cannot approximate it
+// with the unblurred image. For this reason the first weight, the
+// corresponding of the unblurred image, is set to zero.
+D3DXVECTOR3 weights[] = {
+    D3DXVECTOR3(0.0f, 0.0f, 0.0f),
+    D3DXVECTOR3(0.0544578254963f, 0.12454890956f, 0.217724878147f),
+    D3DXVECTOR3(0.243663230592f, 0.243532369381f, 0.18904245481f),
+    D3DXVECTOR3(0.310530428621f, 0.315816663292f, 0.374244725886f),
+    D3DXVECTOR3(0.391348515291f, 0.316102057768f, 0.218987941157f),
+};
+float variances[] = { 0.0362208693441f, 0.114450574559f,
+                      0.455584392509f, 3.48331959682f };
+gaussians = Gaussian::gaussianSum(variances, weights, 4);
+</div>
+
+<h2>Preparing your own models for subsurface scattering</h2>
+
+<p>All the bundled models in the demo are scanned models. As noted in [Hable et al. 09], most artists paint normals trying to match the soft aspect of subsurface scattering, without being able to use algorithms that simulate this effect, and thus they usually resort to make the normals much softer than they are physically. However, when using subsurface scattering for rendering, the best results will be obtained using bumpier normals, as subsurface scattering will be in charge of softening the illumination. Furthermore, as our approach uses pre-scatter texturing, the diffuse map will need to be sharper too.</p>
+
+<h1><a id="license" href="#top">License</a></h1>
+<p></p>
+<div class="code">Copyright (C) 2009 Jorge Jimenez (jim@unizar.es)
+Copyright (C) 2009 Diego Gutierrez (diegog@unizar.es)
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without 
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, 
+   this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must display the names 'Jorge Jimenez'
+   and 'Diego Gutierrez' as 'Real-Time Rendering R&amp;D' in the credits of the
+   application, if such credits exist. The authors of this work must be
+   notified via email (jim@unizar.es) in this case of redistribution.
+
+3. Neither the name of copyright holders nor the names of its contributors 
+   may be used to endorse or promote products derived from this software 
+   without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS 
+IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, 
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL COPYRIGHT HOLDERS OR CONTRIBUTORS 
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+POSSIBILITY OF SUCH DAMAGE.
+</div>
+
+<h1><a id="contact" href="#top">Contact</a></h1>
+
+<p>If you have any questions, don't hesitate in contacting us:</p>
+<p>
+Jorge Jimenez (<a href="mailto:jim@unizar.es">jim@unizar.es</a>)<br/>
+Diego Gutierrez (<a href="mailto:jim@unizar.es">diegog@unizar.es</a>)
+</p>
+
+</div>
+<p class="footer">Copyright (C) 2009 Jorge Jimenez and Diego Gutierrez</p>
+</div>
+</body>
+</html>

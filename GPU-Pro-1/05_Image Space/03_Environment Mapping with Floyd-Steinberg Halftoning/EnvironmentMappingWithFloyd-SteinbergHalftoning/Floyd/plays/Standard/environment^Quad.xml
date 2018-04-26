@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Quad>
+  <use repertoire="environment" />
+  <overrides>
+    <Texture effect="pool" name="envMap" file="media/cloudyNoon.dds"/>
+  </overrides>
+</Quad>

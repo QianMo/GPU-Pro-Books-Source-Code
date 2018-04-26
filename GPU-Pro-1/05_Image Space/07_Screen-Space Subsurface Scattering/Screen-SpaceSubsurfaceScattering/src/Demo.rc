@@ -1,0 +1,32 @@
+1 RT_MANIFEST "Demo.manifest"
+2 ICON "DirectX.ico"
+
+Bloom.fxo RCDATA INT_DIR\Bloom.fxo
+Main1.fxo RCDATA INT_DIR\Main1.fxo
+Main2.fxo RCDATA INT_DIR\Main2.fxo
+Main3.fxo RCDATA INT_DIR\Main3.fxo
+Main4.fxo RCDATA INT_DIR\Main4.fxo
+Main5.fxo RCDATA INT_DIR\Main5.fxo
+Main6.fxo RCDATA INT_DIR\Main6.fxo
+ShadowMap.fxo RCDATA INT_DIR\ShadowMap.fxo
+SubsurfaceScattering1.fxo RCDATA INT_DIR\SubsurfaceScattering1.fxo
+SubsurfaceScattering2.fxo RCDATA INT_DIR\SubsurfaceScattering2.fxo
+SubsurfaceScattering4.fxo RCDATA INT_DIR\SubsurfaceScattering4.fxo
+SubsurfaceScattering8.fxo RCDATA INT_DIR\SubsurfaceScattering8.fxo
+
+#ifdef XYZRGB_BUILD
+Roberto\Roberto.sdkmesh RCDATA Media\Roberto\Roberto.sdkmesh
+Roberto\DiffuseMap.dds RCDATA Media\Roberto\DiffuseMap.dds
+Roberto\NormalMap.dds RCDATA Media\Roberto\NormalMap.dds
+Apollo\Apollo.sdkmesh RCDATA Media\\Apollo\\Apollo.sdkmesh
+Apollo\DiffuseMap.dds RCDATA Media\\Apollo\DiffuseMap.dds
+Apollo\NormalMap.dds RCDATA Media\\Apollo\NormalMap.dds
+#endif
+
+Teapot\Teapot.sdkmesh RCDATA Media\Teapot\Teapot.sdkmesh
+Teapot\DiffuseMap.dds RCDATA Media\Teapot\DiffuseMap.dds
+Teapot\NormalMap.dds RCDATA Media\Teapot\NormalMap.dds
+
+BeckmannMap.png RCDATA Media\BeckmannMap.png
+SmallTitles.png RCDATA Media\SmallTitles.png
+BigTitles.png RCDATA Media\BigTitles.png

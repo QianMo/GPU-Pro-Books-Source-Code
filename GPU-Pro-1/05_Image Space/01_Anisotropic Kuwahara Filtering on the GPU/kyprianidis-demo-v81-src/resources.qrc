@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/" >
+        <file>jet.png</file>
+        <file>test_512x512.png</file>
+        <file>logo.png</file>
+    </qresource>
+    <qresource prefix="/glsl" >
+        <file>sst.glsl</file>
+        <file>gauss.glsl</file>
+        <file>tfm.glsl</file>
+        <file>akf_v1.glsl</file>
+        <file>akf_v2.glsl</file>
+        <file>gkf.glsl</file>
+        <file>kuwahara.glsl</file>
+        <file>lic.glsl</file>
+        <file>showa.glsl</file>
+    </qresource>
+</RCC>

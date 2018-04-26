@@ -1,0 +1,12 @@
+<Scene>
+  <FreeCamera position.x="10" position.y="10" position.z="10"
+       lookAt.x="0" lookAt.y="0.0" lookAt.z="0"/>
+
+  <group>
+    <Entity name="sube">
+      <ShadedEntity shadedMesh="sube" />
+      <StaticEntity />
+      <RaytracingEntity mesh="sube" />
+    </Entity>
+  </group>
+</Scene>

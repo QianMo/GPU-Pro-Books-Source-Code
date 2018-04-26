@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Nothing>
+  <NothingRendition role="randomSampleEnvironment" effect="floyd" technique="randomSampleEnvironment" vertexCount="16384" />
+  <NothingRendition role="halftoning" effect="floyd" technique="halftoning" vertexCount="16384" />
+  <NothingRendition role="instantHalftoning" effect="floyd" technique="instantHalftoning" vertexCount="16384" />
+  <NothingRendition role="randomHalftoning" effect="floyd" technique="randomHalftoning" vertexCount="16384" />
+  <NothingRendition role="instantHalftoningForSplatting" effect="floyd" technique="instantHalftoningForSplatting" vertexCount="16384" />
+</Nothing>

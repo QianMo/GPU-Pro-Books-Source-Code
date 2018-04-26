@@ -1,0 +1,13 @@
+
+#: Material name: MatBasicWall
+newmtl MatBasicWall
+SName=MatBasicWall
+
+#: Material name: MatBasicRoof
+newmtl MatBasicRoof
+SName=MatBasicRoof
+
+#: Material name: MatDontKnow9
+newmtl MatDontKnow9
+SName=MatDontKnow9
+# Success...

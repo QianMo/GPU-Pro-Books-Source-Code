@@ -1,0 +1,25 @@
+#pragma once
+
+#include "Directory.h"
+#include "Material.h"
+#include <vector>
+
+class RenderContext;
+
+/// Class containing a set of Materials (one for every subset).
+class Role
+{
+	/// Dynamic array of Materials.
+	std::vector<Material*> materials;
+public:
+	/// Basic constructor. Used before setting up materials from the XML level description file.
+	Role();
+	/// Destructor. Releases contained materials.
+	~Role(void);
+
+	/// Renders every subset of the mesh using the effect given in the context.
+	void render(const RenderContext& context, ID3DX10Mesh* mesh);
+
+	/// Inserts a new Material into the array.
+	void addMaterial(Material* material);
+};

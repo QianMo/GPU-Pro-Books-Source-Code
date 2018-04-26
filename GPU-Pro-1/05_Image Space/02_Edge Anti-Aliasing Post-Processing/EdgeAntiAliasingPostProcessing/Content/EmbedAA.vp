@@ -1,0 +1,161 @@
+uniform vec3 cameraPos;
+
+varying vec2 texCoord;
+// Varying properties
+//varying vec4 Out_hPos;                // Projected space position
+varying vec2 Out_baseTexCoord;
+varying vec3 Out_wNormal;
+varying vec4 Out_DbgVal;
+varying vec4 Out_SilVal;
+varying vec2 Out_hNormalXY;
+varying vec4 Out_Color;
+
+struct VS_IN
+{
+    vec4 oPos;                // Object space position
+    vec3 oNormal;                // Object space position
+    vec2 tex0;
+    vec3 tex1;
+    vec3 tex2;
+    vec3 tex3;
+    vec3 tex4;
+    vec3 tex5;
+    vec4 Color;                 // Vertex color 
+};
+
+struct VS_OUT
+{
+    vec4 hPos;                // Projected space position
+    vec2 baseTexCoord;
+    vec3 wNormal;
+    vec4 DbgVal;
+    vec4 SilVal;
+    vec2 hNormalXY;
+    vec4 Color;
+};
+
+vec4 mul(vec4 v, mat4 m)
+{
+	return m*v;
+}
+
+vec2 screenSizePixel()
+{
+	return vec2(1280, 720);
+}
+
+// Returns the size of the largest
+//   square that will fit onscreen.
+// eg: On 1280x720, a 720x720 square will be (720/1280, 720/720)
+vec2 aspectScale()
+{
+	vec2 ss=screenSizePixel();
+	float ratio=ss.x/ss.y;
+	vec2 rc;
+	rc.x=min(1.0/ratio, 1.0);
+	rc.y=min(ratio, 1.0);
+	return rc;
+}
+
+float aaExtrudeDistPixel()
+{
+#ifdef ENABLE_SHADOWMAP_DEMO_EXTRAPOLATE
+	return 4.0;
+#endif // ENABLE_SHADOWMAP_DEMO_EXTRAPOLATE
+
+#ifdef ENABLE_SHADOWMAP_DEMO_BORDERSEARCH
+	return 14.0;
+#endif // ENABLE_SHADOWMAP_DEMO_BORDERSEARCH
+
+#ifdef ENABLE_UPRES_DEMO_EXTRAPOLATE
+	return 4.0;
+#endif // ENABLE_UPRES_DEMO_EXTRAPOLATE
+
+	return 2.5;	//1.5;
+}
+
+void main(void)
+{
+	// BEGIN GL SPECIFIC
+	vec3 wVertPos=gl_Vertex.xyz;
+	vec3 wVertNormal=gl_Normal.xyz;
+	mat4 matWVP=gl_ModelViewProjectionMatrix;
+	VS_IN In;
+	//In.oPos;                // Object space position
+    In.oNormal=wVertNormal;                // Object space position
+    In.tex0=gl_MultiTexCoord0.xy;
+    In.tex1=gl_MultiTexCoord1.xyz;
+    In.tex2=gl_MultiTexCoord2.xyz;
+    In.tex3=gl_MultiTexCoord3.xyz;
+    In.tex4=gl_MultiTexCoord4.xyz;
+    In.tex5=gl_MultiTexCoord5.xyz;
+    In.Color=vec4(0.0, 0.0, 0.0, 0.0);
+	VS_OUT Out;
+	vec3 dbgVal=vec3(0.0,0.0,0.0);
+	// END GL SPECIFIC
+	
+	vec3 wOffsetToVert=wVertPos.xyz - cameraPos;
+	float witnessDprN=dot(normalize(wOffsetToVert), normalize(wVertNormal));
+	
+	float s=0.0;
+	if(false)
+	{
+		if(witnessDprN>-0.2)
+		//if(witnessDprN>-1+coneParam)
+		{
+			s=1.0;
+		}
+	}
+	else
+	{
+		//dbgVal=(In.tex1.xyz*0.5)+0.5;
+		dbgVal=(In.oNormal.xyz*0.5)+0.5;
+		float coneWitnessDpr1=dot(wOffsetToVert, In.tex1.xyz);
+		float coneWitnessDpr2=dot(wOffsetToVert, In.tex2.xyz);
+		float coneWitnessDpr3=dot(wOffsetToVert, In.tex3.xyz);
+		float coneWitnessDpr4=dot(wOffsetToVert, In.tex4.xyz);
+		float coneWitnessDpr5=dot(wOffsetToVert, In.tex5.xyz);
+		float t0=0.0;
+		if(	
+			(coneWitnessDpr2>t0) ||
+			(coneWitnessDpr3>t0) ||
+			(coneWitnessDpr4>t0) ||
+			(coneWitnessDpr5>t0) ||
+			false
+			)
+		{
+			s=1.0;
+		}
+	}
+	vec4 hNormal=mul( vec4(wVertNormal.xyz, 0.0), matWVP );
+	vec4 hPos=mul( vec4(wVertPos, 1.0), matWVP );
+	vec4 hAdjPos=hPos;
+	vec2 hOffset=normalize(hNormal.xy)*hPos.w*s*2.0*aaExtrudeDistPixel()/screenSizePixel();
+	hAdjPos.xy+=hOffset;
+
+    Out.hPos=hAdjPos;
+				//Out.hPos.xy=(Out.hPos.xy*2)+vec2(-1,0)*Out.hPos.w;
+    Out.wNormal= normalize(wVertNormal);
+    Out.baseTexCoord=In.tex0;
+    Out.Color = In.Color;        
+    Out.DbgVal=vec4(dbgVal, 0.0);
+    Out.SilVal=vec4(1.0-s, 0.0, 0.0, 0.0);
+    Out.hNormalXY=normalize(hNormal.xy);
+
+
+	// GL SPECIFIC BEGIN	
+	//vec3 wFinalPos=wVertPos+(wVertNormal*0.0);
+	//gl_Position=gl_ModelViewProjectionMatrix*vec4(wFinalPos.rgb, 1);
+	//texCoord=gl_MultiTexCoord0.xy;
+	
+	gl_Position=Out.hPos;
+	Out_baseTexCoord=Out.baseTexCoord;
+	Out_wNormal=Out.wNormal;
+	Out_DbgVal=Out.DbgVal;
+	Out_SilVal=Out.SilVal;
+	Out_hNormalXY=Out.hNormalXY;
+	Out_Color=Out.Color;
+	//silVal=Out.SilVal;
+	//hNormalXY
+	// GL SPECIFIC END
+}

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Play effectPoolFile="./effect/enginePool.fx">
+  <Role name="basic" />
+  <Role name="background" />
+  <Role name="text" />
+  <Role name="deferring" />
+  <Role name="deferred" />
+  <Role name="backgroundDeferring" />
+  <Role name="backgroundUnderlay" />
+  <Role name="instantHalftoning" />
+  <Role name="evaluateImportance" />
+  <Role name="halftoning" />
+  <Role name="randomHalftoning" />
+  <Role name="evaluateSamples" />
+  <Role name="randomSampleEnvironment" />
+  <Role name="alphaNormalize" />
+  <Role name="raycasting" />
+  <Role name="update" />
+  <use effectFile="./effect/standard.fx" effectName="standard" />
+  <use effectFile="./effect/textured.fx" effectName="textured" />
+  <use effectFile="./effect/deferring.fx" effectName="deferring" />
+  <use effectFile="./effect/deferred.fx" effectName="deferred" />
+  <use effectFile="./effect/floyd.fx" effectName="floyd" />
+  <use effectFile="./effect/raycasting.fx" effectName="raycasting" />
+  <useFolder path="./plays/Standard/" />
+  <useFolder path="./plays/Floyd" />
+  <useFolder path="./plays/Raycasting" />
+  <addProps file="standard^Props.xml" />
+  <addProps file="deferred^Props.xml" />
+  <addProps file="floyd^Props.xml" />
+  <addProps file="raycasting^Props.xml" />
+  <Scene cue="main" file="floyd^Scene.xml" >
+    <StaticScene cue="main.static" />
+    <RaytracingScene cue="main.raytracing" />
+  </Scene>
+  <Quad cue="environment" file="environment^Quad.xml" />
+  <Quad cue="deferred" file="deferred^Quad.xml" />
+  <Quad cue="floydQuad" file="floyd^Quad.xml" />
+  <Quad cue="raycastingQuad" file="raycasting^Quad.xml" />
+
+  <Text cue="stats" file="stats^Text.xml" />
+  <Nothing cue="nothing" file="floyd^Nothing.xml" />
+  <Auto cue="auto" file="floyd^Auto.xml" />
+  <ResourceBuilder instantiationLevel="play" instantiationEvent="create" >
+    <Buffer name="environmentSamples"
+            byteWidth="33554432"
+            usage="D3D10_USAGE_DEFAULT" >
+      <binding flag="D3D10_BIND_STREAM_OUTPUT" />
+      <binding flag="D3D10_BIND_VERTEX_BUFFER" />
+    </Buffer>
+    <Texture2D name="gridDirectionMap"
+               width="16"
+               height="64"
+               mipLevels="1"
+               arraySize="1"
+               format="DXGI_FORMAT_R16G16B16A16_SNORM"
+               usage="D3D10_USAGE_IMMUTABLE" >
+      <binding flag="D3D10_BIND_SHADER_RESOURCE" />
+    </Texture2D>
+    <ShaderResourceView name="gridDirectionMap" resource="gridDirectionMap" dimension="D3D10_SRV_DIMENSION_TEXTURE2D" />
+    <Texture2D name="importanceMap"
+           width="2048"
+           height="8192"
+           mipLevels="1"
+           arraySize="1"
+           format="DXGI_FORMAT_R32_FLOAT"
+           usage="D3D10_USAGE_DEFAULT" >
+      <binding flag="D3D10_BIND_RENDER_TARGET" />
+      <binding flag="D3D10_BIND_SHADER_RESOURCE" />
+    </Texture2D>
+    <ShaderResourceView name="importanceMap" resource="importanceMap" dimension="D3D10_SRV_DIMENSION_TEXTURE2D" />
+    <RenderTargetView name="importanceMap" resource="importanceMap" dimension="D3D10_RTV_DIMENSION_TEXTURE2D" />    
+    <BIH />
+  </ResourceBuilder>
+  <ResourceBuilder instantiationLevel="play" instantiationEvent="resize" >
+    <Texture2D name="randomMap"
+               width="0"
+               height="0"
+               mipLevels="1"
+               arraySize="1"
+               format="DXGI_FORMAT_R32G32B32A32_FLOAT"
+               usage="D3D10_USAGE_IMMUTABLE" >
+      <binding flag="D3D10_BIND_SHADER_RESOURCE" />
+    </Texture2D>
+    <ShaderResourceView name="randomMap" resource="randomMap" dimension="D3D10_SRV_DIMENSION_TEXTURE2D" />
+    <Texture2D name="geometryViewportMap"
+               width="0"
+               height="0"
+               mipLevels="1"
+               arraySize="1"
+               format="DXGI_FORMAT_R32G32B32A32_FLOAT"
+               usage="D3D10_USAGE_DEFAULT" >
+      <binding flag="D3D10_BIND_RENDER_TARGET" />
+      <binding flag="D3D10_BIND_SHADER_RESOURCE" />
+    </Texture2D>
+    <ShaderResourceView name="geometryViewportMap" resource="geometryViewportMap" dimension="D3D10_SRV_DIMENSION_TEXTURE2D" />
+    <RenderTargetView name="geometryViewportMap" resource="geometryViewportMap" dimension="D3D10_RTV_DIMENSION_TEXTURE2D" />
+    <Texture2D name="brdfViewportMap"
+               width="0"
+               height="0"
+               mipLevels="1"
+               arraySize="1"
+               format="DXGI_FORMAT_R32G32B32A32_FLOAT"
+               usage="D3D10_USAGE_DEFAULT" >
+      <binding flag="D3D10_BIND_RENDER_TARGET" />
+      <binding flag="D3D10_BIND_SHADER_RESOURCE" />
+    </Texture2D>
+    <ShaderResourceView name="brdfViewportMap" resource="brdfViewportMap" dimension="D3D10_SRV_DIMENSION_TEXTURE2D" />
+    <RenderTargetView name="brdfViewportMap" resource="brdfViewportMap" dimension="D3D10_RTV_DIMENSION_TEXTURE2D" />
+    <Texture2D name="rawViewportMap"
+               width="0"
+               height="0"
+               mipLevels="1"
+               arraySize="1"
+               format="DXGI_FORMAT_R8G8B8A8"
+               usage="D3D10_USAGE_DEFAULT" >
+      <binding flag="D3D10_BIND_RENDER_TARGET" />
+      <binding flag="D3D10_BIND_SHADER_RESOURCE" />
+    </Texture2D>
+    <ShaderResourceView name="rawViewportMap" resource="rawViewportMap" dimension="D3D10_SRV_DIMENSION_TEXTURE2D" />
+    <RenderTargetView name="rawViewportMap" resource="rawViewportMap" dimension="D3D10_RTV_DIMENSION_TEXTURE2D" />
+  </ResourceBuilder>
+  <Act title="3. Floyd-Steinberg">
+    <Script onEvent="renderFrame">
+      <setShaderResource effect="floyd" effectVariableName="gridDirectionMap" shaderResourceView="gridDirectionMap" />
+      <clearRenderTargetView renderTargetView="geometryViewportMap" color.r="1" color.a="0.5" />
+      <clearRenderTargetView renderTargetView="brdfViewportMap" color.r="1" />
+      <clearDepthStencilView depthStencilView="default" depth="1" />
+      <setTargets depthStencilView="default">
+        <setRenderTarget renderTargetView="geometryViewportMap" />
+        <setRenderTarget renderTargetView="brdfViewportMap" />
+      </setTargets>
+      <render cue="main" cameraCue="main" role="deferring" />
+      <render cue="environment" cameraCue="main" role="backgroundDeferring" />
+
+      <clearRenderTargetView renderTargetView="default" color.r="0" color.g="0" color.b="0" color.a="0"/>
+      <clearDepthStencilView depthStencilView="default" depth="1" />
+      <setShaderResource effect="floyd" effectVariableName="geometryViewportMap" shaderResourceView="geometryViewportMap" />
+      <setShaderResource effect="floyd" effectVariableName="brdfViewportMap" shaderResourceView="brdfViewportMap" />
+      
+      <loop effect="floyd" variable="tileCorner" end.x="511" end.y="511" step.x="128" step.y="128" >
+        <setTargets depthStencilView="null">
+          <setRenderTarget renderTargetView="null" />
+          <setRenderTarget renderTargetView="null" />
+        </setTargets>
+        <setStreamTargets>
+          <setStreamTarget buffer="environmentSamples" offset="0" />
+        </setStreamTargets>
+        <render cue="nothing" role="instantHalftoning" />
+        <setStreamTargets>
+          <setStreamTarget buffer="null" offset="0" />
+        </setStreamTargets>
+        <setTargets depthStencilView="default">
+          <setRenderTarget renderTargetView="default" />
+          <setRenderTarget renderTargetView="null" />
+        </setTargets>
+        <setVertexBuffers>
+          <setVertexBuffer buffer="environmentSamples" stride="32" offset="0" />
+        </setVertexBuffers>
+        <render cue="auto" role="evaluateSamples" />
+      </loop>
+      
+      <!--
+      <setTargets depthStencilView="default">
+        <setRenderTarget renderTargetView="default" />
+        <setRenderTarget renderTargetView="null" />
+      </setTargets>
+      <setShaderResource effect="floyd" effectVariableName="rawViewportMap" shaderResourceView="rawViewportMap" />
+      <render cue="floydQuad" cameraCue="main" role="alphaNormalize" />
+      -->
+
+      <render cue="floydQuad" cameraCue="main" role="backgroundUnderlay" />
+      <render cue="stats" cameraCue="main" role="text" />
+    </Script>
+    <animation>
+      <animate cue="main" />
+    </animation>
+    <control>
+      <control cue="main" />
+    </control>
+    <messaging>
+      <message cue="main" />
+    </messaging>
+  </Act>
+  <Act title="2. Random halftoning">
+    <Script onEvent="renderFrame">
+      <setShaderResource effect="floyd" effectVariableName="gridDirectionMap" shaderResourceView="gridDirectionMap" />
+      <clearRenderTargetView renderTargetView="geometryViewportMap" color.r="1" color.a="0.5" />
+      <clearRenderTargetView renderTargetView="brdfViewportMap" color.r="1" />
+      <clearDepthStencilView depthStencilView="default" depth="1" />
+      <setTargets depthStencilView="default">
+        <setRenderTarget renderTargetView="geometryViewportMap" />
+        <setRenderTarget renderTargetView="brdfViewportMap" />
+      </setTargets>
+      <render cue="main" role="deferring" />
+      <render cue="environment" cameraCue="main" role="backgroundDeferring" />
+
+      <clearRenderTargetView renderTargetView="default" color.r="0" color.g="0" color.b="0" color.a="0"/>
+      <clearDepthStencilView depthStencilView="default" depth="1" />
+      <setShaderResource effect="floyd" effectVariableName="geometryViewportMap" shaderResourceView="geometryViewportMap" />
+      <setShaderResource effect="floyd" effectVariableName="brdfViewportMap" shaderResourceView="brdfViewportMap" />
+
+      <loop effect="floyd" variable="tileCorner" end.x="511" end.y="511" step.x="128" step.y="128" >
+        <setTargets depthStencilView="null">
+          <setRenderTarget renderTargetView="null" />
+          <setRenderTarget renderTargetView="null" />
+        </setTargets>
+        <setStreamTargets>
+          <setStreamTarget buffer="environmentSamples" offset="0" />
+        </setStreamTargets>
+        <render cue="nothing" role="randomHalftoning" />
+        <setStreamTargets>
+          <setStreamTarget buffer="null" offset="0" />
+        </setStreamTargets>
+        <setTargets depthStencilView="default">
+          <setRenderTarget renderTargetView="default" />
+          <setRenderTarget renderTargetView="null" />
+        </setTargets>
+        <setVertexBuffers>
+          <setVertexBuffer buffer="environmentSamples" stride="32" offset="0" />
+        </setVertexBuffers>
+        <render cue="auto" role="evaluateSamples" />
+      </loop>
+
+      <!--
+      <setTargets depthStencilView="default">
+        <setRenderTarget renderTargetView="default" />
+        <setRenderTarget renderTargetView="null" />
+      </setTargets>
+      <setShaderResource effect="floyd" effectVariableName="rawViewportMap" shaderResourceView="rawViewportMap" />
+      <render cue="floydQuad" cameraCue="main" role="alphaNormalize" />
+      -->
+
+      <render cue="floydQuad" cameraCue="main" role="backgroundUnderlay" />
+      <render cue="stats" cameraCue="main" role="text" />
+    </Script>
+    <animation>
+      <animate cue="main" />
+    </animation>
+    <control>
+      <control cue="main" />
+    </control>
+    <messaging>
+      <message cue="main" />
+    </messaging>
+  </Act>
+  <Act title="1. BRDF sampling">
+    <Script onEvent="renderFrame">
+      <setShaderResource effect="floyd" effectVariableName="randomMap" shaderResourceView="randomMap" />
+      <clearRenderTargetView renderTargetView="geometryViewportMap" color.r="1" color.a="0.5" />
+      <clearRenderTargetView renderTargetView="brdfViewportMap" color.r="1" />
+      <clearDepthStencilView depthStencilView="default" depth="1" />
+      <setTargets depthStencilView="default">
+        <setRenderTarget renderTargetView="geometryViewportMap" />
+        <setRenderTarget renderTargetView="brdfViewportMap" />
+      </setTargets>
+      <render cue="main" role="deferring" />
+      <render cue="environment" cameraCue="main" role="backgroundDeferring" />
+
+      <clearRenderTargetView renderTargetView="default" color.r="0" color.g="0" color.b="0" color.a="0"/>
+      <clearDepthStencilView depthStencilView="default" depth="1" />
+      <loop effect="floyd" variable="tileCorner" end.x="511" end.y="511" step.x="128" step.y="128" >
+        <setTargets depthStencilView="null">
+          <setRenderTarget renderTargetView="null" />
+          <setRenderTarget renderTargetView="null" />
+        </setTargets>
+        <setStreamTargets>
+          <setStreamTarget buffer="environmentSamples" offset="0" />
+        </setStreamTargets>
+        <render cue="nothing" role="randomSampleEnvironment" />
+        <setStreamTargets>
+          <setStreamTarget buffer="null" offset="0" />
+        </setStreamTargets>
+        <setTargets depthStencilView="default">
+          <setRenderTarget renderTargetView="default" />
+          <setRenderTarget renderTargetView="null" />
+        </setTargets>
+        <setShaderResource effect="floyd" effectVariableName="geometryViewportMap" shaderResourceView="geometryViewportMap" />
+        <setVertexBuffers>
+          <setVertexBuffer buffer="environmentSamples" stride="32" offset="0" />
+        </setVertexBuffers>
+        <render cue="auto" role="evaluateSamples" />
+      </loop>
+
+      <render cue="floydQuad" cameraCue="main" role="backgroundUnderlay" />
+      <render cue="stats" cameraCue="main" role="text" />
+    </Script>
+    <animation>
+      <animate cue="main" />
+    </animation>
+    <control>
+      <control cue="main" />
+    </control>
+    <messaging>
+      <message cue="main" />
+    </messaging>
+  </Act>
+  <Act title="0. incremental (for camera navigation)">
+    <Script onEvent="renderFrame">
+      <clearRenderTargetView renderTargetView="default" color.r="0" />
+      <clearDepthStencilView depthStencilView="default" depth="1" />
+      <render cue="main" cameraCue="main" role="basic" />
+      <render cue="environment" cameraCue="main" role="background" />
+      <render cue="stats" cameraCue="main" role="text" />
+    </Script>
+    <animation>
+      <animate cue="main" />
+    </animation>
+    <control>
+      <control cue="main" />
+    </control>
+    <messaging>
+      <message cue="main" />
+    </messaging>
+  </Act>
+</Play>

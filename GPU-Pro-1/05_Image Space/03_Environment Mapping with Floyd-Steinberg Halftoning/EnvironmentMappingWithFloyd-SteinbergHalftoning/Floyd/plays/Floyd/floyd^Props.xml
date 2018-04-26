@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<props>
+  <Mesh name="sube" fileName="media/shelix.dgb" />
+  <ShadedMesh name="sube" mesh="sube" >
+    <use repertoire="deferring" />
+  </ShadedMesh>
+  <Repertoire name="floyd">
+    <Rendition role="evaluateImportance" effect="floyd" technique="evaluateImportance">
+    </Rendition>
+    <Rendition role="alphaNormalize" effect="floyd" technique="alphaNormalize">
+    </Rendition>
+    <Rendition role="backgroundUnderlay" effect="floyd" technique="backgroundUnderlay">
+      <texture effect="pool" name="envMap" file="media/cloudyNoon.dds"/>
+    </Rendition>
+  </Repertoire>
+</props>

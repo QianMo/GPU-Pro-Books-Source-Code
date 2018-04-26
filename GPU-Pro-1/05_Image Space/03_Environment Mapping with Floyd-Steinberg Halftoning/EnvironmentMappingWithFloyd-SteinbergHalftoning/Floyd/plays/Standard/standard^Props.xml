@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<props>
+  <Repertoire name="environment">
+    <Rendition role="background" effect="standard" technique="background">
+      <texture effect="pool" name="envMap" file="media/colorCube.dds" />
+    </Rendition>
+    <Rendition role="backgroundDeferring" effect="deferring" technique="backgroundDeferring">
+      <texture effect="pool" name="envMap" file="media/colorCube.dds" />
+    </Rendition>
+  </Repertoire>
+  <Repertoire name="show">
+    <Rendition role="show" effect="standard" technique="show">
+      <Texture effect="standard" name="showMap" file="null" />
+    </Rendition>
+  </Repertoire>
+  <Repertoire name="basic">
+    <Rendition role="basic" effect="textured" technique="basic">
+      <Texture effect="pool" name="kdMap" file="media/uvGrid.png" />
+    </Rendition>
+  </Repertoire>
+  <Repertoire name="normalMapped">
+    <Rendition role="basic" effect="textured" technique="normalMapped">
+      <Texture effect="pool" name="normalMap" file="media/uvGrid.png" />
+    </Rendition>
+  </Repertoire>
+  <!--<Repertoire name="envMapped">
+    <Rendition role="basic" effect="textured" technique="envMapped">
+      <Texture effect="pool" name="kdMap" file="media/uvGrid.png" />
+    </Rendition>
+  </Repertoire>-->
+</props>
