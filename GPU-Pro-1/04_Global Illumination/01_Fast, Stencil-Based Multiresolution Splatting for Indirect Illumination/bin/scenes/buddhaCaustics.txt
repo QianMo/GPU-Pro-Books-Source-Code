@@ -1,0 +1,695 @@
+#######################################################################################
+##                                                                                   ##
+## This scene defines the "Caustic Box" used in my Hierarchical Caustic Map paper    ##
+##                                                                                   ##
+## Chris Wyman (1/4/2008)                                                            ##
+#######################################################################################
+
+# These are added to the path for searching for various objects.  There's a number
+#    of good defaults (i.e. in the current directory) but if you have a central 
+#    repository for textures, models, shaders, this is where to put them.
+
+dir model   models\
+
+
+# The location of the camera
+camera pinhole
+	eye 1.12 2.63 0.375
+   	up 0 1 0
+    at 0 0 -1
+   	fovy 90
+   	near 0.1
+   	far 50
+	  res 1024 1024
+	  trackball
+	  matrix
+	    row0 0.942405 0.326733 -0.071538 0.000000
+        row1 -0.305718 0.754693 -0.580497 0.000000
+        row2 -0.135678 0.568933 0.811114 0.000000
+        row3 0.000000 0.000000 0.000000 1.000000
+	  end
+	  move
+        bounce
+            dir 2 0 -3
+            speed 0.15
+        end
+      end
+end
+
+
+# Defines variables used by the program.  If the program *expects* these to
+#   be here, you'd best make sure your code double checks if they are not and
+#   creates a variable with a reasonable default...  I think this is currently
+#   true with all the variables below.
+# Note that variables should be defined early, certainly before use...  If I
+#   recall correctly, all variables need to be declared before any are used.
+
+float shadowMapBias        -0.005   # Default shadow map bias
+bool  shadowsEnabled       true     # When the program starts, are shadows enabled?
+float lightFOV             70.0     # The light's field of view for shadow/caustic mapping
+bool  animation            false    # Is the scene animating at startup?
+int   numLightsUsed        1        # How many lights are enabled at startup?
+
+
+# Currently, whenever a shadow map is used, so is a spot light.  However, you
+#   should be able to declare any texture here, and even reuse it later in the file.
+
+# These spotlights are currently used for all lights, for a variety of reasons.  Additionally,
+#   the caustics are unlikely to respond different colors in the image (since that wasn't a big
+#   concern recently)
+
+texture spotlight spot_white.ppm
+texture spotlightLowRes spot_white64.ppm
+
+
+# Declare a point light source.  This one is bound to light-trackball0
+
+light point
+	pos -2 3 3
+	at 0 0 -1
+    trackball 0
+    matrix
+        row0 0.824334 0.566060 -0.006832 0.000000
+        row1 -0.396225 0.568307 -0.721133 0.000000
+        row2 -0.404322 0.597163 0.692763 0.000000
+        row3 0.000000 0.000000 0.000000 1.000000
+    end
+    move
+        bounce
+            dir 0 3 -3
+            speed 0.3
+        end
+    end
+end
+
+# Another light positioned to the second trackball
+
+light point
+	pos -2 3 3
+	at 0 0 -1
+    trackball 1
+    matrix
+        row0 -0.569546 0.412403 0.711012 0.000000
+        row1 0.808785 0.435430 0.395306 0.000000
+        row2 -0.146571 0.800202 -0.581543 0.000000
+        row3 0.000000 0.000000 0.000000 1.000000
+    end
+#    move
+#        bounce
+#            dir -7 0 5
+#            speed 0.2
+#        end
+#    end
+end
+
+
+# Declare material types.  These can either be declared globally, or inside
+#   the object that uses them
+
+material shader cylmat
+  vert phongObjectShader.vert.glsl
+  frag multiLightPhongObjectShader.frag.glsl
+	bind amb   const 0.049000 0.045000 0.012900 1.0
+	bind dif   const 0.346150 0.314300 0.090300 1.0
+	bind spec  const 0.797357 0.723991 0.208006 1.0
+	bind shiny const 83.2 0.0 0.0 0.0
+	bind spotLight tex 0 spotlight
+	allowsShadows
+	allowsCaustics
+end
+
+material shader redruby
+  vert phongObjectShader.vert.glsl
+  frag multiLightPhongObjectShader.frag.glsl
+	bind amb   const 0.034900 0.002300  0.002300 1.0
+	bind dif   const 0.614240 0.041360 	0.041360 1.0
+	bind spec  const 0.727811 0.626959 	0.626959 1.0
+	bind shiny const 76.8 0.0 0.0 0.0
+	bind spotLight tex 0 spotlight
+	allowsShadows
+	allowsCaustics
+end
+
+material shader greendragon
+  vert phongObjectShader.vert.glsl
+  frag multiLightPhongObjectShader.frag.glsl
+	bind amb   const 0.01 0.02 0.0 1.0
+	bind dif   const 0.15 0.8  0.0 1.0
+	bind spec  const 0.2  1.0  0.0 1.0
+	bind shiny const 50.0 0.0  0.0 0.0
+	bind spotLight tex 0 spotlight
+	allowsShadows
+	allowsCaustics
+end
+
+
+material shader white
+	vert phongObjectShader.vert.glsl
+  frag multiLightPhongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 1.0  1.0  1.0 1.0
+	bind spec  const 0.0  0.0  0.0 1.0
+	bind shiny const 0.0  0.0  0.0 0.0
+	bind spotLight tex 0 spotlight
+	allowsShadows
+end
+
+material shader tex1
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 bigBrickWall.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex2
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 sandDune.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex3
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+#	bind wallTex tex 0 stoneFloor.ppm
+	bind wallTex tex 0 wallColor.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex4
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 squareWhiteTiles.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex5
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex   tex 0 wallColor.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex7
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 rose_512.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex8
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 newZealand_512.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex9
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 sunnyWaterfall.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex10
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 glacier2_512.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex11
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 glacier1_512.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex12
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 stHonoratMonestary.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex13
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 glacier3_512.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex14
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 cat_512.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex15
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 sponza_bw.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex16
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 lake.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex17
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 riverReflections.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex18
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 ruinedRomanBath.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex19
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 volumeTree.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex22
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 glassDragon.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex20
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 skullTeaser.ppm
+	bind spotLight tex 1 spotlight
+end
+
+material shader tex21
+	vert texturedWallShader.vert.glsl
+	frag multiLightTexturedWallShader.frag.glsl
+	allowsShadows
+	allowsCaustics
+	bind wallTex tex 0 cornellBox.ppm
+	bind spotLight tex 1 spotlight
+end
+
+
+object texparallelogram brick_wall3
+	pt0    -30 -5 -8
+	edge2  0 20 0
+	edge1  38 0 0
+	tdel2  0 1.2 0
+	tdel1  0.95 0 0
+	material tex1
+	background
+end
+
+object texparallelogram brick_wall4
+	pt0    -30 -5 14
+	edge1  0 20 0
+	edge2  38 0 0
+	tdel1  0 1.2 0
+	tdel2  0.95 0 0
+	material tex1
+	background
+end
+
+object texparallelogram wall1_tile
+	pt0    8 -5 -8
+	edge2  0 5 0
+	edge1  0 0 40
+	tdel1  20 0 0
+	tdel2  0 2.5 0
+	material tex4
+	background
+end
+
+object texparallelogram wall2_tile
+	pt0    -13 -5 -8
+	edge1  0 5 0
+	edge2  0 0 40
+	tdel2  20 0 0
+	tdel1  0 2.5 0
+	material tex4
+	background
+end
+
+object texparallelogram wall2_solid
+  pt0    -13 0 -8
+	edge1  0 15 0
+	edge2  0 0 40
+	tdel2  1 0 0
+	tdel1  0 1 0
+	material tex5
+	background
+end
+
+object texparallelogram wall1_solid
+	pt0    8 0 -8
+	edge2  0 15 0
+	edge1  0 0 40
+	tdel1  1 0 0
+	tdel2  0 1 0
+	material tex5
+	background
+end
+
+object texparallelogram ceiling
+	pt0    -30 15 -8
+	edge1  38 0 0
+	edge2  0 0 40
+	tdel2  10 0 0
+	tdel1  0 9.5 0
+	material tex2
+	background
+end
+
+object texparallelogram floor
+	pt0    -30 -2 -8
+	edge2  38 0 0
+	edge1  0 0 40
+	tdel2  0 -10 0
+	tdel1  -9.5 0 0
+	material tex3
+	background
+end
+
+object instance
+   object group rose512 
+   	  object texparallelogram picturequad
+				pt0    0.05 3.95 0.02
+				edge2  3.9 0 0
+				edge1  0 -3.9 0
+				tdel2  1 0 0
+				tdel1  0 -1 0
+   		end
+   		material tex7
+   end
+	 object group frame
+	    object cylinder
+   			center 0.05 2 0.02
+   			height 4.1
+   			radius 0.1
+   			axis 0 1 0
+   		end
+   		object cylinder
+   			center 3.95 2 0.02
+   			height 4.1
+   			radius 0.1
+   			axis 0 1 0
+   		end
+   		object cylinder
+   			center 2 0.05 0.02
+   			height 4.1
+   			radius 0.1
+   			axis 1 0 0
+   		end
+   		object cylinder
+   			center 2 3.95 0.02
+   			height 4.1
+   			radius 0.1
+   			axis 1 0 0
+   		end
+   		material cylmat
+   end
+   matrix translate 8 1 -6
+   matrix rotate -90 0 1 0	
+   background
+end
+
+object instance
+   object group newZealand512
+      object picturequad
+      material tex8
+   end
+   object frame
+   matrix translate 8 1 -1
+   matrix rotate -90 0 1 0	
+   background
+end
+
+object instance
+   object group monestary
+      object picturequad
+      material tex12
+   end
+   object frame
+   matrix translate 8 1 4
+   matrix rotate -90 0 1 0	
+   background
+end
+
+object instance
+   object group sunnyWaterfall
+      object picturequad
+      material tex9
+   end
+   object frame
+   matrix translate 8 1 9
+   matrix rotate -90 0 1 0	
+   background
+end
+
+object instance
+   object group cornellBox
+      object picturequad
+      material tex21
+   end
+   object frame
+   matrix translate 7 1 14
+   matrix rotate -180 0 1 0	
+   background
+end
+
+object instance
+   object group sponza
+      object picturequad
+      material tex15
+   end
+   object frame
+   matrix translate 2 1 14
+   matrix rotate -180 0 1 0	
+   background
+end
+
+object instance
+   object group skullTeaser
+      object picturequad
+      material tex20
+   end
+   object frame
+   matrix translate -3 1 14
+   matrix rotate -180 0 1 0	
+   background
+end
+
+object instance
+   object group lakeScene
+      object picturequad
+      material tex16
+   end
+   object frame
+   matrix translate -8 1 14
+   matrix rotate -180 0 1 0	
+   background
+end
+
+object instance
+   object group riverReflections
+      object picturequad
+      material tex17
+   end
+   object frame
+   matrix translate -13 1 -3
+   matrix rotate -270 0 1 0	
+   background
+end
+
+object instance
+   object group volumeTree
+      object picturequad
+      material tex19
+   end
+   object frame
+   matrix translate -13 1 2
+   matrix rotate -270 0 1 0	
+   background
+end
+
+object instance
+   object group romanBath
+      object picturequad
+      material tex18
+   end
+   object frame
+   matrix translate -13 1 7
+   matrix rotate -270 0 1 0	
+   background
+end
+
+object instance
+   object group glassDragon
+      object picturequad
+      material tex22
+   end
+   object frame
+   matrix translate -13 1 12
+   matrix rotate -270 0 1 0	
+   background
+end
+
+object instance
+   object group foggyBunny
+      object picturequad
+      material tex13
+   end
+   object frame
+   matrix translate 3 1 -8	
+   background
+end
+
+object instance
+   object group niceSunset
+      object picturequad
+      material tex10
+   end
+   object frame
+   matrix translate -2 1 -8	
+   background
+end
+
+object instance
+   object group skiSlope
+      object picturequad
+      material tex11
+   end
+   object frame
+   matrix translate -7 1 -8	
+   background
+end
+
+object instance
+   object group dragonCaustic
+      object picturequad
+      material tex14
+   end
+   object frame
+   matrix translate -12 1 -8	
+   background
+end
+
+object instance
+		object mesh hem Dragon
+			file dragon_250k.hem
+			lowres dragon_10k.hem
+			enableEdges
+		end
+		material greendragon
+		matrix translate -3 0.2 -4.5
+		matrix rotate 40 0 1 0
+		matrix scale 4 4 4
+		background
+end
+
+object instance
+		object group
+		   object mesh hem Buddha
+					file buddha_50k.hem
+					lowres buddha_10k.hem
+					enableEdges
+					matrix translate 0 -0.15 0
+					matrix scale 1.3 1.3 1.3
+		   end
+           move
+               rotate
+                   axis 0 1 0
+                   speed 40
+               end
+           end
+		   material white
+		   trackball 0
+		end
+		matrix scale 2 2 2
+		foreground
+		refractive
+end
+
+
+controls
+	map quit										q
+	map reload-shaders  							r
+	map screen-capture								f12
+	map eye-trackball   							mouse-left
+	map obj-trackball-0 							mouse-middle
+	map light-trackball-0 							mouse-right
+	map light-trackball-1 							shift mouse-right
+	map help-screen									h
+	
+	int displayID             is 4     range 0 4   incr *   decr /
+	int vplCount	          is 16    range 8 64   incr up-arrow   decr down-arrow	
+	
+	float depthThreshold      is 0.6   by 0.01  range 0.0 1.5       incr =   decr -	
+	float normThreshold       is 0.2     by 0.02  range 0.0 2.0       incr ]   decr [	
+	float lightDepthThreshold is 0.6   by 0.01  range 0.0 1.5       incr p   decr o
+	float lightIntensity      is 2.0   by 0.1   range 0.2 100.0     incr .   decr ,
+	
+	bool showDirect           is true				toggle d
+	bool showIndirect         is true				toggle i
+	bool computeRSM           is true				toggle f5
+	bool computeMinMax        is true				toggle f6
+	bool computeRefine        is true				toggle f7
+	bool computeIllum         is true				toggle f8
+	bool computeUpsample      is true				toggle f9
+end
+

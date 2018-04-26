@@ -1,0 +1,333 @@
+#######################################################################################
+##                                                                                   ##
+## This scene defines the standard "Cornell Box"...  with a few caveats.             ##
+## Caveats:                                                                          ##
+##     1) The light color is defined in arbitrary RGB units rather than              ##
+##        the physically measured spectrum described on the Cornell Box page         ##
+##        (http://www.graphics.cornell.edu/online/box/data.html)                     ##
+##     2) The light is defined as a point (instead of a quad with points             ##
+##        of (343,548.7,227), (343,548.7,332), (213,548.7,332) and (213,548.7,227)   ##
+##        and a surface normal of (0,-1,0))                                          ##
+##     3) Materials are defined with RGB approximations to their spectral            ##
+##        reflectance, not the 4 nm sampled spectra on the web page.                 ##
+##                                                                                   ##
+## Chris Wyman (1/9/2007)                                                            ##
+#######################################################################################
+
+
+# Setup a camera to view the scene
+camera pinhole
+    eye 2.78 2.73 -8.00
+    #eye    -4 7.487 2.795
+   	up 0 1 0
+    at 2.78 2.73 2.795
+    #at     1.78 2.73 2.795
+	  fovy 38.5
+	  near 5.5
+	  far  16.0
+	  res 1024 1024
+	  trackball
+end
+
+light point
+	pos    0.78 5.487 2.795
+	at     1.78 4.73 2.795
+	#pos    -4 7.487 2.795
+	#at     1.78 2.73 2.795
+	color  1 0.85 0.43
+	trackball 0
+end
+
+
+float shadowMapBias        -0.001   # Default shadow map bias
+bool  shadowsEnabled       true     # When the program starts, are shadows enabled?
+float lightFOV             70.0     # The light's field of view for shadow/caustic mapping
+
+
+ambient 0.12 0.12 0.12
+
+texture spotlight spot_white.ppm
+#texture spotlightLowRes spot_white64.ppm
+
+material shader white
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 0.76 0.75 0.5 1.0
+	bind spec  const 0.0  0.0  0.0 1.0
+	bind shiny const 0.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+
+material shader red
+	vert phongObjectShader.vert.glsl
+  frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 0.63 0.06 0.04 1.0
+	bind spec  const 0.0  0.0  0.0 1.0
+	bind shiny const 0.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader green
+	vert phongObjectShader.vert.glsl
+  frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 0.15 0.48 0.09 1.0
+	bind spec  const 0.0  0.0  0.0 1.0
+	bind shiny const 0.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+     
+#######################################################################################
+##                                                                                   ##
+## Following this point is the geometry for the Cornell Box (minus the light).  This ##
+##     should not need to be changed to 1) add spectral colors or 2) make the units  ##
+##     physically based.  The ceiling geometry may need to be changed to make the    ##
+##     light and ceiling co-planar, however.                                         ##
+##                                                                                   ## 
+#######################################################################################
+
+# The floor (2 triangles)
+object tri floor1
+	v0 5.56 0 0
+	v1 0 0 0
+	v2 0 0 5.592
+	material white
+end
+object tri floor2
+	v0 5.56 0 0
+	v1 0 0 5.592
+	v2 5.56 0 5.592
+	material white
+end
+
+# The ceiling (2 triangles)
+object tri ceiling1
+	v0 5.56 5.488 0
+	v1 5.56 5.488 5.592
+	v2 0 5.488 5.592
+	material white
+end
+object tri ceiling2
+	v0 5.56 5.488 0
+	v1 0 5.488 5.592
+	v2 0 5.488 0
+	material white
+end
+
+# The back wall (2 triangles)
+object tri backWall1
+	v0 5.56 0 5.592
+    v1 0 0 5.592
+    v2 0 5.488 5.592
+	material white
+end
+object tri backWall2
+	v0 5.56 0 5.592
+    v1 0 5.488 5.592
+	v2 5.56 5.488 5.592
+	material white
+end
+
+# The back wall (2 triangles)
+object tri frontWall1
+	v0 5.56 0 0
+    v2 0 0 0
+    v1 0 5.488 0
+	material white
+end
+object tri frontWall2
+	v0 5.56 0 0
+    v2 0 5.488 0
+	v1 5.56 5.488 0
+	material white
+end
+
+# The left wall (2 triangles)
+object tri leftWall1
+	v0 5.56 0 0
+    v1 5.56 0 5.592
+    v2 5.56 5.488 5.592
+	material red
+end
+object tri leftWall2
+	v0 5.56 0 0
+    v1 5.56 5.488 5.592
+	v2 5.56 5.488 0
+	material red
+end
+
+# The right wall (2 triangles)
+object tri rightWall1
+ 	v0 0 0 5.592
+    v1 0 0 0
+    v2 0 5.488 0
+	material green
+end
+object tri rightWall2
+	v0 0 0 5.592
+    v1 0 5.488 0
+	v2 0 5.488 5.592
+	material green
+end
+
+
+# The small block (10 triangles)
+object tri smallBlock1
+	v0 1.30 1.65 0.65
+    v1 0.82 1.65 2.25
+    v2 2.40 1.65 2.72
+	material white
+end
+object tri smallBlock2
+	v0 1.30 1.65 0.65
+    v1 2.40 1.65 2.72
+	v2 2.90 1.65 1.14
+	material white
+end
+object tri smallBlock3
+	v0 2.90 0 1.14
+    v1 2.90 1.65 1.14
+    v2 2.40 1.65 2.72
+	material white
+end
+object tri smallBlock4
+	v0 2.90 0 1.14
+    v1 2.40 1.65 2.72
+	v2 2.40 0 2.72
+	material white
+end
+object tri smallBlock5
+	v0 1.30 0 0.65
+   	v1 1.30 1.65 0.65
+   	v2 2.90 1.65 1.14
+	material white
+end
+object tri smallBlock6
+	v0 1.30 0 0.65
+    v1 2.90 1.65 1.14
+	v2 2.90 0 1.14
+	material white
+end
+object tri smallBlock7
+	v0 0.82 0 2.25
+    v1 0.82 1.65 2.25
+    v2 1.30 1.65 0.65
+	material white
+end
+object tri smallBlock8
+	v0 0.82 0 2.25
+    v1 1.30 1.65 0.65
+	v2 1.30 0 0.65
+	material white
+end
+object tri smallBlock9
+ 	v0 2.40 0 2.72
+    v1 2.40 1.65 2.72
+    v2 0.82 1.65 2.25
+	material white
+end
+object tri smallBlock10
+	v0 2.40 0 2.72
+    v1 0.82 1.65 2.25
+	v2 0.82 0 2.25
+	material white
+end
+
+
+# The large block (10 triangles)
+object tri largeBlock1
+	v0 4.23 3.30 2.47
+    v1 2.65 3.30 2.96
+    v2 3.14 3.30 4.56
+	material white
+end
+object tri largeBlock2
+	v0 4.23 3.30 2.47
+   	v1 3.14 3.30 4.56
+	v2 4.72 3.30 4.06
+	material white
+end
+object tri largeBlock3
+	v0 4.23 0 2.47
+   	v1 4.23 3.30 2.47
+   	v2 4.72 3.30 4.06
+	material white
+end
+object tri largeBlock4
+	v0 4.23 0 2.47
+    v1 4.72 3.30 4.06
+	v2 4.72 0 4.06
+	material white
+end
+object tri largeBlock5
+	v0 4.72 0 4.06
+    v1 4.72 3.30 4.06
+    v2 3.14 3.30 4.56
+	material white
+end
+object tri largeBlock6
+	v0 4.72 0 4.06
+   	v1 3.14 3.30 4.56
+	v2 3.14 0 4.56
+	material white
+end
+object tri largeBlock7
+	v0 3.14 0 4.56
+   	v1 3.14 3.30 4.56
+   	v2 2.65 3.30 2.96
+	material white
+end
+object tri largeBlock8
+	v0 3.14 0 4.56
+   	v1 2.65 3.30 2.96
+	v2 2.65 0 2.96
+	material white
+end
+object tri largeBlock9
+ 	v0 2.65 0 2.96
+   	v1 2.65 3.30 2.96
+   	v2 4.23 3.30 2.47
+	material white
+end
+object tri largeBlock10
+	v0 2.65 0 2.96
+   	v1 4.23 3.30 2.47
+	v2 4.23 0 2.47
+	material white
+end
+
+
+controls
+	map quit										q
+	map reload-shaders  							r
+	map screen-capture								f12
+	map eye-trackball   							mouse-left
+	map obj-trackball-0 							mouse-middle
+	map light-trackball-0 							mouse-right
+	map light-trackball-1 							shift mouse-right
+	map help-screen									h
+	
+	int displayID             is 4     range 0 4    incr *   decr /
+	int vplCount	          is 16    range 8 64   incr up-arrow   decr down-arrow	
+	
+	float depthThreshold      is 0.6   by 0.01  range 0.0 1.5       incr =   decr -	
+	float normThreshold       is 0.2   by 0.02  range 0.0 2.0       incr ]   decr [	
+	float lightDepthThreshold is 0.6   by 0.01  range 0.0 1.5       incr p   decr o
+	float lightIntensity      is 3.0   by 0.1   range 0.2 100.0     incr .   decr ,
+	
+	bool showDirect           is true				toggle d
+	bool showIndirect         is true				toggle i
+	bool computeRSM           is true				toggle f5
+	bool computeMinMax        is true				toggle f6
+	bool computeRefine        is true				toggle f7
+	bool computeIllum         is true				toggle f8
+	bool computeUpsample      is true				toggle f9
+end
+

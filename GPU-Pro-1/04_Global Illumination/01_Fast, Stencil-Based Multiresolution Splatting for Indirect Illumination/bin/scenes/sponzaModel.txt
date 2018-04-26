@@ -1,0 +1,297 @@
+#######################################################################################
+##                                                                                   ##
+## This scene defines the standard "Cornell Box"...  with a few caveats.             ##
+## Caveats:                                                                          ##
+##     1) The light color is defined in arbitrary RGB units rather than              ##
+##        the physically measured spectrum described on the Cornell Box page         ##
+##        (http://www.graphics.cornell.edu/online/box/data.html)                     ##
+##     2) The light is defined as a point (instead of a quad with points             ##
+##        of (343,548.7,227), (343,548.7,332), (213,548.7,332) and (213,548.7,227)   ##
+##        and a surface normal of (0,-1,0))                                          ##
+##     3) Materials are defined with RGB approximations to their spectral            ##
+##        reflectance, not the 4 nm sampled spectra on the web page.                 ##
+##                                                                                   ##
+## Chris Wyman (1/9/2007)                                                            ##
+#######################################################################################
+
+dir model   models\
+#dir model   C:\CHRIS'~1\Models\
+#dir model    C:\Users\cwyman\Desktop\scene\
+#dir texture  C:\Users\cwyman\Desktop\scene\sponzaAtrium\
+
+# Setup a camera to view the scene
+camera pinhole
+    eye 2.78 1.73 -0.00
+   	up 0 1 0
+    at 0.78 1.73 -0
+	  fovy 38.5
+	  near 1.0
+	  far  16.0
+	  res 1024 1024
+#	  trackball
+end
+
+light point
+	pos    2.78 6.73 -0.00
+	at     0.78 0.73 -0
+	color  1 0.85 0.43
+	near   1.0
+	far    25
+	trackball 0
+end
+
+
+float shadowMapBias        -0.001   # Default shadow map bias
+bool  shadowsEnabled       true     # When the program starts, are shadows enabled?
+float lightFOV             70.0     # The light's field of view for shadow/caustic mapping
+
+# timing stuff
+bool computeRSM      true
+bool computeMinMax   true
+bool computeRefine   true
+bool computeIllum    true
+bool computeUpsample true
+
+ambient 0.12 0.12 0.12
+
+texture spotlight spot_white.ppm
+#texture spotlight spot_beeGlass.ppm
+
+
+
+material shader sp_01_luk_a1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.831373 0.796078 0.764706 1.0
+    bind wallTex tex 0 sp_01_luk_a1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+
+material shader sp_00_luk_mali1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.831373 0.796078 0.764706 1.0
+    bind wallTex tex 0 sp_00_luk_mali1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_00_svod1
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 0.941176 0.866667 0.737255 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 15.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_00_vrata_kock1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.450980 0.447059 0.431373 1.0
+    bind wallTex tex 0 sp_00_vrata_kock1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_00_vrata_krug1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.478431 0.478431 0.466667 1.0
+    bind wallTex tex 0 sp_00_vrata_krug1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_00_pod1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.807843 0.768627 0.729412 1.0
+    bind wallTex tex 0 sp_00_pod1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_01_stup1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.862745 0.835294 0.800000 1.0
+    bind wallTex tex 0 sp_01_stup1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_00_luk_mal1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.588235 0.560784 0.525490 1.0
+    bind wallTex tex 0 sp_00_luk_mal1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_vijenac1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.674510 0.662745 0.627451 1.0
+    bind wallTex tex 0 sp_vijenac1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_01_stub_baza1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.737255 0.713725 0.682353 1.0
+    bind wallTex tex 0 sp_01_stub_baza1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_01_stup_baza1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.737255 0.713725 0.682353 1.0
+    bind wallTex tex 0 sp_01_stup_baza1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_01_stub_baza_1
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 0.784314 0.784314 0.784314 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 15.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_svod_kapitel1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.674510 0.662745 0.627451 1.0
+    bind wallTex tex 0 sp_svod_kapitel1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_zid_vani1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.807843 0.768627 0.729412 1.0
+    bind wallTex tex 0 sp_zid_vani1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_01_stub_kut1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.815686 0.788235 0.752941 1.0
+    bind wallTex tex 0 sp_01_stub_kut1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_00_stup1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.815686 0.788235 0.752941 1.0
+    bind wallTex tex 0 sp_00_stup1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_01_stub1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.815686 0.788235 0.752941 1.0
+    bind wallTex tex 0 sp_01_stub1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_02_reljef1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.698039 0.658824 0.639216 1.0
+    bind wallTex tex 0 sp_02_reljef1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_00_zid1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.807843 0.768627 0.729412 1.0
+    bind wallTex tex 0 sp_00_zid1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader sp_00_prozor1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.592157 0.572549 0.545098 1.0
+    bind wallTex tex 0 sp_00_prozor1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+     
+
+object instance
+	   object import obj Sponza
+			file sponzaAtrium.obj
+			smooth 45		
+			matrix scale 8 8 8				
+	   end
+	   matrix translate 0 4 0
+	   foreground
+end
+
+
+
+controls
+	map quit										q
+	map reload-shaders  							r
+	map screen-capture								f12
+	map obj-trackball-0 							mouse-middle
+	map light-trackball-0 							mouse-right
+	map light-trackball-1 							shift mouse-right
+	map rotate-up									mouse-left-neg-y
+	map rotate-down									mouse-left-pos-y
+	map rotate-right								mouse-left-pos-x
+	map rotate-left									mouse-left-neg-x
+	map help-screen									h
+	map forward										w
+	map back                                        s
+	map left										a
+	map right										d
+	scale rotate-up									5
+	scale rotate-down								5
+	scale rotate-right								5
+	scale rotate-left								5
+	
+	int displayID             is 4     range 0 4   incr *   decr /
+	int vplCount	          is 16    range 8 64   incr up-arrow   decr down-arrow	
+	
+	float depthThreshold      is 0.6   by 0.01  range 0.0 1.5       incr =   decr -	
+	float normThreshold       is 0.2     by 0.02  range 0.0 2.0       incr ]   decr [	
+	float lightDepthThreshold is 0.6   by 0.01  range 0.0 1.5       incr p   decr o
+	float lightIntensity      is 2.0   by 0.1   range 0.2 100.0     incr .   decr ,
+	
+	bool showDirect           is true				toggle f1
+	bool showIndirect         is true				toggle f2
+	bool computeRSM           is true				toggle f5
+	bool computeMinMax        is true				toggle f6
+	bool computeRefine        is true				toggle f7
+	bool computeIllum         is true				toggle f8
+	bool computeUpsample      is true				toggle f9
+end
+

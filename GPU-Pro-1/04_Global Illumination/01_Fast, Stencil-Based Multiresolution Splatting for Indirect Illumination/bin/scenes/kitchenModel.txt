@@ -1,0 +1,400 @@
+#######################################################################################
+##                                                                                   ##
+## This scene defines the standard "Cornell Box"...  with a few caveats.             ##
+## Caveats:                                                                          ##
+##     1) The light color is defined in arbitrary RGB units rather than              ##
+##        the physically measured spectrum described on the Cornell Box page         ##
+##        (http://www.graphics.cornell.edu/online/box/data.html)                     ##
+##     2) The light is defined as a point (instead of a quad with points             ##
+##        of (343,548.7,227), (343,548.7,332), (213,548.7,332) and (213,548.7,227)   ##
+##        and a surface normal of (0,-1,0))                                          ##
+##     3) Materials are defined with RGB approximations to their spectral            ##
+##        reflectance, not the 4 nm sampled spectra on the web page.                 ##
+##                                                                                   ##
+## Chris Wyman (1/9/2007)                                                            ##
+#######################################################################################
+
+dir model    models\
+#dir model    C:\CHRIS'~1\Models\
+#dir model    C:\Users\cwyman\Desktop\scene\
+#dir texture  C:\Users\cwyman\Desktop\scene\smallKitchen\
+
+
+# Setup a camera to view the scene
+camera pinhole
+    eye 2.78 3.73 8.00
+   	up 0 1 0
+    at 2.78 3.5 2.795
+	  fovy 38.5
+	  near 1.0
+	  far  50.0
+	  res 1024 1024
+#	  trackball
+end
+
+light point
+	pos    2.78 10.73 8.00
+	at     2.78 9.73 7.0
+	near   1.0
+	far    25
+	color  1 0.85 0.43
+	trackball 0
+end
+
+
+float shadowMapBias        -0.001   # Default shadow map bias
+bool  shadowsEnabled       true     # When the program starts, are shadows enabled?
+float lightFOV             70.0     # The light's field of view for shadow/caustic mapping
+
+ambient 0.12 0.12 0.12
+
+texture spotlight spot_white.ppm
+#texture spotlightLowRes spot_white64.ppm
+
+
+material shader Metal_Corrogated_Shiny
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.756863 0.756863 0.756863 1.0
+    bind wallTex tex 0 Metal_Corrogated_Shiny.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader Material2
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.278431 0.098039 0.027451 1.0
+    bind wallTex tex 0 Material2.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader Glass
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0 0 0 1.0
+	bind dif   const 0.874510 0.874510 0.874510 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 0.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+# d 0.250000
+end
+
+material shader opal_glass
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0 0 0 1.0
+	bind dif   const 0.917647 0.917647 0.917647 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 0.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+# d 0.680000
+end
+
+material shader Stone_Marble_VermontDanby
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.133333 0.149020 0.160784 1.0
+    bind wallTex tex 0 Stone_Marble_VermontDanby.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader _CorrogateShiny_
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.756863 0.756863 0.756863 1.0
+    bind wallTex tex 0 _CorrogateShiny_.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader LEM_CF2
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.800000 0.847059 0.917647 1.0
+    bind wallTex tex 0 LEM_CF2.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+# d 0.340000
+end
+
+material shader brushed_aluminium
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.729412 0.737255 0.733333 1.0
+    bind wallTex tex 0 brushed_aluminium.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader Aquario_bw_top
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.725490 0.725490 0.725490 1.0
+    bind wallTex tex 0 Aquario_bw_top.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader Metal_Corrogated_Shiny1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.756863 0.756863 0.756863 1.0
+    bind wallTex tex 0 Metal_Corrogated_Shiny1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader _Metal_Corrogated_Shiny_1
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.756863 0.756863 0.756863 1.0
+    bind wallTex tex 0 _Metal_Corrogated_Shiny_1.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader Tile_Octagon_Tan
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.745098 0.639216 0.564706 1.0
+    bind wallTex tex 0 Tile_Octagon_Tan.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader Tile_Mosaic_Browns
+	vert texturedWallShader.vert.glsl
+    frag texturedWallShader.frag.glsl
+	bind dif   const 0.725490 0.431373 0.188235 1.0
+    bind wallTex tex 0 Tile_Mosaic_Browns.ppm
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader _0047_Khaki_
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 0.941176 0.901961 0.549020 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 15.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader Color_001
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 0.886275 0.886275 0.886275 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 15.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader Color_008
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 0.117647 0.117647 0.117647 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 15.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader Color_007
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 0.278431 0.278431 0.278431 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 15.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader _Black_
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 0.000000 0.000000 0.000000 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 15.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader _DarkGray_
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 0.662745 0.662745 0.662745 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 15.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader light_HA
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 0.992157 0.878431 0.607843 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 15.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader anthracite
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 0.243137 0.243137 0.243137 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 15.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+
+material shader opal_diffuser
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 1.000000 0.960784 0.933333 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 15.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+# d 0.900000
+end
+
+material shader FrontColor
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 1.000000 1.000000 1.000000 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 15.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader _White_
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 1.000000 1.000000 1.000000 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 15.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader _Silver_
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 0.752941 0.752941 0.752941 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 90.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader _0011_Seashell_
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 1.000000 0.960784 0.933333 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 15.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader _PaleGoldenrod_
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 0.933333 0.909804 0.666667 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 15.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+
+material shader white_ppc1
+	vert phongObjectShader.vert.glsl
+    frag phongObjectShader.frag.glsl
+	bind amb   const 0.05 0.05 0.05 1.0
+	bind dif   const 0.917647 0.917647 0.917647 1.0
+	bind spec  const 0.330000 0.330000 0.330000 1.0
+	bind shiny const 15.0  0.0  0.0 0.0
+	bind spotLight tex 1 spotlight
+	allowsShadows
+end
+     
+
+
+
+
+object instance
+		object import obj Sponza
+			file smallKitchen.obj	
+			smooth 45	
+			matrix scale 8 8 8			
+		end
+		matrix translate 0 4 0
+		foreground
+end
+
+
+
+controls
+	map quit										q
+	map reload-shaders  							r
+	map screen-capture								f12
+	map obj-trackball-0 							mouse-middle
+	map light-trackball-0 							mouse-right
+	map light-trackball-1 							shift mouse-right
+	map rotate-up									mouse-left-neg-y
+	map rotate-down									mouse-left-pos-y
+	map rotate-right								mouse-left-pos-x
+	map rotate-left									mouse-left-neg-x
+	map help-screen									h
+	map forward										w
+	map back                                        s
+	map left										a
+	map right										d
+	scale rotate-up									5
+	scale rotate-down								5
+	scale rotate-right								5
+	scale rotate-left								5
+	
+	int displayID             is 4     range 0 4   incr *   decr /
+	int vplCount	          is 16    range 8 64   incr up-arrow   decr down-arrow	
+	
+	float depthThreshold      is 0.6   by 0.01  range 0.0 1.5       incr =   decr -	
+	float normThreshold       is 0.2     by 0.02  range 0.0 2.0       incr ]   decr [	
+	float lightDepthThreshold is 0.6   by 0.01  range 0.0 1.5       incr p   decr o
+	float lightIntensity      is 2.0   by 0.1   range 0.2 100.0     incr .   decr ,
+	
+	bool showDirect           is true				toggle f1
+	bool showIndirect         is true				toggle f2
+	bool computeRSM           is true				toggle f5
+	bool computeMinMax        is true				toggle f6
+	bool computeRefine        is true				toggle f7
+	bool computeIllum         is true				toggle f8
+	bool computeUpsample      is true				toggle f9
+end
+
+
