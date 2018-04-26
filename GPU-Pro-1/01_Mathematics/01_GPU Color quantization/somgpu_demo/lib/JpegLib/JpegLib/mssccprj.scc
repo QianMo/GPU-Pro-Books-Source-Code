@@ -1,0 +1,9 @@
+SCC = This is a Source Code Control file
+
+[JpegLib.dsp]
+SCC_Aux_Path = "C:\Program Files\Microsoft Visual Studio\Common\VSS"
+SCC_Project_Name = "$/Misc/JPEG/MfcApp/JpegLib", UWGAAAAA
+
+[JPEGLIB2.MAK]
+SCC_Aux_Path = "C:\Program Files\Microsoft Visual Studio\Common\VSS"
+SCC_Project_Name = "$/Misc/JPEG/MfcApp/JpegLib", UWGAAAAA

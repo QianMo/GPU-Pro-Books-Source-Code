@@ -1,0 +1,44 @@
+void cgfl_vp(
+  float4 av : POSITION,
+  float3 an : NORMAL,
+  out float4 hPosition : POSITION,
+  out float3 bv : TEXCOORD0,
+  out float3 bn : TEXCOORD1,
+
+  uniform float4x4 mvp : state.matrix.mvp
+){
+  hPosition = mul( mvp, av );
+  bv = av.xyz;
+  bn = an;
+}
+
+void cgfl_fp(
+  float3 bv : TEXCOORD0,
+  float3 bn : TEXCOORD1,
+
+  uniform float4 lpos,
+  uniform float3 eye,
+  uniform float3 ka,
+  uniform float3 kd,
+  uniform float3 ks,
+  uniform float  shininess,
+
+  out float3 color : COLOR
+){
+  float3 e, n, l;
+    n = normalize( bn );
+    e = normalize( eye - bv );
+    l = normalize( lpos - bv*lpos.w );
+
+    if( dot(n,e)<0 )
+    {
+      n=-n;
+      kd*=float3(.9,.7,.7);
+    }
+
+  float3 h = normalize( l + e );
+
+  float3 lc = lit( dot(n,l), dot(n,h), shininess );
+
+  color = ka + kd*lc.y + ks*lc.z;
+}

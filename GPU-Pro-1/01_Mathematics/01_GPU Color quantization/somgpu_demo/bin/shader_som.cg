@@ -1,0 +1,33 @@
+// maximum codebook_size 1024
+
+#define FLT_MAX 3.402823466e38
+
+void cgfl_vp_som(
+  float3 ac : POSITION,
+  out float4 hPosition : POSITION,
+  out float3 bc : COLOR,
+  uniform float3 codebook[codebook_h][codebook_w]
+){
+  int i, j;
+  float2 imin;
+  float nd, dd;
+  float3 dv;
+
+  nd = FLT_MAX;
+  for( j=0; j<codebook_h; j++ )
+  for( i=0; i<codebook_w; i++ )
+  {
+    dv = ac-codebook[j][i];
+    dd = dot(dv,dv);
+    if( nd>dd )
+    {
+      nd=dd;
+      imin=float2( i, j );
+    }
+  }
+  imin = 2*(imin+.5)/float2(codebook_w,codebook_h)-1;
+
+  hPosition = float4( imin, 0,1);
+  bc=ac;
+}
+

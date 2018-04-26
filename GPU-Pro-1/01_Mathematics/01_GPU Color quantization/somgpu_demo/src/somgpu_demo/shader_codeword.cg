@@ -1,0 +1,108 @@
+// maximum codebook_size 1024
+
+#define FLT_MAX 3.402823466e38
+
+void cgfl_fp_som_codeword(
+  float2 tx : TEXCOORD,
+  uniform sampler2D intex,
+  out float3 bc : COLOR,
+  uniform float3 codebook[codebook_h][codebook_w]
+){
+  int i, j;
+  float nd, dd;
+  float3 dv;
+  float3 ac;
+  float2 imin;
+
+  ac = f3tex2D( intex, tx );
+  nd = FLT_MAX;
+  for( j=0; j<codebook_h; j++ )
+  for( i=0; i<codebook_w; i++ )
+  {
+    dv = ac-codebook[j][i];
+    dd = dot(dv,dv);
+    if( nd>dd )
+    {
+      nd=dd;
+      imin = float2(i,j);
+    }
+  }
+
+  bc=float3( (imin+.5)/float2(codebook_w,codebook_h), 0 );
+}
+
+
+float projval( float3 I_v0, float3 in_v1_v0 )
+{
+  float len;
+  float val;
+  float3 v1_v0;
+
+  v1_v0 = in_v1_v0;
+
+  len = length(v1_v0);
+  v1_v0=(len==0)?0:(v1_v0/len);
+  val = dot( I_v0, v1_v0 );
+  val = (len==0)?0:(val/len);
+  val = (val>0.5)?0:val;
+  val = (val<0)?0:val;
+
+  return val;
+}
+
+void cgfl_fp_som_codeword_subidx(
+  float2 tx : TEXCOORD,
+  uniform sampler2D intex,
+  uniform sampler2D codewordtex,
+  uniform sampler2D codebooktex,
+
+  out float3 bc : COLOR,
+  out float3 cd : COLOR1
+){
+
+  float2 val, cw, dx, dy;
+
+  dx = float2( 1.0/codebook_w, 0 );
+  dy = float2( 0, 1.0/codebook_h );
+
+  float val_r, val_l;
+  float3 I, v0, v1;
+  float3 I_v0, v1_v0;
+  float3 c0, c1;
+
+  I = f3tex2D( intex, tx );
+  cw = f2tex2D( codewordtex, tx );
+  v0 = f3tex2D( codebooktex, cw );
+  I_v0 = I - v0;
+  
+  // right
+  v1 = f3tex2D( codebooktex, cw+dx );
+  v1_v0 = v1 - v0;
+  val_r = projval( I_v0, v1_v0 )*dx.x;
+  // left
+  v1 = f3tex2D( codebooktex, cw-dx );
+  v1_v0 = v1 - v0;
+  val_l = projval( I_v0, v1_v0 )*dx.x;
+
+  val.x = (val_r>val_l)?(cw.x+val_r):(cw.x-val_l);
+  val.x = (val.x<0)?0:val.x;
+
+
+  // top
+  v1 = f3tex2D( codebooktex, cw+dy );
+  v1_v0 = v1 - v0;
+  val_r = projval( I_v0, v1_v0 )*dy.y;
+  // bottom
+  v1 = f3tex2D( codebooktex, cw-dy );
+  v1_v0 = v1 - v0;
+  val_l = projval( I_v0, v1_v0 )*dy.y;
+
+  val.y = (val_r>val_l)?(cw.y+val_r):(cw.y-val_l);
+  val.y = (val.y<0)?0:val.y;
+
+  // sub index
+  bc = float3(val,0);
+
+  cd = f3tex2D( codebooktex, val );
+}
+

@@ -1,0 +1,59 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: somgpu_demo - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\Gary\LOCALS~1\Temp\RSP183E.tmp" with contents
+[
+/nologo /ML /W3 /GX /O2 /I "../common" /I "../g_common" /I "../../lib/glut/include" /I "../../lib/glew/include" /I "../../lib/cgsdk/include" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /FR"Release/" /Fp"Release/somgpu_demo.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\Gary\WinSetting\Desktop\New Folder\src\g_common\g_bell.cpp"
+"E:\Gary\WinSetting\Desktop\New Folder\src\g_common\g_common.cpp"
+"E:\Gary\WinSetting\Desktop\New Folder\src\g_common\g_obj.cpp"
+"E:\Gary\WinSetting\Desktop\New Folder\src\g_common\g_pfm.cpp"
+"E:\Gary\WinSetting\Desktop\New Folder\src\g_common\g_vector.cpp"
+"E:\Gary\WinSetting\Desktop\New Folder\src\somgpu_demo\shader_lighting.cpp"
+"E:\Gary\WinSetting\Desktop\New Folder\src\somgpu_demo\shader_som.cpp"
+"E:\Gary\WinSetting\Desktop\New Folder\src\somgpu_demo\shader_codeword.cpp"
+"E:\Gary\WinSetting\Desktop\New Folder\src\somgpu_demo\gpu_som.cpp"
+"E:\Gary\WinSetting\Desktop\New Folder\src\somgpu_demo\somgpu_demo.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Gary\LOCALS~1\Temp\RSP183E.tmp" 
+Creating temporary file "C:\DOCUME~1\Gary\LOCALS~1\Temp\RSP183F.tmp" with contents
+[
+glew32.lib cg.lib cgGL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:no /pdb:"Release/somgpu_demo.pdb" /machine:I386 /out:"Release/somgpu_demo.exe" /libpath:"../../lib/glut/lib" /libpath:"../../lib/glew/lib" /libpath:"../../lib/cgsdk/lib" 
+".\Release\g_bell.obj"
+".\Release\g_common.obj"
+".\Release\g_obj.obj"
+".\Release\g_pfm.obj"
+".\Release\g_vector.obj"
+".\Release\shader_lighting.obj"
+".\Release\shader_som.obj"
+".\Release\shader_codeword.obj"
+".\Release\gpu_som.obj"
+".\Release\somgpu_demo.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\Gary\LOCALS~1\Temp\RSP183F.tmp"
+<h3>Output Window</h3>
+Compiling...
+g_bell.cpp
+g_common.cpp
+g_obj.cpp
+g_pfm.cpp
+g_vector.cpp
+shader_lighting.cpp
+shader_som.cpp
+shader_codeword.cpp
+gpu_som.cpp
+somgpu_demo.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+somgpu_demo.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
