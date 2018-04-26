@@ -1,0 +1,57 @@
+<?xml version="1.0" standalone='no'?>
+<grammar>
+  <symbols>
+    <symbol name="PYRAMID" mesh="pyramid.dgb" technique="instance_sierpinski" />
+  </symbols>
+  <rules>
+    <rule>
+      <predecessor symbol="PYRAMID" />
+
+      <successor symbol="PYRAMID">
+        <operation op="resize" value="0.5" />
+        <operation op="scaled_move" x="0" y="0.353553" z="0" scaler="1.0" />
+        <operation op="add_noise" attribute="colorID" min="0" max="3" />
+      </successor>
+      <successor symbol="PYRAMID">
+        <operation op="resize" value="0.5" />
+        <operation op="scaled_move" x="-0.5" y="-0.353553" z="-0.5" scaler="1.0" />
+      </successor>
+      <successor symbol="PYRAMID">
+        <operation op="resize" value="0.5" />
+        <operation op="scaled_move" x="-0.5" y="-0.353553" z="0.5" scaler="1.0" />
+      </successor>
+      <successor symbol="PYRAMID">
+        <operation op="resize" value="0.5" />
+        <operation op="scaled_move" x="0.5" y="-0.353553" z="0.5" scaler="1.0" />
+      </successor>
+      <successor symbol="PYRAMID">
+        <operation op="resize" value="0.5" />
+        <operation op="scaled_move" x="0.5" y="-0.353553" z="-0.5" scaler="1.0" />
+      </successor>
+    </rule>
+  </rules>
+  <properties>
+    <symbol_prefix value="SYMBOL_" />
+    <mesh_library value="media" />
+    <generation_depth value="6" />
+  </properties>
+  <module_attributes>
+    <predefined name="position" />
+    <predefined name="size" />
+    <predefined name="terminated" />
+    <predefined name="colorID" />
+    <predefined name="orientation" />
+    <userdefined name ="isDoor" type="uint" />
+    <userdefined name ="south" type="uint" />
+    <userdefined name ="north" type="uint" />
+    <userdefined name ="east" type="uint" />
+    <userdefined name ="west" type="uint" />
+  </module_attributes>
+  <axiom>
+    <module symbol="PYRAMID">
+      <attribute name="size" value="50"/>
+      <attribute name="position" value="0 0 0"/>
+      <attribute name="orientation" value="1 0 0 0"/>
+    </module>
+  </axiom>
+</grammar>

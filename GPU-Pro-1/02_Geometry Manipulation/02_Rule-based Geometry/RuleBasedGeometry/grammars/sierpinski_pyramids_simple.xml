@@ -1,0 +1,83 @@
+<?xml version="1.0" standalone='no'?>
+<grammar>
+  <symbols>
+    <symbol name="PYRAMID" mesh="pyramid.dgb" technique="instance_sierpinski" />    
+  </symbols>
+  <rules>
+    <rule>
+      <predecessor symbol="PYRAMID" />
+
+      <successor symbol="PYRAMID">
+        <operation op="resize" value="0.5" />
+        <operation op="scaled_move" x="0" y="0.353553" z="0" scaler="1.0" />
+      </successor>
+      <successor symbol="PYRAMID">
+        <operation op="resize" value="0.5" />
+        <operation op="scaled_move" x="-0.5" y="-0.353553" z="-0.5" scaler="1.0" />
+      </successor>
+      <successor symbol="PYRAMID">
+        <operation op="resize" value="0.5" />
+        <operation op="scaled_move" x="-0.5" y="-0.353553" z="0.5" scaler="1.0" />
+      </successor>
+      <successor symbol="PYRAMID">
+        <operation op="resize" value="0.5" />
+        <operation op="scaled_move" x="0.5" y="-0.353553" z="0.5" scaler="1.0" />
+      </successor>
+      <successor symbol="PYRAMID">
+        <operation op="resize" value="0.5" />
+        <operation op="scaled_move" x="0.5" y="-0.353553" z="-0.5" scaler="1.0" />
+      </successor>
+    </rule>
+  </rules>
+  <properties>
+    <symbol_prefix value="SYMBOL_" />
+    <mesh_library value="media" />
+    <generation_depth value="6" />
+  </properties>
+  <module_attributes>
+    <predefined name="position" />
+    <predefined name="size" />
+    <predefined name="terminated" />
+    <predefined name="colorID" />
+    <predefined name="orientation" />
+    <userdefined name ="isDoor" type="uint" />
+    <userdefined name ="south" type="uint" />
+    <userdefined name ="north" type="uint" />
+    <userdefined name ="east" type="uint" />
+    <userdefined name ="west" type="uint" />
+  </module_attributes>
+  <axiom>
+    <module symbol="PYRAMID">
+      <attribute name="size" value="40"/>
+      <attribute name="position" value="-200 0 0"/>
+    </module>
+    <module symbol="PYRAMID">
+      <attribute name="size" value="35"/>
+      <attribute name="position" value="-125 0 0"/>
+    </module>
+    <module symbol="PYRAMID">
+      <attribute name="size" value="30"/>
+      <attribute name="position" value="-60 0 0"/>
+    </module>
+    <module symbol="PYRAMID">
+      <attribute name="size" value="25"/>
+      <attribute name="position" value="-5 0 0"/>
+    </module>
+    <module symbol="PYRAMID">
+      <attribute name="size" value="20"/>
+      <attribute name="position" value="35 0 0"/>
+    </module>
+    <module symbol="PYRAMID">
+      <attribute name="size" value="15"/>
+      <attribute name="position" value="70 0 0"/>
+    </module>
+    <module symbol="PYRAMID">
+      <attribute name="size" value="10"/>
+      <attribute name="position" value="95 0 0"/>
+    </module>
+    <module symbol="PYRAMID">
+      <attribute name="size" value="5"/>
+      <attribute name="position" value="110 0 0"/>
+    </module>
+  </axiom>
+</grammar>

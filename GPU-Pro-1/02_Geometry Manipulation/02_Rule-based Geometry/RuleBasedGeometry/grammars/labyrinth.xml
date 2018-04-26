@@ -1,0 +1,145 @@
+<?xml version="1.0" standalone='no'?>
+<grammar>
+  <symbols>
+    <symbol name="ROOM" rule_selection="condition" />
+    <symbol name="WALL_X_CANDIDATE" rule_selection="condition" />
+    <symbol name="WALL_Y_CANDIDATE" rule_selection="condition" />
+    <symbol name="WALL_X" mesh="wall_x.dgb" technique="instance_labyrinth" />
+    <symbol name="WALL_Y" mesh="wall_y.dgb" technique="instance_labyrinth" />
+    <symbol name="FLOOR" mesh="floor.dgb" technique="instance_labyrinth" />
+  </symbols>
+  <rules>
+    <rule condition="20 >= module.size">
+      <predecessor symbol="ROOM" />
+
+      <successor symbol="FLOOR">
+        <operation op="terminate" />
+        <operation op="set" attribute ="colorID" value="2" />
+      </successor>
+      <successor symbol="WALL_X_CANDIDATE">
+        <operation op="set" attribute ="isDoor" value="output.south" />
+        <operation op="set" attribute ="colorID" value="1" />
+      </successor>
+      <successor symbol="WALL_X_CANDIDATE">
+        <operation op="set" attribute ="isDoor" value="output.north" />
+        <operation op="scaled_move" x="0" y="1" z="0" scaler="1.0" />
+        <operation op="set" attribute ="colorID" value="1" />
+      </successor>
+      <successor symbol="WALL_Y_CANDIDATE">
+        <operation op="set" attribute ="isDoor" value="output.west" />
+        <operation op="set" attribute ="colorID" value="1" />
+      </successor>
+      <successor symbol="WALL_Y_CANDIDATE">
+        <operation op="scaled_move" x="1" y="0" z="0" scaler="1.0" />
+        <operation op="set" attribute ="isDoor" value="output.east" />
+        <operation op="set" attribute ="colorID" value="1" />
+      </successor>
+    </rule>
+    <rule condition="module.size > 20 &amp;&amp; generationLevel % 2 == 0">
+      <predecessor symbol="ROOM" />
+      <successor symbol="ROOM">
+        <operation op="resize" value="0.5" />
+        <operation op="set" attribute ="south" value="0" />
+        <!-- module_random_select(module,randomLevels,currentLevel,value1,value2) -->
+        <!-- depending on the value of module_random(module) selects value1 or values -->
+        <!-- 0-1 is splitted into randomLevels parts, this checks if the random is in the currentLevel_th part -->
+        <operation op="set" attribute ="east" value="module_random_select(parent,4,1,0,1)" />
+        <operation op="set" attribute ="north" value="module_random_select(parent,4,4,0,1)" />
+      </successor>
+      <successor symbol="ROOM">
+        <operation op="resize" value="0.5" />
+        <operation op="scaled_move" x="0" y="0.5" z="0" scaler="1.0" />
+        <operation op="set" attribute ="north" value="0" />
+        <operation op="set" attribute ="west" value="0" />
+        <operation op="set" attribute ="south" value="module_random_select(parent,4,4,0,1)" />
+        <operation op="set" attribute ="east" value="module_random_select(parent,4,3,0,1)" />
+      </successor>
+      <successor symbol="ROOM">
+        <operation op="resize" value="0.5" />
+        <operation op="scaled_move" x="0.5" y="0.5" z="0" scaler="1.0" />
+        <operation op="set" attribute ="east" value="0" />
+        <operation op="set" attribute ="south" value="module_random_select(parent,4,2,0,1)" />
+        <operation op="set" attribute ="west" value="module_random_select(parent,4,3,0,1)" />
+      </successor>
+      <successor symbol="ROOM">
+        <operation op="resize" value="0.5" />
+        <operation op="scaled_move" x="0.5" y="0" z="0" scaler="1.0" />
+        <operation op="set" attribute ="west" value="module_random_select(parent,4,1,0,1)" />
+        <operation op="set" attribute ="north" value="module_random_select(parent,4,2,0,1)" />
+      </successor>
+    </rule>
+    <!-- Adding some variation to the passages between rooms -->
+    <rule condition="module.size > 20 &amp;&amp; generationLevel % 2 == 1">
+      <predecessor symbol="ROOM" />
+      <successor symbol="ROOM">
+        <operation op="resize" value="0.5" />
+        <operation op="set" attribute ="west" value="0" />
+        <operation op="set" attribute ="east" value="module_random_select(parent,4,1,0,1)" />
+        <operation op="set" attribute ="north" value="module_random_select(parent,4,4,0,1)" />
+      </successor>
+      <successor symbol="ROOM">
+        <operation op="resize" value="0.5" />
+        <operation op="scaled_move" x="0" y="0.5" z="0" scaler="1.0" />
+        <operation op="set" attribute ="south" value="module_random_select(parent,4,4,0,1)" />
+        <operation op="set" attribute ="east" value="module_random_select(parent,4,3,0,1)" />
+      </successor>
+      <successor symbol="ROOM">
+        <operation op="resize" value="0.5" />
+        <operation op="scaled_move" x="0.5" y="0.5" z="0" scaler="1.0" />
+        <operation op="set" attribute ="north" value="0" />
+        <operation op="set" attribute ="south" value="module_random_select(parent,4,2,0,1)" />
+        <operation op="set" attribute ="west" value="module_random_select(parent,4,3,0,1)" />
+      </successor>
+      <successor symbol="ROOM">
+        <operation op="resize" value="0.5" />
+        <operation op="scaled_move" x="0.5" y="0" z="0" scaler="1.0" />
+        <operation op="set" attribute ="east" value="0" />
+        <operation op="set" attribute ="south" value="0" />
+        <operation op="set" attribute ="west" value="module_random_select(parent,4,1,0,1)" />
+        <operation op="set" attribute ="north" value="module_random_select(parent,4,2,0,1)" />
+      </successor>
+    </rule>
+    <rule condition="module.isDoor == 0">
+      <predecessor symbol="WALL_X_CANDIDATE" />
+
+      <successor symbol="WALL_X">
+        <operation op="terminate" />
+      </successor>
+    </rule>
+    <rule condition="module.isDoor == 0">
+      <predecessor symbol="WALL_Y_CANDIDATE" />
+
+      <successor symbol="WALL_Y">
+        <operation op="terminate" />
+      </successor>
+    </rule>
+  </rules>
+  <properties>
+    <symbol_prefix value="SYMBOL_" />
+    <mesh_library value="media" />
+    <generation_depth value="9" />
+  </properties>
+  <module_attributes>
+    <predefined name="position" />
+    <predefined name="size" />
+    <predefined name="terminated" />
+    <predefined name="colorID" />
+    <predefined name="orientation" />
+    <userdefined name ="isDoor" type="uint" />
+    <userdefined name ="south" type="uint" />
+    <userdefined name ="north" type="uint" />
+    <userdefined name ="east" type="uint" />
+    <userdefined name ="west" type="uint" />
+  </module_attributes>
+  <axiom>
+    <module symbol="ROOM">
+      <attribute name="size" value="2560"/>
+      <attribute name="position" value="-1280 -1280 0"/>
+      <attribute name="south" value="0"/>
+      <attribute name="east" value="0"/>
+      <attribute name="north" value="0"/>
+      <attribute name="west" value="0"/>
+      <attribute name="orientation" value="1 0 0 0"/>
+    </module>
+  </axiom>
+</grammar>

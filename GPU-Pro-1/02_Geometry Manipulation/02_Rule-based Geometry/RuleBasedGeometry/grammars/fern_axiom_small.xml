@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone='no'?>
+<axiom>
+  <module symbol="BRANCH">
+    <attribute name="size" value="51"/>
+    <attribute name="position" value="0 0 0"/>
+    <attribute name="orientation" value="1 0 0 0"/>
+  </module>  
+
+</axiom>

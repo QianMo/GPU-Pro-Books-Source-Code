@@ -1,0 +1,57 @@
+<?xml version="1.0" standalone='no'?>
+<grammar>
+  <symbols>
+    <symbol name="BRANCH" mesh="cylinder.dgb" technique="instance_fern" />
+  </symbols>
+  <rules>
+    <rule>
+      <predecessor symbol="BRANCH" />
+
+      <successor symbol="BRANCH">
+        <operation op="resize" value="0.333333" />
+      </successor>
+      <successor symbol="BRANCH">
+        <operation op="resize" value="0.333333" />
+        <operation op="scaled_move" x="0" y="0.333333" z="0" scaler="3.0" />
+      </successor>
+      <successor symbol="BRANCH">
+        <operation op="resize" value="0.333333" />
+        <operation op="rotate_z" value="45.0">
+          <animation attribute="value" min="-30" max="30" period_length="3" />
+          <random attribute="value" min="-10" max="10" />
+        </operation>
+        <operation op="scaled_move" x="0" y="0.333333" z="0" scaler="3.0" />
+      </successor>
+      <successor symbol="BRANCH">
+        <operation op="resize" value="0.333333" />
+        <operation op="scaled_move" x="0" y="0.666666" z="0" scaler="3.0" />
+      </successor>
+      <successor symbol="BRANCH">
+        <operation op="resize" value="0.333333" />
+        <operation op="rotate_z" value="-45.0" >
+          <animation attribute="value" min="-30" max="30" period_length="3" />
+          <random attribute="value" min="-15" max="15" />
+        </operation>
+        <operation op="scaled_move" x="0" y="0.666666" z="0" scaler="3.0" />
+      </successor>
+    </rule>
+  </rules>
+  <properties>
+    <symbol_prefix value="SYMBOL_" />
+    <mesh_library value="media" />
+    <generation_depth value="3" />
+  </properties>
+  <module_attributes>
+    <predefined name="position" />
+    <predefined name="size" />
+    <predefined name="terminated" />
+    <predefined name="colorID" />
+    <predefined name="orientation" />
+    <userdefined name ="isDoor" type="uint" />
+    <userdefined name ="south" type="uint" />
+    <userdefined name ="north" type="uint" />
+    <userdefined name ="east" type="uint" />
+    <userdefined name ="west" type="uint" />
+  </module_attributes>
+  <axiom file="fern_axiom_big.xml"/>
+</grammar>

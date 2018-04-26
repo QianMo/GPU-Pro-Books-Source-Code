@@ -1,0 +1,37 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Hybrids", "Hybrids.vcproj", "{4F769829-1439-4236-89C5-D8D824B46D3F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		EmuDebug|Win32 = EmuDebug|Win32
+		EmuDebug|x64 = EmuDebug|x64
+		EmuRelease|Win32 = EmuRelease|Win32
+		EmuRelease|x64 = EmuRelease|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F769829-1439-4236-89C5-D8D824B46D3F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4F769829-1439-4236-89C5-D8D824B46D3F}.Debug|Win32.Build.0 = Debug|Win32
+		{4F769829-1439-4236-89C5-D8D824B46D3F}.Debug|x64.ActiveCfg = Debug|x64
+		{4F769829-1439-4236-89C5-D8D824B46D3F}.Debug|x64.Build.0 = Debug|x64
+		{4F769829-1439-4236-89C5-D8D824B46D3F}.EmuDebug|Win32.ActiveCfg = EmuDebug|Win32
+		{4F769829-1439-4236-89C5-D8D824B46D3F}.EmuDebug|Win32.Build.0 = EmuDebug|Win32
+		{4F769829-1439-4236-89C5-D8D824B46D3F}.EmuDebug|x64.ActiveCfg = EmuDebug|x64
+		{4F769829-1439-4236-89C5-D8D824B46D3F}.EmuDebug|x64.Build.0 = EmuDebug|x64
+		{4F769829-1439-4236-89C5-D8D824B46D3F}.EmuRelease|Win32.ActiveCfg = EmuRelease|Win32
+		{4F769829-1439-4236-89C5-D8D824B46D3F}.EmuRelease|Win32.Build.0 = EmuRelease|Win32
+		{4F769829-1439-4236-89C5-D8D824B46D3F}.EmuRelease|x64.ActiveCfg = EmuRelease|x64
+		{4F769829-1439-4236-89C5-D8D824B46D3F}.EmuRelease|x64.Build.0 = EmuRelease|x64
+		{4F769829-1439-4236-89C5-D8D824B46D3F}.Release|Win32.ActiveCfg = Release|Win32
+		{4F769829-1439-4236-89C5-D8D824B46D3F}.Release|Win32.Build.0 = Release|Win32
+		{4F769829-1439-4236-89C5-D8D824B46D3F}.Release|x64.ActiveCfg = Release|x64
+		{4F769829-1439-4236-89C5-D8D824B46D3F}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
