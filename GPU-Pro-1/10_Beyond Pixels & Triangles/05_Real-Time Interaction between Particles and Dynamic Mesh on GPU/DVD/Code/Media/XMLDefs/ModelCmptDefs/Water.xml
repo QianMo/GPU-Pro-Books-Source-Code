@@ -1,0 +1,6 @@
+<ModelDef>
+	<VertexPadding val="0"/>
+	<Effects>
+		<Effect def="MLWater"/>
+	</Effects>
+</ModelDef>

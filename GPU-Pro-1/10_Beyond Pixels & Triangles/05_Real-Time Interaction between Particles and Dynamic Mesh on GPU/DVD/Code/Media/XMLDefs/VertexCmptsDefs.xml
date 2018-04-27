@@ -1,0 +1,83 @@
+<VertexCmptsDefs>
+	<Component	name			= "Position_f3"
+				fmt				= "R32G32B32_FLOAT"
+				factory			= "Position"
+				buffer 			= "Transformable"
+	/>
+
+	<Component	name			= "Normal_f3"
+				fmt				= "R32G32B32_FLOAT"
+				factory			= "Normal"
+				buffer 			= "Transformable"
+	/>
+
+	<Component	name			= "Normal_h4"
+				fmt				= "R16G16B16A16_FLOAT"
+				factory			= "Normal"
+				buffer 			= "Transformable"
+	/>
+
+
+	<Component	name			= "Normal_sn4"
+				fmt				= "R16G16B16A16_SNORM"
+				factory			= "Normal"
+				buffer 			= "Transformable"
+	/>
+
+
+	<Component	name			= "Tangent_f3"
+				fmt				= "R32G32B32_FLOAT"
+				factory			= "Tangent"
+				buffer 			= "Transformable"
+	/>
+
+	<Component	name			= "Tangent_h4"
+				fmt				= "R16G16B16A16_FLOAT"
+				factory			= "Tangent"
+				buffer 			= "Transformable"
+	/>
+
+	<Component	name			= "Tangent_sn4"
+				fmt				= "R16G16B16A16_SNORM"
+				factory			= "Tangent"
+				buffer 			= "Transformable"
+	/>
+
+	<Component 	name	= "Texcoord_f2"
+				fmt		= "R32G32_FLOAT"
+				factory	= "Texcoord"
+				buffer 	= "Static"
+	/>
+
+	<Component 	name	= "Texcoord_sn2"
+				fmt		= "R16G16_SNORM"
+				factory	= "Texcoord"
+				buffer 	= "Static"
+	/>
+
+	<Component 	name	= "VTextBufferIdx_u"
+				fmt		= "R32_UINT"
+				factory	= "VTextVertexIdx"
+				buffer	= "Static"
+	/>
+
+	<Component 	name	= "VTextSymbolIdx_u"
+				fmt		= "R32_UINT"
+				factory	= "VTextSymbolIdx"
+				buffer	= "Static"
+	/>
+
+	<Component	name	= "BlendIndices_u4"
+				fmt		= "R8G8B8A8_UINT"
+				factory	= "BlendIndices"
+				buffer 	= "TransformGuides"
+	/>
+
+	<Compoent	name	= "BlendCoefs_un4"
+				fmt		= "R8G8B8A8_UNORM"
+				factory	= "BlendCoefs"
+				buffer 	= "TransformGuides"
+	/>
+
+
+</VertexCmptsDefs>

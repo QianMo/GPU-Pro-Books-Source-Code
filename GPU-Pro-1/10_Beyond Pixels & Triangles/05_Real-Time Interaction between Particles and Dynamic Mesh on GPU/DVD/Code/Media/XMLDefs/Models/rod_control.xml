@@ -1,0 +1,5 @@
+<Root>
+	<Model file="rod2_control.fbx" def="Colored">
+		<Eff def="MLColored"/>
+	</Model>
+</Root>

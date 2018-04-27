@@ -1,0 +1,5 @@
+<Root>
+	<Model file="water_sign.fbx" def="Colored">
+		<Eff def="MLColoredSelfIlluminate"/>
+	</Model>
+</Root>

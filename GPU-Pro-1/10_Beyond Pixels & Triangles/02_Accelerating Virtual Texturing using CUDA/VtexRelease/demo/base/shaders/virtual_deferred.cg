@@ -1,0 +1,162 @@
+/**
+ *
+ *  This software module was originally developed for research purposes,
+ *  by Multimedia Lab at Ghent University (Belgium).
+ *  Its performance may not be optimized for specific applications.
+ *
+ *  Those intending to use this software module in hardware or software products
+ *  are advized that its use may infringe existing patents. The developers of 
+ *  this software module, their companies, Ghent Universtity, nor Multimedia Lab 
+ *  have any liability for use of this software module or modifications thereof.
+ *
+ *  Ghent University and Multimedia Lab (Belgium) retain full right to modify and
+ *  use the code for their own purpose, assign or donate the code to a third
+ *  party, and to inhibit third parties from using the code for their products. 
+ *
+ *  This copyright notice must be included in all copies or derivative works.
+ *
+ *  For information on its use, applications and associated permission for use,
+ *  please contact Prof. Rik Van de Walle (rik.vandewalle@ugent.be). 
+ *
+ *  Detailed information on the activities of
+ *  Ghent University Multimedia Lab can be found at
+ *  http://multimedialab.elis.ugent.be/.
+ *
+ *  Copyright (c) Ghent University 2004-2009.
+ *
+ **/
+
+sampler2D page_image = sampler_state {
+  generateMipMap = false;
+  minFilter = NearestMipmapNearest;
+  magFilter = Nearest;
+};
+
+sampler2D cache_image = sampler_state {
+  generateMipMap = false;
+  minFilter = LinearMipmapLinear;
+  magFilter = Linear;
+};
+
+struct vsVertex {
+    float4 xyz   : POSITION;
+    float2 uv    : TEXCOORD0;
+};
+
+static const int TextureSize = 15360;
+static const int MaxMipLevel = 7;    // Maximum mipmap level (needs to be log2(TextureSize) )
+static const float pixelsToPage = (1.0f / 120.0f);
+static const float CacheSizePixels = 4096.0f;
+static const float CacheSizePages  = 32.0f;
+static const float PageSize = 128;
+static const float PageContentSize = 120;
+static const float BorderSize = 4.0f;
+static const float PagesOnAxis = TextureSize/PageContentSize;
+
+vsVertex vertex_main(klVertex i) {     
+	vsVertex o;
+    o.xyz = mul(ModelViewProjection, i.xyz);
+    o.uv.x = i.uv.x;
+    o.uv.y = 1.0 - i.uv.y;
+    return o;
+} 
+
+struct GBufferPixel {
+    float4 pageId  : COLOR0;
+    float4 diffuse : COLOR1;
+};
+
+
+GBufferPixel fragment_main(vsVertex i) {    
+    GBufferPixel result;
+    
+    // Calculate the required mipmap level, this uses a similar
+    // formula as the GL spec. Note that actual hw implementations
+    // may differ
+    float deltaX = length(ddx(i.uv)*TextureSize);
+    float deltaY = length(ddy(i.uv)*TextureSize);
+    float deltaMax = max(deltaX, deltaY);
+    float deltaMin = min(deltaX, deltaY);
+    // Calculate the degree of anisotropy    
+    //4 = TEXTURE_MAX_ANISOTROPY of the cache texture
+    //4 = border size (or we will sample into neighbouring tiles)
+    float N = min(ceil(deltaMax/deltaMin),4);
+    float lodBias = 0.5;
+    int level = min(max((int)(log2(deltaMax/N)+lodBias),0),MaxMipLevel);    
+      
+
+    //
+    // Rendertarget 0: The virtual page ID packed into RGBA
+    //
+    // Fixme: Easy on the int<->float conversions...
+    
+    int levelSize = TextureSize >> level;
+    float2 virtualPixelsUv = i.uv * levelSize;
+    int2 virtualTilesUv = virtualPixelsUv * pixelsToPage;
+    
+    int4 resultI =  int4(
+        (virtualTilesUv.x & 0xFF),
+        (virtualTilesUv.y & 0xFF),
+        ((virtualTilesUv.x >> 8) << 4) | (virtualTilesUv.y >> 8),
+        level
+    );
+    
+    result.pageId = float4(
+        (float)resultI.x / 255.0f,
+        (float)resultI.y / 255.0f,
+        (float)resultI.z / 255.0f,
+        (float)resultI.w / 255.0f
+    );    
+    
+    //
+    // Rendertarget 1: The virtual texture diffuse color
+    //
+    
+    // Look up the physical page indexes and the number of pages on the mipmap
+    // level of the page in the translation texture
+    float4 cache = tex2Dlod(page_image,float4(i.uv,0.0,level)); 
+    float2 cacheId = cache.xy * 255.0f;
+    float actualMipLevel = cache.w * 255.0f;
+    int numPagesOnLevel = PagesOnAxis * pow(0.5,actualMipLevel);
+    
+    // Calculate the offset within this page
+    // this works by first calculating [0-1] coords within the page then converting them to pixels
+    // while accounting for overlapping borders around the pages.
+    float2 offset = frac(i.uv * numPagesOnLevel) * PageContentSize + BorderSize;    
+    
+    // Calculate the delta scale this works by first converting the [0-1] texcoord deltas to
+    // pixel deltas on the current mip level, then dividing by the cache size to convert to [0-1] cache deltas
+    float deltaScale = numPagesOnLevel * PageContentSize * (1.0f / CacheSizePixels);
+    float2 sampDeltaX = ddx(i.uv)*deltaScale;
+    float2 sampDeltaY = ddy(i.uv)*deltaScale;
+    
+    // Position of the tile in the physical page in pixels
+    float2 cachePos = cacheId * PageSize;
+    
+    // Convert from pixels to [0-1] and look up in the physical page texture
+    float4 YCoCgA = tex2D(cache_image,(cachePos + offset)*(1.0f / CacheSizePixels),sampDeltaX,sampDeltaY); 
+
+ /*   //
+    // Convert YCoCg to RGB
+    //
+    YCoCgA.x -= (128.0 / 255.0);
+    YCoCgA.y -= (128.0 / 255.0);
+    
+    result.diffuse.z = YCoCgA.z + YCoCgA.y - YCoCgA.x;
+    result.diffuse.y = YCoCgA.z + YCoCgA.x;
+    result.diffuse.x = YCoCgA.z - YCoCgA.y - YCoCgA.x;    
+    result.diffuse.w = YCoCgA.w;*/
+    result.diffuse = YCoCgA;
+    
+    return result;
+} 
+
+technique Default {
+    pass P0 {
+        VertexProgram   = compile gp4vp vertex_main();
+        FragmentProgram = compile gp4fp fragment_main();
+    }
+}
+
+
+

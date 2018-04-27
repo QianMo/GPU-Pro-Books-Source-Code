@@ -1,0 +1,27 @@
+
+material show_texture_cache : guielement_lod { 
+   image map(_cache)  
+   sort last   
+}
+
+material show_page_table : guielement_lod { 
+   image map(_page_table)  
+   sort last
+}
+
+material postprocess : postprocess { 
+   image map(_diffuseRT)  
+   // Draw the post process before any other overlays
+   sort early
+}
+
+// Post processing material that visualizes the pageID
+material postprocess_pageid : postprocess_pageid { 
+   image map(_pageidRT)  
+   // Draw the post process before any other overlays
+   sort early
+}
+
+material font : font {
+    fontTex map(_font)
+}

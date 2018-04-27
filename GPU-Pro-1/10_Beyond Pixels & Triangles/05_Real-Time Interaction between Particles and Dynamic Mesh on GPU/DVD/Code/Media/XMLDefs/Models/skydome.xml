@@ -1,0 +1,6 @@
+
+<Root>
+	<Model file="skydome.fbx" def="TexturedNoLight">
+		<Eff def="TexturedNoLight"/>
+	</Model>
+</Root>

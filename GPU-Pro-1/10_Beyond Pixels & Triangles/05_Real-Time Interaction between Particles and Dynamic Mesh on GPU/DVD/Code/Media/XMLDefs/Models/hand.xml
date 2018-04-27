@@ -1,0 +1,6 @@
+<Root>
+	<Model file="hand_click.FBX" def="SkeletonOpaque">
+		<Eff def="MLBonedNormal"/>
+		<Skeleton name="hand"/>
+	</Model>
+</Root>

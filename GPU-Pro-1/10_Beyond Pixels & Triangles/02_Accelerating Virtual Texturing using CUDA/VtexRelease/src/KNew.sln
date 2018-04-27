@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "klLib", "klLib\klLib.vcproj", "{CCAAC846-D4FF-43D3-A955-23955D317AFA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "V", "V\V.vcproj", "{F95EEF9C-16C8-41B3-A39C-4F730E9120FB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CCAAC846-D4FF-43D3-A955-23955D317AFA} = {CCAAC846-D4FF-43D3-A955-23955D317AFA}
+		{2578BE51-57EC-4467-969E-B3DD450C8869} = {2578BE51-57EC-4467-969E-B3DD450C8869}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glew", "glew\glew.vcproj", "{2578BE51-57EC-4467-969E-B3DD450C8869}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCAAC846-D4FF-43D3-A955-23955D317AFA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CCAAC846-D4FF-43D3-A955-23955D317AFA}.Debug|Win32.Build.0 = Debug|Win32
+		{CCAAC846-D4FF-43D3-A955-23955D317AFA}.Release|Win32.ActiveCfg = Release|Win32
+		{CCAAC846-D4FF-43D3-A955-23955D317AFA}.Release|Win32.Build.0 = Release|Win32
+		{F95EEF9C-16C8-41B3-A39C-4F730E9120FB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F95EEF9C-16C8-41B3-A39C-4F730E9120FB}.Debug|Win32.Build.0 = Debug|Win32
+		{F95EEF9C-16C8-41B3-A39C-4F730E9120FB}.Release|Win32.ActiveCfg = Release|Win32
+		{F95EEF9C-16C8-41B3-A39C-4F730E9120FB}.Release|Win32.Build.0 = Release|Win32
+		{2578BE51-57EC-4467-969E-B3DD450C8869}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2578BE51-57EC-4467-969E-B3DD450C8869}.Debug|Win32.Build.0 = Debug|Win32
+		{2578BE51-57EC-4467-969E-B3DD450C8869}.Release|Win32.ActiveCfg = Release|Win32
+		{2578BE51-57EC-4467-969E-B3DD450C8869}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

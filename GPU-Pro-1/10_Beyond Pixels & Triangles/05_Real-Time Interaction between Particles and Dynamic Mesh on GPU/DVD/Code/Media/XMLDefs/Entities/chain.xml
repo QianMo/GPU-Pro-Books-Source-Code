@@ -1,0 +1,10 @@
+<Entity>
+	<Model name="rod"/>
+	<EffectParamSet target=":all">
+		<!--<param name="ReflectTex" 	type="SR"		value="cm.dds"/>-->
+		<param name="gDiffColor"	type="float4"	value="0.75,0.75,0.75,1"/>
+		<param name="gSpecular"		type="float3"	value="1,1,1,1" expr_only="1"/>
+		<param name="gSpecPower"	type="float"	value="32"/>
+		<!--<param name="gReflection"	type="float3"	value="0.35,0.35,0.35"/>-->
+	</EffectParamSet>
+</Entity>

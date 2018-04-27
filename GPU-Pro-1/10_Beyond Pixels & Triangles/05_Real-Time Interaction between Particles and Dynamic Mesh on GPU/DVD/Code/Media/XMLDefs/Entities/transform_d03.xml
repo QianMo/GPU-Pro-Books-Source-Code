@@ -1,0 +1,5 @@
+<Entity>
+	<Model name="transform_d03"/>
+	<EffectParamSet target=":all">
+	</EffectParamSet>
+</Entity>

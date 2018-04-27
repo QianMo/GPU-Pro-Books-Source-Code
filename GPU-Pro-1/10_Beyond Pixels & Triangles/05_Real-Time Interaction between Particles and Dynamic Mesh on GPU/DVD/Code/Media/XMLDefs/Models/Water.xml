@@ -1,0 +1,5 @@
+<Root>
+	<Model file="Water.fbx" def="Water">
+		<Eff def="MLWater"/>
+	</Model>
+</Root>

@@ -1,0 +1,12 @@
+#ifndef PROVIDERS_CONSTEVALOPERATIONGROUPPROVIDERCONFIG_H_INCLUDED
+#define PROVIDERS_CONSTEVALOPERATIONGROUPPROVIDERCONFIG_H_INCLUDED
+
+namespace Mod
+{
+	struct ConstEvalOperationGroupProviderConfig
+	{
+
+	};
+}
+
+#endif

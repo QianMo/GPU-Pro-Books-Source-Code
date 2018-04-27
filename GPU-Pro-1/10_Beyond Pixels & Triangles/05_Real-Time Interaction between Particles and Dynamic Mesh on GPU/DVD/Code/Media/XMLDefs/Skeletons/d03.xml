@@ -1,0 +1,6 @@
+<SkeletonDef>
+	<Skeleton file="d03.fbx"/>
+	<Skeleton file="d03_dance.fbx"/>
+	<Animation name="idle" loop="1" speed="1"/>
+	<Animation name="dance" loop="1" speed="1"/>
+</SkeletonDef>

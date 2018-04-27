@@ -1,0 +1,6 @@
+<SkeletonDef>
+	<Skeleton file="kerl.fbx"/>
+	<Skeleton file="kerl_loiter.fbx"/>
+	<Animation name="kick" loop="1" speed="1"/>
+	<Animation name="loiter" loop="1" speed="1"/>
+</SkeletonDef>

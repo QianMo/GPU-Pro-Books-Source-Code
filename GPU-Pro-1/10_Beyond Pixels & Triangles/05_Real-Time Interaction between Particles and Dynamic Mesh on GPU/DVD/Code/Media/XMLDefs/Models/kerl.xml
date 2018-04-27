@@ -1,0 +1,6 @@
+<Root>
+	<Model file="kerl.FBX" def="SkeletonOpaque">
+		<Eff def="MLBonedSpecNormal"/>
+		<Skeleton name="kerl"/>
+	</Model>
+</Root>

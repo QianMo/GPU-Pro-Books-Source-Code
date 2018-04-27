@@ -1,0 +1,12 @@
+<Entity>
+	<Model name="kerl"/>
+	<TransformBuffers val="1"/>
+	<EffectParamSet target=":all">
+		<param name="DiffuseTex"	type="SR" 		value="kerl_D.dds"/>
+		<param name="SpecularTex"	type="SR" 		value="kerl_S.dds"/>
+		<param name="NormalTex" 	type="SR"		value="kerl_N.dds"/>
+
+		<param name="gSpecPower"	type="float"	value="32"/>
+		<param name="gSpecular"		type="float3"	value="0.5,0.5,0.375" expr_only="1"/>
+	</EffectParamSet>
+</Entity>

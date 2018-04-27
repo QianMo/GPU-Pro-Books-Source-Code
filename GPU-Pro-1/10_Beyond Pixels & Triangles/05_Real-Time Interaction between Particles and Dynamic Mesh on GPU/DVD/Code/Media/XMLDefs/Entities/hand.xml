@@ -1,0 +1,10 @@
+<Entity>
+	<Model name="hand"/>
+	<EffectParamSet target=":all">
+		<param name="DiffuseTex"	type="SR" 		value="skel_hand_d.dds"/>
+		<param name="NormalTex" 	type="SR"		value="skel_hand_n.dds"/>
+
+		<param name="gSpecPower"	type="float"	value="32"/>
+		<param name="gSpecular"		type="float3"	value="0.75,0.75,0.575" expr_only="1"/>
+	</EffectParamSet>
+</Entity>

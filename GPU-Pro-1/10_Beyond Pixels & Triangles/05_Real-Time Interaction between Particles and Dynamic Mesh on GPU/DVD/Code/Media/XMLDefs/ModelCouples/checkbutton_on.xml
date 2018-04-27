@@ -1,0 +1,9 @@
+<Root>
+	<Light>
+		<Attenuation val = "144"/>
+		<Color x="0.25" y="0.75" z="0.25" w="1"/>
+		<Intensity val="4"/>
+		<Type val="POINT"/>
+		<Position x="0" y="0" z="-4"/>
+	</Light>
+</Root>

@@ -1,0 +1,13 @@
+<Entity>
+	<Model name="water_sign"/>
+	<EffectParamSet target=":all">
+
+		<param name="gDiffColor"		type="float4"	value="0.225,0.425,1.0,1">	
+			<controller type="user_float4" variable="water_color"/>
+		</param>
+		<param name="gSpecular"			type="float3"	value="0.125,0.125,0.125,1" expr_only="1"/>
+		<param name="gSelfIlluminate"	type="float"	value="0.5"/>
+		<param name="gSpecPower"		type="float"	value="16"/>
+
+	</EffectParamSet>
+</Entity>

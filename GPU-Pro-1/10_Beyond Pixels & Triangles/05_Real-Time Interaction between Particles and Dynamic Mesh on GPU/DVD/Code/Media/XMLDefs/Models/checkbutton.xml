@@ -1,0 +1,5 @@
+<Root>
+	<Model file="check_button.FBX" def="Opaque">
+		<Eff def="MLNormal"/>
+	</Model>
+</Root>

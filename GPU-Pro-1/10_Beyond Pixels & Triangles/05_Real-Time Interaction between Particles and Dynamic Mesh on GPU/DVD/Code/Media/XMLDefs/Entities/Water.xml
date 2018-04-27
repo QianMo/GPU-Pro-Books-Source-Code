@@ -1,0 +1,55 @@
+<Entity>
+	<Model name="Water"/>
+
+	<EffectParamSet target=":all">
+		<param name="ReflectTex"	type="SR"		value=":SceneCubemap"/>
+		<param name="RefractTex"	type="SR"		value=":SceneCopy"/>
+
+		<param name="WeightTex" 	type="SR" 		value="water_weight.dds"/>
+
+		<param name="NormalTex" 	type="SR"		value="water_n00.dds">
+			<controller type="animated_texture">
+				<FPS val="24"/>
+				<texture val="water_n00.dds"/>
+				<texture val="water_n01.dds"/>
+				<texture val="water_n02.dds"/>
+				<texture val="water_n03.dds"/>
+				<texture val="water_n04.dds"/>
+				<texture val="water_n05.dds"/>
+				<texture val="water_n06.dds"/>
+				<texture val="water_n07.dds"/>
+				<texture val="water_n08.dds"/>
+				<texture val="water_n09.dds"/>
+				<texture val="water_n10.dds"/>
+				<texture val="water_n11.dds"/>
+				<texture val="water_n12.dds"/>
+				<texture val="water_n13.dds"/>
+				<texture val="water_n14.dds"/>
+				<texture val="water_n15.dds"/>
+				<texture val="water_n16.dds"/>
+				<texture val="water_n17.dds"/>
+				<texture val="water_n18.dds"/>
+				<texture val="water_n19.dds"/>
+				<texture val="water_n20.dds"/>
+				<texture val="water_n21.dds"/>
+				<texture val="water_n22.dds"/>
+				<texture val="water_n23.dds"/>
+			</controller>
+		</param>
+
+		<param name="gFlowTime" type="float" value="0">
+			<controller type="linear_float">
+				<start val="0"/>
+				<end val="4"/>
+				<speed val="0.25"/>
+			</controller>
+		</param>
+		
+		<param name="gDiffColor"	type="float4"	value="1.0,0.05,0.05,1">
+			<controller type="user_float4" variable="water_color"/>
+		</param>
+		<param name="gSpecular"		type="float3"	value="0.35,0.35,0.35,1" expr_only="1"/>
+		<param name="gSpecPower"	type="float"	value="64"/>
+	</EffectParamSet>
+
+</Entity>

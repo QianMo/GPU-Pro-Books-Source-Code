@@ -1,0 +1,16 @@
+<Entity>
+	<Model name="terrain2"/>
+	<EffectParamSet target=":all">
+		<param name="gSpecPower"	type="float"	value="16"/>
+		<param name="gSpecular"		type="float3"	value="0.1,0.1,0.075" expr_only="1"/>
+
+		<param name="DiffuseTex"	type="SR"		value="desert_d.dds"/>
+		<param name="NormalTex" 	type="SR"		value="desert_n.dds"/>
+
+		<param name="WeightTex"		type="SR"		value="terrain_w.dds"/>
+
+		<param name="DiffuseTex1"	type="SR"		value="rock_d.dds"/>
+		<param name="NormalTex1" 	type="SR"		value="rock_n.dds"/>
+
+	</EffectParamSet>
+</Entity>

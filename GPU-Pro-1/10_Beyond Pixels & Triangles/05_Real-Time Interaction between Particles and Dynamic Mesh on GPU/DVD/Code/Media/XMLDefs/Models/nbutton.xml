@@ -1,0 +1,5 @@
+<Root>
+	<Model file="button.fbx" def="Opaque">
+		<Eff def="MLRefNormal"/>
+	</Model>
+</Root>

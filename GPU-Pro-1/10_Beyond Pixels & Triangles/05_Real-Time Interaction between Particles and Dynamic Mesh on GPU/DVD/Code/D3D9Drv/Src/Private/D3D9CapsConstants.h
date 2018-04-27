@@ -1,0 +1,16 @@
+#ifndef D3D9DRV_D3D9CAPSCONSTANTS_H_INCLUDED
+#define D3D9DRV_D3D9CAPSCONSTANTS_H_INCLUDED
+
+namespace Mod
+{
+	struct D3D9CapsConstants
+	{
+		UINT32	NUM_TEXTURE_SLOTS;
+		UINT32	NUM_VERTEXBUFFER_SLOTS;
+		UINT32	MAX_TEXTURE_DIMMENSION;
+	};
+
+	void FillD3D9CapsConstants( D3D9CapsConstants& caps, IDirect3D9* d3d9, UINT adapterID, D3DDEVTYPE devType );
+}
+
+#endif

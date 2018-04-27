@@ -1,0 +1,5 @@
+<Root>
+	<Model file="terrain2.fbx" def="Opaque">
+		<Eff def="MLNormalTerrain"/>
+	</Model>
+</Root>

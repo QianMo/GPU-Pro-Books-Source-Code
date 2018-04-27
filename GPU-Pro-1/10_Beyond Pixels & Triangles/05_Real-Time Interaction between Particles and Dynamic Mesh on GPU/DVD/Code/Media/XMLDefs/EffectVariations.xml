@@ -1,0 +1,108 @@
+<EffectVariations>
+	<Variation name="Default">
+	</Variation>
+
+	<Variation name="RenderToCubemap">
+		<VisibilityChecker name="CubemapChecker"/>
+
+		<SubDef type="Default">
+			<Defines>
+				<MD_RENDER_TO_CUBEMAP/>
+			</Defines>
+		</SubDef>
+
+		<RenderMethod val="InstancedMultipass"/>
+		<PassCount val="6"/>
+	</Variation>
+
+	<Variation name="RenderHeight">
+
+		<SubDef type="Default">
+			<File val="Height"/>
+
+			<Subvars>
+			</Subvars>
+		</SubDef>
+
+	</Variation>
+
+	<Variation name="RenderVelocity">
+		<ConstantsPlugin name="VelocityConstants"/>
+		<VisibilityChecker name="VelocityChecker"/>
+
+		<SubDef type="Default">
+			<File val="Velocity\Velocity"/>
+			<Pool val="Velocity"/>
+
+			<Subvars>
+			</Subvars>
+		</SubDef>
+
+		<Branch>
+			<Conditions>
+				<Condition subdef="Default" type="file" val="VText"/>
+			</Conditions>
+
+			<Conditions>
+				<Condition subdef="Default" type="define" val="MD_VTEXT"/>
+			</Conditions>
+
+			<SubDef type="Default">
+				<Defines>
+					<MD_VTEXT/>
+				</Defines>
+			</SubDef>
+		</Branch>
+
+		<Branch>
+			<Conditions>
+				<Condition subdef="Default" type="file" val="BoneNormal"/>
+			</Conditions>
+
+			<Conditions>
+				<Condition subdef="Default" type="define" val="MD_BONE_TRANSFORM"/>
+			</Conditions>
+
+			<SubDef type="Default">
+				<Defines>
+					<MD_BONE_TRANSFORM/>
+				</Defines>
+			</SubDef>
+
+			<SubDef type="PostTransform">
+
+				<Defines>
+					<MD_BONE_TRANSFORM/>
+					<MD_BONE_POST_TRANSFORM/>
+				</Defines>
+
+				<Buffers>
+					<Buffer type="Transformable"/>
+					<Buffer type="Transformed"/>
+					<Buffer type="TransformGuides"/>
+				</Buffers>
+
+			</SubDef>
+		</Branch>
+	</Variation>
+
+	<Variation name="WaterToCubemap">
+		<Branch>
+			<Conditions>
+				<Condition subdef="Default" type="file" val="ML\Water"/>
+			</Conditions>
+
+			<SubDef type="Default">
+				<Defines>
+					<MD_CUBEMAPREFRACTION/>
+				</Defines>
+
+				<!-- FIX ME: no subvars specified should mean we support subvars 
+					like in the original effect, currently it doesn't work-->
+				<Subvars>
+					<Light/>
+				</Subvars>
+			</SubDef>
+		</Branch>
+	</Variation>
+</EffectVariations>

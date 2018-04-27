@@ -1,0 +1,9 @@
+<Entity>
+	<Model name="CaveSkull"/>
+	<EffectParamSet target=":all">
+		<param name="DiffuseTex"	type="SR"		value="CaveSkull_d.dds"/>
+		<param name="NormalTex" 	type="SR"		value="CaveSkull_n.dds"/>
+		<param name="gSpecPower"	type="float"	value="32"/>
+		<param name="gSpecular"		type="float3"	value="0.05,0.05,0.05" expr_only="1"/>
+	</EffectParamSet>
+</Entity>

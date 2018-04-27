@@ -1,0 +1,4 @@
+
+material default : system.default { 
+   image map(./base/textures/default.png)  
+}

@@ -1,0 +1,11 @@
+<Entity>
+	<Model name="pillar5"/>
+	<EffectParamSet target=":all">
+		<param name="SpecularTex"	type="SR" 		value="evil_pillar_s.dds"/>
+		<param name="DiffuseTex"	type="SR"		value="evil_pillar_d.dds"/>
+		<param name="NormalTex" 	type="SR"		value="evil_pillar_n.dds"/>
+		<param name="ReflectTex" 	type="SR"		value="cm.dds"/>
+		<param name="gSpecPower"	type="float"	value="48"/>
+		<param name="gSpecular"		type="float3"	value="0.5,0.5,0.5" expr_only="1"/>
+	</EffectParamSet>
+</Entity>

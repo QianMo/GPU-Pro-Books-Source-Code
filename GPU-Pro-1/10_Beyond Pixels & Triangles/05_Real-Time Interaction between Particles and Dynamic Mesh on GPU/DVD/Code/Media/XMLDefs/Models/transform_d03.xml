@@ -1,0 +1,6 @@
+<Root>
+	<Model file="d03.fbx" def="SkeletonTransformable">
+		<Eff def="BoneTransformEffectDebug"/>
+		<Skeleton 	name = "d03"/>
+	</Model>
+</Root>

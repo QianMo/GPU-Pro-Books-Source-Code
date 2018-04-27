@@ -1,0 +1,12 @@
+#ifndef EXTRALIB_EFFECTPARAMCONTROLLERCREATORCONFIG_H_INCLUDED
+#define EXTRALIB_EFFECTPARAMCONTROLLERCREATORCONFIG_H_INCLUDED
+
+namespace Mod
+{
+	struct EffectParamControllerCreatorConfig
+	{
+
+	};
+}
+
+#endif

@@ -1,0 +1,570 @@
+<EffectDefs>
+
+	<EffectDef name="Basic">
+
+		<VertexCmpts>
+			<Position_f3 	idx="0" />
+			<Normal_sn4 	idx="0" />
+			<Texcoord_f2 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="Simple"/>
+		</SubDef>
+
+	</EffectDef>
+
+	<EffectDef name="TexturedNoLight">
+
+		<VertexCmpts>
+			<Position_f3 	idx="0" />
+			<Texcoord_sn2 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="TexturedNoLight"/>
+		</SubDef>
+
+	</EffectDef>
+
+
+	<EffectDef name="Environment">
+
+		<VertexCmpts>
+			<Position_f3 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="CubeBackground"/>
+		</SubDef>
+
+	</EffectDef>
+
+	<EffectDef name="DepthGuard">
+		<VertexCmpts>
+			<Position_f3 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="DepthGuard"/>
+		</SubDef>
+
+	</EffectDef>
+
+
+	<EffectDef name="Colored">
+
+		<VertexCmpts>
+			<Position_f3 	idx="0" />
+			<Normal_sn4 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="Colored"/>
+		</SubDef>
+
+	</EffectDef>
+
+	<EffectDef name="BoneTransformEffectDebug">
+
+		<VertexCmpts>
+			<Position_f3 		idx="0" />
+			<Normal_sn4 		idx="0" />
+			<BlendIndices_u4 	idx="0" />
+			<BlendCoefs_un4 	idx="0" />
+		</VertexCmpts>
+
+		<TransformOutput>
+			<Position_f3		idx="0"/>
+			<Normal_f3			idx="0"/>
+		</TransformOutput>
+
+		<SubDef type="Default">
+			<File val="BoneTransformEffectDebug"/>
+		</SubDef>
+
+		<SubDef type="Transform">
+			<File val="BoneTransformEffectBBEval"/>
+		</SubDef>
+
+		<SubDef type="PostTransform">
+			<File val="BoneTransformEffectDebug"/>
+			<Defines>
+				<MD_POST_TRANSFORM/>
+			</Defines>
+		</SubDef>
+
+	</EffectDef>
+
+	<EffectDef name="PNormal">
+
+		<VertexCmpts>
+			<Position_f3 	idx="0" />
+			<Normal_sn4 	idx="0" />
+			<Tangent_sn4 	idx="0" />
+			<Texcoord_f2 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="Normal"/>
+			<Defines>
+				<MD_PACKED_NORMALS/>
+			</Defines>
+		</SubDef>
+
+	</EffectDef>
+
+
+	<EffectDef name="Normal">
+
+		<VertexCmpts>
+			<Position_f3 	idx="0" />
+			<Normal_sn4 	idx="0" />
+			<Tangent_sn4 	idx="0" />
+			<Texcoord_f2 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="Normal"/>
+		</SubDef>
+
+	</EffectDef>
+
+	<EffectDef name="MLNormal">
+
+		<VertexCmpts>
+			<Position_f3 	idx="0" />
+			<Normal_sn4 	idx="0" />
+			<Tangent_sn4 	idx="0" />
+			<Texcoord_f2 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="ML\Normal"/>
+			<Pool val="ML"/>
+			<Subvars>
+				<Light/>
+			</Subvars>
+		</SubDef>
+
+	</EffectDef>
+
+	<EffectDef name="MLNormalTerrain">
+
+		<VertexCmpts>
+			<Position_f3 	idx="0" />
+			<Normal_sn4 	idx="0" />
+			<Tangent_sn4 	idx="0" />
+			<Texcoord_f2 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="ML\Normal"/>
+			<Pool val="ML"/>
+			<Defines>
+				<MD_TERRAIN/>				
+			</Defines>
+			<Subvars>
+				<Light/>
+			</Subvars>
+		</SubDef>
+
+	</EffectDef>
+
+
+	<EffectDef name="MLBonedNormal">
+
+		<VertexCmpts>
+			<Position_f3 		idx="0" />
+			<Normal_sn4 		idx="0" />
+			<Tangent_sn4 		idx="0" />
+			<Texcoord_f2 		idx="0" />
+			<BlendIndices_u4    idx="0" />
+			<BlendCoefs_un4		idx="0" />
+		</VertexCmpts>
+
+
+		<TransformOutput>
+			<Position_f3 	idx="0"/>
+			<Normal_sn4 	idx="0"/>
+			<Tangent_sn4 	idx="0"/>
+		</TransformOutput>
+
+
+		<SubDef type="Default">
+			<File val="ML\Normal"/>
+			<Pool val="ML"/>
+			<Defines>
+				<MD_BONE_TRANSFORM/>
+				<MD_NUM_WEIGHTS val="4"/>
+			</Defines>
+			<Subvars>
+				<Light/>
+			</Subvars>
+		</SubDef>
+
+		<SubDef type="Transform">
+			<File val="ML\NormalBoneTransform"/>
+			<Defines>
+				<MD_NUM_WEIGHTS val="4"/>
+			</Defines>
+			<Subvars>
+			</Subvars>
+		</SubDef>
+
+		<SubDef type="PostTransform">
+
+			<Defines>
+			</Defines>
+
+			<Buffer type="Transformed"/>
+			<Buffer type="Static"/>
+			<File val="ML\Normal"/>
+		</SubDef>
+
+	</EffectDef>
+
+
+
+	<EffectDef name="MLBonedRefMaskSpecNormal">
+
+		<VertexCmpts>
+			<Position_f3 		idx="0" />
+			<Normal_sn4 		idx="0" />
+			<Tangent_sn4 		idx="0" />
+			<Texcoord_f2 		idx="0" />
+			<BlendIndices_u4    idx="0" />
+			<BlendCoefs_un4		idx="0" />
+		</VertexCmpts>
+
+
+		<TransformOutput>
+			<Position_f3 	idx="0"/>
+			<Normal_sn4 	idx="0"/>
+			<Tangent_sn4 	idx="0"/>
+		</TransformOutput>
+
+
+		<SubDef type="Default">
+			<File val="ML\Normal"/>
+			<Pool val="ML"/>
+			<Defines>
+				<MD_BONE_TRANSFORM/>
+				<MD_NUM_WEIGHTS val="4"/>
+				<MD_DO_REFLECTION/>
+				<MD_BAKED_SPECULAR/>
+				<MD_REFLECTION_MASK/>
+			</Defines>
+			<Subvars>
+				<Light/>
+			</Subvars>
+		</SubDef>
+
+		<SubDef type="Transform">
+			<File val="ML\NormalBoneTransform"/>
+			<Defines>
+				<MD_NUM_WEIGHTS val="4"/>
+			</Defines>
+			<Subvars>
+			</Subvars>
+		</SubDef>
+
+		<SubDef type="PostTransform">
+
+			<Defines>
+				<MD_DO_REFLECTION/>
+				<MD_BAKED_SPECULAR/>
+				<MD_REFLECTION_MASK/>
+			</Defines>
+
+			<Buffer type="Transformed"/>
+			<Buffer type="Static"/>
+			<File val="ML\Normal"/>
+		</SubDef>
+
+	</EffectDef>
+
+
+	<EffectDef name="MLBonedSpecNormal">
+
+		<VertexCmpts>
+			<Position_f3 		idx="0" />
+			<Normal_sn4 		idx="0" />
+			<Tangent_sn4 		idx="0" />
+			<Texcoord_f2 		idx="0" />
+			<BlendIndices_u4    idx="0" />
+			<BlendCoefs_un4		idx="0" />
+		</VertexCmpts>
+
+
+		<TransformOutput>
+			<Position_f3 	idx="0"/>
+			<Normal_sn4 	idx="0"/>
+			<Tangent_sn4 	idx="0"/>
+		</TransformOutput>
+
+
+		<SubDef type="Default">
+			<File val="ML\Normal"/>
+			<Pool val="ML"/>
+			<Defines>
+				<MD_BONE_TRANSFORM/>
+				<MD_NUM_WEIGHTS val="4"/>
+				<MD_BAKED_SPECULAR/>
+			</Defines>
+			<Subvars>
+				<Light/>
+			</Subvars>
+		</SubDef>
+
+		<SubDef type="Transform">
+			<File val="ML\NormalBoneTransform"/>
+			<Defines>
+				<MD_NUM_WEIGHTS val="4"/>
+			</Defines>
+			<Subvars>
+			</Subvars>
+		</SubDef>
+
+		<SubDef type="PostTransform">
+
+			<Defines>
+				<MD_BAKED_SPECULAR/>
+			</Defines>
+
+			<Buffer type="Transformed"/>
+			<Buffer type="Static"/>
+			<File val="ML\Normal"/>
+		</SubDef>
+
+	</EffectDef>
+
+
+	<EffectDef name="MLRefNormal">
+
+		<VertexCmpts>
+			<Position_f3 	idx="0" />
+			<Normal_sn4 	idx="0" />
+			<Tangent_sn4 	idx="0" />
+			<Texcoord_f2 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="ML\Normal"/>
+			<Pool val="ML"/>
+			<Defines>
+				<MD_DO_REFLECTION/>
+			</Defines>
+			<Subvars>
+				<Light/>
+			</Subvars>
+		</SubDef>
+
+	</EffectDef>
+
+	<EffectDef name="MLRefNormalSpec">
+
+		<VertexCmpts>
+			<Position_f3 	idx="0" />
+			<Normal_sn4 	idx="0" />
+			<Tangent_sn4 	idx="0" />
+			<Texcoord_f2 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="ML\Normal"/>
+			<Pool val="ML"/>
+			<Defines>
+				<MD_DO_REFLECTION/>
+				<MD_BAKED_SPECULAR/>
+			</Defines>
+			<Subvars>
+				<Light/>
+			</Subvars>
+		</SubDef>
+
+	</EffectDef>
+
+
+	<EffectDef name="MLRefMaskNormalSpec">
+
+		<VertexCmpts>
+			<Position_f3 	idx="0" />
+			<Normal_sn4 	idx="0" />
+			<Tangent_sn4 	idx="0" />
+			<Texcoord_f2 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="ML\Normal"/>
+			<Pool val="ML"/>
+			<Defines>
+				<MD_DO_REFLECTION/>
+				<MD_BAKED_SPECULAR/>
+				<MD_REFLECTION_MASK/>
+			</Defines>
+			<Subvars>
+				<Light/>
+			</Subvars>
+		</SubDef>
+
+	</EffectDef>
+
+	<EffectDef name="MLNormalSpec">
+
+		<VertexCmpts>
+			<Position_f3 	idx="0" />
+			<Normal_sn4 	idx="0" />
+			<Tangent_sn4 	idx="0" />
+			<Texcoord_f2 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="ML\Normal"/>
+			<Pool val="ML"/>
+			<Defines>
+				<MD_BAKED_SPECULAR/>
+			</Defines>
+			<Subvars>
+				<Light/>
+			</Subvars>
+		</SubDef>
+
+	</EffectDef>
+
+	<EffectDef name="MLNormalVText">
+
+		<VertexCmpts>
+			<VTextBufferIdx_u	idx="0" />
+			<VTextSymbolIdx_u	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="ML\Normal"/>
+			<Pool val="ML"/>
+
+			<Defines>
+				<MD_VTEXT/>
+			</Defines>
+
+			<Subvars>
+				<Light/>
+			</Subvars>
+		</SubDef>
+
+	</EffectDef>
+
+
+	<EffectDef name="MLWater">
+
+		<VertexCmpts>
+			<Position_f3 	idx="0" />
+			<Normal_sn4 	idx="0" />
+			<Tangent_sn4 	idx="0" />
+			<Texcoord_f2 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="ML\Water"/>
+			<Pool val="ML"/>
+
+			<Subvars>
+				<Light/>
+			</Subvars>
+		</SubDef>
+
+	</EffectDef>
+
+	<EffectDef name="MLColored">
+
+		<VertexCmpts>
+			<Position_f3 	idx="0" />
+			<Normal_sn4 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="ML\Colored"/>
+			<Pool val="ML"/>
+			<Subvars>
+				<Light/>
+			</Subvars>
+		</SubDef>
+
+	</EffectDef>
+
+
+	<EffectDef name="MLRefColored">
+
+		<VertexCmpts>
+			<Position_f3 	idx="0" />
+			<Normal_sn4 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="ML\Colored"/>
+			<Pool val="ML"/>
+
+			<Defines>
+				<MD_DO_REFLECTION/>
+			</Defines>
+
+			<Subvars>
+				<Light/>
+			</Subvars>
+		</SubDef>
+
+	</EffectDef>
+
+
+	<EffectDef name="MLColoredSelfIlluminate">
+
+		<VertexCmpts>
+			<Position_f3 	idx="0" />
+			<Normal_sn4 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="ML\Colored"/>
+			<Pool val="ML"/>
+			<Defines>
+				<MD_SELF_ILLUMINATE/>
+			</Defines>
+			<Subvars>
+				<Light/>
+			</Subvars>
+		</SubDef>
+
+	</EffectDef>
+
+
+	<EffectDef name="BoneNormal">
+
+		<VertexCmpts>
+			<Position_f3 		idx="0" />
+			<Normal_sn4 		idx="0" />
+			<Tangent_sn4 		idx="0" />
+			<Texcoord_f2 		idx="0" />
+			<BlendIndices_u4 	idx="0" />
+			<BlendCoefs_un4 	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="BoneNormal"/>
+		</SubDef>
+
+	</EffectDef>
+
+	<EffectDef name="VText">
+
+		<VertexCmpts>
+			<VTextBufferIdx_u	idx="0" />
+			<VTextSymbolIdx_u	idx="0" />
+		</VertexCmpts>
+
+		<SubDef type="Default">
+			<File val="VText"/>
+		</SubDef>
+
+	</EffectDef>
+
+</EffectDefs>

@@ -1,0 +1,10 @@
+<Entity>
+	<Model name="checkbutton"/>
+	<EffectParamSet target=":all">
+		<param name="DiffuseTex"	type="SR" 		value="CHECK_BTN_D.dds"/>
+		<param name="NormalTex" 	type="SR"		value="CHECK_BTN_N.dds"/>
+		<param name="gSpecPower"	type="float"	value="32"/>
+		<param name="gSpecular"		type="float3"	value="1.0,1.0,1.0" expr_only="1"/>
+	</EffectParamSet>
+
+</Entity>

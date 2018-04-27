@@ -1,0 +1,5 @@
+<Entity>
+	<Model name="transform_kerl_lp"/>
+	<EffectParamSet target=":all">
+	</EffectParamSet>
+</Entity>

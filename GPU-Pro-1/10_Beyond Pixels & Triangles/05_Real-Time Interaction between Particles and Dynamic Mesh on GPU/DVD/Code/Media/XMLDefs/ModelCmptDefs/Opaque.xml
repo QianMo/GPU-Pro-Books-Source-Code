@@ -1,0 +1,16 @@
+<ModelDef>
+	<VertexPadding val="0"/>
+	<Effects>
+		<Effect def="Basic"/>
+		<Effect def="Colored"/>
+		<Effect def="Normal"/>
+		<Effect def="PNormal"/>
+		<Effect def="MLNormal"/>
+		<Effect def="MLNormalTerrain"/>
+		<Effect def="MLNormalSpec"/>
+		<Effect def="MLRefNormal"/>
+		<Effect def="MLColored"/>
+		<Effect def="MLRefNormalSpec"/>
+		<Effect def="MLRefMaskNormalSpec"/>
+	</Effects>
+</ModelDef>

@@ -1,0 +1,24 @@
+<font>
+	<geometry file="font1.rfnt"/>
+	<glyph_vert_spacing value="60"/>
+	<glyph_horz_spacing value="60"/>
+	<scale				value="0.27"/>
+
+	<!--
+
+	<diff_tex_file value="golden_cobble.dds"/>
+	<norm_tex_file value="golden_cobble_n.dds"/>
+
+	-->
+
+	<effect_def value="MLNormalVText"/>
+
+	<EffectParamSet target=":all">
+		<param name="DiffuseTex"	type="SR" 		value="golden_cobble_font_d.dds"/>
+		<param name="NormalTex" 	type="SR"		value="golden_cobble_font_n.dds"/>
+
+		<param name="gSpecPower"	type="float"	value="16"/>
+		<param name="gSpecular"		type="float3"	value="0.8,0.8,0.8" expr_only="1"/>
+	</EffectParamSet>
+
+</font>

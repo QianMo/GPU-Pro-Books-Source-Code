@@ -1,0 +1,82 @@
+/**
+ *
+ *  This software module was originally developed for research purposes,
+ *  by Multimedia Lab at Ghent University (Belgium).
+ *  Its performance may not be optimized for specific applications.
+ *
+ *  Those intending to use this software module in hardware or software products
+ *  are advized that its use may infringe existing patents. The developers of 
+ *  this software module, their companies, Ghent Universtity, nor Multimedia Lab 
+ *  have any liability for use of this software module or modifications thereof.
+ *
+ *  Ghent University and Multimedia Lab (Belgium) retain full right to modify and
+ *  use the code for their own purpose, assign or donate the code to a third
+ *  party, and to inhibit third parties from using the code for their products. 
+ *
+ *  This copyright notice must be included in all copies or derivative works.
+ *
+ *  For information on its use, applications and associated permission for use,
+ *  please contact Prof. Rik Van de Walle (rik.vandewalle@ugent.be). 
+ *
+ *  Detailed information on the activities of
+ *  Ghent University Multimedia Lab can be found at
+ *  http://multimedialab.elis.ugent.be/.
+ *
+ *  Copyright (c) Ghent University 2004-2009.
+ *
+ **/
+
+//Renders the id's of the virtual pages to the output
+
+struct vsVertex {
+    float4 xyz   : POSITION;
+    float2 uv    : TEXCOORD0;
+};
+
+static const int TextureSize = 15360;
+static const int MaxMipLevel = 7;    // Maximum mipmap level (needs to be log2(TextureSize) )
+static const float pixelsToPage = (1.0f / 120.0f);
+
+vsVertex vertex_main(klVertex i) {     
+	vsVertex o;
+    o.xyz = mul(ModelViewProjection, i.xyz);
+    o.uv.x = i.uv.x;
+    o.uv.y = 1.0 - i.uv.y;
+    return o;
+} 
+
+float4 fragment_main(vsVertex i) : COLOR {    
+    float deltaX = length(ddx(i.uv)*TextureSize);
+    float deltaY = length(ddy(i.uv)*TextureSize);
+    float delta = max(deltaX, deltaY);
+    int level = min(max((int)log2(delta),0),MaxMipLevel);
+    int levelSize = TextureSize >> level;
+    float2 virtualPixelsUv = i.uv * levelSize;
+    int2 virtualTilesUv = virtualPixelsUv * pixelsToPage;
+   
+    int4 resultI =  int4(
+        (virtualTilesUv.x & 0xFF),
+        (virtualTilesUv.y & 0xFF),
+        ((virtualTilesUv.x >> 8) << 4) | (virtualTilesUv.y >> 8),
+        level
+    );
+    
+    float4 result = float4(
+        (float)resultI.x / 255.0f,
+        (float)resultI.y / 255.0f,
+        (float)resultI.z / 255.0f,
+        (float)resultI.w / 255.0f
+    );
+
+    return result; 
+} 
+
+technique Default {
+    pass P0 {
+        VertexProgram   = compile gp4vp vertex_main();
+        FragmentProgram = compile gp4fp fragment_main();
+    }
+}
+
+
+

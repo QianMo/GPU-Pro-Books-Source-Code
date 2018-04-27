@@ -1,0 +1,5 @@
+<Root>
+	<Model file="pillar5.fbx" def="Opaque">
+		<Eff def="MLRefNormalSpec"/>
+	</Model>
+</Root>

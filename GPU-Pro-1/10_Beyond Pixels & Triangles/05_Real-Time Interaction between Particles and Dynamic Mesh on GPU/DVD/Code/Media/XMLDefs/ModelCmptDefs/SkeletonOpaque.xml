@@ -1,0 +1,10 @@
+<ModelDef>
+	<VertexPadding val="0"/>
+	<SplitBuffer val="1"/>
+	<Effects>
+		<Effect def="BoneNormal"/>
+		<Effect def="MLBonedNormal"/>
+		<Effect def="MLBonedSpecNormal"/>
+		<Effect def="MLBonedRefMaskSpecNormal"/>
+	</Effects>
+</ModelDef>

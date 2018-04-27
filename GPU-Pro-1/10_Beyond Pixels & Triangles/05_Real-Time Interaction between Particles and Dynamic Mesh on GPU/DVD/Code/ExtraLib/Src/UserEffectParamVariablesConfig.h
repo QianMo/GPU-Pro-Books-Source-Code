@@ -1,0 +1,12 @@
+#ifndef EXTRALIB_USEREFFECTPARAMVARIABLESCONFIG_H_INCLUDED
+#define EXTRALIB_USEREFFECTPARAMVARIABLESCONFIG_H_INCLUDED
+
+namespace Mod
+{
+	struct UserEffectParamVariablesConfig
+	{
+
+	};
+}
+
+#endif

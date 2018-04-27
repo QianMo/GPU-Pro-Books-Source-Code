@@ -1,0 +1,6 @@
+<SkeletonDef>
+	<Skeleton file="hand_click.FBX"/>
+	<Skeleton file="hand.FBX"/>
+	<Animation name="click" loop="true" speed="1"/>	
+	<Animation name="idle" loop="true" speed="1"/>
+</SkeletonDef>

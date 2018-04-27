@@ -1,0 +1,6 @@
+<Entity>
+	<Model name="skydome"/>
+	<EffectParamSet target=":all">
+		<param name="DiffuseTex" type="SR" value="skydome.dds"/>
+	</EffectParamSet>
+</Entity>

@@ -1,0 +1,9 @@
+<ModelDef>
+	<VertexPadding val="0"/>
+	<Effects>
+		<Effect def="Colored"/>		
+		<Effect def="MLColored"/>
+		<Effect def="MLRefColored"/>
+		<Effect def="MLColoredSelfIlluminate"/>
+	</Effects>
+</ModelDef>

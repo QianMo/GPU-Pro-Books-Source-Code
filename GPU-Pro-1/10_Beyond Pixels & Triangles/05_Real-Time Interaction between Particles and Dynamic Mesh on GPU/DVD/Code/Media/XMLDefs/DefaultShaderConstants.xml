@@ -1,0 +1,68 @@
+<SharerConstants>
+	<Constant name="a_test" type="float" expr="(3+4)*2"/>
+	<Constant name="heightScale" type="float"/>
+	<Constant name="heightDSP" type="float"/>
+
+	<Constant name="matW" type="float3x4"/>
+	<Constant name="matPrevW" type="float3x4"/>
+	<Constant name="matArrBones" type="float3x4_vec"/>
+	<Constant name="matArrPrevBones" type="float3x4_vec"/>
+	<Constant name="matV" type="float3x4"/>
+	<Constant name="matP" type="float4x4"/>
+	<Constant name="matCubeMapV" type="float3x4_vec"/> <!-- 6 view matrices for 1 rendercall cubemap render -->
+	<Constant name="wldLightDir" type="float3"/>
+	<Constant name="wldCamPos" type="float3"/>
+	<Constant name="cubeFaceIndices" type="uint_vec"/>
+
+	<Constant name="gLightDir_WS" type="float3_vec"/>
+	<Constant name="gLightPos_WS" type="float3_vec"/>
+
+	<Constant name="gSpecular" type="float3"/>
+	<Constant name="gSpecPower" type="float"/>
+	
+	<Constant name="gAmbient" type="float3"/>
+	<Constant name="gLightAttenuation" type="float_vec"/>
+	<Constant name="gLightColor" type="float3_vec"/>
+
+	<Constant name="gLightSpecular" type="float3_vec" expr="gSpecular*gLightColor"/>
+	<Constant name="gRefBlur" type="float" expr="1+15*min(max(1-gSpecPower/128,0),1)"/>
+	<Constant name="gReflection" type="float3" expr="gSpecular*0.4"/>
+
+	<Constant name="gRotAxis" type="float3"/>
+	<Constant name="gLinearVelocity" type="float3"/>
+	<Constant name="gAngularVelocity" type="float"/>
+
+	<Constant name="gScale" type="float3" expr="get_scale(matW)"/>
+	<Constant name="gInvScale" type="float3" expr="float3(1,1,1)/gScale"/>
+	<Constant name="matW_NS" type="float3x4" expr="mul(scale(gInvScale), matW)"/>
+	<Constant name="matWV_NS" type="float3x4" expr="mul(matW_NS,matV)"/>
+	<Constant name="matInvW_NS" type="float3x4" expr="inverse(matW_NS)"/>
+
+	<Constant name="matArrW" type="float3x4_vec" expr="mul(matArrBones, matW)"/>
+	<Constant name="matInvW" type="float3x4" expr="inverse(matW)"/>
+	<Constant name="matInvV" type="float3x4" expr="inverse(matV)"/>
+	<Constant name="matInvP" type="float4x4" expr="inverse(matP)"/>
+	<Constant name="matWV" type="float3x4" expr="mul(matW,matV)"/>
+	<Constant name="matPrevWV" type="float3x4" expr="mul(matPrevW,matV)"/>
+	<constant name="matInvVRot" type="float3x4" expr="mul(float3x4(1,0,0, 0,1,0, 0,0,1, 0,0,0),matInvV)"/>
+	<Constant name="matInvVRotP" type="float4x4" expr="mul(matInvP,matInvVRot)"/>
+	<Constant name="matVP" type="float4x4" expr="mul(matV,matP)"/>
+	<Constant name="matWVP" type="float4x4" expr="mul(matWV,matP)"/>
+	<Constant name="matPrevWVP" type="float4x4" expr="mul(matPrevWV,matP)"/>
+	<Constant name="matArrWVP" type="float4x4_vec" expr="mul(matArrW,matVP)"/>
+
+	<Constant name="matCubeMapInvV" type="float3x4_vec" expr="inverse(matCubeMapV)"/>
+	<constant name="matCubeMapInvVRot" type="float3x4_vec" expr="mul(float3x4(1,0,0, 0,1,0, 0,0,1, 0,0,0),matCubeMapInvV)"/>
+	<Constant name="matCubeMapInvVRotP" type="float4x4_vec" expr="mul(matInvP,matCubeMapInvVRot)"/>
+	<Constant name="matCubeMapWVP" type="float4x4_vec" expr="mul(mul(matW,matCubeMapV),matP)"/>
+
+	<Constant name="objLightDir" type="float3" expr="-mul(wldLightDir, matInvW)"/>
+	<Constant name="objCamPos" type="float3" expr="(float3)mul(float4(wldCamPos,1), matInvW)"/>
+	<Constant name="vwLightDir" type="float3" expr="mul(wldLightDir,matV)"/>
+
+	<Constant name="gCamPos_OS" type="float3" expr="(float3)mul(float4(wldCamPos,1), matInvW_NS)"/>
+
+	<Constant name="gLightPos_OS" type="float3_vec" expr="(float3_vec)mul(float4_vec(gLightPos_WS,1), matInvW_NS)"/>
+	<Constant name="gLightDir_OS" type="float3_vec" expr="normalize((float3_vec)mul(gLightDir_WS, matInvW_NS))"/>
+
+</SharerConstants>

@@ -1,0 +1,31 @@
+<root >
+	<resolution x="1024" y="768" full_screen="0"/>
+	<show_fps val="1"/>
+	<gravity val="4.43"/>
+	<grid_size val="64"/>
+	<num_particles val="131072"/>
+	<object_speed val="0.98"/>
+	<object_phase val="0.00"/>
+	<particle_size val="1.44"/>
+	<sim_speed val="1.00"/>
+	<object_freq val="0.54"/>
+	<object_amp val="0.25"/>
+	<draw_particles val="1"/>
+	<draw_body val="1"/>
+	<model_name val="transform_d03"/>
+	<obstacle_model_name val="kerl_lp"/>
+	<obstacle_scene_model_name val="kerl"/>
+	<object_freq_range val="1.00"/>
+	<object_amp_range val="1.00"/>
+	<hdr_range val="0.18"/>
+	<colr_r val="1.00"/>
+	<colr_g val="1.00"/>
+	<colr_b val="1.00"/>
+	<blur val="1"/>
+	<smooth val="1"/>
+	<particles_per_second val="7458"/>
+	<perfomance_mode val="0"/>
+	<auto_mesh_extents val="0"/>
+	<force_model_cache val="0"/>
+	<force_effect_cache val="0"/>
+</root>

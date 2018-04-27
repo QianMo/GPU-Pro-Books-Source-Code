@@ -1,0 +1,9 @@
+
+material barn :virtual_deferred { 
+   page_image map(_page_table)
+   cache_image map(_cache)  
+}
+
+material pageid : virtual_pageid { 
+   //image map(./base/textures/default.png)  
+}

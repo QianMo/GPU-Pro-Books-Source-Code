@@ -1,0 +1,8 @@
+<Entity>
+	<Model name="rod_control"/>
+	<EffectParamSet target=":all">
+		<param name="gDiffColor"	type="float4"	value="0.85,0.85,0.15,1"/>
+		<param name="gSpecular"		type="float3"	value="0.55,0.55,0.55,1" expr_only="1"/>
+		<param name="gSpecPower"	type="float"	value="48"/>
+	</EffectParamSet>
+</Entity>

@@ -1,0 +1,2 @@
+This demo requires the CG and CUDA tookits (32 bit) to be installed.
+Both can be downloaded from the Nvidia website.

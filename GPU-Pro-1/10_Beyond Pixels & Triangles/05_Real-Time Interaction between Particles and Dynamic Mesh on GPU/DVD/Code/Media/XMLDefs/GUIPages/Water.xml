@@ -1,0 +1,375 @@
+<page>
+	<cursor model="hand" scale="0.7"/>
+	<elements>
+		<element type="pillar">
+
+			<show_transform_controller type="SpindleMove" speed="1">
+				<pos_from x="175" y="0" z="240"/>
+				<pos_to x="-83" y="0" z="240"/>
+				<axis x="0" y="1.0" z="0"/>
+				<start_angle val="0"/>
+				<end_angle val="720"/>
+			</show_transform_controller>
+
+			<hide_transform_controller type="SpindleMove" speed="1">
+				<pos_from x="-83" y="0" z="240"/>
+				<pos_to x="175" y="0" z="240"/>
+				<axis x="0" y="1" z="0"/>
+				<start_angle val="0"/>
+				<end_angle val="720"/>
+			</hide_transform_controller>
+
+			<scale x="56" y="177" z="58.9"/>
+			<position x="-83" y="0" z="240"/>
+			<rotation low="-25" high="160" start="-20"/>
+			<sensitivity value="500"/>
+
+			<control_model file="pillar5"/>
+
+			<elements>
+				<element type="button" name="quit">
+					<model file="nbutton"/>
+					<scale x="25" y="14" z="3"/>
+					<sunk_depth value="1.25"/>
+					<text value="Exit" x="-8" y="-3" z="-4.25"/>
+					<text_scale x="0.35" y="0.35" z="0.35"/>
+					<font file="font1"/>
+					<position x="0" y="-31.0" z="-20.5"/>
+					<rotation x="0" y="1" z="0" angle="0"/>
+				</element>
+
+				<element type="slider" name="gravity">
+					<model file="chain"/>
+					<position x="0" y="21" z="-20.5"/>
+					<rotation x="0" y="1" z="0" angle="0"/>
+
+					<scale x = "33" y = "3.5" z="3"/>
+					<text value="Gravity" x="-20" y="6" z="-2"/>
+					<text_scale x="0.15" y="0.2" z="0.3"/>
+					<font file="font1"/>
+
+					<thumb_model file="manacle"/>
+					<thumb_from_pos x = "-14" y = "0" z = "0"/>
+					<thumb_to_pos x = "14" y = "0" z = "0"/>
+					<thumb_scale x="1" y="1" z="1"/>
+					<val_text_pos x="10" y="6" z = "-2"/>
+					<val_text_scale x="0.15" y = "0.2" z="0.3"/>
+
+					<val_min value="0"/>
+					<val_max value="10"/>
+					<init_val value="3"/>
+				</element>
+
+				<element type="slider" name="speed">
+					<model file="chain"/>
+					<position x="0" y="11" z="-20."/>
+					<rotation x="0" y="1" z="0" angle="0"/>
+
+					<scale x = "33" y = "3.5" z="3"/>
+					<text value="Speed" x="-20" y="6" z="-2"/>
+					<text_scale x="0.15" y="0.2" z="0.3"/>
+					<font file="font1"/>
+
+					<thumb_model file="manacle"/>
+					<thumb_from_pos x = "-14" y = "0" z = "0"/>
+					<thumb_to_pos x = "14" y = "0" z = "0"/>
+					<thumb_scale x="1" y="1" z="1"/>
+					<val_text_pos x="10" y="6" z = "-2"/>
+					<val_text_scale x="0.15" y = "0.2" z="0.3"/>
+
+					<val_min value="0"/>
+					<val_max value="5"/>
+					<init_val value="1.0"/>
+				</element>
+
+				<element type="switch" name="pause">
+					<model file="checkbutton"/>
+					<model_on file="checkbutton_on"/>
+					<scale x = "6" y = "6.77" z="1.2"/>
+					<sunk_depth value="0"/>
+					<text value="Pause" x="6.5" y="-1.5" z="-0.25"/>
+					<text_scale x="0.125" y="0.15" z="0.3"/>
+					<font file="font1"/>
+					<position x="-7.5" y="2" z="-20."/>
+					<rotation x="0" y="1" z="0" angle="0"/>
+				</element>
+
+				<element type="slider" name="pps">
+					<model file="chain"/>
+					<position x="0" y="-8" z="-20."/>
+					<rotation x="0" y="1" z="0" angle="0"/>
+
+					<scale x = "33" y = "3.5" z="3"/>
+					<text value="PPS" x="-20" y="6" z="-2"/>
+					<text_scale x="0.15" y="0.2" z="0.3"/>
+					<font file="font1"/>
+
+					<thumb_model file="manacle"/>
+					<thumb_from_pos x = "-14" y = "0" z = "0"/>
+					<thumb_to_pos x = "14" y = "0" z = "0"/>
+					<thumb_scale x="1" y="1" z="1"/>
+					<val_text_pos x="10" y="6" z = "-2"/>
+					<val_text_scale x="0.15" y = "0.2" z="0.3"/>
+
+					<val_text_precision value="0"/>
+
+					<val_min value="0"/>
+					<val_max value="16384"/>
+					<init_val value="512"/>
+
+				</element>
+
+				<element type="slider" name="psize">
+					<model file="chain"/>
+					<position x="0" y="-18" z="-20."/>
+					<rotation x="0" y="1" z="0" angle="0"/>
+
+					<scale x = "33" y = "3.5" z="3"/>
+					<text value="PSize" x="-20" y="6" z="-2"/>
+					<text_scale x="0.15" y="0.2" z="0.3"/>
+					<font file="font1"/>
+
+					<thumb_model file="manacle"/>
+					<thumb_from_pos x = "-14" y = "0" z = "0"/>
+					<thumb_to_pos x = "14" y = "0" z = "0"/>
+					<thumb_scale x="1" y="1" z="1"/>
+					<val_text_pos x="10" y="6" z = "-2"/>
+					<val_text_scale x="0.15" y = "0.2" z="0.3"/>
+
+					<val_min value="0.5"/>
+					<val_max value="4"/>
+					<init_val value="1"/>
+
+				</element>
+
+
+
+				<element type="slider" name="blur">
+					<model file="chain"/>
+					<position x="21.5" y="24" z="0"/>
+					<rotation x="0" y="1" z="0" angle="-90"/>
+
+					<scale x = "33" y = "3.5" z="3"/>
+					<text value="Blur" x="-20" y="6" z="-2"/>
+					<text_scale x="0.15" y="0.2" z="0.3"/>
+					<font file="font1"/>
+
+					<thumb_model file="manacle"/>
+					<thumb_from_pos x = "-14" y = "0" z = "0"/>
+					<thumb_to_pos x = "14" y = "0" z = "0"/>
+					<thumb_scale x="1" y="1" z="1"/>
+					<val_text_pos x="10" y="6" z = "-2"/>
+					<val_text_scale x="0.15" y = "0.2" z="0.3"/>
+
+					<val_text_precision value="0"/>
+
+					<val_min value="0"/>
+					<val_max value="4"/>
+					<init_val value="1"/>
+				</element>
+
+				<element type="slider" name="amplitude">
+					<model file="chain"/>
+					<position x="20." y="13" z="0"/>
+					<rotation x="0" y="1" z="0" angle="-90"/>
+
+					<scale x = "33" y = "3.5" z="3"/>
+					<text value="Amp" x="-20" y="6" z="-2"/>
+					<text_scale x="0.15" y="0.2" z="0.3"/>
+					<font file="font1"/>
+
+					<thumb_model file="manacle"/>
+					<thumb_from_pos x = "-14" y = "0" z = "0"/>
+					<thumb_to_pos x = "14" y = "0" z = "0"/>
+					<thumb_scale x="1" y="1" z="1"/>
+					<val_text_pos x="10" y="6" z = "-2"/>
+					<val_text_scale x="0.15" y = "0.2" z="0.3"/>
+
+					<val_min value="0"/>
+					<val_max value="1"/>
+					<init_val value="0.33"/>
+
+				</element>
+
+
+				<element type="slider" name="freq">
+					<model file="chain"/>
+					<position x="20." y="2" z="0"/>
+					<rotation x="0" y="1" z="0" angle="-90"/>
+
+
+					<scale x = "33" y = "3.5" z="3"/>
+					<text value="Freq" x="-20" y="6" z="-2"/>
+					<text_scale x="0.15" y="0.2" z="0.3"/>
+					<font file="font1"/>
+
+					<thumb_model file="manacle"/>
+					<thumb_from_pos x = "-14" y = "0" z = "0"/>
+					<thumb_to_pos x = "14" y = "0" z = "0"/>
+					<thumb_scale x="1" y="1" z="1"/>
+					<val_text_pos x="10" y="6" z = "-2"/>
+					<val_text_scale x="0.15" y = "0.2" z="0.3"/>
+
+					<val_min value="0.1"/>
+					<val_max value="1"/>
+					<init_val value="0.1"/>
+
+				</element>
+
+
+				<element type="switch" name="smooth">
+					<model file="checkbutton"/>
+					<model_on file="checkbutton_on"/>
+					<scale x = "7" y = "7.9" z="1.4"/>
+					<sunk_depth value="0"/>
+					<text value="Smooth" x="6.5" y="-1.5" z="-0.25"/>
+					<text_scale x="0.1" y="0.125" z="0.25"/>
+					<font file="font1"/>
+					<position x="20." y="-5" z="-10"/>
+					<rotation x="0" y="1" z="0" angle="-90"/>
+				</element>
+
+				<element type="switch" name="debug">
+					<model file="checkbutton"/>
+					<model_on file="checkbutton_on"/>
+					<scale x = "7" y = "7.9" z="1.4"/>
+					<sunk_depth value="0"/>
+					<text value="Debug" x="6.5" y="-1.5" z="-0.25"/>
+					<text_scale x="0.1" y="0.125" z="0.25"/>
+					<font file="font1"/>
+					<position x="20." y="-14" z="-10."/>
+					<rotation x="0" y="1" z="0" angle="-90"/>
+				</element>
+
+				<element type="slider" name="debug_alpha">
+					<model file="chain"/>
+					<position x="20." y="-25" z="0"/>
+					<rotation x="0" y="1" z="0" angle="-90"/>
+
+
+					<scale x = "33" y = "3.5" z="3"/>
+					<text value="Alpha" x="-20" y="6" z="-2"/>
+					<text_scale x="0.15" y="0.2" z="0.3"/>
+					<font file="font1"/>
+
+					<thumb_model file="manacle"/>
+					<thumb_from_pos x = "-14" y = "0" z = "0"/>
+					<thumb_to_pos x = "14" y = "0" z = "0"/>
+					<thumb_scale x="1" y="1" z="1"/>
+					<val_text_pos x="10" y="6" z = "-2"/>
+					<val_text_scale x="0.15" y = "0.2" z="0.3"/>
+
+					<val_min value="0"/>
+					<val_max value="1"/>
+					<init_val value="0.125"/>
+				</element>
+
+
+				<element type="slider" name="hdr_range">
+					<model file="chain"/>
+					<position x="0" y="24" z="21.5"/>
+					<rotation x="0" y="1" z="0" angle="-180"/>
+
+
+					<scale x = "33" y = "3.5" z="3"/>
+					<text value="HDR" x="-20" y="6" z="-2"/>
+					<text_scale x="0.15" y="0.2" z="0.3"/>
+					<font file="font1"/>
+
+					<thumb_model file="manacle"/>
+					<thumb_from_pos x = "-14" y = "0" z = "0"/>
+					<thumb_to_pos x = "14" y = "0" z = "0"/>
+					<thumb_scale x="1" y="1" z="1"/>
+					<val_text_pos x="10" y="6" z = "-2"/>
+					<val_text_scale x="0.15" y = "0.2" z="0.3"/>
+
+					<val_min value="0"/>
+					<val_max value="1"/>
+					<init_val value="0.125"/>
+				</element>
+
+
+				<element type="slider" name="red">
+					<model file="chain"/>
+					<position x="0" y="13" z="20."/>
+					<rotation x="0" y="1" z="0" angle="-180"/>
+
+
+					<scale x = "33" y = "3.5" z="3"/>
+					<text value="Red" x="-20" y="6" z="-2"/>
+					<text_scale x="0.15" y="0.2" z="0.3"/>
+					<font file="font1"/>
+
+					<thumb_model file="manacle"/>
+					<thumb_from_pos x = "-14" y = "0" z = "0"/>
+					<thumb_to_pos x = "14" y = "0" z = "0"/>
+					<thumb_scale x="1" y="1" z="1"/>
+					<val_text_pos x="10" y="6" z = "-2"/>
+					<val_text_scale x="0.15" y = "0.2" z="0.3"/>
+
+					<val_min value="0"/>
+					<val_max value="1"/>
+					<init_val value="0.125"/>
+				</element>
+
+
+				<element type="slider" name="green">
+					<model file="chain"/>
+					<position x="0" y="2" z="20."/>
+					<rotation x="0" y="1" z="0" angle="-180"/>
+
+
+					<scale x = "33" y = "3.5" z="3"/>
+					<text value="Green" x="-20" y="6" z="-2"/>
+					<text_scale x="0.15" y="0.2" z="0.3"/>
+					<font file="font1"/>
+
+					<thumb_model file="manacle"/>
+					<thumb_from_pos x = "-14" y = "0" z = "0"/>
+					<thumb_to_pos x = "14" y = "0" z = "0"/>
+					<thumb_scale x="1" y="1" z="1"/>
+					<val_text_pos x="10" y="6" z = "-2"/>
+					<val_text_scale x="0.15" y = "0.2" z="0.3"/>
+
+					<val_min value="0"/>
+					<val_max value="1"/>
+					<init_val value="0.125"/>
+				</element>
+
+				<element type="slider" name="blue">
+					<model file="chain"/>
+					<position x="0" y="-9" z="20."/>
+					<rotation x="0" y="1" z="0" angle="-180"/>
+
+
+					<scale x = "33" y = "3.5" z="3"/>
+					<text value="Blue" x="-20" y="6" z="-2"/>
+					<text_scale x="0.15" y="0.2" z="0.3"/>
+					<font file="font1"/>
+
+					<thumb_model file="manacle"/>
+					<thumb_from_pos x = "-14" y = "0" z = "0"/>
+					<thumb_to_pos x = "14" y = "0" z = "0"/>
+					<thumb_scale x="1" y="1" z="1"/>
+					<val_text_pos x="10" y="6" z = "-2"/>
+					<val_text_scale x="0.15" y = "0.2" z="0.3"/>
+
+					<val_min value="0"/>
+					<val_max value="1"/>
+					<init_val value="0.125"/>
+				</element>
+
+				<element type="button" name="save">
+					<model file="nbutton"/>
+					<scale x="25" y="14" z="3"/>
+					<sunk_depth value="1.25"/>
+					<text value="Save" x="-8" y="-3" z="-4.25"/>
+					<text_scale x="0.35" y="0.35" z="0.35"/>
+					<font file="font1"/>
+					<position x="0" y="-31" z="20."/>
+					<rotation x="0" y="1" z="0" angle="-180"/>
+				</element>
+			</elements>
+		</element>
+	</elements>
+</page>

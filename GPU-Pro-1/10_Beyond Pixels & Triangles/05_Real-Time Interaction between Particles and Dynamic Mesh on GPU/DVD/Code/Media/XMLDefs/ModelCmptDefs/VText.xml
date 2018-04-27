@@ -1,0 +1,8 @@
+<ModelDef>
+	<Cachable val="0"/>
+	<VertexPadding val="0"/>
+	<Effects>
+		<Effect def="MLNormalVText"/>
+		<Effect def="VText"/>
+	</Effects>
+</ModelDef>

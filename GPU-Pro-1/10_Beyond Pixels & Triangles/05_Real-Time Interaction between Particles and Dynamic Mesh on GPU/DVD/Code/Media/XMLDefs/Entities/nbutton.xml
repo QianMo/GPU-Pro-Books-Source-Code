@@ -1,0 +1,12 @@
+<Entity>
+	<Model name="nbutton"/>
+
+	<EffectParamSet target=":all">
+		<param name="DiffuseTex"	type="SR" 		value="nBUTTON_D.dds"/>
+		<param name="NormalTex" 	type="SR"		value="nBUTTON_N.dds"/>
+		<param name="ReflectTex" 	type="SR"		value="cm.dds"/>
+		<param name="gSpecPower"	type="float"	value="64"/>
+		<param name="gSpecular"		type="float3"	value="1.0,1.0,1.1" expr_only="1"/>
+	</EffectParamSet>
+
+</Entity>

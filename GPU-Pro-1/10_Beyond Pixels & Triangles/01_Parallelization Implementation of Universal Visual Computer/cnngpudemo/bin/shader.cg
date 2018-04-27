@@ -1,0 +1,71 @@
+float4 cnn_filter( float2 tc, samplerRECT utex, samplerRECT xtex, float T[25], float cnn_step )
+{
+  int i;
+  float4 state;
+  state = f4texRECT( utex, tc );
+  for( i=0; i<12; i++ )
+    state +=    clamp( f4texRECT( xtex, float2( tc.x+i%5-2, tc.y+i/5-2 ) ), -1,1 ) * T[i];
+  for( i=13; i<25; i++ )
+    state +=    clamp( f4texRECT( xtex, float2( tc.x+i%5-2, tc.y+i/5-2 ) ), -1,1 ) * T[i];
+  float4 curr = f4texRECT( xtex, tc );
+  state += T[12]*clamp(curr,-1,1);
+  state *= cnn_step;
+  state = state  -cnn_step*curr  +  curr;
+  return state;
+}
+
+void main(
+  float2 tc  : TEXCOORD0,
+  uniform samplerRECT utex,
+  uniform samplerRECT xtex,
+  uniform float T[25],
+  uniform float cnn_step,
+  out float4 state : COLOR0
+){
+  state = cnn_filter( tc, utex, xtex, T, cnn_step );
+}
+
+void cnn_ledge(
+  float2 tc  : TEXCOORD0,
+  uniform samplerRECT utex,
+  uniform samplerRECT xtex,
+  uniform float T[25],
+  uniform float cnn_step,
+  out float4 state : COLOR0
+){
+  state = cnn_filter( tc, utex, xtex, T, cnn_step );
+  state = float4( 0, state.xyz );
+}
+
+void cnn_redge(
+  float2 tc  : TEXCOORD0,
+  uniform samplerRECT utex,
+  uniform samplerRECT xtex,
+  uniform float T[25],
+  uniform float cnn_step,
+  out float4 state : COLOR0
+){
+  state = cnn_filter( tc, utex, xtex, T, cnn_step );
+  state = float4( state.yzw, 0 );
+}
+
+void cnn_unfold(
+  float2 tc  : TEXCOORD0,
+  uniform samplerRECT xtex,
+  uniform float xw,
+  out float4 state : COLOR0
+){
+  state = f4texRECT(xtex,float2(fmod(tc.x-1,xw)+1,tc.y));
+  float xx = floor((tc.x-1)/xw);
+
+  if( xx<1 )
+    state=state.x;
+  else if( xx<2 )
+    state=state.y;
+  else if( xx<3 )
+    state=state.z;
+  else
+    state=state.w;
+
+  state=state*.5+.5;
+}

@@ -1,0 +1,139 @@
+<Root>
+	<!--Waterman -->
+	<Actor>
+		<mesh val="transform_d03"/>
+		<pos_xz x="-.75" z="1.5"/>
+		<volume_extent val="4.00"/>
+		<volume_dim val="14"/>
+
+		<transform_extents_min x="-2.9009731" y="-0.18703838" z="-4.2973514"/>
+		<transform_extents_max x="3.8389692" y="5.5870724" z="3.2830491"/>
+
+		<Event animation="0" time="1.433333" type="generate_start">
+			<pos x="0.539562" y="-5.764169" z="-1.166334"/>
+		</Event>
+
+		<Event animation="0" time="1.466667" type="generate_start">
+			<pos x="0.613578" y="-5.595275" z="-1.395852"/>
+		</Event>
+
+		<Event animation="0" time="1.500000" type="generate_start">
+			<pos x="0.729741" y="-5.376265" z="-1.579848"/>
+		</Event>
+
+		<Event animation="0" time="1.533333" type="generate_start">
+			<pos x="0.778782" y="-5.183921" z="-1.701978"/>
+		</Event>
+
+		<Event animation="0" time="1.566667" type="generate_start">
+			<pos x="0.769094" y="-5.050411" z="-1.806918"/>
+		</Event>
+
+		<Event animation="0" time="1.600000" type="generate_start">
+			<pos x="0.757889" y="-4.919578" z="-1.892301"/>
+		</Event>
+
+		<Event animation="0" time="1.633333" type="generate_start">
+			<pos x="0.786108" y="-4.777900" z="-1.920620"/>
+		</Event>
+
+		<Event animation="0" time="1.666667" type="generate_start">
+			<pos x="0.818742" y="-4.677504" z="-1.909122"/>
+		</Event>
+
+		<Event animation="0" time="1.700000" type="generate_start">
+			<pos x="0.815822" y="-4.626115" z="-1.897719"/>
+		</Event>
+
+		<Event animation="0" time="1.733333" type="generate_start">
+			<pos x="0.793128" y="-4.590618" z="-1.898655"/>
+		</Event>
+
+		<Event animation="0" time="1.766667" type="generate_start">
+			<pos x="0.777513" y="-4.566417" z="-1.906949"/>
+		</Event>
+
+		<Event animation="0" time="1.800000" type="generate_start">
+			<pos x="0.775389" y="-4.565036" z="-1.921254"/>
+		</Event>
+
+		<Event animation="0" time="1.833333" type="generate_start">
+			<pos x="0.776928" y="-4.588729" z="-1.936307"/>
+		</Event>
+
+		<Event animation="0" time="1.866667" type="generate_start">
+			<pos x="0.769611" y="-4.625881" z="-1.940074"/>
+		</Event>
+
+		<Event animation="0" time="1.900000" type="generate_start">
+			<pos x="0.745932" y="-4.663379" z="-1.920390"/>
+		</Event>
+
+		<Event animation="0" time="1.933333" type="generate_start">
+			<pos x="0.721529" y="-4.705499" z="-1.882928"/>
+		</Event>
+
+		<Event animation="0" time="1.966667" type="generate_start">
+			<pos x="0.739619" y="-4.765318" z="-1.849214"/>
+		</Event>
+
+		<Event animation="0" time="2.000000" type="generate_start">
+			<pos x="0.809454" y="-4.839838" z="-1.820945"/>
+		</Event>
+
+		<Event animation="0" time="2.033333" type="generate_start">
+			<pos x="0.880622" y="-4.924451" z="-1.781048"/>
+		</Event>
+
+		<Event animation="0" time="2.066667" type="generate_start">
+			<pos x="0.917787" y="-5.025143" z="-1.727304"/>
+		</Event>
+
+		<Event animation="0" time="2.100000" type="generate_start">
+			<pos x="0.936273" y="-5.128522" z="-1.668003"/>
+		</Event>
+
+		<Event animation="0" time="2.133333" type="generate_start">
+			<pos x="0.965681" y="-5.220906" z="-1.609211"/>
+		</Event>
+
+		<Event animation="0" time="2.166667" type="generate_start">
+			<pos x="0.984257" y="-5.302973" z="-1.536810"/>
+		</Event>
+
+
+
+
+		<Event animation="0" time="2.30" type="generate_stop">
+		</Event>
+
+		<Sequence length="16">			
+			<Animation idx="0" start="0.8" end="4.02"/>
+			<Animation idx="1" start="3.8" end="11.02"/>
+			<Animation idx="0" start="10.8" end="14.02"/>
+			<Animation idx="1" start="13.5" end="17.02"/>
+		</Sequence>
+
+	</Actor>
+
+	<!-- Alan Smithie -->
+	<Actor>
+		<mesh val="kerl_lp"/>
+		<pos_xz x="-0.125" z="-1.25"/>
+		<rot_y val="180"/>
+		<volume_extent val="2.85"/>
+		<volume_dim val="3"/>
+
+		<transform_extents_min x="-8.9616451" y="-1.7083406" z="-18.361322"/>
+		<transform_extents_max x="24.303614" y="49.732357" z="16.434572"/>
+
+		<Sequence length="16">
+			<Animation idx="0" start="0" end="3.72"/>
+			<Animation idx="1" start="3.5" end="10.22"/>
+			<Animation idx="0" start="10.0" end="13.72"/>
+			<Animation idx="1" start="13.5" end="16.22"/>
+		</Sequence>
+
+	</Actor>
+
+</Root>

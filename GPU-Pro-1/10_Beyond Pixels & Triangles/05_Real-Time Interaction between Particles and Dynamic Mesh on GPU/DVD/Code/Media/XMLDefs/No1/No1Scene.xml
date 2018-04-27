@@ -1,0 +1,146 @@
+<Scene>
+
+	<Global_Displacement x="4" y="-0.5" z="0"/>
+
+	<Entity name="skydome">
+		<VisibilityMask val="4"/>
+		<VisibilityMask val="32"/>
+		<VisibilityMask val="128"/>
+		<Pos x="0" y="0" z="0"/>
+		<Scale x="1" y="1" z="1"/>
+	</Entity>
+
+	<Entity name="terrain2">
+		<VisibilityMask val="9"/>
+		<VisibilityMask val="32"/>
+		<VisibilityMask val="128"/>
+		<Pos x="-2" y="2.5" z="-3"/>
+		<Scale x="0.75" y="0.75" z="0.75"/>
+	</Entity>
+
+	<Entity name="Water">
+		<VisibilityMask val="1"/>
+		<VisibilityMask val="64"/>
+		<VisibilityMask val="128"/>
+		<VisibilityMask val="512"/>
+		<Pos x="-2" y="2.575" z="-3"/>
+		<Scale x="0.75" y="0.75" z="0.75"/>
+	</Entity>
+
+	<Entity name="CaveSkull">
+		<VisibilityMask val="8"/>
+		<VisibilityMask val="32"/>
+		<VisibilityMask val="128"/>
+		<Pos x="14.02" y="0.675" z="-2.875"/>
+		<Scale x="0.0791" y="0.0791" z="0.0791"/>
+		<Rotation x="-4" y="-77.5" z="-0.8"/>
+	</Entity>
+
+
+	<Entity name="real_pillar">
+		<VisibilityMask val="8"/>
+		<VisibilityMask val="32"/>
+		<Pos x="12.295" y="2.1145" z="6.3435"/>
+		<Scale x="0.14" y="0.14" z="0.14"/>
+	</Entity>
+
+	<Entity name="water_sign">
+		<VisibilityMask val="24"/>
+		<VisibilityMask val="32"/>
+		<VisibilityMask val="128"/>
+		<Pos x="12.295" y="14.6145" z="6.3435"/>
+		<Scale x="0.025" y="0.025" z="0.025"/>
+
+		<transform_controller type="SpindleWobble" speed="0.75" loop="1">
+			<centre x="12.295" y="14.6145" z="6.3435"/>
+			<axis x="0" y="1" z="0"/>
+			<vert_range val="0.25"/>
+		</transform_controller>
+
+<!--		<Light>
+			<Attenuation val = "64"/>
+			<Color x="0.25" y="0.5" z="1" w="1"/>
+			<Intensity val="1"/>
+			<Type val="POINT"/>
+			<Position x="0" y="0.125" z="0"/>
+		</Light>-->
+
+	</Entity>
+
+	<Entity name="real_pillar">
+		<VisibilityMask val="8"/>
+		<VisibilityMask val="32"/>
+		<VisibilityMask val="128"/>
+		<Pos x="8.1" y="2.118" z="-11.155"/>
+		<Scale x="0.14" y="0.14" z="0.14"/>
+	</Entity>
+
+	<Entity name="water_sign">
+		<VisibilityMask val="24"/>
+		<VisibilityMask val="32"/>
+		<VisibilityMask val="128"/>
+		<Pos x="8.1" y="14.618" z="-11.155"/>
+		<Scale x="0.025" y="0.025" z="0.025"/>
+
+		<transform_controller type="SpindleWobble" speed="0.75" loop="1">
+			<centre x="8.1" y="14.618" z="-11.155"/>
+			<axis x="0" y="1" z="0"/>
+			<vert_range val="0.25"/>
+		</transform_controller>
+
+<!--		<Light>
+			<Attenuation val = "64"/>
+			<Color x="0.25" y="0.5" z="1" w="1"/>
+			<Intensity val="1"/>
+			<Type val="POINT"/>
+			<Position x="0" y="0.125" z="0"/>
+		</Light>-->
+
+	</Entity>
+
+	<Entity name="real_pillar">
+		<VisibilityMask val="8"/>
+		<VisibilityMask val="32"/>
+		<VisibilityMask val="128"/>
+		<Pos x="21.625" y="1.765" z="-4.5915"/>
+		<Scale x="0.14" y="0.14" z="0.14"/>
+	</Entity>
+
+	<Entity name="water_sign">
+		<VisibilityMask val="24"/>
+		<VisibilityMask val="32"/>
+		<VisibilityMask val="128"/>
+		<Pos x="21.625" y="14.265" z="-4.5915"/>
+		<Scale x="0.025" y="0.025" z="0.025"/>
+
+		<transform_controller type="SpindleWobble" speed="0.75" loop="1">
+			<centre x="21.625" y="14.265" z="-4.5915"/>
+			<axis x="0" y="1" z="0"/>
+			<vert_range val="0.25"/>
+		</transform_controller>
+
+
+<!--		<Light>
+			<Attenuation val = "64"/>
+			<Color x="0.25" y="0.5" z="1" w="1"/>
+			<Intensity val="1"/>
+			<Type val="POINT"/>
+			<Position x="0" y="0.125" z="0"/>
+		</Light>-->
+
+	</Entity>
+
+	<Entity name="kerl" mark="kerl">
+
+		<VisibilityMask val="24"/> <!-- 8 == dynamic for in cubemap, 16 == velocity pass -->
+		<VisibilityMask val="64"/>
+		<VisibilityMask val="256"/>
+		<VisibilityMask val="1024"/> <!-- perfomance mode visibility-->
+
+		<Pos x="0.4275" y="-2.275" z="4.4"/>
+		<Rotation x="0" y="180" z="0"/>
+		<Scale x="0.067" y="0.067" z="0.067"/>
+		<Animation val="kick"/>
+	</Entity>
+
+</Scene>

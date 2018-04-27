@@ -1,0 +1,6 @@
+<Font type="sprite">
+	<Spacing x="0.5" y = "0.8"/>
+	<Texture name="def_font.dds"/>
+	<DefSize val="0.0625"/>
+	<Effect name="Font2D"/>
+</Font>

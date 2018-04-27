@@ -1,0 +1,12 @@
+#ifndef PROVIDERS_EFFECTVARIATIONMAPCONFIG_H_INCLUDED
+#define PROVIDERS_EFFECTVARIATIONMAPCONFIG_H_INCLUDED
+
+namespace Mod
+{
+	struct EffectVariationMapConfig
+	{
+
+	};
+}
+
+#endif

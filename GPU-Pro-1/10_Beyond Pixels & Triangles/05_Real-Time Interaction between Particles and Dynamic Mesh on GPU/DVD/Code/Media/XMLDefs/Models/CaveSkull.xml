@@ -1,0 +1,5 @@
+<Root>
+	<Model file="CaveSkull.fbx" def="Opaque">
+		<Eff def="MLNormal"/>
+	</Model>
+</Root>
