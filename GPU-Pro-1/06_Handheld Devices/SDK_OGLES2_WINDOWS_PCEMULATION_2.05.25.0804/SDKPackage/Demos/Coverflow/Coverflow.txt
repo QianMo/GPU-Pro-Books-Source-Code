@@ -1,0 +1,14 @@
+
+Demo title: 		Cover flow
+
+Demonstrates: 		Demonstrates cover flow
+
+Short Description:	Demonstrates cover flow
+
+Full Description:	
+Demonstrates cover flow.
+
+
+
+
+

@@ -1,0 +1,17 @@
+
+Demo title: 		Shaders
+
+Demonstrates: 		Using vertex and fragment shaders on OpenGL
+
+Short Description:	Shows a balloon and allows the user to change the shaders used.
+
+Full Description:	
+Shows a balloon rendered with a vertex and fragment shader.
+
+The user can change the shaders used by pressing left and right keys.
+ 
+VGP: 			Not Required
+Polygon Count: 		1947
+Vertex Count: 		1228
+
+

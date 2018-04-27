@@ -1,0 +1,12 @@
+
+Demo title: 		PerturbedUvs
+
+Demonstrates: 		How to use a normal map to perturb Uvs
+
+Short Description:	How to use a normal map to perturb Uvs
+
+Full Description:	
+How to use a normal map to perturb Uvs.
+
+polygon count:		4480
+Vertex Count: 		2238

@@ -1,0 +1,13 @@
+
+Demo title: 		IntroducingPFX
+
+Demonstrates: 		How to use our tools to load our PFX file format.
+
+Short Description:	How to use our tools to load our PFX file format.
+
+Full Description:	
+Shows how to use our tools to load our PFX file format.
+
+VGP: 			Not Required
+Polygon Count: 		4480
+Vertex Count: 		2238

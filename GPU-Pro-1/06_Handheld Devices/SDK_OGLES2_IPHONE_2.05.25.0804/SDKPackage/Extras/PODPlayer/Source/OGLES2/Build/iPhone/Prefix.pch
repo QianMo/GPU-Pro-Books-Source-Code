@@ -1,0 +1,8 @@
+#import <TargetConditionals.h>
+//#if TARGET_IPHONE_SIMULATOR
+//#error This sample is designed to run on a device, not in the simulator. To run this sample, choose Project > Set Active SDK > Device and connect a device. Then click Build and Go. 
+//#endif
+
+#ifdef __OBJC__
+	#import <UIKit/UIKit.h>
+#endif

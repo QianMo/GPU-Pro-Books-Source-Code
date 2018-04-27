@@ -1,0 +1,39 @@
+This document illustrates the build process for the sample application on Windows PC Emulation and OMAP Zoom1/2.
+
+The sample demo builds on top of the PowerVR OpenGL ES 2.0 SDK, publicly available at www.imgtec.com -> Developers -> PowerVR Insider SDK
+
+** Procedure for Windows PC Emulation **
+
+Once downloaded and extracted the SDK Package, a folder called SDK_OGLES2_WINDOWS_PCEMULATION_x.xx.xx.xxxx will be created.
+Simply extract the Touchscreen_Based_User_Interaction.zip file into the newly created directory, so that the contents will be:
+- SDKPackage
+- Touchscreen_Based_User_Interaction
+
+Then, open the Visual Studio solution file at Example/IntroducingPODTouch/OGLES2/Build/WindowsPC and compile it.
+
+** Procedure for OMAP Zoom **
+
+PREREQUISITES:
+As a prerequisite, the graphics drivers and the publicly available tslib library need to be installed on the target filesystem.
+
+A similar procedure needs to be followed for OMAP Zoom platforms: Download the SDK for OMAP3 from the website, copy the application folder accordingly and follow the following steps:
+
+- Go to Example/IntroducingPODTouch/OGLES2/Build/LinuxGeneric
+- Set the following environment variables:
+export PATH=<path/to/arm/cross/compiler>:$PATH
+export LIBDIR=<path/to/target/filesystem>/usr/lib
+export TSLIB_INCLUDE=<path/to/tslib.h>
+export TSLIB_LIB=<path/to/tslib.so> 
+
+Type
+
+make TS_SUPPORT=1 (for Zoom1)
+make TS_SUPPORT=2 (for Zoom2)
+
+The output binary will be stored at Example/IntroducingPODTouch/OGLES2/Build/LinuxOMAP3/ReleaseRaw/OGLES2IntroducingTouchPOD
+
+Once built, it can just be copied to the target filesystem and run upon starting the graphics driver:
+
+/etc/init.d/rc.pvr start
+
+

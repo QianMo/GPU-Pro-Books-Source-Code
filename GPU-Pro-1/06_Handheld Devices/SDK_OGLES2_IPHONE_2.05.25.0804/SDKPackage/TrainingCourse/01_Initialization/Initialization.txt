@@ -1,0 +1,13 @@
+
+Demo title: 		Initialization
+
+Demonstrates: 		Initialize egl
+
+Short Description:	Initialize egl
+
+Full Description:	
+Basic Tutorial that shows step-by-step how to initialize OpenGL ES, use it for clearing the screen with different colours and terminate it.
+
+VGP: 			Not Required
+Polygon Count: 		0
+Vertex Count: 		0

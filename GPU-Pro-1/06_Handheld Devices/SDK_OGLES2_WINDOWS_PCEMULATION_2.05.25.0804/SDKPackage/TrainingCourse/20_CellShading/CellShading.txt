@@ -1,0 +1,11 @@
+
+Demo title: 		CellShading
+
+Demonstrates: 		How to implement cell shading
+Short Description:	How to implement cell shading
+
+Full Description:	
+How to implement cell shading.
+
+polygon count:		4480
+Vertex Count: 		2238

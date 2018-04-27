@@ -1,0 +1,25 @@
+Input Commands:
+
+Windows PC:
+
+Mouse control can be used to rotate the arm in the spherical coordinate system.
+
+It's possible to apply the rotation to the object axis, or the object itself. To switch between the two modes, press SPACE.
+
+To quit, press ESC.
+
+Zoom 1:
+
+Touchscreen control can be used for the same purpose of the mouse in the Windows PC version.
+
+To switch between the two modes, press the central keypad.
+
+To quit, hit the red button on the bottom-right corner of the device.
+
+Zoom 2:
+
+Touchscreen control can be used for the same purpose of the mouse in the Windows PC version.
+
+To switch between the two modes, press ENTER.
+
+To quit, press U.

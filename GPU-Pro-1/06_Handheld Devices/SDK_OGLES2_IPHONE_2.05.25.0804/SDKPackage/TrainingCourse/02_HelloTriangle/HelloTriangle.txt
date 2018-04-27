@@ -1,0 +1,13 @@
+
+Demo title: 		HelloTriangle
+
+Demonstrates: 		Draw a triangle
+
+Short Description:	Draw a triangle
+
+Full Description:	
+Basic Tutorial that shows step-by-step how to initialize OpenGL ES, use it for drawing a triangle and terminate it.
+
+VGP: 			Not Required
+Polygon Count: 		1
+Vertex Count: 		3

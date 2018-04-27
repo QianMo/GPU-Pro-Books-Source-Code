@@ -1,0 +1,11 @@
+
+Demo title: 		Reflections
+Demonstrates: 		How to use reflections, 2D Mapping and Cube Mapping
+
+Short Description:	How to use reflections, 2D Mapping and Cube Mapping
+
+Full Description:	
+How to use reflections, 2D Mapping and Cube Mapping. 
+
+polygon count:		4480
+Vertex Count: 		2238

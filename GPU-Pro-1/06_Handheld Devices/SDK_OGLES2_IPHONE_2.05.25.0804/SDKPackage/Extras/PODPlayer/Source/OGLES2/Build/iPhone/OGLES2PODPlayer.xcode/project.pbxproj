@@ -1,0 +1,523 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F822BCCF1021A85D00CD34DE /* libOGLES2Engine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F854585B1021A81100B1BC26 /* libOGLES2Engine.a */; };
+		F84698E910175C1D00C5315F /* libOGLES2Tools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F84698E510175C0A00C5315F /* libOGLES2Tools.a */; };
+		F86DBDEF0FF3BFCB009FD3F0 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F8748C7A0FF23E830052D400 /* Icon.png */; };
+		F86DBDF00FF3BFCB009FD3F0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F8748C7B0FF23E830052D400 /* Default.png */; };
+		F86DBDF20FF3BFCB009FD3F0 /* EAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = F8748AF70FF234820052D400 /* EAGLView.mm */; };
+		F86DBDF30FF3BFCB009FD3F0 /* AppController.mm in Sources */ = {isa = PBXBuildFile; fileRef = F8748AF10FF2345E0052D400 /* AppController.mm */; };
+		F86DBDF40FF3BFCB009FD3F0 /* PVRShellOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748AEF0FF2344F0052D400 /* PVRShellOS.cpp */; };
+		F86DBDF50FF3BFCB009FD3F0 /* PVRShell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748AEB0FF2343A0052D400 /* PVRShell.cpp */; };
+		F86DBDF60FF3BFCB009FD3F0 /* PVRShellAPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748AFB0FF2348B0052D400 /* PVRShellAPI.cpp */; };
+		F86DBDF70FF3BFCB009FD3F0 /* PODPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748AFD0FF234A90052D400 /* PODPlayer.cpp */; };
+		F86DBDF80FF3BFCB009FD3F0 /* PVRES.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748AFF0FF234A90052D400 /* PVRES.cpp */; };
+		F86DBDF90FF3BFCB009FD3F0 /* PVRESParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748B010FF234A90052D400 /* PVRESParser.cpp */; };
+		F86DBDFA0FF3BFCB009FD3F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F8748AF40FF2346C0052D400 /* main.m */; };
+		F86DBDFE0FF3BFCB009FD3F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		F86DBDFF0FF3BFCB009FD3F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		F86DBE000FF3BFCB009FD3F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */; };
+		F86DBE010FF3BFCB009FD3F0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D500B990D5A79CF00DBA0E3 /* QuartzCore.framework */; };
+		F86DBE020FF3BFCB009FD3F0 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA240AC10FEFE77A00DE852D /* OpenGLES.framework */; };
+		F86DBE0C0FF3C001009FD3F0 /* Sample.pvres in Resources */ = {isa = PBXBuildFile; fileRef = F87DBCDA0FF2A00B0093D325 /* Sample.pvres */; };
+		F86DBE0D0FF3C001009FD3F0 /* Sample.pod in Resources */ = {isa = PBXBuildFile; fileRef = F87DBCDB0FF2A00B0093D325 /* Sample.pod */; };
+		F86DBE0E0FF3C001009FD3F0 /* Basetex.pvr in Resources */ = {isa = PBXBuildFile; fileRef = F87DBCDC0FF2A00B0093D325 /* Basetex.pvr */; };
+		F86DBE0F0FF3C001009FD3F0 /* Arm.pvr in Resources */ = {isa = PBXBuildFile; fileRef = F87DBCDD0FF2A00B0093D325 /* Arm.pvr */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F822BCDA1021A86500CD34DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8CAA4A91014D80F00F1672E /* OGLES2PVREngine.xcode */;
+			proxyType = 1;
+			remoteGlobalIDString = F8748A390FF221480052D400;
+			remoteInfo = OGLES2Engine;
+		};
+		F84698E410175C0A00C5315F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F84698E010175C0A00C5315F /* OGLES2Tools.xcode */;
+			proxyType = 2;
+			remoteGlobalIDString = F8748A3A0FF221480052D400;
+			remoteInfo = OGLES2Tools;
+		};
+		F84698E710175C1400C5315F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F84698E010175C0A00C5315F /* OGLES2Tools.xcode */;
+			proxyType = 1;
+			remoteGlobalIDString = F8748A390FF221480052D400;
+			remoteInfo = OGLES2Tools;
+		};
+		F854585A1021A81100B1BC26 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F8CAA4A91014D80F00F1672E /* OGLES2PVREngine.xcode */;
+			proxyType = 2;
+			remoteGlobalIDString = F8748A3A0FF221480052D400;
+			remoteInfo = OGLES2Engine;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F86DBE030FF3BFCB009FD3F0 /* data */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = data;
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			name = data;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F86DBE040FF3BFCB009FD3F0 /* textures */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = data/textures;
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			name = textures;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F86DBE050FF3BFCB009FD3F0 /* shaders */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = data/shaders;
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			name = shaders;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2D500B990D5A79CF00DBA0E3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		32CA4F630368D1EE00C91783 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		BA240AC10FEFE77A00DE852D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = ../iPhoneOS3.0.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		F84698E010175C0A00C5315F /* OGLES2Tools.xcode */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OGLES2Tools.xcode; path = ../../../../../../Tools/OGLES2/Build/iPhone/OGLES2Tools.xcode; sourceTree = SOURCE_ROOT; };
+		F86DBE090FF3BFCB009FD3F0 /* PODPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PODPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8748AEA0FF2343A0052D400 /* PVRShellImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PVRShellImpl.h; path = ../../../../../../Shell/PVRShellImpl.h; sourceTree = SOURCE_ROOT; };
+		F8748AEB0FF2343A0052D400 /* PVRShell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PVRShell.cpp; path = ../../../../../../Shell/PVRShell.cpp; sourceTree = SOURCE_ROOT; };
+		F8748AEC0FF2343A0052D400 /* PVRShell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PVRShell.h; path = ../../../../../../Shell/PVRShell.h; sourceTree = SOURCE_ROOT; };
+		F8748AEE0FF2344F0052D400 /* PVRShellOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PVRShellOS.h; path = ../../../../../../Shell/OS/iPhone/PVRShellOS.h; sourceTree = SOURCE_ROOT; };
+		F8748AEF0FF2344F0052D400 /* PVRShellOS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PVRShellOS.cpp; path = ../../../../../../Shell/OS/iPhone/PVRShellOS.cpp; sourceTree = SOURCE_ROOT; };
+		F8748AF10FF2345E0052D400 /* AppController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppController.mm; path = ../../../../../../Shell/OS/iPhone/AppController.mm; sourceTree = SOURCE_ROOT; };
+		F8748AF20FF2345E0052D400 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ../../../../../../Shell/OS/iPhone/AppController.h; sourceTree = SOURCE_ROOT; };
+		F8748AF40FF2346C0052D400 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../../../../../../Shell/OS/iPhone/main.m; sourceTree = SOURCE_ROOT; };
+		F8748AF60FF234820052D400 /* OpenGL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenGL_Internal.h; path = ../../../../../../Shell/API/EAGL/OpenGLSupport/OpenGL_Internal.h; sourceTree = SOURCE_ROOT; };
+		F8748AF70FF234820052D400 /* EAGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = EAGLView.mm; path = ../../../../../../Shell/API/EAGL/OpenGLSupport/EAGLView.mm; sourceTree = SOURCE_ROOT; };
+		F8748AF80FF234820052D400 /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EAGLView.h; path = ../../../../../../Shell/API/EAGL/OpenGLSupport/EAGLView.h; sourceTree = SOURCE_ROOT; };
+		F8748AFA0FF2348B0052D400 /* PVRShellAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PVRShellAPI.h; path = ../../../../../../Shell/API/EAGL/PVRShellAPI.h; sourceTree = SOURCE_ROOT; };
+		F8748AFB0FF2348B0052D400 /* PVRShellAPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PVRShellAPI.cpp; path = ../../../../../../Shell/API/EAGL/PVRShellAPI.cpp; sourceTree = SOURCE_ROOT; };
+		F8748AFD0FF234A90052D400 /* PODPlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PODPlayer.cpp; path = ../../../PODPlayer.cpp; sourceTree = SOURCE_ROOT; };
+		F8748AFE0FF234A90052D400 /* PODPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PODPlayer.h; path = ../../../PODPlayer.h; sourceTree = SOURCE_ROOT; };
+		F8748AFF0FF234A90052D400 /* PVRES.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PVRES.cpp; path = ../../../PVRES.cpp; sourceTree = SOURCE_ROOT; };
+		F8748B000FF234A90052D400 /* PVRES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PVRES.h; path = ../../../PVRES.h; sourceTree = SOURCE_ROOT; };
+		F8748B010FF234A90052D400 /* PVRESParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PVRESParser.cpp; path = ../../../PVRESParser.cpp; sourceTree = SOURCE_ROOT; };
+		F8748B020FF234A90052D400 /* PVRESParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PVRESParser.h; path = ../../../PVRESParser.h; sourceTree = SOURCE_ROOT; };
+		F8748C7A0FF23E830052D400 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../../../../../../Builds/iPhone/Media/Icon.png; sourceTree = SOURCE_ROOT; };
+		F8748C7B0FF23E830052D400 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../../../../../../Builds/iPhone/Media/Default.png; sourceTree = SOURCE_ROOT; };
+		F87DBCDA0FF2A00B0093D325 /* Sample.pvres */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Sample.pvres; path = ../../../../Examples/OGLES2/Sample/Sample.pvres; sourceTree = SOURCE_ROOT; };
+		F87DBCDB0FF2A00B0093D325 /* Sample.pod */ = {isa = PBXFileReference; lastKnownFileType = file; name = Sample.pod; path = ../../../../Examples/OGLES2/Sample/Sample.pod; sourceTree = SOURCE_ROOT; };
+		F87DBCDC0FF2A00B0093D325 /* Basetex.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; name = Basetex.pvr; path = ../../../../Examples/OGLES2/Sample/Basetex.pvr; sourceTree = SOURCE_ROOT; };
+		F87DBCDD0FF2A00B0093D325 /* Arm.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; name = Arm.pvr; path = ../../../../Examples/OGLES2/Sample/Arm.pvr; sourceTree = SOURCE_ROOT; };
+		F8CAA4A91014D80F00F1672E /* OGLES2PVREngine.xcode */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OGLES2PVREngine.xcode; path = ../../../../../PVREngine/OGLES2/Build/iPhone/OGLES2PVREngine.xcode; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F86DBDFB0FF3BFCB009FD3F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F822BCCF1021A85D00CD34DE /* libOGLES2Engine.a in Frameworks */,
+				F84698E910175C1D00C5315F /* libOGLES2Tools.a in Frameworks */,
+				F86DBDFE0FF3BFCB009FD3F0 /* Foundation.framework in Frameworks */,
+				F86DBDFF0FF3BFCB009FD3F0 /* UIKit.framework in Frameworks */,
+				F86DBE000FF3BFCB009FD3F0 /* CoreGraphics.framework in Frameworks */,
+				F86DBE010FF3BFCB009FD3F0 /* QuartzCore.framework in Frameworks */,
+				F86DBE020FF3BFCB009FD3F0 /* OpenGLES.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F86DBE090FF3BFCB009FD3F0 /* PODPlayer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				F84698E010175C0A00C5315F /* OGLES2Tools.xcode */,
+				F8CAA4A91014D80F00F1672E /* OGLES2PVREngine.xcode */,
+				F85E2B260DD21E3F00CA9BEB /* PODPlayer */,
+				F8DAC1360DD2069F008D2EBD /* PVRShell */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F87DBC990FF29FCF0093D325 /* Sample */,
+				F8748C7A0FF23E830052D400 /* Icon.png */,
+				F8748C7B0FF23E830052D400 /* Default.png */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA240AC10FEFE77A00DE852D /* OpenGLES.framework */,
+				1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */,
+				2D500B990D5A79CF00DBA0E3 /* QuartzCore.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F84698E110175C0A00C5315F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F84698E510175C0A00C5315F /* libOGLES2Tools.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F85458571021A81100B1BC26 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F854585B1021A81100B1BC26 /* libOGLES2Engine.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F85E2B260DD21E3F00CA9BEB /* PODPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				F8748AFD0FF234A90052D400 /* PODPlayer.cpp */,
+				F8748AFE0FF234A90052D400 /* PODPlayer.h */,
+				F8748AFF0FF234A90052D400 /* PVRES.cpp */,
+				F8748B000FF234A90052D400 /* PVRES.h */,
+				F8748B010FF234A90052D400 /* PVRESParser.cpp */,
+				F8748B020FF234A90052D400 /* PVRESParser.h */,
+			);
+			name = PODPlayer;
+			sourceTree = "<group>";
+		};
+		F85E2BCC0DD2E83000CA9BEB /* Obj-C Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F8748AF60FF234820052D400 /* OpenGL_Internal.h */,
+				F8748AF70FF234820052D400 /* EAGLView.mm */,
+				F8748AF80FF234820052D400 /* EAGLView.h */,
+				F8748AF10FF2345E0052D400 /* AppController.mm */,
+				F8748AF20FF2345E0052D400 /* AppController.h */,
+				F8748AF40FF2346C0052D400 /* main.m */,
+			);
+			name = "Obj-C Classes";
+			sourceTree = "<group>";
+		};
+		F87DBC990FF29FCF0093D325 /* Sample */ = {
+			isa = PBXGroup;
+			children = (
+				F87DBCDA0FF2A00B0093D325 /* Sample.pvres */,
+				F87DBCDB0FF2A00B0093D325 /* Sample.pod */,
+				F87DBCDC0FF2A00B0093D325 /* Basetex.pvr */,
+				F87DBCDD0FF2A00B0093D325 /* Arm.pvr */,
+			);
+			name = Sample;
+			sourceTree = "<group>";
+		};
+		F8DAC1360DD2069F008D2EBD /* PVRShell */ = {
+			isa = PBXGroup;
+			children = (
+				F8748AEE0FF2344F0052D400 /* PVRShellOS.h */,
+				F8748AEF0FF2344F0052D400 /* PVRShellOS.cpp */,
+				F8748AEA0FF2343A0052D400 /* PVRShellImpl.h */,
+				F8748AEB0FF2343A0052D400 /* PVRShell.cpp */,
+				F8748AEC0FF2343A0052D400 /* PVRShell.h */,
+				F8748AFA0FF2348B0052D400 /* PVRShellAPI.h */,
+				F8748AFB0FF2348B0052D400 /* PVRShellAPI.cpp */,
+				F85E2BCC0DD2E83000CA9BEB /* Obj-C Classes */,
+			);
+			name = PVRShell;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F86DBDB40FF3BFCB009FD3F0 /* Sample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F86DBE060FF3BFCB009FD3F0 /* Build configuration list for PBXNativeTarget "Sample" */;
+			buildPhases = (
+				F86DBDB90FF3BFCB009FD3F0 /* Resources */,
+				F86DBDF10FF3BFCB009FD3F0 /* Sources */,
+				F86DBDFB0FF3BFCB009FD3F0 /* Frameworks */,
+				F86DBE030FF3BFCB009FD3F0 /* data */,
+				F86DBE040FF3BFCB009FD3F0 /* textures */,
+				F86DBE050FF3BFCB009FD3F0 /* shaders */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F84698E810175C1400C5315F /* PBXTargetDependency */,
+				F822BCDB1021A86500CD34DE /* PBXTargetDependency */,
+			);
+			name = Sample;
+			productName = foo;
+			productReference = F86DBE090FF3BFCB009FD3F0 /* PODPlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "OGLES2PODPlayer" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F85458571021A81100B1BC26 /* Products */;
+					ProjectRef = F8CAA4A91014D80F00F1672E /* OGLES2PVREngine.xcode */;
+				},
+				{
+					ProductGroup = F84698E110175C0A00C5315F /* Products */;
+					ProjectRef = F84698E010175C0A00C5315F /* OGLES2Tools.xcode */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				F86DBDB40FF3BFCB009FD3F0 /* Sample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F84698E510175C0A00C5315F /* libOGLES2Tools.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOGLES2Tools.a;
+			remoteRef = F84698E410175C0A00C5315F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F854585B1021A81100B1BC26 /* libOGLES2Engine.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOGLES2Engine.a;
+			remoteRef = F854585A1021A81100B1BC26 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F86DBDB90FF3BFCB009FD3F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F86DBE0C0FF3C001009FD3F0 /* Sample.pvres in Resources */,
+				F86DBE0D0FF3C001009FD3F0 /* Sample.pod in Resources */,
+				F86DBE0E0FF3C001009FD3F0 /* Basetex.pvr in Resources */,
+				F86DBE0F0FF3C001009FD3F0 /* Arm.pvr in Resources */,
+				F86DBDEF0FF3BFCB009FD3F0 /* Icon.png in Resources */,
+				F86DBDF00FF3BFCB009FD3F0 /* Default.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F86DBDF10FF3BFCB009FD3F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F86DBDF20FF3BFCB009FD3F0 /* EAGLView.mm in Sources */,
+				F86DBDF30FF3BFCB009FD3F0 /* AppController.mm in Sources */,
+				F86DBDF40FF3BFCB009FD3F0 /* PVRShellOS.cpp in Sources */,
+				F86DBDF50FF3BFCB009FD3F0 /* PVRShell.cpp in Sources */,
+				F86DBDF60FF3BFCB009FD3F0 /* PVRShellAPI.cpp in Sources */,
+				F86DBDF70FF3BFCB009FD3F0 /* PODPlayer.cpp in Sources */,
+				F86DBDF80FF3BFCB009FD3F0 /* PVRES.cpp in Sources */,
+				F86DBDF90FF3BFCB009FD3F0 /* PVRESParser.cpp in Sources */,
+				F86DBDFA0FF3BFCB009FD3F0 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F822BCDB1021A86500CD34DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OGLES2Engine;
+			targetProxy = F822BCDA1021A86500CD34DE /* PBXContainerItemProxy */;
+		};
+		F84698E810175C1400C5315F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OGLES2Tools;
+			targetProxy = F84698E710175C1400C5315F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Gordon MacLachlan";
+				DEPLOYMENT_POSTPROCESSING = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
+					BUILD_OGLES2,
+					_IPHONE_,
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				PRODUCT_NAME = PODPlayer;
+				SDKROOT = iphoneos3.0;
+				USER_HEADER_SEARCH_PATHS = "../../../../../Tools/OGLES2 ../../../../../Tools";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
+					BUILD_OGLES2,
+					_IPHONE_,
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.0;
+				USER_HEADER_SEARCH_PATHS = "../../../../../Tools/OGLES2 ../../../../../Tools";
+			};
+			name = Release;
+		};
+		F86DBE070FF3BFCB009FD3F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
+					BUILD_OGLES2,
+					_IPHONE_,
+				);
+				INFOPLIST_FILE = Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\\\\\"$(SRCROOT)/build/Debug-iphonesimulator\\\\\\\"",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				PRODUCT_NAME = PODPlayer;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos3.0;
+				USER_HEADER_SEARCH_PATHS = "../../../../../PVREngine/Include/OGLES2 ../../../../../PVREngine/Include ../../../../../Builds/OGLES2/Include ../../../../../../Tools/OGLES2 ../../../../../../Tools";
+				WARNING_CFLAGS = "-Wall";
+			};
+			name = Debug;
+		};
+		F86DBE080FF3BFCB009FD3F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
+					BUILD_OGLES2,
+					_IPHONE_,
+				);
+				INFOPLIST_FILE = Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\\\\\\\"$(SRCROOT)/build/Debug-iphonesimulator\\\\\\\"",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				PRODUCT_NAME = PODPlayer;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos3.0;
+				USER_HEADER_SEARCH_PATHS = "../../../../../PVREngine/Include/OGLES2 ../../../../../PVREngine/Include ../../../../../Builds/OGLES2/Include ../../../../../../Tools/OGLES2 ../../../../../../Tools";
+				WARNING_CFLAGS = "-Wall";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "OGLES2PODPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F86DBE060FF3BFCB009FD3F0 /* Build configuration list for PBXNativeTarget "Sample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F86DBE070FF3BFCB009FD3F0 /* Debug */,
+				F86DBE080FF3BFCB009FD3F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

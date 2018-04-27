@@ -1,0 +1,13 @@
+
+Demo title: 		IntroducingPOD
+
+Demonstrates: 		How to use our POD 3D format
+
+Short Description:	How to use our POD 3D format
+
+Full Description:	
+Shows how to load POD files and play the animation with basic lighting.
+
+VGP: 			Not Required
+Polygon Count: 		1190
+Vertex Count: 		605

@@ -1,0 +1,13 @@
+
+Demo title: 		Stencil Buffer
+
+Demonstrates: 		How to use the stencil buffer
+
+Short Description:	How to use the stencil buffer
+
+Full Description:	
+Shows how to use the stencil buffer.
+
+VGP: 			Not Required
+Polygon Count: 		1610
+Vertex Count: 		809

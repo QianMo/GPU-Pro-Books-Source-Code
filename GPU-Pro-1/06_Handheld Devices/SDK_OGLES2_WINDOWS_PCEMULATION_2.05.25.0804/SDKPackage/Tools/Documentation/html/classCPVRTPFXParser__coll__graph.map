@@ -1,0 +1,8 @@
+base referer
+rect $structSPVRTPFXParserTexture.html 7,204 183,231
+rect $structSPVRTPFXParserEffect.html 207,204 372,231
+rect $structSPVRTPFXParserSemantic.html 84,97 271,124
+rect $structSPVRTSemanticDefaultData.html 80,7 275,33
+rect $structSPVRTPFXParserEffectTexture.html 295,97 505,124
+rect $structSPVRTPFXParserShader.html 396,204 569,231
+rect $structSPVRTPFXParserHeader.html 593,204 767,231

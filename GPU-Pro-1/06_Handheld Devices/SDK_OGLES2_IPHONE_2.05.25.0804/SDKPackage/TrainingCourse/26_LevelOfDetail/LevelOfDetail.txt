@@ -1,0 +1,12 @@
+
+Demo title: 		Level of detail
+
+Demonstrates: 		Using a low detail method for displaying an object where you won't notice all the detail i.e. far away
+
+Short Description:	Using a low detail method for displaying an object where you won't notice all the detail i.e. far away
+
+Full Description:	
+Using a low detail method for displaying an object where you won't notice all the detail i.e. far away.
+
+polygon count:		4480 (for high detail)
+Vertex Count: 		2238 (for high detail)

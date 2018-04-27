@@ -1,0 +1,13 @@
+
+Demo title: 		IntroducingPVRShell
+
+Demonstrates: 		How to use our PVRShell
+
+Short Description:	How to use our PVRShell
+
+Full Description:	
+Shows how to use the PowerVR framework for initialization. This framework allows platform abstraction so applications using it will work on any MBX enabled device.
+
+VGP: 			Not Required
+Polygon Count: 		1
+Vertex Count: 		3

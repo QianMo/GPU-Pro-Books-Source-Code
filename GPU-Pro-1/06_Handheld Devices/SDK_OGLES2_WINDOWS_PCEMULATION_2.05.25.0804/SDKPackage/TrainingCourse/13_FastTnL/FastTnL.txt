@@ -1,0 +1,12 @@
+
+Demo title: 		FastTnL
+
+Demonstrates: 		How to use our fast transformation and lighting vertex shader
+
+Short Description:	How to use our fast transformation and lighting vertex shader
+
+Full Description:	
+Shows how to use our fast transformation and lighting vertex shader. This technique is appropiate when a high perfromance shader is required. 
+
+polygon count:		4480
+Vertex Count: 		2238

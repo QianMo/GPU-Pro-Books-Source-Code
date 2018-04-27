@@ -1,0 +1,3 @@
+base referer
+rect $structEPODBlendOp.html 7,7 119,34
+rect $structEPODBlendFunc.html 143,7 266,34

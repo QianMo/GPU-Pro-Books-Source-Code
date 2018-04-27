@@ -1,0 +1,12 @@
+
+Demo title: 		AnisotropicLighting
+
+Demonstrates: 		How to do anisotropic lighting
+
+Short Description:	How to do anisotropic lighting
+
+Full Description:	
+This example demonstrates two techniques for generating an anisotropic lighting effect on the mask. One calculates the shading for each pixel on the fly, the other is optimised by using a texture to lookup the shading values. Anisotropic lighting simulates the effect of surfaces with a grain, or grooves. This includes materials such as brushed metal, velvet and records.
+
+Polygon Count: 		4480
+Vertex Count: 		2238

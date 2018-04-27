@@ -1,0 +1,12 @@
+
+Demo title: 		ComplexLighting
+
+Demonstrates: 		How to implement various forms of complex Lighting
+
+Short Description:	How to implement various forms of complex Lighting
+
+Full Description:	
+Shows how to implement directional, point and spot lighting.
+
+polygon count:		4480
+Vertex Count: 		2238

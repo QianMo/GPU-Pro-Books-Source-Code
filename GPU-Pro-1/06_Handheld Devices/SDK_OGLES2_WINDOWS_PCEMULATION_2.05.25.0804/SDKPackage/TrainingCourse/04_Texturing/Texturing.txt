@@ -1,0 +1,13 @@
+
+Demo title: 		Texturing
+
+Demonstrates: 		Texturing
+
+Short Description:	Texturing
+
+Full Description:	
+Shows how to load a texture into OpenGL ES.
+
+VGP: 			Not Required
+Polygon Count: 		1
+Vertex Count: 		3

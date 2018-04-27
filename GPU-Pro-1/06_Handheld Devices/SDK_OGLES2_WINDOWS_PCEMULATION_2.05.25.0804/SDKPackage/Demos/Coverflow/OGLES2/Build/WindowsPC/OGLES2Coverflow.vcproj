@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.10"
+	Name="OGLES2Coverflow"
+	ProjectGUID="{DA225857-C79C-4026-8D2F-57A2D3FF079C}"
+	RootNamespace="OGLES2Coverflow"
+	Keyword="Win32Proj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="Debug"
+			IntermediateDirectory="Debug"
+			ConfigurationType="1"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="..\..\..\..\..\Shell;..\..\..\..\..\Shell\API\KEGL;..\..\..\..\..\Shell\OS\Windows;..\..\..\..\..\Builds\OGLES2\Include;..\..\..\..\..\Builds\OGLES2\WindowsPC\Include;..\..\..\..\..\Tools\OGLES2;"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;BUILD_OGLES2"
+				MinimalRebuild="TRUE"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="4"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="libEGL.lib libGLESv2.lib OGLES2Tools.lib"
+				OutputFile="$(OutDir)/OGLES2Coverflow.exe"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="..\..\..\..\..\Builds\OGLES2\WindowsPC\Lib;..\..\..\..\..\Tools\OGLES2\Build\WindowsPC\$(OUTDIR)"
+				GenerateDebugInformation="TRUE"
+				ProgramDatabaseFile="$(OutDir)/OGLES2Coverflow.pdb"
+				SubSystem="2"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="Release"
+			IntermediateDirectory="Release"
+			ConfigurationType="1"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="..\..\..\..\..\Shell;..\..\..\..\..\Shell\API\KEGL;..\..\..\..\..\Shell\OS\Windows;..\..\..\..\..\Builds\OGLES2\Include;..\..\..\..\..\Builds\OGLES2\WindowsPC\Include;..\..\..\..\..\Tools\OGLES2;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;BUILD_OGLES2"
+				RuntimeLibrary="0"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="libEGL.lib libGLESv2.lib OGLES2Tools.lib"
+				OutputFile="$(OutDir)/OGLES2Coverflow.exe"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="..\..\..\..\..\Builds\OGLES2\WindowsPC\Lib; ..\..\..\..\..\Tools\OGLES2\Build\WindowsPC\$(OUTDIR)"
+				GenerateDebugInformation="TRUE"
+				SubSystem="2"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
+			<File
+				RelativePath="..\..\OGLES2Coverflow.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\..\..\Shell\PVRShell.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\..\..\Shell\Api\Kegl\PVRShellAPI.cpp">
+			</File>
+			<File
+				RelativePath="..\..\..\..\..\Shell\Os\Windows\PVRShellOS.cpp">
+			</File>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl;inc;xsd"
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+			<File
+				RelativePath="..\..\..\..\..\Shell\PVRShell.h">
+			</File>
+			<File
+				RelativePath="..\..\..\..\..\Shell\Api\Kegl\PVRShellAPI.h">
+			</File>
+			<File
+				RelativePath="..\..\..\..\..\Shell\PVRShellImpl.h">
+			</File>
+			<File
+				RelativePath="..\..\..\..\..\Shell\Os\Windows\PVRShellOS.h">
+			</File>
+			<File
+				RelativePath="..\..\..\..\..\Builds\Windows\resource.h">
+			</File>
+		</Filter>
+		<Filter
+			Name="Resource Files"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
+			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}">
+			<File
+				RelativePath="..\..\..\..\..\Builds\Windows\shared.rc">
+			</File>
+		</Filter>
+		<Filter
+			Name="Content Files"
+			Filter="">
+			<Filter
+				Name="CPP"
+				Filter="">
+				<File
+					RelativePath="..\..\Content\Album1.cpp">
+				</File>
+				<File
+					RelativePath="..\..\Content\Album2.cpp">
+				</File>
+				<File
+					RelativePath="..\..\Content\Album3.cpp">
+				</File>
+				<File
+					RelativePath="..\..\Content\Album4.cpp">
+				</File>
+				<File
+					RelativePath="..\..\Content\Album5.cpp">
+				</File>
+				<File
+					RelativePath="..\..\Content\Album6.cpp">
+				</File>
+				<File
+					RelativePath="..\..\Content\Album7.cpp">
+				</File>
+				<File
+					RelativePath="..\..\Content\Album8.cpp">
+				</File>
+				<File
+					RelativePath="..\..\Content\Album9.cpp">
+				</File>
+				<File
+					RelativePath="..\..\Content\Album10.cpp">
+				</File>
+				<File
+					RelativePath="..\..\Content\Album11.cpp">
+				</File>
+				<File
+					RelativePath="..\..\Content\Album12.cpp">
+				</File>
+				<File
+					RelativePath="..\..\Content\Album13.cpp">
+				</File>
+				<File
+					RelativePath="..\..\Content\Album14.cpp">
+				</File>
+				<File
+					RelativePath="..\..\Content\Album15.cpp">
+				</File>
+				<File
+					RelativePath="..\..\Content\Album16.cpp">
+				</File>
+				<File
+					RelativePath="..\..\Content\FragShader.cpp">
+				</File>
+				<File
+					RelativePath="..\..\Content\VertShader.cpp">
+				</File>
+			</Filter>
+			<Filter
+				Name="Shaders"
+				Filter="">
+				<File
+					RelativePath="..\..\FragShader.fsh">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Wrapping shader $(InputFileName)"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -s -o &quot;$(InputDir)Content\$(InputName).cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Wrapping shader $(InputFileName)"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -s -o &quot;$(InputDir)Content\$(InputName).cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\$(InputName).cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\VertShader.vsh">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Wrapping shader $(InputFileName)"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -s -o &quot;$(InputDir)Content\$(InputName).cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\$(InputName).cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Wrapping shader $(InputFileName)"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -s -o &quot;$(InputDir)Content\$(InputName).cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\$(InputName).cpp"/>
+					</FileConfiguration>
+				</File>
+			</Filter>
+			<Filter
+				Name="Textures"
+				Filter="">
+				<File
+					RelativePath="..\..\Album1.pvr">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album1.cpp from Album1.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album1.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album1.cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album1.cpp from Album1.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album1.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album1.cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\Media\Album1.bmp">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album1.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album1.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album1.pvr"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album1.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album1.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album1.pvr"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\Album2.pvr">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album2.cpp from Album2.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album2.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album2.cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album2.cpp from Album2.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album2.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album2.cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\Media\Album2.bmp">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album2.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album2.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album2.pvr"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album2.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album2.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album2.pvr"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\Album3.pvr">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album3.cpp from Album3.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album3.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album3.cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album3.cpp from Album3.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album3.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album3.cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\Media\Album3.bmp">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album3.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album3.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album3.pvr"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album3.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album3.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album3.pvr"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\Album4.pvr">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album4.cpp from Album4.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album4.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album4.cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album4.cpp from Album4.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album4.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album4.cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\Media\Album4.bmp">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album4.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album4.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album4.pvr"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album4.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album4.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album4.pvr"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\Album5.pvr">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album5.cpp from Album5.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album5.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album5.cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album5.cpp from Album5.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album5.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album5.cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\Media\Album5.bmp">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album5.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album5.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album5.pvr"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album5.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album5.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album5.pvr"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\Album6.pvr">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album6.cpp from Album6.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album6.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album6.cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album6.cpp from Album6.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album6.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album6.cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\Media\Album6.bmp">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album6.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album6.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album6.pvr"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album6.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album6.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album6.pvr"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\Album7.pvr">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album7.cpp from Album7.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album7.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album7.cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album7.cpp from Album7.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album7.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album7.cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\Media\Album7.bmp">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album7.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album7.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album7.pvr"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album7.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album7.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album7.pvr"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\Album8.pvr">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album8.cpp from Album8.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album8.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album8.cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album8.cpp from Album8.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album8.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album8.cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\Media\Album8.bmp">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album8.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album8.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album8.pvr"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album8.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album8.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album8.pvr"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\Album9.pvr">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album9.cpp from Album9.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album9.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album9.cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album9.cpp from Album9.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album9.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album9.cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\Media\Album9.bmp">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album9.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album9.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album9.pvr"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album9.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album9.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album9.pvr"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\Album10.pvr">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album10.cpp from Album10.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album10.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album10.cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album10.cpp from Album10.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album10.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album10.cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\Media\Album10.bmp">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album10.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album10.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album10.pvr"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album10.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album10.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album10.pvr"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\Album11.pvr">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album11.cpp from Album11.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album11.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album11.cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album11.cpp from Album11.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album11.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album11.cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\Media\Album11.bmp">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album11.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album11.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album11.pvr"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album11.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album11.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album11.pvr"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\Album12.pvr">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album12.cpp from Album12.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album12.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album12.cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album12.cpp from Album12.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album12.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album12.cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\Media\Album12.bmp">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album12.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album12.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album12.pvr"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album12.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album12.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album12.pvr"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\Album13.pvr">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album13.cpp from Album13.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album13.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album13.cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album13.cpp from Album13.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album13.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album13.cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\Media\Album13.bmp">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album13.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album13.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album13.pvr"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album13.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album13.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album13.pvr"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\Album14.pvr">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album14.cpp from Album14.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album14.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album14.cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album14.cpp from Album14.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album14.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album14.cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\Media\Album14.bmp">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album14.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album14.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album14.pvr"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album14.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album14.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album14.pvr"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\Album15.pvr">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album15.cpp from Album15.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album15.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album15.cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album15.cpp from Album15.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album15.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album15.cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\Media\Album15.bmp">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album15.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album15.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album15.pvr"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album15.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album15.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album15.pvr"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\Album16.pvr">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album16.cpp from Album16.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album16.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album16.cpp"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album16.cpp from Album16.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\Filewrap\Win32\Filewrap.exe&quot; -o &quot;$(InputDir)Content\Album16.cpp&quot; &quot;$(InputPath)&quot;"
+							Outputs="$(InputDir)Content\Album16.cpp"/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\..\Media\Album16.bmp">
+					<FileConfiguration
+						Name="Debug|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album16.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album16.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album16.pvr"/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32">
+						<Tool
+							Name="VCCustomBuildTool"
+							Description="Generating Album16.pvr"
+							CommandLine="&quot;$(ProjectDir)..\..\..\..\..\Utilities\PVRTexTool\PVRTexToolCL\Win32\PVRTexTool.exe&quot; -m -fOGLPVRTC4 -i&quot;$(InputPath)&quot; -o&quot;$(ProjectDir)..\..\Album16.pvr&quot;"
+							Outputs="$(ProjectDir)..\..\Album16.pvr"/>
+					</FileConfiguration>
+				</File>
+			</Filter>
+		</Filter>		
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

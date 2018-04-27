@@ -1,0 +1,497 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F8748DA80FF272EA0052D400 /* MeshBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748D940FF272EA0052D400 /* MeshBase.cpp */; };
+		F8748DA90FF272EA0052D400 /* ConsoleLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748D950FF272EA0052D400 /* ConsoleLog.cpp */; };
+		F8748DAA0FF272EA0052D400 /* LightBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748D960FF272EA0052D400 /* LightBase.cpp */; };
+		F8748DAB0FF272EA0052D400 /* PVREngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748D970FF272EA0052D400 /* PVREngine.cpp */; };
+		F8748DAC0FF272EA0052D400 /* LightManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748D980FF272EA0052D400 /* LightManager.cpp */; };
+		F8748DAD0FF272EA0052D400 /* UniformBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748D990FF272EA0052D400 /* UniformBase.cpp */; };
+		F8748DAE0FF272EA0052D400 /* Option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748D9A0FF272EA0052D400 /* Option.cpp */; };
+		F8748DAF0FF272EA0052D400 /* MeshManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748D9B0FF272EA0052D400 /* MeshManager.cpp */; };
+		F8748DB00FF272EA0052D400 /* PVRESettingsBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748D9C0FF272EA0052D400 /* PVRESettingsBase.cpp */; };
+		F8748DB10FF272EA0052D400 /* Plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748D9D0FF272EA0052D400 /* Plane.cpp */; };
+		F8748DB20FF272EA0052D400 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748D9E0FF272EA0052D400 /* TextureManager.cpp */; };
+		F8748DB30FF272EA0052D400 /* OptionsMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748D9F0FF272EA0052D400 /* OptionsMenu.cpp */; };
+		F8748DB40FF272EA0052D400 /* TextureBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748DA00FF272EA0052D400 /* TextureBase.cpp */; };
+		F8748DB50FF272EA0052D400 /* SimpleCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748DA10FF272EA0052D400 /* SimpleCamera.cpp */; };
+		F8748DB60FF272EA0052D400 /* UniformHandlerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748DA20FF272EA0052D400 /* UniformHandlerBase.cpp */; };
+		F8748DB70FF272EA0052D400 /* BoundingBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748DA30FF272EA0052D400 /* BoundingBox.cpp */; };
+		F8748DB80FF272EA0052D400 /* MaterialManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748DA40FF272EA0052D400 /* MaterialManager.cpp */; };
+		F8748DB90FF272EA0052D400 /* MaterialBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748DA50FF272EA0052D400 /* MaterialBase.cpp */; };
+		F8748DBA0FF272EA0052D400 /* BoundingHex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748DA60FF272EA0052D400 /* BoundingHex.cpp */; };
+		F8748DBB0FF272EA0052D400 /* TimeController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748DA70FF272EA0052D400 /* TimeController.cpp */; };
+		F8748DCA0FF273090052D400 /* PVRESettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748DC20FF273090052D400 /* PVRESettings.cpp */; };
+		F8748DCB0FF273090052D400 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748DC30FF273090052D400 /* Texture.cpp */; };
+		F8748DCC0FF273090052D400 /* UniformHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748DC40FF273090052D400 /* UniformHandler.cpp */; };
+		F8748DCD0FF273090052D400 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748DC50FF273090052D400 /* Light.cpp */; };
+		F8748DCE0FF273090052D400 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748DC60FF273090052D400 /* Material.cpp */; };
+		F8748DCF0FF273090052D400 /* Uniform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748DC70FF273090052D400 /* Uniform.cpp */; };
+		F8748DD00FF273090052D400 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748DC80FF273090052D400 /* Mesh.cpp */; };
+		F8748DD10FF273090052D400 /* ContextManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8748DC90FF273090052D400 /* ContextManager.cpp */; };
+		F8748DE30FF273210052D400 /* LightManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DD40FF273210052D400 /* LightManager.h */; };
+		F8748DE40FF273210052D400 /* MaterialManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DD50FF273210052D400 /* MaterialManager.h */; };
+		F8748DE50FF273210052D400 /* BoundingHex.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DD60FF273210052D400 /* BoundingHex.h */; };
+		F8748DE60FF273210052D400 /* PVREngine.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DD70FF273210052D400 /* PVREngine.h */; };
+		F8748DE70FF273210052D400 /* OptionsMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DD80FF273210052D400 /* OptionsMenu.h */; };
+		F8748DE80FF273210052D400 /* Option.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DD90FF273210052D400 /* Option.h */; };
+		F8748DE90FF273210052D400 /* Plane.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DDA0FF273210052D400 /* Plane.h */; };
+		F8748DEA0FF273210052D400 /* TextureManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DDB0FF273210052D400 /* TextureManager.h */; };
+		F8748DEB0FF273210052D400 /* Globals.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DDC0FF273210052D400 /* Globals.h */; };
+		F8748DEC0FF273210052D400 /* BoundingBox.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DDD0FF273210052D400 /* BoundingBox.h */; };
+		F8748DED0FF273210052D400 /* SimpleCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DDE0FF273210052D400 /* SimpleCamera.h */; };
+		F8748DEE0FF273210052D400 /* dynamicArray.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DDF0FF273210052D400 /* dynamicArray.h */; };
+		F8748DEF0FF273210052D400 /* ConsoleLog.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DE00FF273210052D400 /* ConsoleLog.h */; };
+		F8748DF00FF273210052D400 /* TimeController.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DE10FF273210052D400 /* TimeController.h */; };
+		F8748DF10FF273210052D400 /* MeshManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DE20FF273210052D400 /* MeshManager.h */; };
+		F8748E000FF2732E0052D400 /* Texture.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DF40FF2732E0052D400 /* Texture.h */; };
+		F8748E010FF2732E0052D400 /* Mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DF50FF2732E0052D400 /* Mesh.h */; };
+		F8748E020FF2732E0052D400 /* Material.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DF60FF2732E0052D400 /* Material.h */; };
+		F8748E030FF2732E0052D400 /* Semantics.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DF70FF2732E0052D400 /* Semantics.h */; };
+		F8748E040FF2732E0052D400 /* Uniform.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DF80FF2732E0052D400 /* Uniform.h */; };
+		F8748E050FF2732E0052D400 /* PVRESettings.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DF90FF2732E0052D400 /* PVRESettings.h */; };
+		F8748E060FF2732E0052D400 /* Light.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DFA0FF2732E0052D400 /* Light.h */; };
+		F8748E070FF2732E0052D400 /* UniformHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DFB0FF2732E0052D400 /* UniformHandler.h */; };
+		F8748E080FF2732E0052D400 /* ContextManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DFC0FF2732E0052D400 /* ContextManager.h */; };
+		F8748E090FF2732E0052D400 /* ambientdiffusedirection.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DFD0FF2732E0052D400 /* ambientdiffusedirection.h */; };
+		F8748E0A0FF2732E0052D400 /* ambientdiffuse.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DFE0FF2732E0052D400 /* ambientdiffuse.h */; };
+		F8748E0B0FF2732E0052D400 /* flatMaterial.h in Headers */ = {isa = PBXBuildFile; fileRef = F8748DFF0FF2732E0052D400 /* flatMaterial.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2D500B990D5A79CF00DBA0E3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		32CA4F630368D1EE00C91783 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
+		BA240AC10FEFE77A00DE852D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = ../iPhoneOS3.0.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		F8748A3A0FF221480052D400 /* libOGLES2Engine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOGLES2Engine.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8748D940FF272EA0052D400 /* MeshBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MeshBase.cpp; path = ../../../MeshBase.cpp; sourceTree = SOURCE_ROOT; };
+		F8748D950FF272EA0052D400 /* ConsoleLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConsoleLog.cpp; path = ../../../ConsoleLog.cpp; sourceTree = SOURCE_ROOT; };
+		F8748D960FF272EA0052D400 /* LightBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LightBase.cpp; path = ../../../LightBase.cpp; sourceTree = SOURCE_ROOT; };
+		F8748D970FF272EA0052D400 /* PVREngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PVREngine.cpp; path = ../../../PVREngine.cpp; sourceTree = SOURCE_ROOT; };
+		F8748D980FF272EA0052D400 /* LightManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LightManager.cpp; path = ../../../LightManager.cpp; sourceTree = SOURCE_ROOT; };
+		F8748D990FF272EA0052D400 /* UniformBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UniformBase.cpp; path = ../../../UniformBase.cpp; sourceTree = SOURCE_ROOT; };
+		F8748D9A0FF272EA0052D400 /* Option.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Option.cpp; path = ../../../Option.cpp; sourceTree = SOURCE_ROOT; };
+		F8748D9B0FF272EA0052D400 /* MeshManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MeshManager.cpp; path = ../../../MeshManager.cpp; sourceTree = SOURCE_ROOT; };
+		F8748D9C0FF272EA0052D400 /* PVRESettingsBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PVRESettingsBase.cpp; path = ../../../PVRESettingsBase.cpp; sourceTree = SOURCE_ROOT; };
+		F8748D9D0FF272EA0052D400 /* Plane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Plane.cpp; path = ../../../Plane.cpp; sourceTree = SOURCE_ROOT; };
+		F8748D9E0FF272EA0052D400 /* TextureManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureManager.cpp; path = ../../../TextureManager.cpp; sourceTree = SOURCE_ROOT; };
+		F8748D9F0FF272EA0052D400 /* OptionsMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OptionsMenu.cpp; path = ../../../OptionsMenu.cpp; sourceTree = SOURCE_ROOT; };
+		F8748DA00FF272EA0052D400 /* TextureBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureBase.cpp; path = ../../../TextureBase.cpp; sourceTree = SOURCE_ROOT; };
+		F8748DA10FF272EA0052D400 /* SimpleCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SimpleCamera.cpp; path = ../../../SimpleCamera.cpp; sourceTree = SOURCE_ROOT; };
+		F8748DA20FF272EA0052D400 /* UniformHandlerBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UniformHandlerBase.cpp; path = ../../../UniformHandlerBase.cpp; sourceTree = SOURCE_ROOT; };
+		F8748DA30FF272EA0052D400 /* BoundingBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoundingBox.cpp; path = ../../../BoundingBox.cpp; sourceTree = SOURCE_ROOT; };
+		F8748DA40FF272EA0052D400 /* MaterialManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MaterialManager.cpp; path = ../../../MaterialManager.cpp; sourceTree = SOURCE_ROOT; };
+		F8748DA50FF272EA0052D400 /* MaterialBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MaterialBase.cpp; path = ../../../MaterialBase.cpp; sourceTree = SOURCE_ROOT; };
+		F8748DA60FF272EA0052D400 /* BoundingHex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BoundingHex.cpp; path = ../../../BoundingHex.cpp; sourceTree = SOURCE_ROOT; };
+		F8748DA70FF272EA0052D400 /* TimeController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimeController.cpp; path = ../../../TimeController.cpp; sourceTree = SOURCE_ROOT; };
+		F8748DC20FF273090052D400 /* PVRESettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PVRESettings.cpp; path = ../../PVRESettings.cpp; sourceTree = SOURCE_ROOT; };
+		F8748DC30FF273090052D400 /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Texture.cpp; path = ../../Texture.cpp; sourceTree = SOURCE_ROOT; };
+		F8748DC40FF273090052D400 /* UniformHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UniformHandler.cpp; path = ../../UniformHandler.cpp; sourceTree = SOURCE_ROOT; };
+		F8748DC50FF273090052D400 /* Light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Light.cpp; path = ../../Light.cpp; sourceTree = SOURCE_ROOT; };
+		F8748DC60FF273090052D400 /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Material.cpp; path = ../../Material.cpp; sourceTree = SOURCE_ROOT; };
+		F8748DC70FF273090052D400 /* Uniform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Uniform.cpp; path = ../../Uniform.cpp; sourceTree = SOURCE_ROOT; };
+		F8748DC80FF273090052D400 /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Mesh.cpp; path = ../../Mesh.cpp; sourceTree = SOURCE_ROOT; };
+		F8748DC90FF273090052D400 /* ContextManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ContextManager.cpp; path = ../../ContextManager.cpp; sourceTree = SOURCE_ROOT; };
+		F8748DD40FF273210052D400 /* LightManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LightManager.h; path = ../../../Include/LightManager.h; sourceTree = SOURCE_ROOT; };
+		F8748DD50FF273210052D400 /* MaterialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MaterialManager.h; path = ../../../Include/MaterialManager.h; sourceTree = SOURCE_ROOT; };
+		F8748DD60FF273210052D400 /* BoundingHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoundingHex.h; path = ../../../Include/BoundingHex.h; sourceTree = SOURCE_ROOT; };
+		F8748DD70FF273210052D400 /* PVREngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PVREngine.h; path = ../../../Include/PVREngine.h; sourceTree = SOURCE_ROOT; };
+		F8748DD80FF273210052D400 /* OptionsMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionsMenu.h; path = ../../../Include/OptionsMenu.h; sourceTree = SOURCE_ROOT; };
+		F8748DD90FF273210052D400 /* Option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Option.h; path = ../../../Include/Option.h; sourceTree = SOURCE_ROOT; };
+		F8748DDA0FF273210052D400 /* Plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Plane.h; path = ../../../Include/Plane.h; sourceTree = SOURCE_ROOT; };
+		F8748DDB0FF273210052D400 /* TextureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextureManager.h; path = ../../../Include/TextureManager.h; sourceTree = SOURCE_ROOT; };
+		F8748DDC0FF273210052D400 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Globals.h; path = ../../../Include/Globals.h; sourceTree = SOURCE_ROOT; };
+		F8748DDD0FF273210052D400 /* BoundingBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoundingBox.h; path = ../../../Include/BoundingBox.h; sourceTree = SOURCE_ROOT; };
+		F8748DDE0FF273210052D400 /* SimpleCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleCamera.h; path = ../../../Include/SimpleCamera.h; sourceTree = SOURCE_ROOT; };
+		F8748DDF0FF273210052D400 /* dynamicArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dynamicArray.h; path = ../../../Include/dynamicArray.h; sourceTree = SOURCE_ROOT; };
+		F8748DE00FF273210052D400 /* ConsoleLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConsoleLog.h; path = ../../../Include/ConsoleLog.h; sourceTree = SOURCE_ROOT; };
+		F8748DE10FF273210052D400 /* TimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeController.h; path = ../../../Include/TimeController.h; sourceTree = SOURCE_ROOT; };
+		F8748DE20FF273210052D400 /* MeshManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeshManager.h; path = ../../../Include/MeshManager.h; sourceTree = SOURCE_ROOT; };
+		F8748DF40FF2732E0052D400 /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Texture.h; path = ../../../Include/OGLES2/Texture.h; sourceTree = SOURCE_ROOT; };
+		F8748DF50FF2732E0052D400 /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Mesh.h; path = ../../../Include/OGLES2/Mesh.h; sourceTree = SOURCE_ROOT; };
+		F8748DF60FF2732E0052D400 /* Material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Material.h; path = ../../../Include/OGLES2/Material.h; sourceTree = SOURCE_ROOT; };
+		F8748DF70FF2732E0052D400 /* Semantics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Semantics.h; path = ../../../Include/OGLES2/Semantics.h; sourceTree = SOURCE_ROOT; };
+		F8748DF80FF2732E0052D400 /* Uniform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Uniform.h; path = ../../../Include/OGLES2/Uniform.h; sourceTree = SOURCE_ROOT; };
+		F8748DF90FF2732E0052D400 /* PVRESettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PVRESettings.h; path = ../../../Include/OGLES2/PVRESettings.h; sourceTree = SOURCE_ROOT; };
+		F8748DFA0FF2732E0052D400 /* Light.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Light.h; path = ../../../Include/OGLES2/Light.h; sourceTree = SOURCE_ROOT; };
+		F8748DFB0FF2732E0052D400 /* UniformHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UniformHandler.h; path = ../../../Include/OGLES2/UniformHandler.h; sourceTree = SOURCE_ROOT; };
+		F8748DFC0FF2732E0052D400 /* ContextManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContextManager.h; path = ../../../Include/OGLES2/ContextManager.h; sourceTree = SOURCE_ROOT; };
+		F8748DFD0FF2732E0052D400 /* ambientdiffusedirection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ambientdiffusedirection.h; path = ../../../Include/OGLES2/ambientdiffusedirection.h; sourceTree = SOURCE_ROOT; };
+		F8748DFE0FF2732E0052D400 /* ambientdiffuse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ambientdiffuse.h; path = ../../../Include/OGLES2/ambientdiffuse.h; sourceTree = SOURCE_ROOT; };
+		F8748DFF0FF2732E0052D400 /* flatMaterial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = flatMaterial.h; path = ../../../Include/OGLES2/flatMaterial.h; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F8748A380FF221480052D400 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F8748A3A0FF221480052D400 /* libOGLES2Engine.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				F8748D8F0FF272C50052D400 /* PVREngine */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BA240AC10FEFE77A00DE852D /* OpenGLES.framework */,
+				1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */,
+				2D500B990D5A79CF00DBA0E3 /* QuartzCore.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F8748D8F0FF272C50052D400 /* PVREngine */ = {
+			isa = PBXGroup;
+			children = (
+				F8748DD20FF273130052D400 /* Include */,
+				F8748DBC0FF272EF0052D400 /* Source */,
+			);
+			name = PVREngine;
+			sourceTree = "<group>";
+		};
+		F8748DBC0FF272EF0052D400 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				F8748DBD0FF272FB0052D400 /* OGLES2 */,
+				F8748D940FF272EA0052D400 /* MeshBase.cpp */,
+				F8748D950FF272EA0052D400 /* ConsoleLog.cpp */,
+				F8748D960FF272EA0052D400 /* LightBase.cpp */,
+				F8748D970FF272EA0052D400 /* PVREngine.cpp */,
+				F8748D980FF272EA0052D400 /* LightManager.cpp */,
+				F8748D990FF272EA0052D400 /* UniformBase.cpp */,
+				F8748D9A0FF272EA0052D400 /* Option.cpp */,
+				F8748D9B0FF272EA0052D400 /* MeshManager.cpp */,
+				F8748D9C0FF272EA0052D400 /* PVRESettingsBase.cpp */,
+				F8748D9D0FF272EA0052D400 /* Plane.cpp */,
+				F8748D9E0FF272EA0052D400 /* TextureManager.cpp */,
+				F8748D9F0FF272EA0052D400 /* OptionsMenu.cpp */,
+				F8748DA00FF272EA0052D400 /* TextureBase.cpp */,
+				F8748DA10FF272EA0052D400 /* SimpleCamera.cpp */,
+				F8748DA20FF272EA0052D400 /* UniformHandlerBase.cpp */,
+				F8748DA30FF272EA0052D400 /* BoundingBox.cpp */,
+				F8748DA40FF272EA0052D400 /* MaterialManager.cpp */,
+				F8748DA50FF272EA0052D400 /* MaterialBase.cpp */,
+				F8748DA60FF272EA0052D400 /* BoundingHex.cpp */,
+				F8748DA70FF272EA0052D400 /* TimeController.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		F8748DBD0FF272FB0052D400 /* OGLES2 */ = {
+			isa = PBXGroup;
+			children = (
+				F8748DC20FF273090052D400 /* PVRESettings.cpp */,
+				F8748DC30FF273090052D400 /* Texture.cpp */,
+				F8748DC40FF273090052D400 /* UniformHandler.cpp */,
+				F8748DC50FF273090052D400 /* Light.cpp */,
+				F8748DC60FF273090052D400 /* Material.cpp */,
+				F8748DC70FF273090052D400 /* Uniform.cpp */,
+				F8748DC80FF273090052D400 /* Mesh.cpp */,
+				F8748DC90FF273090052D400 /* ContextManager.cpp */,
+			);
+			name = OGLES2;
+			sourceTree = "<group>";
+		};
+		F8748DD20FF273130052D400 /* Include */ = {
+			isa = PBXGroup;
+			children = (
+				F8748DF20FF273240052D400 /* OGLES2 */,
+				F8748DD40FF273210052D400 /* LightManager.h */,
+				F8748DD50FF273210052D400 /* MaterialManager.h */,
+				F8748DD60FF273210052D400 /* BoundingHex.h */,
+				F8748DD70FF273210052D400 /* PVREngine.h */,
+				F8748DD80FF273210052D400 /* OptionsMenu.h */,
+				F8748DD90FF273210052D400 /* Option.h */,
+				F8748DDA0FF273210052D400 /* Plane.h */,
+				F8748DDB0FF273210052D400 /* TextureManager.h */,
+				F8748DDC0FF273210052D400 /* Globals.h */,
+				F8748DDD0FF273210052D400 /* BoundingBox.h */,
+				F8748DDE0FF273210052D400 /* SimpleCamera.h */,
+				F8748DDF0FF273210052D400 /* dynamicArray.h */,
+				F8748DE00FF273210052D400 /* ConsoleLog.h */,
+				F8748DE10FF273210052D400 /* TimeController.h */,
+				F8748DE20FF273210052D400 /* MeshManager.h */,
+			);
+			name = Include;
+			sourceTree = "<group>";
+		};
+		F8748DF20FF273240052D400 /* OGLES2 */ = {
+			isa = PBXGroup;
+			children = (
+				F8748DF40FF2732E0052D400 /* Texture.h */,
+				F8748DF50FF2732E0052D400 /* Mesh.h */,
+				F8748DF60FF2732E0052D400 /* Material.h */,
+				F8748DF70FF2732E0052D400 /* Semantics.h */,
+				F8748DF80FF2732E0052D400 /* Uniform.h */,
+				F8748DF90FF2732E0052D400 /* PVRESettings.h */,
+				F8748DFA0FF2732E0052D400 /* Light.h */,
+				F8748DFB0FF2732E0052D400 /* UniformHandler.h */,
+				F8748DFC0FF2732E0052D400 /* ContextManager.h */,
+				F8748DFD0FF2732E0052D400 /* ambientdiffusedirection.h */,
+				F8748DFE0FF2732E0052D400 /* ambientdiffuse.h */,
+				F8748DFF0FF2732E0052D400 /* flatMaterial.h */,
+			);
+			name = OGLES2;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		F8748A360FF221480052D400 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8748DE30FF273210052D400 /* LightManager.h in Headers */,
+				F8748DE40FF273210052D400 /* MaterialManager.h in Headers */,
+				F8748DE50FF273210052D400 /* BoundingHex.h in Headers */,
+				F8748DE60FF273210052D400 /* PVREngine.h in Headers */,
+				F8748DE70FF273210052D400 /* OptionsMenu.h in Headers */,
+				F8748DE80FF273210052D400 /* Option.h in Headers */,
+				F8748DE90FF273210052D400 /* Plane.h in Headers */,
+				F8748DEA0FF273210052D400 /* TextureManager.h in Headers */,
+				F8748DEB0FF273210052D400 /* Globals.h in Headers */,
+				F8748DEC0FF273210052D400 /* BoundingBox.h in Headers */,
+				F8748DED0FF273210052D400 /* SimpleCamera.h in Headers */,
+				F8748DEE0FF273210052D400 /* dynamicArray.h in Headers */,
+				F8748DEF0FF273210052D400 /* ConsoleLog.h in Headers */,
+				F8748DF00FF273210052D400 /* TimeController.h in Headers */,
+				F8748DF10FF273210052D400 /* MeshManager.h in Headers */,
+				F8748E000FF2732E0052D400 /* Texture.h in Headers */,
+				F8748E010FF2732E0052D400 /* Mesh.h in Headers */,
+				F8748E020FF2732E0052D400 /* Material.h in Headers */,
+				F8748E030FF2732E0052D400 /* Semantics.h in Headers */,
+				F8748E040FF2732E0052D400 /* Uniform.h in Headers */,
+				F8748E050FF2732E0052D400 /* PVRESettings.h in Headers */,
+				F8748E060FF2732E0052D400 /* Light.h in Headers */,
+				F8748E070FF2732E0052D400 /* UniformHandler.h in Headers */,
+				F8748E080FF2732E0052D400 /* ContextManager.h in Headers */,
+				F8748E090FF2732E0052D400 /* ambientdiffusedirection.h in Headers */,
+				F8748E0A0FF2732E0052D400 /* ambientdiffuse.h in Headers */,
+				F8748E0B0FF2732E0052D400 /* flatMaterial.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		F8748A390FF221480052D400 /* OGLES2Engine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F8748A3E0FF2214C0052D400 /* Build configuration list for PBXNativeTarget "OGLES2Engine" */;
+			buildPhases = (
+				F8748A360FF221480052D400 /* Headers */,
+				F8748A370FF221480052D400 /* Sources */,
+				F8748A380FF221480052D400 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OGLES2Engine;
+			productName = OGLES2Tools;
+			productReference = F8748A3A0FF221480052D400 /* libOGLES2Engine.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "OGLES2PVREngine" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F8748A390FF221480052D400 /* OGLES2Engine */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F8748A370FF221480052D400 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F8748DA80FF272EA0052D400 /* MeshBase.cpp in Sources */,
+				F8748DA90FF272EA0052D400 /* ConsoleLog.cpp in Sources */,
+				F8748DAA0FF272EA0052D400 /* LightBase.cpp in Sources */,
+				F8748DAB0FF272EA0052D400 /* PVREngine.cpp in Sources */,
+				F8748DAC0FF272EA0052D400 /* LightManager.cpp in Sources */,
+				F8748DAD0FF272EA0052D400 /* UniformBase.cpp in Sources */,
+				F8748DAE0FF272EA0052D400 /* Option.cpp in Sources */,
+				F8748DAF0FF272EA0052D400 /* MeshManager.cpp in Sources */,
+				F8748DB00FF272EA0052D400 /* PVRESettingsBase.cpp in Sources */,
+				F8748DB10FF272EA0052D400 /* Plane.cpp in Sources */,
+				F8748DB20FF272EA0052D400 /* TextureManager.cpp in Sources */,
+				F8748DB30FF272EA0052D400 /* OptionsMenu.cpp in Sources */,
+				F8748DB40FF272EA0052D400 /* TextureBase.cpp in Sources */,
+				F8748DB50FF272EA0052D400 /* SimpleCamera.cpp in Sources */,
+				F8748DB60FF272EA0052D400 /* UniformHandlerBase.cpp in Sources */,
+				F8748DB70FF272EA0052D400 /* BoundingBox.cpp in Sources */,
+				F8748DB80FF272EA0052D400 /* MaterialManager.cpp in Sources */,
+				F8748DB90FF272EA0052D400 /* MaterialBase.cpp in Sources */,
+				F8748DBA0FF272EA0052D400 /* BoundingHex.cpp in Sources */,
+				F8748DBB0FF272EA0052D400 /* TimeController.cpp in Sources */,
+				F8748DCA0FF273090052D400 /* PVRESettings.cpp in Sources */,
+				F8748DCB0FF273090052D400 /* Texture.cpp in Sources */,
+				F8748DCC0FF273090052D400 /* UniformHandler.cpp in Sources */,
+				F8748DCD0FF273090052D400 /* Light.cpp in Sources */,
+				F8748DCE0FF273090052D400 /* Material.cpp in Sources */,
+				F8748DCF0FF273090052D400 /* Uniform.cpp in Sources */,
+				F8748DD00FF273090052D400 /* Mesh.cpp in Sources */,
+				F8748DD10FF273090052D400 /* ContextManager.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Gordon MacLachlan";
+				DEPLOYMENT_POSTPROCESSING = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
+					BUILD_OGLES2,
+					_IPHONE_,
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				PRODUCT_NAME = Iridescence;
+				SDKROOT = iphoneos3.0;
+				USER_HEADER_SEARCH_PATHS = "../../../../../Tools/OGLES2 ../../../../../Tools";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
+					BUILD_OGLES2,
+					_IPHONE_,
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.0;
+				USER_HEADER_SEARCH_PATHS = "../../../../../Tools/OGLES2 ../../../../../Tools";
+			};
+			name = Release;
+		};
+		F8748A3B0FF221480052D400 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
+					TARGET_OS_IPHONE,
+					BUILD_OGLES2,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = OGLES2Engine;
+				USER_HEADER_SEARCH_PATHS = "../../../../../Shell ../../../../../Tools/OGLES2 ../../../../../Tools";
+			};
+			name = Debug;
+		};
+		F8748A3C0FF221480052D400 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
+					TARGET_OS_IPHONE,
+					BUILD_OGLES2,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = OGLES2Engine;
+				USER_HEADER_SEARCH_PATHS = "../../../../../Shell ../../../../../Tools/OGLES2 ../../../../../Tools";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "OGLES2PVREngine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F8748A3E0FF2214C0052D400 /* Build configuration list for PBXNativeTarget "OGLES2Engine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8748A3B0FF221480052D400 /* Debug */,
+				F8748A3C0FF221480052D400 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

@@ -1,0 +1,12 @@
+
+Demo title: 		Bumpmap
+
+Demonstrates: 		How to use a normal map to implement bump mapping
+
+Short Description:	How to use a normal map to implement bump mapping
+
+Full Description:	
+Shows how to use a normal map to implement bump mapping.
+
+polygon count:		4480
+Vertex Count: 		2238

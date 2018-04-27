@@ -1,0 +1,7 @@
+base referer
+rect $classPVRShell.html 136,279 216,305
+rect $classPVRShellInitAPI.html 32,97 152,124
+rect $classPVRShellInitOS.html 176,97 293,124
+rect $structPVRShellData.html 7,188 113,215
+rect $classPVRShellCommandLine.html 317,97 483,124
+rect $structSCmdLineOpt.html 347,7 453,33

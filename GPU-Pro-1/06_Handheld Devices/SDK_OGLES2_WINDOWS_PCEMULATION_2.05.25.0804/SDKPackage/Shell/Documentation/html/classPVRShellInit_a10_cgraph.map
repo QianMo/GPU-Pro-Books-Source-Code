@@ -1,0 +1,5 @@
+base referer
+rect $classPVRShell.html#a21 256,7 451,34
+rect $classPVRShell.html#a20 242,58 466,84
+rect $classPVRShellInit.html#a5 534,7 736,34
+rect $classPVRShellInit.html#a28 515,58 755,84

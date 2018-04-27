@@ -1,0 +1,12 @@
+
+Demo title: 		Refraction
+
+Demonstrates: 		How to create glass like materials and Phong's specular reflection.
+
+Short Description:	How to create glass like materials and Phong's specular reflection.
+
+Full Description:	
+How to create glass like materials and Phong's specular reflection. 
+
+polygon count:		4480
+Vertex Count: 		2238

@@ -1,0 +1,4 @@
+base referer
+rect $classPVRShellInitAPI.html 7,7 127,34
+rect $classPVRShellInit.html 175,32 273,59
+rect $classPVRShellInitOS.html 8,58 125,84

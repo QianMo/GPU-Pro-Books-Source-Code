@@ -1,0 +1,12 @@
+
+Demo title: 		Fresnel Reflections
+
+Demonstrates: 		How to implement fresnel reflections
+
+Short Description:	How to implement fresnel reflections
+
+Full Description:	
+Shows how to implement fresnel reflections. It looks similar to a car body surface with wax.
+
+polygon count:		4480
+Vertex Count: 		2238

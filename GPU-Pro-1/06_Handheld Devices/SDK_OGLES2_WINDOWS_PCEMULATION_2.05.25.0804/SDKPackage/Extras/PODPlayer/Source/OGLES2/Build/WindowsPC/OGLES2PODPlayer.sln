@@ -1,0 +1,58 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OGLES2PODPlayer", "OGLES2PODPlayer.vcproj", "{DA225857-C79C-4026-8D2F-57A2D3FF079C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C} = {CEFD3143-269A-4405-B2B5-C0350DB3B93C}
+		{DA225857-C79C-4026-8D2F-57A2D3FF079C} = {DA225857-C79C-4026-8D2F-57A2D3FF079C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OGLES2Tools", "..\..\..\..\..\..\Tools\OGLES2\Build\WindowsPC\OGLES2Tools.vcproj", "{CEFD3143-269A-4405-B2B5-C0350DB3B93C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OGLES2PVREngine", "..\..\..\..\..\PVREngine\OGLES2\Build\WindowsPC\OGLES2PVREngine.vcproj", "{9D8A8C4E-8E13-442A-AC36-A671BA6E7B83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Common Debug|Win32 = Common Debug|Win32
+		Common Release|Win32 = Common Release|Win32
+		CommonLite Debug|Win32 = CommonLite Debug|Win32
+		CommonLite Release|Win32 = CommonLite Release|Win32
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA225857-C79C-4026-8D2F-57A2D3FF079C}.Common Debug|Win32.ActiveCfg = Debug|Win32
+		{DA225857-C79C-4026-8D2F-57A2D3FF079C}.Common Debug|Win32.Build.0 = Debug|Win32
+		{DA225857-C79C-4026-8D2F-57A2D3FF079C}.Common Release|Win32.ActiveCfg = Release|Win32
+		{DA225857-C79C-4026-8D2F-57A2D3FF079C}.Common Release|Win32.Build.0 = Release|Win32
+		{DA225857-C79C-4026-8D2F-57A2D3FF079C}.CommonLite Debug|Win32.ActiveCfg = Debug|Win32
+		{DA225857-C79C-4026-8D2F-57A2D3FF079C}.CommonLite Debug|Win32.Build.0 = Debug|Win32
+		{DA225857-C79C-4026-8D2F-57A2D3FF079C}.CommonLite Release|Win32.ActiveCfg = Release|Win32
+		{DA225857-C79C-4026-8D2F-57A2D3FF079C}.CommonLite Release|Win32.Build.0 = Release|Win32
+		{DA225857-C79C-4026-8D2F-57A2D3FF079C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DA225857-C79C-4026-8D2F-57A2D3FF079C}.Debug|Win32.Build.0 = Debug|Win32
+		{DA225857-C79C-4026-8D2F-57A2D3FF079C}.Release|Win32.ActiveCfg = Release|Win32
+		{DA225857-C79C-4026-8D2F-57A2D3FF079C}.Release|Win32.Build.0 = Release|Win32
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C}.Common Debug|Win32.ActiveCfg = Debug|Win32
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C}.Common Debug|Win32.Build.0 = Debug|Win32
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C}.Common Release|Win32.ActiveCfg = Release|Win32
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C}.Common Release|Win32.Build.0 = Release|Win32
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C}.CommonLite Debug|Win32.ActiveCfg = Debug|Win32
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C}.CommonLite Debug|Win32.Build.0 = Debug|Win32
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C}.CommonLite Release|Win32.ActiveCfg = Release|Win32
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C}.CommonLite Release|Win32.Build.0 = Release|Win32
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C}.Debug|Win32.Build.0 = Debug|Win32
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C}.Release|Win32.ActiveCfg = Release|Win32
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C}.Release|Win32.Build.0 = Release|Win32
+		{9D8A8C4E-8E13-442A-AC36-A671BA6E7B83}.Common Debug|Win32.ActiveCfg = Debug|Win32
+		{9D8A8C4E-8E13-442A-AC36-A671BA6E7B83}.Common Debug|Win32.Build.0 = Debug|Win32
+		{9D8A8C4E-8E13-442A-AC36-A671BA6E7B83}.Common Release|Win32.ActiveCfg = Release|Win32
+		{9D8A8C4E-8E13-442A-AC36-A671BA6E7B83}.CommonLite Debug|Win32.ActiveCfg = Debug|Win32
+		{9D8A8C4E-8E13-442A-AC36-A671BA6E7B83}.CommonLite Release|Win32.ActiveCfg = Release|Win32
+		{9D8A8C4E-8E13-442A-AC36-A671BA6E7B83}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9D8A8C4E-8E13-442A-AC36-A671BA6E7B83}.Release|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

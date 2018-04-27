@@ -1,0 +1,12 @@
+
+Demo title: 		Skinning
+
+
+Demonstrates: 		How to implement Skinning using POD files
+Short Description:	How to implement Skinning using POD files
+
+Full Description:	
+How to implement Skinning using POD files
+
+polygon count:		2360
+Vertex Count: 		1301

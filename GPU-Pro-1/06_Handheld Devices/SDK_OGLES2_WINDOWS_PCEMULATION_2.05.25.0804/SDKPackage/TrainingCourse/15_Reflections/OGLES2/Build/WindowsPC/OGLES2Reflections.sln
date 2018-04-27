@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OGLES2Reflections", "OGLES2Reflections.vcproj", "{DA225857-C79C-4026-8D2F-57A2D3FF079C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C} = {CEFD3143-269A-4405-B2B5-C0350DB3B93C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OGLES2Tools", "..\..\..\..\..\Tools\OGLES2\Build\WindowsPC\OGLES2Tools.vcproj", "{CEFD3143-269A-4405-B2B5-C0350DB3B93C}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{DA225857-C79C-4026-8D2F-57A2D3FF079C}.Debug.ActiveCfg = Debug|Win32
+		{DA225857-C79C-4026-8D2F-57A2D3FF079C}.Debug.Build.0 = Debug|Win32
+		{DA225857-C79C-4026-8D2F-57A2D3FF079C}.Release.ActiveCfg = Release|Win32
+		{DA225857-C79C-4026-8D2F-57A2D3FF079C}.Release.Build.0 = Release|Win32
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C}.Debug.ActiveCfg = Debug|Win32
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C}.Debug.Build.0 = Debug|Win32
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C}.Release.ActiveCfg = Release|Win32
+		{CEFD3143-269A-4405-B2B5-C0350DB3B93C}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

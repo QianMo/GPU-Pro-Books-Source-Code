@@ -1,0 +1,10 @@
+
+Demo title: 		DisplacementMap
+
+Demonstrates: 		Displacement mapping
+
+Short Description:	Displacement mapping
+
+Full Description:	
+Shows how to displace geometry in the vertex shader using a
+texture.

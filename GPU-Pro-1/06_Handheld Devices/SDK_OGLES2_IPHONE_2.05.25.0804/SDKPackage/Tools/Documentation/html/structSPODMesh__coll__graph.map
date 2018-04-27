@@ -1,0 +1,4 @@
+base referer
+rect $classCPVRTBoneBatches.html 7,7 153,34
+rect $classCPODData.html 177,7 265,34
+rect $structEPODPrimitiveType.html 289,7 431,34

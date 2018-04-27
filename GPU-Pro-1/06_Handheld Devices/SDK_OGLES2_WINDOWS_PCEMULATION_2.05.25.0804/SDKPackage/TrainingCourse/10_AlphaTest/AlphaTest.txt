@@ -1,0 +1,13 @@
+
+Demo title: 		AlphaTest
+
+Demonstrates: 		How to perform the AlphaTest
+
+Short Description:	How to perform the AlphaTest
+
+Full Description:	
+How to perform the AlphaTest
+
+VGP: 			Not Required
+Polygon Count: 		16
+Vertex Count: 		32

@@ -1,0 +1,15 @@
+Demo title: 		Skybox2
+
+Demonstrates: 		This demo is an OGLES2 version of the original OGLES Skybox demo. This time it shows various shaders
+			applied to the balloon.
+
+Short Description:	Shows a balloon in the air inside a skybox.
+
+Full Description:	
+This demo is an OGLES2 version of the original OGLES Skybox demo. This time it shows various shaders applied to the balloon.
+
+The skybox is compressed using PVRTC4 using our PVRTextureTool skybox compression feature.
+ 
+VGP: 			Not Required
+Polygon Count: 		1947
+Vertex Count: 		1228

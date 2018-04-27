@@ -1,0 +1,13 @@
+
+Demo title: 		IntroducingTouchPOD
+
+Demonstrates: 		How to use our POD 3D format and touchscreen
+
+Short Description:	How to use our POD 3D format and touchscreen
+
+Full Description:	
+Shows how to load POD files, play the animation with basic lighting, and use touchscreen to move objects on screen
+
+VGP: 			Not Required
+Polygon Count: 		1190
+Vertex Count: 		605

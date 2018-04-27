@@ -1,0 +1,26 @@
+Demo title: 		RenderToTexture
+
+Demonstrates: 		How to use render to a texture.
+
+Short Description:	How to use render to a texture.
+
+Full Description:
+	
+OGLES
+
+If usings OGLES 1.1 or above then the trainingcourse shows how to use 2 P-Buffers, 1 texture, several quads and an untextured polygon to create a nice effect. Alternatively if you are using OGLES 1.0 then it shows how to copy the backbuffer to a texture and apply that in the scene.
+
+OGLES2
+
+This trainingcouse shows how to use a frame buffer object to render to a texture. The trainingcourse switches the rendering between two textures and uses the previous frame's texture in the current frame to create an effect.
+
+D3DM
+
+This trainingcourse shows how to use render targets to render to a texture. The trainingcourse switches the rendering between two textures and uses the previous frame's texture in the current frame to create an effect.
+
+OGL
+
+This trainingcourse shows how to use the backbuffer to render to a texture.
+
+polygon count:		?
+Vertex Count: 		?

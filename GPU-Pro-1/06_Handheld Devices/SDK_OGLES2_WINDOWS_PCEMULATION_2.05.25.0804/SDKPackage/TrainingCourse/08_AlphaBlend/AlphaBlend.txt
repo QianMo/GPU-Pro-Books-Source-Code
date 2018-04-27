@@ -1,0 +1,13 @@
+
+Demo title: 		AlphaBlend
+
+Demonstrates: 		Blending modes
+
+Short Description:	Blending modes
+
+Full Description:	
+Shows 4 different types of blending modes.
+
+VGP: 			Not Required
+Polygon Count: 		244
+Vertex Count: 		488

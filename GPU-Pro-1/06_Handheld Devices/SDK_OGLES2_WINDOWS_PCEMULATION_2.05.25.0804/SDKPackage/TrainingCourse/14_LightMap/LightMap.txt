@@ -1,0 +1,12 @@
+
+Demo title: 		LightMap
+
+Demonstrates: 		How to use LightMaps
+
+Short Description:	How to use LightMaps
+
+Full Description:	
+Shows how to use LigthMaps.
+
+polygon count:		4480
+Vertex Count: 		2238

@@ -1,0 +1,12 @@
+
+Demo title: 		Fog
+
+Demonstrates: 		How to create a fog effect using shaders.
+
+Short Description:	How to create a fog effect using shaders.
+
+Full Description:	
+This training course demonstrates how to create a fog effect using shaders.
+
+polygon count:		4480
+Vertex Count: 		2238

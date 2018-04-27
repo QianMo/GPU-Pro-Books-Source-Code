@@ -1,0 +1,13 @@
+
+Demo title: 		IntroducingPVRTools
+
+Demonstrates: 		How to use our PVRTools
+
+Short Description:	How to use our PVRTools
+
+Full Description:	
+Shows how to use the tools to load textures and display text.
+
+VGP: 			Not Required
+Polygon Count: 		1
+Vertex Count: 		3

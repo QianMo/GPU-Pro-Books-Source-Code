@@ -1,0 +1,10 @@
+
+Demo title: 		Iridescence
+Demonstrates: 		How to implement an iridescence effect
+Short Description:	How to implement an iridescence effect
+
+Full Description:	
+Shows how to implement an iridescence effect by mimicing the behaviour of light reflecting off a surface covered by a translucent film of variable thickness.
+
+polygon count:		4480
+Vertex Count: 		2238

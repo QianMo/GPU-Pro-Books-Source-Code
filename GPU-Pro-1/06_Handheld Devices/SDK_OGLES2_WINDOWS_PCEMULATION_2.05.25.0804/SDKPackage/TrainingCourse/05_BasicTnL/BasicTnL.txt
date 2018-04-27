@@ -1,0 +1,13 @@
+
+Demo title: 		BasicTnL
+
+Demonstrates: 		Basic Transform and Lighting
+
+Short Description:	Basic Transform and Lighting
+
+Full Description:	
+Shows how to draw a lit rotating triangle.
+
+VGP: 			Not Required
+Polygon Count: 		1
+Vertex Count: 		3
