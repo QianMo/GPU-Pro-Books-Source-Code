@@ -1,0 +1,625 @@
+/*********************************************************************NVMH3****
+*******************************************************************************
+$Revision: #1 $
+
+Copyright NVIDIA Corporation 2008
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED
+*AS IS* AND NVIDIA AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS
+OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA OR ITS SUPPLIERS
+BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES
+WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS,
+BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY
+LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THIS SOFTWARE, EVEN IF
+NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+Improved Perceptually-correct soft shadows, based on a three-step process:
+
+1. Find relevant blockers
+2. Estimate penumbra sizes
+3. Perform variable-sized percentage-closer filtering
+
+% Perceptually-correct soft shadows.
+% For more information, please see the 
+% "Percentage-Closer Soft Shadows" talk from GDC 2005.
+% The talk is available at 
+% http://developer.nvidia.com/object/gdc_2005_presentations.html
+
+keywords: material shadow
+date: 080614
+
+
+
+To learn more about shading, shaders, and to bounce ideas off other shader
+    authors and users, visit the NVIDIA Shader Library Forums at:
+
+    http://developer.nvidia.com/forums/
+
+*******************************************************************************
+******************************************************************************/
+
+/*****************************************************************/
+/*** HOST APPLICATION IDENTIFIERS ********************************/
+/*** Potentially predefined by varying host environments *********/
+/*****************************************************************/
+
+// #define _XSI_		/* predefined when running in XSI */
+
+#ifndef FXCOMPOSER_VERSION	/* for very old versions */
+#define FXCOMPOSER_VERSION 180
+#endif /* FXCOMPOSER_VERSION */
+
+// #define FLIP_TEXTURE_Y	/* Different in OpenGL & DirectX */
+
+/*****************************************************************/
+/*** EFFECT-SPECIFIC CODE BEGINS HERE ****************************/
+/*****************************************************************/
+
+/******* Lighting Macros *******/
+/** To use "Object-Space" lighting definitions, change these two macros: **/
+#define LIGHT_COORDS "World"
+// #define OBJECT_SPACE_LIGHTS /* Define if LIGHT_COORDS is "Object" */
+/** Define the macro USE_SHARED_SHADOW to permit the import and use of "shared
+		surface "shadow maps created by COLLADA-FX. **/
+// #define USE_SHARED_SHADOW
+
+// for machines that support FP16 buffers....
+#define HAS_FP16
+
+#include "include/Quad.cgh"
+
+float Script : STANDARDSGLOBAL <
+    string UIWidget = "none";
+    string ScriptClass = "scene";
+    string ScriptOrder = "postprocess";
+    string ScriptOutput = "color";
+    string Script = "Technique=Main;";
+> = 0.8;
+
+// color and depth used for full-screen clears
+
+float4 gClearColor <
+    string UIWidget = "Color";
+    string UIName = "Background";
+> = {0,0,1,0};
+
+float gClearDepth <string UIWidget = "none";> = 1.0;
+
+#ifdef HAS_FP16
+#define FAR 1000.0f
+#else
+#define FAR 1.0f
+#endif
+
+float4 gShadowClearColor <
+	string UIName = "Shadow Far BG";
+    string UIWidget = "none";
+> = {FAR,FAR,FAR,0.0};
+
+texture gFloorTexture <
+    string UIName = "Surface Texture";
+    // string ResourceName = "floor.dds";
+    string ResourceName = "default_color.dds";
+>;
+
+sampler2D gFloorSampler = sampler_state
+{
+    texture = <gFloorTexture>;
+    WrapS = Repeat;
+    WrapT = Repeat;
+    MinFilter = LinearMipMapLinear;
+    MagFilter = Linear;
+};
+
+/**** UNTWEAKABLES: Hidden & Automatically-Tracked Parameters **********/
+
+// transform object vertices to world-space:
+float4x4 gWorldXf : World < string UIWidget="None"; >;
+// transform object normals, tangents, & binormals to world-space:
+float4x4 gWorldITXf : WorldInverseTranspose < string UIWidget="None"; >;
+// transform object vertices to view space and project them in perspective:
+float4x4 gWvpXf : WorldViewProjection < string UIWidget="None"; >;
+// provide tranform from "view" or "eye" coords back to world-space:
+float4x4 gViewIXf : ViewInverse < string UIWidget="None"; >;
+
+// and these transforms are used for the shadow projection:
+
+float4x4 gLampViewXf : View <
+   string UIName = "Lamp View Xform";
+   //string UIWidget="None";
+   string Object = "SpotLight0";
+>;
+
+float4x4 gLampProjXf : Projection <
+   string UIName = "Lamp Projection Xform";
+   //string UIWidget="None";
+   string Object = "SpotLight0";
+>;
+
+///////////////////////////////////////////////////////////////
+/// TWEAKABLES ////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+
+float3 gSpotLamp0Pos : POSITION <
+    string Object = "SpotLight0";
+    string UIName =  "Lamp 0 Position";
+    string Space = (LIGHT_COORDS);
+> = {-0.5f,2.0f,1.25f};
+float3 gLamp0Color : COLOR <
+    string UIName =  "Lamp 0";
+    string Object = "Spotlight0";
+    string UIWidget = "Color";
+> = {1.0f,1.0f,1.0f};
+
+// Parameters for the algorithm
+
+float gLightSize <
+   string UIWidget = "slider";
+   float UIMin = 0.010;
+   float UIMax = 0.100;
+   float UIStep = 0.001;
+   string UIName = "Light Size";
+> = 0.05f;
+
+float gShadBias <
+   string UIWidget = "slider";
+   float UIMin = 0.0;
+   float UIMax = 10.3;
+   float UIStep = 0.0001;
+   string UIName = "Shadow Bias";
+> = 0.01;
+
+float gSceneScale <
+   string UIWidget = "slider";
+   float UIMin = 0.1;
+   float UIMax = 100.0;
+   float UIStep = 0.1;
+   string UIName = "Near Plane Factor";
+> = 1.0f;
+
+// General lighting parameters
+
+// Ambient Light
+float3 gAmbiColor <
+    string UIName =  "Ambient Light";
+    string UIWidget = "Color";
+> = {0.07f,0.07f,0.07f};
+
+////////////////////////////////////////////// surface
+
+// surface color
+float3 gSurfaceColor <
+    string UIName =  "Surface";
+    string UIWidget = "Color";
+> = {1,1,1};
+
+float gKd <
+    string UIWidget = "slider";
+    float UIMin = 0.0;
+    float UIMax = 1.0;
+    float UIStep = 0.01;
+    string UIName =  "Diffuse";
+> = 0.9;
+
+////////////////////////////////////////////////////////
+/// TEXTURES ///////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+#define SHADOW_SIZE 1024
+
+//#ifdef HAS_FP16
+//#define SHADOW_FMT  "a16b16g16r16f"
+#define SHADOW_FMT  "r32f"
+//#else /* !HAS_FP16 */
+//#define SHADOW_FMT  "a8b8g8r8"
+//#endif /* !HAS_FP16 */
+
+texture gShadMap : RENDERCOLORTARGET <
+   float2 Dimensions = { SHADOW_SIZE, SHADOW_SIZE };
+   string Format = (SHADOW_FMT) ;
+   string UIWidget = "None";
+>;
+sampler2D gShadSampler = sampler_state {
+    texture = <gShadMap>;
+    WrapS = ClampToEdge;
+    WrapT = ClampToEdge;
+    MinFilter = Point;
+    MagFilter = Point;
+    MipFilter = Point;
+};
+
+texture gShadDepthTarget : RENDERDEPTHSTENCILTARGET <
+   float2 Dimensions = { SHADOW_SIZE, SHADOW_SIZE };
+   string format = "D24S8";
+   string UIWidget = "None";
+>;
+
+/////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////
+/// SHADER CODE BEGINS /////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+
+/* data from application vertex buffer */
+struct ShadowAppData {
+   float3 Position     : POSITION;
+   float4 UV           : TEXCOORD0;
+   float4 Normal       : NORMAL;
+};
+
+// Connector from vertex to pixel shader
+struct ShadowVertexOutput {
+   float4 HPosition    : POSITION;
+   float2 UV           : TEXCOORD0;
+   float3 LightVec     : TEXCOORD1;
+   float3 WNormal      : TEXCOORD2;
+   float3 WView        : TEXCOORD3;
+   float4 LP           : TEXCOORD4;    // current position in light-projection space
+};
+
+// Connector from vertex to pixel shader
+struct JustShadowVertexOutput {
+   float4 HPosition    : POSITION;
+   float4 LP           : TEXCOORD0;    // current position in light-projection space
+};
+
+////////////////////////////////////////////////////////////////////////////////
+/// Vertex Shaders /////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+JustShadowVertexOutput shadVS(ShadowAppData IN,
+			       uniform float4x4 WorldITXf, // our four standard "untweakable" xforms
+	uniform float4x4 WorldXf,
+	uniform float4x4 ViewIXf,
+	uniform float4x4 WvpXf,
+			       uniform float4x4 ShadowViewProjXf
+) {
+   JustShadowVertexOutput OUT = (JustShadowVertexOutput)0;
+   float4 Po = float4(IN.Position.xyz,(float)1.0);     // object coordinates
+   float4 Pw = mul(WorldXf,Po);                        // "P" in world coordinates
+   float4 Pl = mul(ShadowViewProjXf,Pw);  // "P" in light coords
+   OUT.LP = Pl;                // view coords (also lightspace projection coords in this case)
+   OUT.HPosition = Pl; // screen clipspace coords
+   return OUT;
+}
+
+// from scene camera POV
+ShadowVertexOutput mainCamVS(ShadowAppData IN,
+			       uniform float4x4 WorldITXf, // our four standard "untweakable" xforms
+	uniform float4x4 WorldXf,
+	uniform float4x4 ViewIXf,
+	uniform float4x4 WvpXf,
+			       uniform float4x4 ShadowViewProjXf,
+			       uniform float3 SpotLightPos,
+			       uniform float ShadBias
+) {
+   ShadowVertexOutput OUT = (ShadowVertexOutput)0;
+   OUT.WNormal = mul(WorldITXf,IN.Normal).xyz; // world coords
+   float4 Po = float4(IN.Position.xyz,(float)1.0);     // "P" in object coordinates
+   float4 Pw = mul(WorldXf,Po);                        // "P" in world coordinates
+   float4 Pl = mul(ShadowViewProjXf,Pw);  // "P" in light coords
+   Pl.z -= ShadBias;	// factor in bias here to save pixel shader work
+   OUT.LP = Pl;                                                       
+// ...for pixel-shader shadow calcs
+   OUT.WView = normalize(float3(ViewIXf[0].w,ViewIXf[1].w,ViewIXf[2].w) - Pw.xyz);     // world coords
+   OUT.HPosition = mul(WvpXf,Po);    // screen clipspace coords
+   OUT.UV = IN.UV.xy;                                                 
+// pass-thru
+   OUT.LightVec = SpotLightPos - Pw.xyz;               // world coords
+   return OUT;
+}
+
+/*********************************************************/
+/*********** pixel shader ********************************/
+/*********************************************************/
+
+float4 shadPS(JustShadowVertexOutput IN) : COLOR
+{
+   return float4(IN.LP.zzz,1);
+}
+
+// -------------------------------------
+// STEP 1: Search for potential blockers
+// -------------------------------------
+float findBlocker(float2 uv,
+		float4 LP,
+		uniform sampler2D ShadowMap,
+		uniform float bias,
+		float searchWidth,
+		float numSamples)
+{
+        // divide filter width by number of samples to use
+        float stepSize = 2 * searchWidth / numSamples;
+
+        // compute starting point uv coordinates for search
+        uv = uv - float2(searchWidth, searchWidth);
+
+        // reset sum to zero
+        float blockerSum = 0;
+        float receiver = LP.z;
+        float blockerCount = 0;
+        float foundBlocker = 0;
+
+        // iterate through search region and add up depth values
+        for (int i=0; i<numSamples; i++) {
+               for (int j=0; j<numSamples; j++) {
+                       float shadMapDepth = tex2D(ShadowMap, uv +
+                                                 float2(i*stepSize,j*stepSize)).x;
+                       // found a blocker
+                       if (shadMapDepth < receiver) {
+                               blockerSum += shadMapDepth;
+                               blockerCount++;
+                               foundBlocker = 1;
+                       }
+               }
+        }
+
+		float result;
+		
+		if (foundBlocker == 0) {
+			// set it to a unique number so we can check
+			// later to see if there was no blocker
+			result = 999;
+		}
+		else {
+		    // return average depth of the blockers
+			result = blockerSum / blockerCount;
+		}
+		
+		return result;
+}
+
+// ------------------------------------------------
+// STEP 2: Estimate penumbra based on
+// blocker estimate, receiver depth, and light size
+// ------------------------------------------------
+float estimatePenumbra(float4 LP,
+			float Blocker,
+			uniform float LightSize)
+{
+       // receiver depth
+       float receiver = LP.z;
+       // estimate penumbra using parallel planes approximation
+       float penumbra = (receiver - Blocker) * LightSize / Blocker;
+       return penumbra;
+}
+
+// ----------------------------------------------------
+// Step 3: Percentage-closer filter implementation with
+// variable filter width and number of samples.
+// This assumes a square filter with the same number of
+// horizontal and vertical samples.
+// ----------------------------------------------------
+
+float PCF_Filter(float2 uv, float4 LP, uniform sampler2D ShadowMap, 
+                uniform float bias, float filterWidth, float numSamples)
+{
+       // compute step size for iterating through the kernel
+       float stepSize = 2 * filterWidth / numSamples;
+
+       // compute uv coordinates for upper-left corner of the kernel
+       uv = uv - float2(filterWidth,filterWidth);
+
+       float sum = 0;  // sum of successful depth tests
+
+       // now iterate through the kernel and filter
+       for (int i=0; i<numSamples; i++) {
+               for (int j=0; j<numSamples; j++) {
+                       // get depth at current texel of the shadow map
+                       float shadMapDepth = 0;
+                       
+                       shadMapDepth = tex2D(ShadowMap, uv +
+                                            float2(i*stepSize,j*stepSize)).x;
+
+                       // test if the depth in the shadow map is closer than
+                       // the eye-view point
+                       float shad = LP.z < shadMapDepth;
+
+                       // accumulate result
+                       sum += shad;
+               }
+       }
+       
+       // return average of the samples
+       return sum / (numSamples*numSamples);
+
+}
+
+float4 useShadowPS(ShadowVertexOutput IN,
+       uniform float3 SpotLightColor,
+       uniform float LightSize,
+       uniform float SceneScale,
+       uniform float ShadBias,
+       uniform float Kd,
+       uniform float3 SurfColor,
+       uniform sampler2D ShadSampler,
+       uniform sampler2D FloorSampler) : COLOR
+{
+   // Generic lighting code 
+   float3 Nn = normalize(IN.WNormal);
+   float3 Vn = normalize(IN.WView);
+   float3 Ln = normalize(IN.LightVec);
+   float ldn = dot(Ln,Nn);
+   float3 diffContrib = SurfColor*(Kd*ldn * SpotLightColor);
+   // float3 result = diffContrib;
+   
+   // The soft shadow algorithm follows:
+
+   // Compute uv coordinates for the point being shaded
+   // Saves some future recomputation.
+   float2 uv = float2(.5,.5)*(IN.LP.xy)/IN.LP.w + float2(.5,.5);
+
+   // ---------------------------------------------------------
+   // Step 1: Find blocker estimate
+   float searchSamples = 6;   // how many samples to use for blocker search
+   float zReceiver = IN.LP.z;
+   float searchWidth = SceneScale * (zReceiver - 1.0) / zReceiver;
+   float blocker = findBlocker(uv, IN.LP, ShadSampler, ShadBias,
+                              SceneScale * LightSize / IN.LP.z, searchSamples);
+   
+   //return (blocker*0.3);  // uncomment to visualize blockers
+   
+   // ---------------------------------------------------------
+   // Step 2: Estimate penumbra using parallel planes approximation
+   float penumbra;  
+   penumbra = estimatePenumbra(IN.LP, blocker, LightSize);
+
+   //return penumbra*32;  // uncomment to visualize penumbrae
+
+   // ---------------------------------------------------------
+   // Step 3: Compute percentage-closer filter
+   // based on penumbra estimate
+   float samples = 8;	// reduce this for higher performance
+
+   // Now do a penumbra-based percentage-closer filter
+   float shadowed; 
+
+   shadowed = PCF_Filter(uv, IN.LP, ShadSampler, ShadBias, penumbra, samples);
+   
+   // If no blocker was found, just return 1.0
+   // since the point isn't occluded
+   
+   if (blocker > 998) 
+   		shadowed = 1.0;
+
+   // Visualize lighting and shadows
+   
+   float3 floorColor = tex2D(FloorSampler, IN.UV*2).rgb;
+   //return floorColor;
+   //return shadowed;
+   
+   return float4((shadowed*diffContrib*floorColor),1);
+}
+
+////////////////////////////////////////////////////////////////////
+/// TECHNIQUES /////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+#if DIRECT3D_VERSION >= 0xa00
+//
+// Standard DirectX10 Material State Blocks
+//
+RasterizerState DisableCulling { CullMode = NONE; };
+DepthStencilState DepthEnabling { DepthEnable = TRUE; };
+DepthStencilState DepthDisabling {
+	DepthEnable = FALSE;
+	DepthWriteMask = ZERO;
+};
+BlendState DisableBlend { BlendEnable[0] = FALSE; };
+
+
+technique10 Main10 <
+       string Script = "Pass=MakeShadow;"
+		       "Pass=UseShadow;";
+> {
+       pass MakeShadow <
+               string Script = "RenderColorTarget0=gShadMap;"
+				"RenderDepthStencilTarget=gShadDepthTarget;"
+				"RenderPort=SpotLight0;"
+				"ClearSetColor=gShadowClearColor;"
+				"ClearSetDepth=gClearDepth;"
+				"Clear=Color;"
+				"Clear=Depth;"
+				"Draw=geometry;";
+       > {
+	    SetVertexShader( CompileShader( vs_4_0, shadVS(gWorldITXf,gWorldXf,
+				gViewIXf,gWvpXf,
+					   mul(gLampViewXf,gLampProjXf))));
+	    SetGeometryShader( NULL );
+	    SetPixelShader( CompileShader( ps_4_0, shadPS()));
+	       SetRasterizerState(DisableCulling);
+	    SetDepthStencilState(DepthEnabling, 0);
+	    SetBlendState(DisableBlend, float4( 0.0f, 0.0f, 0.0f, 0.0f ), 0xFFFFFFFF);
+       }
+       pass UseShadow <
+               string Script = "RenderColorTarget0=;"
+			       "RenderDepthStencilTarget=;"
+			       "RenderPort=;"
+			       "ClearSetColor=gClearColor;"
+			       "ClearSetDepth=gClearDepth;"
+			       "Clear=Color;"
+			       "Clear=Depth;"
+			       "Draw=geometry;";
+       > {
+	    SetVertexShader( CompileShader( vs_4_0, mainCamVS(gWorldITXf,gWorldXf,
+				gViewIXf,gWvpXf,
+					   mul(gLampViewXf,gLampProjXf),
+					   gSpotLamp0Pos,
+					   gShadBias)));
+	    SetGeometryShader( NULL );
+	    SetPixelShader( CompileShader( ps_4_0, useShadowPS(
+					       gLamp0Color,
+					       gLightSize,
+					       gSceneScale,
+					       gShadBias,
+					       gKd,
+					       gSurfaceColor,
+					       gShadSampler,
+					       gFloorSampler
+					       )));
+	       SetRasterizerState(DisableCulling);
+	    SetDepthStencilState(DepthEnabling, 0);
+	    SetBlendState(DisableBlend, float4( 0.0f, 0.0f, 0.0f, 0.0f ), 0xFFFFFFFF);
+       }
+}
+
+#endif /* DIRECT3D_VERSION >= 0xa00 */
+technique Main <
+       string Script = "Pass=MakeShadow;"
+		       "Pass=UseShadow;";
+> {
+       pass MakeShadow <
+               string Script = "RenderColorTarget0=gShadMap;"
+				"RenderDepthStencilTarget=gShadDepthTarget;"
+				"RenderPort=SpotLight0;"
+				"ClearSetColor=gShadowClearColor;"
+				"ClearSetDepth=gClearDepth;"
+				"Clear=Color;"
+				"Clear=Depth;"
+				"Draw=geometry;";
+       > {
+	   VertexProgram = compile vp40 shadVS(gWorldITXf,gWorldXf,
+				gViewIXf,gWvpXf,
+					   mul(gLampProjXf,gLampViewXf));
+	       DepthTestEnable = true;
+		DepthMask = true;
+		CullFaceEnable = false;
+		BlendEnable = false;
+		DepthFunc = LEqual;
+	   FragmentProgram = compile fp40 shadPS();
+       }
+       pass UseShadow <
+               string Script = "RenderColorTarget0=;"
+			       "RenderDepthStencilTarget=;"
+			       "RenderPort=;"
+			       "ClearSetColor=gClearColor;"
+			       "ClearSetDepth=gClearDepth;"
+			       "Clear=Color;"
+			       "Clear=Depth;"
+			       "Draw=geometry;";
+       > {
+	   VertexProgram = compile vp40 mainCamVS(gWorldITXf,gWorldXf,
+				gViewIXf,gWvpXf,
+					   mul(gLampProjXf,gLampViewXf),
+					   gSpotLamp0Pos,
+					   gShadBias);
+	       DepthTestEnable = true;
+		DepthMask = true;
+		CullFaceEnable = false;
+		BlendEnable = false;
+		DepthFunc = LEqual;
+	   FragmentProgram = compile fp40 useShadowPS(
+					       gLamp0Color,
+					       gLightSize,
+					       gSceneScale,
+					       gShadBias,
+					       gKd,
+					       gSurfaceColor,
+					       gShadSampler,
+					       gFloorSampler
+					       );
+       }
+}
+
+/***************************** eof ***/

@@ -1,0 +1,103 @@
+<project>
+  <current_configuration value="Debug" />
+  <configurations>
+    <configuration name="Debug">
+      <settings category="Project\Direct3D\HLSL Compiler">
+        <CompilerOptions value="" />
+      </settings>
+      <settings category="Project\OpenGL\CgCompiler">
+        <CompilerOptions value="" />
+      </settings>
+      <settings category="Project\Paths">
+        <Includes value="" />
+        <Models value="" />
+        <Scripts value="" />
+        <Shaders value="" />
+        <Textures value="" />
+      </settings>
+      <settings category="Project\Settings">
+        <BindLightToUnboundMaterials value="False" />
+      </settings>
+      <settings category="Project\COLLADA Common Profile">
+        <EnvironmentMap value="" />
+        <DisableCommonProfileTransparency value="False" />
+      </settings>
+      <settings category="Project\Direct3D10\HLSL Compiler">
+        <CompilerOptions value="" />
+      </settings>
+    </configuration>
+    <configuration name="Release">
+      <settings category="Project\Direct3D\HLSL Compiler">
+        <CompilerOptions value="" />
+      </settings>
+      <settings category="Project\OpenGL\CgCompiler">
+        <CompilerOptions value="" />
+      </settings>
+      <settings category="Project\Paths">
+        <Includes value="" />
+        <Models value="" />
+        <Scripts value="" />
+        <Shaders value="" />
+        <Textures value="" />
+      </settings>
+      <settings category="Project\Settings">
+        <BindLightToUnboundMaterials value="False" />
+      </settings>
+      <settings category="Project\COLLADA Common Profile">
+        <EnvironmentMap value="" />
+        <DisableCommonProfileTransparency value="False" />
+      </settings>
+      <settings category="Project\Direct3D10\HLSL Compiler">
+        <CompilerOptions value="" />
+      </settings>
+    </configuration>
+  </configurations>
+  <assetFile uri="Document5.dae" referenced="False" />
+  <assetFile uri="Document4.dae" referenced="False" />
+  <assetFile uri="Document1.dae" referenced="False" />
+  <assetFile uri="Document2.dae" referenced="False" />
+  <assetFile uri="Document3.dae" referenced="False" />
+  <activeAssetCollection uri="Document1.dae" />
+  <customConfigurations>
+    <FXComposer.Scene.Services.FXRenderPortService>
+      <defaultScene sceneUri="Document1.dae#DefaultScene" />
+      <camera type="Top" scene="Document1.dae#DefaultScene">
+        <focallength>1.779631</focallength>
+        <fov>40</fov>
+        <zoomrect>0 0 1 1</zoomrect>
+        <viewtransform>1 0 0 0 0 5.960463E-08 -0.9999998 0 0 0.9999998 5.960463E-08 0 0 1.779631 0 1 </viewtransform>
+      </camera>
+      <camera type="Front" scene="Document1.dae#DefaultScene">
+        <focallength>1.779631</focallength>
+        <fov>40</fov>
+        <zoomrect>0 0 1 1</zoomrect>
+        <viewtransform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.779631 1 </viewtransform>
+      </camera>
+      <camera type="Right" scene="Document1.dae#DefaultScene">
+        <focallength>1.779631</focallength>
+        <fov>40</fov>
+        <zoomrect>0 0 1 1</zoomrect>
+        <viewtransform>5.960463E-08 0 -0.9999998 0 0 1 0 0 0.9999998 0 5.960463E-08 0 1.779631 0 0 1 </viewtransform>
+      </camera>
+      <camera type="Perspective" scene="Document1.dae#DefaultScene">
+        <focallength>4.008735</focallength>
+        <fov>40</fov>
+        <zoomrect>0 0 1 1</zoomrect>
+        <viewtransform>-0.8984944 0.01197918 -0.4388214 0 -0.2920423 0.7300157 0.61789 0 0.3277484 0.6833252 -0.6524166 0 1.495095 2.728747 -2.238672 1 </viewtransform>
+      </camera>
+      <renderPort name="Render" />
+    </FXComposer.Scene.Services.FXRenderPortService>
+    <FXComposer.Scene.Services.FXSceneService>
+      <grid_settings sceneUri="Document1.dae#DefaultScene">
+        <show_grid value="False" />
+        <axes_color value="0, 0, 0, 1" />
+        <size value="17.32051" />
+        <major_ticks_color value="0.25, 0.25, 0.25, 1" />
+        <major_tick_every_nth value="10" />
+        <ticks_color value="0.425, 0.425, 0.425, 1" />
+        <ticks_interval_in_units value="0.3464102" />
+      </grid_settings>
+      <background_color color="0.5 0.5 0.5 0" />
+    </FXComposer.Scene.Services.FXSceneService>
+  </customConfigurations>
+</project>

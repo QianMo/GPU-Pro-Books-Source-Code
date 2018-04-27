@@ -1,0 +1,312 @@
+/*********************************************************************NVMH3****
+*******************************************************************************
+$Revision: #10 $
+
+Copyright NVIDIA Corporation 2008
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THIS SOFTWARE IS PROVIDED
+*AS IS* AND NVIDIA AND ITS SUPPLIERS DISCLAIM ALL WARRANTIES, EITHER EXPRESS
+OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS FOR A PARTICULAR PURPOSE.  IN NO EVENT SHALL NVIDIA OR ITS SUPPLIERS
+BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES
+WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF BUSINESS PROFITS,
+BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR ANY OTHER PECUNIARY
+LOSS) ARISING OUT OF THE USE OF OR INABILITY TO USE THIS SOFTWARE, EVEN IF
+NVIDIA HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+A few utility macros and functions for shadow mapping.
+See typical usage in effect files like "shadowSpot," and note
+  special-case values for AutoDesk 3DS Max!
+
+
+
+To learn more about shading, shaders, and to bounce ideas off other shader
+    authors and users, visit the NVIDIA Shader Library Forums at:
+
+    http://developer.nvidia.com/forums/
+
+*******************************************************************************
+******************************************************************************/
+
+
+
+#ifndef _H_SHADOWMAP
+#define _H_SHADOWMAP
+
+// The macro USE_SHARED_SHADOW (typically set by the calling code module)
+//   currently just changes the declarations of the widget in incoming
+//   shadow textures (so that they can be aimed at shared surfaces
+//
+// #define USE_SHARED_SHADOW
+//
+#ifdef USE_SHARED_SHADOW
+#define SHADOWWIDGET ""
+#else /* ! USE_SHARED_SHADOW */
+#define SHADOWWIDGET "None"
+#endif /* ! USE_SHARED_SHADOW */
+
+// usually set by the calling effect file if needed...
+// #define FLIP_TEXTURE_Y
+
+#include "include/Quad.cgh"
+
+float4 gShadowMapClearColor <
+	string UIWidget = "none";
+#ifdef BLACK_SHADOW_PASS
+> = {1,1,1,0.0};
+#else /* !BLACK_SHADOW_PASS */
+> = {0.0,0.0,0.0,0.0};
+#endif /* !BLACK_SHADOW_PASS */
+
+//////////////////////////////////////////////
+// CONSTANTS /////////////////////////////////
+//////////////////////////////////////////////
+
+// Some user-assignable macros -- define their values before including
+//	this file to override these defaults
+
+#ifndef SHADOW_SIZE
+#ifdef _3DSMAX_
+#define SHADOW_SIZE 1024
+#else /* _3DSMAX_ */
+#define SHADOW_SIZE 512
+#endif /* _3DSMAX_ */
+#endif /* !SHADOW_SIZE */
+
+// other formats include "D24X8_SHADOWMAP" and "D16_SHADOWMAP"
+#ifndef SHADOW_FORMAT
+#define SHADOW_FORMAT "D24S8_SHADOWMAP"
+#endif /* SHADOW_FORMAT */
+
+// other formats include "D24X8_SHADOWMAP" and "D16_SHADOWMAP"
+#ifndef SHADOW_COLOR_FORMAT
+#define SHADOW_COLOR_FORMAT "X8B8G8R8"
+#endif /* SHADOW_COLOR_FORMAT */
+
+#ifndef MAX_SHADOW_BIAS
+#ifdef _3DSMAX_
+#define MAX_SHADOW_BIAS 1500.0
+#else /* _3DSMAX_ */
+#define MAX_SHADOW_BIAS 0.01
+#endif /* _3DSMAX_ */
+#endif /* !MAX_SHADOW_BIAS */
+
+#ifndef MIN_SHADOW_BIAS
+#ifdef _3DSMAX_
+#define MIN_SHADOW_BIAS (-MAX_SHADOW_BIAS)
+#else /* _3DSMAX_ */
+#define MIN_SHADOW_BIAS 0.00005
+#endif /* _3DSMAX_ */
+#endif /* !MIN_SHADOW_BIAS */
+
+#ifndef DEFAULT_BIAS
+#ifdef _3DSMAX_
+#define DEFAULT_BIAS 1.0
+#else /* _3DSMAX_ */
+#define DEFAULT_BIAS MAX_SHADOW_BIAS
+#endif /* _3DSMAX_ */
+#endif /* !DEFAULT_BIAS */
+
+#ifndef BIAS_INCREMENT
+#ifdef _3DSMAX_
+#define BIAS_INCREMENT 1.0
+#else /* _3DSMAX_ */
+#define BIAS_INCREMENT 0.00001
+#endif /* _3DSMAX_ */
+#endif /* !BIAS_INCREMENT */
+
+#ifndef LPROJ_COORD
+#ifdef _3DSMAX_
+#define LPROJ_COORD TEXCOORD4
+#else /* _3DSMAX_ */
+#define LPROJ_COORD TEXCOORD7
+#endif /* _3DSMAX_ */
+#endif /* !LPROJ_COORD */
+
+// Define BLACK_SHADOW_PASS before including this file for a SLIGHTLY faster
+//	generation of the "throwaway" RGB buffer created when generating depth
+//	maps - ONLY is you're really throwing the buffer away though!
+// #define BLACK_SHADOW_PASS
+
+//////////////////////////////////////////////////////
+//// VM FUNCTIONS ////////////////////////////////////
+//////////////////////////////////////////////////////
+
+float4x4 make_bias_mat(float BiasVal)
+{
+    float4x4 result = float4x4(
+	    0.5f,	0.0f,	0.0f,	0.5,
+	    0.0f,	0.5f,	0.0f,	0.5,
+	    0.0f,	0.0f,	0.5f,	0.5-BiasVal,
+	    0.0f,	0.0f,	0.0f,	1.0f );
+    return result;
+}
+
+//////////////////////////////////////////////////////
+// DECLARATION MACROS ////////////////////////////////
+//////////////////////////////////////////////////////
+
+//
+// Create standard biasing tweakable slider
+//
+#define DECLARE_SHADOW_BIAS float gShadBias < string UIWidget = "slider"; \
+    float UIMin = MIN_SHADOW_BIAS; \
+    float UIMax = MAX_SHADOW_BIAS; \
+    float UIStep = BIAS_INCREMENT; \
+    string UIName = "Shadow Bias"; \
+> = DEFAULT_BIAS; 
+
+//
+// Declare standard setup for lamp transforms using "Object."
+//
+#define DECLARE_SHADOW_XFORMS(LampName,LampView,LampProj,LampViewProj) \
+    float4x4 LampView : View < string Object = (LampName); >; \
+    float4x4 LampProj : Projection < string Object = (LampName); >; \
+    float4x4 LampViewProj : ViewProjection < string Object = (LampName); >;
+
+//
+// Declare standard square_sized shadow map targets.
+// Typical use: DECLARE_SHADOW_MAPS(ColorShadMap,ColorShadSampler,ShadDepthTarget,ShadDepthSampler)
+//
+#define DECLARE_SHADOW_MAPS(CTex,CSamp,DTex,DSamp) \
+texture CTex : RENDERCOLORTARGET < \
+    float2 Dimensions = {SHADOW_SIZE,SHADOW_SIZE}; \
+    string Format = (SHADOW_COLOR_FORMAT) ; \
+    string UIWidget = (SHADOWWIDGET); >; \
+sampler2D CSamp = sampler_state { \
+    texture = <CTex>; \
+    WrapS = ClampToEdge; \
+    WrapT = ClampToEdge; \
+    MagFilter = Linear; \
+    MinFilter = Linear; \
+     }; \
+texture DTex : RENDERDEPTHSTENCILTARGET < \
+    float2 Dimensions = {SHADOW_SIZE,SHADOW_SIZE}; \
+    string Format = (SHADOW_FORMAT); \
+    string UIWidget = (SHADOWWIDGET); >; \
+sampler2D DSamp = sampler_state { \
+    texture = <DTex>; \
+    WrapS = ClampToEdge; \
+    WrapT = ClampToEdge; \
+    MagFilter = Linear; \
+    MinFilter = Linear; \
+     };
+
+/////////////////////////////////////////////////////////
+// Structures ///////////////////////////////////////////
+/////////////////////////////////////////////////////////
+
+/* data from application vertex buffer */
+struct ShadowAppData {
+    float3 Position	: POSITION;
+    float4 UV		: TEXCOORD0;	// provided for potential use
+    float4 Normal	: NORMAL;	// ignored if BLACK_SHADOW_PASS
+};
+
+// Connector from vertex (no pixel shader needed) for simple shadow 
+struct ShadowVertexOutput {
+    float4 HPosition	: POSITION;
+    float4 diff : COLOR0;
+};
+
+//
+// Connector from vertex to pixel shader for typical usage. The
+//		"LProj" member is the crucial one for shadow mapping.
+//
+struct ShadowingVertexOutput {
+    float4 HPosition	: POSITION;
+    float2 UV		: TEXCOORD0;
+    float3 LightVec	: TEXCOORD1;
+    float3 WNormal	: TEXCOORD2;
+    float3 WView	: TEXCOORD3;
+    float4 LProj	: LPROJ_COORD;	// current position in light-projection space
+};
+
+/////////////////////////////////////////////////////////
+// Vertex Shaders ///////////////////////////////////////
+/////////////////////////////////////////////////////////
+
+//
+// Use this vertex shader for GENERATING shadows. It needs to know some
+//  transforms from your scene, pass them as uniform arguments.
+// Note that a color is returned because DirectX requires you to render an
+//  RGB value in addition to the depth map. If BLACK_SHADOW_PASS is defined
+//  this will just be black, otherwise COLOR0 will encode the object-space
+//  normal as a color, which can be useful for debugging or other effects.
+//  Either way, no pixel shader is required for the shadow-generation pass.
+//
+ShadowVertexOutput shadowGenVS(ShadowAppData IN,
+		uniform float4x4 WorldXform,
+		uniform float4x4 WorldITXform,
+		uniform float4x4 ShadowVPXform)
+{
+    ShadowVertexOutput OUT = (ShadowVertexOutput)0;
+    float4 Po = float4(IN.Position.xyz,(float)1.0);
+    float4 Pw = mul(WorldXform,Po);
+    float4 Pl = mul(ShadowVPXform,Pw);  // "P" in light coords
+    OUT.HPosition = Pl; // screen clipspace coords for shadow pass
+#ifndef BLACK_SHADOW_PASS
+#ifdef SHADOW_COLORS
+    float4 N = mul(WorldITXform,IN.Normal); // world coords
+    N = normalize(N);
+    OUT.diff = 0.5 + 0.5 * N;
+#else /* ! SHADOW_COLORS -- deliver depth info instead */
+    OUT.diff = float4(Pl.zzz,1);
+#endif /* ! SHADOW_COLORS */
+#else /* BLACK_SHADOW_PASS */
+    OUT.diff = float4(0,0,0,1);
+#endif /* BLACK_SHADOW_PASS */
+    return OUT;
+}
+
+//
+// A typical vertex shader for USING shadows. It needs to know some transforms
+//  from your scene, pass them as uniform aguments.
+//
+ShadowingVertexOutput shadowUseVS(ShadowAppData IN,
+		uniform float4x4 WorldXform,
+		uniform float4x4 WorldITXform,
+		uniform float4x4 WVPXform,
+		uniform float4x4 ShadowVPXform,
+		uniform float4x4 ViewIXform,
+		uniform float Bias,
+		uniform float3 LightPosition) {
+    ShadowingVertexOutput OUT = (ShadowingVertexOutput)0;
+    OUT.WNormal = mul(WorldITXform,IN.Normal).xyz; // world coords
+    float4 Po = float4(IN.Position.xyz,(float)1.0);	// "P" in object coords
+    float4 Pw = mul(WorldXform,Po);		// "P" in world coordinates
+    float4 Pl = mul(ShadowVPXform,Pw);  // "P" in light coords
+    //OUT.LProj = Pl;			// ...for pixel-shader shadow calcs
+    float4x4 BiasXform = make_bias_mat(Bias);
+    OUT.LProj = mul(BiasXform,Pl);		// bias to make texcoord
+    //
+    float3 EyePos = float3(ViewIXform[0].w,ViewIXform[1].w,ViewIXform[2].w);
+
+    OUT.WView = normalize(EyePos - Pw.xyz);	// world coords
+    OUT.HPosition = mul(WVPXform,Po);	// screen clipspace coords
+#ifdef FLIP_TEXTURE_Y
+    OUT.UV = float2(IN.UV.x,(1.0-IN.UV.y));
+#else /* !FLIP_TEXTURE_Y */
+    OUT.UV = IN.UV.xy;
+#endif /* !FLIP_TEXTURE_Y */
+    OUT.LightVec = LightPosition - Pw.xyz;		// world coords
+    return OUT;
+}
+
+///////////////////////////////////////////////////////////
+/////////////// Pixel Shader //////////////////////////////
+///////////////////////////////////////////////////////////
+
+//
+// Use this optional pixel/fragment shader when performing variance shadow mapping.
+//   Be sure that BLACK_SHADOW_PASS and SHADOW_COLORS macros are NOT set....
+//
+float4 shadowGenPS(ShadowVertexOutput IN) : COLOR
+{
+    float d = IN.diff.r;
+    float d2 = d*d;
+    return float4(d,d2,0,1);
+}
+
+#endif /* _H_SHADOWMAP */
+
+/***************************** eof ***/

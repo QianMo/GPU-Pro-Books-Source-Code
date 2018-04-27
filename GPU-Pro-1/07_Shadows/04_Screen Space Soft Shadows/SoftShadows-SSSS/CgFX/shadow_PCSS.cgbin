@@ -1,0 +1,268 @@
+!!ARBfp1.0
+OPTION NV_fragment_program2;
+# cgc version 2.0.0016, build date Jun  5 2008
+# command line args: -profile fp40 -I h:\documents and settings\jgumbau\mis documentos\fx composer 2\shader library\hlsl\include -I h:\documents and settings\jgumbau\mis documentos\fx composer 2\shader library\cgfx\include -I h:\documents and settings\jgumbau\mis documentos\fx composer 2\shader library\hlsl -I h:\documents and settings\jgumbau\mis documentos\fx composer 2\shader library\cgfx -I h:\archivos de programa\nvidia corporation\fx composer 2.5\media\hlsl\include -I h:\archivos de programa\nvidia corporation\fx composer 2.5\media\cgfx\include -I h:\archivos de programa\nvidia corporation\fx composer 2.5\projects\softshadows-pcss\CgFX
+# source file: h:\archivos de programa\nvidia corporation\fx composer 2.5\projects\softshadows-pcss\CgFX\shadow_PCSS.cgfx
+#vendor NVIDIA Corporation
+#version 2.0.0.16
+#profile fp40
+#program useShadowPS
+#semantic useShadowPS.SpotLightColor
+#semantic useShadowPS.LightSize
+#semantic useShadowPS.SceneScale
+#semantic useShadowPS.ShadBias
+#semantic useShadowPS.Kd
+#semantic useShadowPS.SurfColor
+#semantic useShadowPS.ShadSampler
+#semantic useShadowPS.FloorSampler
+#semantic Script : STANDARDSGLOBAL
+#semantic gClearColor
+#semantic gClearDepth
+#semantic gShadowClearColor
+#semantic gFloorTexture
+#semantic gFloorSampler
+#semantic gWorldXf : World
+#semantic gWorldITXf : WorldInverseTranspose
+#semantic gWvpXf : WorldViewProjection
+#semantic gViewIXf : ViewInverse
+#semantic gLampViewXf : View
+#semantic gLampProjXf : Projection
+#semantic gSpotLamp0Pos : POSITION
+#semantic gLamp0Color : COLOR
+#semantic gLightSize
+#semantic gShadBias
+#semantic gSceneScale
+#semantic gAmbiColor
+#semantic gSurfaceColor
+#semantic gKd
+#semantic gShadMap : RENDERCOLORTARGET
+#semantic gShadSampler
+#semantic gShadDepthTarget : RENDERDEPTHSTENCILTARGET
+#var float2 IN.UV : $vin.TEXCOORD0 : TEX0 : 0 : 1
+#var float3 IN.LightVec : $vin.TEXCOORD1 : TEX1 : 0 : 1
+#var float3 IN.WNormal : $vin.TEXCOORD2 : TEX2 : 0 : 1
+#var float3 IN.WView : $vin.TEXCOORD3 : TEX3 : 0 : 0
+#var float4 IN.LP : $vin.TEXCOORD4 : TEX4 : 0 : 1
+#var float3 SpotLightColor :  : c[0] : 1 : 1
+#var float LightSize :  : c[1] : 2 : 1
+#var float SceneScale :  : c[2] : 3 : 1
+#var float ShadBias :  :  : 4 : 0
+#var float Kd :  : c[3] : 5 : 1
+#var float3 SurfColor :  : c[4] : 6 : 1
+#var sampler2D ShadSampler :  : texunit 0 : 7 : 1
+#var sampler2D FloorSampler :  : texunit 1 : 8 : 1
+#var float Script : STANDARDSGLOBAL :  : -1 : 0
+#var float4 gClearColor :  :  : -1 : 0
+#var float gClearDepth :  :  : -1 : 0
+#var float4 gShadowClearColor :  :  : -1 : 0
+#var texture gFloorTexture :  :  : -1 : 0
+#var sampler2D gFloorSampler :  :  : -1 : 0
+#var float4x4 gWorldXf : World : , 4 : -1 : 0
+#var float4x4 gWorldITXf : WorldInverseTranspose : , 4 : -1 : 0
+#var float4x4 gWvpXf : WorldViewProjection : , 4 : -1 : 0
+#var float4x4 gViewIXf : ViewInverse : , 4 : -1 : 0
+#var float4x4 gLampViewXf : View : , 4 : -1 : 0
+#var float4x4 gLampProjXf : Projection : , 4 : -1 : 0
+#var float3 gSpotLamp0Pos : POSITION :  : -1 : 0
+#var float3 gLamp0Color : COLOR :  : -1 : 0
+#var float gLightSize :  :  : -1 : 0
+#var float gShadBias :  :  : -1 : 0
+#var float gSceneScale :  :  : -1 : 0
+#var float3 gAmbiColor :  :  : -1 : 0
+#var float3 gSurfaceColor :  :  : -1 : 0
+#var float gKd :  :  : -1 : 0
+#var texture gShadMap : RENDERCOLORTARGET :  : -1 : 0
+#var sampler2D gShadSampler :  :  : -1 : 0
+#var texture gShadDepthTarget : RENDERDEPTHSTENCILTARGET :  : -1 : 0
+#var float4 useShadowPS : $vout.COLOR : COL : -1 : 1
+#const c[5] = 0.5 0.33333334 0 6
+#const c[6] = 255 0 1 5
+#const c[7] = 4 3 2 999
+#const c[8] = 0.25 0 8 7
+#const c[9] = 0.015625 998
+#default Script = 0.80000001
+#default gClearColor = 0 0 0 0
+#default gClearDepth = 1
+#default gShadowClearColor = 1000 1000 1000 0
+#default gSpotLamp0Pos = -0.5 2 1.25
+#default gLamp0Color = 1 1 1
+#default gLightSize = 0.050000001
+#default gShadBias = 0.0099999998
+#default gSceneScale = 1
+#default gAmbiColor = 0.07 0.07 0.07
+#default gSurfaceColor = 1 1 1
+#default gKd = 0.89999998
+PARAM c[10] = { program.local[0..4],
+		{ 0.5, 0.33333334, 0, 6 },
+		{ 255, 0, 1, 5 },
+		{ 4, 3, 2, 999 },
+		{ 0.25, 0, 8, 7 },
+		{ 0.015625, 998 } };
+TEMP R0;
+TEMP R1;
+TEMP R2;
+TEMP R3;
+TEMP R4;
+SHORT TEMP H0;
+TEMP RC;
+TEMP HC;
+OUTPUT oCol = result.color;
+DP3R  R0.y, fragment.texcoord[2], fragment.texcoord[2];
+RSQR  R0.y, R0.y;
+DP3R  R0.x, fragment.texcoord[1], fragment.texcoord[1];
+MULR  R1.xyz, R0.y, fragment.texcoord[2];
+RSQR  R0.x, R0.x;
+MULR  R0.xyz, R0.x, fragment.texcoord[1];
+DP3R  R0.x, R0, R1;
+MULR  R0.x, R0, c[3];
+MULR  R1.xyz, R0.x, c[0];
+RCPR  R0.x, fragment.texcoord[4].w;
+MULR  R0.zw, fragment.texcoord[4].xyxy, R0.x;
+MOVR  R0.x, c[1];
+MULR  R2.xyz, R1, c[4];
+RCPR  R0.y, fragment.texcoord[4].z;
+MULR  R0.x, R0, c[2];
+MULR  R0.x, R0, R0.y;
+MADR  R0.zw, R0, c[5].x, c[5].x;
+ADDR  R1.xy, R0.zwzw, -R0.x;
+MULR  R2.w, R0.x, c[5].y;
+MOVR  R3.x, c[5].z;
+MOVR  R3.y, c[5].z;
+MOVR  R3.z, c[5];
+MOVR  R3.w, c[5].z;
+LOOP c[6];
+SLTRC HC.x, R3.w, c[5].w;
+BRK   (EQ.x);
+MULR  R1.z, R3.w, R2.w;
+MOVR  R1.w, c[5].z;
+ADDR  R0.xy, R1, R1.zwzw;
+TEX   R0.x, R0, texture[0], 2D;
+MOVR  R1.w, R3.x;
+SLTRC HC.x, R0, fragment.texcoord[4].z;
+ADDR  R1.w(NE.x), R0.x, R3.x;
+MOVR  R4.y, R3;
+MOVR  R4.x, c[6].z;
+MOVR  R4.x(EQ), R3.z;
+ADDR  R4.y(NE.x), R3, c[6].z;
+MULR  R3.xyz, R2.w, c[7].yxzw;
+MOVR  R0.y, R2.w;
+MOVR  R0.x, R1.z;
+ADDR  R0.xy, R1, R0;
+TEX   R0.x, R0, texture[0], 2D;
+SLTRC HC.x, R0, fragment.texcoord[4].z;
+ADDR  R1.w(NE.x), R0.x, R1;
+ADDR  R4.y(NE.x), R4, c[6].z;
+MOVR  R4.x(NE), c[6].z;
+MOVR  R0.y, R3.z;
+MOVR  R0.x, R1.z;
+ADDR  R0.xy, R1, R0;
+TEX   R0.x, R0, texture[0], 2D;
+SLTRC HC.x, R0, fragment.texcoord[4].z;
+ADDR  R1.w(NE.x), R0.x, R1;
+ADDR  R4.y(NE.x), R4, c[6].z;
+MOVR  R4.x(NE), c[6].z;
+MOVR  R0.y, R3.x;
+MOVR  R0.x, R1.z;
+ADDR  R0.xy, R1, R0;
+TEX   R0.x, R0, texture[0], 2D;
+SLTRC HC.x, R0, fragment.texcoord[4].z;
+ADDR  R1.w(NE.x), R0.x, R1;
+ADDR  R4.y(NE.x), R4, c[6].z;
+MOVR  R4.x(NE), c[6].z;
+MOVR  R0.y, R3;
+MOVR  R0.x, R1.z;
+ADDR  R0.xy, R1, R0;
+TEX   R0.x, R0, texture[0], 2D;
+SLTRC HC.x, R0, fragment.texcoord[4].z;
+ADDR  R1.w(NE.x), R0.x, R1;
+ADDR  R4.y(NE.x), R4, c[6].z;
+MOVR  R4.x(NE), c[6].z;
+MULR  R0.y, R2.w, c[6].w;
+MOVR  R0.x, R1.z;
+ADDR  R0.xy, R1, R0;
+TEX   R0.x, R0, texture[0], 2D;
+SLTRC HC.x, R0, fragment.texcoord[4].z;
+ADDR  R4.y(NE.x), R4, c[6].z;
+ADDR  R1.w(NE.x), R0.x, R1;
+MOVR  R4.x(NE), c[6].z;
+MOVR  R3.x, R1.w;
+MOVR  R3.y, R4;
+MOVR  R3.z, R4.x;
+ADDR  R3.w, R3, c[6].z;
+ENDLOOP;
+MOVR  R2.w, c[7];
+RCPR  R0.x, R3.y;
+SEQRC HC.x, R3.z, c[5].z;
+MULR  R2.w(EQ.x), R3.x, R0.x;
+ADDR  R0.x, -R2.w, fragment.texcoord[4].z;
+RCPR  R0.y, R2.w;
+MULR  R0.x, R0, c[1];
+MULR  R0.x, R0, R0.y;
+MULR  R3.w, R0.x, c[8].x;
+ADDR  R0.zw, -R0.x, R0;
+MOVR  R1.w, c[5].z;
+MOVR  R4.z, c[5];
+LOOP c[6];
+SLTRC HC.x, R4.z, c[8].z;
+BRK   (EQ.x);
+MULR  R1.z, R4, R3.w;
+MULR  R3.xyz, R3.w, c[7].yzxw;
+MOVR  R0.y, R3;
+MOVR  R0.x, R1.z;
+ADDR  R4.xy, R0.zwzw, R0;
+MOVR  R0.y, c[5].z;
+MOVR  R0.x, R1.z;
+ADDR  R0.xy, R0.zwzw, R0;
+TEX   R0.x, R0, texture[0], 2D;
+SLTR  H0.x, fragment.texcoord[4].z, R0;
+ADDR  R0.x, R1.w, H0;
+MOVR  R1.y, R3.w;
+MOVR  R1.x, R1.z;
+ADDR  R1.xy, R0.zwzw, R1;
+TEX   R1.x, R1, texture[0], 2D;
+SLTR  H0.y, fragment.texcoord[4].z, R1.x;
+ADDR  R0.y, R0.x, H0;
+TEX   R0.x, R4, texture[0], 2D;
+SLTR  H0.x, fragment.texcoord[4].z, R0;
+MOVR  R1.y, R3.x;
+MOVR  R1.x, R1.z;
+ADDR  R1.xy, R0.zwzw, R1;
+TEX   R0.x, R1, texture[0], 2D;
+ADDR  R1.x, R0.y, H0;
+SLTR  H0.x, fragment.texcoord[4].z, R0;
+ADDR  R1.w, R1.x, H0.x;
+MOVR  R0.y, R3.z;
+MOVR  R0.x, R1.z;
+ADDR  R0.xy, R0.zwzw, R0;
+TEX   R0.x, R0, texture[0], 2D;
+SLTR  H0.x, fragment.texcoord[4].z, R0;
+ADDR  R0.y, R1.w, H0.x;
+MULR  R1.w, R3, c[5];
+MULR  R1.y, R3.w, c[6].w;
+MOVR  R1.x, R1.z;
+ADDR  R1.xy, R0.zwzw, R1;
+TEX   R0.x, R1, texture[0], 2D;
+SLTR  H0.x, fragment.texcoord[4].z, R0;
+ADDR  R3.x, R0.y, H0;
+ADDR  R0.xy, R0.zwzw, R1.zwzw;
+TEX   R0.x, R0, texture[0], 2D;
+SLTR  H0.y, fragment.texcoord[4].z, R0.x;
+MULR  R1.y, R3.w, c[8].w;
+MOVR  R1.x, R1.z;
+ADDR  R1.xy, R0.zwzw, R1;
+TEX   R1.x, R1, texture[0], 2D;
+SLTR  H0.x, fragment.texcoord[4].z, R1;
+ADDR  R0.x, R3, H0.y;
+ADDR  R1.w, R0.x, H0.x;
+ADDR  R4.z, R4, c[6];
+ENDLOOP;
+MOVR  R0.x, c[6].z;
+SGTRC HC.x, R2.w, c[9].y;
+MULR  R0.x(EQ), R1.w, c[9];
+MULR  R1.xyz, R0.x, R2;
+MULR  R0.xy, fragment.texcoord[0], c[7].z;
+TEX   R0.xyz, R0, texture[1], 2D;
+MULR  oCol.xyz, R1, R0;
+MOVR  oCol.w, c[6].z;
+END
+# 157 instructions, 5 R-regs, 1 H-regs

@@ -1,0 +1,297 @@
+#define MUL_SWAP(A,B) mul(B,A)
+float Script : STANDARDSGLOBAL <
+    string UIWidget = "none";
+    string ScriptClass = "object";
+    string ScriptOrder = "standard";
+    string ScriptOutput = "color";
+    string Script = "Technique=Technique?SimplePS:TexturedPS:SimpleQuadraticPS:TexturedQuadraticPS;";
+> = 0.8;
+
+/************* UN-TWEAKABLES **************/
+
+//// UN-TWEAKABLES - AUTOMATICALLY-TRACKED TRANSFORMS ////////////////
+
+float4x4 WvpXf : WorldViewProjection < string UIWidget="None"; >;
+
+float Life < string UIWidget = "None"; > = 1.0f;
+float3 Color < string UIWidget = "None"; > = float3(1,1,1);
+
+/************* TWEAKABLES **************/
+
+texture ColorTexture : DIFFUSE <
+    string ResourceName = "Particle.dds";
+    string UIName =  "Diffuse Texture";
+    string ResourceType = "2D";
+>;
+
+sampler2D ColorSampler = sampler_state {
+    Texture = <ColorTexture>;
+    MagFilter = Linear;
+    WrapS = Repeat;
+    WrapT = Repeat;
+    MinFilter = LinearMipMapLinear;
+};  
+
+/************* DATA STRUCTS **************/
+
+/* data from application vertex buffer */
+struct appdata {
+    float3 Position	: POSITION;
+    float2 UV		: TEXCOORD0;
+};
+
+/* data passed from vertex shader to pixel shader */
+struct vertexOutput {
+    float4 HPosition	: POSITION;
+    float2 UV		: TEXCOORD0;
+};
+
+/*********** vertex shader for pixel-shaded versions ******/
+
+vertexOutput vShader(appdata IN)
+{
+    vertexOutput OUT = (vertexOutput)0;
+    
+    OUT.HPosition = MUL_SWAP(float4(IN.Position.xyz,1),WvpXf);
+    OUT.UV = IN.UV;
+    
+    return OUT;
+}
+
+/********* pixel shaders ********/
+
+float4 pShader(vertexOutput IN) : COLOR 
+{
+    float4 map = tex2D(ColorSampler,IN.UV);
+    
+    return float4(map.rgb * Color.rgb, map.a * Life);
+}
+
+//////////////////////////////////////////////////////////////////////
+// TECHNIQUES ////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+technique Normal <
+	string Script = "Pass=p0;";
+> {
+	pass p0 <
+	string Script = "Draw=geometry;";
+    > {		
+        VertexProgram = compile vp30 vShader();
+        DepthTestEnable = true;
+        DepthMask = true;
+        DepthFunc = LEqual;
+        BlendEnable = true;
+        CullFaceEnable = true;
+        FrontFace = CW;
+        BlendEquation = FuncAdd;
+        FragmentProgram = compile arbfp1 pShader();
+        BlendFunc = int2(SrcAlpha, OneMinusSrcAlpha);
+    }
+}
+
+technique Screen <
+	string Script = "Pass=p0;";
+> {
+	pass p0 <
+	string Script = "Draw=geometry;";
+    > {		
+        VertexProgram = compile vp30 vShader();
+        DepthTestEnable = true;
+        DepthMask = true;
+        DepthFunc = LEqual;
+        BlendEnable = true;
+        CullFaceEnable = true;
+        FrontFace = CW;
+        BlendEquation = FuncAdd;
+        FragmentProgram = compile arbfp1 pShader();
+        BlendFunc = int2(InvDestColor, One);
+    }
+}
+
+technique Addition <
+	string Script = "Pass=p0;";
+> {
+	pass p0 <
+	string Script = "Draw=geometry;";
+    > {		
+        VertexProgram = compile vp30 vShader();
+        DepthTestEnable = true;
+        DepthMask = true;
+        DepthFunc = LEqual;
+        BlendEnable = true;
+        CullFaceEnable = true;
+        FrontFace = CW;
+        BlendEquation = FuncAdd;
+        FragmentProgram = compile arbfp1 pShader();
+        BlendFunc = int2(SrcAlpha, One);
+    }
+}
+
+technique Subtraction <
+	string Script = "Pass=p0;";
+> {
+	pass p0 <
+	string Script = "Draw=geometry;";
+    > {		
+        VertexProgram = compile vp30 vShader();
+        DepthTestEnable = true;
+        DepthMask = true;
+        DepthFunc = LEqual;
+        BlendEnable = true;
+        CullFaceEnable = true;
+        FrontFace = CW;
+        BlendEquation = ReverseSubtract;
+        FragmentProgram = compile arbfp1 pShader();
+        BlendFunc = int2(SrcAlpha, One);
+    }
+}
+
+technique CompareLight <
+	string Script = "Pass=p0;";
+> {
+	pass p0 <
+	string Script = "Draw=geometry;";
+    > {		
+        VertexProgram = compile vp30 vShader();
+        DepthTestEnable = true;
+        DepthMask = true;
+        DepthFunc = LEqual;
+        BlendEnable = true;
+        CullFaceEnable = true;
+        FrontFace = CW;
+        BlendEquation = Max;
+        FragmentProgram = compile arbfp1 pShader();
+        BlendFunc = int2(One, One);
+    }
+}
+
+technique Contrast <
+	string Script = "Pass=p0;";
+> {
+	pass p0 <
+	string Script = "Draw=geometry;";
+    > {		
+        VertexProgram = compile vp30 vShader();
+        DepthTestEnable = true;
+        DepthMask = true;
+        DepthFunc = LEqual;
+        BlendEnable = true;
+        CullFaceEnable = true;
+        FrontFace = CW;
+        BlendEquation = FuncAdd;
+        FragmentProgram = compile arbfp1 pShader();
+        BlendFunc = int2(DestColor, One);
+    }
+}
+
+technique NormalNoZ <
+	string Script = "Pass=p0;";
+> {
+	pass p0 <
+	string Script = "Draw=geometry;";
+    > {		
+        VertexProgram = compile vp30 vShader();
+        DepthTestEnable = false;
+        DepthMask = false;
+        BlendEnable = true;
+        CullFaceEnable = true;
+        FrontFace = CW;
+        BlendEquation = FuncAdd;
+        FragmentProgram = compile arbfp1 pShader();
+        BlendFunc = int2(SrcAlpha, OneMinusSrcAlpha);
+    }
+}
+
+technique ScreenNoZ <
+	string Script = "Pass=p0;";
+> {
+	pass p0 <
+	string Script = "Draw=geometry;";
+    > {		
+        VertexProgram = compile vp30 vShader();
+        DepthTestEnable = false;
+        DepthMask = false;
+        BlendEnable = true;
+        CullFaceEnable = true;
+        FrontFace = CW;
+        BlendEquation = FuncAdd;
+        FragmentProgram = compile arbfp1 pShader();
+        BlendFunc = int2(InvDestColor, One);
+    }
+}
+
+technique AdditionNoZ <
+	string Script = "Pass=p0;";
+> {
+	pass p0 <
+	string Script = "Draw=geometry;";
+    > {		
+        VertexProgram = compile vp30 vShader();
+        DepthTestEnable = false;
+        DepthMask = false;
+        BlendEnable = true;
+        CullFaceEnable = true;
+        FrontFace = CW;
+        BlendEquation = FuncAdd;
+        FragmentProgram = compile arbfp1 pShader();
+        BlendFunc = int2(SrcAlpha, One);
+    }
+}
+
+technique SubtractionNoZ <
+	string Script = "Pass=p0;";
+> {
+	pass p0 <
+	string Script = "Draw=geometry;";
+    > {		
+        VertexProgram = compile vp30 vShader();
+        DepthTestEnable = false;
+        DepthMask = false;
+        BlendEnable = true;
+        CullFaceEnable = true;
+        FrontFace = CW;
+        BlendEquation = ReverseSubtract;
+        FragmentProgram = compile arbfp1 pShader();
+        BlendFunc = int2(SrcAlpha, One);
+    }
+}
+
+technique CompareLightNoZ <
+	string Script = "Pass=p0;";
+> {
+	pass p0 <
+	string Script = "Draw=geometry;";
+    > {		
+        VertexProgram = compile vp30 vShader();
+        DepthTestEnable = false;
+        DepthMask = false;
+        BlendEnable = true;
+        CullFaceEnable = true;
+        FrontFace = CW;
+        BlendEquation = Max;
+        FragmentProgram = compile arbfp1 pShader();
+        BlendFunc = int2(One, One);
+    }
+}
+
+technique ContrastNoZ <
+	string Script = "Pass=p0;";
+> {
+	pass p0 <
+	string Script = "Draw=geometry;";
+    > {		
+        VertexProgram = compile vp30 vShader();
+        DepthTestEnable = false;
+        DepthMask = false;
+        BlendEnable = true;
+        CullFaceEnable = true;
+        FrontFace = CW;
+        BlendEquation = FuncAdd;
+        FragmentProgram = compile arbfp1 pShader();
+        BlendFunc = int2(DestColor, One);
+    }
+}
+
+
+/***************************** eof ***/
