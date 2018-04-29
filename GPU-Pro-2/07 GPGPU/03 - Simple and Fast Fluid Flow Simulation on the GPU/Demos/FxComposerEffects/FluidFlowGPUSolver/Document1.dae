@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+	<asset>
+		<contributor>
+			<author>Administrator</author>
+			<authoring_tool>NVIDIA FX Composer 2.5</authoring_tool>
+			<comments/>
+			<copyright/>
+		</contributor>
+		<contributor>
+			<author>guay</author>
+			<authoring_tool>NVIDIA FX Composer 2.5</authoring_tool>
+			<comments/>
+			<copyright/>
+		</contributor>
+		<contributor>
+			<author>Martin</author>
+			<authoring_tool>NVIDIA FX Composer 2.5</authoring_tool>
+			<comments/>
+			<copyright/>
+		</contributor>
+		<created>2010-05-27T02:52:42Z</created>
+		<keywords>FXComposer, NVIDIA</keywords>
+		<modified>2011-02-09T19:13:05Z</modified>
+		<subject/>
+		<title/>
+		<unit/>
+		<up_axis>Y_UP</up_axis>
+	</asset>
+	<library_visual_scenes>
+		<visual_scene id="DefaultScene" name="DefaultScene">
+			<node sid="__fxc_remove_node"/>
+			<evaluate_scene name="Evaluate">
+				<render camera_node="">
+					<instance_effect url="#Material"/>
+				</render>
+			</evaluate_scene>
+			<extra type="evaluatescene_enables">
+				<technique profile="NVIDIA_FXCOMPOSER">
+					<true/>
+				</technique>
+			</extra>
+		</visual_scene>
+	</library_visual_scenes>
+	<library_images>
+		<image id="InitialDensity" name="InitialDensity">
+			<init_from>initialdensity.dds</init_from>
+		</image>
+		<image id="InitialDomain" name="InitialDomain">
+			<init_from>initialdomain.dds</init_from>
+		</image>
+	</library_images>
+	<library_effects>
+		<effect id="Effect" name="Solver">
+			<profile_COMMON>
+				<technique sid="__fxc_remove_profile_COMMON">
+					<constant/>
+				</technique>
+			</profile_COMMON>
+			<extra type="import">
+				<technique profile="NVIDIA_FXCOMPOSER">
+					<import url="../../Src/3D/Shader/Solver.fx" compiler_options="" profile="fx"/>
+				</technique>
+			</extra>
+		</effect>
+	</library_effects>
+	<library_materials>
+		<material id="Material" name="Solver">
+			<instance_effect url="#Effect">
+				<technique_hint platform="PC-D3D" ref="DefaultMPasses"/>
+				<setparam ref="Script">
+					<float>1</float>
+				</setparam>
+				<setparam ref="ViewportSize">
+					<float2>449 478</float2>
+				</setparam>
+				<setparam ref="ClearColor">
+					<float4>0 0 0 1</float4>
+				</setparam>
+				<setparam ref="ClearDepth">
+					<float>1</float>
+				</setparam>
+				<setparam ref="Projection">
+					<float4x4>2.92493 0 0 0 0 2.74748 0 0 0 0 -1.25137 -15.8854 0 0 -1 0</float4x4>
+				</setparam>
+				<setparam ref="Step">
+					<float2>0.0078125 0.0078125</float2>
+				</setparam>
+				<setparam ref="FieldT">
+					<surface type="2D">
+						<init_as_target/>
+						<format>A16B16G16R16F</format>
+						<size>128 128 1</size>
+						<extra type="share">
+							<technique profile="NVIDIA_FXCOMPOSER">
+								<share name="FieldT"/>
+							</technique>
+						</extra>
+					</surface>
+				</setparam>
+				<setparam ref="InitialDensity">
+					<surface type="2D">
+						<init_from>InitialDensity</init_from>
+						<format>R8G8B8A8</format>
+						<size>128 128 1</size>
+					</surface>
+				</setparam>
+				<setparam ref="InitialDomain">
+					<surface type="2D">
+						<init_from>InitialDomain</init_from>
+						<format>R8G8B8A8</format>
+						<size>128 128 1</size>
+					</surface>
+				</setparam>
+				<setparam ref="DensityT">
+					<surface type="2D">
+						<init_as_target/>
+						<format>A32B32G32R32F</format>
+						<size>128 128 1</size>
+						<extra type="share">
+							<technique profile="NVIDIA_FXCOMPOSER">
+								<share name="SmokeDensity"/>
+							</technique>
+						</extra>
+					</surface>
+				</setparam>
+				<setparam ref="BInitializeDomain">
+					<bool>false</bool>
+				</setparam>
+				<setparam ref="Directions[0]">
+					<float2>1 0</float2>
+				</setparam>
+				<setparam ref="Directions[1]">
+					<float2>0 -1</float2>
+				</setparam>
+				<setparam ref="Directions[2]">
+					<float2>-1 0</float2>
+				</setparam>
+				<setparam ref="Directions[3]">
+					<float2>0 1</float2>
+				</setparam>
+				<setparam ref="v">
+					<float>0.05</float>
+				</setparam>
+				<setparam ref="Grav">
+					<float>0.19</float>
+				</setparam>
+				<setparam ref="dt">
+					<float>0.1</float>
+				</setparam>
+				<setparam ref="K">
+					<float>0.25</float>
+				</setparam>
+			</instance_effect>
+		</material>
+	</library_materials>
+	<scene>
+		<instance_visual_scene url="#DefaultScene"/>
+	</scene>
+</COLLADA>

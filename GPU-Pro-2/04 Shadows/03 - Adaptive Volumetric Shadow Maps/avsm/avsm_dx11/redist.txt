@@ -1,0 +1,5 @@
+DXUT\Core\*.*
+DXUT\Optional\*.*
+Media\hair\*.*
+Media\UI\*.*
+cyHairFile.h

@@ -1,0 +1,437 @@
+11:49:00: Creating resource group General
+11:49:00: Creating resource group Internal
+11:49:00: Creating resource group Autodetect
+11:49:00: SceneManagerFactory for type 'DefaultSceneManager' registered.
+11:49:01: Registering ResourceManager for type Material
+11:49:01: Registering ResourceManager for type Mesh
+11:49:01: Registering ResourceManager for type Skeleton
+11:49:01: MovableObjectFactory for type 'ParticleSystem' registered.
+11:49:01: OverlayElementFactory for type Panel registered.
+11:49:01: OverlayElementFactory for type BorderPanel registered.
+11:49:01: OverlayElementFactory for type TextArea registered.
+11:49:01: Registering ResourceManager for type Font
+11:49:01: ArchiveFactory for archive type FileSystem registered.
+11:49:01: ArchiveFactory for archive type Zip registered.
+11:49:01: FreeImage version: 3.10.0
+11:49:01: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+11:49:01: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2
+11:49:01: DDS codec registering
+11:49:01: Registering ResourceManager for type HighLevelGpuProgram
+11:49:01: Registering ResourceManager for type Compositor
+11:49:01: MovableObjectFactory for type 'Entity' registered.
+11:49:01: MovableObjectFactory for type 'Light' registered.
+11:49:01: MovableObjectFactory for type 'BillboardSet' registered.
+11:49:01: MovableObjectFactory for type 'ManualObject' registered.
+11:49:01: MovableObjectFactory for type 'BillboardChain' registered.
+11:49:01: MovableObjectFactory for type 'RibbonTrail' registered.
+11:49:01: Loading library .\RenderSystem_Direct3D9_d
+11:49:01: Installing plugin: D3D9 RenderSystem
+11:49:01: D3D9 : Direct3D9 Rendering Subsystem created.
+11:49:01: D3D9: Driver Detection Starts
+11:49:01: D3D9: Driver Detection Ends
+11:49:01: Plugin successfully installed
+11:49:01: Loading library .\Plugin_CgProgramManager_d
+11:49:01: Installing plugin: Cg Program Manager
+11:49:01: Plugin successfully installed
+11:49:01: *-*-* OGRE Initialising
+11:49:01: *-*-* Version 1.6.5 (Shoggoth)
+11:49:01: Creating resource group Bootstrap
+11:49:01: Added resource location '../GPUProMedia/OgreCore.zip' of type 'Zip' to resource group 'Bootstrap'
+11:49:01: Added resource location '../GPUProMedia' of type 'FileSystem' to resource group 'General'
+11:49:01: Added resource location '../GPUProMedia/GPUProScene' of type 'FileSystem' to resource group 'General'
+11:49:01: Added resource location '../GPUProMedia/GPUProScene/IrrMaps' of type 'FileSystem' to resource group 'General'
+11:49:01: Added resource location '../GPUProMedia/Materials' of type 'FileSystem' to resource group 'General'
+11:49:01: Added resource location '../GPUProMedia/Textures' of type 'FileSystem' to resource group 'General'
+11:49:01: D3D9 : RenderSystem Option: Allow NVPerfHUD = No
+11:49:01: D3D9 : RenderSystem Option: Anti aliasing = None
+11:49:01: D3D9 : RenderSystem Option: Floating-point mode = Fastest
+11:49:01: D3D9 : RenderSystem Option: Full Screen = No
+11:49:01: D3D9 : RenderSystem Option: Rendering Device = NVIDIA GeForce GTX 280
+11:49:01: D3D9 : RenderSystem Option: VSync = No
+11:49:01: D3D9 : RenderSystem Option: Video Mode = 1280 x 720 @ 32-bit colour
+11:49:01: D3D9 : RenderSystem Option: sRGB Gamma Conversion = Yes
+11:49:06: CPU Identifier & Features
+11:49:06: -------------------------
+11:49:06:  *   CPU ID: GenuineIntel: Intel(R) Core(TM)2 Quad  CPU   Q9450  @ 2.66GHz
+11:49:06:  *      SSE: yes
+11:49:06:  *     SSE2: yes
+11:49:06:  *     SSE3: yes
+11:49:06:  *      MMX: yes
+11:49:06:  *   MMXEXT: yes
+11:49:06:  *    3DNOW: no
+11:49:06:  * 3DNOWEXT: no
+11:49:06:  *     CMOV: yes
+11:49:06:  *      TSC: yes
+11:49:06:  *      FPU: yes
+11:49:06:  *      PRO: yes
+11:49:06:  *       HT: no
+11:49:06: -------------------------
+11:49:06: D3D9 : Subsystem Initialising
+11:49:06: D3D9RenderSystem::_createRenderWindow "OGRE Render Window", 1280x720 windowed  miscParams: FSAA=0 FSAAQuality=0 colourDepth=32 gamma=true useNVPerfHUD=false vsync=false 
+11:49:06: D3D9 : Created D3D9 Rendering Window 'OGRE Render Window' : 1280x720, 32bpp
+11:49:06: D3D9 : WARNING - disabling VSync in windowed mode can cause timing issues at lower frame rates, turn VSync on if you observe this problem.
+11:49:06: Registering ResourceManager for type Texture
+11:49:06: Registering ResourceManager for type GpuProgram
+11:49:06: D3D9: Vertex texture format supported - PF_FLOAT16_RGB
+11:49:06: D3D9: Vertex texture format supported - PF_FLOAT16_RGBA
+11:49:06: D3D9: Vertex texture format supported - PF_FLOAT32_RGB
+11:49:06: D3D9: Vertex texture format supported - PF_FLOAT32_RGBA
+11:49:06: D3D9: Vertex texture format supported - PF_FLOAT16_R
+11:49:06: D3D9: Vertex texture format supported - PF_FLOAT32_R
+11:49:06: D3D9: Vertex texture format supported - PF_FLOAT16_GR
+11:49:06: D3D9: Vertex texture format supported - PF_FLOAT32_GR
+11:49:06: RenderSystem capabilities
+11:49:06: -------------------------
+11:49:06: RenderSystem Name: Direct3D9 Rendering Subsystem
+11:49:06: GPU Vendor: nvidia
+11:49:06: Device Name: NVIDIA GeForce GTX 280
+11:49:06: Driver Version: 8.17.11.9713
+11:49:06:  * Fixed function pipeline: yes
+11:49:06:  * Hardware generation of mipmaps: yes
+11:49:06:  * Texture blending: yes
+11:49:06:  * Anisotropic texture filtering: yes
+11:49:06:  * Dot product texture operation: yes
+11:49:06:  * Cube mapping: yes
+11:49:06:  * Hardware stencil buffer: yes
+11:49:06:    - Stencil depth: 8
+11:49:06:    - Two sided stencil support: yes
+11:49:06:    - Wrap stencil values: yes
+11:49:06:  * Hardware vertex / index buffers: yes
+11:49:06:  * Vertex programs: yes
+11:49:06:  * Fragment programs: yes
+11:49:06:  * Geometry programs: no
+11:49:06:  * Supported Shader Profiles: hlsl ps_1_1 ps_1_2 ps_1_3 ps_1_4 ps_2_0 ps_2_a ps_2_b ps_2_x ps_3_0 vs_1_1 vs_2_0 vs_2_a vs_2_x vs_3_0
+11:49:06:  * Texture Compression: yes
+11:49:06:    - DXT: yes
+11:49:06:    - VTC: no
+11:49:06:  * Scissor Rectangle: yes
+11:49:06:  * Hardware Occlusion Query: yes
+11:49:06:  * User clip planes: yes
+11:49:06:  * VET_UBYTE4 vertex element type: yes
+11:49:06:  * Infinite far plane projection: yes
+11:49:06:  * Hardware render-to-texture: yes
+11:49:06:  * Floating point textures: yes
+11:49:06:  * Non-power-of-two textures: yes
+11:49:06:  * Volume textures: yes
+11:49:06:  * Multiple Render Targets: 4
+11:49:06:    - With different bit depths: yes
+11:49:06:  * Point Sprites: yes
+11:49:06:  * Extended point parameters: yes
+11:49:06:  * Max Point Size: 8192
+11:49:06:  * Vertex texture fetch: yes
+11:49:06:    - Max vertex textures: 4
+11:49:06:    - Vertex textures shared: no
+11:49:06:  * Render to Vertex Buffer : no
+11:49:06:  * DirectX per stage constants: yes
+11:49:06: ***************************************
+11:49:06: *** D3D9 : Subsystem Initialised OK ***
+11:49:06: ***************************************
+11:49:06: ResourceBackgroundQueue - threading disabled
+11:49:06: Particle Renderer Type 'billboard' registered
+11:49:06: Parsing scripts for resource group Autodetect
+11:49:06: Finished parsing scripts for resource group Autodetect
+11:49:06: Parsing scripts for resource group Bootstrap
+11:49:06: Parsing script OgreCore.material
+11:49:06: Parsing script OgreProfiler.material
+11:49:06: Parsing script Ogre.fontdef
+11:49:06: Parsing script OgreDebugPanel.overlay
+11:49:07: Texture: New_Ogre_Border_Center.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+11:49:07: Texture: New_Ogre_Border.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+11:49:07: Texture: New_Ogre_Border_Break.png: Loading 1 faces(PF_A8R8G8B8,32x32x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,32x32x1.
+11:49:07: Font BlueHighwayusing texture size 512x512
+11:49:07: Info: Freetype returned null for character 127 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 128 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 129 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 130 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 131 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 132 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 133 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 134 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 135 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 136 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 137 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 138 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 139 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 140 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 141 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 142 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 143 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 144 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 145 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 146 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 147 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 148 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 149 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 150 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 151 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 152 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 153 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 154 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 155 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 156 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 157 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 158 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 159 in font BlueHighway
+11:49:07: Info: Freetype returned null for character 160 in font BlueHighway
+11:49:07: Texture: BlueHighwayTexture: Loading 1 faces(PF_BYTE_LA,512x512x1) with 0 generated mipmaps from Image. Internal format is PF_BYTE_LA,512x512x1.
+11:49:07: Texture: ogretext.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+11:49:07: Parsing script OgreLoadingPanel.overlay
+11:49:07: Finished parsing scripts for resource group Bootstrap
+11:49:07: Parsing scripts for resource group General
+11:49:07: Parsing script StdQuad_vp.program
+11:49:07: Parsing script GPUPro.material
+11:49:07: Parsing script hdr.material
+11:49:07: Parsing script IrrNorm.material
+11:49:07: Compiler error: fewer parameters expected in IrrNorm.material(446): lod_index only supports 1 argument
+11:49:07: Compiler error: fewer parameters expected in IrrNorm.material(630): lod_index only supports 1 argument
+11:49:07: Parsing script Skybox.material
+11:49:07: Parsing script HDR.compositor
+11:49:07: Parsing script HelpOverlay.overlay
+11:49:07: Finished parsing scripts for resource group General
+11:49:07: Parsing scripts for resource group Internal
+11:49:07: Finished parsing scripts for resource group Internal
+11:49:07: Mesh: Loading GroundShape.mesh.
+11:49:07: Texture: Dirt.png: Loading 1 faces(PF_R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+11:49:07: Mesh: Loading StatueShape.mesh.
+11:49:08: Texture: Fischi.png: Loading 1 faces(PF_R8G8B8,3072x1024x1) with 5 generated mipmaps from Image. Internal format is PF_X8R8G8B8,3072x1024x1.
+11:49:08: Mesh: Loading NormalTestShape.mesh.
+11:49:08: Texture: Test.png: Loading 1 faces(PF_R8G8B8,1x1x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,1x1x1.
+11:49:08: Mesh: Loading RockWallShape.mesh.
+11:49:08: Texture: Rock.png: Loading 1 faces(PF_R8G8B8,800x800x1) with 5 generated mipmaps from Image. Internal format is PF_X8R8G8B8,800x800x1.
+11:49:08: Mesh: Loading RocksRightShape.mesh.
+11:49:08: Mesh: Loading StatueCaveShape.mesh.
+11:49:08: Mesh: Loading LavaShape.mesh.
+11:49:09: Texture: Lava.png: Loading 1 faces(PF_R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,256x256x1.
+11:49:09: Mesh: Loading RocksLeftShape.mesh.
+11:49:09: Mesh: Loading ArtefactShape.mesh.
+11:49:09: Texture: Artefact.png: Loading 1 faces(PF_R8G8B8,128x128x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+11:49:09: Mesh: Loading HutShape.mesh.
+11:49:09: Mesh: Loading DeepCaveShape.mesh.
+11:49:09: Texture: ArtefactNormal.png: Loading 1 faces(PF_R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,16x16x1.
+11:49:09: Texture: ArtefactShape_0.png: Loading 1 faces(PF_R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,16x16x1.
+11:49:09: Texture: ArtefactShape_1.png: Loading 1 faces(PF_R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,16x16x1.
+11:49:09: Texture: ArtefactShape_2.png: Loading 1 faces(PF_R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,16x16x1.
+11:49:09: Texture: ArtefactShape_3.png: Loading 1 faces(PF_R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,16x16x1.
+11:49:09: Texture: ArtefactShape_4.png: Loading 1 faces(PF_R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,16x16x1.
+11:49:09: Texture: ArtefactShape_5.png: Loading 1 faces(PF_R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,16x16x1.
+11:49:09: Texture: RockNormal.png: Loading 1 faces(PF_R8G8B8,2048x2048x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,2048x2048x1.
+11:49:10: Texture: DeepCaveShape_0.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+11:49:10: Texture: DeepCaveShape_1.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+11:49:10: Texture: DeepCaveShape_2.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+11:49:10: Texture: DeepCaveShape_3.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+11:49:10: Texture: DeepCaveShape_4.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+11:49:10: Texture: DeepCaveShape_5.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+11:49:10: Texture: DirtNormal.png: Loading 1 faces(PF_R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,512x512x1.
+11:49:10: Texture: GroundShape_0.png: Loading 1 faces(PF_A8R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x512x1.
+11:49:10: Texture: GroundShape_1.png: Loading 1 faces(PF_A8R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x512x1.
+11:49:10: Texture: GroundShape_2.png: Loading 1 faces(PF_A8R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x512x1.
+11:49:10: Texture: GroundShape_3.png: Loading 1 faces(PF_A8R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x512x1.
+11:49:10: Texture: GroundShape_4.png: Loading 1 faces(PF_A8R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x512x1.
+11:49:10: Texture: GroundShape_5.png: Loading 1 faces(PF_A8R8G8B8,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x512x1.
+11:49:10: Texture: HutShape_0.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+11:49:10: Texture: HutShape_1.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+11:49:10: Texture: HutShape_2.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+11:49:10: Texture: HutShape_3.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+11:49:10: Texture: HutShape_4.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+11:49:10: Texture: HutShape_5.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+11:49:10: Texture: LavaNormal.png: Loading 1 faces(PF_R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,16x16x1.
+11:49:10: Texture: LavaShape_0.png: Loading 1 faces(PF_R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,16x16x1.
+11:49:10: Texture: LavaShape_1.png: Loading 1 faces(PF_R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,16x16x1.
+11:49:10: Texture: LavaShape_2.png: Loading 1 faces(PF_R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,16x16x1.
+11:49:10: Texture: LavaShape_3.png: Loading 1 faces(PF_R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,16x16x1.
+11:49:10: Texture: LavaShape_4.png: Loading 1 faces(PF_R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,16x16x1.
+11:49:10: Texture: LavaShape_5.png: Loading 1 faces(PF_R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,16x16x1.
+11:49:10: Texture: TestNormal.png: Loading 1 faces(PF_R8G8B8,1280x768x1) with 5 generated mipmaps from Image. Internal format is PF_X8R8G8B8,1280x768x1.
+11:49:10: Texture: NormalTestShape_0.png: Loading 1 faces(PF_A8R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,16x16x1.
+11:49:10: Texture: NormalTestShape_1.png: Loading 1 faces(PF_A8R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,16x16x1.
+11:49:10: Texture: NormalTestShape_2.png: Loading 1 faces(PF_A8R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,16x16x1.
+11:49:10: Texture: NormalTestShape_3.png: Loading 1 faces(PF_A8R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,16x16x1.
+11:49:10: Texture: NormalTestShape_4.png: Loading 1 faces(PF_A8R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,16x16x1.
+11:49:10: Texture: NormalTestShape_5.png: Loading 1 faces(PF_A8R8G8B8,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,16x16x1.
+11:49:10: Texture: RockWallShape_0.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+11:49:10: Texture: RockWallShape_1.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+11:49:10: Texture: RockWallShape_2.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+11:49:10: Texture: RockWallShape_3.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+11:49:10: Texture: RockWallShape_4.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+11:49:10: Texture: RockWallShape_5.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+11:49:10: Texture: RocksLeftShape_0.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+11:49:10: Texture: RocksLeftShape_1.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+11:49:10: Texture: RocksLeftShape_2.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+11:49:10: Texture: RocksLeftShape_3.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+11:49:10: Texture: RocksLeftShape_4.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+11:49:10: Texture: RocksLeftShape_5.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+11:49:10: Texture: RocksRightShape_0.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+11:49:10: Texture: RocksRightShape_1.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+11:49:10: Texture: RocksRightShape_2.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+11:49:10: Texture: RocksRightShape_3.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+11:49:10: Texture: RocksRightShape_4.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+11:49:10: Texture: RocksRightShape_5.png: Loading 1 faces(PF_A8R8G8B8,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,64x64x1.
+11:49:11: Texture: FischiNormal.png: Loading 1 faces(PF_R8G8B8,3072x1024x1) with 5 generated mipmaps from Image. Internal format is PF_X8R8G8B8,3072x1024x1.
+11:49:11: Texture: StatueCaveShape_0.png: Loading 1 faces(PF_A8R8G8B8,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,384x128x1.
+11:49:11: Texture: StatueCaveShape_1.png: Loading 1 faces(PF_A8R8G8B8,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,384x128x1.
+11:49:11: Texture: StatueCaveShape_2.png: Loading 1 faces(PF_A8R8G8B8,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,384x128x1.
+11:49:11: Texture: StatueCaveShape_3.png: Loading 1 faces(PF_A8R8G8B8,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,384x128x1.
+11:49:11: Texture: StatueCaveShape_4.png: Loading 1 faces(PF_A8R8G8B8,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,384x128x1.
+11:49:11: Texture: StatueCaveShape_5.png: Loading 1 faces(PF_A8R8G8B8,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,384x128x1.
+11:49:11: Texture: StatueShape_0.png: Loading 1 faces(PF_A8R8G8B8,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,384x128x1.
+11:49:12: Texture: StatueShape_1.png: Loading 1 faces(PF_A8R8G8B8,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,384x128x1.
+11:49:12: Texture: StatueShape_2.png: Loading 1 faces(PF_A8R8G8B8,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,384x128x1.
+11:49:12: Texture: StatueShape_3.png: Loading 1 faces(PF_A8R8G8B8,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,384x128x1.
+11:49:12: Texture: StatueShape_4.png: Loading 1 faces(PF_A8R8G8B8,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,384x128x1.
+11:49:12: Texture: StatueShape_5.png: Loading 1 faces(PF_A8R8G8B8,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_A8R8G8B8,384x128x1.
+11:49:12: Texture: campus_cross_fr.png: Loading 1 faces(PF_R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,256x256x1.
+11:49:12: Texture: campus_cross_bk.png: Loading 1 faces(PF_R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,256x256x1.
+11:49:12: Texture: campus_cross_lf.png: Loading 1 faces(PF_R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,256x256x1.
+11:49:12: Texture: campus_cross_rt.png: Loading 1 faces(PF_R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,256x256x1.
+11:49:12: Texture: campus_cross_up.png: Loading 1 faces(PF_R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,256x256x1.
+11:49:12: Texture: campus_cross_dn.png: Loading 1 faces(PF_R8G8B8,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,256x256x1.
+11:49:12: *** Initializing OIS ***
+11:49:19: D3D9 : Loading 2D Texture, image name : 'ArtefactShape_0.DDS' with 5 mip map levels
+11:49:19: D3D9 : Loading 2D Texture, image name : 'ArtefactShape_1.DDS' with 5 mip map levels
+11:49:19: D3D9 : Loading 2D Texture, image name : 'ArtefactShape_2.DDS' with 5 mip map levels
+11:49:19: D3D9 : Loading 2D Texture, image name : 'ArtefactShape_3.DDS' with 5 mip map levels
+11:49:19: D3D9 : Loading 2D Texture, image name : 'ArtefactShape_4.DDS' with 5 mip map levels
+11:49:19: D3D9 : Loading 2D Texture, image name : 'ArtefactShape_5.DDS' with 5 mip map levels
+11:49:19: D3D9 : Loading 2D Texture, image name : 'DeepCaveShape_0.DDS' with 5 mip map levels
+11:49:19: D3D9 : Loading 2D Texture, image name : 'DeepCaveShape_1.DDS' with 5 mip map levels
+11:49:19: D3D9 : Loading 2D Texture, image name : 'DeepCaveShape_2.DDS' with 5 mip map levels
+11:49:19: D3D9 : Loading 2D Texture, image name : 'DeepCaveShape_3.DDS' with 5 mip map levels
+11:49:19: D3D9 : Loading 2D Texture, image name : 'DeepCaveShape_4.DDS' with 5 mip map levels
+11:49:19: D3D9 : Loading 2D Texture, image name : 'DeepCaveShape_5.DDS' with 5 mip map levels
+11:49:19: D3D9 : Loading 2D Texture, image name : 'GroundShape_0.DDS' with 5 mip map levels
+11:49:19: D3D9 : Loading 2D Texture, image name : 'GroundShape_1.DDS' with 5 mip map levels
+11:49:19: D3D9 : Loading 2D Texture, image name : 'GroundShape_2.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'GroundShape_3.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'GroundShape_4.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'GroundShape_5.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'HutShape_0.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'HutShape_1.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'HutShape_2.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'HutShape_3.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'HutShape_4.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'HutShape_5.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'LavaShape_0.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'LavaShape_1.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'LavaShape_2.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'LavaShape_3.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'LavaShape_4.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'LavaShape_5.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'NormalTestShape_0.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'NormalTestShape_1.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'NormalTestShape_2.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'NormalTestShape_3.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'NormalTestShape_4.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'NormalTestShape_5.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RockWallShape_0.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RockWallShape_1.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RockWallShape_2.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RockWallShape_3.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RockWallShape_4.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RockWallShape_5.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RocksLeftShape_0.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RocksLeftShape_1.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RocksLeftShape_2.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RocksLeftShape_3.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RocksLeftShape_4.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RocksLeftShape_5.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RocksRightShape_0.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RocksRightShape_1.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RocksRightShape_2.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RocksRightShape_3.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RocksRightShape_4.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'RocksRightShape_5.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'StatueCaveShape_0.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'StatueCaveShape_1.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'StatueCaveShape_2.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'StatueCaveShape_3.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'StatueCaveShape_4.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'StatueCaveShape_5.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'StatueShape_0.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'StatueShape_1.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'StatueShape_2.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'StatueShape_3.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'StatueShape_4.DDS' with 5 mip map levels
+11:49:20: D3D9 : Loading 2D Texture, image name : 'StatueShape_5.DDS' with 5 mip map levels
+11:49:21: Texture: ArtefactShape_0.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:21: Texture: ArtefactShape_1.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:21: Texture: ArtefactShape_2.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:21: Texture: ArtefactShape_3.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:21: Texture: ArtefactShape_4.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:21: Texture: ArtefactShape_5.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:22: Texture: DeepCaveShape_0.exr: Loading 1 faces(PF_FLOAT32_RGB,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x256x1.
+11:49:22: Texture: DeepCaveShape_1.exr: Loading 1 faces(PF_FLOAT32_RGB,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x256x1.
+11:49:22: Texture: DeepCaveShape_2.exr: Loading 1 faces(PF_FLOAT32_RGB,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x256x1.
+11:49:22: Texture: DeepCaveShape_3.exr: Loading 1 faces(PF_FLOAT32_RGB,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x256x1.
+11:49:22: Texture: DeepCaveShape_4.exr: Loading 1 faces(PF_FLOAT32_RGB,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x256x1.
+11:49:22: Texture: DeepCaveShape_5.exr: Loading 1 faces(PF_FLOAT32_RGB,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x256x1.
+11:49:23: Texture: GroundShape_0.exr: Loading 1 faces(PF_FLOAT32_RGB,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,512x512x1.
+11:49:23: Texture: GroundShape_1.exr: Loading 1 faces(PF_FLOAT32_RGB,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,512x512x1.
+11:49:23: Texture: GroundShape_2.exr: Loading 1 faces(PF_FLOAT32_RGB,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,512x512x1.
+11:49:24: Texture: GroundShape_3.exr: Loading 1 faces(PF_FLOAT32_RGB,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,512x512x1.
+11:49:24: Texture: GroundShape_4.exr: Loading 1 faces(PF_FLOAT32_RGB,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,512x512x1.
+11:49:25: Texture: GroundShape_5.exr: Loading 1 faces(PF_FLOAT32_RGB,512x512x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,512x512x1.
+11:49:25: Texture: HutShape_0.exr: Loading 1 faces(PF_FLOAT32_RGB,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x256x1.
+11:49:25: Texture: HutShape_1.exr: Loading 1 faces(PF_FLOAT32_RGB,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x256x1.
+11:49:25: Texture: HutShape_2.exr: Loading 1 faces(PF_FLOAT32_RGB,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x256x1.
+11:49:25: Texture: HutShape_3.exr: Loading 1 faces(PF_FLOAT32_RGB,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x256x1.
+11:49:26: Texture: HutShape_4.exr: Loading 1 faces(PF_FLOAT32_RGB,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x256x1.
+11:49:26: Texture: HutShape_5.exr: Loading 1 faces(PF_FLOAT32_RGB,256x256x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x256x1.
+11:49:26: Texture: LavaShape_0.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:26: Texture: LavaShape_1.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:26: Texture: LavaShape_2.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:26: Texture: LavaShape_3.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:26: Texture: LavaShape_4.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:26: Texture: LavaShape_5.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:26: Texture: NormalTestShape_0.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:26: Texture: NormalTestShape_1.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:26: Texture: NormalTestShape_2.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:26: Texture: NormalTestShape_3.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:26: Texture: NormalTestShape_4.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:26: Texture: NormalTestShape_5.exr: Loading 1 faces(PF_FLOAT32_RGB,16x16x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,16x16x1.
+11:49:26: Texture: RockWallShape_0.exr: Loading 1 faces(PF_FLOAT32_RGBA,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x128x1.
+11:49:26: Texture: RockWallShape_1.exr: Loading 1 faces(PF_FLOAT32_RGBA,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x128x1.
+11:49:26: Texture: RockWallShape_2.exr: Loading 1 faces(PF_FLOAT32_RGBA,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x128x1.
+11:49:26: Texture: RockWallShape_3.exr: Loading 1 faces(PF_FLOAT32_RGBA,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x128x1.
+11:49:26: Texture: RockWallShape_4.exr: Loading 1 faces(PF_FLOAT32_RGBA,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x128x1.
+11:49:26: Texture: RockWallShape_5.exr: Loading 1 faces(PF_FLOAT32_RGBA,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,256x128x1.
+11:49:26: Texture: RocksLeftShape_0.exr: Loading 1 faces(PF_FLOAT32_RGB,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,64x64x1.
+11:49:26: Texture: RocksLeftShape_1.exr: Loading 1 faces(PF_FLOAT32_RGB,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,64x64x1.
+11:49:26: Texture: RocksLeftShape_2.exr: Loading 1 faces(PF_FLOAT32_RGB,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,64x64x1.
+11:49:26: Texture: RocksLeftShape_3.exr: Loading 1 faces(PF_FLOAT32_RGB,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,64x64x1.
+11:49:26: Texture: RocksLeftShape_4.exr: Loading 1 faces(PF_FLOAT32_RGB,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,64x64x1.
+11:49:26: Texture: RocksLeftShape_5.exr: Loading 1 faces(PF_FLOAT32_RGB,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,64x64x1.
+11:49:26: Texture: RocksRightShape_0.exr: Loading 1 faces(PF_FLOAT32_RGB,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,64x64x1.
+11:49:26: Texture: RocksRightShape_1.exr: Loading 1 faces(PF_FLOAT32_RGB,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,64x64x1.
+11:49:26: Texture: RocksRightShape_2.exr: Loading 1 faces(PF_FLOAT32_RGB,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,64x64x1.
+11:49:26: Texture: RocksRightShape_3.exr: Loading 1 faces(PF_FLOAT32_RGB,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,64x64x1.
+11:49:26: Texture: RocksRightShape_4.exr: Loading 1 faces(PF_FLOAT32_RGB,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,64x64x1.
+11:49:26: Texture: RocksRightShape_5.exr: Loading 1 faces(PF_FLOAT32_RGB,64x64x1) with  hardware generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,64x64x1.
+11:49:26: Texture: StatueCaveShape_0.exr: Loading 1 faces(PF_FLOAT32_RGB,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,384x128x1.
+11:49:26: Texture: StatueCaveShape_1.exr: Loading 1 faces(PF_FLOAT32_RGB,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,384x128x1.
+11:49:27: Texture: StatueCaveShape_2.exr: Loading 1 faces(PF_FLOAT32_RGB,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,384x128x1.
+11:49:27: Texture: StatueCaveShape_3.exr: Loading 1 faces(PF_FLOAT32_RGB,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,384x128x1.
+11:49:27: Texture: StatueCaveShape_4.exr: Loading 1 faces(PF_FLOAT32_RGB,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,384x128x1.
+11:49:27: Texture: StatueCaveShape_5.exr: Loading 1 faces(PF_FLOAT32_RGB,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,384x128x1.
+11:49:27: Texture: StatueShape_0.exr: Loading 1 faces(PF_FLOAT32_RGB,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,384x128x1.
+11:49:27: Texture: StatueShape_1.exr: Loading 1 faces(PF_FLOAT32_RGB,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,384x128x1.
+11:49:27: Texture: StatueShape_2.exr: Loading 1 faces(PF_FLOAT32_RGB,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,384x128x1.
+11:49:27: Texture: StatueShape_3.exr: Loading 1 faces(PF_FLOAT32_RGB,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,384x128x1.
+11:49:27: Texture: StatueShape_4.exr: Loading 1 faces(PF_FLOAT32_RGB,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,384x128x1.
+11:49:27: Texture: StatueShape_5.exr: Loading 1 faces(PF_FLOAT32_RGB,384x128x1) with 5 generated mipmaps from Image. Internal format is PF_FLOAT32_RGBA,384x128x1.
+11:49:46: *-*-* OGRE Shutdown
+11:49:46: Unregistering ResourceManager for type Compositor
+11:49:46: Unregistering ResourceManager for type Font
+11:49:46: Unregistering ResourceManager for type Skeleton
+11:49:46: Unregistering ResourceManager for type Mesh
+11:49:46: Unregistering ResourceManager for type HighLevelGpuProgram
+11:49:46: Uninstalling plugin: Cg Program Manager
+11:49:46: Plugin successfully uninstalled
+11:49:46: Unloading library .\Plugin_CgProgramManager_d
+11:49:46: Uninstalling plugin: D3D9 RenderSystem
+11:49:46: D3D9 : Shutting down cleanly.
+11:49:46: Unregistering ResourceManager for type Texture
+11:49:46: Unregistering ResourceManager for type GpuProgram
+11:49:46: D3D9 : Direct3D9 Rendering Subsystem destroyed.
+11:49:46: Plugin successfully uninstalled
+11:49:46: Unloading library .\RenderSystem_Direct3D9_d
+11:49:46: Unregistering ResourceManager for type Material

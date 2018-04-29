@@ -1,0 +1,27 @@
+struct
+{
+  float4 Offsets[8];
+} c : register(c0);
+
+sampler2D DepthSMP : register(s0);
+
+struct Input
+{
+  float2 TexCoord : TEXCOORD0;
+};
+
+struct Output
+{
+  float4 Color : COLOR0;
+};
+
+Output main(Input In)
+{
+  half r = tex2D(DepthSMP, In.TexCoord.xy).x;
+  [unroll] for(int i=0; i<8; ++i)
+    r = min(tex2D(DepthSMP, In.TexCoord.xy + c.Offsets[i].xy).x, r);
+
+  Output Out;
+  Out.Color = float4(r + c.Offsets[0].z, 0, 0, 0);
+  return Out;
+}

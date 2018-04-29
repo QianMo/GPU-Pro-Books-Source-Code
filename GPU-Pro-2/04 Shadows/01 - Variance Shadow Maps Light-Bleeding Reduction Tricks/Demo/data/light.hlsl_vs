@@ -1,0 +1,36 @@
+uniform float4x4 worldTransform;
+uniform float4x4 worldViewProjTransform;
+uniform float4x4 lightWorldViewProjTransform;
+
+
+
+struct VS_INPUT
+{
+	float4 position: POSITION;
+	float3 normal: NORMAL;
+	float2 texCoord: TEXCOORD0;
+};
+
+
+
+struct VS_OUTPUT
+{
+	float4 position: POSITION;
+	float3 normal: NORMAL;
+	float2 texCoord: TEXCOORD0;
+	float4 projTexCoord: TEXCOORD1;
+};
+
+
+
+VS_OUTPUT main(VS_INPUT input)
+{
+	VS_OUTPUT output;
+
+	output.position = mul(input.position, worldViewProjTransform);
+	output.normal = mul(input.normal, (float3x3)worldTransform);
+	output.texCoord = input.texCoord;
+	output.projTexCoord = mul(input.position, lightWorldViewProjTransform);
+
+	return output;
+}

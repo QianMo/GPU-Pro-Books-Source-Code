@@ -1,0 +1,4 @@
+half4 main(half4 Color : COLOR0) : COLOR0
+{
+  return Color;
+}

@@ -1,0 +1,1 @@
+Scene mesh is always loaded from mesh.ASE. To load a different mesh, simply rename it to mesh.ASE and substitute the existing one.

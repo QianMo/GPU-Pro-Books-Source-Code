@@ -1,0 +1,35 @@
+19:59:51: Creating resource group General
+19:59:51: Creating resource group Internal
+19:59:51: Creating resource group Autodetect
+19:59:51: SceneManagerFactory for type 'DefaultSceneManager' registered.
+19:59:51: Registering ResourceManager for type Material
+19:59:51: Registering ResourceManager for type Mesh
+19:59:51: Registering ResourceManager for type Skeleton
+19:59:51: MovableObjectFactory for type 'ParticleSystem' registered.
+19:59:51: OverlayElementFactory for type Panel registered.
+19:59:51: OverlayElementFactory for type BorderPanel registered.
+19:59:51: OverlayElementFactory for type TextArea registered.
+19:59:51: Registering ResourceManager for type Font
+19:59:51: ArchiveFactory for archive type FileSystem registered.
+19:59:51: ArchiveFactory for archive type Zip registered.
+19:59:51: FreeImage version: 3.10.0
+19:59:51: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+19:59:51: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2
+19:59:51: DDS codec registering
+19:59:51: Registering ResourceManager for type HighLevelGpuProgram
+19:59:51: Registering ResourceManager for type Compositor
+19:59:51: MovableObjectFactory for type 'Entity' registered.
+19:59:51: MovableObjectFactory for type 'Light' registered.
+19:59:51: MovableObjectFactory for type 'BillboardSet' registered.
+19:59:51: MovableObjectFactory for type 'ManualObject' registered.
+19:59:51: MovableObjectFactory for type 'BillboardChain' registered.
+19:59:51: MovableObjectFactory for type 'RibbonTrail' registered.
+19:59:51: Loading library .\RenderSystem_Direct3D9
+19:59:51: Installing plugin: D3D9 RenderSystem
+19:59:51: D3D9 : Direct3D9 Rendering Subsystem created.
+19:59:51: D3D9: Driver Detection Starts
+19:59:51: D3D9: Driver Detection Ends
+19:59:51: Plugin successfully installed
+19:59:51: Loading library .\Plugin_CgProgramManager
+19:59:51: OGRE EXCEPTION(7:InternalErrorException): Could not load dynamic library .\Plugin_CgProgramManager.  System Error: 找不到指定的模块。
+ in DynLib::load at ..\src\OgreDynLib.cpp (line 81)

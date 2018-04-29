@@ -1,0 +1,140 @@
+uniform sampler2D shadowMapSampler_point: register(s0);
+uniform sampler2D shadowMapSampler_linear: register(s1);
+uniform sampler2D diffuseMapSampler: register(s2);
+
+uniform float shadowMapSize;
+uniform float VSM_tailCutOff;
+uniform float ESM_k;
+
+uniform float3 lightDirection;
+
+
+
+struct PS_INPUT
+{
+	float3 normal: NORMAL;
+	float2 texCoord: TEXCOORD0;
+	float4 projTexCoord: TEXCOORD1;
+};
+
+
+
+struct PS_OUTPUT
+{
+	float4 color: COLOR;
+};
+
+
+
+float SSM(float2 projTexCoord, float depth, float bias)
+{
+	return tex2D(shadowMapSampler_point, projTexCoord).r > (depth - bias);
+}
+
+
+
+float VSM(float2 projTexCoord, float depth, float bias, float tailCutoff)
+{
+	float2 moments = tex2D(shadowMapSampler_linear, projTexCoord).rg;
+
+	if (moments.x >= depth - bias)
+		return 1.0f;
+
+	float variance = moments.y - moments.x*moments.x;
+	float delta = depth - moments.x;
+	float p_max = variance / (variance + delta*delta) - tailCutoff;
+
+	return saturate(p_max);
+}
+
+
+
+float ESM(float2 projTexCoord, float depth, float bias, float k)
+{
+	return saturate(tex2D(shadowMapSampler_linear, projTexCoord).r * exp(-k * (depth - bias)));
+}
+
+
+
+float EVSM(float2 projTexCoord, float depth, float bias, float tailCutoff, float k)
+{
+	float2 moments = tex2D(shadowMapSampler_linear, projTexCoord).rg;
+
+	if (moments.x >= exp(k * (depth - bias)))
+		return 1.0f;
+
+	float variance = moments.y - moments.x*moments.x;
+	float delta = exp(ESM_k * depth) - moments.x;
+	float p_max = variance / (variance + delta*delta) - tailCutoff;
+
+	return saturate(p_max);
+}
+
+
+
+float shadowEdgeDetection(float2 projTexCoord, float depth, float bias)
+{
+	float halfTexelSize = 0.5f / shadowMapSize;
+
+	float2 offsets[4] =
+	{
+		float2(-halfTexelSize, -halfTexelSize), float2(-halfTexelSize, halfTexelSize),
+		float2(halfTexelSize, -halfTexelSize), float2(halfTexelSize, halfTexelSize)
+	};
+
+	float samplesSum = 0.0f;
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (tex2D(shadowMapSampler_point, projTexCoord.xy + offsets[i]).r > depth - bias)
+			samplesSum += 1.0f;
+	}
+
+	return samplesSum;
+}
+
+
+
+PS_OUTPUT main(PS_INPUT input)
+{
+	PS_OUTPUT output;
+
+	input.normal = normalize(input.normal);
+
+	input.projTexCoord.x = 0.5f*input.projTexCoord.x + 0.5f;
+	input.projTexCoord.y = -0.5f*input.projTexCoord.y + 0.5f;
+	float depth = input.projTexCoord.z;
+
+	float4 ambient = 0.11f; // * tex2D(diffuseMapSampler, input.texCoord);
+	float4 diffuse = max(dot(input.normal, -lightDirection), 0.0f); // * tex2D(diffuseMapSampler, input.texCoord);
+	float bias = 0.002f;
+
+	#ifdef SSM_ID
+		output.color = ambient + diffuse * SSM(input.projTexCoord.xy, depth, bias);
+	#endif
+	
+	#ifdef VSM_ID
+		output.color = ambient + diffuse * VSM(input.projTexCoord.xy, depth, bias, VSM_tailCutOff);
+	#endif
+
+	#ifdef VSM2_ID
+		float samplesSum = shadowEdgeDetection(input.projTexCoord.xy, depth, bias);
+
+		if (samplesSum < 0.5f)
+			output.color = ambient;
+		else if (samplesSum > 3.5f)
+			output.color = ambient + diffuse;
+		else
+			output.color = ambient + diffuse * VSM(input.projTexCoord.xy, depth, bias, VSM_tailCutOff);
+	#endif
+
+	#ifdef ESM_ID
+		output.color = ambient + diffuse * ESM(input.projTexCoord.xy, depth, bias, ESM_k);
+	#endif
+
+	#ifdef EVSM_ID
+		output.color = ambient + diffuse * EVSM(input.projTexCoord.xy, depth, bias, VSM_tailCutOff, ESM_k);
+	#endif
+
+	return output;
+}

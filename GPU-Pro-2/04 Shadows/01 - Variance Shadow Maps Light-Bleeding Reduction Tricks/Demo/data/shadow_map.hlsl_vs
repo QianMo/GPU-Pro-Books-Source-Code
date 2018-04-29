@@ -1,0 +1,28 @@
+uniform float4x4 worldViewProjTransform;
+
+
+
+struct VS_INPUT
+{
+	float4 position: POSITION;
+};
+
+
+
+struct VS_OUTPUT
+{
+	float4 position: POSITION;
+	float depth: TEXCOORD0;
+};
+
+
+
+VS_OUTPUT main(VS_INPUT input)
+{
+	VS_OUTPUT output;
+
+	output.position = mul(input.position, worldViewProjTransform);
+	output.depth = output.position.z;
+
+	return output;
+}

@@ -1,0 +1,27 @@
+struct
+{
+  float4 Params;
+} c : register(c0);
+
+sampler2D DecalSMP : register(s0)  : register(t0);
+sampler2D DepthSMP : register(s10) : register(t10);
+
+struct Input
+{
+  float4 SMapCoord : TEXCOORD0;
+#if ALPHATEST
+  float2 TexCoord  : TEXCOORD1;
+#endif
+};
+
+float4 main(Input In) : COLOR0
+{
+#if ALPHATEST
+  clip(tex2D(DecalSMP, In.TexCoord).a - 0.2);
+#endif
+#if LAYER
+  half Depth = tex2D(DepthSMP, In.SMapCoord.xy).x + c.Params.x;
+  clip(In.SMapCoord.z - Depth - 0.002);
+#endif
+  return In.SMapCoord.z;
+}

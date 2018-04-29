@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Practical and Realistic Facial Wrinkles Animation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+html, body, div, span,
+applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dd, dl, dt, li, ol, ul,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    line-height: 1;
+    font-family: inherit;
+    text-align: left;
+    vertical-align: baseline;
+}
+a img, :link img, :visited img {border: 0}
+table {border-collapse: collapse; border-spacing: 0}
+ul {list-style: none}
+q:before, q:after,
+blockquote:before, blockquote:after {content: ""}
+
+body {font-size:20px; font-family:Garamond,Times,"Times New Roman",serif; color:#555; background-color:#f4f3f3}
+h1 {font-size:34px; margin-top:30px}
+h2 {font-size:24px; margin-top:30px}
+p, ul, ol {margin:15px 0}
+a {color:#545976; text-decoration:none}
+a:hover {color:#9a9cb5; text-decoration:underline}
+
+.wrapper {width:825px; margin:0 auto}
+.header h1 {font-size:52px; color:#272e4a; text-align:center; letter-spacing:3px}
+.navigation {margin-top:40px; font-size:20px; text-align:center; margin-right:-45px; letter-spacing:1px}
+.navigation li {display:inline; text-transform:uppercase; margin-right:45px}
+.content h1 a {color: #543628; letter-spacing:3px}
+.content h2 {color: #543628; letter-spacing:3px; font-style:italic}
+.content p {line-height:1.25em; text-align:justify}
+.content ul {margin-left:25px; list-style-type:disc}
+.content ol {margin-left:25px}
+.content li {margin:10px 0; text-align:justify}
+.code {font-family:"Courier",monospace; white-space:pre; font-size:17px}
+div.code {background-color: #eeeceb; padding: 15px; font-size:17px}
+.bold {font-weight:bold}
+.italic {font-style:italic}
+.footer {padding:40px 0 30px 0; font-size:18px; font-style:italic; color:gray}
+</style>
+<!--[if !IE]>-->
+<script type="text/javascript">
+//<!--
+/* Smooth scrolling
+   Changes links that link to other parts of this page to scroll
+   smoothly to those links rather than jump to them directly, which
+   can be a little disorienting.
+   
+   sil, http://www.kryogenix.org/
+   
+   v1.0 2003-11-11
+   v1.1 2005-06-16 wrap it up in an object
+*/
+
+var ss = {
+  fixAllLinks: function() {
+    // Get a list of all links in the page
+    var allLinks = document.getElementsByTagName('a');
+    // Walk through the list
+    for (var i=0;i<allLinks.length;i++) {
+      var lnk = allLinks[i];
+      if ((lnk.href && lnk.href.indexOf('#') != -1) && 
+          ( (lnk.pathname == location.pathname) ||
+	    ('/'+lnk.pathname == location.pathname) ) && 
+          (lnk.search == location.search)) {
+        // If the link is internal to the page (begins in #)
+        // then attach the smoothScroll function as an onclick
+        // event handler
+        ss.addEvent(lnk,'click',ss.smoothScroll);
+      }
+    }
+  },
+
+  smoothScroll: function(e) {
+    // This is an event handler; get the clicked on element,
+    // in a cross-browser fashion
+    if (window.event) {
+      target = window.event.srcElement;
+    } else if (e) {
+      target = e.target;
+    } else return;
+
+    // Make sure that the target is an element, not a text node
+    // within an element
+    if (target.nodeName.toLowerCase() != 'a') {
+      target = target.parentNode;
+    }
+  
+    // Paranoia; check this is an A tag
+    if (target.nodeName.toLowerCase() != 'a') return;
+  
+    // Find the <a name> tag corresponding to this href
+    // First strip off the hash (first character)
+    anchor = target.hash.substr(1);
+    // Now loop all A tags until we find one with that name
+    var allLinks = document.getElementsByTagName('a');
+    var destinationLink = null;
+    for (var i=0;i<allLinks.length;i++) {
+      var lnk = allLinks[i];
+      if (lnk.name && (lnk.name == anchor)) {
+        destinationLink = lnk;
+        break;
+      }
+    }
+    if (!destinationLink) destinationLink = document.getElementById(anchor);
+
+    // If we didn't find a destination, give up and let the browser do
+    // its thing
+    if (!destinationLink) return true;
+  
+    // Find the destination's position
+    var destx = destinationLink.offsetLeft; 
+    var desty = destinationLink.offsetTop;
+    var thisNode = destinationLink;
+    while (thisNode.offsetParent && 
+          (thisNode.offsetParent != document.body)) {
+      thisNode = thisNode.offsetParent;
+      destx += thisNode.offsetLeft;
+      desty += thisNode.offsetTop;
+    }
+  
+    // Stop any current scrolling
+    clearInterval(ss.INTERVAL);
+  
+    cypos = ss.getCurrentYPos();
+  
+    ss_stepsize = parseInt((desty-cypos)/ss.STEPS);
+    ss.INTERVAL =
+setInterval('ss.scrollWindow('+ss_stepsize+','+desty+',"'+anchor+'")',10);
+  
+    // And stop the actual click happening
+    if (window.event) {
+      window.event.cancelBubble = true;
+      window.event.returnValue = false;
+    }
+    if (e && e.preventDefault && e.stopPropagation) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  },
+
+  scrollWindow: function(scramount,dest,anchor) {
+    wascypos = ss.getCurrentYPos();
+    isAbove = (wascypos < dest);
+    window.scrollTo(0,wascypos + scramount);
+    iscypos = ss.getCurrentYPos();
+    isAboveNow = (iscypos < dest);
+    if ((isAbove != isAboveNow) || (wascypos == iscypos)) {
+      // if we've just scrolled past the destination, or
+      // we haven't moved from the last scroll (i.e., we're at the
+      // bottom of the page) then scroll exactly to the link
+      window.scrollTo(0,dest);
+      // cancel the repeating timer
+      clearInterval(ss.INTERVAL);
+      // and jump to the link directly so the URL's right
+      location.hash = anchor;
+    }
+  },
+
+  getCurrentYPos: function() {
+    if (document.body && document.body.scrollTop)
+      return document.body.scrollTop;
+    if (document.documentElement && document.documentElement.scrollTop)
+      return document.documentElement.scrollTop;
+    if (window.pageYOffset)
+      return window.pageYOffset;
+    return 0;
+  },
+
+  addEvent: function(elm, evType, fn, useCapture) {
+    // addEvent and removeEvent
+    // cross-browser event handling for IE5+,  NS6 and Mozilla
+    // By Scott Andrew
+    if (elm.addEventListener){
+      elm.addEventListener(evType, fn, useCapture);
+      return true;
+    } else if (elm.attachEvent){
+      var r = elm.attachEvent("on"+evType, fn);
+      return r;
+    } else {
+      alert("Handler could not be removed");
+    }
+  } 
+}
+
+ss.STEPS = 25;
+
+ss.addEvent(window,"load",ss.fixAllLinks);
+//-->
+</script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="wrapper">
+<a id="top"></a>
+<div class="header">
+<h1>Practical and Realistic Facial Wrinkles Animation</h1>
+<h2 style="text-align: center; margin-top: 0px"><a href="http://www.iryokufx.com/wrinkles">www.iryokufx.com/wrinkles</a></h2>
+<ul class="navigation">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#code">Shader</a></li>
+<li><a href="#contact">Contact</a></li>                 
+</ul>
+<img src="images/fig 2.png" alt="Teaser" style="width: 825px"/>
+</div>
+<div class="content">
+<h1><a id="overview" href="#top">Overview</a></h1>
+<p>Welcome to our web material! In this document you will find the
+<a href="#code">shader code</a> and the
+<a href="#contact">contact</a> info.</p> 
+
+<p>The following material is bundled:</p>
+<ol>
+<li><span class="code">demo.mp4</span>: demo movie showcasing the technique (1280x720p).</li>
+<li><span class="code">images</span>: several high-res figures from the article.</li>
+<li><span class="code">scripts</span>:
+<ul>
+<li><span class="code">partialderivative.py</span>: this Python script calculates a partial derivative normal map from a standard normal map.</li>
+</ul>
+</li>
+</ol>
+
+<h1><a id="requirements" href="#top">Requirements</a></h1>
+
+<ol>
+<li>For running the script:
+<ul>
+<li>Python 2.6.5</li>
+<li>PIL 1.1.7</li>
+</ul>
+</li>
+</ol>
+
+<h1><a id="code" href="#top">Shader Code</a></h1>
+
+<h2>Overview</h2>
+
+<p>In this section we will show the code corresponding to the two approaches introduced in the article. Copy pasting from this section into your application will allow you to have facial wrinkles up and running in no time.</p>
+
+<h2>Partial Derivative Normal Maps Approach</h2>
+
+<p>This code is the optimized version of the shader ready to be used: </p>
+
+<div class="code">float3 WrinkledNormal(Texture2D<float2> baseTex,
+                      Texture2D<float2> wrinkleTex,
+                      Texture2D maskTex[2],
+                      float4 weights[2],
+                      float2 texcoord) {
+  float4 base;
+  base.xy = baseTex.Sample(AnisotropicSampler16, texcoord).gr;
+  base.xy = (-1.0 + 2.0 * base.xy);
+
+  #ifdef WRINKLES
+  float2 wrinkles = wrinkleTex.Sample(LinearSampler,
+                                      texcoord).gr;
+  wrinkles = -1.0 + 2.0 * wrinkles;
+
+  base.zw = 0.0;
+
+  float4 mask1 = maskTex[0].Sample(LinearSampler, texcoord);
+  mask1 *= weights[0];
+  base += mask1.rrgg * wrinkles.xyxy;
+  base += mask1.bbaa * wrinkles.xyxy;
+
+  float4 mask2 = maskTex[1].Sample(LinearSampler, texcoord);
+  mask2 *= weights[1];
+  base += mask2.rrgg * wrinkles.xyxy;
+  base += mask2.bbaa * wrinkles.xyxy;
+
+  base.xy += base.zw;
+  #endif
+
+  base.z = 1.0;
+
+  return normalize(base.xyz);
+}
+</div>
+
+<p>Where <span class="code">baseTex</span> is the base normal map, <span class="code">wrinkleTex</span> is the wrinkle map, <span class="code">maskTex</span> is the mask map and <span class="code">weights</span> are the specified weights for each region. See Figure 1.3 and Table 1.1 in the article for more details.</p>
+
+
+<h2>Normal Map Differences Approach</h2>
+
+<p>This code is the optimized version of the shader corresponding to the alternative approach presented in Section 1.2.1: </p>
+
+<div class="code">float3 WrinkledNormal(Texture2D<float2> baseTex,
+                      Texture2D<float4> normalDiffTex,
+                      Texture2D maskTex[2],
+                      float4 weights[2],
+                      float2 texcoord) {
+  float3 base;
+  base.xy = baseTex.Sample(AnisotropicSampler16, texcoord).gr;
+  base.xy = -1.0 + 2.0 * base.xy;
+  base.z = sqrt(1.0 - base.x * base.x - base.y * base.y);
+
+  #ifdef WRINKLES
+  float3 diff = normalDiffTex.Sample(LinearSampler, texcoord).agb;
+  diff = -1.0 + 2.0 * diff;
+
+  // We multiply by 2.0 because the difference wrinkle map was
+  // calculated using values in the range 0..1, and now we are
+  // working in the range -1..1
+  diff *= 2.0;
+
+  float4 mask1 = maskTex[0].Sample(LinearSampler, texcoord);
+  float4 mask2 = maskTex[1].Sample(LinearSampler, texcoord);
+  mask1 *= weights[0];
+  mask2 *= weights[1];
+
+  base += mask1.r * diff;
+  base += mask1.g * diff;
+  base += mask1.b * diff;
+  base += mask1.a * diff;
+  base += mask2.r * diff;
+  base += mask2.g * diff;
+  base += mask2.b * diff;
+  base += mask2.a * diff;
+  #endif
+
+  return normalize(base);
+} 
+</div>
+
+<p>Where <span class="code">baseTex</span> is the base normal map, <span class="code">normalDiffTex</span> is the difference map, <span class="code">maskTex</span> is the mask map and <span class="code">weights</span> are the specified weights for each region. See Figure 1.4 and Table 1.1 in the article for more details.</p>
+
+
+<h1><a id="contact" href="#top">Contact</a></h1>
+
+<p>If you have any questions, don't hesitate to contact us:</p>
+<p>
+Jorge Jimenez (<a href="mailto:jim@unizar.es">jim@unizar.es</a>)<br/>
+Jose I. Echevarria (<a href="mailto:joseignacioechevarria@gmail.com">joseignacioechevarria@gmail.com</a>)<br/>
+Christopher Oat (<a href="mailto:chris@chrisoat.com">chris@chrisoat.com</a>)<br/>
+Diego Gutierrez (<a href="mailto:diegog@unizar.es">diegog@unizar.es</a>)
+</p>
+
+</div>
+<p class="footer">Copyright (C) 2010 Jorge Jimenez, Jose I. Echevarria, Christopher Oat and Diego Gutierrez</p>
+</div>
+</body>
+</html>

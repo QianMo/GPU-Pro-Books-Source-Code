@@ -1,0 +1,377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Practical Morphological Anti-Aliasing</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+html, body, div, span,
+applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dd, dl, dt, li, ol, ul,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    line-height: 1;
+    font-family: inherit;
+    text-align: left;
+    vertical-align: baseline;
+}
+a img, :link img, :visited img {border: 0}
+table {border-collapse: collapse; border-spacing: 0}
+ul {list-style: none}
+q:before, q:after,
+blockquote:before, blockquote:after {content: ""}
+
+body {font-size:20px; font-family:Garamond,Times,"Times New Roman",serif; color:#555; background-color:#f4f3f3}
+h1 {font-size:34px; margin-top:30px}
+h2 {font-size:24px; margin-top:30px}
+p, ul, ol {margin:15px 0}
+a {color:#545976; text-decoration:none}
+a:hover {color:#9a9cb5; text-decoration:underline}
+
+.wrapper {width:825px; margin:0 auto}
+.header h1 {font-size:52px; color:#272e4a; text-align:center; letter-spacing:3px}
+.navigation {margin-top:40px; font-size:20px; text-align:center; margin-right:-45px; letter-spacing:1px}
+.navigation li {display:inline; text-transform:uppercase; margin-right:45px}
+.content h1 a {color: #543628; letter-spacing:3px}
+.content h2 {color: #543628; letter-spacing:3px; font-style:italic}
+.content p {line-height:1.25em; text-align:justify}
+.content ul {margin-left:25px; list-style-type:disc}
+.content ol {margin-left:25px}
+.content li {margin:10px 0; text-align:justify}
+.code {font-family:"Courier",monospace; white-space:pre; font-size:17px}
+div.code {background-color: #eeeceb; padding: 15px; font-size:17px}
+.bold {font-weight:bold}
+.italic {font-style:italic}
+.footer {padding:40px 0 30px 0; font-size:18px; font-style:italic; color:gray}
+</style>
+<!--[if !IE]>-->
+<script type="text/javascript">
+//<!--
+/* Smooth scrolling
+   Changes links that link to other parts of this page to scroll
+   smoothly to those links rather than jump to them directly, which
+   can be a little disorienting.
+   
+   sil, http://www.kryogenix.org/
+   
+   v1.0 2003-11-11
+   v1.1 2005-06-16 wrap it up in an object
+*/
+
+var ss = {
+  fixAllLinks: function() {
+    // Get a list of all links in the page
+    var allLinks = document.getElementsByTagName('a');
+    // Walk through the list
+    for (var i=0;i<allLinks.length;i++) {
+      var lnk = allLinks[i];
+      if ((lnk.href && lnk.href.indexOf('#') != -1) && 
+          ( (lnk.pathname == location.pathname) ||
+	    ('/'+lnk.pathname == location.pathname) ) && 
+          (lnk.search == location.search)) {
+        // If the link is internal to the page (begins in #)
+        // then attach the smoothScroll function as an onclick
+        // event handler
+        ss.addEvent(lnk,'click',ss.smoothScroll);
+      }
+    }
+  },
+
+  smoothScroll: function(e) {
+    // This is an event handler; get the clicked on element,
+    // in a cross-browser fashion
+    if (window.event) {
+      target = window.event.srcElement;
+    } else if (e) {
+      target = e.target;
+    } else return;
+
+    // Make sure that the target is an element, not a text node
+    // within an element
+    if (target.nodeName.toLowerCase() != 'a') {
+      target = target.parentNode;
+    }
+  
+    // Paranoia; check this is an A tag
+    if (target.nodeName.toLowerCase() != 'a') return;
+  
+    // Find the <a name> tag corresponding to this href
+    // First strip off the hash (first character)
+    anchor = target.hash.substr(1);
+    // Now loop all A tags until we find one with that name
+    var allLinks = document.getElementsByTagName('a');
+    var destinationLink = null;
+    for (var i=0;i<allLinks.length;i++) {
+      var lnk = allLinks[i];
+      if (lnk.name && (lnk.name == anchor)) {
+        destinationLink = lnk;
+        break;
+      }
+    }
+    if (!destinationLink) destinationLink = document.getElementById(anchor);
+
+    // If we didn't find a destination, give up and let the browser do
+    // its thing
+    if (!destinationLink) return true;
+  
+    // Find the destination's position
+    var destx = destinationLink.offsetLeft; 
+    var desty = destinationLink.offsetTop;
+    var thisNode = destinationLink;
+    while (thisNode.offsetParent && 
+          (thisNode.offsetParent != document.body)) {
+      thisNode = thisNode.offsetParent;
+      destx += thisNode.offsetLeft;
+      desty += thisNode.offsetTop;
+    }
+  
+    // Stop any current scrolling
+    clearInterval(ss.INTERVAL);
+  
+    cypos = ss.getCurrentYPos();
+  
+    ss_stepsize = parseInt((desty-cypos)/ss.STEPS);
+    ss.INTERVAL =
+setInterval('ss.scrollWindow('+ss_stepsize+','+desty+',"'+anchor+'")',10);
+  
+    // And stop the actual click happening
+    if (window.event) {
+      window.event.cancelBubble = true;
+      window.event.returnValue = false;
+    }
+    if (e && e.preventDefault && e.stopPropagation) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  },
+
+  scrollWindow: function(scramount,dest,anchor) {
+    wascypos = ss.getCurrentYPos();
+    isAbove = (wascypos < dest);
+    window.scrollTo(0,wascypos + scramount);
+    iscypos = ss.getCurrentYPos();
+    isAboveNow = (iscypos < dest);
+    if ((isAbove != isAboveNow) || (wascypos == iscypos)) {
+      // if we've just scrolled past the destination, or
+      // we haven't moved from the last scroll (i.e., we're at the
+      // bottom of the page) then scroll exactly to the link
+      window.scrollTo(0,dest);
+      // cancel the repeating timer
+      clearInterval(ss.INTERVAL);
+      // and jump to the link directly so the URL's right
+      location.hash = anchor;
+    }
+  },
+
+  getCurrentYPos: function() {
+    if (document.body && document.body.scrollTop)
+      return document.body.scrollTop;
+    if (document.documentElement && document.documentElement.scrollTop)
+      return document.documentElement.scrollTop;
+    if (window.pageYOffset)
+      return window.pageYOffset;
+    return 0;
+  },
+
+  addEvent: function(elm, evType, fn, useCapture) {
+    // addEvent and removeEvent
+    // cross-browser event handling for IE5+,  NS6 and Mozilla
+    // By Scott Andrew
+    if (elm.addEventListener){
+      elm.addEventListener(evType, fn, useCapture);
+      return true;
+    } else if (elm.attachEvent){
+      var r = elm.attachEvent("on"+evType, fn);
+      return r;
+    } else {
+      alert("Handler could not be removed");
+    }
+  } 
+}
+
+ss.STEPS = 25;
+
+ss.addEvent(window,"load",ss.fixAllLinks);
+//-->
+</script>
+<!--<![endif]-->
+</head>
+<body>
+<div class="wrapper">
+<a id="top"></a>
+<div class="header">
+<h1>Practical Morphological <br> Anti-Aliasing</h1>
+<h2 style="text-align: center; margin-top: 0px"><a href="http://www.iryokufx.com/mlaa">www.iryokufx.com/mlaa</a></h2>
+<ul class="navigation">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#tutorial">Demo</a></li>
+<li><a href="#license">License</a></li>
+<li><a href="#contact">Contact</a></li>                 
+</ul>
+<img src="imgs/teaser.png" alt="Teaser" style="width: 825px"/>
+</div>
+<div class="content">
+<h1><a id="overview" href="#top">Overview</a></h1>
+<p>Welcome to our web material! In this document you will find the compilation and runtime <a href="#requirements">requirements</a>, a
+<a href="#tutorial">tutorial</a> with instructions that will enable you to fully test our demo</a>, the
+<a href="#license">license</a> of the <span class="code">src</span> code and the
+<a href="#contact">contact</a> info.</p> 
+
+<p>The following material is bundled:</p>
+<ol>
+<li><span class="code">demo.exe</span>: pre-compiled binary of our Morphological Anti-Aliasing Demo.</li>
+<li><span class="code">demo.mp4</span>: movie demonstrating our technique in-game. Comparisons vs. 1x MSAA and 8x MSAA are provided (1280x720p).</li>
+<li><span class="code">src</span>: C++ source code of our demo.</li>
+<li><span class="code">scripts</span>: support scripts.
+<ul>
+<li><span class="code">areamap2d.py</span>: generates a 2D texture that encondes the corresponding blending weights depending on the left and right distances from the edgel to the crossing edge.</li>
+<li><span class="code">areamap4d.py</span>: based on the previous 2D texture, generates a new single texture that encodes that info for each pattern detected (crossing edge type).</li>
+</ul>
+</li>
+<li><span class="code">images</span>: several high-res figures from the article.</li>
+</ol>
+<p>The precompiled binary, source code and video contain example images from Unigine Heaven Benchmark courtesy of Unigine Corporation. 
+
+<h1><a id="requirements" href="#top">Requirements</a></h1>
+
+<ol>
+<li>For compiling the source code:
+<ul>
+<li>Visual C++ 2010 Express Edition</li>
+<li>Microsoft DirectX SDK (February 2010)</li>
+</ul>
+</li>
+<li>For running the demo: a DirectX 10 compatible GPU.</li>
+<li>For running the scripts:
+<ul>
+<li>Python 2.6.5</li>
+<li>PIL 1.1.7</li>
+</ul>
+</ol>
+
+<h1><a id="tutorial" href="#top">Demo</a></h1>
+
+<p>The demo provided includes example images allowing its instant use. If you want to play with your own images, you just need to create a folder called <span class="code">Images</span> where <span class="code">demo.exe</span> is located and put them into it. Then, the application will load automatically all the <span class="code">png</span> images in the folder. You can load other image formats using the button found on the GUI. The recommended resolution for the images is <span class="code">1280x720</span>.</p>
+<p>By default, the demo uses color for the edge detection pass. However, when a depth map is provided, it is automatically loaded and used for detecting edges. The depth map must have the same name as the image but with <span class="code">dds</span> extension (i.e. <span class="code">image.png</span> and <span class="code">image.dds</span>).</p>
+
+<p>Once inside the app, you can:</p>
+
+<ul>
+<li>Load a new image. The rules are the same as for automatic loading: <span class="code">image.png</span> is the image to be anti-aliased, and <span class="code">image.dds</span> its corresponding depth map (optional). Supported image formats for the color image are <span class="code">bmp</span>, <span class="code">jpg</span> and <span class="code">png</span>.
+</li>
+<li>Change between edge detection modes. Depth mode is only available if a depth map has been provided.
+</li>
+<li>Display the color image, the edges detected or the blending weights for the anti-aliasing pass.
+</li>
+<li>Change between the images loaded. Alternatively, <span class="code">A</span> and <span class="code">D</span> keys can be used.
+</li>
+<li>Switch anti-aliasing on/off in order to compare the results with the original input.
+</li>
+<li>Check the performance of the algorithm for the current image activating the <span class="code">Profile</span> checkbox.
+</li>
+<li>Change the threshold used for the edge detection with the corresponding slider (it is interesting to see its effects while 'View edges' is selected).
+</li>
+<li>Change the 'Max search steps'. A comprehensive low-level description of this parameter can be found in the article. In practice, it makes large quasi-horizontal and quasi-vertical aliased edges an lines look smoother. 
+</li>
+</ul>
+
+<p>All the changes done to the loaded images will not modify the original source files.</p>
+
+<h1><a id="license" href="#top">License</a></h1>
+<p>The <span class="code">src</span> code of the shader (files <span class="code">MLAA.h</span>, <span class="code">MLAA.cpp</span> and <span class="code">MLAA.fx</span>) is distributed under the following license: </p>
+
+<div class="code">Copyright (C) 2010 Jorge Jimenez (jim@unizar.es)
+Copyright (C) 2010 Belen Masia (bmasia@unizar.es) 
+Copyright (C) 2010 Jose I. Echevarria (joseignacioechevarria@gmail.com) 
+Copyright (C) 2010 Fernando Navarro (fernandn@microsoft.com) 
+Copyright (C) 2010 Diego Gutierrez (diegog@unizar.es)
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without 
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, 
+   this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must display the names 'Jorge Jimenez',
+   'Belen Masia', 'Jose I. Echevarria', 'Fernando Navarro' and 'Diego 
+   Gutierrez' as 'Real-Time Rendering R&amp;D' in the credits of the
+   application, if such credits exist. The authors of this work must be
+   notified via email (jim@unizar.es) in this case of redistribution.
+
+3. Neither the name of copyright holders nor the names of its contributors 
+   may be used to endorse or promote products derived from this software 
+   without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS 
+IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, 
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL COPYRIGHT HOLDERS OR CONTRIBUTORS 
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+POSSIBILITY OF SUCH DAMAGE.
+</div>
+
+<p>The rest of the <span class="code">src</span> code of the demo is distributed under the following license: </p>
+
+<div class="code">Copyright (C) 2010 Jorge Jimenez (jim@unizar.es)
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without 
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, 
+   this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must display the names 'Jorge Jimenez' 
+   as 'Real-Time Rendering R&amp;D' in the credits of the application, if 
+   such credits exist. The authors of this work must be notified via email 
+   (jim@unizar.es) in this case of redistribution.
+
+3. Neither the name of copyright holders nor the names of its contributors 
+   may be used to endorse or promote products derived from this software 
+   without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS 
+IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, 
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL COPYRIGHT HOLDERS OR CONTRIBUTORS 
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
+POSSIBILITY OF SUCH DAMAGE.
+</div>
+
+<h1><a id="contact" href="#top">Contact</a></h1>
+
+<p>If you have any questions, don't hesitate to contact us:</p>
+<p>
+Jorge Jimenez (<a href="mailto:jim@unizar.es">jim@unizar.es</a>)<br/>
+Belen Masia (<a href="mailto:bmasia@unizar.es">bmasia@unizar.es</a>)<br/>
+Jose I. Echevarria(<a href="mailto:joseignacioechevarria@gmail.com">joseignacioechevarria@gmail.com</a>)<br/>
+Fernando Navarro (<a href="mailto:fernandn@microsoft.com">fernandn@microsoft.com</a>)<br/>
+Diego Gutierrez (<a href="mailto:diegog@unizar.es">diegog@unizar.es</a>)
+</p>
+
+</div>
+<p class="footer">Copyright (C) 2010 Jorge Jimenez, Belen Masia, Jose I. Echevarria, Fernando Navarro and Diego Gutierrez</p>
+</div>
+</body>
+</html>

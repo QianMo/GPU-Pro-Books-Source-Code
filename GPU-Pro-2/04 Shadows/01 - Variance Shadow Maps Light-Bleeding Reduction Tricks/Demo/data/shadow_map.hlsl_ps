@@ -1,0 +1,80 @@
+uniform float ESM_k;
+
+
+
+struct PS_INPUT
+{
+	float depth: TEXCOORD0;
+};
+
+
+
+struct PS_OUTPUT
+{
+	float4 depth: COLOR;
+};
+
+
+
+float4 SSM(float depth)
+{
+	return depth;
+}
+
+
+
+float4 VSM(float depth)
+{
+	float4 result;
+
+	result.x = depth;
+	result.y = result.x * result.x;
+	result.zw = 0.0f;
+
+	return result;
+}
+
+
+
+float4 ESM(float depth, float k)
+{
+	return exp(k * depth);
+}
+
+
+
+float4 EVSM(float depth, float k)
+{
+	float4 result;
+
+	result.x = exp(k * depth);
+	result.y = result.x * result.x;
+	result.zw = 0.0f;
+
+	return result;
+}
+
+
+
+PS_OUTPUT main(PS_INPUT input)
+{
+	PS_OUTPUT output;
+
+	#ifdef SSM_ID
+		output.depth = SSM(input.depth);
+	#endif
+
+	#ifdef VSM_ID
+		output.depth = VSM(input.depth);
+	#endif
+
+	#ifdef ESM_ID
+		output.depth = ESM(input.depth, ESM_k);
+	#endif	
+
+	#ifdef EVSM_ID
+		output.depth = EVSM(input.depth, ESM_k);
+	#endif
+
+	return output;
+}

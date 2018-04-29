@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GPUPro", "GPUPro.vcproj", "{41618F4B-D249-4844-A31E-2760CE83CB84}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		MinSizeRel|Win32 = MinSizeRel|Win32
+		Release|Win32 = Release|Win32
+		RelWithDebInfo|Win32 = RelWithDebInfo|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41618F4B-D249-4844-A31E-2760CE83CB84}.Debug|Win32.ActiveCfg = Debug|Win32
+		{41618F4B-D249-4844-A31E-2760CE83CB84}.Debug|Win32.Build.0 = Debug|Win32
+		{41618F4B-D249-4844-A31E-2760CE83CB84}.MinSizeRel|Win32.ActiveCfg = MinSizeRel|Win32
+		{41618F4B-D249-4844-A31E-2760CE83CB84}.MinSizeRel|Win32.Build.0 = MinSizeRel|Win32
+		{41618F4B-D249-4844-A31E-2760CE83CB84}.Release|Win32.ActiveCfg = Release|Win32
+		{41618F4B-D249-4844-A31E-2760CE83CB84}.Release|Win32.Build.0 = Release|Win32
+		{41618F4B-D249-4844-A31E-2760CE83CB84}.RelWithDebInfo|Win32.ActiveCfg = RelWithDebInfo|Win32
+		{41618F4B-D249-4844-A31E-2760CE83CB84}.RelWithDebInfo|Win32.Build.0 = RelWithDebInfo|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

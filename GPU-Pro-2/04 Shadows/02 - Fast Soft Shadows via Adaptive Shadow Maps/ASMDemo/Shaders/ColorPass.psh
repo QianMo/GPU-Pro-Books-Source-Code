@@ -1,0 +1,116 @@
+#include "PCF.inc"
+
+struct
+{
+  float4 L;
+  float4 CamPos;
+  float4x4 SMapProj;
+  float4 AtlasSize;
+  float4 PenumbraSizeParam;
+} c : register(c0);
+
+sampler2D DiffuseTex    : register(s0) : register(t0);
+sampler2D DepthTexture  : register(s1) : register(t1);
+sampler2D IndexTex      : register(s2) : register(t2); // ASM index texture
+sampler2D DEM           : register(s3) : register(t3); // depth extent map (DEM) holds Z-Min only (1-channel FP16 texture)
+sampler2D LayerIndexTex : register(s4) : register(t4); // ASM index texture for layer shadow map
+
+float3 GetTileCoord(float3 f, float4 t)
+{
+  f.xy = abs(t.ww*c.AtlasSize.xy)*f.xy + t.xy;
+  f.z += t.z;
+  return f;
+}
+
+half GetShadowFactor(sampler2D IndexTexture, float4 IndexCoord, half LOD, half KernelSize)
+{
+  float4 t = tex2Dlod(IndexTexture, float4(IndexCoord.xy, 0, LOD));
+  return PCF(DepthTexture, GetTileCoord(IndexCoord, t), KernelSize, c.AtlasSize);
+}
+
+half GetClampedDepthDifference(sampler2D IndexTexture, float3 IndexCoord, half nMIP)
+{
+  float4 t = tex2Dlod(IndexTexture, float4(IndexCoord.xy, 0, nMIP));
+  float3 DEMCoord = GetTileCoord(IndexCoord, t);
+  return t.w>0 ? saturate(DEMCoord.z - tex2Dlod(DEM, float4(DEMCoord.xy, 0, 0)).x) : 0;
+}
+
+half3 Lighting(float3 WorldPos, half3 L, half3 N)
+{
+  float4 IndexCoord = mul(c.SMapProj, float4(WorldPos, 1));
+#if MRF
+  half ShadowFactor = 1;
+  half3 Color = half3(0,0,1);
+
+  half2 d;
+  d.x = GetClampedDepthDifference(IndexTex, IndexCoord, 3);
+  d.y = GetClampedDepthDifference(LayerIndexTex, IndexCoord, 1);
+
+  // We can skip a pixel if it is closer to the light than Z-Min from the DEM.
+  // This can happen only to pixels from non-shadow casting objects (which are
+  // not in shadow map and thus are not in the DEM). For instance, terrain
+  // and grass don't cast shadows in Age of Conan, they're recievers only.
+  // Also we skip applying shadows to the pixels that don't receive any 
+  // lighting.
+  [branch] if((dot(N, L)*d.x)>0)
+  {
+    half2 f = saturate(c.PenumbraSizeParam.xx*d + c.PenumbraSizeParam.yy);
+    half2 KernelSize = saturate(0.5 + f*10);
+    const half c_MaxRefinement = 3;
+    half2 fLevel = f*c_MaxRefinement;
+    half2 iLevel = floor(fLevel);
+
+    // MRF
+    half ShadowFactor0 = GetShadowFactor(IndexTex, IndexCoord, iLevel.x + 0, KernelSize.x);
+    half ShadowFactor1 = GetShadowFactor(IndexTex, IndexCoord, iLevel.x + 1, KernelSize.x);
+    ShadowFactor = lerp(ShadowFactor0, ShadowFactor1, fLevel.x - iLevel.x);
+    Color = half3(0,1,0);
+
+#if LAYER
+    // Layer shadow map does not affect the pixels with depth less than 
+    // Z-Min from the layer's DEM.
+    // Also skip applying layer shadow map if a pixel was already determined 
+    // not to recieve any light.
+    [branch] if((d.y*ShadowFactor)>0)
+    {
+      // layer MRF
+      ShadowFactor0 = GetShadowFactor(LayerIndexTex, IndexCoord, iLevel.y + 0, KernelSize.y);
+      ShadowFactor1 = GetShadowFactor(LayerIndexTex, IndexCoord, iLevel.y + 1, KernelSize.y);
+      ShadowFactor = min(ShadowFactor, lerp(ShadowFactor0, ShadowFactor1, fLevel.y - iLevel.y));
+      Color = half3(1,0,0);
+    }
+#endif //#if LAYER
+  }
+#if SHOW_SHADER_COST
+  return Color;
+#endif
+#else //#if MRF
+  half ShadowFactor = GetShadowFactor(IndexTex, IndexCoord, 0, 0);
+#endif //#if MRF
+
+  // Lighting
+  half3 PtToEye = WorldPos - half3(c.CamPos.xyz);
+  half3 V = normalize(PtToEye);
+  half3 H = normalize(L - V);
+  return 0.1 + (dot(N, L)>0 ? ShadowFactor*(0.8*dot(N, L) + 0.5*pow(saturate(dot(N, H)), 40)) : 0);
+}
+
+struct Input
+{
+  float3 WorldPos : TEXCOORD0;
+  half3 Normal    : TEXCOORD1;
+#if ALPHATEST
+  float2 TexCoord : TEXCOORD2;
+#endif
+};
+
+half4 main(Input In) : COLOR0
+{
+#if ALPHATEST
+  half4 Decal = tex2D(DiffuseTex, In.TexCoord);
+  clip(Decal.a - 0.2);
+#else
+  half4 Decal = 1;
+#endif
+  return half4(Lighting(In.WorldPos, c.L.xyz, normalize(In.Normal))*Decal.xyz, Decal.w);
+}

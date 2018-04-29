@@ -1,0 +1,33 @@
+uniform sampler2D shadowMapSampler: register(s0);
+
+uniform float texelHeight;
+
+
+
+struct PS_INPUT
+{
+	float2 texCoord: TEXCOORD0;
+};
+
+
+
+struct PS_OUTPUT
+{
+	float4 color: COLOR;
+};
+
+
+
+PS_OUTPUT main(PS_INPUT input)
+{
+	PS_OUTPUT output;
+
+	float4 result = 0.0f;
+	for (int i = 0; i < 5; i++)
+	{
+		result += tex2D(shadowMapSampler, float2(input.texCoord.x, input.texCoord.y + (i-2)*texelHeight));
+	}
+	output.color = result / 5.0f;
+
+	return output;
+}
