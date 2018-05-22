@@ -1,0 +1,80 @@
+# Max2Mtl Version 4.0 Mar 10th, 2001
+#
+# Multi/Sub Material__49 (3) to come 
+#
+newmtl 1_-_Head
+id 3
+Ka  1 0.7451 0.8196
+Kd  1 0.9451 0.8196
+Ks  0.9 0.9 0.9
+d  1
+Ns  0
+illum 2
+#map_Kd Head.tga
+#
+newmtl 3_-_Eyes
+id 1
+Ka  0 0 0
+Kd  0 0 0
+Ks  0.9 0.9 0.9
+d  1
+Ns  0
+illum 2
+#
+newmtl 2_-_Jaw
+id 3
+Ka  1 0.349 0.4784
+Kd  1 0.749 0.8784
+Ks  0.9 0.9 0.9
+d  1
+Ns  0
+illum 2
+#map_Kd Jaw.tga
+#
+# Multi/Sub Material__49 done 
+#
+# Multi/Sub Material__62 (2) to come 
+#
+newmtl 7_-_KeySpindle
+id 2
+Ka  1 0.7725 0.1725
+Kd  1 0.7725 0.1725
+Ks  0.9 0.9 0.9
+d  1
+Ns  0
+illum 2
+map_Kd Pin.tga
+#
+newmtl 8_-_Key
+id 2
+Ka  0.8196 0.8196 0.8196
+Kd  0.8196 0.8196 0.8196
+Ks  0.9 0.9 0.9
+d  1
+Ns  0
+illum 2
+map_Kd Key.tga
+#
+# Multi/Sub Material__62 done 
+#
+newmtl 9_-_Legs
+id 2
+Ka  0.7961 0.4784 0.8471
+Kd  0.8961 0.5784 0.9471
+Ks  0.9 0.9 0.9
+d  1
+Ns  0
+illum 2
+#map_Kd Feet.tga
+#
+newmtl 13_-_Default
+id 1
+Ka  0.5882 0.5882 0.5882
+Kd  0.5882 0.5882 0.5882
+Ks  0.9 0.9 0.9
+d  1
+Ns  0
+illum 2
+map_Kd Stone.tga
+#
+# EOF

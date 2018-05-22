@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Name="unknown" Date="2011-07-12T00:51:31">
+    <Parameters File="SceneXML/ParameterSets/Box-OneToaster-Param.xml"/>
+    <!--
+Resolution
+-->
+    <Window width="1024" height="768"/>
+    <!--
+Camera Definition
+-->
+    <Camera aspect="1.33333" fov="50" zNear="0.1" zFar="40">
+        <Pose>
+            <Eye x="-1.0306" y="2.86684" z="6.38201"/>
+            <!--(Eye = UserPosition)-->
+            <ViewDir angleX="32" angleY="-712.625" angleZ="0" x="0.108858" y="-0.529919" z="-0.841032"/>
+            <Up x="0.068022" y="0.848048" z="-0.525535"/>
+        </Pose>
+        <CurrentPose index="0"/>
+    </Camera>
+    <!--
+All Lights
+-->
+    <Lights>
+        <SpotLight constantAttenuation="0" quadraticAttenuation="1" cutoffAngle="44" spotExponent="0" angleX="30.5" angleY="-63.25" angleZ="0">
+            <Position x="-0.76541" y="2.08858" z="1.263"/>
+            <I r="50" g="50" b="50"/>
+            <SpotDirection x="-0.769417" y="-0.507538" z="-0.387818"/>
+            <Up x="-0.453221" y="0.861629" z="-0.228442"/>
+        </SpotLight>
+        <SpotLight constantAttenuation="0" quadraticAttenuation="1" cutoffAngle="48" spotExponent="0" angleX="23.5429" angleY="101.938" angleZ="0">
+            <Position x="-0.911565" y="1.98723" z="1.17278"/>
+            <I r="50" g="50" b="50"/>
+            <SpotDirection x="0.896934" y="-0.399436" z="0.189635"/>
+            <Up x="0.390797" y="0.916761" z="0.0826245"/>
+        </SpotLight>
+    </Lights>
+    <!--
+
+All Scene Elements (Static and Dynamic Geometry)
+-->
+    <StaticElement name="colorbox" pathModel="models/colorbox2-single.obj">
+        <Atlas pathAtlas="models/colorbox2-single-atlas.obj" atlasWidth="1024" atlasHeight="1024"/>
+        <!--mode = GLM_FLAT GLM_COLOR -->
+        <LoaderSettings defaultDrawMode="17" computedVertexNormals="1" vertexNormalsAngle="0" vertexNormalsSmoothingGroups="0" unitized="0" centered="1" scaleFactor="1"/>
+        <Position x="0" y="0" z="0"/>
+        <Rotation angleX="0" angleY="0" angleZ="0"/>
+        <Scale factor="1"/>
+    </StaticElement>
+    <DynamicElement name="toaster" pathModel="models/OneToaster/Toasters004.obj">
+        <Atlas pathAtlas="models/OneToaster/Toaster-atlas.obj" atlasWidth="128" atlasHeight="128"/>
+        <!--mode = GLM_SMOOTH GLM_TEXTURE GLM_COLOR -->
+        <LoaderSettings defaultDrawMode="22" computedVertexNormals="1" vertexNormalsAngle="35" vertexNormalsSmoothingGroups="1" unitized="0" centered="0" scaleFactor="0.016"/>
+        <Instance isUserMovable="1">
+            <Position x="1.63694" y="-2.85812" z="-1.72056"/>
+            <Rotation angleX="0" angleY="-34.375" angleZ="0"/>
+            <Scale factor="1"/>
+            <AnimationSettings looping="0" forwards="0" stepInterval="60" startAtFrame="19"/>
+        </Instance>
+        <AnimationLoading pathSequence="models/OneToaster/Toasters" sequenceReadInMethod="2" animFileStartIndex="4" animFileEndIndex="63" numAnimFiles="60"/>
+    </DynamicElement>
+</Scene>

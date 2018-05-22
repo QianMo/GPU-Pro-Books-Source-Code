@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<RenderDescription>
+    <MaxParticles type="unsigned int">65535</MaxParticles>
+    <NumReserveParticles type="unsigned int">0</NumReserveParticles>
+    <RestParticlesPerMeter type="float">0.7</RestParticlesPerMeter>
+    <RestDensity type="float">1000</RestDensity>
+    <KernelRadiusMultiplier type="float">2</KernelRadiusMultiplier>
+    <MotionLimitMultiplier type="float">16</MotionLimitMultiplier>
+    <CollisionDistanceMultiplier type="float">0.75</CollisionDistanceMultiplier>
+    <Stiffness type="float">10</Stiffness>
+    <Viscosity type="float">15</Viscosity>
+    <SurfaceTension type="float">0</SurfaceTension>
+    <Damping type="float">0</Damping>
+    <FadeInTime type="float">0</FadeInTime>
+    <RestitutionForStaticShapes type="float">0.5</RestitutionForStaticShapes>
+    <DynamicFrictionForStaticShapes type="float">0</DynamicFrictionForStaticShapes>
+    <RestitutionForDynamicShapes type="float">0</RestitutionForDynamicShapes>
+    <DynamicFrictionForDynamicShapes type="float">0</DynamicFrictionForDynamicShapes>
+    <CollisionResponseCoefficient type="float">0.005</CollisionResponseCoefficient>
+    <SimulationMethod type="unsigned int">1</SimulationMethod>
+</RenderDescription>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Name="unknown" Date="2011-07-10T18:58:24">
+    <Parameters File="SceneXML/ParameterSets/Cornell-CamelGallop-VoxelRes128.xml"/>
+    <!--
+Resolution
+-->
+    <Window width="1024" height="768"/>
+    <!--
+Camera Definition
+-->
+    <Camera aspect="1.33333" fov="90" zNear="0.1" zFar="40">
+        <Pose>
+            <Eye x="1.74529" y="-1.23915" z="2.4025"/>
+            <!--(Eye = UserPosition)-->
+            <ViewDir angleX="35.375" angleY="-746.875" angleZ="0" x="-0.368589" y="-0.578925" z="-0.727315"/>
+            <Up x="-0.261701" y="0.81538" z="-0.516398"/>
+        </Pose>
+        <CurrentPose index="0"/>
+    </Camera>
+    <!--
+All Lights
+-->
+    <Lights>
+        <SpotLight constantAttenuation="0" quadraticAttenuation="1" cutoffAngle="48" spotExponent="0" angleX="36.5429" angleY="54.938" angleZ="0">
+            <Position x="-0.0182253" y="2.1974" z="1.77495"/>
+            <I r="50" g="50" b="50"/>
+            <SpotDirection x="0.657617" y="-0.595425" z="-0.46153"/>
+            <Up x="0.487373" y="0.803411" z="-0.342049"/>
+        </SpotLight>
+    </Lights>
+    <!--
+
+All Scene Elements (Static and Dynamic Geometry)
+-->
+    <StaticElement name="colorbox" pathModel="models/colorbox2-single.obj">
+        <Atlas pathAtlas="models/colorbox2-single-atlas.obj" atlasWidth="1024" atlasHeight="1024"/>
+        <!--mode = GLM_FLAT GLM_COLOR -->
+        <LoaderSettings defaultDrawMode="17" computedVertexNormals="1" vertexNormalsAngle="0" vertexNormalsSmoothingGroups="0" unitized="0" centered="1" scaleFactor="1"/>
+        <Position x="0" y="0" z="0"/>
+        <Rotation angleX="0" angleY="0" angleZ="0"/>
+        <Scale factor="1"/>
+    </StaticElement>
+    <DynamicElement name="camel" pathModel="models/camel-gallop/camel-gallop-01.obj">
+        <Atlas pathAtlas="models/camel-gallop/camel_atlas.obj" atlasWidth="256" atlasHeight="256"/>
+        <!--mode = GLM_SMOOTH GLM_COLOR -->
+        <LoaderSettings defaultDrawMode="18" computedVertexNormals="0" vertexNormalsAngle="0" vertexNormalsSmoothingGroups="0" unitized="0" centered="0" scaleFactor="4.5"/>
+        <Instance isUserMovable="1">
+            <Position x="0.80654" y="-2.71149" z="0.654555"/>
+            <Rotation angleX="0" angleY="63" angleZ="0"/>
+            <Scale factor="1"/>
+            <AnimationSettings looping="1" forwards="1" stepInterval="160" startAtFrame="1"/>
+        </Instance>
+        <AnimationLoading pathSequence="models/camel-gallop/camel-gallop-" sequenceReadInMethod="1" animFileStartIndex="1" animFileEndIndex="12" numAnimFiles="12"/>
+    </DynamicElement>
+</Scene>

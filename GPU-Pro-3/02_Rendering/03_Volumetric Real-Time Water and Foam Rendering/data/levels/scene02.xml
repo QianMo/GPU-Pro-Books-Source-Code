@@ -1,0 +1,192 @@
+<level>
+	<gameElement type=cameraPosition >
+		<elementPosition>
+			<positionX>-173.890045f</positionX>
+			<positionY>111.160156f</positionY>
+			<positionZ>-106.161118f</positionZ>
+		</elementPosition>
+	</gameElement>
+	
+	<gameElement type=cameraDirection >
+		<elementPosition>
+			<positionX>-0.751271f</positionX>
+			<positionY>0.519374f</positionY>
+			<positionZ>-0.407237f</positionZ>
+		</elementPosition>
+	</gameElement>
+	
+	<gameElement type=skyBox >
+		<elementTextureFileNames>
+			<textureLeft>data/textures/west.dds</textureLeft>
+			<textureRight>data/textures/east.dds</textureRight>
+			<textureTop>data/textures/up.dds</textureTop>
+			<textureBottom>data/textures/down.dds</textureBottom>
+			<textureFront>data/textures/north.dds</textureFront>
+			<textureBack>data/textures/south.dds</textureBack>
+		</elementTextureFileNames>
+	</gameElement>
+	
+	<gameElement type=mesh >
+		<elementPosition>
+			<positionX>0.0f</positionX>
+			<positionY>0.0f</positionY>
+			<positionZ>0.0f</positionZ>
+		</elementPosition>
+		<elementRotation>
+			<rotationX>0.0f</rotationX>
+			<rotationY>0.0f</rotationY>
+			<rotationZ>0.0f</rotationZ>
+		</elementRotation>
+		<elementMeshFileName>
+			<fileName>data/meshes/object04_bamboo.obj</fileName>
+		</elementMeshFileName>
+		<elementCollFileName>
+			<fileName>data/meshes/object04_coll.obj</fileName>
+		</elementCollFileName>
+		<elementMaterial>
+			<materialId>10</materialId>
+		</elementMaterial>
+	</gameElement>
+	
+	<gameElement type=dynamic_convex_mesh >
+		<elementPosition>
+			<positionX>0.626f</positionX>
+			<positionY>30.566f</positionY>
+			<positionZ>52.389f</positionZ>
+		</elementPosition>
+		<elementRotation>
+			<rotationX>0.0f</rotationX>
+			<rotationY>0.0f</rotationY>
+			<rotationZ>0.0f</rotationZ>
+		</elementRotation>
+		<elementMeshFileName>
+			<fileName>data/meshes/object04_dynamic.obj</fileName>
+		</elementMeshFileName>
+		<elementCollFileName>
+			<fileName>data/meshes/object04_dynamic_coll_01.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_02.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_03.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_04.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_05.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_06.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_07.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_08.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_09.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_10.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_11.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_12.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_13.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_14.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_15.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_16.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_17.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_18.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_19.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_20.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_21.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_22.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_23.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_24.obj</fileName>
+			<fileName>data/meshes/object04_dynamic_coll_25.obj</fileName>
+		</elementCollFileName>
+		<elementMaterial>
+			<materialId>10</materialId>
+		</elementMaterial>
+	</gameElement>
+	
+	<gameElement type=box >
+		<elementPosition>
+			<positionX>0.650f</positionX>
+			<positionY>1.159f</positionY>
+			<positionZ>110.383f</positionZ>
+		</elementPosition>
+		<elementMeasures>
+			<width>10.0f</width>
+			<height>4.0f</height>
+			<depth>10.0f</depth>
+		</elementMeasures>
+		<elementUTex>
+			<uTexX>20.0f</uTexX>
+			<uTexY>0.0f</uTexY>
+			<uTexZ>0.0f</uTexZ>
+		</elementUTex>
+		<elementVTex>
+			<vTexX>0.0f</vTexX>
+			<vTexY>0.0f</vTexY>
+			<vTexZ>0.0f</vTexZ>
+		</elementVTex>
+		<elementMaterial>
+			<materialId>3</materialId>
+		</elementMaterial>
+	</gameElement>
+
+	<gameElement type=box >
+		<elementPosition>
+			<positionX>0.0f</positionX>
+			<positionY>-30.0f</positionY>
+			<positionZ>8.0f</positionZ>
+		</elementPosition>
+		<elementRotation>
+			<rotationX>45.0f</rotationX>
+			<rotationY>0.0f</rotationY>
+			<rotationZ>0.0f</rotationZ>
+		</elementRotation>
+		<elementMeasures>
+			<width>30.0f</width>
+			<height>5.0f</height>
+			<depth>5.0f</depth>
+		</elementMeasures>
+		<elementUTex>
+			<uTexX>20.0f</uTexX>
+			<uTexY>0.0f</uTexY>
+			<uTexZ>0.0f</uTexZ>
+		</elementUTex>
+		<elementVTex>
+			<vTexX>0.0f</vTexX>
+			<vTexY>0.0f</vTexY>
+			<vTexZ>0.0f</vTexZ>
+		</elementVTex>
+		<elementMaterial>
+			<materialId>10</materialId>
+		</elementMaterial>
+	</gameElement>
+	
+	<gameElement type=non_physics_mesh >
+		<elementPosition>
+			<positionX>0.0f</positionX>
+			<positionY>0.0f</positionY>
+			<positionZ>0.0f</positionZ>
+		</elementPosition>
+		<elementRotation>
+			<rotationX>0.0f</rotationX>
+			<rotationY>0.0f</rotationY>
+			<rotationZ>0.0f</rotationZ>
+		</elementRotation>
+		<elementMeshFileName>
+			<fileName>data/meshes/object04_stone.obj</fileName>
+		</elementMeshFileName>
+		<elementMaterial>
+			<materialId>3</materialId>
+		</elementMaterial>
+	</gameElement>
+	
+	<gameElement type=non_physics_mesh >
+		<elementPosition>
+			<positionX>0.0f</positionX>
+			<positionY>20.0f</positionY>
+			<positionZ>0.0f</positionZ>
+		</elementPosition>
+		<elementRotation>
+			<rotationX>0.0f</rotationX>
+			<rotationY>0.0f</rotationY>
+			<rotationZ>0.0f</rotationZ>
+		</elementRotation>
+		<elementMeshFileName>
+			<fileName>data/meshes/object04_ground.obj</fileName>
+		</elementMeshFileName>
+		<elementMaterial>
+			<materialId>6</materialId>
+		</elementMaterial>
+	</gameElement>
+	
+</level>

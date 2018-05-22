@@ -1,0 +1,336 @@
+//1
+<material>
+	<lighting>
+		<useLight>false</useLight>
+	</lighting>
+	<ambiente>
+		<red>0.0f</red>
+		<green>0.0f</green>
+		<blue>0.0f</blue>
+		<alpha>0.0f</alpha>
+	</ambiente>
+	<diffuse>
+		<red>0.0f</red>
+		<green>0.0f</green>
+		<blue>0.0f</blue>
+		<alpha>0.0f</alpha>
+	</diffuse>
+	<specular>
+		<red>0.0f</red>
+		<green>0.0f</green>
+		<blue>0.0f</blue>
+		<alpha>0.0f</alpha>
+	</specular>
+	<shininess>
+		<shininessValue>0</shininessValue>
+	</shininess>
+</material>
+//2
+<material>
+	<lighting>
+		<useLight>true</useLight>
+	</lighting>
+	<ambiente>
+		<red>0.0f</red>
+		<green>0.0f</green>
+		<blue>0.0f</blue>
+		<alpha>1.0f</alpha>
+	</ambiente>
+	<diffuse>
+		<red>0.0f</red>
+		<green>0.0f</green>
+		<blue>0.0f</blue>
+		<alpha>0.0f</alpha>
+	</diffuse>
+	<specular>
+		<red>1.0f</red>
+		<green>1.0f</green>
+		<blue>1.0f</blue>
+		<alpha>1.0f</alpha>
+	</specular>
+	<shininess>
+		<shininessValue>25</shininessValue>
+	</shininess>
+	<texture>
+			<textureFileName>data/textures/whiteTexture.dds</textureFileName>
+	</texture>
+</material>
+//3
+<material>
+	<lighting>
+		<useLight>true</useLight>
+	</lighting>
+	<ambiente>
+		<red>0.4f</red>
+		<green>0.4f</green>
+		<blue>0.4f</blue>
+		<alpha>1.0f</alpha>
+	</ambiente>
+	<diffuse>
+		<red>1.0f</red>
+		<green>1.0f</green>
+		<blue>1.0f</blue>
+		<alpha>1.0f</alpha>
+	</diffuse>
+	<specular>
+		<red>0.5f</red>
+		<green>0.5f</green>
+		<blue>0.5f</blue>
+		<alpha>1.0f</alpha>
+	</specular>
+	<shininess>
+		<shininessValue>500</shininessValue>
+	</shininess>
+	<texture>
+			<textureFileName>data/textures/stoneFloorTexture.dds</textureFileName>
+	</texture>
+</material>
+//4
+<material>
+	<lighting>
+		<useLight>true</useLight>
+	</lighting>
+	<ambiente>
+		<red>0.1f</red>
+		<green>0.1f</green>
+		<blue>0.1f</blue>
+		<alpha>1.0f</alpha>
+	</ambiente>
+	<diffuse>
+		<red>1.0f</red>
+		<green>1.0f</green>
+		<blue>1.0f</blue>
+		<alpha>1.0f</alpha>
+	</diffuse>
+	<specular>
+		<red>0.75f</red>
+		<green>0.75f</green>
+		<blue>0.75f</blue>
+		<alpha>1.0f</alpha>
+	</specular>
+	<shininess>
+		<shininessValue>64</shininessValue>
+	</shininess>
+	<texture>
+			<textureFileName>data/textures/rockTexture.dds</textureFileName>
+	</texture>
+	<normalMap>
+			<normalMapFileName>data/textures/rockNormalMap.tga</normalMapFileName>
+	</normalMap>
+</material>
+//5
+<material>
+	<lighting>
+		<useLight>true</useLight>
+	</lighting>
+	<ambiente>
+		<red>0.1f</red>
+		<green>0.1f</green>
+		<blue>0.1f</blue>
+		<alpha>1.0f</alpha>
+	</ambiente>
+	<diffuse>
+		<red>1.0f</red>
+		<green>1.0f</green>
+		<blue>1.0f</blue>
+		<alpha>1.0f</alpha>
+	</diffuse>
+	<specular>
+		<red>0.75f</red>
+		<green>0.75f</green>
+		<blue>0.75f</blue>
+		<alpha>1.0f</alpha>
+	</specular>
+	<shininess>
+		<shininessValue>64</shininessValue>
+	</shininess>
+	<texture>
+			<textureFileName>data/textures/woodTexture.dds</textureFileName>
+	</texture>
+	<normalMap>
+			<normalMapFileName>data/textures/woodNormalMap.tga</normalMapFileName>
+	</normalMap>
+</material>
+//6
+<material>
+	<lighting>
+		<useLight>true</useLight>
+	</lighting>
+	<ambiente>
+		<red>0.4f</red>
+		<green>0.4f</green>
+		<blue>0.4f</blue>
+		<alpha>1.0f</alpha>
+	</ambiente>
+	<diffuse>
+		<red>1.0f</red>
+		<green>1.0f</green>
+		<blue>1.0f</blue>
+		<alpha>1.0f</alpha>
+	</diffuse>
+	<specular>
+		<red>0.0f</red>
+		<green>0.0f</green>
+		<blue>0.0f</blue>
+		<alpha>1.0f</alpha>
+	</specular>
+	<shininess>
+		<shininessValue>100</shininessValue>
+	</shininess>
+	<texture>
+			<textureFileName>data/textures/grass.dds</textureFileName>
+	</texture>
+</material>
+//7
+<material>
+	<lighting>
+		<useLight>true</useLight>
+	</lighting>
+	<ambiente>
+		<red>0.4f</red>
+		<green>0.4f</green>
+		<blue>0.4f</blue>
+		<alpha>1.0f</alpha>
+	</ambiente>
+	<diffuse>
+		<red>1.0f</red>
+		<green>1.0f</green>
+		<blue>1.0f</blue>
+		<alpha>1.0f</alpha>
+	</diffuse>
+	<specular>
+		<red>0.0f</red>
+		<green>0.0f</green>
+		<blue>0.0f</blue>
+		<alpha>1.0f</alpha>
+	</specular>
+	<shininess>
+		<shininessValue>300</shininessValue>
+	</shininess>
+	<texture>
+			<textureFileName>data/textures/object.dds</textureFileName>
+	</texture>
+</material>
+//8
+<material>
+	<lighting>
+		<useLight>true</useLight>
+	</lighting>
+	<ambiente>
+		<red>0.4f</red>
+		<green>0.4f</green>
+		<blue>0.4f</blue>
+		<alpha>1.0f</alpha>
+	</ambiente>
+	<diffuse>
+		<red>1.0f</red>
+		<green>1.0f</green>
+		<blue>1.0f</blue>
+		<alpha>1.0f</alpha>
+	</diffuse>
+	<specular>
+		<red>0.0f</red>
+		<green>0.0f</green>
+		<blue>0.0f</blue>
+		<alpha>1.0f</alpha>
+	</specular>
+	<shininess>
+		<shininessValue>30</shininessValue>
+	</shininess>
+	<texture>
+			<textureFileName>data/textures/object.dds</textureFileName>
+	</texture>
+	<normalMap>
+			<normalMapFileName>data/textures/objectNormalMap.tga</normalMapFileName>
+	</normalMap>
+</material>
+//9
+<material>
+  <lighting>
+    <useLight>true</useLight>
+  </lighting>
+  <ambiente>
+    <red>0.4f</red>
+    <green>0.4f</green>
+    <blue>0.4f</blue>
+    <alpha>1.0f</alpha>
+  </ambiente>
+  <diffuse>
+    <red>1.0f</red>
+    <green>1.0f</green>
+    <blue>1.0f</blue>
+    <alpha>1.0f</alpha>
+  </diffuse>
+  <specular>
+    <red>0.0f</red>
+    <green>0.0f</green>
+    <blue>0.0f</blue>
+    <alpha>1.0f</alpha>
+  </specular>
+  <shininess>
+    <shininessValue>30</shininessValue>
+  </shininess>
+  <texture>
+    <textureFileName>data/textures/object.dds</textureFileName>
+  </texture>
+</material>
+//10
+<material>
+  <lighting>
+    <useLight>true</useLight>
+  </lighting>
+  <ambiente>
+    <red>0.4f</red>
+    <green>0.4f</green>
+    <blue>0.4f</blue>
+    <alpha>1.0f</alpha>
+  </ambiente>
+  <diffuse>
+    <red>1.0f</red>
+    <green>1.0f</green>
+    <blue>1.0f</blue>
+    <alpha>1.0f</alpha>
+  </diffuse>
+  <specular>
+    <red>0.0f</red>
+    <green>0.0f</green>
+    <blue>0.0f</blue>
+    <alpha>1.0f</alpha>
+  </specular>
+  <shininess>
+    <shininessValue>500</shininessValue>
+  </shininess>
+  <texture>
+    <textureFileName>data/textures/bamboo.dds</textureFileName>
+  </texture>
+</material>
+//11
+<material>
+  <lighting>
+    <useLight>true</useLight>
+  </lighting>
+  <ambiente>
+    <red>0.4f</red>
+    <green>0.4f</green>
+    <blue>0.4f</blue>
+    <alpha>1.0f</alpha>
+  </ambiente>
+  <diffuse>
+    <red>1.0f</red>
+    <green>1.0f</green>
+    <blue>1.0f</blue>
+    <alpha>1.0f</alpha>
+  </diffuse>
+  <specular>
+    <red>0.0f</red>
+    <green>0.0f</green>
+    <blue>0.0f</blue>
+    <alpha>1.0f</alpha>
+  </specular>
+  <shininess>
+    <shininessValue>500</shininessValue>
+  </shininess>
+  <texture>
+    <textureFileName>data/textures/wall.dds</textureFileName>
+  </texture>
+</material>

@@ -1,0 +1,61 @@
+BaseRock = 
+{
+    Color = ( 0.207031, 0.210938, 0.214844, 0.0 )
+
+    RelativeMinHeight = -1.0
+    RelativeMaxHeight = 2.0
+    HeightTransitionWidth = 1 
+
+    MinSlope = 1.0
+    MaxSlope = 100
+    SlopeTransitionWidth = 0.1
+
+    DiffuseTex = media\tiles\BaseRock.jpg
+}
+
+BaseGrass = 
+{
+    Color = ( 0.327, 0.374, 0.187, 0.0 )
+
+    RelativeMinHeight = 0.1
+    RelativeMaxHeight = 0.7
+    HeightTransitionWidth = 0.1
+
+    MinSlope = 1.0
+    MaxSlope = 1.3
+    SlopeTransitionWidth = 0.1
+
+    DiffuseTex = media\tiles\BaseGrass.jpg
+}
+
+BaseSand = 
+{
+    Color = ( 0.80, 0.80, 0.7, 0.0 )
+
+    RelativeMinHeight = -1.0
+    RelativeMaxHeight = 0.1
+    HeightTransitionWidth = 0.1
+
+    MinSlope = 1.0
+    MaxSlope = 1.2
+    SlopeTransitionWidth = 0.05
+
+    DiffuseTex = media\tiles\BaseSand.jpg
+}
+
+
+Snow = 
+{
+    Color = ( 1.0, 1.0, 1.0, 0.0 )
+
+    RelativeMinHeight = 0.7
+    RelativeMaxHeight = 2.0
+    HeightTransitionWidth = 0.2
+
+    MinSlope = 1.0
+    MaxSlope = 1.5
+    SlopeTransitionWidth = 0.2
+
+    DiffuseTex = media\tiles\Snow.jpg
+}
+

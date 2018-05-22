@@ -1,0 +1,97 @@
+// ================================================================================ //
+// The authors of this code (Francisco Ávila, Sergio Murguía, Leo Reyes and Arturo	//
+// García) hereby release it into the public domain. This applies worldwide.		//
+//																					//
+// In case this is not legally possible, we grant any entity the right to use this	//
+// work for any purpose, without any conditions, unless such conditions are			//
+// required by law.																	//
+//																					//
+// This work is provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF	//
+// ANY KIND. You are solely responsible for the consequences of using or			//
+// redistributing this code and assume any risks associated with these or related	//
+// activities.																		//
+// ================================================================================ //
+
+---------------------------------------------------
+Interactive Ray Tracing Using the Compute Shader
+---------------------------------------------------
+Arturo García, Francisco Ávila, Sergio Murguía, Leo Reyes
+August, 2011
+
+---------------------------------------------------
+ABOUT THE DEMO
+---------------------------------------------------
+If you find bug or have further comments, suggestions or questions, please send an email to gpu.raytracing at gmail dot com.
+
+This application is not a product, it is just a demo. It started as a simple experiment and it does not follow the best software engineering practices. However, you may suggest improvements to its design.
+
+---------------------------------------------------
+REQUIREMENTS
+---------------------------------------------------
+* GPU supporting DirectX 11.0 or higher (If not, the RT will run using the reference driver)
+* DirectX SDK June 2010 or newer
+* Visual Studio 2008 and its SP1
+* gtkmm Win32 installed on C:/ (http://live.gnome.org/gtkmm/MSWindows)
+
+---------------------------------------------------
+ACKNOWLEDGMENTS
+---------------------------------------------------
+The authors would like to thank the Stanford Computer Graphics Laboratory for the Happy Buddha, the Stanford Dragon and the Stanford Bunny models; the Bangor University for the Welsh Dragon model (released for Eurographics 2011); Crytek for its modified version of the Sponza model; and Matt Pharr and Greg Humphreys for their permission to base the BVH implementation on the PBRT framework.
+
+Special thanks to Julio Zamora for his advice on using the Compute Shader for ray tracing and Alberto Castrejon for reviewing the article.
+
+---------------------------------------------------
+NOTES (This is important, read it)
+---------------------------------------------------
+* The OBJ loader was downloaded from http://www.dhpoware.com/demos/glObjViewer.html which is a OpenGL OBJ Viewer Demo. We are parsing data which was already parsed by this library (practical, but not efficient).
+* We tried to load Soda Hall, but the application crashes, the biggest model we loaded was Welsh Dragon with 2.1M triangles. If you load a bigger model, we would like to hear about: gpu.raytracing at gmail dot com
+* We included the necessary files in order to use the BVH used in the PBRT framework: https://github.com/mmp/pbrt-v2. We encourage you to visit its webpage: http://www.pbrt.org/ and read the acceleration structures chapter: http://pbrt.org/pbrt-2ed-chap4.pdf. We are including the PBRT license on the file PBRT_LICENSE.txt.
+* The Crytek Sponza model is available at http://www.crytek.com/cryengine/cryengine3/downloads.
+* The Stanford repository has many available models at http://graphics.stanford.edu/data/3Dscanrep/
+* The Welsh Dragon model can be downloaded at http://eg2011.bangor.ac.uk/dragon/Welsh-Dragon.html
+* Since our RT just supports OBJ models, you can use MeshLab (or other software) to export your PLY models (or other extensions as well) to OBJ. You can ignore the normals data since the OBJ loader automatically calculates it. Mesh Lab is available at http://meshlab.sourceforge.net/
+* The environment map was taken from the DirectX SDK at C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Samples\Media\Light Probes
+
+---------------------------------------------------
+ABOUT THE AUTHORS
+---------------------------------------------------
+Arturo holds B.S. degree in computer sciences from University of Guadalajara. He received his Master’s degree in computer science from CINVESTAV and completed his MBA from ITESO. He  is currently engineering manager at Intel.
+
+Francisco Ávila received his BSc from ITESM, Mexico in December 2011. He is a research intern in the Visual and Parallel Computing at Intel since April 2010. He is pursuing a PhD degree and his research interests include GPGPU and parallel algorithms.
+
+Sergio Murguia received his BSc from the University of Guanajuato in 2005 and has MSc studies from Center of research in Mathematics (CIMAT) in Mexico. On 2009, he joined Intel to do software validation of DirectX and OpenGL drivers for Larrabee. He is currently working as a software validation engineer for the MIC family of products. His areas of interest cover computer graphics and photorealistic rendering.
+
+Leo Reyes studied computer engineering in the University of Guadalajara, Mexico. He made his Master’s and Ph.D. in the Center of Research and Advanced Studies (CINVESTAV) in computer vision. His research interests include computer vision, computer graphics, image processing and artificial intelligence. He is currently working at Intel Labs in Guadalajara.
+
+---------------------------------------------------
+KEYBOARD/MOUSE SHORTCUTS
+---------------------------------------------------
+Mouse: Rotate camera (left click on press)
+ESCAPE: Quit
+F4: On/Off Camera orbit mode
+W: Move camera front
+S: Move camera back
+D: Move camera right
+A: Move camera left
+Q: Move camera down
+E: Move camera up
+F: Phong/Flat shading
+K: On/Off shadows
+M: On/Off environment mapping
+G: On/Off gloss mapping (If it is off, reflections will be off)
+N: On/Off normal mapping
+L: Recompile and reload shaders (useful for debugging)
+Space: Take screenshot
+Num pad 0-8: Change cameras
+Num pad minus: Decrease number of reflections
+Num pad plus: Increase number of reflections
+Ctrl + Arrow up: Increase camera speed movement
+Ctrl + Arrow down: Decrease camera speed movement
+Ctrl + 0 (Num pad): Set light zero (use this for bunny)
+Ctrl + 1 (Num pad): Set light zero (use this for sponza)
+Arrow up: Rotate camera 22.5 degrees on x-axis
+Arrow down: Rotate camera -22.5 degrees on x-axis
+Arrow right: Rotate camera 22.5 degrees on y-axis
+Arrow left: Rotate camera -22.5 degrees on y-axis
+Home: Rotate camera 22.5 degrees on z-axis
+End: Rotate camera -22.5 degrees on z-axis

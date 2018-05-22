@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="DxaVolTransRaster.cpp" />
+    <ClCompile Include="VolumetricTransparency11.cpp" />
+    <ClCompile Include="ThrowOnFail.cpp" />
+    <ClCompile Include="Mesh\Indexed.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\Instanced.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\VertexStream.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\Binder.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\Bound.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\GeometryLoader.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Core\DXUT.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Optional\DXUTcamera.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Core\DXUTDevice11.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Core\DXUTDevice9.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Optional\DXUTgui.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Core\DXUTmisc.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Optional\DXUTres.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Optional\DXUTsettingsdlg.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\Material.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\Shaded.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\Cast.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\Role.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh\Importer.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Sas\SasButton.cpp">
+      <Filter>Sas</Filter>
+    </ClCompile>
+    <ClCompile Include="Sas\SasCheckbox.cpp">
+      <Filter>Sas</Filter>
+    </ClCompile>
+    <ClCompile Include="Sas\SasSlider.cpp">
+      <Filter>Sas</Filter>
+    </ClCompile>
+    <ClCompile Include="Sas\DxaSas.cpp">
+      <Filter>Sas</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Optional\SDKmesh.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT\Optional\SDKmisc.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DxaVolTransRaster.h" />
+    <ClInclude Include="Dxa.h" />
+    <ClInclude Include="Mesh\Geometry.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="ThrowOnFail.h" />
+    <ClInclude Include="Mesh\Indexed.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\Instanced.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\VertexStream.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\Binder.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\Bound.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\GeometryLoader.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\DXUTsettingsdlg.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Core\DXUT.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\DXUTcamera.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Core\DXUTDevice11.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Core\DXUTDevice9.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\DXUTgui.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Core\DXUTmisc.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\DXUTres.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\Material.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\Shaded.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\Cast.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\Role.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh\Importer.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Sas\SasButton.h">
+      <Filter>Sas</Filter>
+    </ClInclude>
+    <ClInclude Include="Sas\SasCheckbox.h">
+      <Filter>Sas</Filter>
+    </ClInclude>
+    <ClInclude Include="Sas\SasControl.h">
+      <Filter>Sas</Filter>
+    </ClInclude>
+    <ClInclude Include="Sas\SasSlider.h">
+      <Filter>Sas</Filter>
+    </ClInclude>
+    <ClInclude Include="Sas\DxaSas.h">
+      <Filter>Sas</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\SDKmisc.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT\Optional\SDKmesh.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <CLInclude Include="resource.h">
+      <Filter>resource</Filter>
+    </CLInclude>
+    <ClInclude Include="Particle.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="VolumetricTransparency11.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fx\basic.fx">
+      <Filter>fx</Filter>
+    </None>
+    <None Include="fx\voltransshadow.fx">
+      <Filter>fx</Filter>
+    </None>
+    <None Include="fx\voltranssort.fx">
+      <Filter>fx</Filter>
+    </None>
+    <None Include="fx\voltransstore.fx">
+      <Filter>fx</Filter>
+    </None>
+    <None Include="fx\voltransdefer.fx">
+      <Filter>fx</Filter>
+    </None>
+    <None Include="fx\voltransfluid.fx">
+      <Filter>fx</Filter>
+    </None>
+    <None Include="DXUT\Optional\directx.ico">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="fx\renderstates.fx">
+      <Filter>fx</Filter>
+    </None>
+    <None Include="fx\voltransdata.fx">
+      <Filter>fx</Filter>
+    </None>
+    <None Include="fx\voltransmain.fx">
+      <Filter>fx</Filter>
+    </None>
+    <None Include="fx\volparticles.fx">
+      <Filter>fx</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Mesh">
+      <UniqueIdentifier>{3a776ced-442c-489e-bbef-494ba5acc624}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fx">
+      <UniqueIdentifier>{b2d5f070-831a-423c-91f4-b8b4f6c1483b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DXUT">
+      <UniqueIdentifier>{f6738b89-a0be-486c-a214-984cc9be58e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sas">
+      <UniqueIdentifier>{387f9b46-d638-46fb-a390-1cc5f19c7af9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{eaa54c75-b1ae-49c8-beac-baf2556cac4e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,12 @@
+newmtl grey
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.700000 0.700000 0.70000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+#phongExp 4
+#phongExp 16
+#phongExp 6
+senderMatScale 0.008

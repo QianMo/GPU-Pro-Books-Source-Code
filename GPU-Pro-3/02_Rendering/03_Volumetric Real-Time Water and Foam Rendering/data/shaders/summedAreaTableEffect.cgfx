@@ -1,0 +1,222 @@
+
+sampler2D satMap;
+sampler2DARRAY satArrayMap;
+float satPassIndex;
+float satIndex;
+float satTexelSize;
+
+#include "data/shaders/util.fxh"
+
+// -----------------------------------------------------------------------------
+// --------------------------- SummedAreaTable ---------------------------------
+// -----------------------------------------------------------------------------
+struct Sat4VertexShaderOutput
+{
+	float4 pos : POSITION;
+	float4 uv[2] : TEXCOORD0; // 4 UVsstuffed in 2 float4’s
+};
+
+Sat4VertexShaderOutput SummedAreaTableH4VP(float4 position : POSITION, float2 inUV : TEXCOORD0)
+{
+	Sat4VertexShaderOutput OUT;
+
+	OUT.pos = mul(glstate.matrix.mvp, position);
+
+	float passOffset = pow(4.0f, satPassIndex) * satTexelSize;
+
+	// output first two texcoords
+	OUT.uv[0].xy = inUV;
+	OUT.uv[0].wz = OUT.uv[0].xy - float2(passOffset, 0.0f);
+
+	OUT.uv[1].xy = OUT.uv[0].xy - float2(2.0f*passOffset, 0.0f);
+	OUT.uv[1].wz = OUT.uv[0].xy - float2(3.0f*passOffset, 0.0f);
+
+	return OUT;
+}
+
+Sat4VertexShaderOutput SummedAreaTableV4VP(float4 position : POSITION, float2 inUV : TEXCOORD0)
+{
+	Sat4VertexShaderOutput OUT;
+
+	OUT.pos = mul(glstate.matrix.mvp, position);
+
+	float passOffset = pow(4.0f, satPassIndex) * satTexelSize;
+
+	// output first two texcoords
+	OUT.uv[0].xy = inUV;
+	OUT.uv[0].wz = OUT.uv[0].xy - float2(0.0f, passOffset);
+
+	OUT.uv[1].xy = OUT.uv[0].xy - float2(0.0f, 2.0f*passOffset);
+	OUT.uv[1].wz = OUT.uv[0].xy - float2(0.0f, 3.0f*passOffset);
+
+	return OUT;
+}
+
+FragmentShaderOutput SummedAreaTable4FP(Sat4VertexShaderOutput IN)
+{
+	FragmentShaderOutput OUT;
+	
+	float4 t[2];
+	// add 4 texture samples with pyramidal scheme to maintain precision
+	for(int i=0; i<2; i++)
+		t[i] = tex2D(satMap, IN.uv[i].xy) + tex2D(satMap, IN.uv[i].wz);
+	
+	OUT.color = t[0] + t[1];
+
+	return OUT;
+}
+
+FragmentShaderOutput SummedAreaTableArray4FP(Sat4VertexShaderOutput IN)
+{
+	FragmentShaderOutput OUT;
+	
+	float4 t[2];
+	// add 4 texture samples with pyramidal scheme to maintain precision
+	for(int i=0; i<2; i++)
+		t[i] = tex2DARRAY(satArrayMap, float3(IN.uv[i].xy, satIndex)) + tex2DARRAY(satArrayMap, float3(IN.uv[i].wz, satIndex));
+	
+	OUT.color = t[0] + t[1];
+
+	return OUT;
+}
+
+// -----------------------------------------------------------------------------
+
+struct Sat8VertexShaderOutput
+{
+	float4 pos : POSITION;
+	float4 uv[4] : TEXCOORD0; // 8 UVsstuffed in 4 float4’s
+};
+
+Sat8VertexShaderOutput SummedAreaTableH8VP(float4 position : POSITION, float2 inUV : TEXCOORD0)
+{
+	Sat8VertexShaderOutput OUT;
+
+	OUT.pos = mul(glstate.matrix.mvp, position);
+
+	float passOffset = pow(8.0f, satPassIndex) * satTexelSize;
+
+	// output first two texcoords
+	OUT.uv[0].xy = inUV;
+	OUT.uv[0].wz = OUT.uv[0].xy - float2(passOffset, 0.0f);
+
+	// compute remaining 6 texcoords for neighboring pixels
+	for (int i=1; i<4; i++)
+	{
+		OUT.uv[i].xy = OUT.uv[0].xy - float2((2.0f*i)*passOffset, 0.0f);
+		OUT.uv[i].wz = OUT.uv[0].xy - float2((2.0f*i + 1.0f)*passOffset, 0.0f);
+	}
+
+	return OUT;
+}
+
+Sat8VertexShaderOutput SummedAreaTableV8VP(float4 position : POSITION, float2 inUV : TEXCOORD0)
+{
+	Sat8VertexShaderOutput OUT;
+
+	OUT.pos = mul(glstate.matrix.mvp, position);
+
+	float passOffset = pow(8.0f, satPassIndex) * satTexelSize;
+
+	// output first two texcoords
+	OUT.uv[0].xy = inUV;
+	OUT.uv[0].wz = OUT.uv[0].xy - float2(0.0f, passOffset);
+
+	// compute remaining 6 texcoords for neighboring pixels
+	for (int i=1; i<4; i++)
+	{
+		OUT.uv[i].xy = OUT.uv[0].xy - float2(0.0f, (2.0f*i)*passOffset);
+		OUT.uv[i].wz = OUT.uv[0].xy - float2(0.0f, (2.0f*i + 1.0f)*passOffset);
+	}
+
+	return OUT;
+}
+
+FragmentShaderOutput SummedAreaTable8FP(Sat8VertexShaderOutput IN)
+{
+	FragmentShaderOutput OUT;
+	
+	float4 t[4];
+	// add 8 texture samples with pyramidal scheme to maintain precision
+	for(int i=0; i<4; i++)
+		t[i] = tex2D(satMap, IN.uv[i].xy) + tex2D(satMap, IN.uv[i].wz);
+	
+	t[0] += t[1]; t[2] += t[3];
+	
+	OUT.color = t[0] + t[2];
+
+	return OUT;
+}
+
+FragmentShaderOutput SummedAreaTableArray8FP(Sat8VertexShaderOutput IN)
+{
+	FragmentShaderOutput OUT;
+	
+	float4 t[4];
+	// add 8 texture samples with pyramidal scheme to maintain precision
+	for(int i=0; i<4; i++)
+		t[i] = tex2DARRAY(satArrayMap, float3(IN.uv[i].xy, satIndex)) + tex2DARRAY(satArrayMap, float3(IN.uv[i].wz, satIndex));
+	
+	t[0] += t[1]; t[2] += t[3];
+	
+	OUT.color = t[0] + t[2];
+
+	return OUT;
+}
+
+// -----------------------------------------------------------------------------
+// --------------------------------- Passes ------------------------------------
+// -----------------------------------------------------------------------------
+technique SummedAreaTableShader
+{
+
+	pass GenerateSummedAreaTableH4
+	{
+		VertexProgram = compile gp4vp SummedAreaTableH4VP();
+		FragmentProgram = compile gp4fp SummedAreaTable4FP();
+	}
+
+	pass GenerateSummedAreaTableV4
+	{
+		VertexProgram = compile gp4vp SummedAreaTableV4VP();
+		FragmentProgram = compile gp4fp SummedAreaTable4FP();
+	}
+
+	pass GenerateSummedAreaTableArrayH4
+	{
+		VertexProgram = compile gp4vp SummedAreaTableH4VP();
+		FragmentProgram = compile gp4fp SummedAreaTableArray4FP();
+	}
+
+	pass GenerateSummedAreaTableArrayV4
+	{
+		VertexProgram = compile gp4vp SummedAreaTableV4VP();
+		FragmentProgram = compile gp4fp SummedAreaTableArray4FP();
+	}
+
+	// -----------------------------------------------------------------------------
+
+	pass GenerateSummedAreaTableH8
+	{
+		VertexProgram = compile gp4vp SummedAreaTableH8VP();
+		FragmentProgram = compile gp4fp SummedAreaTable8FP();
+	}
+
+	pass GenerateSummedAreaTableV8
+	{
+		VertexProgram = compile gp4vp SummedAreaTableV8VP();
+		FragmentProgram = compile gp4fp SummedAreaTable8FP();
+	}
+
+	pass GenerateSummedAreaTableArrayH8
+	{
+		VertexProgram = compile gp4vp SummedAreaTableH8VP();
+		FragmentProgram = compile gp4fp SummedAreaTableArray8FP();
+	}
+
+	pass GenerateSummedAreaTableArrayV8
+	{
+		VertexProgram = compile gp4vp SummedAreaTableV8VP();
+		FragmentProgram = compile gp4fp SummedAreaTableArray8FP();
+	}
+}

@@ -1,0 +1,9 @@
+screenWidth 1280
+screenHeight 720
+bitsPerPixel 32
+refreshRate 60
+fullScreen 0
+
+sceneIndex 0
+
+windowName VolumetricRealTimeWaterAndFoamRendering

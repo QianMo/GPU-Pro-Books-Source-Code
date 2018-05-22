@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Parameters Date="2011-07-15T00:37:23">
+    <IndirectLight BufferSize="1" EnvMapRotation="1">
+        <General Rays="24" Steps="47" VoxelResolution="128" Radius="10" Spread="1" PatternSize="16"/>
+        <Brightness IndirectLightScale="2.8" DirectLightScale="0.61" EnvMapOcclusionStrength="1.25" EnvMapBrightness="3"/>
+        <Offsets RayOffsetScale="0.51" NormalOffsetScale="0.36" DistanceThreshold="1"/>
+    </IndirectLight>
+    <Filter enabled="1">
+        <Settings Spatial="1" Radius="10" IterationRadius="4" Iterations="2" DistanceLimit="1" NormalLimit="15" MaterialLimit="0.11"/>
+        <SurfaceDetail enabled="1" alpha="0.3"/>
+    </Filter>
+    <ToneMapping enabled="1" Linear="0" Log="1" MaxRadiance="2"/>
+</Parameters>

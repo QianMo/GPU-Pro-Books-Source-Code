@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Name="unknown" Date="2011-07-12T23:42:33">
+    <Parameters File="SceneXML/ParameterSets/Sibenik-Radius-1.5.xml"/>
+    <!--
+Resolution
+-->
+    <Window width="1024" height="768"/>
+    <!--
+Camera Definition
+-->
+    <Camera aspect="1.33333" fov="90" zNear="0.1" zFar="100">
+        <Pose>
+            <Eye x="0.400146" y="-4.65747" z="-0.132189"/>
+            <!--(Eye = UserPosition)-->
+            <ViewDir angleX="-10.625" angleY="-90.875" angleZ="0" x="-0.98274" y="0.18438" z="0.0150093"/>
+            <Up x="0.184359" y="0.982855" z="-0.00281569"/>
+        </Pose>
+        <CurrentPose index="0"/>
+    </Camera>
+    <!--
+All Lights
+-->
+    <Lights>
+        <SpotLight constantAttenuation="1" quadraticAttenuation="0" cutoffAngle="24" spotExponent="0" angleX="68.75" angleY="-90.75" angleZ="0">
+            <Position x="-2.03565" y="-0.0142903" z="-0.477122"/>
+            <I r="10" g="6.94118" b="2.62745"/>
+            <SpotDirection x="-0.362407" y="-0.932008" z="0.0047442"/>
+            <Up x="-0.931928" y="0.362438" z="0.0121997"/>
+        </SpotLight>
+    </Lights>
+    <!--
+
+All Scene Elements (Static and Dynamic Geometry)
+-->
+    <StaticElement name="sibenik" pathModel="models/Sibenik/sibenik2_cut_mod_rep_recolor2.obj">
+        <Atlas pathAtlas="models/Sibenik/sibenik2_cut_mod_rep-atlas-lightpack1q.obj" atlasWidth="1024" atlasHeight="1024"/>
+        <!--mode = GLM_SMOOTH GLM_TEXTURE GLM_COLOR -->
+        <LoaderSettings defaultDrawMode="22" computedVertexNormals="1" vertexNormalsAngle="55" vertexNormalsSmoothingGroups="0" unitized="1" centered="1" scaleFactor="8"/>
+        <Position x="0" y="0" z="0"/>
+        <Rotation angleX="0" angleY="0" angleZ="0"/>
+        <Scale factor="1"/>
+    </StaticElement>
+</Scene>

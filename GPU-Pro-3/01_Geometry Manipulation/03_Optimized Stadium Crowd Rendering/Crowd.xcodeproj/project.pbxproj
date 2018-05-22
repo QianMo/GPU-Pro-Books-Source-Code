@@ -1,0 +1,402 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05180F321261B2BD006D6529 /* Crowd-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05180F311261B2BD006D6529 /* Crowd-Info.plist */; };
+		058312851410D36200D7ABC7 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = 058312841410D36200D7ABC7 /* ReadMe.txt */; };
+		05A310141410CDF400A3F75D /* App.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A30FF21410CDF400A3F75D /* App.cpp */; };
+		05A310151410CDF400A3F75D /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A30FF41410CDF400A3F75D /* Camera.cpp */; };
+		05A310161410CDF400A3F75D /* Camera.inl in Resources */ = {isa = PBXBuildFile; fileRef = 05A30FF61410CDF400A3F75D /* Camera.inl */; };
+		05A310171410CDF400A3F75D /* Crowd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A30FF71410CDF400A3F75D /* Crowd.cpp */; };
+		05A310181410CDF400A3F75D /* CrowdGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A30FF91410CDF400A3F75D /* CrowdGroup.cpp */; };
+		05A310191410CDF400A3F75D /* CrowdGroup.inl in Resources */ = {isa = PBXBuildFile; fileRef = 05A30FFB1410CDF400A3F75D /* CrowdGroup.inl */; };
+		05A3101A1410CDF400A3F75D /* CrowdMesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A30FFC1410CDF400A3F75D /* CrowdMesh.cpp */; };
+		05A3101B1410CDF400A3F75D /* CrowdMesh.inl in Resources */ = {isa = PBXBuildFile; fileRef = 05A30FFE1410CDF400A3F75D /* CrowdMesh.inl */; };
+		05A3101C1410CDF400A3F75D /* CrowdSection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A30FFF1410CDF400A3F75D /* CrowdSection.cpp */; };
+		05A3101E1410CDF400A3F75D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A310041410CDF400A3F75D /* main.cpp */; };
+		05A3101F1410CDF400A3F75D /* Matrix4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A310051410CDF400A3F75D /* Matrix4.cpp */; };
+		05A310201410CDF400A3F75D /* Matrix4.inl in Resources */ = {isa = PBXBuildFile; fileRef = 05A310071410CDF400A3F75D /* Matrix4.inl */; };
+		05A310211410CDF400A3F75D /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A310081410CDF400A3F75D /* Shader.cpp */; };
+		05A310221410CDF400A3F75D /* Shader.inl in Resources */ = {isa = PBXBuildFile; fileRef = 05A3100A1410CDF400A3F75D /* Shader.inl */; };
+		05A310231410CDF400A3F75D /* Stadium.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A3100B1410CDF400A3F75D /* Stadium.cpp */; };
+		05A310241410CDF400A3F75D /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A3100E1410CDF400A3F75D /* Texture.cpp */; };
+		05A310251410CDF400A3F75D /* Texture.inl in Resources */ = {isa = PBXBuildFile; fileRef = 05A310101410CDF400A3F75D /* Texture.inl */; };
+		05A310261410CDF400A3F75D /* Vector4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05A310111410CDF400A3F75D /* Vector4.cpp */; };
+		05A310271410CDF400A3F75D /* Vector4.inl in Resources */ = {isa = PBXBuildFile; fileRef = 05A310131410CDF400A3F75D /* Vector4.inl */; };
+		05DD5926128525A900E304B0 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05DD5925128525A900E304B0 /* IOKit.framework */; };
+		65D5852511D8CEC50042E2E3 /* Cg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D5852411D8CEC50042E2E3 /* Cg.framework */; };
+		65D8E73411CDC79000862620 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D8E73311CDC79000862620 /* OpenGL.framework */; };
+		65D8E75511CDC84200862620 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D8E75411CDC84200862620 /* GLUT.framework */; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		05180F311261B2BD006D6529 /* Crowd-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Crowd-Info.plist"; sourceTree = "<group>"; };
+		058312841410D36200D7ABC7 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
+		05A30FF21410CDF400A3F75D /* App.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = App.cpp; path = Source/App.cpp; sourceTree = "<group>"; };
+		05A30FF31410CDF400A3F75D /* App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = App.h; path = Source/App.h; sourceTree = "<group>"; };
+		05A30FF41410CDF400A3F75D /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Camera.cpp; path = Source/Camera.cpp; sourceTree = "<group>"; };
+		05A30FF51410CDF400A3F75D /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Camera.h; path = Source/Camera.h; sourceTree = "<group>"; };
+		05A30FF61410CDF400A3F75D /* Camera.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Camera.inl; path = Source/Camera.inl; sourceTree = "<group>"; };
+		05A30FF71410CDF400A3F75D /* Crowd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Crowd.cpp; path = Source/Crowd.cpp; sourceTree = "<group>"; };
+		05A30FF81410CDF400A3F75D /* Crowd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Crowd.h; path = Source/Crowd.h; sourceTree = "<group>"; };
+		05A30FF91410CDF400A3F75D /* CrowdGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CrowdGroup.cpp; path = Source/CrowdGroup.cpp; sourceTree = "<group>"; };
+		05A30FFA1410CDF400A3F75D /* CrowdGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CrowdGroup.h; path = Source/CrowdGroup.h; sourceTree = "<group>"; };
+		05A30FFB1410CDF400A3F75D /* CrowdGroup.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CrowdGroup.inl; path = Source/CrowdGroup.inl; sourceTree = "<group>"; };
+		05A30FFC1410CDF400A3F75D /* CrowdMesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CrowdMesh.cpp; path = Source/CrowdMesh.cpp; sourceTree = "<group>"; };
+		05A30FFD1410CDF400A3F75D /* CrowdMesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CrowdMesh.h; path = Source/CrowdMesh.h; sourceTree = "<group>"; };
+		05A30FFE1410CDF400A3F75D /* CrowdMesh.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = CrowdMesh.inl; path = Source/CrowdMesh.inl; sourceTree = "<group>"; };
+		05A30FFF1410CDF400A3F75D /* CrowdSection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CrowdSection.cpp; path = Source/CrowdSection.cpp; sourceTree = "<group>"; };
+		05A310001410CDF400A3F75D /* CrowdSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CrowdSection.h; path = Source/CrowdSection.h; sourceTree = "<group>"; };
+		05A310011410CDF400A3F75D /* CrowdShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CrowdShader.h; path = Source/CrowdShader.h; sourceTree = "<group>"; };
+		05A310041410CDF400A3F75D /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Source/main.cpp; sourceTree = "<group>"; };
+		05A310051410CDF400A3F75D /* Matrix4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Matrix4.cpp; path = Source/Matrix4.cpp; sourceTree = "<group>"; };
+		05A310061410CDF400A3F75D /* Matrix4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Matrix4.h; path = Source/Matrix4.h; sourceTree = "<group>"; };
+		05A310071410CDF400A3F75D /* Matrix4.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Matrix4.inl; path = Source/Matrix4.inl; sourceTree = "<group>"; };
+		05A310081410CDF400A3F75D /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Shader.cpp; path = Source/Shader.cpp; sourceTree = "<group>"; };
+		05A310091410CDF400A3F75D /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shader.h; path = Source/Shader.h; sourceTree = "<group>"; };
+		05A3100A1410CDF400A3F75D /* Shader.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Shader.inl; path = Source/Shader.inl; sourceTree = "<group>"; };
+		05A3100B1410CDF400A3F75D /* Stadium.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Stadium.cpp; path = Source/Stadium.cpp; sourceTree = "<group>"; };
+		05A3100C1410CDF400A3F75D /* Stadium.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Stadium.h; path = Source/Stadium.h; sourceTree = "<group>"; };
+		05A3100D1410CDF400A3F75D /* StadiumShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StadiumShader.h; path = Source/StadiumShader.h; sourceTree = "<group>"; };
+		05A3100E1410CDF400A3F75D /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Texture.cpp; path = Source/Texture.cpp; sourceTree = "<group>"; };
+		05A3100F1410CDF400A3F75D /* Texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Texture.h; path = Source/Texture.h; sourceTree = "<group>"; };
+		05A310101410CDF400A3F75D /* Texture.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Texture.inl; path = Source/Texture.inl; sourceTree = "<group>"; };
+		05A310111410CDF400A3F75D /* Vector4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Vector4.cpp; path = Source/Vector4.cpp; sourceTree = "<group>"; };
+		05A310121410CDF400A3F75D /* Vector4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Vector4.h; path = Source/Vector4.h; sourceTree = "<group>"; };
+		05A310131410CDF400A3F75D /* Vector4.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Vector4.inl; path = Source/Vector4.inl; sourceTree = "<group>"; };
+		05DD5925128525A900E304B0 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		65D5852411D8CEC50042E2E3 /* Cg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cg.framework; path = /Library/Frameworks/Cg.framework; sourceTree = "<absolute>"; };
+		65D8E73311CDC79000862620 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		65D8E75411CDC84200862620 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = /System/Library/Frameworks/GLUT.framework; sourceTree = "<absolute>"; };
+		8D1107320486CEB800E47090 /* Crowd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Crowd.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				65D8E73411CDC79000862620 /* OpenGL.framework in Frameworks */,
+				65D8E75511CDC84200862620 /* GLUT.framework in Frameworks */,
+				65D5852511D8CEC50042E2E3 /* Cg.framework in Frameworks */,
+				05DD5926128525A900E304B0 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05180F301261B28E006D6529 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65D5852411D8CEC50042E2E3 /* Cg.framework */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				65D8E73311CDC79000862620 /* OpenGL.framework */,
+				65D8E75411CDC84200862620 /* GLUT.framework */,
+				05DD5925128525A900E304B0 /* IOKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		05180F331261B2E2006D6529 /* OSX */ = {
+			isa = PBXGroup;
+			children = (
+				05A310041410CDF400A3F75D /* main.cpp */,
+			);
+			name = OSX;
+			sourceTree = "<group>";
+		};
+		05180FCF1261B3A4006D6529 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				05180F311261B2BD006D6529 /* Crowd-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		058312861410D37B00D7ABC7 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				05A310081410CDF400A3F75D /* Shader.cpp */,
+				05A310091410CDF400A3F75D /* Shader.h */,
+				05A3100A1410CDF400A3F75D /* Shader.inl */,
+				05A3100E1410CDF400A3F75D /* Texture.cpp */,
+				05A3100F1410CDF400A3F75D /* Texture.h */,
+				05A310101410CDF400A3F75D /* Texture.inl */,
+			);
+			name = Graphics;
+			sourceTree = "<group>";
+		};
+		058312871410D38800D7ABC7 /* Crowd */ = {
+			isa = PBXGroup;
+			children = (
+				05A30FF91410CDF400A3F75D /* CrowdGroup.cpp */,
+				05A30FFA1410CDF400A3F75D /* CrowdGroup.h */,
+				05A30FFB1410CDF400A3F75D /* CrowdGroup.inl */,
+				05A30FFC1410CDF400A3F75D /* CrowdMesh.cpp */,
+				05A30FFD1410CDF400A3F75D /* CrowdMesh.h */,
+				05A30FFE1410CDF400A3F75D /* CrowdMesh.inl */,
+				05A30FFF1410CDF400A3F75D /* CrowdSection.cpp */,
+				05A310001410CDF400A3F75D /* CrowdSection.h */,
+			);
+			name = Crowd;
+			sourceTree = "<group>";
+		};
+		058312881410D39200D7ABC7 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				05A30FF21410CDF400A3F75D /* App.cpp */,
+				05A30FF31410CDF400A3F75D /* App.h */,
+				05A30FF41410CDF400A3F75D /* Camera.cpp */,
+				05A30FF51410CDF400A3F75D /* Camera.h */,
+				05A30FF61410CDF400A3F75D /* Camera.inl */,
+				05A30FF71410CDF400A3F75D /* Crowd.cpp */,
+				05A30FF81410CDF400A3F75D /* Crowd.h */,
+				05A3100B1410CDF400A3F75D /* Stadium.cpp */,
+				05A3100C1410CDF400A3F75D /* Stadium.h */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
+		058312891410D3C400D7ABC7 /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				05A310051410CDF400A3F75D /* Matrix4.cpp */,
+				05A310061410CDF400A3F75D /* Matrix4.h */,
+				05A310071410CDF400A3F75D /* Matrix4.inl */,
+				05A310111410CDF400A3F75D /* Vector4.cpp */,
+				05A310121410CDF400A3F75D /* Vector4.h */,
+				05A310131410CDF400A3F75D /* Vector4.inl */,
+			);
+			name = Math;
+			sourceTree = "<group>";
+		};
+		080E96DDFE201D6D7F000001 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				05A310011410CDF400A3F75D /* CrowdShader.h */,
+				05A3100D1410CDF400A3F75D /* StadiumShader.h */,
+			);
+			name = Shaders;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* Crowd.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* Helicopter */ = {
+			isa = PBXGroup;
+			children = (
+				058312841410D36200D7ABC7 /* ReadMe.txt */,
+				058312871410D38800D7ABC7 /* Crowd */,
+				058312881410D39200D7ABC7 /* Game */,
+				058312861410D37B00D7ABC7 /* Graphics */,
+				058312891410D3C400D7ABC7 /* Math */,
+				05180F331261B2E2006D6529 /* OSX */,
+				080E96DDFE201D6D7F000001 /* Shaders */,
+				05180F301261B28E006D6529 /* Frameworks */,
+				05180FCF1261B3A4006D6529 /* Resources */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = Helicopter;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* Crowd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Crowd" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Crowd;
+			productInstallPath = "$(HOME)/Applications";
+			productName = Helicopter;
+			productReference = 8D1107320486CEB800E47090 /* Crowd.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Crowd" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* Helicopter */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* Crowd */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05180F321261B2BD006D6529 /* Crowd-Info.plist in Resources */,
+				05A310161410CDF400A3F75D /* Camera.inl in Resources */,
+				05A310191410CDF400A3F75D /* CrowdGroup.inl in Resources */,
+				05A3101B1410CDF400A3F75D /* CrowdMesh.inl in Resources */,
+				05A310201410CDF400A3F75D /* Matrix4.inl in Resources */,
+				05A310221410CDF400A3F75D /* Shader.inl in Resources */,
+				05A310251410CDF400A3F75D /* Texture.inl in Resources */,
+				05A310271410CDF400A3F75D /* Vector4.inl in Resources */,
+				058312851410D36200D7ABC7 /* ReadMe.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05A310141410CDF400A3F75D /* App.cpp in Sources */,
+				05A310151410CDF400A3F75D /* Camera.cpp in Sources */,
+				05A310171410CDF400A3F75D /* Crowd.cpp in Sources */,
+				05A310181410CDF400A3F75D /* CrowdGroup.cpp in Sources */,
+				05A3101A1410CDF400A3F75D /* CrowdMesh.cpp in Sources */,
+				05A3101C1410CDF400A3F75D /* CrowdSection.cpp in Sources */,
+				05A3101E1410CDF400A3F75D /* main.cpp in Sources */,
+				05A3101F1410CDF400A3F75D /* Matrix4.cpp in Sources */,
+				05A310211410CDF400A3F75D /* Shader.cpp in Sources */,
+				05A310231410CDF400A3F75D /* Stadium.cpp in Sources */,
+				05A310241410CDF400A3F75D /* Texture.cpp in Sources */,
+				05A310261410CDF400A3F75D /* Vector4.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = Crowd;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = Crowd;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					_DEBUG,
+					_OGL,
+					_CG,
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = ./Build;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
+				SYMROOT = "./$(CONFIGURATION)";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)";
+				CONFIGURATION_TEMP_DIR = "$(PROJECT_TEMP_DIR)/$(CONFIGURATION)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_CPP_EXCEPTIONS = NO;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					_RELEASE,
+					_OGL,
+					_CG,
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = ./Build;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
+				SYMROOT = "./$(CONFIGURATION)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Crowd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Crowd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

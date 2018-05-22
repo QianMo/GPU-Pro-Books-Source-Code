@@ -1,0 +1,16 @@
+RawDEMDataFile = media\Puget16k\ps_height_16k.png
+NumColumns = 16384
+NumRows = 16384
+CompressedDEM = media\Puget16k\Puget_16384x16384.hf
+CameraTrack = media\Puget16k\CameraTrack.raw
+MaterialDescFile = media\MaterialsPuget.txt
+TexturingMode = IndexedMask
+TilingScale = 12
+ForceRecompressElevData = false
+PatchSize = 128
+ElevationSamplingInterval = 10
+ScreenSpaceThreshold = 2
+ReconstrPrecision = 5
+ElevationScale = 0.1
+EnableStoneShower = true
+SaveModifiedHeigtMap = true

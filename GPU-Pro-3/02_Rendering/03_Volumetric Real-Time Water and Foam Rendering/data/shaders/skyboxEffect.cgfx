@@ -1,0 +1,41 @@
+
+sampler2D skyboxFace;
+
+#include "data/shaders/util.fxh"
+
+// -----------------------------------------------------------------------------
+// -------------------------------- Skybox -------------------------------------
+// -----------------------------------------------------------------------------
+
+
+PositionTexCoordShaderInput SkyboxVP(PositionTexCoordShaderInput IN)
+{
+	PositionTexCoordShaderInput OUT;
+
+	OUT.position = mul(glstate.matrix.mvp, IN.position);
+	OUT.texCoord = IN.texCoord;
+
+	return OUT;
+}
+
+FragmentShaderOutput SkyboxFP(PositionTexCoordShaderInput IN)
+{
+	FragmentShaderOutput OUT;
+
+	OUT.color.xyz = tex2D(skyboxFace, IN.texCoord).xyz;
+	OUT.color.w = 1.0f;
+
+	return OUT;
+}
+
+// -----------------------------------------------------------------------------
+// --------------------------------- Passes ------------------------------------
+// -----------------------------------------------------------------------------
+technique SkyboxShader
+{
+	pass Skybox
+    {
+		VertexProgram = compile gp4vp SkyboxVP();
+        FragmentProgram = compile gp4fp SkyboxFP();
+    }
+}

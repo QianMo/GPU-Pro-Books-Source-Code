@@ -1,0 +1,803 @@
+
+float renderMode;
+
+samplerRECT thicknessMap;
+samplerRECT foamThicknessMap;
+
+samplerRECT depthMap;
+samplerRECT foamDepthMap;
+samplerRECT depthMask;
+samplerRECT noiseMap;
+
+sampler3D perlinMap;
+
+samplerRECT sceneMap;
+samplerCUBE cubeMap;
+
+float particleSize;
+float particleScale;
+float2 bufferSize;
+float3 lightPosEyeSpace;
+
+float4x4 invView;
+float4x4 invProj;
+float4x4 invViewProj;
+
+float lowResFactor;
+float2 invViewport;
+float2 invFocalLength;
+float2 invCamera;
+float3 camera;
+float currentIteration;
+
+float4 baseColor;
+float4 colorFalloff;
+float falloffScale;
+float3 fluidSpecularColor;
+float fluidShininess;
+float densityThreshold;
+float fresnelBias;
+float fresnelScale;
+float fresnelPower;
+float thicknessRefraction;
+float faceScale;
+float epsilon; 
+float blurDepthFalloff;
+float thresholdMin;
+float eulerIterationFactor;
+float depthThreshold;
+float useNoise;
+float noiseDepthFalloff;
+float normalNoiseWeight;
+
+float4 foamBackColor;
+float4 foamFrontColor;
+float foamFalloffScale;
+float foamDepthThreshold;
+float foamFrontFalloffScale;
+
+float2 scaledDownSize;
+
+
+float4x4 shadowMapTextureMatrix;
+float4x4 shadowMapLinearTextureMatrix;
+
+float reconstructionOrder;
+float2 reconstructionOffset;
+float shadowMapSize;
+float shadowMapSizeSquared;
+float shadowMapTexelSize;
+float shadowMapFOV;
+
+sampler2DARRAY csmSinMap;
+sampler2DARRAY csmCosMap;
+
+float3 clipPlanes;
+float useMipMaps;
+
+#define PI 3.14159265f
+
+struct ColorDepthFragmentShaderOutput
+{	
+	float4 color : COLOR0;
+	float depth	 : DEPTH;
+};
+
+struct MultiColorFragmentShaderOutput
+{	
+	float4 color0 : COLOR0;
+	float4 color1 : COLOR1;
+};
+
+#include "data/shaders/csmReconstruction.fxh"
+#include "data/shaders/util.fxh"
+#include "data/shaders/fluidUtil.fxh"
+
+
+// -----------------------------------------------------------------------------
+// --------------------------------- FluidFoam ---------------------------------
+// -----------------------------------------------------------------------------
+void FluidFoamDepthVP(float4 position			: POSITION,
+					  float2 texCoord				: TEXCOORD0,
+					  float density				: TEXCOORD1,
+					  float3 velocity				: TEXCOORD2,
+					  float lifeTime				: TEXCOORD3,
+					  float foam					: TEXCOORD4,
+					  out float4 outPosition		: POSITION,
+					  out float4 outColor			: COLOR,
+					  out float4 outPrevPosition	: TEXCOORD0,
+					  out float  outPointSize		: TEXCOORD1,
+					  out float  outDensity		: TEXCOORD2)
+{
+	const float timeStep = 0.02f;
+
+	float3 pos = position.xyz;
+	float3 vel = velocity.xyz;
+	float3 prevPos = (pos - vel*timeStep);
+
+	outPosition = mul(glstate.matrix.modelview[0], float4(pos, 1.0f));
+	outPrevPosition = mul(glstate.matrix.modelview[0], float4(prevPos, 1.0f));
+	outDensity	= density;
+
+	const float pointShrink = 0.75f;
+	float scaledPointRadius = particleSize * (pointShrink + smoothstep(densityThreshold, densityThreshold*2.0f, density)*(1.0-pointShrink));
+
+	const float foamScale = pow(foam, 0.25f);
+
+	// calculate point size
+	outPointSize = scaledPointRadius*foamScale;
+
+	float4 mvpPos = mul(glstate.matrix.mvp, position);
+
+	float3 postPerspectivePos = mvpPos.xyz / mvpPos.w;
+	float2 uv = (postPerspectivePos.xy*0.5f + 0.5f)*scaledDownSize;
+	float depth = texRECT(depthMap, uv).x;
+
+	if (foam <= 0.0f)
+		outDensity = 0.0f;
+
+	outColor = float4(foam, lifeTime, step(depth, outPosition.z + foamDepthThreshold), 1.0f);
+}
+
+POINT TRIANGLE_OUT void FluidFoamDepthGP(AttribArray<float4> position : POSITION,
+										 AttribArray<float4> color : COLOR0,
+										 AttribArray<float4> prevPosition : TEXCOORD0,
+										 AttribArray<float> pointSize : TEXCOORD1,
+										 AttribArray<float> density : TEXCOORD2)
+{
+	if (density[0] > densityThreshold)
+	{
+
+		float3 pos = position[0].xyz;
+		float3 prevPos = prevPosition[0].xyz;
+		float3 motion = pos - prevPos;
+		float3 direction = normalize(motion);
+		float len = length(motion);
+
+		float3 viewVector = normalize(-pos);
+		float facing = dot(viewVector, direction);
+
+		float3 x = direction*pointSize[0]*2.0f;
+		float3 y = normalize(cross(direction, viewVector))*pointSize[0];
+
+		const float motionThreshold = 0.5f;
+		if ((len < motionThreshold) || (facing > 0.95f) || (facing < -0.95f))
+		{
+			prevPos = pos;
+			x = float3(pointSize[0], 0.0, 0.0);
+			y = float3(0.0, -pointSize[0], 0.0);
+		}
+
+		float4 eyeSpace0 = float4(pos + x + y, 1.0f);
+		float4 eyeSpace1 = float4(pos + x - y, 1.0f);
+		float4 eyeSpace2 = float4(pos - x + y, 1.0f);
+		float4 eyeSpace3 = float4(pos - x - y, 1.0f);
+
+		float4 p0 = mul(glstate.matrix.projection, eyeSpace0);
+		float4 p1 = mul(glstate.matrix.projection, eyeSpace1);
+		float4 p2 = mul(glstate.matrix.projection, eyeSpace2);
+		float4 p3 = mul(glstate.matrix.projection, eyeSpace3);
+
+		emitVertex(p0 : POSITION, color[0], float4(0, 0, 0, 0) : TEXCOORD0, eyeSpace0 : TEXCOORD1);
+		emitVertex(p1 : POSITION, color[0], float4(0, 1, 0, 0) : TEXCOORD0, eyeSpace1 : TEXCOORD1);
+		emitVertex(p2 : POSITION, color[0], float4(1, 0, 0, 0) : TEXCOORD0, eyeSpace2 : TEXCOORD1);
+		emitVertex(p3 : POSITION, color[0], float4(1, 1, 0, 0) : TEXCOORD0, eyeSpace3 : TEXCOORD1);
+	}
+}
+
+ColorDepthFragmentShaderOutput FluidFoamDepthFP(float2 texCoord : TEXCOORD0,
+												float4 eyeSpace	: TEXCOORD1)
+{
+	ColorDepthFragmentShaderOutput OUT;
+
+	// calculate eye-space normal from texture coordinates
+	float3 normal;
+	normal.xy = texCoord.xy*float2(2.0f, -2.0f) + float2(-1.0f, 1.0f);
+	float r2 = dot(normal.xy, normal.xy);
+
+	// kill pixels outside circle
+	if (r2 > 1.0f)
+		discard;
+
+	normal.z = sqrt(1.0f-r2);
+
+	// calculate depth
+	float4 eyeSpacePos = float4(eyeSpace.xyz + normal*eyeSpace.w, 1.0f); // position of this pixel on sphere in eye space
+	float4 clipSpacePos = mul(glstate.matrix.projection, eyeSpacePos);
+
+	OUT.color = float4(eyeSpacePos.z, 0.0f, 0.0f, 0.0f); // output eye-space depth
+	OUT.depth = (clipSpacePos.z / clipSpacePos.w)*0.5f+0.5f;
+
+	return OUT;
+}
+
+FragmentShaderOutput FluidFoamThicknessFP(float4 color : COLOR0, float2 texCoord : TEXCOORD0)
+{
+	FragmentShaderOutput OUT;
+
+	// calculate eye-space normal from texture coordinates
+	float3 normal;
+	normal.xy = texCoord.xy*float2(2.0f, -2.0f) + float2(-1.0f, 1.0f);
+	float r2 = dot(normal.xy, normal.xy);
+
+	// kill pixels outside circle
+	if (r2 > 1.0f)
+		discard;
+
+	normal.z = sqrt(1.0f-r2) * faceScale;
+
+	float thickness = normal.z*particleSize*2.0*exp(-r2*4.0f);
+
+	float noise = tex3D(perlinMap, float3(texCoord.xy, color.y)).x;
+
+	OUT.color = float4(thickness*noise, thickness*noise*color.z, 0.0f, 1.0f);
+
+	return OUT;
+}
+
+
+// -----------------------------------------------------------------------------
+// ------------------------------ FluidParticleVP ------------------------------
+// -----------------------------------------------------------------------------
+void FluidParticleVP(float4 position			: POSITION,
+				     float2 texCoord			: TEXCOORD0,
+					 float density				: TEXCOORD1,
+					 float3 velocity			: TEXCOORD2,
+					 float lifeTime				: TEXCOORD3,
+					 float foam					: TEXCOORD4,
+					 out float4 outPos			: POSITION,
+					 out float outPointSize		: PSIZE,
+					 out float2 outTexCoord		: TEXCOORD0,
+					 out float4 eyeSpace		: TEXCOORD1,
+					 out float outLifeTime		: TEXCOORD2,
+					 out float3 outVelocity		: TEXCOORD3,
+					 out float outDensity		: TEXCOORD4,
+					 out float outFoam			: TEXCOORD5)
+{
+	outPos = mul(glstate.matrix.mvp, position);
+	outTexCoord = texCoord;
+
+	const float pointShrink = 0.5f;
+	float scaledPointRadius = particleSize * (pointShrink + smoothstep(densityThreshold, densityThreshold*2.0f, density)*(1.0-pointShrink));
+
+	// calculate point size
+	float4 eyeSpacePosition = mul(glstate.matrix.modelview[0], position);
+	float dist = length(eyeSpacePosition.xyz);
+	outPointSize = scaledPointRadius * (particleScale / dist);
+
+	eyeSpace = float4(eyeSpacePosition.xyz, scaledPointRadius);
+
+	if (density < densityThreshold) // cull particles with density below threshold
+		outPos.w = -1.0;
+		
+	outLifeTime = lifeTime*0.1f;
+
+	outVelocity = velocity;
+	outDensity = density;
+	outFoam = foam;
+}
+
+// -----------------------------------------------------------------------------
+// -------------------------------- FluidDepthFP -------------------------------
+// -----------------------------------------------------------------------------
+ColorDepthFragmentShaderOutput FluidDepthFP(float2 texCoord : TEXCOORD0, float4 eyeSpace : TEXCOORD1)
+{
+	ColorDepthFragmentShaderOutput OUT;
+
+	// calculate eye-space normal from texture coordinates
+	float3 normal;
+	normal.xy = texCoord.xy*float2(2.0f, -2.0f) + float2(-1.0f, 1.0f);
+	float r2 = dot(normal.xy, normal.xy);
+
+	// kill pixels outside circle
+	if (r2 > 1.0f)
+		discard;
+
+	normal.z = sqrt(1.0f-r2);
+
+	// calculate depth
+	float4 eyeSpacePos = float4(eyeSpace.xyz + normal*eyeSpace.w, 1.0f); // position of this pixel on sphere in eye space
+	float4 clipSpacePos = mul(glstate.matrix.projection, eyeSpacePos);
+
+	OUT.color = float4(eyeSpacePos.z, 0.0f, 0.0f, 0.0f); // output eye-space depth
+	OUT.depth = (clipSpacePos.z / clipSpacePos.w)*0.5f+0.5f;
+
+	return OUT;
+}
+
+
+// -----------------------------------------------------------------------------
+// ------------------------------- FluidThickness ------------------------------
+// -----------------------------------------------------------------------------
+void FluidThicknessVP(float4 position			: POSITION,
+					 float2 texCoord			: TEXCOORD0,
+					 float density				: TEXCOORD1,
+					 float foam					: TEXCOORD4,
+					 out float4 outPos			: POSITION,
+					 out float outPointSize		: PSIZE,
+					 out float2 outTexCoord		: TEXCOORD0,
+					 out float4 eyeSpace		: TEXCOORD1,
+					 out float outFoam			: TEXCOORD2)
+{
+	outPos = mul(glstate.matrix.mvp, position);
+	outTexCoord = texCoord;
+
+	const float pointShrink = 0.5f;
+	float scaledPointRadius = particleSize * (pointShrink + smoothstep(densityThreshold, densityThreshold*2.0f, density)*(1.0-pointShrink));
+
+	// calculate point size
+	float4 eyeSpacePosition = mul(glstate.matrix.modelview[0], position);
+	float dist = length(eyeSpacePosition.xyz);
+	outPointSize = scaledPointRadius * (particleScale / dist);
+
+	eyeSpace = float4(eyeSpacePosition.xyz, scaledPointRadius);
+
+	//if (density < densityThreshold)
+	if ((density < densityThreshold) || (foam > 0.0f)) // cull particles with density below threshold
+		outPos.w = -1.0;
+
+	float3 postPerspectivePos = outPos.xyz / outPos.w;
+	float2 uv = (postPerspectivePos.xy*0.5f + 0.5f)*scaledDownSize;
+	float depth = texRECT(depthMap, uv).x;
+
+	outFoam = step(depth, eyeSpacePosition.z);
+}
+
+FragmentShaderOutput FluidThicknessFP(float2 texCoord : TEXCOORD0,
+									  float4 eyeSpace : TEXCOORD1,
+									  float foam : TEXCOORD2)
+{
+	FragmentShaderOutput OUT;
+
+	// calculate eye-space normal from texture coordinates
+	float3 normal;
+	normal.xy = texCoord.xy*float2(2.0f, -2.0f) + float2(-1.0f, 1.0f);
+	float r2 = dot(normal.xy, normal.xy);
+
+	// kill pixels outside circle
+	if (r2 > 1.0f)
+		discard;
+
+	normal.z = sqrt(1.0f-r2) * faceScale;
+
+	// calculate depth
+	float4 eyeSpacePos = float4(eyeSpace.xyz + normal*eyeSpace.w, 1.0f); // position of this pixel on sphere in eye space
+
+	float thickness = normal.z*particleSize*2.0*exp(-r2*2.0f);
+	OUT.color = float4(thickness*(1.0f-foam), thickness*foam, 0.0f, 0.0f);	
+
+	return OUT;
+}
+
+// -----------------------------------------------------------------------------
+// ------------------------------ FluidScaleDownFP -----------------------------
+// -----------------------------------------------------------------------------
+FragmentShaderOutput FluidScaleDownFP(PositionTexCoordShaderInput IN)
+{
+	FragmentShaderOutput OUT;
+
+    OUT.color.xyz = texRECT(depthMap, IN.texCoord + float2(-0.5, -0.5)).xyz;
+	OUT.color.w = 1.0f;
+
+	return OUT;
+}
+
+// -----------------------------------------------------------------------------
+// ------------------------------ FluidSmoothingFP -----------------------------
+// -----------------------------------------------------------------------------
+FragmentShaderOutput FluidSmoothingPassThroughFP(PositionTexCoordShaderInput IN)
+{
+	FragmentShaderOutput OUT;
+	
+	OUT.color = texRECT(depthMap, IN.texCoord.xy);
+
+	return OUT;
+}
+
+FragmentShaderOutput FluidSmoothingFP(PositionTexCoordShaderInput IN)
+{
+	FragmentShaderOutput OUT;
+
+	float2 coo = texRECT(depthMap, IN.texCoord.xy).xy;
+
+	// depth values are in the negative range, thus we have to use -coo.x
+	float tmp = eulerIterationFactor / -coo.x;
+
+	if ((coo.x < -9999.0f) || (currentIteration > tmp))
+	{
+		discard;
+	}
+	else
+	{
+		// samples
+		float com = texRECT(depthMap, IN.texCoord.xy + float2( 0.0f, -1.0f)).x;
+		float cmo = texRECT(depthMap, IN.texCoord.xy + float2(-1.0f,  0.0f)).x;
+		float cpo = texRECT(depthMap, IN.texCoord.xy + float2( 1.0f,  0.0f)).x;
+		float cop = texRECT(depthMap, IN.texCoord.xy + float2( 0.0f,  1.0f)).x;
+
+		// derivatives
+		float dx = (0.5f*(cpo - cmo)); 
+		float dy = (0.5f*(cop - com));
+
+		float dxx = (cmo - 2.0f*coo.x + cpo);
+		float dyy = (com - 2.0f*coo.x + cop);
+		float dxy = 0.0f;
+
+		// directional derivatives
+		float dx1 = coo.x - cmo;
+		float dx2 = cpo - coo.x;
+		float dy1 = coo.x - com;
+		float dy2 = cop - coo.x;
+
+		if (abs(dx1) > blurDepthFalloff || abs(dx2) > blurDepthFalloff)
+		{
+			dx = 0.0f;
+			dxx = 0.0f;
+		}
+
+		if (abs(dy1) > blurDepthFalloff || abs(dy2) > blurDepthFalloff)
+		{
+			dy = 0.0f;
+			dyy = 0.0f;
+		}
+
+		float depth = min(coo.x, thresholdMin);
+
+		// calculate curvature
+		const float a = camera.x;
+		const float b = camera.y;
+		const float c = camera.z;
+
+		float bl = a*a*dx*dx + b*b*dy*dy + c*c*depth*depth;
+		float H =  a*dxx*bl - a*dx*(a*a*dx*dxx + b*b*dy*dxy + c*c*depth*dx)
+			+b*dyy*bl - b*dy*(a*a*dx*dxy + b*b*dy*dyy + c*c*depth*dy);		
+		H /= pow(bl, 3.0f/2.0f);
+
+		// evolve under curvature
+		OUT.color = float4(coo.x + epsilon * H, coo.y+1.0f, 0.0f, 0.0f);
+	}
+
+	return OUT;
+}
+
+
+// -----------------------------------------------------------------------------
+// ------------------------------- FluidNoiseVP --------------------------------
+// -----------------------------------------------------------------------------
+void FluidNoiseVP(float4 position		: POSITION,
+				 float2 texCoord		: TEXCOORD0,
+				 float density			: TEXCOORD1,
+				 float texCoordNoise	: TEXCOORD3,
+				 //float texCoordNoiseY	: TEXCOORD4,
+				 out float4 outPos		: POSITION,
+				 out float outPointSize	: PSIZE,
+				 out float2 outTexCoord	: TEXCOORD0,
+				 out float4 eyeSpace	: TEXCOORD1,
+				 out float outNoise		: TEXCOORD2)
+{
+	outPos = mul(glstate.matrix.mvp, position);
+	outTexCoord = texCoord;
+	
+	const float pointShrink = 0.5f;
+	float scaledPointRadius = particleSize * (pointShrink + smoothstep(densityThreshold, densityThreshold*2.0f, density)*(1.0-pointShrink));
+	
+	// calculate point size
+	float4 eyeSpacePosition = mul(glstate.matrix.modelview[0], position);
+	float dist = length(eyeSpacePosition.xyz);
+	outPointSize = scaledPointRadius * (particleScale / dist);
+
+	eyeSpace.xyz = eyeSpacePosition.xyz;
+	eyeSpace.w = scaledPointRadius;
+	
+	if (density < densityThreshold) 
+		outPos.w = -1.0;	// cull particles with small density
+
+	outNoise = texCoordNoise*0.1f;
+}
+
+// -----------------------------------------------------------------------------
+// ------------------------------- FluidNoiseFP --------------------------------
+// -----------------------------------------------------------------------------
+FragmentShaderOutput FluidNoiseFP(float2 texCoord : TEXCOORD0,
+								  float4 eyeSpace : TEXCOORD1,
+								  float texCoordNoise : TEXCOORD2,
+								  float4 wpos : WPOS)
+{
+	FragmentShaderOutput OUT;
+
+	// calculate eye-space normal from texture coordinates
+	float3 normal;
+	normal.xy = texCoord.xy*float2(2.0f, -2.0f) + float2(-1.0f, 1.0f);
+	float r2 = dot(normal.xy, normal.xy);
+	normal.z = 0.0;
+
+	// calculate depth
+	float4 eyeSpacePos = float4(eyeSpace.xyz + normal*eyeSpace.w, 1.0f); // position of this pixel on sphere in eye space
+	float depth = texRECT(depthMap, wpos.xy*lowResFactor).x;
+
+	float p_noise = texCoordNoise.x;
+	
+	const float noise_scale = 2.0f;
+	float noise = tex3D(perlinMap, float3(texCoord.xy*noise_scale, p_noise)).x;
+	float alpha = noise*exp(min((eyeSpacePos.z - depth)*noiseDepthFalloff, 0.0))*exp(-r2*4.0);
+	
+	OUT.color = alpha;
+
+	return OUT;
+}
+
+
+// -----------------------------------------------------------------------------
+// -------------------------------- FluidSprayVP -------------------------------
+// -----------------------------------------------------------------------------
+void FluidSprayVP(float4 position				: POSITION,
+				  float4 color					: COLOR,
+				  float2 texCoord				: TEXCOORD0,
+				  float density					: TEXCOORD1,
+				  float3 velocity				: TEXCOORD2,
+				  out float4 outPosition		: POSITION,
+				  out float4 outColor			: COLOR,
+				  out float4 outPrevPosition	: TEXCOORD0,
+				  out float  outDensity			: TEXCOORD1)
+{
+	const float timeStep = 0.02f;
+
+	float3 pos = position.xyz;
+	float3 vel = velocity.xyz;
+	float3 prevPos = (pos - vel*timeStep);
+
+	outPosition = mul(glstate.matrix.modelview[0], float4(pos, 1.0f));
+	outPrevPosition = mul(glstate.matrix.modelview[0], float4(prevPos, 1.0f));
+	outDensity = density;
+
+	float shadowTerm = GetShadowTerm(outPosition.xyz);
+
+	float4 Ka = float4(0.2f, 0.2f, 0.2f, 0.2f);
+	outColor = Ka*color*(1.0f-shadowTerm) + color*shadowTerm;
+}
+
+// -----------------------------------------------------------------------------
+// -------------------------------- FluidSprayGP -------------------------------
+// -----------------------------------------------------------------------------
+POINT TRIANGLE_OUT void FluidSprayGP(AttribArray<float4> position : POSITION,
+									 AttribArray<float4> color : COLOR0,
+									 AttribArray<float4> prevPosition : TEXCOORD0,
+									 AttribArray<float> density : TEXCOORD1)
+{
+	float3 pos = position[0].xyz;
+	float3 prevPos = prevPosition[0].xyz;
+	float3 motion = pos - prevPos;
+	float3 direction = normalize(motion);
+	float len = length(motion);
+
+	float3 x = direction*particleSize*2.0f*len;
+	float3 viewVector = normalize(-pos);
+
+	float3 y = normalize(cross(direction, viewVector))*particleSize;
+
+	float facing = dot(viewVector, direction);
+
+	const float motionThreshold = 0.05f;
+
+	if ((len < motionThreshold) || (facing > 0.95f) || (facing < -0.95f))
+	{
+		prevPos = pos;
+		x = float3(particleSize, 0.0, 0.0);
+		y = float3(0.0, -particleSize, 0.0);
+	}
+
+	if (density[0] < densityThreshold)
+	{
+		float4 p0 = mul(glstate.matrix.projection, float4(pos + x + y, 1.0f));
+		float4 p1 = mul(glstate.matrix.projection, float4(pos + x - y, 1.0f));
+		float4 p2 = mul(glstate.matrix.projection, float4(prevPos - x + y, 1.0f));
+		float4 p3 = mul(glstate.matrix.projection, float4(prevPos - x - y, 1.0f));
+
+		emitVertex(p0 : POSITION, color[0], float4(0, 0, 0, 0) : TEXCOORD0);
+		emitVertex(p1 : POSITION, color[0], float4(0, 1, 0, 0) : TEXCOORD0);
+		emitVertex(p2 : POSITION, color[0], float4(1, 0, 0, 0) : TEXCOORD0);
+		emitVertex(p3 : POSITION, color[0], float4(1, 1, 0, 0) : TEXCOORD0);
+	}
+}
+
+// -----------------------------------------------------------------------------
+// -------------------------------- FluidSprayFP -------------------------------
+// -----------------------------------------------------------------------------
+FragmentShaderOutput FluidSprayFP(float4 color : COLOR,
+								 float2 texCoord : TEXCOORD0)
+{
+	FragmentShaderOutput OUT;
+
+	// calculate eye-space normal from texture coordinates
+	float3 normal;
+	normal.xy = texCoord.xy*float2(2.0f, -2.0f) + float2(-1.0f, 1.0f);
+	float r2 = dot(normal.xy, normal.xy);
+
+	// kill pixels outside circle
+	if (r2 > 1.0f)
+		discard;
+
+	float falloff = exp(-r2*4.0f);
+
+	OUT.color = color*falloff;
+
+	return OUT;
+}
+
+// -----------------------------------------------------------------------------
+// ---------------------------- FluidCompositionFP -----------------------------
+// -----------------------------------------------------------------------------
+FragmentShaderOutput FluidCompositionFP(PositionTexCoordShaderInput IN)
+{
+	FragmentShaderOutput OUT;
+
+	float2 tc = floor(IN.texCoord.xy) + 0.5f;
+
+	float2 textureOffsets[9];
+	textureOffsets[0] = float2( 0.0f, 0.0f);
+	textureOffsets[1] = float2(-1.0f, 0.0f);
+	textureOffsets[2] = float2( 1.0f, 0.0f);
+	textureOffsets[3] = float2( 0.0f,-1.0f);
+	textureOffsets[4] = float2( 0.0f, 1.0f);
+	textureOffsets[5] = float2( 1.0f, 1.0f);
+	textureOffsets[6] = float2( 1.0f,-1.0f);
+	textureOffsets[7] = float2(-1.0f, 1.0f);
+	textureOffsets[8] = float2(-1.0f,-1.0f);
+
+	float accDepthValue = 0.0f;
+	float accDepthNorm = 0.0f;
+
+	// try to detect edge in both directions and accumulate depth for shadow calculation
+	float depthValues[9];
+	for (int i=0; i<9; ++i)
+	{
+		depthValues[i] = texRECT(depthMap, tc + textureOffsets[i]).x;
+
+		float stepValue = step(-9999.0f, depthValues[i]);
+		accDepthValue += depthValues[i]*stepValue;
+		accDepthNorm += stepValue;
+	}
+	accDepthValue /= accDepthNorm;
+
+	// if accumulated depth value is invalid use foam depth instead
+	if (!step(-9999.0f, accDepthValue))
+	{
+		accDepthValue = 0.0f;
+		accDepthNorm = 0.0f;
+
+		for (int i=0; i<9; ++i)
+		{
+			float depthTmp = texRECT(foamDepthMap, tc + textureOffsets[i]).x;
+
+			float stepValue = step(-9999.0f, depthTmp);
+			accDepthValue += depthTmp*stepValue;
+			accDepthNorm += stepValue;
+		}
+		accDepthValue /= accDepthNorm;
+	}
+
+	// calculate shadow term
+	float3 shadowViewSpace = uvToEye(IN.texCoord.xy, accDepthValue);
+	float shadowTerm = GetShadowTerm(shadowViewSpace);
+	if (!step(-9999.0f, accDepthValue))
+		shadowTerm = 1.0f;
+
+	float2 fr = frac(IN.texCoord.xy);
+	float4 fluidColor;
+
+	// extract noise normal
+	float2 noiseNormal = float2(0.0f, 0.0f);
+	if (useNoise)
+	{
+		float noiseb  = texRECT(noiseMap, IN.texCoord.xy*lowResFactor + float2(0.0, 0.0)).x;
+		float noisexp = texRECT(noiseMap, IN.texCoord.xy*lowResFactor + float2(1.0, 0.0)).x;
+		float noiseyp = texRECT(noiseMap, IN.texCoord.xy*lowResFactor + float2(0.0, 1.0)).x;
+		noiseNormal = float2(noisexp - noiseb, noiseyp - noiseb) * normalNoiseWeight;
+	}
+	
+	if(abs(depthValues[1] - 2.0f*depthValues[0] + depthValues[2]) > depthThreshold || abs(depthValues[3] - 2.0f*depthValues[0] + depthValues[4]) > depthThreshold || 
+		abs(depthValues[7] - 2.0f*depthValues[4] + depthValues[5]) > depthThreshold || abs(depthValues[6] - 2.0f*depthValues[2] + depthValues[5]) > depthThreshold)
+	{
+		// interpolate samples
+		float4 s1 = sample(tc, noiseNormal, IN.texCoord, shadowTerm);
+		float4 s2 = sample(tc + float2(1.0f, 0.0f), noiseNormal, IN.texCoord, shadowTerm);
+		float4 s3 = sample(tc + float2(0.0f, 1.0f), noiseNormal, IN.texCoord, shadowTerm);
+		float4 s4 = sample(tc + float2(1.0f, 1.0f), noiseNormal, IN.texCoord, shadowTerm);
+		fluidColor = lerp(lerp(s1, s2, fr.x), lerp(s3, s4, fr.x), fr.y);
+	}
+	else
+	{
+		// interpolate normals
+		float4 _ddx  = ipnormal2(tc, float2(1.0f, 0.0f), fr.x);
+		float4 _ddx2 = ipnormal2(tc + float2(0.0f, 1.0f), float2(1.0f, 0.0f), fr.x);
+		float4 _ddy  = ipnormal2(tc, float2(0.0f, 1.0f), fr.y);
+		float4 _ddy2 = ipnormal2(tc + float2(1.0f, 0.0f), float2(0.0f, 1.0f), fr.y);
+		_ddx = lerp(_ddx, _ddx2, fr.y);
+		_ddy = lerp(_ddy, _ddy2, fr.x);
+
+		float3 eyePos = uvToEye(IN.texCoord.xy, (_ddx.w + _ddy.w)*0.5f);
+		
+		fluidColor = shade(_ddx.xyz, _ddy.xyz, eyePos, noiseNormal, IN.texCoord, shadowTerm);
+	}
+
+	OUT.color.xyz = fluidColor.xyz;
+	OUT.color.w = 1.0f;
+
+	return OUT;
+}
+
+
+// -----------------------------------------------------------------------------
+// --------------------------------- Passes ------------------------------------
+// -----------------------------------------------------------------------------
+technique FluidShader
+{
+	pass FluidFoamDepth
+	{
+		VertexProgram = compile gp4vp FluidFoamDepthVP();
+		GeometryProgram = compile gp4gp FluidFoamDepthGP();
+		FragmentProgram = compile gp4fp FluidFoamDepthFP();
+	}
+
+	pass FluidFoamThickness
+	{
+		VertexProgram = compile gp4vp FluidFoamDepthVP();
+		GeometryProgram = compile gp4gp FluidFoamDepthGP();
+		FragmentProgram = compile gp4fp FluidFoamThicknessFP();
+	}
+
+	//////////////////////////////////////////////////////////////////////////
+
+	pass FluidDepth
+	{
+		VertexProgram = compile gp4vp FluidParticleVP();
+        FragmentProgram = compile gp4fp FluidDepthFP();
+	}
+	
+	pass FluidThickness
+	{
+		VertexProgram = compile gp4vp FluidThicknessVP();
+        FragmentProgram = compile gp4fp FluidThicknessFP();
+	}
+	
+	//////////////////////////////////////////////////////////////////////////
+
+	pass FluidDownsample
+	{
+		VertexProgram = compile gp4vp PassThroughVP();
+        FragmentProgram = compile gp4fp FluidScaleDownFP();
+	}
+
+	pass FluidSmoothingPassThrough
+	{
+		VertexProgram = compile gp4vp PassThroughVP();
+		FragmentProgram = compile gp4fp FluidSmoothingPassThroughFP();
+	}
+
+	pass FluidSmoothing
+	{
+		VertexProgram = compile gp4vp PassThroughVP();
+        FragmentProgram = compile gp4fp FluidSmoothingFP();
+	}
+
+	//////////////////////////////////////////////////////////////////////////
+	
+	pass FluidNoise
+	{
+		VertexProgram = compile gp4vp FluidParticleVP();
+        FragmentProgram = compile gp4fp FluidNoiseFP();
+	}
+
+	pass FluidComposition
+	{
+		VertexProgram = compile gp4vp PassThroughVP();
+		FragmentProgram = compile gp4fp FluidCompositionFP();
+	}
+
+	pass FluidSpray
+	{
+		VertexProgram = compile gp4vp FluidSprayVP();
+		GeometryProgram = compile gp4gp FluidSprayGP();
+		FragmentProgram = compile gp4fp FluidSprayFP();
+	}
+}

@@ -1,0 +1,12 @@
+
+Please see the linux subdirectory's README file for instructions on
+making GLUT shared libraries for Linux.
+
+Thanks to Peter F. Martone (pmarton@mailbox.bgsu.edu) for this
+information.  Please let me or Peter know if this Linux support can be
+improved.
+
+- Mark Kilgard
+  mjk@sgi.com
+  August 2, 1996
+

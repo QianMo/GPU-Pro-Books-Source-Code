@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<RenderDescription>
+    <ParticleSize type="float">0.86</ParticleSize>
+    <BaseColor type="Color">
+        <R>0.305882</R>
+        <G>0.545098</G>
+        <B>0.956863</B>
+        <A>1</A>
+    </BaseColor>
+    <ColorFalloff type="Color">
+        <R>0.784314</R>
+        <G>0.784314</G>
+        <B>0.588235</B>
+        <A>1</A>
+    </ColorFalloff>
+    <FalloffScale type="float">0.0372</FalloffScale>
+    <SpecularColor type="Color">
+        <R>1</R>
+        <G>1</G>
+        <B>1</B>
+        <A>0</A>
+    </SpecularColor>
+    <SpecularShininess type="float">80</SpecularShininess>
+    <SprayColor type="Color">
+        <R>1</R>
+        <G>1</G>
+        <B>1</B>
+        <A>0.4</A>
+    </SprayColor>
+    <DensityThreshold type="float">150</DensityThreshold>
+    <FresnelBias type="float">0.1</FresnelBias>
+    <FresnelScale type="float">0.4</FresnelScale>
+    <FresnelPower type="float">2</FresnelPower>
+    <ThicknessRefraction type="float">0.2</ThicknessRefraction>
+    <FluidThicknessScale type="float">0.6</FluidThicknessScale>
+    <FoamThicknessScale type="float">0.6</FoamThicknessScale>
+    <WorldSpaceKernelRadius type="float">4.5</WorldSpaceKernelRadius>
+    <UseNoise>0</UseNoise>
+    <NoiseDepthFalloff type="float">2</NoiseDepthFalloff>
+    <NormalNoiseWeight type="float">0.336</NormalNoiseWeight>
+    <FoamBackColor type="Color">
+        <R>0.490196</R>
+        <G>0.607843</G>
+        <B>0.788235</B>
+        <A>1</A>
+    </FoamBackColor>
+    <FoamFrontColor type="Color">
+        <R>0.988235</R>
+        <G>1</G>
+        <B>0.631373</B>
+        <A>1</A>
+    </FoamFrontColor>
+    <FoamFalloffScale type="float">0.18</FoamFalloffScale>
+    <FoamThreshold type="float">100</FoamThreshold>
+    <FoamLifetime type="float">1.5</FoamLifetime>
+    <FoamDepthThreshold type="float">9.5</FoamDepthThreshold>
+    <FoamFrontFalloffScale type="float">0.089</FoamFrontFalloffScale>
+</RenderDescription>

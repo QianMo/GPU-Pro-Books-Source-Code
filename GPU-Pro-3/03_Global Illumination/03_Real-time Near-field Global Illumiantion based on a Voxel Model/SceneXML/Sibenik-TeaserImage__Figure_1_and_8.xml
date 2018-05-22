@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Name="SibenikTeaser" Date="2011-07-12T21:31:03">
+    <Parameters File = "SceneXML/ParameterSets/Sibenik-TeaserImage-Param.xml" />
+    <!--
+Resolution
+-->
+    <Window width="1024" height="768"/>
+    <!--
+Camera Definition
+-->
+    <Camera aspect="1.33333" fov="85" zNear="0.1" zFar="100">
+        <Pose>
+            <Eye x="2.24813" y="-5.34708" z="-2.39301"/>
+            <!--(Eye = UserPosition)-->
+            <ViewDir angleX="6.5" angleY="-104.5" angleZ="0" x="-0.961924" y="-0.113203" z="0.248771"/>
+            <Up x="-0.109597" y="0.993572" z="0.0283438"/>
+        </Pose>
+        <CurrentPose index="0"/>
+    </Camera>
+    <!--
+All Lights
+-->
+    <Lights>
+        <SpotLight constantAttenuation="1" quadraticAttenuation="0" cutoffAngle="24" spotExponent="0" angleX="35" angleY="36.25" angleZ="0">
+            <Position x="-2.67295" y="-2.30643" z="2.0483"/>
+            <I r="6" g="4.63529" b="1.15294"/>
+            <SpotDirection x="0.484373" y="-0.573576" z="-0.660601"/>
+            <Up x="0.339161" y="0.819152" z="-0.462558"/>
+        </SpotLight>
+    </Lights>
+    <!--
+
+All Scene Elements (Static and Dynamic Geometry)
+-->
+    <StaticElement name="sibenik" pathModel="models/Sibenik/sibenik2_cut_mod_rep_recolor2.obj">
+        <Atlas pathAtlas="models/Sibenik/sibenik2_cut_mod_rep-atlas-lightpack1q.obj" atlasWidth="1536" atlasHeight="1536"/>
+        <!--mode = GLM_SMOOTH GLM_TEXTURE GLM_COLOR -->
+        <LoaderSettings defaultDrawMode="22" computedVertexNormals="1" vertexNormalsAngle="55" vertexNormalsSmoothingGroups="0" unitized="1" centered="1" scaleFactor="8"/>
+        <Position x="0" y="0" z="0"/>
+        <Rotation angleX="0" angleY="0" angleZ="0"/>
+        <Scale factor="1"/>
+    </StaticElement>
+    <DynamicElement name="ele" pathModel="models/elephant-gallop/elephant-gallop-01.obj">
+        <Atlas pathAtlas="models/elephant-gallop/elephant-atlas.obj" atlasWidth="128" atlasHeight="128"/>
+        <!--mode = GLM_SMOOTH GLM_COLOR -->
+        <LoaderSettings defaultDrawMode="18" computedVertexNormals="0" vertexNormalsAngle="0" vertexNormalsSmoothingGroups="0" unitized="0" centered="1" scaleFactor="0.9"/>
+        <Instance isUserMovable="1">
+            <Position x="0.835437" y="-5.54687" z="-2.26184"/>
+            <Rotation angleX="0" angleY="420.25" angleZ="0"/>
+            <Scale factor="1"/>
+            <AnimationSettings looping="1" forwards="1" stepInterval="140" startAtFrame="2"/>
+        </Instance>
+        <Instance isUserMovable="1">
+            <Position x="-0.538909" y="-5.59375" z="0.817843"/>
+            <Rotation angleX="0" angleY="626.75" angleZ="0"/>
+            <Scale factor="1"/>
+            <AnimationSettings looping="1" forwards="1" stepInterval="140" startAtFrame="2"/>
+        </Instance>
+        <AnimationLoading pathSequence="models/elephant-gallop/elephant-gallop-" sequenceReadInMethod="1" animFileStartIndex="1" animFileEndIndex="12" numAnimFiles="12"/>
+    </DynamicElement>
+</Scene>

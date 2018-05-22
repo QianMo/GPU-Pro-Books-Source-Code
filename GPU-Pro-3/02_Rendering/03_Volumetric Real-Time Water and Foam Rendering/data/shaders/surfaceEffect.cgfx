@@ -1,0 +1,124 @@
+
+float4x4 viewMatrix;
+
+float3 lightPosObjSpace;
+float3 eyePosObjSpace;
+
+sampler2D textureMap;
+sampler2D normalMap;
+sampler2D shadowMap;
+
+float4x4 shadowMapTextureMatrix;
+float4x4 shadowMapLinearTextureMatrix;
+
+float reconstructionOrder;
+float2 reconstructionOffset;
+float shadowMapSize;
+float shadowMapSizeSquared;
+float shadowMapTexelSize;
+float shadowMapFOV;
+
+sampler2DARRAY csmSinMap;
+sampler2DARRAY csmCosMap;
+
+float3 clipPlanes;
+float useMipMaps;
+
+float3 Ka;
+float4 Kd;
+float3 Ks;
+float shininess;
+
+#define PI 3.14159265f
+
+#include "data/shaders/util.fxh"
+#include "data/shaders/csmReconstruction.fxh"
+#include "data/shaders/relief.fxh"
+
+// -----------------------------------------------------------------------------
+// --------------------------------- TextureVP ---------------------------------
+// -----------------------------------------------------------------------------
+struct VertexShaderInput 
+{
+	float4 position : POSITION;
+    float3 normal   : NORMAL;
+	float2 texCoord : TEXCOORD0;
+};
+
+struct VertexShaderOutput
+{
+	float4 position	   : POSITION;
+	float3 normal	   : TEXCOORD0;
+	float2 texCoord    : TEXCOORD1;
+	float3 vertexPos   : TEXCOORD2;
+	float4 smTexCoord  : TEXCOORD3;
+};
+
+VertexShaderOutput TextureVP(VertexShaderInput IN)
+{
+	VertexShaderOutput OUT;
+
+	OUT.position = mul(glstate.matrix.mvp, IN.position);
+	OUT.normal = IN.normal;
+	OUT.texCoord = IN.texCoord;
+	OUT.vertexPos = IN.position.xyz;
+
+	float zEyeSpace = mul(mul(shadowMapLinearTextureMatrix, glstate.matrix.modelview[0]), IN.position).z;
+	OUT.smTexCoord = mul(mul(shadowMapTextureMatrix, glstate.matrix.modelview[0]), IN.position);
+	OUT.smTexCoord.z = (zEyeSpace + clipPlanes.x) / clipPlanes.z;
+
+	return OUT;
+}
+
+// -----------------------------------------------------------------------------
+// --------------------------------- TextureFP ---------------------------------
+// -----------------------------------------------------------------------------
+FragmentShaderOutput TextureFP(VertexShaderOutput IN)
+{
+	FragmentShaderOutput OUT;
+
+	float3 color = tex2D(textureMap, IN.texCoord).xyz;
+
+	float shadowTerm = 1.0f;
+	float2 uv = IN.smTexCoord.xy/IN.smTexCoord.w;
+
+	if (useMipMaps)
+		shadowTerm = ShadowTerm(csmSinMap, csmCosMap, float3(uv, IN.smTexCoord.z), log2(0.0075f*shadowMapSize));
+	else
+		shadowTerm = ShadowTerm(csmSinMap, csmCosMap, float3(uv, IN.smTexCoord.z), 0.0001f*shadowMapSize);
+
+	// Per pixel light
+	float3 p = IN.vertexPos.xyz;
+	float3 n = normalize(IN.normal);
+
+	float3 l = normalize(lightPosObjSpace - p);
+	float3 v = normalize(eyePosObjSpace - p);
+
+	// Compute diffuse and specular terms
+	float diff = shadowTerm*saturate(dot(l, n));
+	float spec = shadowTerm*saturate(dot(normalize(l + v), n));
+
+	OUT.color.xyz = Ka*color + color*Kd.xyz*diff + Ks*pow(spec, shininess);
+	OUT.color.w = 1.0f;
+
+	return OUT;
+}
+
+// -----------------------------------------------------------------------------
+// --------------------------------- Passes ------------------------------------
+// -----------------------------------------------------------------------------
+technique SurfaceShader
+{
+    pass TextureMapping
+    {
+		VertexProgram = compile gp4vp TextureVP();
+        FragmentProgram = compile gp4fp TextureFP();
+    }
+
+	pass ParallaxMapping
+	{
+		VertexProgram = compile gp4vp ReliefConeMappingVP();
+		//FragmentProgram = compile fp40 ReliefConeMappingFP();
+		FragmentProgram = compile gp4fp NormalMappingFP();
+	}
+}

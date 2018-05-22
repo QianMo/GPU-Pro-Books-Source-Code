@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Name="unknown" Date="2011-07-15T00:37:12">
+    <Parameters File="SceneXML/ParameterSets/BoxDragon-Columns-Param.xml"/>
+    <!--
+Resolution
+-->
+    <Window width="1024" height="768"/>
+    <!--
+Camera Definition
+-->
+    <Camera aspect="1.33333" fov="60" zNear="0.1" zFar="40">
+        <Pose>
+            <Eye x="4.384" y="1.45595" z="9.60174"/>
+            <!--(Eye = UserPosition)-->
+            <ViewDir angleX="8.875" angleY="-747.25" angleZ="0" x="-0.452392" y="-0.154279" z="-0.878373"/>
+            <Up x="-0.0706405" y="0.988027" z="-0.137157"/>
+        </Pose>
+        <CurrentPose index="0"/>
+    </Camera>
+    <!--
+All Lights
+-->
+    <Lights>
+        <SpotLight constantAttenuation="1" quadraticAttenuation="0" cutoffAngle="44" spotExponent="1" angleX="27.5" angleY="-72.25" angleZ="0">
+            <Position x="-1.01699" y="2.44611" z="0.901935"/>
+            <I r="50" g="50" b="50"/>
+            <SpotDirection x="-0.844785" y="-0.461749" z="-0.270418"/>
+            <Up x="-0.439767" y="0.887011" z="-0.140771"/>
+        </SpotLight>
+        <SpotLight constantAttenuation="1" quadraticAttenuation="0" cutoffAngle="62" spotExponent="0" angleX="-23.2071" angleY="-106.312" angleZ="0">
+            <Position x="2.64994" y="-2.28175" z="-1.92355"/>
+            <I r="40" g="40" b="40"/>
+            <SpotDirection x="-0.88209" y="0.394056" z="0.258142"/>
+            <Up x="0.378194" y="0.919087" z="-0.110678"/>
+        </SpotLight>
+    </Lights>
+    <!--
+
+All Scene Elements (Static and Dynamic Geometry)
+-->
+    <StaticElement name="colorbox" pathModel="models/box-streifen2.obj">
+        <Atlas pathAtlas="models/box-streifen-atlas.obj" atlasWidth="1024" atlasHeight="1024"/>
+        <!--mode = GLM_FLAT GLM_COLOR -->
+        <LoaderSettings defaultDrawMode="17" computedVertexNormals="1" vertexNormalsAngle="0" vertexNormalsSmoothingGroups="0" unitized="0" centered="1" scaleFactor="1"/>
+        <Position x="0" y="0" z="0"/>
+        <Rotation angleX="0" angleY="0" angleZ="0"/>
+        <Scale factor="1"/>
+    </StaticElement>
+    <DynamicElement name="dragon" pathModel="models/dragon_100000.obj">
+        <Atlas pathAtlas="models/dragon_atlas.obj" atlasWidth="256" atlasHeight="256"/>
+        <!--mode = GLM_SMOOTH GLM_TEXTURE GLM_COLOR -->
+        <LoaderSettings defaultDrawMode="22" computedVertexNormals="1" vertexNormalsAngle="50" vertexNormalsSmoothingGroups="0" unitized="1" centered="1" scaleFactor="2.4"/>
+        <Instance isUserMovable="1">
+            <Position x="-0.303026" y="-0.60938" z="-0.788643"/>
+            <Rotation angleX="0" angleY="-92.25" angleZ="0"/>
+            <Scale factor="1"/>
+        </Instance>
+    </DynamicElement>
+    <DynamicElement name="longsculp" pathModel="models/demo3-sharp-withatlas.obj">
+        <Atlas pathAtlas="models/demo3-sharp-withatlas.obj" atlasWidth="256" atlasHeight="256"/>
+        <!--mode = GLM_SMOOTH GLM_COLOR -->
+        <LoaderSettings defaultDrawMode="18" computedVertexNormals="1" vertexNormalsAngle="60" vertexNormalsSmoothingGroups="0" unitized="1" centered="1" scaleFactor="3.5"/>
+        <Instance isUserMovable="1">
+            <Position x="-0.76039" y="0" z="2.45073"/>
+            <Rotation angleX="0" angleY="-18.375" angleZ="0"/>
+            <Scale factor="1"/>
+        </Instance>
+        <Instance isUserMovable="1">
+            <Position x="-2.7765" y="0" z="2.47174"/>
+            <Rotation angleX="0" angleY="-35.375" angleZ="0"/>
+            <Scale factor="1"/>
+        </Instance>
+    </DynamicElement>
+</Scene>

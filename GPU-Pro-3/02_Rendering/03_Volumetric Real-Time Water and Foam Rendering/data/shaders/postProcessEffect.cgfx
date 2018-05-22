@@ -1,0 +1,30 @@
+
+samplerRECT postSceneMap;
+
+#include "data/shaders/util.fxh"
+
+// -----------------------------------------------------------------------------
+// ------------------------------- RenderScreenFP ------------------------------
+// -----------------------------------------------------------------------------
+FragmentShaderOutput RenderScreenFP(PositionTexCoordShaderInput IN)
+{
+	FragmentShaderOutput OUT;
+
+	OUT.color.xyz = texRECT(postSceneMap, IN.texCoord.xy + float2(0.0f, 0.0f)).xyz;
+	OUT.color.w = 1.0f;
+
+	return OUT;
+}
+
+// -----------------------------------------------------------------------------
+// --------------------------------- Passes ------------------------------------
+// -----------------------------------------------------------------------------
+technique PostProcessShader
+{
+	pass RenderScreenBuffer
+	{
+		VertexProgram = compile gp4vp PassThroughVP();
+		FragmentProgram = compile gp4fp RenderScreenFP();
+	}
+
+}

@@ -1,0 +1,79 @@
+	  Files For Making a Mesa/GLUT System For Linux ELF
+
+			    Version 0.0.6
+
+			   Peter F. Martone
+		       updated by Mark Kilgard (for GLUT 3.7)
+
+//************************************************************
+
+There are three files included in this archive:
+
+	Glut.cf -- file required by imake-- use this to replace the
+	  stock version that came with GLUT.
+
+	Makefile -- Makefile required to build ELF library,  belongs in
+	  the $GLUT_HOME/lib/glut/. directory.
+
+	path -- the line required for ld.so to find the libraries at
+	  run-time.  Add this to your .profile file.
+
+//************************************************************
+
+The steps to make this work are:
+
+     1) Change into $GLUT_HOME/. and make a backup copy of the
+	Glut.cf file. Then, take the copy from this archive and move it
+	into $GLUT_HOME.
+
+     2) Run the script to build all the makefiles:
+
+	  ./mkmkfiles.imake
+
+     3) Change into $GLUT_HOME/lib/glut/. and make a backup copy of
+	the Makefile.  Now, take the Makefile out of the archive and
+	replace the old one.
+
+     4) WHILE STILL IN THE $GLUT_HOME/lib/glut/. DIRECTOR, RUN:
+
+	  make
+	
+	This should build the shared library 'libglut.so.3.7'.
+
+	IF YOU HAVE PROBLEMS WITH HEADER FILE DEPENDENCIES, try
+	doing:
+
+	  make depend
+	  make
+
+	This should rebuild the Makefile dependencies.
+
+	If this does not work, remove all the lines in "Makefile" below
+	the line saying "DO NOT DELETE" (yes, disregard what the line
+	says).  Then try "make depend; make"
+
+     5) Make two symbolic links:
+
+	  ln -s libglut.so.3.7 libglut.so.3
+	  ln -s libglut.so.3.7 libglut.so
+
+     6) Now, back up to $GLUT_HOME/. and:
+
+	  make
+
+	This will make all the example programs.
+
+     7) Add the line from archive file 'path' to your .profile, or
+	better to your systemwide (/etc/profile).  Then logout out and
+	back in again (to refresh your path.)
+
+	After this, your system should be working fine.  If you are
+	having any problems with these files, or you have any comments,
+	please contact me at pmarton@bgnet.bgsu.edu.  I've only tried
+	this on a Slackware 3.0 (heavily modified) Linux PC, so
+	different distributions may behave differently.
+
+	Good luck, and <SOAPBOX> thank you Brian Paul, Mark Kilgard,
+	Linus Torvalds and everybody else that fits for giving college
+	students on a budget a decent learning enviornment.</SOAPBOX>
+

@@ -1,0 +1,69 @@
+Base = 
+{
+    Color = ( 0.207031, 0.210938, 0.214844, 0.0 )
+
+
+    DiffuseTex = media\tiles\BaseMaterial_Diffuse.jpg
+}
+
+Rock = 
+{
+    Color = ( 0.207031, 0.210938, 0.214844, 0.0 )
+
+    RelativeMinHeight = -1.0
+    RelativeMaxHeight = 2.0
+    HeightTransitionWidth = 1 
+
+    MinSlope = 1.0
+    MaxSlope = 100
+    SlopeTransitionWidth = 0.1
+
+    DiffuseTex = media\tiles\Rock_Diffuse.jpg
+}
+
+Ground = 
+{
+    Color = ( 0.327, 0.374, 0.187, 0.0 )
+
+    RelativeMinHeight = 0.0
+    RelativeMaxHeight = 0.7
+    HeightTransitionWidth = 0.1
+
+    MinSlope = 1.0
+    MaxSlope = 1.3
+    SlopeTransitionWidth = 0.1
+
+    DiffuseTex = media\tiles\Ground_Diffuse.jpg
+}
+
+BaseSand = 
+{
+    Color = ( 0.80, 0.80, 0.7, 0.0 )
+
+    RelativeMinHeight = -1.0
+    RelativeMaxHeight = 0.2
+    HeightTransitionWidth = 0.1
+
+    MinSlope = 1.0
+    MaxSlope = 1.05
+    SlopeTransitionWidth = 0.3
+
+    DiffuseTex = media\tiles\Sand_Diffuse.jpg
+}
+
+
+Snow = 
+{
+    Color = ( 1.0, 1.0, 1.0, 0.0 )
+
+    RelativeMinHeight = 0.85
+    RelativeMaxHeight = 2.0
+    HeightTransitionWidth = 0.2
+
+    MinSlope = 1.0
+    MaxSlope = 1.3
+    SlopeTransitionWidth = 0.3
+
+    DiffuseTex = media\tiles\Snow_Diffuse.jpg
+}
+

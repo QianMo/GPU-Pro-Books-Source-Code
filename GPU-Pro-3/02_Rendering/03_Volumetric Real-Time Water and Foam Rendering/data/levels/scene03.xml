@@ -1,0 +1,70 @@
+<level>
+	<gameElement type=cameraPosition >
+		<elementPosition>
+			<positionX>192.520233f</positionX>
+			<positionY>74.719795f</positionY>
+			<positionZ>-17.784895f</positionZ>
+		</elementPosition>
+	</gameElement>
+	
+	<gameElement type=cameraDirection >
+		<elementPosition>
+			<positionX>0.958432f</positionX>
+			<positionY>0.285311f</positionY>
+			<positionZ>-0.002352f</positionZ>
+		</elementPosition>
+	</gameElement>
+	
+	<gameElement type=skyBox >
+		<elementTextureFileNames>
+			<textureLeft>data/textures/west.dds</textureLeft>
+			<textureRight>data/textures/east.dds</textureRight>
+			<textureTop>data/textures/up.dds</textureTop>
+			<textureBottom>data/textures/down.dds</textureBottom>
+			<textureFront>data/textures/north.dds</textureFront>
+			<textureBack>data/textures/south.dds</textureBack>
+		</elementTextureFileNames>
+	</gameElement>
+	
+	<gameElement type=mesh >
+		<elementPosition>
+			<positionX>0.0f</positionX>
+			<positionY>0.0f</positionY>
+			<positionZ>0.0f</positionZ>
+		</elementPosition>
+		<elementRotation>
+			<rotationX>0.0f</rotationX>
+			<rotationY>0.0f</rotationY>
+			<rotationZ>0.0f</rotationZ>
+		</elementRotation>
+		<elementMeshFileName>
+			<fileName>data/meshes/object02.obj</fileName>
+		</elementMeshFileName>
+		<elementCollFileName>
+			<fileName>data/meshes/object02_coll.obj</fileName>
+		</elementCollFileName>
+		<elementMaterial>
+			<materialId>9</materialId>
+		</elementMaterial>
+	</gameElement>
+	
+	<gameElement type=non_physics_mesh >
+		<elementPosition>
+			<positionX>0.0f</positionX>
+			<positionY>0.0f</positionY>
+			<positionZ>0.0f</positionZ>
+		</elementPosition>
+		<elementRotation>
+			<rotationX>0.0f</rotationX>
+			<rotationY>0.0f</rotationY>
+			<rotationZ>0.0f</rotationZ>
+		</elementRotation>
+		<elementMeshFileName>
+			<fileName>data/meshes/ground.obj</fileName>
+		</elementMeshFileName>
+		<elementMaterial>
+			<materialId>6</materialId>
+		</elementMaterial>
+	</gameElement>
+	
+</level>

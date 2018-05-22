@@ -1,0 +1,313 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 16.06.2010 14:44:38
+
+newmtl initialShadingGroup
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 1
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.3 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/sponza_fabric_diff.png
+	map_Kd ./sponza/textures/sponza_fabric_diff.png
+
+newmtl leaf
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/sponza_thorn_diff.png
+	map_Kd ./sponza/textures/sponza_thorn_diff.png
+	map_d ./sponza/textures/sponza_thorn_mask.png
+	map_bump ./sponza/textures/sponza_thorn_ddn.png
+	bump ./sponza/textures/sponza_thorn_ddn.png
+
+newmtl vase_round
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/vase_round.png
+	map_Kd ./sponza/textures/vase_round.png
+	map_bump ./sponza/textures/vase_round_ddn.png
+	bump ./sponza/textures/vase_round_ddn.png
+
+newmtl Material__57
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/vase_plant.png
+	map_Kd ./sponza/textures/vase_plant.png
+	map_d ./sponza/textures/vase_plant_mask.png
+
+newmtl Material__25
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/lion.png
+	map_Kd ./sponza/textures/lion.png
+	map_bump ./sponza/textures/lion_ddn.png
+	bump ./sponza/textures/lion_ddn.png
+
+newmtl ___Default
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 0
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/gi_flag.png
+	map_Kd ./sponza/textures/gi_flag.png
+
+newmtl bricks
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/spnza_bricks_a_diff.png
+	map_Kd ./sponza/textures/spnza_bricks_a_diff.png
+	map_bump ./sponza/textures/spnza_bricks_a_ddn.png
+	bump ./sponza/textures/spnza_bricks_a_ddn.png
+
+newmtl arch
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/sponza_arch_diff.png
+	map_Kd ./sponza/textures/sponza_arch_diff.png
+
+newmtl ceiling
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/sponza_ceiling_a_diff.png
+	map_Kd ./sponza/textures/sponza_ceiling_a_diff.png
+
+newmtl column_a
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/sponza_column_a_diff.png
+	map_Kd ./sponza/textures/sponza_column_a_diff.png
+	map_bump ./sponza/textures/sponza_column_a_ddn.png
+	bump ./sponza/textures/sponza_column_a_ddn.png
+
+newmtl floor
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/sponza_floor_a_diff.png
+	map_Kd ./sponza/textures/sponza_floor_a_diff.png
+
+newmtl column_c
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/sponza_column_c_diff.png
+	map_Kd ./sponza/textures/sponza_column_c_diff.png
+	map_bump ./sponza/textures/sponza_column_c_ddn.png
+	bump ./sponza/textures/sponza_column_c_ddn.png
+
+newmtl details
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/sponza_details_diff.png
+	map_Kd ./sponza/textures/sponza_details_diff.png
+
+newmtl column_b
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/sponza_column_b_diff.png
+	map_Kd ./sponza/textures/sponza_column_b_diff.png
+	map_bump ./sponza/textures/sponza_column_b_ddn.png
+	bump ./sponza/textures/sponza_column_b_ddn.png
+
+newmtl Material__47
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+
+newmtl flagpole
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/sponza_flagpole_diff.png
+	map_Kd ./sponza/textures/sponza_flagpole_diff.png
+
+newmtl fabric
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 0
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/sponza_fabric_diff.png
+	map_Kd ./sponza/textures/sponza_fabric_diff.png
+
+newmtl chain
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/chain_texture.png
+	map_Kd ./sponza/textures/chain_texture.png
+	map_d ./sponza/textures/chain_texture_mask.png
+	map_bump ./sponza/textures/chain_texture_ddn.png
+	bump ./sponza/textures/chain_texture_ddn.png
+
+newmtl vase_hanging
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/vase_hanging.png
+	map_Kd ./sponza/textures/vase_hanging.png
+
+newmtl vase
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/vase_dif.png
+	map_Kd ./sponza/textures/vase_dif.png
+
+newmtl roof
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.588000 0.588000 0.588000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./sponza/textures/sponza_roof_diff.png
+	map_Kd ./sponza/textures/sponza_roof_diff.png

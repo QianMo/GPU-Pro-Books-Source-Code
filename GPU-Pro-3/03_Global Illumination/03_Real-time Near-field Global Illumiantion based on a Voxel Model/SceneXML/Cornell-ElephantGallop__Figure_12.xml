@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Name="unknown" Date="2011-07-16T20:32:27">
+    <Parameters File="SceneXML/ParameterSets/Cornell-ElephantGallop-Param.xml"/>
+    <!--
+Resolution
+-->
+    <Window width="1024" height="768"/>
+    <!--
+Camera Definition
+-->
+    <Camera aspect="1.33333" fov="50" zNear="0.1" zFar="40">
+        <Pose>
+            <Eye x="-0.112525" y="1.86705" z="11.1813"/>
+            <!--(Eye = UserPosition)-->
+            <ViewDir angleX="11.5" angleY="-719.375" angleZ="0" x="0.0106886" y="-0.199368" z="-0.979866"/>
+            <Up x="0.00217462" y="0.979925" z="-0.199356"/>
+        </Pose>
+        <CurrentPose index="0"/>
+    </Camera>
+    <!--
+All Lights
+-->
+    <Lights>
+        <SpotLight constantAttenuation="0" quadraticAttenuation="1" cutoffAngle="44" spotExponent="0" angleX="30.5" angleY="-63.25" angleZ="0">
+            <Position x="-0.76541" y="2.08858" z="1.263"/>
+            <I r="50" g="50" b="50"/>
+            <SpotDirection x="-0.769417" y="-0.507538" z="-0.387818"/>
+            <Up x="-0.453221" y="0.861629" z="-0.228442"/>
+        </SpotLight>
+        <SpotLight constantAttenuation="0" quadraticAttenuation="1" cutoffAngle="48" spotExponent="0" angleX="23.5429" angleY="101.938" angleZ="0">
+            <Position x="-0.911565" y="1.98723" z="1.17278"/>
+            <I r="50" g="50" b="50"/>
+            <SpotDirection x="0.896934" y="-0.399436" z="0.189635"/>
+            <Up x="0.390797" y="0.916761" z="0.0826245"/>
+        </SpotLight>
+    </Lights>
+    <!--
+
+All Scene Elements (Static and Dynamic Geometry)
+-->
+    <StaticElement name="colorbox" pathModel="models/colorbox2-single.obj">
+        <Atlas pathAtlas="models/colorbox2-single-atlas.obj" atlasWidth="1024" atlasHeight="1024"/>
+        <!--mode = GLM_FLAT GLM_COLOR -->
+        <LoaderSettings defaultDrawMode="17" computedVertexNormals="1" vertexNormalsAngle="0" vertexNormalsSmoothingGroups="0" unitized="0" centered="1" scaleFactor="1"/>
+        <Position x="0" y="0" z="0"/>
+        <Rotation angleX="0" angleY="0" angleZ="0"/>
+        <Scale factor="1"/>
+    </StaticElement>
+    <DynamicElement name="eles" pathModel="models/elephant-gallop/elephant-gallop-01.obj">
+        <Atlas pathAtlas="models/elephant-gallop/elephant-atlas.obj" atlasWidth="256" atlasHeight="256"/>
+        <!--mode = GLM_SMOOTH GLM_COLOR -->
+        <LoaderSettings defaultDrawMode="18" computedVertexNormals="0" vertexNormalsAngle="0" vertexNormalsSmoothingGroups="0" unitized="0" centered="0" scaleFactor="3.5"/>
+        <Instance isUserMovable="1">
+            <Position x="-0.198693" y="-2.71149" z="-0.239599"/>
+            <Rotation angleX="0" angleY="5455.56" angleZ="0"/>
+            <Scale factor="1"/>
+            <AnimationSettings looping="1" forwards="1" stepInterval="120" startAtFrame="0"/>
+        </Instance>
+        <AnimationLoading pathSequence="models/elephant-gallop/elephant-gallop-" sequenceReadInMethod="1" animFileStartIndex="1" animFileEndIndex="12" numAnimFiles="12"/>
+    </DynamicElement>
+    <DynamicElements automaticRotation="1"/>    
+</Scene>

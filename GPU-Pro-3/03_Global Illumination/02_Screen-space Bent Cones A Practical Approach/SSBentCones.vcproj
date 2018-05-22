@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="9,00"
+	Name="SSBentCones"
+	ProjectGUID="{9E9EE87F-962F-347E-8040-765DFB858445}"
+	Keyword="Qt4VSv1.0">
+	<Platforms>
+		<Platform
+			Name="Win32" />
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="."
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			ConfigurationType="1"
+			IntermediateDirectory="release\"
+			UseOfMfc="0">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="&quot;include&quot;,&quot;include\nv&quot;,&quot;include\glm-0.9.0.5&quot;,&quot;$(WindowsSdkDir)\include&quot;,&quot;$(VCInstallDir)\include&quot;,..\..\..\Qt\4.7.1\mkspecs\win32-msvc2008"
+				AdditionalOptions="-Zm200"
+				AssemblerListingLocation="release\"
+				BufferSecurityCheck="false"
+				DebugInformationFormat="0"
+				ExceptionHandling="1"
+				GeneratePreprocessedFile="0"
+				ObjectFile="release\"
+				Optimization ="2"
+				PreprocessorDefinitions="QT_NO_DEBUG,NDEBUG,UNICODE,WIN32,QT_LARGEFILE_SUPPORT,NDEBUG"
+				ProgramDataBaseFileName=".\"
+				RuntimeLibrary="2"
+				SuppressStartupBanner="true"
+				TreatWChar_tAsBuiltInType="false"
+				WarningLevel="0" />
+			<Tool
+				Name="VCCustomBuildTool" />
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="glu32.lib opengl32.lib gdi32.lib user32.lib glew32.lib glut32.lib"
+				AdditionalLibraryDirectories="lib,$(WindowsSdkDir)\lib,$(VCInstallDir)\lib"
+				GenerateDebugInformation="false"
+				IgnoreImportLibrary="true"
+				LinkIncremental="1"
+				LinkTimeCodeGeneration="0"
+				OutputFile=".\SSBentCones.exe"
+				ProgramDatabaseFile=""
+				SubSystem="1"
+				SuppressStartupBanner="true" />
+			<Tool
+				Name="VCMIDLTool"
+				DefaultCharType="0"
+				EnableErrorChecks="1"
+				WarningLevel="0" />
+			<Tool
+				Name="VCPostBuildEventTool" />
+			<Tool
+				Name="VCPreBuildEventTool" />
+			<Tool
+				Name="VCPreLinkEventTool" />
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="QT_NO_DEBUG,NDEBUG,UNICODE,WIN32,QT_LARGEFILE_SUPPORT" />
+		</Configuration>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="."
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			ConfigurationType="1"
+			IntermediateDirectory="debug\"
+			UseOfMfc="0">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="&quot;include&quot;,&quot;include\nv&quot;,&quot;include\glm-0.9.0.5&quot;,&quot;$(WindowsSdkDir)\include&quot;,&quot;$(VCInstallDir)\include&quot;,..\..\..\Qt\4.7.1\mkspecs\win32-msvc2008"
+				AdditionalOptions="-Zm200"
+				AssemblerListingLocation="debug\"
+				BufferSecurityCheck="false"
+				DebugInformationFormat="3"
+				ExceptionHandling="1"
+				GeneratePreprocessedFile="0"
+				ObjectFile="debug\"
+				Optimization ="4"
+				PreprocessorDefinitions="UNICODE,WIN32,QT_LARGEFILE_SUPPORT"
+				ProgramDataBaseFileName=".\"
+				RuntimeLibrary="3"
+				SuppressStartupBanner="true"
+				TreatWChar_tAsBuiltInType="false"
+				WarningLevel="0" />
+			<Tool
+				Name="VCCustomBuildTool" />
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="glu32.lib opengl32.lib gdi32.lib user32.lib glew32.lib glut32.lib"
+				AdditionalLibraryDirectories="lib,$(WindowsSdkDir)\lib,$(VCInstallDir)\lib"
+				GenerateDebugInformation="true"
+				IgnoreImportLibrary="true"
+				LinkTimeCodeGeneration="0"
+				OutputFile=".\SSBentCones.exe"
+				ProgramDatabaseFile=""
+				SubSystem="1"
+				SuppressStartupBanner="true" />
+			<Tool
+				Name="VCMIDLTool"
+				DefaultCharType="0"
+				EnableErrorChecks="1"
+				WarningLevel="0" />
+			<Tool
+				Name="VCPostBuildEventTool" />
+			<Tool
+				Name="VCPreBuildEventTool" />
+			<Tool
+				Name="VCPreLinkEventTool" />
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="UNICODE,WIN32,QT_LARGEFILE_SUPPORT,_DEBUG" />
+		</Configuration>
+	</Configurations>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
+			<Filter
+				Name="include"
+				Filter="">
+				<Filter
+					Name="NV"
+					Filter="">
+					<File
+						RelativePath="include\NV\nvModel.cpp" />
+					<File
+						RelativePath="include\NV\nvModelObj.cpp" />
+					<File
+						RelativePath="include\NV\nvModelQuery.cpp" />
+				</Filter>
+			</Filter>
+			<Filter
+				Name="shaders"
+				Filter="">
+				<File
+					RelativePath="shaders\bent_normal_blurring.frag" />
+				<File
+					RelativePath="shaders\bent_normal_ray_marching.frag" />
+				<File
+					RelativePath="shaders\cone_lighting.frag" />
+				<File
+					RelativePath="shaders\env_map_convolution.frag" />
+				<File
+					RelativePath="shaders\env_map_renderer.frag" />
+				<File
+					RelativePath="shaders\gbuffer.frag" />
+				<File
+					RelativePath="shaders\gbuffer.vert" />
+				<File
+					RelativePath="shaders\quad.vert" />
+				<File
+					RelativePath="shaders\quad_texcoord.vert" />
+				<File
+					RelativePath="shaders\sky.frag" />
+				<File
+					RelativePath="shaders\sky.vert" />
+			</Filter>
+			<Filter
+				Name="src"
+				Filter="">
+				<File
+					RelativePath="src\FrameBuffer.cpp" />
+				<File
+					RelativePath="src\bent_normal_blurring.cpp" />
+				<File
+					RelativePath="src\bent_normal_ray_marching_technique.cpp" />
+				<File
+					RelativePath="src\camera.cpp" />
+				<File
+					RelativePath="src\canvas.cpp" />
+				<File
+					RelativePath="src\cone_lighting_technique.cpp" />
+				<File
+					RelativePath="src\env_map_convolution.cpp" />
+				<File
+					RelativePath="src\gbuffer.cpp" />
+				<File
+					RelativePath="src\glhelper.cpp" />
+				<File
+					RelativePath="src\light_env_map_renderer.cpp" />
+				<File
+					RelativePath="src\main.cpp" />
+				<File
+					RelativePath="src\microimage.cpp" />
+				<File
+					RelativePath="src\modifiedData.cpp" />
+				<File
+					RelativePath="src\multiple_texture2d_rt.cpp" />
+				<File
+					RelativePath="src\program.cpp" />
+				<File
+					RelativePath="src\quad.cpp" />
+				<File
+					RelativePath="src\scene_renderer.cpp" />
+				<File
+					RelativePath="src\shader_loader.cpp" />
+				<File
+					RelativePath="src\single_texture2d_rt.cpp" />
+				<File
+					RelativePath="src\sky_renderer.cpp" />
+				<File
+					RelativePath="src\trackball.cpp" />
+			</Filter>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl;inc;xsd"
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+			<Filter
+				Name="include"
+				Filter="">
+				<Filter
+					Name="NV"
+					Filter="">
+					<File
+						RelativePath="include\NV\GPU_timer.h" />
+					<File
+						RelativePath="include\NV\nvMath.h" />
+					<File
+						RelativePath="include\NV\nvMatrix.h" />
+					<File
+						RelativePath="include\NV\nvModel.h" />
+					<File
+						RelativePath="include\NV\nvQuaternion.h" />
+					<File
+						RelativePath="include\NV\nvVector.h" />
+				</Filter>
+			</Filter>
+			<Filter
+				Name="src"
+				Filter="">
+				<File
+					RelativePath="src\FrameBuffer.h" />
+				<File
+					RelativePath="src\Texture2D.h" />
+				<File
+					RelativePath="src\bent_normal_blurring.h" />
+				<File
+					RelativePath="src\bent_normal_ray_marching_technique.h" />
+				<File
+					RelativePath="src\camera.h" />
+				<File
+					RelativePath="src\canvas.h" />
+				<File
+					RelativePath="src\cone_lighting_technique.h" />
+				<File
+					RelativePath="src\config.h" />
+				<File
+					RelativePath="src\env_map_convolution.h" />
+				<File
+					RelativePath="src\gbuffer.h" />
+				<File
+					RelativePath="src\glhelper.h" />
+				<File
+					RelativePath="src\light_env_map_renderer.h" />
+				<File
+					RelativePath="src\microimage.h" />
+				<File
+					RelativePath="src\modifiedData.h" />
+				<File
+					RelativePath="src\multiple_texture2d_rt.h" />
+				<File
+					RelativePath="src\program.h" />
+				<File
+					RelativePath="src\quad.h" />
+				<File
+					RelativePath="src\rendergeometry.h" />
+				<File
+					RelativePath="src\scene_renderer.h" />
+				<File
+					RelativePath="src\shader.h" />
+				<File
+					RelativePath="src\shader_loader.h" />
+				<File
+					RelativePath="src\single_texture2d_rt.h" />
+				<File
+					RelativePath="src\sky_renderer.h" />
+				<File
+					RelativePath="src\tools.h" />
+				<File
+					RelativePath="src\trackball.h" />
+			</Filter>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

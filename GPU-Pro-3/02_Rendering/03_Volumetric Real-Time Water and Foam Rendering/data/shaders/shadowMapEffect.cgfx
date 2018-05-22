@@ -1,0 +1,117 @@
+
+sampler2D smeShadowMap;
+float smeCkIndex;
+bool smeSinCosFlag;
+float3 smeClipPlanes;
+
+#include "data/shaders/util.fxh"
+
+// -----------------------------------------------------------------------------
+// ------------------------------- ShadowMap -----------------------------------
+// -----------------------------------------------------------------------------
+void LinearDepthVP(float4 position		: POSITION,
+					out float4 outPos	: POSITION,
+					out float outDepth	: TEXCOORD0)
+{
+	outPos = mul(glstate.matrix.mvp, position);
+
+	float zEyeSpace = mul(glstate.matrix.modelview[0], position).z;
+	outDepth.x = (zEyeSpace + smeClipPlanes.x) / smeClipPlanes.z;
+}
+
+FragmentShaderOutput LinearDepthFP(float3 depth : TEXCOORD0)
+{
+	FragmentShaderOutput OUT;
+	
+	OUT.color = float4(depth.x, depth.x, depth.x, 1.0f);
+
+	return OUT;
+}
+
+// -----------------------------------------------------------------------------
+// ---------------------------- ConvolutionMap ---------------------------------
+// -----------------------------------------------------------------------------
+
+// generate CSM and CSM-Z using MRT
+
+#define PI 3.14159265f
+
+struct FragmentShader4xOutput
+{	
+	float4 color0 : COLOR0;
+	float4 color1 : COLOR1;
+	float4 color2 : COLOR2;
+	float4 color3 : COLOR3;
+};
+
+// Compute a coefficient 4D vector Ck which starts at k and multiplies z.
+float4 Ck_v_z(const float k, const float z) 
+{
+  float pi_z = PI * z;
+  return float4(pi_z * (2.0f * (k  ) - 1.0f),
+                pi_z * (2.0f * (k+1.0f) - 1.0f),
+                pi_z * (2.0f * (k+2.0f) - 1.0f),
+                pi_z * (2.0f * (k+3.0f) - 1.0f));
+}
+
+PositionTexCoordShaderInput ConvolutionMapVP(PositionTexCoordShaderInput IN)
+{
+	PositionTexCoordShaderInput OUT;
+
+	OUT.position = mul(glstate.matrix.mvp, IN.position);
+	OUT.texCoord = IN.texCoord;
+
+	return OUT;
+}
+
+FragmentShader4xOutput ConvolutionMapFP(PositionTexCoordShaderInput IN)
+{
+	FragmentShader4xOutput OUT;
+
+	float z = tex2D(smeShadowMap, IN.texCoord.xy).x;
+
+	float4 basisFunc0;
+	float4 basisFunc1;
+	float4 basisFunc2;
+	float4 basisFunc3;
+
+	if(smeSinCosFlag == false)
+	{
+		basisFunc0 = sin(Ck_v_z((smeCkIndex*4.0f)+1.0f, z));
+		basisFunc1 = sin(Ck_v_z(((smeCkIndex+1)*4.0f)+1.0f, z));
+		basisFunc2 = sin(Ck_v_z(((smeCkIndex+2)*4.0f)+1.0f, z));
+		basisFunc3 = sin(Ck_v_z(((smeCkIndex+3)*4.0f)+1.0f, z));
+	}
+	else
+	{
+		basisFunc0 = cos(Ck_v_z((smeCkIndex*4.0f)+1.0f, z));
+		basisFunc1 = cos(Ck_v_z(((smeCkIndex+1.0f)*4.0f)+1.0f, z));
+		basisFunc2 = cos(Ck_v_z(((smeCkIndex+2.0)*4.0f)+1.0f, z));
+		basisFunc3 = cos(Ck_v_z(((smeCkIndex+3.0)*4.0f)+1.0f, z));
+	}
+	
+	OUT.color0 = basisFunc0;
+	OUT.color1 = basisFunc1;
+	OUT.color2 = basisFunc2;
+	OUT.color3 = basisFunc3;
+
+	return OUT;
+}
+
+// -----------------------------------------------------------------------------
+// --------------------------------- Passes ------------------------------------
+// -----------------------------------------------------------------------------
+technique ShadowMapShader
+{
+	pass ComputeShadowMap
+	{
+		VertexProgram = compile gp4vp LinearDepthVP();
+        FragmentProgram = compile gp4fp LinearDepthFP();
+	}
+
+	pass ComputeConvolutionMap
+	{
+		VertexProgram = compile gp4vp ConvolutionMapVP();
+        FragmentProgram = compile gp4fp ConvolutionMapFP();
+	}
+}
