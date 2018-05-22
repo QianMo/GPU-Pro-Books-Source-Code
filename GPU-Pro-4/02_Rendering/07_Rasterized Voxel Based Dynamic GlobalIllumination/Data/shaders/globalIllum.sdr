@@ -1,0 +1,16 @@
+Defines
+{
+  NO_TEXTURE
+}
+VertexShader
+{
+  postQuad.vsh
+}
+GeometryShader
+{
+  globalIllum.gsh
+}
+FragmentShader
+{ 
+  globalIllum.fsh
+}

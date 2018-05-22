@@ -1,0 +1,31 @@
+#version 120 // -*- c++ -*-
+#include "../compatibility.glsl"
+#line 4
+
+uniform sampler2D packedBuffer;
+uniform sampler2D blurBuffer;
+
+#if __VERSION__ < 130
+#   define result gl_FragColor.rgb
+#else
+    out vec3 result;
+#endif
+    
+void main() {
+    int2 A = int2(gl_FragCoord.xy);
+
+    float4 pack  = texelFetch(packedBuffer, A, 0);
+    float3 sharp   = pack.rgb;
+
+    // Bilinear interpolate
+    float3 blurred = texture(blurBuffer, gl_FragCoord.xy * g3d_sampler2DInvSize(packedBuffer)).rgb;
+
+    // Normalized Radius
+    float normRadius = (pack.a * 2.0 - 1.0);
+
+    // Boost the blur factor
+    normRadius = clamp(normRadius * 2.0, -1.0, 1.0);
+    
+    result = lerp(sharp, blurred, abs(normRadius));
+    
+}

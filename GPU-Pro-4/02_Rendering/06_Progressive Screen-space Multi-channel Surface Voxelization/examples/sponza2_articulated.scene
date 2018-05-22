@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<world background="0.4 0.5 1.0" ambient="0.02 0.02 0.02" shadows="disk">
+
+  <gi resolution="64" active="yes" method="iv" bounces="1" samples="32" params="0.245" factor="2" lights="sun"/>
+
+  <eventmessage event="init" recipient="light_spin" message="start"/>
+  <spinner name="light_spin" period="30.0" repeats="0" axis="0,1,0">
+    <light name="sun" shadows="on" color="1.3 1.3 1.3" active="1"
+       attenuation="off" range="700" near_range="100" position="100,300,0" target="0,100,0"
+       resolution="512" skipframes="0" apperture="60" size="8"/>
+  </spinner>
+
+  <directory path="sponza2"/>
+  <transformation name="environment" rotation="-90,0,1,0">
+	  <object name="Atrium" file="sponza_corrected.obj"/>
+  </transformation>
+
+  <directory path="characters/horse"/>
+  <eventmessage event="init" recipient="walk_horse" message="start"/>
+  <linearmotion name="walk_horse" begin="-111 0 0" end="170 0 0" duration="23">
+    <transformation scale="2.75 2.75 2.75" rotation="90 0 1 0" translation="0 10 5">
+      <character file="horse.cfg"/>
+    </transformation>
+  </linearmotion>
+
+  <directory path="characters/Mac_Philip_H"/>
+  <eventmessage event="init" recipient="walk_man" message="start"/>
+  <linearmotion name="walk_man" begin="-111 0 0" end="170 0 0" duration="23">
+    <transformation scale="10 10 10" rotation="90 0 1 0" translation="0 10 -5">
+      <character file="Philip_H.cfg"/>
+    </transformation>
+  </linearmotion>
+
+  <camera name="first_person" apperture="60.0" focal_distance ="80" focal_range="360"
+          near="1" far="1000" follow="Myself" primary="true"/>
+
+  <user name="Myself" control="navigate" speed="12" turn="0.5"
+        position="132.60 28.137 -9.35" lookat="40.834 28.137 -9.35" input="console"/>
+
+  <input name="Console" type="mousekeyboard">
+    <eventmessage event="button2pressed" recipient="%world" delay="0.05" message="reset"/>
+  </input>
+
+</world>

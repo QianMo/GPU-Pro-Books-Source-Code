@@ -1,0 +1,224 @@
+
+struct PsIn
+{
+	float4 Position : SV_Position;
+	float2 TexCoord : TexCoord;
+};
+
+[Vertex shader]
+
+PsIn main(uint VertexID : SV_VertexID)
+{
+	// Produce a fullscreen triangle
+	PsIn Out;
+	Out.Position.x = (VertexID == 0)? 3.0f : -1.0f;
+	Out.Position.y = (VertexID == 2)? 3.0f : -1.0f;
+	Out.Position.z = 0.5f;
+	Out.Position.w = 1.0f;
+	Out.TexCoord = Out.Position.xy * float2(0.5f, -0.5f) + 0.5f;
+
+	return Out;
+}
+
+[Fragment shader]
+
+Texture2D BackBuffer;
+Texture2D <float> DepthBuffer;
+Texture2D <float> SecondDepthBuffer;
+
+SamplerState Linear;
+SamplerState Point;
+
+float2 PixelSize;
+
+float4 main(PsIn In) : SV_Target
+{
+	float dc = DepthBuffer.Sample(Point, In.TexCoord);
+
+#ifdef DX10_1
+	// Use Gather() to optimize on DX10.1
+	float4 d0 = DepthBuffer.Gather(Linear, In.TexCoord + float2(-1.5f, -0.5f) * PixelSize);
+	float4 d1 = DepthBuffer.Gather(Linear, In.TexCoord + float2( 1.5f,  0.5f) * PixelSize);
+	float4 d2 = DepthBuffer.Gather(Linear, In.TexCoord + float2( 0.5f, -1.5f) * PixelSize);
+	float4 d3 = DepthBuffer.Gather(Linear, In.TexCoord + float2(-0.5f,  1.5f) * PixelSize);
+
+	float dx0 = d0.x;
+	float dx1 = d0.y;
+	float dx2 = d1.w;
+	float dx3 = d1.z;
+
+	float dy0 = d2.w;
+	float dy1 = d2.x;
+	float dy2 = d3.z;
+	float dy3 = d3.y;
+#else
+	// Standard DX10.0 path
+	float dx0 = DepthBuffer.Sample(Point, In.TexCoord, int2(-2, 0));
+	float dx1 = DepthBuffer.Sample(Point, In.TexCoord, int2(-1, 0));
+	float dx2 = DepthBuffer.Sample(Point, In.TexCoord, int2(+1, 0));
+	float dx3 = DepthBuffer.Sample(Point, In.TexCoord, int2(+2, 0));
+
+	float dy0 = DepthBuffer.Sample(Point, In.TexCoord, int2(0, -2));
+	float dy1 = DepthBuffer.Sample(Point, In.TexCoord, int2(0, -1));
+	float dy2 = DepthBuffer.Sample(Point, In.TexCoord, int2(0, +1));
+	float dy3 = DepthBuffer.Sample(Point, In.TexCoord, int2(0, +2));
+#endif
+
+	// Detect edges
+	bool edge_x = (abs(dx1 + dx2 - 2 * dc) > 0.00001f * dc);
+	bool edge_y = (abs(dy1 + dy2 - 2 * dc) > 0.00001f * dc);
+
+
+	bool is_silhouette = false;
+	float2 offset = 0.5f;
+ 
+	// Where an edge was found, first assume it's a crease and attempt to compute the intersection point
+	// marked with "x" below where the depth values meet.
+	//
+	//   *
+	//   |                   *
+	//   |    *         *    |
+	//   |    |  x *    |    |
+	//   |    |  | |    |    |
+	//  dx0  dx1 | dc  dx2  dx3
+	//
+	// If we get a value between -1 and 1 it's a crease, otherwise it's a silhuette edge.
+	// If it's a crease, but the value is outside of -0.5 to 0.5, the edge falls outside the pixel so we don't use it.
+
+
+	[flatten]
+	if (edge_x)
+	{
+		float k0 = dx1 - dx0;
+		float k1 = dx3 - dx2;
+		float m0 = dx1 + k0;
+		float m1 = dx2 - k1;
+
+		offset.x = (m1 - m0) / (k0 - k1);
+
+		is_silhouette = (abs(offset.x) > 1.0f);
+
+		offset.x = (abs(offset.x) < 0.5f)? offset.x : 0.5f;
+	}
+
+	[flatten]
+	if (edge_y)
+	{
+		float k0 = dy1 - dy0;
+		float k1 = dy3 - dy2;
+		float m0 = dy1 + k0;
+		float m1 = dy2 - k1;
+
+		offset.y = (m1 - m0) / (k0 - k1);
+
+		is_silhouette = (abs(offset.y) > 1.0f);
+
+		offset.y = (abs(offset.y) < 0.5f)? offset.y : 0.5f;
+	}
+
+
+	[branch]
+	if (is_silhouette)
+	{
+		offset = 0.5f;
+
+#ifdef DX10_1
+		// Use Gather() to optimize on DX10.1
+		float4 sd0 = SecondDepthBuffer.Gather(Linear, In.TexCoord + float2(-1.5f, -0.5f) * PixelSize);
+		float4 sd1 = SecondDepthBuffer.Gather(Linear, In.TexCoord + float2( 1.5f,  0.5f) * PixelSize);
+		float4 sd2 = SecondDepthBuffer.Gather(Linear, In.TexCoord + float2( 0.5f, -1.5f) * PixelSize);
+		float4 sd3 = SecondDepthBuffer.Gather(Linear, In.TexCoord + float2(-0.5f,  1.5f) * PixelSize);
+
+		float sdx0 = sd0.x;
+		float sdx1 = sd0.y;
+		float sdx2 = sd1.w;
+		float sdx3 = sd1.z;
+
+		float sdy0 = sd2.w;
+		float sdy1 = sd2.x;
+		float sdy2 = sd3.z;
+		float sdy3 = sd3.y;
+#else
+		// Standard DX10.0 path
+		float sdx0 = SecondDepthBuffer.Sample(Point, In.TexCoord, int2(-2, 0));
+		float sdx1 = SecondDepthBuffer.Sample(Point, In.TexCoord, int2(-1, 0));
+		float sdx2 = SecondDepthBuffer.Sample(Point, In.TexCoord, int2(+1, 0));
+		float sdx3 = SecondDepthBuffer.Sample(Point, In.TexCoord, int2(+2, 0));
+
+		float sdy0 = SecondDepthBuffer.Sample(Point, In.TexCoord, int2(0, -2));
+		float sdy1 = SecondDepthBuffer.Sample(Point, In.TexCoord, int2(0, -1));
+		float sdy2 = SecondDepthBuffer.Sample(Point, In.TexCoord, int2(0, +1));
+		float sdy3 = SecondDepthBuffer.Sample(Point, In.TexCoord, int2(0, +2));
+#endif
+
+		// If we have a silhouette edge we need to consider the second-depth values. The logic is the same as with creases,
+		// except that we compute the intersection where the depth and second-depth values meet. We need to do this both
+		// left and right. The left case is illustrated below.
+		//
+		//  sdx0 sdx1
+		//   *
+		//   |
+		//   |    *
+		//   |    |  x *
+		//   |    *  |
+		//   *       |
+		//           |
+		//  dx0  dx1 | dc
+		//
+		// Again, if the value is outside of -0.5 to 0.5, the edge falls outside the pixel so we don't use it.
+
+		[flatten]
+		if (edge_x)
+		{
+			float k0 = sdx3 - sdx2;
+			float k1 =  dx3 -  dx2;
+			float k2 = sdx1 - sdx0;
+			float k3 =  dx1 -  dx0;
+
+			float m0 = sdx2 - k0;
+			float m1 =  dx2 - k1;
+			float m2 = sdx1 + k2;
+			float m3 =  dx1 + k3;
+
+			float offset0 = (m1 - m0) / (k0 - k1);
+			float offset1 = (m3 - m2) / (k2 - k3);
+
+			offset.x = (abs(offset0) < abs(offset1))? offset0 : offset1;
+			offset.x = (abs(offset.x) < 0.5f)? offset.x : 0.5f;
+		}
+
+		[flatten]
+		if (edge_y)
+		{
+			float k0 = sdy3 - sdy2;
+			float k1 =  dy3 -  dy2;
+			float k2 = sdy1 - sdy0;
+			float k3 =  dy1 -  dy0;
+
+			float m0 = sdy2 - k0;
+			float m1 =  dy2 - k1;
+			float m2 = sdy1 + k2;
+			float m3 =  dy1 + k3;
+
+			float offset0 = (m1 - m0) / (k0 - k1);
+			float offset1 = (m3 - m2) / (k2 - k3);
+
+			offset.y = (abs(offset0) < abs(offset1))? offset0 : offset1;
+			offset.y = (abs(offset.y) < 0.5f)? offset.y : 0.5f;
+		}
+	}
+
+	// Convert distances to a texture coordinate shift for filtering
+	if (abs(offset.x) > abs(offset.y))
+	{
+		offset.x = 0;
+		offset.y = ((offset.y >= 0)? 0.5f : -0.5f) - offset.y;
+	}
+	else
+	{
+		offset.x = ((offset.x >= 0)? 0.5f : -0.5f) - offset.x;
+		offset.y = 0;
+	}
+
+	return BackBuffer.Sample(Linear, In.TexCoord + offset * PixelSize);
+}

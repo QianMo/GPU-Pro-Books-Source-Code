@@ -1,0 +1,16 @@
+Textures
+{
+  ColorTexture          textures/fonts/arial.dds
+}
+RenderStates
+{
+  cull                  BACK_CULL   
+  noDepthTest
+  noDepthMask
+  colorBlend            SRC_ALPHA_BLEND INV_SRC_ALPHA_BLEND ADD_BLEND_OP
+  alphaBlend            SRC_ALPHA_BLEND INV_SRC_ALPHA_BLEND ADD_BLEND_OP
+}
+Shader
+{
+  file                  shaders/font.sdr
+}

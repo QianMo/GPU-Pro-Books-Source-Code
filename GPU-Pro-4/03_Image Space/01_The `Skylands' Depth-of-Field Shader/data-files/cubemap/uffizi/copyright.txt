@@ -1,0 +1,4 @@
+Image by Paul Debevec
+http://www.debevec.org/probes/
+
+Converted from HDR .hdr to LDR .jpg

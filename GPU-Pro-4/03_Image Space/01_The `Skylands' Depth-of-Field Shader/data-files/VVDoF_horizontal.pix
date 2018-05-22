@@ -1,0 +1,3 @@
+#version 120 // -*- c++ -*-
+#define HORIZONTAL 1
+#include "VVDoF_blur.glsl"

@@ -1,0 +1,191 @@
+#version 120 // -*- c++ -*-
+#extension GL_ARB_shader_texture_lod : require  // For textureCubeLod
+#extension GL_EXT_gpu_shader4 : enable          // For texelFetch2D        
+/**
+  \file SS_NonShadowedPass.pix
+  \author Morgan McGuire, http://graphics.cs.williams.edu
+
+  For use with G3D::SuperShader.
+
+  \edited  2012-08-23
+  \created 2007-12-18
+ */
+
+#include "SS_Globals.pix"
+#include "SS_Light.pix"
+
+#ifdef NORMALBUMPMAP
+#include "BumpMap.glsl"
+#   if (PARALLAXSTEPS == 0)
+#       define bumpMap bumpMapBlinn78
+#   elif (PARALLAXSTEPS <= 1)
+#       define bumpMap bumpMapWelsh04
+#   else // PARALLAXSETPS > 1
+#       define bumpMap bumpMapTatarchuk06
+#   endif
+#endif
+
+uniform vec4        lightPosition1;
+uniform vec3        lightColor1;
+uniform vec3        lightDirection1;
+uniform vec4        lightAttenuation1;
+
+uniform vec4        lightPosition2;
+uniform vec3        lightColor2;
+uniform vec3        lightDirection2;
+uniform vec4        lightAttenuation2;
+
+uniform vec4        lightPosition3;
+uniform vec3        lightColor3;
+uniform vec3        lightDirection3;
+uniform vec4        lightAttenuation3;
+
+uniform samplerCube environmentMap;
+uniform float       environmentMapScale;
+
+#ifdef EMISSIVECONSTANT
+    uniform vec3        emissiveConstant;
+#endif
+
+#ifdef EMISSIVEMAP
+    uniform sampler2D   emissiveMap;
+#endif
+
+#ifdef GL_EXT_gpu_shader4
+uniform sampler2D   aoBuffer;
+uniform ivec2       aoBufferOffset;
+#endif
+
+#if __VERSION__ == 120
+#   define texelFetch   texelFetch2D
+#   define textureSize  textureSize2D
+#endif
+
+void main(void) {
+
+#define pi (3.1415926)
+#define invPi (0.318309886)
+// 1.0 / (8.0 pi); used for normalizing the specular lobe
+#define inv8pi (0.0397887358)
+#include "SS_LambertianComponent.pix"
+
+#   if defined(SPECULARCONSTANT) || defined(SPECULARMAP)
+        // Eye vector
+        vec3 wsE = normalize(wsEyePos - wsPosition);
+        // or... (tangentToWorld * vec4(tsE, 0.0)).xyz;
+#   else
+        vec3 wsE = BLACK;
+#   endif
+
+    // Sample the highest MIP-level
+    vec3 ambientTop    = textureCubeLod(environmentMap, vec3(0.0,  1.0, 0.0), 100.0).rgb;
+    vec3 ambientBottom = textureCubeLod(environmentMap, vec3(0.0, -1.0, 0.0), 100.0).rgb;
+
+    float AO = 
+#       ifdef  GL_EXT_gpu_shader4
+            // The clamp is for the case where the aoBuffer is a small, all-white buffer
+            (0.9 * texelFetch(aoBuffer, min(ivec2(gl_FragCoord.xy) + aoBufferOffset, textureSize(aoBuffer, 0) - ivec2(1, 1)), 0).r + 0.1);
+#       else
+            1.0;
+#       endif
+
+    vec3 E_lambertian  = (ambientTop + (ambientTop - ambientBottom) * min(wsN.y, 0.0)) * (environmentMapScale * pi) * AO;
+    vec3 E_specular;
+    float shininess;
+
+#   if defined(EMISSIVECONSTANT) || defined(EMISSIVEMAP)     
+        vec3 emissiveColor =
+#       ifdef EMISSIVECONSTANT
+            emissiveConstant
+#           ifdef EMISSIVEMAP
+                * texture2D(emissiveMap, offsetTexCoord).rgb
+#           endif
+#       else
+            texture2D(emissiveMap, offsetTexCoord).rgb
+#       endif
+        ;
+#   endif
+
+#   if defined(SPECULARCONSTANT) || defined(SPECULARMAP)
+        vec3 F0;
+        vec3 specularColor;
+        float cos_i = dot(wsN, wsE);
+        
+        // If 1.0, mirror reflect
+        // If 0.0, no specular
+        // Otherwise exponent = shininess * 127 + 1. 
+        {        
+            vec4 temp =
+#               ifdef SPECULARCONSTANT
+                    specularConstant
+#                   ifdef SPECULARMAP
+                        * texture2D(specularMap, offsetTexCoord)
+#                   endif
+#               else
+                    texture2D(specularMap, offsetTexCoord)
+#               endif
+                ;
+                   
+            F0 = temp.rgb;
+            specularColor = computeF(F0, max(0.0, cos_i));
+
+//          Only if this texture is known to contain some mirror reflective value do we bother
+//          testing each pixel's specular exponent for mirror reflection
+#           ifdef MIRROR
+                if (temp.a == 1.0) {
+                    // Mirror reflection
+                
+                    // Reflection vector
+                    vec3 wsR = normalize(wsN * (2.0 * cos_i) - wsE);
+                    E_specular = textureCube(environmentMap, wsR).rgb * environmentMapScale;
+
+                } else
+#        endif
+            {
+                // Only glossy reflection
+                E_specular = BLACK;
+            }
+            // Unpack the specular exponent
+            shininess = unpackSpecularExponent(temp.a);
+       }
+
+#      if defined(LAMBERTIANCONSTANT) || defined(LAMBERTIANMAP)
+          // modulate the lambertian color by the specular; this
+          // ensures energy conservation at glancing angles under
+          // Fresnel effects.
+          lambertianColor.rgb *= vec3(1.0) - specularColor;
+#      endif
+#   else
+       shininess = 0.0;
+#   endif
+
+    float specularCoefficient = (shininess + 8.0) * inv8pi;
+    vec3 ignore;
+    addLightContribution(wsN, wsE, wsPosition, shininess, specularCoefficient, lightPosition0, lightAttenuation0, lightDirection0, lightColor0, E_lambertian, E_specular, ignore);
+    addLightContribution(wsN, wsE, wsPosition, shininess, specularCoefficient, lightPosition1, lightAttenuation1, lightDirection1, lightColor1, E_lambertian, E_specular, ignore);
+    addLightContribution(wsN, wsE, wsPosition, shininess, specularCoefficient, lightPosition2, lightAttenuation2, lightDirection2, lightColor2, E_lambertian, E_specular, ignore);
+    addLightContribution(wsN, wsE, wsPosition, shininess, specularCoefficient, lightPosition3, lightAttenuation3, lightDirection3, lightColor3, E_lambertian, E_specular, ignore);
+
+    gl_FragColor.rgb =
+#       if defined(EMISSIVECONSTANT) || defined(EMISSIVEMAP)
+            emissiveColor +
+#       endif      
+        BLACK
+#       if defined(LAMBERTIANCONSTANT) || defined(LAMBERTIANMAP)
+           + E_lambertian * lambertianColor.rgb
+#       endif
+
+#       if defined(SPECULARCONSTANT) || defined(SPECULARMAP)
+           + E_specular * specularColor.rgb
+#       endif
+        ;
+
+    gl_FragColor.a = 
+#       if defined(LAMBERTIANMAP) || defined(LAMBERTIANCONSTANT)
+            lambertianColor.a
+#       else
+            1.0
+#       endif
+        ;        
+}
+/* end of SS_NonShadowedPass.pix */

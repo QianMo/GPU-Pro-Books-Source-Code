@@ -1,0 +1,2 @@
+DeepShadowMapSize 512
+BufferElementsMemAlloc 50

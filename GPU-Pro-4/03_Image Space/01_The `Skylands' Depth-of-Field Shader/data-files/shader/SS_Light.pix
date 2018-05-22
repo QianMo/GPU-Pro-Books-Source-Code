@@ -1,0 +1,66 @@
+// -*- c++ -*-
+/**
+  @file SS_Light.pix
+  @author Morgan McGuire morgan@cs.williams.edu
+
+  For use with G3D::SuperShader.
+  This file is included into NonShadowedPass.pix and 
+  ShadowMappedLightPass.pix.
+
+  \created 2007-12-18
+  \edited  2012-08-23
+ */
+
+
+#define pif (3.14159265356)
+ 
+/**
+ @param lightAttenuation OpenGL distance attenuation polynomial coefficients
+ @param lightDirection   OpenGL spotlight direction
+ */
+void addLightContribution(in vec3 wsN, in vec3 wsE, in vec3 wsPosition, in float specularExponent, in float specularCoefficient,
+                          in vec4 lightPosition, in vec4 lightAttenuation, in vec3 lightDirection,
+                          in vec3 lightColor, inout vec3 I_lambertian, inout vec3 I_specular, out vec3 wsL) {
+    
+    // Light vector
+    wsL = lightPosition.xyz - wsPosition.xyz * lightPosition.w;
+    float lightDistance = length(wsL);
+    wsL = normalize(wsL);
+
+    float attenuation =
+        lightPosition.w *
+
+        // Spotlight cone (lightAttenuation.w = -1 for other lights)
+        ((-dot(lightDirection, wsL) >= lightAttenuation.w) ? 
+         
+         // Within spotlight cone
+         (1.0 / dot( vec3(1.0, lightDistance, 4.0 * pif * lightDistance * lightDistance), lightAttenuation.xyz)) : 
+         
+         // Outside spotlight cone
+         0.0) + (1.0 - lightPosition.w);
+
+#   ifdef NORMALBUMPMAP
+        // For a bump mapped surface, do not allow illumination on the back side even if the
+        // displacement creates a light-facing surface, since it should be self-shadowed for any 
+        // large polygon.
+        attenuation *= float(dot(tan_Z.xyz, wsL) * backside > 0.0);
+#   endif
+
+    // Attenuation is modulated by the cosine of the angle of incidence
+    attenuation *= max(dot(wsL, wsN), 0.0);
+
+    vec3 attLightColor = attenuation * lightColor;
+
+#   if defined(LAMBERTIANCONSTANT) || defined(LAMBERTIANMAP)
+        I_lambertian += attLightColor;
+#   endif
+
+#   if defined(SPECULARCONSTANT) || defined(SPECULARMAP)
+        if (specularExponent > 0.0) {
+            // cosine of the angle between the normal and the half-vector
+            vec3 wsH = normalize(wsL + wsE);
+            float cos_h = max(dot(wsH, wsN), 0.0);
+            I_specular += attLightColor * (pow(cos_h, specularExponent) * specularCoefficient);
+        }
+#   endif
+}

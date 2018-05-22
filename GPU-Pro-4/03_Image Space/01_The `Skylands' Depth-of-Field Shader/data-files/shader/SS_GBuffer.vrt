@@ -1,0 +1,7 @@
+// -*- c++ -*-
+/** \file SS_GBuffer.vrt
+    \author Morgan McGuire, http://graphics.cs.williams.edu */
+// This shader expects a prefix attached at runtime in SuperShader.cpp
+
+// Perform vertex transformation as if we were rendering a normal pass
+#include "SS_NonShadowedPass.vrt"

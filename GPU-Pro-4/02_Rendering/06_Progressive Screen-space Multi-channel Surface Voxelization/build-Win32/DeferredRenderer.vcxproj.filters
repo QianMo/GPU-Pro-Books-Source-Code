@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{9c6c912f-a37e-4195-a36e-68148e36f077}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Header Files">
+      <UniqueIdentifier>{40d5abbf-4a81-427f-8fcb-f7b142c4631d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Source Files">
+      <UniqueIdentifier>{affd9023-ac11-4118-897a-931d6fe73d49}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\GlobalIlluminationRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\GlobalIlluminationRenderer_IV.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_ClearMRT.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_FilterKernels.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_FrameBuffer.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_GI.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_GI_IV.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_GI_IV_Injection_SS.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_GI_IV_Injection_SS_Cleanup.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_GI_IV_Propagation.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_Glow.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_Illumination.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_MRT.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_PostProcess.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_ShadowFunctions.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_ShadowMap.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_SphericalHarmonics.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_Transparency.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_ViewDepthBuffer.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_ViewPhotonMap.cpp">
+      <Filter>Shaders\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\DeferredRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GlobalIlluminationRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GlobalIlluminationRenderer_IV.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_ClearMRT.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_FilterKernels.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_FrameBuffer.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_GI.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_GI_IV.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_GI_IV_Injection_SS.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_GI_IV_Injection_SS_Cleanup.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_GI_IV_Propagation.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_Glow.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_Illumination.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_MRT.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_PostProcess.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_ShadowFunctions.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_ShadowMap.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_SphericalHarmonics.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_Transparency.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\DeferredRendererShaders.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_ViewDepthBuffer.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_ViewPhotonMap.h">
+      <Filter>Shaders\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

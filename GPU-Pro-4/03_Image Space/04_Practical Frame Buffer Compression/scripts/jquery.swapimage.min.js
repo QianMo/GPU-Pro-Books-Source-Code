@@ -1,0 +1,11 @@
+/**
+ * swapImage - jQuery plugin for swapping image
+ *
+ * Copyright (c) 2010 tszming (tszming@gmail.com)
+ *
+ * Dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ */
+(function(a){a.swapImage=function(c,b,e,f,d){a.swapImage.files={};a.swapImage.data={};a.swapImage.uuid=0;a.swapImage.init=function(){var h=++a.swapImage.uuid;a(this).attr("swapImageId",h);var g=a(this).metadata();a.swapImage.data[h]=a.swapImage.data[h]||{};if(typeof g.src!="undefined"){a.swapImage.data[h]["src"]=g.src;a.swapImage.files[g.src]=false}a.each(a.grep([[g.sin,"sin"],[g.sout,"sout"]],function(i){return(typeof i[0]!="undefined"&&i[0].length>0)}),function(){var k=this[0];var o=this[1];for(var m=0;m<k.length;m++){var j=g[o][m].indexOf(":");var n=g[o][m].substring(0,j);var l=g[o][m].substring(j+1);a.swapImage.data[h][o]=a.swapImage.data[h][o]||[];if(j>1){a.swapImage.data[h][o].push([n,l]);a.swapImage.files[l]=false}else{a.swapImage.data[h][o].push([l])}}})};a.swapImage.preload=function(){a.each(a.swapImage.files,function(i,h){if(h==false){a.swapImage.files[i]=true;var g=new Image();g.src=i}})};a.swapImage.swapIn=function(){a.swapImage.swap(this,"sin")};a.swapImage.swapOut=function(){a.swapImage.swap(this,"sout")};a.swapImage.swap=function(j,g){var k=a(j).attr("swapImageId");if(typeof a.swapImage.data[k][g]!="undefined"){for(var h=0;h<a.swapImage.data[k][g].length;h++){if(a.swapImage.data[k][g][h].length>1){a(a.swapImage.data[k][g][h][0]).attr("src",a.swapImage.data[k][g][h][1])}else{a(a.swapImage.data[k][g][h][0]).each(a.swapImage._swap)}}}else{a.swapImage._swap.call(j)}};a.swapImage._swap=function(i){var j=a(this).attr("swapImageId");var h=a.swapImage.data[j];if(typeof h.src!="undefined"){var g=h.src;h.src=this.src;this.src=g}};a(document).ready(function(){if(typeof e=="undefined"){e=true}if(typeof b=="undefined"){b=true}a(c).each(a.swapImage.init);if(typeof f=="undefined"&&typeof f=="undefined"){f="mouseenter";d="mouseleave"}if(e){if(typeof d!="undefined"){a(c).bind(f,a.swapImage.swapIn).bind(d,a.swapImage.swapOut)}else{a(c).bind(f,a.swapImage.swapIn)}}else{a(c).one(f,a.swapImage.swapIn)}if(b){a(c).each(a.swapImage.preload)}})}})(jQuery);

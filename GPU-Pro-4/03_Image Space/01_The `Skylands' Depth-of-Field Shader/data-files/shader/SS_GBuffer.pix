@@ -1,0 +1,265 @@
+// -*- c++ -*-
+/** \file SS_GBuffer.pix 
+    \author Morgan McGuire, http://graphics.cs.williams.edu
+    
+     This shader expects a prefix (GBuffer::macros()) to be attached
+     at runtime, e.g., as done in SuperShader.cpp
+    */
+
+/** Texture coordinate */
+varying vec2 texCoord;
+
+varying vec3 wsPosition;
+
+// UniversalMaterial
+#ifdef SPECULARCONSTANT
+    uniform vec4        specularConstant;
+#endif
+
+#ifdef SPECULARMAP
+    uniform sampler2D   specularMap;
+#endif
+
+#ifdef LAMBERTIANCONSTANT
+    uniform vec4        lambertianConstant;
+#endif
+
+#ifdef LAMBERTIANMAP
+    uniform sampler2D   lambertianMap;
+#endif
+
+#ifdef EMISSIVECONSTANT
+    uniform vec3        emissiveConstant;
+#endif
+
+#ifdef EMISSIVEMAP
+    uniform sampler2D   emissiveMap;
+#endif
+
+#ifdef TRANSMISSIVECONSTANT
+    // Index of refraction / 24 is in the alpha value
+    uniform vec4        transmissiveConstant;
+#endif
+
+#ifdef TRANSMITMAP
+    uniform sampler2D   transmissiveMap;
+#endif
+
+#if defined(CS_POSITION_CHANGE) || defined(SS_POSITION_CHANGE)
+    varying vec3 csPrevPosition;
+#endif
+
+#ifdef SS_POSITION_CHANGE
+    // We reproject per-pixel so that csPrevPosition can be interpolated
+    // linearly in the current frame's 3D; projecting the previous position
+    // in the vertex shader would result in a previous homogeneous value
+    // being linearly in the current time frame.
+    uniform mat4 ProjectToScreenMatrix;
+#endif
+
+float backside = (gl_FrontFacing == g3d_InvertY) ?  1.0 : -1.0;
+
+#ifdef NORMALBUMPMAP
+#   if (PARALLAXSTEPS > 0)
+        /** Multiplier for bump map.  Typically on the range [0, 0.05]
+          This increases with texture scale and bump height. */
+        uniform float       bumpMapScale;
+
+        /** How high is the 0-level of the bump map? On the range [0, 1] */
+        uniform float       bumpMapBias;
+
+        /** Un-normalized (interpolated) tangent space eye vector */
+        varying vec3        _tsE;
+#   endif    
+    /** xyz = normal, w = bump height */
+    uniform sampler2D   normalBumpMap;
+    varying vec3        tan_X, tan_Y;
+
+#include "BumpMap.glsl"
+#   if (PARALLAXSTEPS == 0)
+#       define bumpMap bumpMapBlinn78
+#   elif (PARALLAXSTEPS <= 1)
+#       define bumpMap bumpMapWelsh04
+#   else // PARALLAXSETPS > 1
+#       define bumpMap bumpMapTatarchuk06
+#   endif
+#endif
+varying vec3        tan_Z;
+
+/** Index of refraction / 24.0 */
+uniform float       normalizedIndexOfRefraction;
+
+
+void main() {    
+#   if defined(NORMALBUMPMAP)
+        vec3 wsN;
+        vec2 offsetTexCoord;
+        vec3 tsN;
+#       if (PARALLAXSTEPS > 0)
+            bumpMap(normalBumpMap, bumpMapScale, bumpMapBias, texCoord, tan_X, tan_Y, tan_Z, backside, normalize(_tsE), wsN, offsetTexCoord, tsN);
+#       else
+            // Vanilla normal mapping
+            bumpMap(normalBumpMap, 0.0, 0.0, texCoord, tan_X, tan_Y, tan_Z, backside, vec3(0.0), wsN, offsetTexCoord, tsN);
+#       endif    
+
+#   else
+        // World space normal
+        vec3 wsN = normalize(tan_Z.xyz * backside);
+        vec2 offsetTexCoord = texCoord;
+        // No bump maps, normal always Z-axis of tangent space
+        vec3 tsN = vec3(0.0,0.0,1.0);
+#   endif
+
+    //////////////////////// MATERIAL //////////////////////////////
+
+    float alpha;
+
+    // We have to always read alpha because there may be alpha testing
+#   if defined(LAMBERTIANCONSTANT) || defined(LAMBERTIANMAP)
+    {
+        vec4 temp = 
+#       ifdef LAMBERTIANCONSTANT
+            lambertianConstant
+#           ifdef LAMBERTIANMAP
+                * texture2D(lambertianMap, offsetTexCoord)
+#           endif
+#       else
+            texture2D(lambertianMap, offsetTexCoord)
+#       endif
+        ;
+#       ifdef LAMBERTIAN
+            LAMBERTIAN.rgb = temp.rgb;
+#       endif
+        alpha = temp.a;
+
+        if (alpha == 0.0) {
+            // Explict alpha test to discard; we can't rely on the hardware for it
+            // because the FBO specification doesn't say how it works.
+            discard;
+        }
+    }
+#   else
+#       ifdef LAMBERTIAN
+            LAMBERTIAN.rgb = vec3(0.0);
+#       endif
+        alpha = 1.0;
+#   endif
+
+#   ifdef GLOSSY
+        GLOSSY.rgba =
+#       if defined(SPECULARCONSTANT) || defined(SPECULARMAP)     
+#           ifdef SPECULARCONSTANT
+                specularConstant
+#               ifdef SPECULARMAP
+                    * texture2D(specularMap, offsetTexCoord)
+#               endif
+#           else
+                texture2D(specularMap, offsetTexCoord)
+#           endif
+#       else
+            vec4(0.0)
+#       endif
+        ;
+#   endif
+
+
+#   ifdef EMISSIVE
+        EMISSIVE.rgb =
+#       if defined(EMISSIVECONSTANT) || defined(EMISSIVEMAP)     
+#           ifdef EMISSIVECONSTANT
+                emissiveConstant
+#               ifdef EMISSIVEMAP
+                    * texture2D(emissiveMap, offsetTexCoord).rgb
+#               endif
+#           else
+                texture2D(emissiveMap, offsetTexCoord).rgb
+#           endif
+#       else
+            vec3(0.0)
+#       endif
+        ;
+#   endif
+
+
+
+#   ifdef TRANSMISSIVE
+        TRANSMISSIVE.rgb =
+#       if defined(TRANSMISSIVECONSTANT) || defined(TRANSMISSIVEMAP)     
+#           ifdef TRANSMISSIVECONSTANT
+                transmissiveConstant
+#               ifdef TRANSMISSIVEMAP
+                    * texture2D(transmissiveMap, offsetTexCoord).rgb
+#               endif
+#           else
+                vec4(texture2D(transmissiveMap, offsetTexCoord).rgb
+#           endif
+#       else
+            vec3(0.0, 0.0, 0.0)
+#       endif
+        ;
+#   endif
+
+    ///////////////////////// NORMALS //////////////////////////////
+#   ifdef WS_NORMAL
+        WS_NORMAL.xyz = wsN * WS_NORMAL_writeScaleBias.x + vec3(WS_NORMAL_writeScaleBias.y);
+#   endif
+
+#   ifdef CS_NORMAL
+        CS_NORMAL.xyz = (mat3(g3d_WorldToCameraMatrix) * wsN) * CS_NORMAL_writeScaleBias.x + vec3(CS_NORMAL_writeScaleBias.y);
+#   endif
+
+#   ifdef TS_NORMAL
+        TS_NORMAL.xyz = tsN * TS_NORMAL_writeScaleBias.x + vec3(TS_NORMAL_writeScaleBias.y);
+#   endif
+
+#   if defined(WS_FACE_NORMAL) || defined(CS_FACE_NORMAL)
+        vec3 wsFaceNormal = normalize(cross(dFdy(wsPosition), dFdx(wsPosition)));
+#   endif
+
+    // For simplicity, all normals are encoded regardless of format.
+#   ifdef WS_FACE_NORMAL
+        WS_FACE_NORMAL.xyz = wsFaceNormal * WS_FACE_NORMAL_writeScaleBias.x + vec3(WS_FACE_NORMAL_writeScaleBias.y);
+#   endif
+
+#   ifdef CS_FACE_NORMAL
+        CS_FACE_NORMAL.xyz = (g3d_WorldToCameraMatrix * vec4(wsFaceNormal, 0.0)) * CS_FACE_NORMAL_writeScaleBias.x + vec3(CS_FACE_NORMAL_writeScaleBias.y);
+#   endif
+
+    //////////////////////// POSITIONS /////////////////////////////
+    // NVIDIA drivers miscompile this unless we write WS_POSITION after the normals
+
+#   ifdef WS_POSITION
+        WS_POSITION.xyz = wsPosition * WS_POSITION_writeScaleBias.x + vec3(WS_POSITION_writeScaleBias.y);
+#   endif
+
+#   if defined(CS_POSITION) || defined(CS_POSITION_CHANGE) || defined(SS_POSITION_CHANGE) || defined(CS_Z)
+        vec3 csPosition = g3d_WorldToCameraMatrix * vec4(wsPosition, 1.0);
+#   endif
+
+#   ifdef CS_POSITION
+        CS_POSITION.xyz = csPosition * CS_POSITION_writeScaleBias.x + vec3(CS_POSITION_writeScaleBias.y);
+#   endif
+
+#   ifdef CS_Z
+        CS_Z.r = csPosition.z * CS_Z_writeScaleBias.x + CS_Z_writeScaleBias.y;
+#   endif
+
+#   ifdef CS_POSITION_CHANGE
+        CS_POSITION_CHANGE.xyz = (csPosition - csPrevPosition) * CS_POSITION_CHANGE_writeScaleBias.x + CS_POSITION_CHANGE_writeScaleBias.y;
+#   endif
+
+#   ifdef SS_POSITION_CHANGE
+        {
+            vec4 temp = ProjectToScreenMatrix * vec4(csPrevPosition, 1.0);
+            vec2 ssPrevPosition = temp.xy / temp.w;
+
+            // gl_FragCoord.xy has already been rounded to a pixel center, so regenerate the true projected position.
+            // This is needed to generate correct velocity vectors in the presence of Projection::pixelOffset
+            vec4 temp2 = ProjectToScreenMatrix * vec4(csPosition, 1.0);
+            vec2 ssPosition = temp2.xy / temp2.w;
+
+            SS_POSITION_CHANGE.xy = (ssPosition - ssPrevPosition) * SS_POSITION_CHANGE_writeScaleBias.x + SS_POSITION_CHANGE_writeScaleBias.y;
+        }
+#   endif
+}
+/* end of SS_GBuffer.pix */

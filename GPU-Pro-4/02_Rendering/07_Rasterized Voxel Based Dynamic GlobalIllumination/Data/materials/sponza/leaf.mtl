@@ -1,0 +1,15 @@
+Textures
+{
+  ColorTexture          textures/sponza/sponza_thorn_diff.dds
+  NormalTexture         textures/sponza/sponza_thorn_ddn.dds
+  SpecularTexture       textures/sponza/sponza_thorn_spec.dds
+}
+RenderStates
+{
+  cull                  NONE_CULL     
+}
+Shader
+{
+  permutation           1
+  file                  shaders/base.sdr
+}

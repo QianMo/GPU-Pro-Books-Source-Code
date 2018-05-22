@@ -1,0 +1,16 @@
+# G3D test crate mesh
+
+newmtl metalcrate
+  Ns 30.0000
+  Ni 1.5000
+  d 1.0000
+  Tr 0
+  Tf 0 0 0
+  illum 2
+  Ka 1 1 1
+  Kd 1 1 1
+  Ks 1 1 1
+  Ke 0 0 0
+  map_Kd metalcrate-L.png
+  map_Ks metalcrate-G.png
+  map_bump metalcrate-B.png

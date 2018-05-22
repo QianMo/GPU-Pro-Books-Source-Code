@@ -1,0 +1,9 @@
+VertexShader
+{
+  pointLight.vsh
+}
+FragmentShader
+{ 
+  pointLight.fsh
+}
+

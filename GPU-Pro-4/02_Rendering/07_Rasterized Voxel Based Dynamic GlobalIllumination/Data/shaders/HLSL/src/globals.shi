@@ -1,0 +1,77 @@
+#define CAMERA_UB_BP b0
+#define LIGHT_UB_BP b1
+#define CUSTOM_UB_BP b2
+
+#define GLOBAL_CAMERA_UB(x) \
+ cbuffer CAMERA_UB: register(CAMERA_UB_BP) \
+ { \
+   struct \
+   { \
+     matrix viewMatrix; \
+	 matrix invTransposeViewMatrix; \
+	 matrix projMatrix; \
+	 matrix viewProjMatrix; \
+	 float4 frustumRays[4];\
+	 float3 position; \
+	 float nearClipDistance; \
+	 float farClipDistance; \
+	 float nearFarClipDistance; \
+   }x; \
+ } ; 
+ 
+#define GLOBAL_POINT_LIGHT_UB(x) \
+ cbuffer POINT_LIGHT_UB: register(LIGHT_UB_BP) \
+ { \
+   struct \
+   { \
+     float3 position; \
+     float radius; \
+     float4 color; \
+     matrix worldMatrix; \
+     float multiplier; \
+   }x; \
+ };
+ 
+#define GLOBAL_DIR_LIGHT_UB(x) \
+ cbuffer DIRECTIONAL_LIGHT_UB: register(LIGHT_UB_BP) \
+ { \
+   struct \
+   { \
+     float3 direction; \
+     float multiplier; \
+     float4 color; \
+     matrix shadowViewProjMatrix; \
+     matrix shadowViewProjTexMatrix; \
+     float invShadowMapSize; \
+   }x; \
+ };
+ 
+#define COLOR_TEX_BP t0
+#define NORMAL_TEX_BP t1
+#define SPECULAR_TEX_BP t2
+#define CUSTOM0_TEX_BP t3
+#define CUSTOM1_TEX_BP t4
+#define CUSTOM2_TEX_BP t5
+#define CUSTOM3_TEX_BP t6
+#define CUSTOM4_TEX_BP t7
+#define CUSTOM5_TEX_BP t8
+
+#define CUSTOM0_SB_BP t9
+#define CUSTOM1_SB_BP t10
+
+#define COLOR_SAM_BP s0
+#define NORMAL_SAM_BP s1
+#define SPECULAR_SAM_BP s2
+#define CUSTOM0_SAM_BP s3
+#define CUSTOM1_SAM_BP s4
+#define CUSTOM2_SAM_BP s5
+#define CUSTOM3_SAM_BP s6
+#define CUSTOM4_SAM_BP s7
+#define CUSTOM5_SAM_BP s8
+
+
+
+
+ 
+    
+ 

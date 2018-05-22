@@ -1,0 +1,132 @@
+// -*- c++ -*-
+// You can extend this sample scene file format with your own fields.
+// Edit the scene parsing in Scene.cpp.
+{
+    name = "Crates",
+   
+    models = {
+       groundModel = ArticulatedModel::Specification {
+            filename = "ifs/squarex8.ifs";
+            scale = 20.0f;
+            preprocess = (
+                setCFrame(root(), CFrame::fromXYZYPRDegrees(0,0,0,0,-90,0));
+
+                // Refer to parts and meshes by ID, name, root(), all(), or 0.
+                setTwoSided("root", "mesh", true);
+
+                setMaterial(all(), all(), UniversalMaterial::Specification {
+                    lambertian   = "material/asphalt/asphalt-L.png";
+                });
+            );
+       };
+
+       fenceModel = ArticulatedModel::Specification {
+            filename = "ifs/squarex8.ifs";
+            scale = 4.0f;
+            preprocess = (
+                setCFrame(root(), CFrame::fromXYZYPRDegrees(0,0,0,0,0,0));
+
+                // Refer to parts and meshes by ID, name, root(), all(), or 0.
+                setTwoSided("root", "mesh", true);
+
+                setMaterial(all(), all(), UniversalMaterial::Specification {
+                    lambertian   = "fence.png";
+                });
+            );
+       };        
+
+       crateModel = ArticulatedModel::Specification {
+            filename = "ifs/crate.ifs";
+            preprocess = (
+                // You can #include a material file, or simply put all of the
+                // options here as was done for groundModel.  #include can be
+                // used to replace any Any value, including a whole 
+                // ArticulatedModel::Specification.
+                setMaterial(all(), all(), #include("material/metalcrate/metalcrate.mat.any"));  
+            );
+       };
+    };
+
+    environmentMap = {
+        constant = 1.5;
+        texture  = 
+            Texture::Specification {
+                filename = "cubemap/hipshot_m9_sky/16_*.png";
+                desiredFormat = "SRGB8";
+            };
+    };
+    
+    entities = {
+        // Each entity has a name and is an instance of a model.  The instantiation syntax accepts
+        // two (optional) arguments: a position spline (which can be a single position), and a 
+        // pose spline (which can be a single pose).
+        
+        sun = Light {
+            type = "DIRECTIONAL";
+            position = CFrame::fromXYZYPRDegrees(inf, inf, inf, -117, -34, 0);
+            power = Power3(9, 9.5, 8.5);
+            shadowMapSize = Vector2int16(2048, 2048);
+        };
+
+        fillLight = Light {
+            type = "DIRECTIONAL";
+            power = Color3::fromARGB(0x85816f);
+            position = CFrame::fromXYZYPRDegrees(inf, inf, inf, -30, 45, 0);
+            castsShadows = false;
+        };
+
+        c0 = VisibleEntity {
+            model    = "crateModel";
+            position = Vector3(1.0, 0.5, 0.0);
+        };
+        
+        c1 = VisibleEntity {
+            model = "crateModel";
+            position = CFrame::fromXYZYPRDegrees(0.6f, 0.5f, -1.8f, 30.0f);
+        };
+
+        c2 = VisibleEntity {
+            model = "crateModel";
+            position = CFrame::fromXYZYPRDegrees(-0.6f, 0.5f, -4.0f, -20.0f);
+        };
+
+        c3 = VisibleEntity {
+            model = "crateModel";
+            position = CFrame::fromXYZYPRDegrees(-2.6f, 0.5f, -8.0f, 0.0f);
+        };        
+
+        fence = VisibleEntity {
+            model = "fenceModel";
+            position = CFrame::fromXYZYPRDegrees( -0.758754, 0.5, 1.24373, -1.77409 ) ;
+        };
+
+        ground = VisibleEntity {
+            model    = "groundModel";
+            position = CFrame::fromXYZYPRDegrees(0, -0.01, 0, 45);
+        };
+
+        camera = Camera {
+            position = CFrame::fromXYZYPRDegrees(  0.1f,   0.8f,   2.1f,  -6.3f,   0.6f,   0.0f);
+        
+            depthOfFieldSettings = DepthOfFieldSettings {
+                focusPlaneZ = -4.0;
+                lensRadius = 0.007;
+                model = "ARTIST";
+                farBlurRadiusFraction = 0.01;
+                farBlurryPlaneZ  = -15;
+                farSharpPlaneZ  =  -5;
+                nearSharpPlaneZ =  -3;
+                nearBlurryPlaneZ =  -0.1;
+                nearBlurRadiusFraction = 0.01;
+            };
+
+            projection = Projection {
+                nearPlaneZ = -0.1;
+                farPlaneZ = -100;
+                fovDirection = "VERTICAL";
+                fovDegrees = 60;
+            };
+        };
+    };
+        
+}

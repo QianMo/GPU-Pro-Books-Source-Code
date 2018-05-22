@@ -1,0 +1,97 @@
+#version 120  // -*- c++ -*-
+/** \file DepthOfField_artistCoC.pix
+
+    Packs color and signed, normalized circle of confusion radius
+    into the output buffer, reading from a depth buffer.
+
+    Code to bind the args:
+
+    \code
+    const double z_f    = camera.farPlaneZ();
+    const double z_n    = camera.nearPlaneZ();
+        
+    const Vector3& clipInfo = 
+        (z_f == -inf()) ? 
+        Vector3(float(z_n), -1.0f, 1.0f) : 
+        Vector3(float(z_n * z_f),  float(z_n - z_f),  float(z_f));
+        
+    args.set("color",            color);
+    args.set("depth",            depth);
+    args.set("clipInfo",         clipInfo);
+    args.set("nearBlurryPlaneZ", camera.nearBlurryPlaneZ());
+    args.set("nearSharpPlaneZ",  camera.nearSharpPlaneZ());
+    args.set("farSharpPlaneZ",   camera.farSharpPlaneZ());
+    args.set("farBlurryPlaneZ",  camera.farBlurryPlaneZ());
+
+    const float maxRadiusFraction = 
+        max(camera.nearBlurRadiusFraction(), camera.farBlurRadiusFraction());
+
+    // This is a positive number
+    const float nearNormalize =             
+        (1.0f / (camera.nearBlurryPlaneZ() - camera.nearSharpPlaneZ())) *
+        (camera.nearBlurRadiusFraction() / maxRadiusFraction);
+    alwaysAssertM(nearNormalize >= 0.0f, "Near normalization must be a non-negative factor");
+    args.set("nearNormalize", nearNormalize); 
+
+    // This is a positive number
+    const float farNormalize =             
+        (1.0f / (camera.farSharpPlaneZ() - camera.farBlurryPlaneZ())) *
+        (camera.farBlurRadiusFraction() / maxRadiusFraction);
+    alwaysAssertM(farNormalize >= 0.0f, "Far normalization must be a non-negative factor");
+    args.set("farNormalize", farNormalize);
+    \endcode
+*/
+#include "../reconstruct.glsl"
+#include "../compatibility.glsl"
+#line 10
+
+uniform sampler2D color;
+uniform sampler2D depth;
+
+uniform float nearBlurryPlaneZ;
+uniform float nearSharpPlaneZ;
+uniform float farSharpPlaneZ;
+uniform float farBlurryPlaneZ;
+
+/** Scales the near-field z distance to the fraction of the maximum
+    blur radius in either field. */
+uniform float nearNormalize;
+
+/** Scales the far-field z distance to the fraction of the maximum
+    blur radius in either field. */
+uniform float farNormalize;
+
+#if __VERSION__ < 130
+#   define packedResult gl_FragColor
+#else
+#   out vec4 packedResult;
+#endif
+
+void main() {
+    ivec2 A = ivec2(gl_FragCoord.xy);
+    
+    float d = texelFetch(depth, A, 0).r;
+    float z = reconstructCSZ(d);     
+
+    // Fractional radius on [0, 1]
+    float radius;
+    
+    // Note that the radius is negative in the far field.
+
+    if (z > nearSharpPlaneZ) {
+        radius    = (min(z, nearBlurryPlaneZ) - nearSharpPlaneZ) * nearNormalize;
+    } else if (z > farSharpPlaneZ) {
+        // In the focus field
+        radius    = 0.0;
+    } else {
+        // Produce a negative value
+        radius    = (max(z, farBlurryPlaneZ) - farSharpPlaneZ) * farNormalize;
+    }
+
+    packedResult.rgb = texelFetch(color, A, 0).rgb;
+
+    // Store the radius biased because the target texture format may
+    // be unsigned.  It is on the scale [0, 1] in case the format
+    // is normalized fixed point.
+    packedResult.a   = radius * 0.5 + 0.5;
+ }

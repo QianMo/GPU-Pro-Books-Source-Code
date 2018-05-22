@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{28DF6DE9-D856-43d6-B58D-68D47E8AD095}") = "GlobalIllumination", "GlobalIllumination.vcproj", "{1841F2F8-D3DA-4727-9331-A4FCF04B2650}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug DX11|Win32 = Debug DX11|Win32
+		Release DX11|Win32 = Release DX11|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1841F2F8-D3DA-4727-9331-A4FCF04B2650}.Debug DX11|Win32.ActiveCfg = Debug DX11|Win32
+		{1841F2F8-D3DA-4727-9331-A4FCF04B2650}.Debug DX11|Win32.Build.0 = Debug DX11|Win32
+		{1841F2F8-D3DA-4727-9331-A4FCF04B2650}.Release DX11|Win32.ActiveCfg = Release DX11|Win32
+		{1841F2F8-D3DA-4727-9331-A4FCF04B2650}.Release DX11|Win32.Build.0 = Release DX11|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

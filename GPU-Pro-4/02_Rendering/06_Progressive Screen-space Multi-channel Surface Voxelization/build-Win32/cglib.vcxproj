@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{10CA59E3-2EF9-4BC2-871C-D5E6ACC52EE6}</ProjectGuid>
+    <RootNamespace>cglib</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\build-Win32\VS2010\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\build-Win32\VS2010\$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\build-Win32\VS2010\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\build-Win32\VS2010\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)\include\cglib;$(SolutionDir)\include\cgplugins;$(SolutionDir)\include;$(SolutionDir)\3rdParty\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;EAZD_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>$(SolutionDir)\include\cglib;$(SolutionDir)\include\cgplugins;$(SolutionDir)\include;$(SolutionDir)\3rdParty\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\cglib\BBox3D.cpp" />
+    <ClCompile Include="..\src\cglib\BSphere3D.cpp" />
+    <ClCompile Include="..\src\cglib\FrameBufferObject.cpp" />
+    <ClCompile Include="..\src\cglib\Material3D.cpp" />
+    <ClCompile Include="..\src\cglib\Matrix4D.cpp" />
+    <ClCompile Include="..\src\cglib\Mesh3D.cpp" />
+    <ClCompile Include="..\src\cglib\Primitive3D.cpp" />
+    <ClCompile Include="..\src\cglib\Ray3D.cpp" />
+    <ClCompile Include="..\src\cglib\Shape3D.cpp" />
+    <ClCompile Include="..\src\cglib\SpatialSubdivision.cpp" />
+    <ClCompile Include="..\src\cglib\Texture2D.cpp" />
+    <ClCompile Include="..\src\cglib\Timer.cpp" />
+    <ClCompile Include="..\src\cglib\Triangle3D.cpp" />
+    <ClCompile Include="..\src\cglib\utils.cpp" />
+    <ClCompile Include="..\src\cglib\Vector2D.cpp" />
+    <ClCompile Include="..\src\cglib\Vector3D.cpp" />
+    <ClCompile Include="..\src\cglib\Vector4D.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\cglib\BBox3D.h" />
+    <ClInclude Include="..\include\cglib\BSphere3D.h" />
+    <ClInclude Include="..\include\cglib\cglib.h" />
+    <ClInclude Include="..\include\cglib\cglibdefines.h" />
+    <ClInclude Include="..\include\cglib\FrameBufferObject.h" />
+    <ClInclude Include="..\include\cglib\Material3D.h" />
+    <ClInclude Include="..\include\cglib\Matrix4D.h" />
+    <ClInclude Include="..\include\cglib\Mesh3D.h" />
+    <ClInclude Include="..\include\cglib\Primitive3D.h" />
+    <ClInclude Include="..\include\cglib\Ray3D.h" />
+    <ClInclude Include="..\include\cglib\Shape3D.h" />
+    <ClInclude Include="..\include\cglib\SpatialSubdivision.h" />
+    <ClInclude Include="..\include\cglib\stdafx.h" />
+    <ClInclude Include="..\include\cglib\Texture2D.h" />
+    <ClInclude Include="..\include\cglib\Triangle3D.h" />
+    <ClInclude Include="..\include\cglib\utils.h" />
+    <ClInclude Include="..\include\cglib\Vector2D.h" />
+    <ClInclude Include="..\include\cglib\Vector3D.h" />
+    <ClInclude Include="..\include\cglib\Vector4D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="cgplugins.vcxproj">
+      <Project>{061a47a3-7ad7-435d-aef8-d51f4588877b}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,332 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+
+
+  <style type="text/css">
+    body   { text-align:   justify;
+             margin-right: 12%;
+             margin-left:  12%; }
+    h1     { margin-left: -12%; }
+    h2     { margin-left:  -9%; }
+    h3     { margin-left:  -6%; }
+    h4     { margin-left:  -3%; }
+    h5     { margin-left:  -0%; }
+    dt     { background: #EEEEEE; padding: 0.25em; }
+    dt.dep { background: #FFDDDD; padding: 0.25em; }
+    pre    { background: #FFFFCC; padding: 1.00em; }
+    p.note { background: #CCFFFF; padding: 1.00em; }
+  </style><title>obj.[ch]</title></head><body>
+
+<!---------------------------------------------------------------------------->
+
+<pre style="padding: 0.25em; font-size: 3em; font-weight: bold;">obj.[ch]
+</pre>
+
+<p><tt>obj.[ch]</tt> loads, manipulates, renders, and stores 3D geometry using the Wavefront OBJ file format.</p>
+
+<ul>
+<li><a href="http://www.evl.uic.edu/rlk/obj/obj.c"><tt>obj.c</tt></a>
+</li><li><a href="http://www.evl.uic.edu/rlk/obj/obj.h"><tt>obj.h</tt></a>
+</li></ul>
+
+<p>Geometry is represented as a set of files. A file consists of sets
+of materials, vertices, and surfaces. A surface consists of sets of
+polygons and lines with a reference to a material in the same file to
+be used when rendering them. A polygon is a triplet of references to
+vertices in the file, and a line is a pair of references to vertices.</p>
+
+<p>Each of these objects may be referenced by application code via an
+integer index. This works much like a file or socket descriptor. The
+internal geometry representation is not accessible to the application.
+All operations on geometry are performed using the API documented here.</p>
+
+<!---------------------------------------------------------------------------->
+
+<h1>Compilation</h1>
+
+<p>To use this module, simply link it with your own code. It requires OpenGL, GLU, JPEG, and PNG libraries to be present:</p>
+
+<pre>cc -o program program.c obj.c -ljpeg -lpng -lz -lGL -lGLU -lm
+</pre>
+
+<p>If JPEG or PNG support is not required, the dependancies may be eliminated by defining the symbols <tt>CONF_NO_JPG</tt> or <tt>CONF_NO_PNG</tt>:</p>
+
+<pre>cc -DCONF_NO_PNG -DCONF_NO_JPG -o program program.c obj.c -lGL -lGLU -lm
+</pre>
+
+<p>Alternatively, this module may be stored in a library for easy reuse:</p>
+
+<pre>cc -c obj.c
+ar rc libobj.a obj.o
+</pre>
+
+<p>Then when compiling your own code, specify the location of <tt>libobj.a</tt> using the compiler's <tt>-L</tt> option, and the location of <tt>obj.h</tt> using the <tt>-I</tt> option.</p>
+
+<!---------------------------------------------------------------------------->
+
+<h1>Quickstart</h1>
+
+<p>These code fragments implement the common case of loading and
+displaying a model stored in an OBJ file. First, an integer descriptor
+is declared.</p>
+
+<pre>int fi;
+</pre>
+
+<p>During initialization, the OBJ file and all of its MTL files and texture images are read and the resulting descriptor is stored.</p>
+
+<pre>fi = obj_add_file("model.obj");
+</pre>
+
+<p>During rendering, the model is drawn.</p>
+
+<pre>obj_draw_file(fi);
+</pre>
+
+<!---------------------------------------------------------------------------->
+
+<h1>The OBJ API</h1>
+
+<h2>Object Creation</h2>
+<dl>
+<dt><tt>int obj_add_file(const char *filename)</tt></dt><dd><p>Create a new file object, load the OBJ file named by <tt>filename</tt>, and return a file index. If <tt>filename</tt> is <tt>NULL</tt> then an empty file is returned.</p>
+
+</dd><dt><tt>int obj_add_mtrl(int fi)</tt></dt><dd><p>Add a new material to file <tt>fi</tt>,
+return a material index. The new material is initialized with a diffuse
+color of (0.8, 0.8, 0.8, 1.0), an ambient color of (0.2, 0.2, 0.2,
+1.0), an emissive color of (0.0, 0.0, 0.0, 0.0), a specular color of
+(0.0, 0.0, 0.0, 0.0), and a specular exponent of 8.0.</p>
+
+</dd><dt><tt>int obj_add_vert(int fi)</tt></dt><dd><p>Add a new vertex to file <tt>fi</tt>, returning a vertex index. The new vertex position, normal, and texture coordinate are initialized to zero.</p>
+
+</dd><dt><tt>int obj_add_surf(int fi)</tt></dt><dd><p>Add a new surface to file <tt>fi</tt>,
+returning a surface index. The new surface is initialized to reference
+material zero. If no materials are defined when this surface is
+rendered, a default material is applied.</p>
+
+</dd><dt><tt>int obj_add_poly(int fi, int si)</tt></dt><dd><p>Add a new 3-sided polygon to surface <tt>si</tt> of file <tt>fi</tt>, returning a polygon index. The new polygon's vertex indices are initialized to zero.</p>
+
+</dd><dt><tt>int obj_add_line(int fi, int si)</tt></dt><dd><p>Add a new line to surface <tt>si</tt> of file <tt>fi</tt>, returning a line index. The new line's vertex indices are initialized to zero.</p>
+
+</dd></dl>
+
+<!---------------------------------------------------------------------------->
+
+<h2>Object Counters</h2>
+<dl>
+
+<dt><tt>int obj_num_file(void)</tt></dt><dd><p>Return the number of existing file objects. All indices less than this number are valid file indices.</p>
+
+</dd><dt><tt>int obj_num_mtrl(int fi)</tt></dt><dd>
+</dd><dt><tt>int obj_num_vert(int fi)</tt></dt><dd>
+</dd><dt><tt>int obj_num_surf(int fi)</tt></dt><dd><p>Return the number of materials, vertices, and surfaces contained by file <tt>fi</tt>. All indices less than this number are valid indices into that file.</p>
+
+</dd><dt><tt>int obj_num_poly(int fi, int si)</tt></dt><dd>
+</dd><dt><tt>int obj_num_line(int fi, int si)</tt></dt><dd><p>Return the number of polygons and lines contained by surface <tt>si</tt> of file <tt>fi</tt>. All indices less than this number are valid indices into that surface.</p>
+
+</dd></dl>
+<!---------------------------------------------------------------------------->
+
+<h2>Object deletion</h2>
+<dl>
+
+<dt><tt>void obj_del_mtrl(int fi, int mi)</tt></dt><dd><p>Remove material <tt>mi</tt> from file <tt>fi</tt>. Any surfaces in file <tt>fi</tt>
+that reference this material will also be removed. All higher-indexed
+materials are shifted down. Surfaces that refer to higher-indexed
+materials have their material indices decremented.</p>
+
+</dd><dt><tt>void obj_del_vert(int fi, int vi)</tt></dt><dd><p>Remove vertex <tt>vi</tt> from file <tt>fi</tt>. Any polygons or lines referencing this vertex in any surface of file <tt>fi</tt>
+are also removed. Higher-indexed vertices are shifted down. Polygons
+and lines that refer to higher-index materials have their vertex
+indices decremented.</p>
+
+</dd><dt><tt>void obj_del_poly(int fi, int si, int pi)</tt></dt><dd><p>Remove polygon <tt>pi</tt> from surface <tt>si</tt> of file <tt>fi</tt>. Higher-indexed polygons are shifted down. Vertices referenced by polygon <tt>pi</tt> are <i>not</i> removed.</p>
+
+</dd><dt><tt>void obj_del_line(int fi, int si, int li)</tt></dt><dd><p>Remove line <tt>li</tt> from surface <tt>si</tt> of file <tt>fi</tt>. Higher-indexed lines are shifted down. Vertices referenced by line <tt>li</tt> are <i>not</i> removed.</p>
+
+</dd><dt><tt>void obj_del_surf(int fi, int si)</tt></dt><dd><p>Remove surface <tt>si</tt> from file <tt>fi</tt>. All polygons and lines contained in this surface are also removed. Vertices in file <tt>fi</tt> referenced by these polygons and lines are <i>not</i> removed. Higher-indexed surfaces are shifted down.</p>
+
+</dd><dt><tt>void obj_del_file(int fi)</tt></dt><dd><p>Remove file <tt>fi</tt>. Higher-indexed files are shifted down.</p>
+
+</dd></dl>
+
+<!---------------------------------------------------------------------------->
+
+<h2>Object Manipulators</h2>
+<dl>
+
+<dt><tt>void obj_set_mtrl_name(int fi, int mi, const char *name)</tt></dt><dd><p>Set the name of material <tt>mi</tt> in file <tt>fi</tt>.
+This name is the means by which materials defined in an MTL file are
+referenced from within an OBJ file. Materials without assigned names
+are referenced as &#8220;default.&#8221; If materials are not assigned unique
+names, then then the surface-material mapping is not guaranteed to be
+preserved when a file is written.</p>
+
+</dd><dt><tt>void obj_set_mtrl_map(int fi, int mi, int ki, const char *image)</tt></dt><dd><p>Set the image map to be used for diffuse color, ambient color, emissive color, specular color, or specular exponent of material <tt>mi</tt> of file <tt>fi</tt>.
+The named file must be of one of the supported image formats, usually
+PNG or JPEG depending on the configuration options specified at compile
+time.</p>
+
+<a name="property"><p>The <tt>ki</tt> argument selects the property to be set. It must be one of the following:</p></a>
+
+<ul>
+<li><tt>OBJ_KD</tt><p>Diffuse color</p>
+</li><li><tt>OBJ_KA</tt><p>Ambient color</p>
+</li><li><tt>OBJ_KE</tt><p>Emissive color (a non-standard extension)</p>
+</li><li><tt>OBJ_KS</tt><p>Specular color</p>
+</li><li><tt>OBJ_NS</tt><p>Specular exponent</p>
+</li></ul>
+
+</dd><dt><tt>void obj_set_mtrl_option(int fi, int mi, int ki, unsigned int opt)</tt></dt><dd><p>Set the options on <a href="#property">property</a> <tt>ki</tt> of material <tt>mi</tt> in file <tt>fi</tt>.</p>
+
+<a name="option"></a><p><a name="option">The <tt>opt</tt> argument gives a bitmap of options to be enabled. The following options are defined.  Yeah, there's only one right now.</a></p>
+
+<ul>
+<li><a name="option"><tt>OBJ_OPT_CLAMP</tt></a><p><a name="option">Clamp the corresponding property map. The default is off, and the image map is wrapped.</a></p>
+</li></ul>
+
+</dd><dt><a name="option"><tt>void obj_set_mtrl_color(int fi, int mi, int ki, const float c[4])</tt></a></dt><dd><p><a name="option">Set the diffuse color, ambient color, emissive color, specular color, or specular exponent of material <tt>mi</tt> of file <tt>fi</tt>. The <tt>ki</tt> argument selects the </a><a href="#property">property</a>
+to be set. Note that the MTL file format supports RGBA diffuse color,
+but only RGB ambient, and specular colors. So while ambient and
+specular alpha values will be rendered normally, they cannot be stored
+in an MTL file, and will always default to 1.0 when a material is
+loaded. The specular exponent is stored and applied as a scalar.</p>
+
+</dd><dt><tt>void obj_set_mtrl_texcoord_offset(int fi, int mi, int ki, const float o[3])</tt></dt><dd><p>Set the texture coordinate offset for <a href="#property">property</a> map <tt>ki</tt> of material <tt>mi</tt> in file <tt>fi</tt>.</p>
+
+</dd><dt><tt>void obj_set_mtrl_texcoord_scale(int fi, int mi, int ki, const float s[3])</tt></dt><dd><p>Set the texture coordinate scale for <a href="#property">property</a> map <tt>ki</tt> of material <tt>mi</tt> in file <tt>fi</tt>.</p>
+
+</dd><dt><tt>void obj_set_vert_coord(int fi, int vi, const float v[3])</tt></dt><dd>
+</dd><dt><tt>void obj_set_vert_texcoord(int fi, int vi, const float t[2])</tt></dt><dd>
+</dd><dt><tt>void obj_set_vert_normal(int fi, int vi, const float n[3])</tt></dt><dd><p>Set the position, texture coordinate, or normal vector of vertex <tt>vi</tt> of file fi.</p>
+
+</dd><dt><tt>void obj_set_poly(int fi, int si, int pi, const int vi[3])</tt></dt><dd><p>Set the triplet of vertex indices defining polygon <tt>pi</tt> in surface <tt>si</tt> of file <tt>fi</tt>.</p>
+
+</dd><dt><tt>void obj_set_line(int fi, int si, int li, const int vi[2])</tt></dt><dd><p>Set the pair of vertex indices defining line <tt>li</tt> in surface <tt>si</tt> of file <tt>fi</tt>.</p>
+
+</dd><dt><tt>void obj_set_surf(int fi, int si, int mi)</tt></dt><dd><p>Set the material index of surface <tt>si</tt> of file <tt>fi</tt></p>
+
+</dd></dl>
+
+<!---------------------------------------------------------------------------->
+
+<h2>Object Query</h2>
+<dl>
+
+<dt><tt>const char  *obj_get_mtrl_name(int fi, int mi)</tt></dt><dd><p>Return the name of material <tt>mi</tt> of file <tt>fi</tt>.</p>
+
+</dd><dt><tt>unsigned int obj_get_mtrl_map(int fi, int mi, int ki)</tt></dt><dd><p>Return the <a href="#property">property</a> map <tt>ki</tt> of material <tt>mi</tt> of file <tt>fi</tt>. The returned value is an OpenGL texture object that may be manipulated normally using the OpenGL API.</p>
+
+</dd><dt><tt>unsigned int obj_get_mtrl_option(int fi, int mi, int ki)</tt></dt><dd><p>Return the bitmap of <a href="#option">options</a> set on the <a href="#property">property</a> map <tt>ki</tt> of material <tt>mi</tt> of file <tt>fi</tt>.</p>
+
+</dd><dt><tt>void obj_get_mtrl_color(int fi, int mi, int ki, float c[4])</tt></dt><dd><p>Return the color of <a href="#property">property</a> <tt>ki</tt> of material <tt>mi</tt> in file <tt>fi</tt>.</p>
+
+</dd><dt><tt>void obj_get_mtrl_texcoord_offset(int fi, int mi, int ki, float o[3])</tt></dt><dd><p>Return the texture coordinate offset of <a href="#property">property</a> map <tt>ki</tt> of material <tt>mi</tt> in file <tt>fi</tt>.</p>
+
+</dd><dt><tt>void obj_get_mtrl_texcoord_scale(int fi, int mi, int ki, float s[3])</tt></dt><dd><p>Return the texture coordinate scale of <a href="#property">property</a> map <tt>ki</tt> of material <tt>mi</tt> in file <tt>fi</tt>.</p>
+
+</dd><dt><tt>void obj_get_vert_coord(int fi, int vi, float v[3])</tt></dt><dd>
+</dd><dt><tt>void obj_get_vert_texcoord(int fi, int vi, float t[2])</tt></dt><dd>
+</dd><dt><tt>void obj_get_vert_normal(int fi, int vi, float n[3])</tt></dt><dd><p>Return the position, texture coordinate, or normal vector of vertex <tt>vi</tt> of file <tt>fi</tt>.</p>
+
+</dd><dt><tt>void obj_get_poly(int fi, int si, int pi, int vi[3])</tt></dt><dd><p>Return the triplet of indices defining polygon <tt>pi</tt> in surface <tt>si</tt> of file <tt>fi</tt>.</p>
+
+</dd><dt><tt>void obj_get_line(int fi, int si, int li, int vi[2])</tt></dt><dd><p>Return the pair of indices defining line <tt>li</tt> in surface <tt>si</tt> of file <tt>fi</tt>.</p>
+
+</dd><dt><tt>int  obj_get_surf(int fi, int si)</tt></dt><dd><p>Return the material index of surface <tt>si</tt> of file <tt>fi</tt>.</p>
+
+</dd></dl>
+
+<!---------------------------------------------------------------------------->
+
+<h2>Object I/O</h2>
+
+<h3>Processing</h3>
+<dl>
+
+<dt><tt>void obj_proc_file(int fi)</tt></dt><dd><p>Process file <tt>fi</tt>
+for rendering. All normal vectors are normalized and a tangent vector
+is computed for each vertex using its normal vector and texture
+coordinate. Surfaces are sorted in order of increasing transparency in
+order to ensure correct blend order.</p>
+
+</dd><dt><tt>float obj_acmr_file(int fi, int qc)</tt></dt><dd><p>Compute the average cache miss ratio for file <tt>fi</tt> using a cache size of <tt>qc</tt>.
+The ACMR gives a measure of the effective geometry complexity of a
+model. It is the average number of vertices processed per triangle,
+taking into account post-transform vertex caching. In the worst case
+scenario, an unoptimized model will have an ACMR of 3. A
+well-optimized, well-behaved model can have an ACMR as low as 0.6.</p>
+
+</dd><dt><tt>void obj_sort_file(int fi, int qc)</tt></dt><dd><p>Sort the triangles of file <tt>fi</tt> in an attempt to reduce the model's average cache miss ratio, as rendered using a vertex cache of size <tt>qc</tt>.  A sorted model may be written to a file and will remain optimized when subsequently read.</p>
+
+<p>Proper selection of <tt>qc</tt> is crucial. Overestimating the cache
+size will result in bad performance. It is safe to assume a cache size
+of 16. Recent video hardware provides cache sizes up to 32.
+Average-case analysis indicates thet future video hardware is unlikely
+to increase cache size far beyond 32.</p>
+
+<p>Optimal sorting is NP-complete. This implementation is fast (linear
+in the number of triangles) but not optimal. There is no guarantee that
+a sorted model will have a lower ACMR than the original unsorted model.
+Paranoid applications should confirm that sorting reduces the ACMR and
+reload the model if it does not.</p>
+
+</dd></dl>
+
+<h3>Rendering</h3>
+<dl>
+
+<dt><tt>void obj_draw_file(int fi)</tt></dt><dd><p>Draw file <tt>fi</tt>.
+All polygons and lines of all surfaces are rendered using their
+assigned materials. Aside from materials and textures, no OpenGL state
+is modified. In particular, bound vertex and fragment shaders execute
+as expected.</p>
+
+<p>Tangent vectors are bound to vertex attribute location 6.
+Applications may take advantage of them by binding this location to a
+GLSL attribute like so:</p>
+
+<pre>glBindAttribLocationARB(program, 6, "tangent");
+</pre>
+
+</dd><dt><tt>void obj_draw_vert(int fi)</tt></dt><dd><p>Bind the vertex buffer of file <tt>fi</tt>. If the local OpenGL implementation supports the <tt>GL_ARB_vertex_buffer_object</tt>
+extension then it is used, otherwise the buffer is mapped as a vertex
+array. The application may then render selected vertices using <tt>glDrawElements</tt>, <tt>glDrawArrays</tt>, etc.</p>
+
+</dd><dt><tt>void obj_draw_mtrl(int fi, int mi)</tt></dt><dd><p>Apply material <tt>mi</tt> of file <tt>fi</tt>. Any rendering subsequently performed by the application will use this material.</p>
+
+</dd><dt><tt>void obj_draw_surf(int fi, int si)</tt></dt><dd><p>Draw all polygons and lines in surface <tt>si</tt> of file <tt>fi</tt>.
+Rendering will use any material and vertex buffer previously set by the
+application. It is recommended that applications bind the file's own
+vertex buffer using <tt>obj_draw_vert</tt> prior to rendering a surface in that file.</p>
+
+</dd><dt><tt>void obj_draw_axes(int fi, float length)</tt></dt><dd><p>Draw the tangent-space basis vectors (normal, tangent, and bitangent) of all vertices of file <tt>fi</tt>.</p>
+
+</dd></dl>
+
+<h3>Exporting</h3>
+<dl>
+
+<dt><tt>void obj_write_file(int fi, const char *obj, const char *mtl)</tt></dt><dd><p>Write all geometry of file <tt>fi</tt> to a file named by <tt>obj</tt>. Write all materials of file <tt>fi</tt> to a file named by <tt>mtl</tt>. If either file name argument is <tt>NULL</tt> then no file is written.</p>
+
+<p>Note: if geometry is read from one file and written to another then
+there is no guarantee that the source and destination files be
+identical. Shared normals and texture coordinates are duplicated per
+vertex. The number of position, normal, and texture coordinate
+specifications equal the number of vertices in the file.</p>
+
+<p>All face specifications are of the form &#8220;<tt>f i/i/i j/j/j k/k/k</tt>&#8221; for some vertex indices <tt>i</tt>, <tt>j</tt>, <tt>k</tt>. All line specifications are of the form &#8220;<tt>l i/i j/j</tt>&#8221; for some vertex indices <tt>i</tt>, <tt>j</tt>. All vertex indices are positive, counting from the beginning of the file.</p>
+
+<p>Any groups specified in the source OBJ are discarded, and the output
+OBJ is organized by material. Unused specifications in OBJ and MTL
+files (curves, merging groups, etc) are omitted. Smoothing groups are
+omitted, and the computed normals for each vertex are inserted instead.
+All comments are stripped.</p>
+
+</dd></dl>
+
+<!---------------------------------------------------------------------------->
+
+<p class="note" style="text-align: right;"><i> rlk (at) evl.uic.edu </i></p>
+
+</body></html>

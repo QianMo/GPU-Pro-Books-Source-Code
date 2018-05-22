@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{26242588-E73F-47F6-9F16-6662CDD138DE}</ProjectGuid>
+    <RootNamespace>DeferredRenderer</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\build-Win32\VS2010\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\build-Win32\VS2010\$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\build-Win32\VS2010\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\build-Win32\VS2010\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>$(SolutionDir)\include\cglib;$(SolutionDir)\include;$(SolutionDir)\3rdParty\include;$(SolutionDir)\include\SceneGraph3D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>$(SolutionDir)\include\cglib;$(SolutionDir)\include;$(SolutionDir)\3rdParty\include;$(SolutionDir)\include\SceneGraph3D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRenderer.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_ViewPhotonMap.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\GlobalIlluminationRenderer.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\GlobalIlluminationRenderer_IV.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_ClearMRT.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_FilterKernels.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_FrameBuffer.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_GI.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_GI_IV.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_GI_IV_Injection_SS.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_GI_IV_Injection_SS_Cleanup.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_GI_IV_Propagation.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_Glow.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_Illumination.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_MRT.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_PostProcess.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_ShadowFunctions.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_ShadowMap.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_SphericalHarmonics.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_Transparency.cpp" />
+    <ClCompile Include="..\src\DeferredRenderer\DeferredRendererShader_ViewDepthBuffer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\DeferredRenderer.h" />
+    <ClInclude Include="..\include\GlobalIlluminationRenderer.h" />
+    <ClInclude Include="..\include\GlobalIlluminationRenderer_IV.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_ClearMRT.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_FilterKernels.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_FrameBuffer.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_GI.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_GI_IV.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_GI_IV_Injection_SS.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_GI_IV_Injection_SS_Cleanup.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_GI_IV_Propagation.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_Glow.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_Illumination.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_MRT.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_PostProcess.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_ShadowFunctions.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_ShadowMap.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_SphericalHarmonics.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_Transparency.h" />
+    <ClInclude Include="..\include\DeferredRendererShaders.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_ViewDepthBuffer.h" />
+    <ClInclude Include="..\include\shaders\DeferredRendererShader_ViewPhotonMap.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="cglib.vcxproj">
+      <Project>{10ca59e3-2ef9-4bc2-871c-d5e6acc52ee6}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="glsl.vcxproj">
+      <Project>{81a08373-8f2b-49f8-b4f6-0283f25e1c2c}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="SceneGraph3D.vcxproj">
+      <Project>{51827b43-b1fc-44d2-8069-93b2f3321e5c}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

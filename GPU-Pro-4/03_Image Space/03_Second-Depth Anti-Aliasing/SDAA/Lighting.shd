@@ -1,0 +1,82 @@
+
+struct VsIn
+{
+	float4 Position : Position;
+};
+
+struct PsIn
+{
+	float4 Position : SV_Position;
+};
+
+[Vertex shader]
+
+float4x4 ViewProj;
+float3 LightPos;
+float Radius;
+
+PsIn main(VsIn In)
+{
+	PsIn Out;
+
+	float4 position = In.Position;
+	position.xyz *= Radius;
+	position.xyz += LightPos;
+	Out.Position = mul(ViewProj, position);
+
+	return Out;
+}
+
+[Fragment shader]
+
+Texture2D <float4> Base;
+Texture2D <float4> Normal;
+Texture2D <float > Depth;
+
+float4x4 ViewProjInv;
+float2 ZBounds;
+float3 CamPos;
+float3 LightPos;
+float InvRadius;
+
+float3 main(PsIn In) : SV_Target
+{
+	int3 texCoord = int3(int2(In.Position.xy), 0);
+
+	float3 light = 0;
+
+	float depth = Depth.Load(texCoord).x;
+
+	[branch]
+	if (depth >= ZBounds.x && depth <= ZBounds.y)
+	{
+		float4 base = Base.Load(texCoord);
+		float3 normal = Normal.Load(texCoord).xyz;
+		normal = normalize(normal);
+
+		// Screen-space position
+		float4 cPos = float4(In.Position.xy, depth, 1);
+
+		// World-space position
+		float4 wPos = mul(ViewProjInv, cPos);
+		float3 pos = wPos.xyz / wPos.w;
+
+		// Lighting vectors
+		float3 lVec = (LightPos - pos) * InvRadius;
+		float3 lightVec = normalize(lVec);
+		float3 viewVec = normalize(CamPos - pos);
+
+		// Attenuation that falls off to zero at light radius
+		float atten = saturate(1.0f - dot(lVec, lVec));
+		atten *= atten;
+
+		// Lighting
+		float diffuse = saturate(dot(lightVec, normal));
+		float specular_intensity = base.w * 0.4f;
+		float specular = specular_intensity * pow(saturate(dot(reflect(-viewVec, normal), lightVec)), 10.0f);
+
+		light = atten * (diffuse * base + specular);
+	}
+
+	return light;
+}

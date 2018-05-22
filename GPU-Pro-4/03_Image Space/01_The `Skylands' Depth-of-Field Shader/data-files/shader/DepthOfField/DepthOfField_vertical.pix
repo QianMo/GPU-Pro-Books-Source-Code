@@ -1,0 +1,3 @@
+#version 120 // -*- c++ -*-
+#define HORIZONTAL 0
+#include "DepthOfField_blur.glsl"

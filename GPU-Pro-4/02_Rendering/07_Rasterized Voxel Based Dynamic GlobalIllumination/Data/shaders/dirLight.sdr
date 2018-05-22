@@ -1,0 +1,13 @@
+VertexShader
+{
+  postQuad.vsh
+}
+GeometryShader
+{
+  dirLight.gsh
+}
+FragmentShader
+{ 
+  dirLight.fsh
+}
+

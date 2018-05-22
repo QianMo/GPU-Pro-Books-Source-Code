@@ -1,0 +1,14 @@
+Textures
+{
+  ColorTexture          textures/sponza/sponza_fabric_diff.dds
+  NormalTexture         textures/sponza/sponza_fabric_ddn.dds
+  SpecularTexture       textures/sponza/sponza_fabric_spec.dds
+}
+RenderStates
+{
+  cull                  BACK_CULL     
+}
+Shader
+{
+  file                  shaders/base.sdr
+}

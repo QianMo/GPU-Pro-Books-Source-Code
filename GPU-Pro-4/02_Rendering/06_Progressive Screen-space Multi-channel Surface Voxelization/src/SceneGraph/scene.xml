@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<world ambient_occlusion="ssao|no|spatial" bloom="BOOLEAN"
+        shadows="simple|quad|disk|variance"
+        ambient="VEC3" defocus="BOOLEAN" active="BOOLEAN" ao_radius="FLOAT">
+
+  <directory path="STRING"/>
+
+  <camera apperture="FLOAT" focal_distance ="FLOAT" focal_range="FLOAT"
+        near="FLOAT" far="FLOAT" follow="STRING" primary="BOOLEAN">
+  </camera>
+
+  <light type="spot" shadows="BOOLEAN" color="VEC3" active="BOOLEAN"
+        attenuation="BOOLEAN" range="FLOAT" near_range="FLOAT"
+        position="VEC3" target="VEC3" resolution="INTEGER"
+        skipframes="INTEGER" apperture="FLOAT" size="FLOAT">
+  </light>
+
+  <group name="STRING" visible="BOOLEAN" active="BOOLEAN">
+    ...
+  </group>
+
+  <transformation name="STRING" rotation="VEC4" scale="VEC3" translation="VEC3">
+  ...
+  </transformation>
+
+  <object name="STRING" file="STRING" visible="BOOLEAN" active="BOOLEAN"
+        doublesided="BOOLEAN">
+  </object>
+
+  <instance reference="STRING" name="STRING">
+  </instance>
+
+  <user name="STRING" control="orbit|navigate|passive" speed="FLOAT" turn="FLOAT"
+        position="VEC3" lookat="VEC3" input="STRING" upright="BOOLEAN">
+    ... can carry things or be represented by avatar
+  </user>
+
+  <input type="mousekeyboard|joystick" name="STRING">
+  </input>
+
+  <picture which="color|alpha|depth|stensil" photo="BOOLEAN" video="BOOLEAN"
+        tiles="BOOLEAN" tiles_count="IVEC2" cubemaps="BOOLEAN" path="STRING">
+  </picture>
+
+  <path file="STRING" curvetype="cubic|bezier|bspline|catmullrom|hermite"
+        redistribute="INTEGER">
+  </path>
+
+  <proximitytrigger name="STRING" position="VEC3" radius="FLOAT"
+        mode="center|volume" shape="sphere|box|plane" normal="VEC3"
+        offset="FLOAT" size="VEC3">
+  </proximitytrigger>
+
+  <eventmessage event="STRING" recipient="STRING" delay="FLOAT"
+        message="STRING"></eventmessage>
+  This can be put inside any node asmany times as necessary.
+
+</world>
+

@@ -1,0 +1,104 @@
+// -*- c++ -*-
+#include "reconstruct.glsl"
+
+#ifdef EMISSIVE
+    varying vec3        direction;
+    uniform samplerCube skyBox;
+    uniform float       radianceScale;
+    uniform float       gammaAdjust;
+#endif
+
+#ifdef SS_POSITION_CHANGE
+    uniform mat4x3  CurrentToPreviousCameraMatrix;
+    uniform mat4    ProjectToScreenMatrix;
+#endif
+
+void main() {
+    // When forced to provide a distance to the skybox, return this z value.
+    const float FAR = -100000.0;
+
+#   ifdef EMISSIVE
+        EMISSIVE.rgb = pow(textureCube(skyBox, direction).rgb, vec3(gammaAdjust)) * radianceScale * EMISSIVE_writeScaleBias.x + vec3(EMISSIVE_writeScaleBias.y);
+#   endif
+
+#   if defined(SS_POSITION_CHANGE) || defined(CS_NORMAL) || defined(WS_NORMAL) || defined(CS_FACE_NORMAL) || defined(WS_FACE_NORMAL) || defined(CS_POSITION) || defined(WS_POSITION)
+        // Create a camera-space point on the plane z=-1 that projects
+        // to this pixel
+        vec3 csNow = reconstructCSPosition(gl_FragCoord.xy, -1.0);
+
+        // Move the point onto a sphere, while keeping it projecting to
+        // the current pixel
+        csNow = normalize(csNow);
+#   endif
+
+#   ifdef CS_NORMAL
+        CS_NORMAL.xyz = -csNow * CS_NORMAL_writeScaleBias.x + vec3(CS_NORMAL_writeScaleBias.y);
+#   endif
+
+#   ifdef TS_NORMAL
+        TS_NORMAL.xyz = vec3(0,0,1) * TS_NORMAL_writeScaleBias.x + vec3(TS_NORMAL_writeScaleBias.y);
+#   endif
+
+#   ifdef CS_FACE_NORMAL
+        CS_FACE_NORMAL.xyz = -csNow * CS_FACE_NORMAL_writeScaleBias.x + vec3(CS_FACE_NORMAL_writeScaleBias.y);
+#   endif
+
+#   ifdef CS_Z
+        CS_Z.x = -100000.0 * CS_Z_writeScaleBias.x + CS_Z_writeScaleBias.y;
+#   endif
+
+#   ifdef CS_POSITION
+        CS_POSITION.xyz = (-100000.0 * csNow) * CS_POSITION_writeScaleBias.x + vec3(CS_POSITION_writeScaleBias.y);
+#   endif
+
+#   ifdef WS_POSITION
+        WS_POSITION.xyz = (g3d_CameraToWorldMatrix * vec4(FAR * csNow, 1.0)).xyz * WS_POSITION_writeScaleBias.x + vec3(WS_POSITION_writeScaleBias.y);
+#   endif
+
+#   ifdef WS_NORMAL
+        WS_NORMAL.xyz = -(mat3(g3d_CameraToWorldMatrix) * csNow) * WS_NORMAL_writeScaleBias.x + vec3(WS_NORMAL_writeScaleBias.y);
+#   endif
+
+#   ifdef WS_FACE_NORMAL
+        WS_FACE_NORMAL.xyz = -(mat3(g3d_CameraToWorldMatrix) * csNow) * WS_FACE_NORMAL_writeScaleBias.x + vec3(WS_FACE_NORMAL_writeScaleBias.y);
+#   endif
+
+#   ifdef LAMBERTIAN
+        LAMBERTIAN.rgb = vec3(LAMBERTIAN_writeScaleBias.y);
+#   endif
+
+#   ifdef GLOSSY
+        GLOSSY.rgba = vec4(GLOSSY_writeScaleBias.y);
+#   endif
+
+#   ifdef TRANSMISSIVE
+        TRANSMISSIVE.rgb = vec4(TRANSMISSIVE_writeScaleBias.y);
+#   endif
+
+#   if defined(SS_POSITION_CHANGE) || defined(CS_POSITION_CHANGE)
+        // Take it back to the previous camera space, ignoring translation
+        vec3 csPrev = /* mat3(CurrentToPreviousCameraMatrix) * */ csNow; // TODO: Restore
+#   endif
+
+#   ifdef CS_POSITION_CHANGE
+        CS_POSITION_CHANGE.xyz = (csNow - csPrev) * FAR * CS_POSITION_CHANGE_writeScaleBias.x + vec3(CS_POSITION_CHANGE_writeScaleBias.y);
+#   endif
+
+#   ifdef SS_POSITION_CHANGE
+
+        if (csPrev.z >= 0.0) {
+            // Projects behind the camera; write zero velocity
+            SS_POSITION_CHANGE.xy = vec2(SS_POSITION_CHANGE_writeScaleBias.y);
+        } else {
+            vec4 temp = ProjectToScreenMatrix * vec4(csPrev, 1.0);
+            vec2 ssPrevPosition = temp.xy / temp.w;
+
+            // gl_FragCoord.xy has already been rounded to a pixel center, so regenerate the true projected position.
+            // This is needed to generate correct velocity vectors in the presence of Projection::pixelOffset
+            vec4 temp2 = ProjectToScreenMatrix * vec4(csNow, 1.0);
+            vec2 ssNowPosition = temp2.xy / temp2.w;
+
+            SS_POSITION_CHANGE.xy = (ssNowPosition - ssPrevPosition) * SS_POSITION_CHANGE_writeScaleBias.x + SS_POSITION_CHANGE_writeScaleBias.y;
+        }
+#   endif
+}

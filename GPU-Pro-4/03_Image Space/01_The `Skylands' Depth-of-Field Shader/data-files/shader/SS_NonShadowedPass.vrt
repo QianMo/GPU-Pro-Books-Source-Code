@@ -1,0 +1,66 @@
+// -*- c++ -*-
+/**
+ \file NonShadowedPass.vrt
+ \author Morgan McGuire
+ \created 2007-10-22
+ \edited  2011-06-12 
+ */
+#ifdef CUSTOMCONSTANT
+    uniform vec4        customConstant;
+#endif
+
+#if defined(CS_POSITION_CHANGE) || defined(SS_POSITION_CHANGE)
+    uniform mat4x3 PreviousObjectToCameraMatrix;
+    varying vec3 csPrevPosition;
+#endif
+    
+/** Texture coordinate */
+varying vec2 texCoord;
+
+varying vec3 wsPosition;
+
+#ifdef NORMALBUMPMAP  
+#   if PARALLAXSTEPS > 0
+        /** Vector to the eye in tangent space (needed for parallax) */
+        varying vec3 _tsE;
+#   endif
+
+	/** Tangent space to world space.
+    Note that this will be linearly interpolated across the polygon. */
+	varying vec3 tan_X, tan_Y;
+#endif
+
+varying vec3 tan_Z; 
+
+void main(void) {
+    vec3 wsEyePos = g3d_CameraToWorldMatrix[3].xyz;
+
+    wsPosition = (g3d_ObjectToWorldMatrix * gl_Vertex).xyz;
+
+#   if defined(CS_POSITION_CHANGE) || defined(SS_POSITION_CHANGE)
+        csPrevPosition = (PreviousObjectToCameraMatrix * gl_Vertex).xyz;
+#   endif
+
+    tan_Z = g3d_ObjectToWorldNormalMatrix * gl_Normal.xyz;
+
+#   ifdef NORMALBUMPMAP      
+        tan_X = (g3d_ObjectToWorldMatrix * vec4(gl_MultiTexCoord1.xyz, 0)).xyz;
+
+        // T and N are guaranteed perpendicular, so B is normalized.  Its facing 
+        // direction is stored in the texcoord w component.
+        tan_Y = cross(tan_Z, tan_X) * gl_MultiTexCoord1.w;
+
+#       if PARALLAXSTEPS > 0
+            // Compute the tangent space eye vector (ATI does not support the transpose operator)
+            mat3 worldToTangent = mat3(tan_X.x, tan_Y.x, tan_Z.x,
+                                       tan_X.y, tan_Y.y, tan_Z.y,
+                                       tan_X.z, tan_Y.z, tan_Z.z);
+      
+            _tsE             = worldToTangent * (wsEyePos - wsPosition);
+#       endif       
+#    endif
+
+    texCoord     = gl_MultiTexCoord0.st;
+    gl_Position  = ftransform();
+    gl_ClipVertex = gl_ModelViewMatrix * gl_Vertex;
+}

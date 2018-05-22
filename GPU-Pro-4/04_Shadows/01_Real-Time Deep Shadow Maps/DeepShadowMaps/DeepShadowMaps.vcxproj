@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0F3614BA-F940-45AB-9C43-69E4261462DC}</ProjectGuid>
+    <RootNamespace>DeepShadowMaps</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(DXSDK_DIR)\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(DXSDK_DIR)\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(DXSDK_DIR)\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(DXSDK_DIR)\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;$(DXSDK_DIR)\lib\x86</LibraryPath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;$(DXSDK_DIR)\lib\x86</LibraryPath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(VCInstallDir)lib\amd64;$(VCInstallDir)atlmfc\lib\amd64;$(WindowsSdkDir)lib\x64;$(DXSDK_DIR)\lib\x64</LibraryPath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(VCInstallDir)lib\amd64;$(VCInstallDir)atlmfc\lib\amd64;$(WindowsSdkDir)lib\x64;$(DXSDK_DIR)\lib\x64</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\Core\Include;.\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>d3d11.lib;dxgi.lib;d3dcompiler.lib;d3dx11.lib;d3d9.lib;d3dx9.lib;dxerr.lib;winmm.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\Core\Include;.\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>d3d11.lib;dxgi.lib;d3dcompiler.lib;d3dx11.lib;d3d9.lib;d3dx9.lib;dxerr.lib;winmm.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>.\Core\Include;.\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <CompileAsManaged>false</CompileAsManaged>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>d3d11.lib;dxgi.lib;d3dcompiler.lib;d3dx11.lib;d3d9.lib;d3dx9.lib;dxerr.lib;winmm.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>.\Core\Include;.\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointModel>Fast</FloatingPointModel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>d3d11.lib;dxgi.lib;d3dcompiler.lib;d3dx11.lib;d3d9.lib;d3dx9.lib;dxerr.lib;winmm.lib;comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Libs\DXUT\DXUT.cpp" />
+    <ClCompile Include="Libs\DXUT\DXUTDevice11.cpp" />
+    <ClCompile Include="Libs\DXUT\DXUTDevice9.cpp" />
+    <ClCompile Include="Libs\DXUT\DXUTgui.cpp" />
+    <ClCompile Include="Libs\DXUT\DXUTmisc.cpp" />
+    <ClCompile Include="Libs\DXUT\DXUTres.cpp" />
+    <ClCompile Include="Libs\DXUT\DXUTsettingsdlg.cpp" />
+    <ClCompile Include="Libs\DXUT\SDKmisc.cpp" />
+    <ClCompile Include="Source\DeepShadowMap.cpp" />
+    <ClCompile Include="Source\Effects.cpp" />
+    <ClCompile Include="Source\HairModelLoader.cpp" />
+    <ClCompile Include="Source\IncludeHandler.cpp" />
+    <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\MainWindow.cpp" />
+    <ClCompile Include="Source\MemoryLeakTracker.cpp" />
+    <ClCompile Include="Source\Model.cpp" />
+    <ClCompile Include="Core\Source\Core.cpp" />
+    <ClCompile Include="Core\Source\CoreCamera.cpp" />
+    <ClCompile Include="Core\Source\CoreColor.cpp" />
+    <ClCompile Include="Core\Source\CoreLog.cpp" />
+    <ClCompile Include="Core\Source\CoreMatrix4x4.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Disabled</Optimization>
+    </ClCompile>
+    <ClCompile Include="Core\Source\CorePlane.cpp" />
+    <ClCompile Include="Core\Source\CoreQuaternion.cpp" />
+    <ClCompile Include="Core\Source\CoreTexture1D.cpp" />
+    <ClCompile Include="Core\Source\CoreTexture2D.cpp" />
+    <ClCompile Include="Core\Source\CoreTexture3D.cpp" />
+    <ClCompile Include="Core\Source\CoreUtils.cpp" />
+    <ClCompile Include="Core\Source\CoreVector3.cpp">
+      <Optimization Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Disabled</Optimization>
+    </ClCompile>
+    <ClCompile Include="Core\Source\ICoreBase.cpp" />
+    <ClCompile Include="Core\jpeglib\jcapimin.c" />
+    <ClCompile Include="Core\jpeglib\jcapistd.c" />
+    <ClCompile Include="Core\jpeglib\jccoefct.c" />
+    <ClCompile Include="Core\jpeglib\jccolor.c" />
+    <ClCompile Include="Core\jpeglib\jcdctmgr.c" />
+    <ClCompile Include="Core\jpeglib\jchuff.c" />
+    <ClCompile Include="Core\jpeglib\jcinit.c" />
+    <ClCompile Include="Core\jpeglib\jcmainct.c" />
+    <ClCompile Include="Core\jpeglib\jcmarker.c" />
+    <ClCompile Include="Core\jpeglib\jcmaster.c" />
+    <ClCompile Include="Core\jpeglib\jcomapi.c" />
+    <ClCompile Include="Core\jpeglib\jcparam.c" />
+    <ClCompile Include="Core\jpeglib\jcphuff.c" />
+    <ClCompile Include="Core\jpeglib\jcprepct.c" />
+    <ClCompile Include="Core\jpeglib\jcsample.c" />
+    <ClCompile Include="Core\jpeglib\jctrans.c" />
+    <ClCompile Include="Core\jpeglib\jdapimin.c" />
+    <ClCompile Include="Core\jpeglib\jdapistd.c" />
+    <ClCompile Include="Core\jpeglib\jdatadst.c" />
+    <ClCompile Include="Core\jpeglib\jdatasrc.c" />
+    <ClCompile Include="Core\jpeglib\jdcoefct.c" />
+    <ClCompile Include="Core\jpeglib\jdcolor.c" />
+    <ClCompile Include="Core\jpeglib\jddctmgr.c" />
+    <ClCompile Include="Core\jpeglib\jdhuff.c" />
+    <ClCompile Include="Core\jpeglib\jdinput.c" />
+    <ClCompile Include="Core\jpeglib\jdmainct.c" />
+    <ClCompile Include="Core\jpeglib\jdmarker.c" />
+    <ClCompile Include="Core\jpeglib\jdmaster.c" />
+    <ClCompile Include="Core\jpeglib\jdmerge.c" />
+    <ClCompile Include="Core\jpeglib\jdphuff.c" />
+    <ClCompile Include="Core\jpeglib\jdpostct.c" />
+    <ClCompile Include="Core\jpeglib\jdsample.c" />
+    <ClCompile Include="Core\jpeglib\jdtrans.c" />
+    <ClCompile Include="Core\jpeglib\jerror.c" />
+    <ClCompile Include="Core\jpeglib\jfdctflt.c" />
+    <ClCompile Include="Core\jpeglib\jfdctfst.c" />
+    <ClCompile Include="Core\jpeglib\jfdctint.c" />
+    <ClCompile Include="Core\jpeglib\jidctflt.c" />
+    <ClCompile Include="Core\jpeglib\jidctfst.c" />
+    <ClCompile Include="Core\jpeglib\jidctint.c" />
+    <ClCompile Include="Core\jpeglib\jidctred.c" />
+    <ClCompile Include="Core\jpeglib\jmemmgr.c" />
+    <ClCompile Include="Core\jpeglib\jmemnobs.c" />
+    <ClCompile Include="Core\jpeglib\jquant1.c" />
+    <ClCompile Include="Core\jpeglib\jquant2.c" />
+    <ClCompile Include="Core\jpeglib\jutils.c" />
+    <ClCompile Include="Core\jpeglib\transupp.c" />
+    <ClCompile Include="Core\libpng\png.c" />
+    <ClCompile Include="Core\libpng\pngerror.c" />
+    <ClCompile Include="Core\libpng\pnggccrd.c" />
+    <ClCompile Include="Core\libpng\pngget.c" />
+    <ClCompile Include="Core\libpng\pngmem.c" />
+    <ClCompile Include="Core\libpng\pngpread.c" />
+    <ClCompile Include="Core\libpng\pngread.c" />
+    <ClCompile Include="Core\libpng\pngrio.c" />
+    <ClCompile Include="Core\libpng\pngrtran.c" />
+    <ClCompile Include="Core\libpng\pngrutil.c" />
+    <ClCompile Include="Core\libpng\pngset.c" />
+    <ClCompile Include="Core\libpng\pngtrans.c" />
+    <ClCompile Include="Core\libpng\pngvcrd.c" />
+    <ClCompile Include="Core\libpng\pngwio.c" />
+    <ClCompile Include="Core\libpng\pngwrite.c" />
+    <ClCompile Include="Core\libpng\pngwtran.c" />
+    <ClCompile Include="Core\libpng\pngwutil.c" />
+    <ClCompile Include="Core\zlib\adler32.c" />
+    <ClCompile Include="Core\zlib\compress.c" />
+    <ClCompile Include="Core\zlib\crc32.c" />
+    <ClCompile Include="Core\zlib\deflate.c" />
+    <ClCompile Include="Core\zlib\gzio.c" />
+    <ClCompile Include="Core\zlib\infback.c" />
+    <ClCompile Include="Core\zlib\inffast.c" />
+    <ClCompile Include="Core\zlib\inflate.c" />
+    <ClCompile Include="Core\zlib\inftrees.c" />
+    <ClCompile Include="Core\zlib\trees.c" />
+    <ClCompile Include="Core\zlib\uncompr.c" />
+    <ClCompile Include="Core\zlib\zutil.c" />
+    <ClCompile Include="Core\Effects11\d3dx11dbg.cpp" />
+    <ClCompile Include="Core\Effects11\d3dxGlobal.cpp" />
+    <ClCompile Include="Core\Effects11\EffectAPI.cpp" />
+    <ClCompile Include="Core\Effects11\EffectLoad.cpp" />
+    <ClCompile Include="Core\Effects11\EffectNonRuntime.cpp" />
+    <ClCompile Include="Core\Effects11\EffectReflection.cpp" />
+    <ClCompile Include="Core\Effects11\EffectRuntime.cpp" />
+    <ClCompile Include="Source\XModelLoader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\Effects.h" />
+    <ClInclude Include="Include\ModelLoader.h" />
+    <ClInclude Include="Include\DeepShadowMap.h" />
+    <ClInclude Include="Include\IncludeHandler.h" />
+    <ClInclude Include="Include\Main.h" />
+    <ClInclude Include="Include\MemoryLeakTracker.h" />
+    <ClInclude Include="Include\Model.h" />
+    <ClInclude Include="Libs\cyHair\cyHairFile.h" />
+    <ClInclude Include="Core\Include\Core.h" />
+    <ClInclude Include="Core\Include\CoreCamera.h" />
+    <ClInclude Include="Core\Include\CoreColor.h" />
+    <ClInclude Include="Core\Include\CoreError.h" />
+    <ClInclude Include="Core\Include\CoreLog.h" />
+    <ClInclude Include="Core\Include\CoreMatrix4x4.h" />
+    <ClInclude Include="Core\Include\CorePlane.h" />
+    <ClInclude Include="Core\Include\CoreQuaternion.h" />
+    <ClInclude Include="Core\Include\CoreTexture1D.h" />
+    <ClInclude Include="Core\Include\CoreTexture2D.h" />
+    <ClInclude Include="Core\Include\CoreTexture3D.h" />
+    <ClInclude Include="Core\Include\CoreUtils.h" />
+    <ClInclude Include="Core\Include\CoreVector3.h" />
+    <ClInclude Include="Core\Include\ICoreBase.h" />
+    <ClInclude Include="Core\jpeglib\jchuff.h" />
+    <ClInclude Include="Core\jpeglib\jconfig.h" />
+    <ClInclude Include="Core\jpeglib\jdct.h" />
+    <ClInclude Include="Core\jpeglib\jdhuff.h" />
+    <ClInclude Include="Core\jpeglib\jerror.h" />
+    <ClInclude Include="Core\jpeglib\jinclude.h" />
+    <ClInclude Include="Core\jpeglib\jmemsys.h" />
+    <ClInclude Include="Core\jpeglib\Jmorecfg.h" />
+    <ClInclude Include="Core\jpeglib\jpegint.h" />
+    <ClInclude Include="Core\jpeglib\jpeglib.h" />
+    <ClInclude Include="Core\jpeglib\jversion.h" />
+    <ClInclude Include="Core\jpeglib\transupp.h" />
+    <ClInclude Include="Core\libpng\png.h" />
+    <ClInclude Include="Core\libpng\pngconf.h" />
+    <ClInclude Include="Core\zlib\crc32.h" />
+    <ClInclude Include="Core\zlib\deflate.h" />
+    <ClInclude Include="Core\zlib\inffast.h" />
+    <ClInclude Include="Core\zlib\inffixed.h" />
+    <ClInclude Include="Core\zlib\inflate.h" />
+    <ClInclude Include="Core\zlib\inftrees.h" />
+    <ClInclude Include="Core\zlib\trees.h" />
+    <ClInclude Include="Core\zlib\zconf.h" />
+    <ClInclude Include="Core\zlib\zconf.in.h" />
+    <ClInclude Include="Core\zlib\zlib.h" />
+    <ClInclude Include="Core\zlib\zutil.h" />
+    <ClInclude Include="Core\Effects11\Inc\d3dx11dbg.h" />
+    <ClInclude Include="Core\Effects11\Inc\d3dx11effect.h" />
+    <ClInclude Include="Core\Effects11\Inc\d3dxGlobal.h" />
+    <ClInclude Include="Core\Effects11\Effect.h" />
+    <ClInclude Include="Core\Effects11\Binary\EffectBinaryFormat.h" />
+    <ClInclude Include="Core\Effects11\EffectLoad.h" />
+    <ClInclude Include="Core\Effects11\Binary\EffectStateBase11.h" />
+    <ClInclude Include="Core\Effects11\Binary\EffectStates11.h" />
+    <ClInclude Include="Core\Effects11\pchfx.h" />
+    <ClInclude Include="Core\Effects11\Binary\SOParser.h" />
+    <ClInclude Include="Libs\DXUT\DXUT.h" />
+    <ClInclude Include="Libs\DXUT\DXUTDevice11.h" />
+    <ClInclude Include="Libs\DXUT\DXUTDevice9.h" />
+    <ClInclude Include="Libs\DXUT\DXUTgui.h" />
+    <ClInclude Include="Libs\DXUT\DXUTmisc.h" />
+    <ClInclude Include="Libs\DXUT\DXUTres.h" />
+    <ClInclude Include="Libs\DXUT\DXUTsettingsdlg.h" />
+    <ClInclude Include="Libs\DXUT\SDKmisc.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Core\Effects11\EffectVariable.inl" />
+    <None Include="RootDir\EffectsDeepShadowMap\DeepShadowMap.hlsl" />
+    <None Include="RootDir\EffectsDeepShadowMap\DeepShadowMapGlobal.hlsl" />
+    <None Include="RootDir\EffectsDeepShadowMap\Hair.hlsl" />
+    <None Include="RootDir\EffectsExpDeepShadowMap\DeepShadowMap.hlsl" />
+    <None Include="RootDir\EffectsExpDeepShadowMap\DeepShadowMapGlobal.hlsl" />
+    <None Include="RootDir\EffectsExpDeepShadowMap\Hair.hlsl" />
+    <None Include="RootDir\EffectsShading\DeepShadowMap.hlsl" />
+    <None Include="RootDir\EffectsShading\DeepShadowMapGlobal.hlsl" />
+    <None Include="RootDir\EffectsShading\Hair.hlsl" />
+    <None Include="RootDir\EffectsShadowMap\DeepShadowMap.hlsl" />
+    <None Include="RootDir\EffectsShadowMap\DeepShadowMapGlobal.hlsl" />
+    <None Include="RootDir\EffectsShadowMap\Hair.hlsl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

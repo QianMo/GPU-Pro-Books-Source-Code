@@ -1,0 +1,64 @@
+
+// Image of the background plane
+uniform sampler2D background;
+uniform bool backgroundInvertY;
+
+// Camera space z position of the background plane; Negative number
+uniform float backZ;
+
+uniform float etaRatio;
+
+// Camera space surface position
+varying vec3 csPos;
+
+// Camera space normal (non-unit)
+varying vec3 csN_raw;
+
+uniform vec2 backSizeMeters;
+
+uniform sampler2D lambertianMap;
+uniform vec4      lambertianConstant;
+
+/** Texture coordinate */
+varying vec2 texCoord;
+
+bool totalInternalRefraction(in vec3 v) {
+    return dot(v, v) <= 0.01;
+}
+
+void main(void) {
+    // Surface normal, pointing away from csPos
+    vec3 csN   = normalize(csN_raw);
+
+    // Incoming ray direction from eye, pointing away from csPos
+    vec3 csw_i = normalize(-csPos);
+
+    // Refracted ray direction, pointing away from wsPos
+    vec3 csw_o = refract(-csw_i, csN, etaRatio);
+
+    if (totalInternalRefraction(csw_o)) {
+        // No transmitted light
+        gl_FragColor.rgb = vec3(0.0);
+    } else {
+        // Take to the reference frame of the background (i.e., offset 
+        vec3 d = csw_o;
+
+        // Take to the reference frame of the background
+        vec3 x = csPos;
+        x.z -= backZ; 
+
+        // Find the xy intersection with the plane z = 0
+        vec2 hit = (x.xy - d.xy * x.z / d.z);
+
+        // Hit is now scaled in meters from the center of the screen; adjust scale and offset based 
+        // on the actual size of the background
+        vec2 texCoord = (hit / backSizeMeters) + vec2(0.5);
+
+        if (backgroundInvertY) {
+            texCoord.y = 1.0 - texCoord.y;
+        }
+        gl_FragColor.rgb = texture2D(background, texCoord).rgb;
+    }
+
+    gl_FragColor.a = texture2D(lambertianMap, texCoord).a * lambertianConstant.a;
+}

@@ -1,0 +1,635 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{d1bd371c-2cea-4662-89ca-d1ce632fdaf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{3f63a026-bbb0-48f6-8593-75cc6ab0d7f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libs">
+      <UniqueIdentifier>{133967e3-370b-4609-b26e-336ed1df8512}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libs\CyHair">
+      <UniqueIdentifier>{98d54842-98dd-4247-bc84-a0778550ff19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{2807fb33-7f6d-44d0-8344-d54e351de7dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Include">
+      <UniqueIdentifier>{fb94d1a5-086f-4f7d-b8f6-93379151fa27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Source">
+      <UniqueIdentifier>{7f08bb88-b973-4579-b946-889d9c2dd726}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Libs">
+      <UniqueIdentifier>{be6018e8-1f23-48df-826d-32c2ed8fddfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Libs\jpeglib">
+      <UniqueIdentifier>{3056751e-2b9e-4ce7-9ab3-b8774d69e16c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Libs\libpng">
+      <UniqueIdentifier>{d6333db2-0147-4c3a-bee4-7ba9b457087f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Libs\zlib">
+      <UniqueIdentifier>{b287dac1-ecc2-4d0a-874b-2c99bf548a3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Libs\Effects11">
+      <UniqueIdentifier>{ba2b424d-b082-477d-aa5d-c03aaa712dcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libs\DXUT">
+      <UniqueIdentifier>{e3a9f7e2-d85d-4742-86f3-78733d0fe93b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EffectsDeepShadowMap">
+      <UniqueIdentifier>{fa7709a4-efc9-443b-8cb0-b81c55538d8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EffectsShadowMap">
+      <UniqueIdentifier>{ba7c2b73-8b4c-4a89-9d20-a1a6f985c8d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EffectsExpDeepShadowMap">
+      <UniqueIdentifier>{b1fd2777-5496-49c2-a6e3-2e7814804f5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="EffectsShading">
+      <UniqueIdentifier>{4e5e13c8-6d6c-4877-80b8-4a30826fbccb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\DeepShadowMap.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HairModelLoader.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\IncludeHandler.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MainWindow.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MemoryLeakTracker.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Model.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Source\Core.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Source\CoreCamera.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Source\CoreColor.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Source\CoreLog.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Source\CoreMatrix4x4.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Source\CorePlane.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Source\CoreQuaternion.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Source\CoreTexture1D.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Source\CoreTexture2D.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Source\CoreTexture3D.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Source\CoreUtils.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Source\CoreVector3.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Source\ICoreBase.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jcapimin.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jcapistd.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jccoefct.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jccolor.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jcdctmgr.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jchuff.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jcinit.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jcmainct.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jcmarker.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jcmaster.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jcomapi.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jcparam.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jcphuff.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jcprepct.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jcsample.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jctrans.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jdapimin.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jdapistd.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jdatadst.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jdatasrc.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jdcoefct.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jdcolor.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jddctmgr.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jdhuff.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jdinput.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jdmainct.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jdmarker.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jdmaster.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jdmerge.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jdphuff.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jdpostct.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jdsample.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jdtrans.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jerror.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jfdctflt.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jfdctfst.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jfdctint.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jidctflt.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jidctfst.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jidctint.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jidctred.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jmemmgr.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jmemnobs.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jquant1.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jquant2.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\jutils.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\jpeglib\transupp.c">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\libpng\png.c">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\libpng\pngerror.c">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\libpng\pnggccrd.c">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\libpng\pngget.c">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\libpng\pngmem.c">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\libpng\pngpread.c">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\libpng\pngread.c">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\libpng\pngrio.c">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\libpng\pngrtran.c">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\libpng\pngrutil.c">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\libpng\pngset.c">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\libpng\pngtrans.c">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\libpng\pngvcrd.c">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\libpng\pngwio.c">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\libpng\pngwrite.c">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\libpng\pngwtran.c">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\libpng\pngwutil.c">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\zlib\adler32.c">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\zlib\compress.c">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\zlib\crc32.c">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\zlib\deflate.c">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\zlib\gzio.c">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\zlib\infback.c">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\zlib\inffast.c">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\zlib\inflate.c">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\zlib\inftrees.c">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\zlib\trees.c">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\zlib\uncompr.c">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\zlib\zutil.c">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Effects11\d3dx11dbg.cpp">
+      <Filter>Core\Libs\Effects11</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Effects11\d3dxGlobal.cpp">
+      <Filter>Core\Libs\Effects11</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Effects11\EffectAPI.cpp">
+      <Filter>Core\Libs\Effects11</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Effects11\EffectLoad.cpp">
+      <Filter>Core\Libs\Effects11</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Effects11\EffectNonRuntime.cpp">
+      <Filter>Core\Libs\Effects11</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Effects11\EffectReflection.cpp">
+      <Filter>Core\Libs\Effects11</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Effects11\EffectRuntime.cpp">
+      <Filter>Core\Libs\Effects11</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\DXUT\DXUTmisc.cpp">
+      <Filter>Libs\DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\DXUT\DXUTres.cpp">
+      <Filter>Libs\DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\DXUT\DXUTsettingsdlg.cpp">
+      <Filter>Libs\DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\DXUT\SDKmisc.cpp">
+      <Filter>Libs\DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\DXUT\DXUT.cpp">
+      <Filter>Libs\DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\DXUT\DXUTDevice9.cpp">
+      <Filter>Libs\DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\DXUT\DXUTDevice11.cpp">
+      <Filter>Libs\DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="Libs\DXUT\DXUTgui.cpp">
+      <Filter>Libs\DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Effects.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\XModelLoader.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\DeepShadowMap.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\IncludeHandler.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Main.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\MemoryLeakTracker.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Model.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\cyHair\cyHairFile.h">
+      <Filter>Libs\CyHair</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Include\Core.h">
+      <Filter>Core\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Include\CoreCamera.h">
+      <Filter>Core\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Include\CoreColor.h">
+      <Filter>Core\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Include\CoreError.h">
+      <Filter>Core\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Include\CoreLog.h">
+      <Filter>Core\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Include\CoreMatrix4x4.h">
+      <Filter>Core\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Include\CorePlane.h">
+      <Filter>Core\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Include\CoreQuaternion.h">
+      <Filter>Core\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Include\CoreTexture1D.h">
+      <Filter>Core\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Include\CoreTexture2D.h">
+      <Filter>Core\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Include\CoreTexture3D.h">
+      <Filter>Core\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Include\CoreUtils.h">
+      <Filter>Core\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Include\CoreVector3.h">
+      <Filter>Core\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Include\ICoreBase.h">
+      <Filter>Core\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\jpeglib\jchuff.h">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\jpeglib\jconfig.h">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\jpeglib\jdct.h">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\jpeglib\jdhuff.h">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\jpeglib\jerror.h">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\jpeglib\jinclude.h">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\jpeglib\jmemsys.h">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\jpeglib\Jmorecfg.h">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\jpeglib\jpegint.h">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\jpeglib\jpeglib.h">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\jpeglib\jversion.h">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\jpeglib\transupp.h">
+      <Filter>Core\Libs\jpeglib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\libpng\png.h">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\libpng\pngconf.h">
+      <Filter>Core\Libs\libpng</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\zlib\crc32.h">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\zlib\deflate.h">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\zlib\inffast.h">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\zlib\inffixed.h">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\zlib\inflate.h">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\zlib\inftrees.h">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\zlib\trees.h">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\zlib\zconf.h">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\zlib\zconf.in.h">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\zlib\zlib.h">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\zlib\zutil.h">
+      <Filter>Core\Libs\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Effects11\Inc\d3dx11dbg.h">
+      <Filter>Core\Libs\Effects11</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Effects11\Inc\d3dx11effect.h">
+      <Filter>Core\Libs\Effects11</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Effects11\Inc\d3dxGlobal.h">
+      <Filter>Core\Libs\Effects11</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Effects11\Effect.h">
+      <Filter>Core\Libs\Effects11</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Effects11\Binary\EffectBinaryFormat.h">
+      <Filter>Core\Libs\Effects11</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Effects11\EffectLoad.h">
+      <Filter>Core\Libs\Effects11</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Effects11\Binary\EffectStateBase11.h">
+      <Filter>Core\Libs\Effects11</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Effects11\Binary\EffectStates11.h">
+      <Filter>Core\Libs\Effects11</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Effects11\pchfx.h">
+      <Filter>Core\Libs\Effects11</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Effects11\Binary\SOParser.h">
+      <Filter>Core\Libs\Effects11</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\ModelLoader.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\DXUT\DXUTgui.h">
+      <Filter>Libs\DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\DXUT\DXUTmisc.h">
+      <Filter>Libs\DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\DXUT\DXUTres.h">
+      <Filter>Libs\DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\DXUT\DXUTsettingsdlg.h">
+      <Filter>Libs\DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\DXUT\SDKmisc.h">
+      <Filter>Libs\DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\DXUT\DXUT.h">
+      <Filter>Libs\DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\DXUT\DXUTDevice9.h">
+      <Filter>Libs\DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="Libs\DXUT\DXUTDevice11.h">
+      <Filter>Libs\DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Effects.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Core\Effects11\EffectVariable.inl">
+      <Filter>Core\Libs\Effects11</Filter>
+    </None>
+    <None Include="RootDir\EffectsDeepShadowMap\DeepShadowMapGlobal.hlsl">
+      <Filter>EffectsDeepShadowMap</Filter>
+    </None>
+    <None Include="RootDir\EffectsDeepShadowMap\Hair.hlsl">
+      <Filter>EffectsDeepShadowMap</Filter>
+    </None>
+    <None Include="RootDir\EffectsDeepShadowMap\DeepShadowMap.hlsl">
+      <Filter>EffectsDeepShadowMap</Filter>
+    </None>
+    <None Include="RootDir\EffectsShadowMap\DeepShadowMapGlobal.hlsl">
+      <Filter>EffectsShadowMap</Filter>
+    </None>
+    <None Include="RootDir\EffectsShadowMap\Hair.hlsl">
+      <Filter>EffectsShadowMap</Filter>
+    </None>
+    <None Include="RootDir\EffectsShadowMap\DeepShadowMap.hlsl">
+      <Filter>EffectsShadowMap</Filter>
+    </None>
+    <None Include="RootDir\EffectsExpDeepShadowMap\DeepShadowMapGlobal.hlsl">
+      <Filter>EffectsExpDeepShadowMap</Filter>
+    </None>
+    <None Include="RootDir\EffectsExpDeepShadowMap\Hair.hlsl">
+      <Filter>EffectsExpDeepShadowMap</Filter>
+    </None>
+    <None Include="RootDir\EffectsExpDeepShadowMap\DeepShadowMap.hlsl">
+      <Filter>EffectsExpDeepShadowMap</Filter>
+    </None>
+    <None Include="RootDir\EffectsShading\DeepShadowMapGlobal.hlsl">
+      <Filter>EffectsShading</Filter>
+    </None>
+    <None Include="RootDir\EffectsShading\Hair.hlsl">
+      <Filter>EffectsShading</Filter>
+    </None>
+    <None Include="RootDir\EffectsShading\DeepShadowMap.hlsl">
+      <Filter>EffectsShading</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{51827B43-B1FC-44D2-8069-93B2F3321E5C}</ProjectGuid>
+    <RootNamespace>SceneGraph3D</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\build-Win32\VS2010\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)\build-Win32\VS2010\$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\build-Win32\VS2010\$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)\build-Win32\VS2010\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>$(SolutionDir)\include\cgplugins;$(SolutionDir)\include\cglib;$(SolutionDir)\include\;$(SolutionDir)\3rdparty\include\;$(SolutionDir)\include\SceneGraph3D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;EAZD_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\3rdParty\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>$(SolutionDir)\include\cgplugins;$(SolutionDir)\include\cglib;$(SolutionDir)\include\;$(SolutionDir)\3rdparty\include\;$(SolutionDir)\include\SceneGraph3D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\3rdParty\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\SceneGraph\InputDevice3D.cpp" />
+    <ClCompile Include="..\src\SceneGraph\MouseKeyboardDevice3D.cpp" />
+    <ClCompile Include="..\src\SceneGraph\SceneGraph_Aux.cpp" />
+    <ClCompile Include="..\src\SceneGraph\SceneGraph_Cal3D.cpp" />
+    <ClCompile Include="..\src\SceneGraph\SceneGraph_Camera3D.cpp" />
+    <ClCompile Include="..\src\SceneGraph\SceneGraph_Force3D.cpp" />
+    <ClCompile Include="..\src\SceneGraph\SceneGraph_ForceEnabled3D.cpp" />
+    <ClCompile Include="..\src\SceneGraph\SceneGraph_Geometry3D.cpp" />
+    <ClCompile Include="..\src\SceneGraph\SceneGraph_Group3D.cpp" />
+    <ClCompile Include="..\src\SceneGraph\SceneGraph_Input3D.cpp" />
+    <ClCompile Include="..\src\SceneGraph\SceneGraph_Light3D.cpp" />
+    <ClCompile Include="..\src\SceneGraph\SceneGraph_LinearMotion3D.cpp" />
+    <ClCompile Include="..\src\SceneGraph\SceneGraph_MessageMap.cpp" />
+    <ClCompile Include="..\src\SceneGraph\SceneGraph_Node3D.cpp" />
+    <ClCompile Include="..\src\SceneGraph\SceneGraph_Spinner3D.cpp" />
+    <ClCompile Include="..\src\SceneGraph\SceneGraph_Timer3D.cpp" />
+    <ClCompile Include="..\src\SceneGraph\SceneGraph_TransformationNode3D.cpp" />
+    <ClCompile Include="..\src\SceneGraph\SceneGraph_User3D.cpp" />
+    <ClCompile Include="..\src\SceneGraph\SceneGraph_World3D.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_Aux.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_Cal3D.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_Camera3D.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_Collidable3D.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_Drawable3D.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_EventMessage.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_Force3D.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_ForceEnabled3D.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_Geometry3D.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_Group3D.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_Input3D.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_Light3D.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_LinearMotion3D.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_Node3D.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_Spinner3D.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_Timer3D.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_TransformationNode3D.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_User3D.h" />
+    <ClInclude Include="..\include\SceneGraph3D\SceneGraph_World3D.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\SceneGraph\scene.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="cglib.vcxproj">
+      <Project>{10ca59e3-2ef9-4bc2-871c-d5e6acc52ee6}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

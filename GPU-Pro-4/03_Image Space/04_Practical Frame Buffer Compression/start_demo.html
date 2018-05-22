@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+<title>Practical Frame Buffer Compression - WebGL Demo</title>
+<link rel="stylesheet" type="text/css" href="data/common.css" media="all">
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.metadata.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.swapimage.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.tabify.js" charset="utf-8"></script>
+<script type="text/javascript" src="scripts/glMatrix-0.9.5.min.js"></script>
+<script type="text/javascript" src="scripts/webgl-utils.js"></script>
+<script type="text/javascript" src="scripts/teapot.min.js"></script>
+<script type="text/javascript" src="scripts/macton-gl-utils.js"></script>
+<script type="text/javascript" src="scripts/demo.js"></script>
+
+	<style type="text/css" media="screen">
+			.menu {  clear: both; }
+			.menu li { display: inline;}
+			.menu li a { border-bottom: none; text-decoration: none; color: #000; opacity:0.6;}
+			.menu li.active a { background: #fff; opacity:1.0;}
+			.content {clear: both; }
+			.content td{padding-right:3em; font-size:120%; }
+			.fil_type{cursor:hand;cursor:pointer;} 
+			.fil_type:hover{color:#f00;} 
+			.demo_parent{height:380px;}
+			.demo_click{position:relative; color:#222; bottom:220px; left:220px;cursor:hand;cursor:pointer;}
+		</style>
+	
+</head>
+
+
+<body>
+<script type="text/javascript">
+	$.swapImage(".swapImage");
+	$.swapImage(".swapImageClick", true, true, "click");
+	$.swapImage(".swapImageDoubleClick", true, true, "dblclick");
+	$.swapImage(".swapImageSingleClick", true, false, "click");
+	$.swapImage(".swapImageDisjoint");
+
+</script>
+
+<div id="wrapper">
+<div id="main">
+
+<div class="center">
+<h1> Practical Frame Buffer Compression -  WebGL Demo</h1> 
+<div class="paperauthors">Pavlos Mavridis &nbsp&nbsp&nbsp Georgios Papaioannou</div>
+<div class="bottom_skip">Department of Informatics, Athens University of Economics & Business</div>
+<br/>
+</div>
+
+
+
+<div class="demo_parent">
+<div id="load_demo"> <img src="images/demo2.png" alt="webgl_demo" /> <div class="demo_click" id="demo_button"> <img src="images/start_demo.png" alt=" " /> </div></div>
+</div>
+
+<div class="copyright">
+Copyright © 2012 Pavlos Mavridis
+</div>
+
+</div>
+</div>
+
+
+
+<script type="text/javascript">
+			// <![CDATA[
+			var start=0;
+			
+			function loadDemo() {
+				$("#load_demo").load('data/demo.html','',webGLStart).fadeIn("slow");		
+						//setTimeout("webGLStart();",100);
+			}
+			
+			$(document).ready(function () {
+				$('#menu').tabify();
+				$("#demo_button").click(function() {
+					if(start==0){
+						start=1;
+						//$("#load_demo").hide('fast',loadDemo);  
+						$("#load_demo").fadeOut('fast',loadDemo);  
+					}
+					
+				});
+			});
+					
+			// ]]>
+		</script>
+
+</body> 
+</html> 

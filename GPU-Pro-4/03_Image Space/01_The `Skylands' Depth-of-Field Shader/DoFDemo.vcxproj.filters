@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="source\App.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VVDoF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\App.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\VVDoF.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resources.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="journal\journal.dox" />
+    <None Include="mainpage.dox" />
+    <None Include="data-files\sponza.scn.any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="data-files\CornellBox.scn.any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="data-files\alpha.scn.any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="data-files\cubes.scn.any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="data-files\crates.scn.any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="data-files\VVDoF_horizontal.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="data-files\VVDoF_vertical.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="data-files\VVDoF_blur.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="data-files\VVDoF_composite.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{bdde37c0-6279-434e-b2f1-d0edf1080364}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{0c54b4c9-c5e7-4581-93ed-4c244ea6d63b}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+    <Filter Include="Shader Files">
+      <UniqueIdentifier>{5124dd0e-05fe-46a5-8e84-4fcbf9426d23}</UniqueIdentifier>
+      <Extensions>*.glsl;*.pix;*.vrt</Extensions>
+    </Filter>
+    <Filter Include="Scene Files">
+      <UniqueIdentifier>{bc849c1a-3588-4be4-8c36-742de8bffb60}</UniqueIdentifier>
+      <Extensions>*.any</Extensions>
+    </Filter>
+  </ItemGroup>
+</Project>

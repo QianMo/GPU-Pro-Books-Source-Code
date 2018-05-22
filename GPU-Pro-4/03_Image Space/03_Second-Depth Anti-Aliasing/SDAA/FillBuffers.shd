@@ -1,0 +1,69 @@
+
+struct VsIn
+{
+	float4 Position : Position;
+	float2 TexCoord : TexCoord;
+	float3 Tangent  : Tangent;
+	float3 Binormal : Binormal;
+	float3 Normal   : Normal;
+};
+
+struct PsIn
+{
+	float4 Position : SV_Position;
+	float2 TexCoord : TexCoord;
+	float3 Tangent  : Tangent;
+	float3 Binormal : Binormal;
+	float3 Normal   : Normal;
+};
+
+
+[Vertex shader]
+
+float4x4 ViewProj;
+
+PsIn main(VsIn In)
+{
+	PsIn Out;
+
+	Out.Position = mul(ViewProj, In.Position);
+	Out.TexCoord = In.TexCoord;
+	// Pass tangent space
+	Out.Tangent  = In.Tangent;
+	Out.Binormal = In.Binormal;
+	Out.Normal   = In.Normal;
+
+	return Out;
+}
+
+
+[Fragment shader]
+
+struct PsOut
+{
+	float4 Base   : SV_Target0;
+	float3 Normal : SV_Target1;
+};
+
+Texture2D Base;
+Texture2D Bump;
+SamplerState Filter;
+
+PsOut main(PsIn In)
+{
+	PsOut Out;
+
+	float4 base = Base.Sample(Filter, In.TexCoord);
+
+	float3 bump = Bump.Sample(Filter, In.TexCoord).xyz;
+
+	// Compute world-space normal
+	float3 normal = In.Tangent * bump.x + In.Binormal * bump.y + In.Normal * bump.z;
+	normal = normalize(normal);
+
+	// Fill the buffers
+	Out.Base = base;
+	Out.Normal = normal;
+
+	return Out;
+}

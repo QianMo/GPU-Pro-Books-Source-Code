@@ -1,0 +1,528 @@
+Application Log
+Start: Thu Oct 04 11:49:09 2012
+
+
+Entering GApp::GApp()
+cwd = E:\GPU Pro\GPUPro4\Edits\Final\03_Image Space\temp\Morgan_Samples\data-files
+System::setAppDataDir("E:\GPU Pro\GPUPro4\Edits\Final\03_Image Space\temp\Morgan_Samples\")
+Setting video mode
+wglSwapIntervalEXT(0);
+Enabling separate specular lighting.
+Setting initial rendering state.
+Done setting initial state.
+Supported Formats:
+              Format  Texture RenderBuffer TextureDrawBuffer
+                  L8  Yes       Yes         No 
+                 L16  Yes       Yes         No 
+                L16F  Yes       Yes         Yes
+                L32F  Yes       Yes         Yes
+                  A8  Yes       Yes         No 
+                 A16  Yes       Yes         No 
+                A16F  Yes       Yes         Yes
+                A32F  Yes       Yes         Yes
+                 LA4  Yes       Yes         No 
+                 LA8  Yes       Yes         No 
+                LA16  Yes       Yes         No 
+               LA16F  Yes       Yes         Yes
+               LA32F  Yes       Yes         Yes
+                RGB5  Yes       Yes         Yes
+              RGB5A1  Yes       Yes         Yes
+                RGB8  Yes       Yes         No 
+               RGB10  Yes       Yes         Yes
+             RGB10A2  Yes       Yes         Yes
+               RGB16  Yes       Yes         Yes
+              RGB32F  Yes       Yes         Yes
+          R11G11B10F  Yes       Yes         Yes
+             RGB9E5F  Yes       Yes         No 
+               RGB8I  Yes       Yes         Yes
+              RGB8UI  Yes       Yes         Yes
+                BGR8  Yes       Yes         No 
+               BGRA8  Yes       Yes         No 
+                  R8  Yes       Yes         No 
+                 RG8  Yes       Yes         No 
+                RG8I  Yes       Yes         Yes
+               RG8UI  Yes       Yes         Yes
+                R16F  No        Yes         No 
+               RG16F  Yes       Yes         Yes
+                R32F  No        Yes         No 
+               RG32F  Yes       Yes         Yes
+               RGBA8  Yes       Yes         No 
+              RGBA16  Yes       Yes         Yes
+             RGBA16F  Yes       Yes         Yes
+             RGBA32F  Yes       Yes         Yes
+            RGBA32UI  Yes       Yes         Yes
+       YUV420_PLANAR  No        No          No 
+              YUV422  No        No          No 
+              YUV444  No        No          No 
+            RGB_DXT1  Yes       No          No 
+           RGBA_DXT1  Yes       No          No 
+           RGBA_DXT3  Yes       No          No 
+           RGBA_DXT5  Yes       No          No 
+               SRGB8  Yes       Yes         No 
+              SRGBA8  Yes       Yes         No 
+                 SL8  Yes       Yes         No 
+                SLA8  Yes       Yes         No 
+           SRGB_DXT1  Yes       No          No 
+          SRGBA_DXT1  Yes       No          No 
+          SRGBA_DXT3  Yes       No          No 
+          SRGBA_DXT5  Yes       No          No 
+             DEPTH16  Yes       Yes         No 
+             DEPTH24  Yes       Yes         No 
+             DEPTH32  Yes       Yes         No 
+            DEPTH32F  Yes       Yes         No 
+            STENCIL1  No        Yes         No 
+            STENCIL4  No        Yes         No 
+            STENCIL8  No        Yes         No 
+           STENCIL16  No        Yes         No 
+    DEPTH24_STENCIL8  Yes       Yes         No 
+
+Capability    Minimum   Desired   Received  Ok?
+-------------------------------------------------
+* RENDER DEVICE 
+Depth         16 bits   24 bits   24 bits   ok
+Stencil        8 bits    8 bits    8 bits   ok
+Alpha                              0 bits   ok
+Red                                8 bits   ok
+Green                              8 bits   ok
+Blue                               8 bits   ok
+FSAA                       0     0    ok
+Width                 1200 pixels           ok
+Height                 900 pixels           ok
+Mode                   Windowed             ok
+
+This driver will support G3D 9.00:
+GLSL version 3.30                   yes - GLSL version on this driver is 4.20
+GPU Supports OpenGL 3.3 or later    yes - OpenGL version on this driver is 4.2
+         GL_ARB_seamless_cube_map   yes - Optional
+            GL_ARB_sample_shading   yes - Optional
+
+
+Done initializing RenderDevice.
+Network StartupStarting WinSock networking.
+Network:
+  Status: WinSock 2.0
+  Loaded winsock specification version 1236865 (2 is the highest available)
+  514 sockets available
+  Largest UDP datagram packet size is 0 bytes
+
+System = { 
+    App { 
+        Name =
+        "E:\\GPU Pro\\GPUPro4\\Edits\\Final\\03_Image
+        Space\\temp\\Morgan_Samples\\DoFDemo.exe"
+        cwd =
+        "E:\\GPU Pro\\GPUPro4\\Edits\\Final\\03_Image
+        Space\\temp\\Morgan_Samples\\data-files"
+    } 
+    
+    OS { 
+        Name = "Windows 6.1 build 7601 Platform 2 S"
+    } 
+    
+    CPU { 
+        Vendor = ""
+        Architecture = "8 x 33-bit Unknown processor"
+        hasCPUID = Yes 
+        hasMMX = No 
+        hasSSE = No 
+        hasSSE2 = No 
+        hasSSE3 = No 
+        has3DNow = No 
+        hasRDTSC = No 
+        numCores = 8 
+    } 
+    
+    G3D { 
+        Link version = 90004 
+        Compile version = "G3D Innovation Engine 9.00 beta 4, 64-bit"
+        G3D9DATA = ""
+    } 
+    
+    GPU = { 
+        Chipset = "GeForce GTX 580/PCIe/SSE2;"
+        Vendor = "NVIDIA Corporation;"
+        Driver = "9.18.13.623;"
+        OpenGL version = "4.2.0;"
+        Textures = 32 ;
+        Texture coordinates = 8 ;
+        Texture units = 4 ;
+        GL_MAX_TEXTURE_SIZE = 16384 ;
+        GL_MAX_CUBE_MAP_TEXTURE_SIZE = 16384 ;
+        GL_MAX_COLOR_ATTACHMENTS = 8 ;
+    } ; 
+    
+    Window = { 
+        API = "Win32;"
+        Version = "1.1;"
+        
+        In focus = true; 
+        Centered = true; 
+        Framed = true; 
+        Visible = true; 
+        Resizable = false; 
+        Full screen = false; 
+        Top = 256 ;
+        Left = 677 ;
+        Width = 1200 ;
+        Height = 900 ;
+        Refresh rate = 85 ;
+        
+        Alpha bits = 0 ;
+        Red bits = 8 ;
+        Green bits = 8 ;
+        Blue bits = 8 ;
+        Depth bits = 24 ;
+        Stencil bits = 8 ;
+        Asynchronous = true; 
+        Stereo = false; 
+        FSAA samples = 0 ;
+        GL extensions = [ GL_AMD_multi_draw_indirect,
+             GL_ARB_base_instance,
+             GL_ARB_blend_func_extended,
+             GL_ARB_color_buffer_float,
+             GL_ARB_compatibility,
+             GL_ARB_compressed_texture_pixel_storage,
+             GL_ARB_conservative_depth,
+             GL_ARB_copy_buffer,
+             GL_ARB_depth_buffer_float,
+             GL_ARB_depth_clamp,
+             GL_ARB_depth_texture,
+             GL_ARB_draw_buffers,
+             GL_ARB_draw_buffers_blend,
+             GL_ARB_draw_indirect,
+             GL_ARB_draw_elements_base_vertex,
+             GL_ARB_draw_instanced,
+             GL_ARB_ES2_compatibility,
+             GL_ARB_explicit_attrib_location,
+             GL_ARB_fragment_coord_conventions,
+             GL_ARB_fragment_program,
+             GL_ARB_fragment_program_shadow,
+             GL_ARB_fragment_shader,
+             GL_ARB_framebuffer_object,
+             GL_ARB_framebuffer_sRGB,
+             GL_ARB_geometry_shader4,
+             GL_ARB_get_program_binary,
+             GL_ARB_gpu_shader5,
+             GL_ARB_gpu_shader_fp64,
+             GL_ARB_half_float_pixel,
+             GL_ARB_half_float_vertex,
+             GL_ARB_imaging,
+             GL_ARB_instanced_arrays,
+             GL_ARB_internalformat_query,
+             GL_ARB_map_buffer_alignment,
+             GL_ARB_map_buffer_range,
+             GL_ARB_multisample,
+             GL_ARB_multitexture,
+             GL_ARB_occlusion_query,
+             GL_ARB_occlusion_query2,
+             GL_ARB_pixel_buffer_object,
+             GL_ARB_point_parameters,
+             GL_ARB_point_sprite,
+             GL_ARB_provoking_vertex,
+             GL_ARB_robustness,
+             GL_ARB_sample_shading,
+             GL_ARB_sampler_objects,
+             GL_ARB_seamless_cube_map,
+             GL_ARB_separate_shader_objects,
+             GL_ARB_shader_atomic_counters,
+             GL_ARB_shader_bit_encoding,
+             GL_ARB_shader_image_load_store,
+             GL_ARB_shader_objects,
+             GL_ARB_shader_precision,
+             GL_ARB_shader_subroutine,
+             GL_ARB_shader_texture_lod,
+             GL_ARB_shading_language_100,
+             GL_ARB_shading_language_420pack,
+             GL_ARB_shading_language_include,
+             GL_ARB_shading_language_packing,
+             GL_ARB_shadow,
+             GL_ARB_sync,
+             GL_ARB_tessellation_shader,
+             GL_ARB_texture_border_clamp,
+             GL_ARB_texture_buffer_object,
+             GL_ARB_texture_buffer_object_rgb32,
+             GL_ARB_texture_compression,
+             GL_ARB_texture_compression_bptc,
+             GL_ARB_texture_compression_rgtc,
+             GL_ARB_texture_cube_map,
+             GL_ARB_texture_cube_map_array,
+             GL_ARB_texture_env_add,
+             GL_ARB_texture_env_combine,
+             GL_ARB_texture_env_crossbar,
+             GL_ARB_texture_env_dot3,
+             GL_ARB_texture_float,
+             GL_ARB_texture_gather,
+             GL_ARB_texture_mirrored_repeat,
+             GL_ARB_texture_multisample,
+             GL_ARB_texture_non_power_of_two,
+             GL_ARB_texture_query_lod,
+             GL_ARB_texture_rectangle,
+             GL_ARB_texture_rg,
+             GL_ARB_texture_rgb10_a2ui,
+             GL_ARB_texture_storage,
+             GL_ARB_texture_swizzle,
+             GL_ARB_timer_query,
+             GL_ARB_transform_feedback2,
+             GL_ARB_transform_feedback3,
+             GL_ARB_transform_feedback_instanced,
+             GL_ARB_transpose_matrix,
+             GL_ARB_uniform_buffer_object,
+             GL_ARB_vertex_array_bgra,
+             GL_ARB_vertex_array_object,
+             GL_ARB_vertex_attrib_64bit,
+             GL_ARB_vertex_buffer_object,
+             GL_ARB_vertex_program,
+             GL_ARB_vertex_shader,
+             GL_ARB_vertex_type_2_10_10_10_rev,
+             GL_ARB_viewport_array,
+             GL_ARB_window_pos,
+             GL_ATI_draw_buffers,
+             GL_ATI_texture_float,
+             GL_ATI_texture_mirror_once,
+             GL_S3_s3tc,
+             GL_EXT_texture_env_add,
+             GL_EXT_abgr,
+             GL_EXT_bgra,
+             GL_EXT_bindable_uniform,
+             GL_EXT_blend_color,
+             GL_EXT_blend_equation_separate,
+             GL_EXT_blend_func_separate,
+             GL_EXT_blend_minmax,
+             GL_EXT_blend_subtract,
+             GL_EXT_compiled_vertex_array,
+             GL_EXT_Cg_shader,
+             GL_EXT_depth_bounds_test,
+             GL_EXT_direct_state_access,
+             GL_EXT_draw_buffers2,
+             GL_EXT_draw_instanced,
+             GL_EXT_draw_range_elements,
+             GL_EXT_fog_coord,
+             GL_EXT_framebuffer_blit,
+             GL_EXT_framebuffer_multisample,
+             GL_EXTX_framebuffer_mixed_formats,
+             GL_EXT_framebuffer_object,
+             GL_EXT_framebuffer_sRGB,
+             GL_EXT_geometry_shader4,
+             GL_EXT_gpu_program_parameters,
+             GL_EXT_gpu_shader4,
+             GL_EXT_multi_draw_arrays,
+             GL_EXT_packed_depth_stencil,
+             GL_EXT_packed_float,
+             GL_EXT_packed_pixels,
+             GL_EXT_pixel_buffer_object,
+             GL_EXT_point_parameters,
+             GL_EXT_provoking_vertex,
+             GL_EXT_rescale_normal,
+             GL_EXT_secondary_color,
+             GL_EXT_separate_shader_objects,
+             GL_EXT_separate_specular_color,
+             GL_EXT_shader_image_load_store,
+             GL_EXT_shadow_funcs,
+             GL_EXT_stencil_two_side,
+             GL_EXT_stencil_wrap,
+             GL_EXT_texture3D,
+             GL_EXT_texture_array,
+             GL_EXT_texture_buffer_object,
+             GL_EXT_texture_compression_dxt1,
+             GL_EXT_texture_compression_latc,
+             GL_EXT_texture_compression_rgtc,
+             GL_EXT_texture_compression_s3tc,
+             GL_EXT_texture_cube_map,
+             GL_EXT_texture_edge_clamp,
+             GL_EXT_texture_env_combine,
+             GL_EXT_texture_env_dot3,
+             GL_EXT_texture_filter_anisotropic,
+             GL_EXT_texture_format_BGRA8888,
+             GL_EXT_texture_integer,
+             GL_EXT_texture_lod,
+             GL_EXT_texture_lod_bias,
+             GL_EXT_texture_mirror_clamp,
+             GL_EXT_texture_object,
+             GL_EXT_texture_shared_exponent,
+             GL_EXT_texture_sRGB,
+             GL_EXT_texture_sRGB_decode,
+             GL_EXT_texture_storage,
+             GL_EXT_texture_swizzle,
+             GL_EXT_texture_type_2_10_10_10_REV,
+             GL_EXT_timer_query,
+             GL_EXT_transform_feedback2,
+             GL_EXT_vertex_array,
+             GL_EXT_vertex_array_bgra,
+             GL_EXT_vertex_attrib_64bit,
+             GL_EXT_import_sync_object,
+             GL_IBM_rasterpos_clip,
+             GL_IBM_texture_mirrored_repeat,
+             GL_KTX_buffer_region,
+             GL_NV_alpha_test,
+             GL_NV_blend_minmax,
+             GL_NV_blend_square,
+             GL_NV_complex_primitives,
+             GL_NV_conditional_render,
+             GL_NV_copy_depth_to_color,
+             GL_NV_copy_image,
+             GL_NV_depth_buffer_float,
+             GL_NV_depth_clamp,
+             GL_NV_ES1_1_compatibility,
+             GL_NV_explicit_multisample,
+             GL_NV_fbo_color_attachments,
+             GL_NV_fence,
+             GL_NV_float_buffer,
+             GL_NV_fog_distance,
+             GL_NV_fragdepth,
+             GL_NV_fragment_program,
+             GL_NV_fragment_program_option,
+             GL_NV_fragment_program2,
+             GL_NV_framebuffer_multisample_coverage,
+             GL_NV_geometry_shader4,
+             GL_NV_gpu_program4,
+             GL_NV_gpu_program4_1,
+             GL_NV_gpu_program5,
+             GL_NV_gpu_program_fp64,
+             GL_NV_gpu_shader5,
+             GL_NV_half_float,
+             GL_NV_light_max_exponent,
+             GL_NV_multisample_coverage,
+             GL_NV_multisample_filter_hint,
+             GL_NV_occlusion_query,
+             GL_NV_packed_depth_stencil,
+             GL_NV_parameter_buffer_object,
+             GL_NV_parameter_buffer_object2,
+             GL_NV_path_rendering,
+             GL_NV_pixel_data_range,
+             GL_NV_point_sprite,
+             GL_NV_primitive_restart,
+             GL_NV_register_combiners,
+             GL_NV_register_combiners2,
+             GL_NV_shader_atomic_counters,
+             GL_NV_shader_atomic_float,
+             GL_NV_shader_buffer_load,
+             GL_NV_texgen_reflection,
+             GL_NV_texture_barrier,
+             GL_NV_texture_compression_vtc,
+             GL_NV_texture_env_combine4,
+             GL_NV_texture_expand_normal,
+             GL_NV_texture_lod_clamp,
+             GL_NV_texture_multisample,
+             GL_NV_texture_rectangle,
+             GL_NV_texture_shader,
+             GL_NV_texture_shader2,
+             GL_NV_texture_shader3,
+             GL_NV_transform_feedback,
+             GL_NV_transform_feedback2,
+             GL_NV_vertex_array_range,
+             GL_NV_vertex_array_range2,
+             GL_NV_vertex_attrib_integer_64bit,
+             GL_NV_vertex_buffer_unified_memory,
+             GL_NV_vertex_program,
+             GL_NV_vertex_program1_1,
+             GL_NV_vertex_program2,
+             GL_NV_vertex_program2_option,
+             GL_NV_vertex_program3,
+             GL_NVX_conditional_render,
+             GL_NVX_gpu_memory_info,
+             GL_OES_compressed_paletted_texture,
+             GL_OES_depth24,
+             GL_OES_depth32,
+             GL_OES_depth_texture,
+             GL_OES_element_index_uint,
+             GL_OES_fbo_render_mipmap,
+             GL_OES_get_program_binary,
+             GL_OES_mapbuffer,
+             GL_OES_packed_depth_stencil,
+             GL_OES_point_size_array,
+             GL_OES_point_sprite,
+             GL_OES_rgb8_rgba8,
+             GL_OES_read_format,
+             GL_OES_standard_derivatives,
+             GL_OES_texture_3D,
+             GL_OES_texture_float,
+             GL_OES_texture_float_linear,
+             GL_OES_texture_half_float,
+             GL_OES_texture_half_float_linear,
+             GL_OES_texture_npot,
+             GL_OES_vertex_array_object,
+             GL_OES_vertex_half_float,
+             GL_SGIS_generate_mipmap,
+             GL_SGIS_texture_lod,
+             GL_SGIX_depth_texture,
+             GL_SGIX_shadow,
+             GL_SUN_slice_accum,
+             GL_WIN_swap_hint,
+             WGL_EXT_swap_control,
+             ]; 
+    }; 
+    
+    Network = { 
+        Adapter0 ={ 
+            hostname = "wolf-PC;"
+            name = ";"
+            ip = "192.168.  1.103"; 
+            subnet = "  0.  0.255.255"; 
+            broadcast = "255.255.255.255"; 
+            mac = "00:00:00:00:00:00"; 
+        }; 
+    }; 
+    
+    
+    }; 
+
+Entering GApp::loadFont("console-small.fnt")
+Initializing System::findDataFile took 0.000360s
+Found "console-small.fnt" at "font/console-small.fnt"
+Done GApp::loadFont(...)
+Done GApp::GApp()
+
+Found scenes:
+  "Alpha Base" (alpha.scn.any)
+  "Cornell Box" (CornellBox.scn.any)
+  "Crates" (crates.scn.any)
+  "Cubes" (cubes.scn.any)
+  "Sponza" (sponza.scn.any)
+Could not find 'ifs/crate.ifs'.
+
+  cwd                    = 'E:\GPU Pro\GPUPro4\Edits\Final\03_Image Space\temp\Morgan_Samples\data-files'
+  G3D9DATA               = (environment variable is not defined)
+  GApp::Settings.dataDir = 'E:\GPU Pro\GPUPro4\Edits\Final\03_Image Space\temp\Morgan_Samples\'
+
+Filenames tested:
+'ifs/crate.ifs'
+'font/ifs/crate.ifs'
+'gui/ifs/crate.ifs'
+'shader/ifs/crate.ifs'
+'models/ifs/crate.ifs'
+'cubemap/ifs/crate.ifs'
+'icon/ifs/crate.ifs'
+'material/ifs/crate.ifs'
+'ifs/ifs/crate.ifs'
+'3ds/ifs/crate.ifs'
+'E:\GPU Pro\GPUPro4\Edits\Final\03_Image Space\temp\Morgan_Samples\ifs/crate.ifs'
+
+
+**************************
+
+Critical Error - DoFDemo.exe
+Could not find 'ifs/crate.ifs'.
+
+  cwd                    = 'E:\GPU Pro\GPUPro4\Edits\Final\03_Image Space\temp\Morgan_Samples\data-files'
+  G3D9DATA               = (environment variable is not defined)
+  GApp::Settings.dataDir = 'E:\GPU Pro\GPUPro4\Edits\Final\03_Image Space\temp\Morgan_Samples\'
+
+Filenames tested:
+'ifs/crate.ifs'
+'font/ifs/crate.ifs'
+'gui/ifs/crate.ifs'
+'shader/ifs/crate.ifs'
+'models/ifs/crate.ifs'
+'cubemap/ifs/crate.ifs'
+'icon/ifs/crate.ifs'
+'material/ifs/crate.ifs'
+'ifs/ifs/crate.ifs'
+'3ds/ifs/crate.ifs'
+'E:\GPU Pro\GPUPro4\Edits\Final\03_Image Space\temp\Morgan_Samples\ifs/crate.ifs'
+
+
+Expression: false
+..\GLG3D.lib\source\GApp.cpp:504
+
+Last Error (0x00000002): T
+

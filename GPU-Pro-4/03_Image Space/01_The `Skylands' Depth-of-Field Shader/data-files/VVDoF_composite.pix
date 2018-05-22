@@ -1,0 +1,114 @@
+#version 120 // -*- c++ -*-
+#include "compatability.glsl"
+#line 4
+
+uniform sampler2D packedBuffer;
+uniform sampler2D blurBuffer;
+uniform sampler2D nearBuffer;
+
+uniform int debugOption;
+
+#if __VERSION__ < 130
+#   define result gl_FragColor.rgb
+#else
+    out vec3 result;
+#endif
+
+// Boost the coverage of the near field by this factor.  Should always be >= 1
+//
+// Make this larger if near-field objects seem too transparent
+//
+// Make this smaller if an obvious line is visible between the near-field blur and the mid-field sharp region
+// when looking at a textured ground plane.
+const float coverageBoost = 1.5;
+
+float grayscale(float3 c) {
+    return (c.r + c.g + c.b) / 3.0;
+}
+
+void main() {
+    int2 A = int2(gl_FragCoord.xy);
+
+    float4 pack  = texelFetch(packedBuffer, A, 0);
+    float3 sharp   = pack.rgb;
+    float3 blurred = texture(blurBuffer, gl_FragCoord.xy * g3d_sampler2DInvSize(packedBuffer)).rgb;
+    float4 near    = texture(nearBuffer, gl_FragCoord.xy * g3d_sampler2DInvSize(packedBuffer));
+
+    // Normalized Radius
+    float normRadius = (pack.a * 2.0 - 1.0);
+
+    // Boost the blur factor
+    //normRadius = clamp(normRadius * 2.0, -1.0, 1.0);
+
+    if (coverageBoost != 1.0) {
+        float a = saturate(coverageBoost * near.a);
+        near.rgb = near.rgb * (a / max(near.a, 0.001f));
+        near.a = a;
+    }
+
+    // Decrease sharp image's contribution rapidly in the near field
+    if (normRadius > 0.1) {
+        normRadius = min(normRadius * 1.5, 1.0);
+    }
+
+    result = lerp(sharp, blurred, abs(normRadius)) * (1.0 - near.a) + near.rgb;
+    
+    /////////////////////////////////////////////////////////////////////////////////
+    // Debugging options:
+    const int SHOW_COC          = 1;
+    const int SHOW_REGION       = 2;
+    const int SHOW_NEAR         = 3;
+    const int SHOW_BLURRY       = 4;
+    const int SHOW_INPUT        = 5;
+    const int SHOW_MID_AND_FAR  = 6;
+    const int SHOW_SIGNED_COC   = 7;
+
+
+    switch (debugOption) {
+    case SHOW_COC:
+        // Go back to the true radius, before it was enlarged by post-processing
+        result.rgb = float3(abs(pack.a * 2.0 - 1.0));
+        break;
+
+    case SHOW_SIGNED_COC:
+        {
+            // Go back to the true radius, before it was enlarged by post-processing
+            float r = pack.a * 2.0 - 1.0;
+            if (r < 0) {
+                result.rgb = float3(0.0, 0.14, 0.8) * abs(r);
+            } else {
+                result.rgb = float3(1.0, 1.0, 0.15) * abs(r);
+            }
+        }
+        break;
+
+    case SHOW_REGION:
+        if (pack.a < 0.49) {
+            // Far field: Dark blue
+            result.rgb = float3(0.0, 0.07, 0.4) * (grayscale(sharp) * 0.7 + 0.3);
+        } else if (pack.a <= 0.51) {
+            // Mifield: Gray
+            result.rgb = float3(0.4) * (grayscale(sharp) * 0.7 + 0.3);
+        } else {
+            result.rgb = float3(1.0, 1.0, 0.15) * (grayscale(sharp) * 0.7 + 0.3);
+        }
+        break;
+
+    case SHOW_BLURRY:
+        result = blurred;
+        break;
+
+    case SHOW_NEAR:
+        result = near.rgb;
+        break;
+
+    case SHOW_INPUT:
+        result = sharp;
+        break;
+
+    case SHOW_MID_AND_FAR:
+        // Just lerp based on this pixel's blurriness. Works well in the background, less well in the foreground
+        result = lerp(sharp, blurred, abs(normRadius));
+        break;
+    }
+}

@@ -1,0 +1,54 @@
+// -*- c++ -*-
+/**
+  \file SS_LambertianComponent.pix
+  \author Morgan McGuire morgan@cs.williams.edu
+
+  For use with G3D::SuperShader.
+  This file is included into NonShadowedPass.pix and 
+  ShadowMappedLightPass.pix.
+
+  Lambertian is included in a different location in the shadow mapped
+  pass in order to allow alpha testing early.
+
+  \created 2007-12-18
+  \edited  2010-06-17
+ */
+#   ifndef invPi
+#       define invPi (0.318309886)
+#   endif
+
+    const vec3 BLACK = vec3(0.0, 0.0, 0.0);
+
+    vec3 wsEyePos = g3d_CameraToWorldMatrix[3].xyz;
+
+#   if defined(NORMALBUMPMAP)
+        vec3 wsN;
+        vec2 offsetTexCoord;
+        vec3 tsN;
+#       if (PARALLAXSTEPS > 0)
+            bumpMap(normalBumpMap, bumpMapScale, bumpMapBias, texCoord, tan_X, tan_Y, tan_Z, backside, normalize(_tsE), wsN, offsetTexCoord, tsN);
+#       else
+            // Vanilla normal mapping
+            bumpMap(normalBumpMap, 0.0, 0.0, texCoord, tan_X, tan_Y, tan_Z, backside, vec3(0.0), wsN, offsetTexCoord, tsN);
+#       endif    
+
+#   else
+        // World space normal
+        vec3 wsN = normalize(tan_Z.xyz * backside);
+        vec2 offsetTexCoord = texCoord;
+#   endif
+
+#   if (defined(LAMBERTIANCONSTANT) || defined(LAMBERTIANMAP))
+        vec4 lambertianColor =
+#       ifdef LAMBERTIANCONSTANT
+            lambertianConstant
+#           ifdef LAMBERTIANMAP
+                * texture2D(lambertianMap, offsetTexCoord)
+#           endif
+#       else
+            texture2D(lambertianMap, offsetTexCoord)
+#       endif
+        ;
+	  lambertianColor.rgb *= invPi;
+#   endif
+/* end of SS_LambertianComponent.pix */

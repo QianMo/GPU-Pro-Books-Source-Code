@@ -1,0 +1,11 @@
+Defines
+{
+  FINE_GRID
+  USE_OCCLUSION
+}
+ComputeShader
+{
+  lightPropagate.csh
+}
+
+

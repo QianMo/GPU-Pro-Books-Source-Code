@@ -1,0 +1,50 @@
+// -*- c++ -*-
+{
+    name = "Cornell Box",
+   
+    models = {
+       boxModel =  "models/CornellBox/CornellBox.zip/CornellBox-Original.obj";
+    };
+    
+    environmentMap = {
+        constant = 0.05;
+    };
+    
+    ambientOcclusionSettings = AmbientOcclusionSettings {
+        radius = 1.0;
+        bias   = 0;
+        intensity = 1.0;
+        numSamples = 20;
+    };
+
+    entities = {
+        light = Light {
+            type = "SPOT";
+            position = CFrame::fromXYZYPRDegrees(0, 3, 0.2, 0, -90);
+            spotHalfAngleDegrees = 58; 
+            power = Power3(200);
+            shadowMapSize = Vector2int16(4096, 4096);
+        };
+
+        box = VisibleEntity {
+            model = "boxModel";
+        };
+        
+        camera = Camera {
+            position = CFrame::fromXYZYPRDegrees(  0.0f,   1.0f,   4.8f,  0.0f,   0,   0.0f);
+        
+            depthOfFieldSettings = DepthOfFieldSettings {
+                model = "ARTIST";
+                nearSharpPlaneZ = -1.5;
+            };
+
+            projection = Projection {
+                nearPlaneZ = -0.1;
+                farPlaneZ = -200;
+                fovDirection = "VERTICAL";
+                fovDegrees = 30;
+            };
+        };
+    };
+
+}

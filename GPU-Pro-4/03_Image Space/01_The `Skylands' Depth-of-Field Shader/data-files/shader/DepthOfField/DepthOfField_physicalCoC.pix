@@ -1,0 +1,60 @@
+#version 120  // -*- c++ -*-
+/** \file DepthOfField_artistCoC.pix
+
+    Packs color and signed, normalized circle of confusion radius
+    into the output buffer, reading from a depth buffer.
+
+    Code to bind the args:
+
+    \code
+    const double z_f    = camera.farPlaneZ();
+    const double z_n    = camera.nearPlaneZ();
+        
+    const Vector3& clipInfo = 
+        (z_f == -inf()) ? 
+        Vector3(float(z_n), -1.0f, 1.0f) : 
+        Vector3(float(z_n * z_f),  float(z_n - z_f),  float(z_f));
+        
+    args.set("color",            color);
+    args.set("depth",            depth);
+    args.set("clipInfo",         clipInfo);
+    args.set("focusPlaneZ",      camera.focusPlaneZ());
+    args.set("scale",            camera.imagePlanePixelsPerMeter(viewport) * camera.lensRadius() / (camera.focusPlaneZ() * maxBlurRadius));
+
+    \endcode
+*/
+#include "../reconstruct.glsl"
+#include "../compatibility.glsl"
+#line 10
+
+uniform sampler2D color;
+uniform sampler2D depth;
+
+uniform float focusPlaneZ;
+uniform float scale;
+
+#if __VERSION__ < 130
+#   define packedResult gl_FragColor
+#else
+#   out vec4 packedResult;
+#endif
+
+void main() {
+    ivec2 A = ivec2(gl_FragCoord.xy);
+    
+    float d = texelFetch(depth, A, 0).r;
+    float z = reconstructCSZ(d);     
+
+    // Fractional radius on [0, 1]
+    float radius;
+    
+    // Note that the radius is negative in the far field.
+    radius = (z - focusPlaneZ) * scale;
+
+    packedResult.rgb = texelFetch(color, A, 0).rgb;
+
+    // Store the radius biased because the target texture format may
+    // be unsigned.  It is on the scale [0, 1] in case the format
+    // is normalized fixed point.
+    packedResult.a   = saturate(radius * 0.5 + 0.5);
+ }

@@ -1,0 +1,6 @@
+tango.icn file copyright information
+
+The uwe subdirectory contains icons released under the BSD license (http://creativecommons.org/licenses/BSD/) by Unknown Worlds Entertainment at http://www.unknownworlds.com/developer/.  These icons have been slightly modified
+from their original form by Morgan McGuire.
+
+All other icons are from the Tango Image Library http://tango.freedesktop.org/ and are in the public domain.

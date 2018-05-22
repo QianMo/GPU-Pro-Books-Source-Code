@@ -1,0 +1,70 @@
+// -*- c++ -*-
+{
+    name = "Sponza",
+    models = {
+       buildingModel = ArticulatedModel::Specification {
+			filename = "models/crytek_sponza/sponza.zip/sponza.obj";
+			// stripMaterials = true;
+			scale = 0.02;
+		};
+    };
+
+    environmentMap = {
+        constant = 0.7;
+        texture = Texture::Specification {
+            filename = "cubemap/uffizi/uffizi*.jpg";
+            desiredFormat = "sRGB";
+        }
+    };
+
+    skybox = {
+        constant = 1.0;
+        texture = "cubemap/noonclouds/noonclouds_*.png";
+    };
+    
+    entities = {
+        // Each entity has a name and is an instance of a model.  The instantiation syntax accepts
+        // two (optional) arguments: a position spline (which can be a single position), and a 
+        // pose spline (which can be a single pose).
+        building = VisibleEntity {
+            model    = "buildingModel";
+        };
+
+        sun = Light {
+            type = "DIRECTIONAL";
+            position = CFrame::fromXYZYPRDegrees(inf, inf, inf, 195, -70, 15);
+            power = Radiance3(10);
+            shadowMapSize = Vector2int16(2048, 2048);
+        };
+
+        fillLight = Light {
+            type = "DIRECTIONAL";
+            position = CFrame::fromXYZYPRDegrees(inf, inf, inf, 15, 85, 15);             
+            power = Radiance3::fromARGB(0x1e324d);
+            castsShadows = false;
+        };
+
+        camera = Camera {
+            position = CFrame::fromXYZYPRDegrees(-19.4f,   3.4f,  -4.8f, -112.0f,  19.0f,   0.0f);
+        
+            depthOfFieldSettings = DepthOfFieldSettings {
+                model = "ARTIST";
+                farBlurRadiusFraction = 0.01;
+                farBlurryPlaneZ  = -120;
+                farSharpPlaneZ  =  -11;
+                nearSharpPlaneZ =  -1.0;
+                nearBlurryPlaneZ =  -0.1;
+                nearBlurRadiusFraction = 0.01;
+            };
+
+            projection = Projection {
+                nearPlaneZ = -0.1;
+                farPlaneZ = -200;
+                fovDirection = "VERTICAL";
+                fovDegrees = 60;
+            }
+        };
+    };
+        
+
+}

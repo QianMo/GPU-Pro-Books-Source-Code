@@ -1,0 +1,14 @@
+
+struct VsIn
+{
+	float4 Position : Position;
+};
+
+[Vertex shader]
+
+float4x4 ViewProj;
+
+float4 main(VsIn In) : SV_Position
+{
+	return mul(ViewProj, In.Position);
+}

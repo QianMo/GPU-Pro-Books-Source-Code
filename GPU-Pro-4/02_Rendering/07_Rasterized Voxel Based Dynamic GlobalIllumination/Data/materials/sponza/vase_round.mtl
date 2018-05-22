@@ -1,0 +1,14 @@
+Textures
+{
+  ColorTexture          textures/sponza/vase_round.dds
+  NormalTexture         textures/sponza/vase_round_ddn.dds
+  SpecularTexture       textures/sponza/vase_round_spec.dds
+}
+RenderStates
+{
+  cull                  BACK_CULL     
+}
+Shader
+{
+  file                  shaders/base.sdr
+}

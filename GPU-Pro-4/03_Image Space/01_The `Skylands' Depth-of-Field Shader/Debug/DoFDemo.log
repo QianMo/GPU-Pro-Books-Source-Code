@@ -1,0 +1,13 @@
+﻿Build started 10/4/2012 11:49:02 AM.
+     1>Project "E:\GPU Pro\GPUPro4\Edits\Final\03_Image Space\temp\Morgan_Samples\DoFDemo.vcxproj" on node 2 (Build target(s)).
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D G3D_STATIC_LINK_FFMPEG /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt source\App.cpp source\VVDoF.cpp
+         VVDoF.cpp
+     1>e:\gpu pro\gpupro4\edits\final\03_image space\temp\morgan_samples\source\vvdof.h(4): fatal error C1083: Cannot open include file: 'G3D/G3DAll.h': No such file or directory
+         App.cpp
+     1>e:\gpu pro\gpupro4\edits\final\03_image space\temp\morgan_samples\source\app.h(7): fatal error C1083: Cannot open include file: 'G3D/G3DAll.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "E:\GPU Pro\GPUPro4\Edits\Final\03_Image Space\temp\Morgan_Samples\DoFDemo.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.41

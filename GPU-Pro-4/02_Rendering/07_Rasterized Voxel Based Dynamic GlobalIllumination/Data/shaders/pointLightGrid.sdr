@@ -1,0 +1,18 @@
+Defines
+{
+  FINE_GRID
+}
+VertexShader
+{
+  grid.vsh
+}
+GeometryShader
+{
+  grid.gsh
+}
+FragmentShader
+{ 
+  pointLightGrid.fsh
+}
+
+

@@ -1,0 +1,143 @@
+// -*- c++ -*-
+/**
+  \file ShadowMappedLightPass.pix
+  \author Morgan McGuire morgan@cs.williams.edu
+
+  For use with G3D::SuperShader.
+
+  \edited 2012-08-23
+ */
+
+#include "SS_Globals.pix"
+#include "SS_Light.pix"
+
+#ifdef NORMALBUMPMAP
+#include "BumpMap.glsl"
+#if (PARALLAXSTEPS == 0)
+#   define bumpMap bumpMapBlinn78
+#elif (PARALLAXSTEPS <= 1)
+#   define bumpMap bumpMapWelsh04
+#else // PARALLAXSETPS > 1
+#   define bumpMap bumpMapTatarchuk06
+#endif
+#endif
+
+uniform sampler2DShadow shadowMap;
+
+/** Coordinate to use in the shadow map */
+varying vec4        shadowCoord;
+
+void main(void) {
+#define pi (3.1415926)
+#define invPi (0.318309886)
+// 1.0 / (8.0 pi); used for normalizing the specular lobe
+#define inv8pi (0.0397887358)
+
+#include "SS_LambertianComponent.pix"
+    gl_FragColor.a = 
+#       if defined(LAMBERTIANMAP) || defined(LAMBERTIANCONSTANT)
+            lambertianColor.a
+#       else
+            1.0
+#       endif
+        ;
+
+    float shadow = 0.0;
+    
+    // Test whether we are within a spotlight's cone. 
+    vec3 wsL = normalize(lightPosition0.xyz - wsPosition.xyz * lightPosition0.w);
+    if (-dot(lightDirection0, wsL) >= lightAttenuation0.w) {
+
+        // Compute projected shadow coord.
+        vec3 projShadowCoord = shadowCoord.xyz / shadowCoord.w;
+
+        // "side" and "diagonal" offset variables used to produce vectors to the 
+        // 8-neighbors, which leads to a smoother shadow result (0.71 is sqrt(2)/2).
+        vec4 s = vec4(g3d_sampler2DInvSize(shadowMap), -g3d_sampler2DInvSize(shadowMap).x, 0.0);
+        vec4 d = s * 0.71;
+
+        shadow = 
+            (shadow2D(shadowMap, projShadowCoord).r +
+             
+             shadow2D(shadowMap, projShadowCoord + s.xww).r +
+             shadow2D(shadowMap, projShadowCoord - s.xww).r +
+             shadow2D(shadowMap, projShadowCoord + s.wyw).r +
+             shadow2D(shadowMap, projShadowCoord - s.wyw).r +
+         
+             shadow2D(shadowMap, projShadowCoord + d.xyw).r +
+             shadow2D(shadowMap, projShadowCoord - d.zyw).r +
+             shadow2D(shadowMap, projShadowCoord + d.zyw).r +
+             shadow2D(shadowMap, projShadowCoord - d.xyw).r) / 9.0;
+
+        // Clamp to zero beyond border.  The texture clamping mode is supposed
+        // to do this but is not working.  We clamp 1 pixel beyond in order to
+        // get correct blended values near the border.
+        shadow *= 
+            float(all(bvec4(greaterThanEqual(projShadowCoord.xy, -s.xy),
+                            lessThanEqual(projShadowCoord.xy, vec2(1.0, 1.0) + s.xy))));
+
+    }
+
+    if (shadow == 0.0) {
+        discard;
+    }
+    
+#   if defined(SPECULARCONSTANT) || defined(SPECULARMAP)
+        // Eye vector
+        vec3 wsE = normalize(wsEyePos - wsPosition);
+        // or... (tangentToWorld * vec4(tsE, 0.0)).xyz;
+#   else
+        vec3 wsE = BLACK;
+#   endif
+
+    float shininess = 0.0;
+
+#   if defined(SPECULARCONSTANT) || defined(SPECULARMAP)
+        vec3 F0;
+        vec3 specularColor;
+        float cos_i = dot(wsN, wsE);
+        {        
+            vec4 temp =
+#           ifdef SPECULARCONSTANT
+                specularConstant
+#	            ifdef SPECULARMAP
+                    * texture2D(specularMap, offsetTexCoord)
+#	            endif
+#	        else
+                texture2D(specularMap, offsetTexCoord)
+#           endif
+            ;
+    				   
+	       F0 = temp.rgb;
+	       specularColor = computeF(F0, max(0.0, cos_i));
+           shininess = unpackSpecularExponent(temp.a);
+        }
+#       if defined(LAMBERTIANCONSTANT) || defined(LAMBERTIANMAP)
+           // modulate the lambertian color by the specular; this
+           // ensures energy conservation at glancing angles under Fresnel effects.
+           lambertianColor.rgb *= vec3(1.0) - specularColor;
+#       endif
+#   else
+       shininess = 0.0;
+#   endif
+
+    // Incident irradiance
+    vec3 E_lambertian = BLACK;
+    vec3 E_specular = BLACK;
+    float specularCoefficient = (shininess + 8.0) * inv8pi;
+    addLightContribution(wsN, wsE, wsPosition, shininess, specularCoefficient, lightPosition0, lightAttenuation0,
+                         lightDirection0, lightColor0, E_lambertian, E_specular, wsL);
+    
+        
+    gl_FragColor.rgb =
+        shadow * (BLACK
+#       if defined(LAMBERTIANCONSTANT) || defined(LAMBERTIANMAP)
+           + E_lambertian * lambertianColor.rgb 
+#       endif
+
+#       if defined(SPECULARCONSTANT) || defined(SPECULARMAP)
+           + E_specular * specularColor.rgb
+#       endif
+        );
+}
+/* end of SS_ShadowMappedLightPass.pix */

@@ -1,0 +1,15 @@
+// -*- c++ -*-
+ArticulatedModel::Specification {
+    filename = "spaceFighter01.3ds";
+    scale = 0.016;
+    preprocess = 
+        (setCFrame(root(), CFrame::fromXYZYPRDegrees(0,0,0,180));
+         
+         setMaterial(all(), all(), UniversalMaterial::Specification { 
+                 lambertian = "diffuse.jpg",
+                 emissive   = "emit.jpg",
+                 specular   = "specular.jpg",
+                 shininess  = glossyExponent(200)
+             });
+         );
+}

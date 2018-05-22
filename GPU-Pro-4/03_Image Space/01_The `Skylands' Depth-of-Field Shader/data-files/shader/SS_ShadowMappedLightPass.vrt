@@ -1,0 +1,74 @@
+/**
+ @file ShadowMappedLightPass.vrt
+ @author Morgan McGuire, http://graphics.cs.williams.edu
+ @created 2007-10-22
+ @edited  2009-03-25 
+ */
+#ifdef CUSTOMCONSTANT
+    uniform vec4        customConstant;
+#endif
+
+#ifdef NORMALBUMPMAP
+
+#   if PARALLAXSTEPS > 0
+        /** Vector to the eye in tangent space (needed for parallax) */
+        varying vec3 _tsE;
+#   endif
+    
+    /** Tangent space to world space.
+    Note that this will be linearly interpolated across the polygon.
+
+    NVIDIA drivers do not properly interpolate mat4, so we must pass
+    the columns along a separate vectors. */
+    varying vec3 tan_X, tan_Y;
+#endif
+
+varying vec3 tan_Z;
+
+/** Point on the surface being shaded */
+varying vec3 wsPosition; 
+
+/** Modelview projection matrix used for the light's shadow map */
+uniform mat4 lightMVP;
+
+/** Coordinate to use in the shadow map */
+varying vec4 shadowCoord;
+
+varying vec2 texCoord;
+
+void main(void) {
+
+    vec3 wsEyePos = g3d_CameraToWorldMatrix[3].xyz;
+
+    wsPosition = (g3d_ObjectToWorldMatrix * gl_Vertex).xyz;
+
+    tan_Z = g3d_ObjectToWorldNormalMatrix * gl_Normal.xyz;
+
+#   ifdef NORMALBUMPMAP
+        tan_X = (g3d_ObjectToWorldMatrix * vec4(gl_MultiTexCoord1.xyz, 0)).xyz;
+
+        // T and N are guaranteed perpendicular, so B is normalized.  Its facing 
+        // direction is stored in the texcoord w component.
+        tan_Y = cross(tan_Z, tan_X) * gl_MultiTexCoord1.w;
+
+        // (there is no tan_W, because it is equal to wsPosition)
+
+#       if PARALLAXSTEPS > 0
+            // Compute the tangent space eye vector (ATI does not support the transpose operator)
+            mat3 worldToTangent = mat3(tan_X.x, tan_Y.x, tan_Z.x,
+                                       tan_X.y, tan_Y.y, tan_Z.y,
+                                       tan_X.z, tan_Y.z, tan_Z.z);
+
+            _tsE         = worldToTangent * (wsEyePos - wsPosition);
+#       endif
+#    endif
+
+    shadowCoord      = lightMVP * vec4(wsPosition, 1.0);
+
+    texCoord         = gl_MultiTexCoord0.st;
+
+    // This has higher precision than multiplying with the matrix on the right on NVIDIA GPUs
+    gl_Position   = gl_Vertex * gl_ModelViewProjectionMatrixTranspose;
+    gl_ClipVertex = gl_Vertex * gl_ModelViewMatrixTranspose;
+
+}

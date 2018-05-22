@@ -1,0 +1,129 @@
+// -*- c++ -*-
+// You can extend this sample scene file format with your own fields.
+// Edit the scene parsing in Scene.cpp.
+{
+    name = "Alpha Base",
+   
+    models = {
+       shipModel = #include("3ds/spaceFighter01/spaceFighter01.am.any");
+       
+       groundModel = ArticulatedModel::Specification {
+            filename = "ifs/squarex8.ifs";
+            scale = 12.0f;
+            preprocess = (
+                setCFrame(root(), CFrame::fromXYZYPRDegrees(0,0,0,0,-90,0));
+
+                // Refer to parts and meshes by ID, name, root(), all(), or 0.
+                setTwoSided("root", "mesh", true);
+
+                setMaterial(all(), all(), UniversalMaterial::Specification {
+                    lambertian   = "material/asphalt/asphalt-L.png";
+                    specular     = "material/asphalt/asphalt-G.png";
+                    shininess    = glossyExponent(20);
+                    bump         = "material/asphalt/asphalt-L.png";
+                });
+            );
+       };
+
+        
+       crateModel = ArticulatedModel::Specification {
+            filename = "ifs/crate.ifs";
+            preprocess = (
+                // You can #include a material file, or simply put all of the
+                // options here as was done for groundModel.  #include can be
+                // used to replace any Any value, including a whole 
+                // ArticulatedModel::Specification.
+                setMaterial(all(), all(), #include("material/metalcrate/metalcrate.mat.any"));  
+            );
+       };
+    };
+    
+    environmentMap = {
+        constant = 1.5;
+        texture  = 
+            Texture::Specification {
+                filename = "cubemap/hipshot_m9_sky/16_*.png";
+                desiredFormat = "SRGB8";
+            };
+    };
+    
+    entities = {
+        // Each entity has a name and is an instance of a model.  The instantiation syntax accepts
+        // two (optional) arguments: a position spline (which can be a single position), and a 
+        // pose spline (which can be a single pose).
+        
+        sun = Light {
+            type = "DIRECTIONAL";
+            position = CFrame::fromXYZYPRDegrees(inf, inf, inf, -117, -34, 0);
+            power = Power3(9, 9.5, 8.5);
+            shadowMapSize = Vector2int16(2048, 2048);
+        };
+
+        fillLight = Light {
+            type = "DIRECTIONAL";
+            power = Color3::fromARGB(0x85816f);
+            position = CFrame::fromXYZYPRDegrees(inf, inf, inf, -30, 45, 0);
+            castsShadows = false;
+        };
+        
+        crate0 = VisibleEntity {
+            model = "crateModel";
+            position = CFrame::fromXYZYPRDegrees( -0.907395, 0.5, -0.929706, 63.1677 ) ;
+        };
+
+        crate1 = VisibleEntity {
+            model    = "crateModel";
+            position = CFrame::fromXYZYPRDegrees( 1.87553, 0.5, 0.52729, -59.9654 );
+        };
+
+        crate2 = VisibleEntity {
+            model = "crateModel";
+            position = CFrame::fromXYZYPRDegrees( 2.50425, 0.5, 2.35944, -103.2 ) ;
+        };
+
+        s0 = VisibleEntity {
+            model = "shipModel";
+            position = PhysicsFrameSpline {
+                control = (CFrame::fromXYZYPRDegrees(  -1.1f,  8.1f, -12.3f,  181.8f, -55.6f,   0.0f),
+                           CFrame::fromXYZYPRDegrees(  0.5f,   4.6f,  -7.0f,  184.7f, -53.3f,   0.0f),
+                           
+                           // Hover:
+                           CFrame::fromXYZYPRDegrees(  0.6f,   2.5f,  -2.0f,  175.5f,  -6.9f,   2.0f),
+                           CFrame::fromXYZYPRDegrees(  0.6f,   2.5f,  -2.0f,  175.5f,  -6.9f,   -2.0f),
+                           
+                           // Turn:
+                           CFrame::fromXYZYPRDegrees(  0.6f,   2.5f,  -2.0f,  175.5f,  -6.9f,   0.0f),
+                           
+                           // Fly off
+                           CFrame::fromXYZYPRDegrees( -0.6f,   2.5f,  -2.0f,  137.1f,  -1.7f,   0.0f),
+                           CFrame::fromXYZYPRDegrees( -1.2f,   5.3f,   0.0f,  95.9f,   6.9f,   -45.0f),
+                           CFrame::fromXYZYPRDegrees( -2.2f,   6.7f,  -14.9f,  343.0f,   9.7f,   0.0f),
+                           CFrame::fromXYZYPRDegrees( -3.0f,   8.3f, -16.1f,  270.8f,   5.2f,  10.0f));
+                time = (0,3,4,6,8,10,12,14,16);
+                cyclic = true;
+            };
+        };
+        
+        ground = VisibleEntity {
+            model    = "groundModel";
+            position = CFrame::fromXYZYPRDegrees(0, -0.01, 0, 45);
+        };
+
+        camera = Camera {
+            position = CFrame::fromXYZYPRDegrees(  2.0f,   0.2f,   3.8f,  33.9f,  16.6f,   0.0f);
+        
+            depthOfFieldSettings = DepthOfFieldSettings {
+                model = "ARTIST";
+                nearSharpPlaneZ = -1.5;
+            };
+
+            projection = Projection {
+                nearPlaneZ = -0.1;
+                farPlaneZ = -200;
+                fovDirection = "VERTICAL";
+                fovDegrees = 60;
+            }
+        };
+    };
+        
+}
