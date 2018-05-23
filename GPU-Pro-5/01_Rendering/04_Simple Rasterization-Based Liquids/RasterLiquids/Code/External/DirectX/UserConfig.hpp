@@ -1,0 +1,2 @@
+
+#define DIRECTX_EXTERNAL_PACKAGE    0

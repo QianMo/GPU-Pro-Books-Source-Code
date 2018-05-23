@@ -1,0 +1,609 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\containers">
+      <UniqueIdentifier>{5d058c60-06b6-480c-a5ed-fde39ae1273d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\pimpl">
+      <UniqueIdentifier>{65d4572b-bb7b-47b2-b8f9-3d28f2012f18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\tags">
+      <UniqueIdentifier>{af39c3e9-901a-4405-a70a-66396427bd5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\meta">
+      <UniqueIdentifier>{cb1fcd6f-1ee5-4662-9ea5-f79193686d3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\smart">
+      <UniqueIdentifier>{a6f8a453-7810-4d6a-ba72-7f0c788abab4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\memory">
+      <UniqueIdentifier>{b16c27e2-fd8d-48b1-940f-46c467c3ecd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\properties">
+      <UniqueIdentifier>{09dc0e61-e8cd-4f41-bcee-5ad5ea593426}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\logging">
+      <UniqueIdentifier>{053e59fb-cfe4-46fc-8544-bdddfde35fbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files\concurrent">
+      <UniqueIdentifier>{79bda9a5-9c1b-4261-ab8a-811f20299cbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\io">
+      <UniqueIdentifier>{875b1abe-2c0a-4c80-ad67-ab61bc65b110}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\time">
+      <UniqueIdentifier>{9f2e4440-c4b6-4109-9e9e-05647dcb0f91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\time">
+      <UniqueIdentifier>{55932d64-8493-457a-aafc-10fc1e06af74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\config">
+      <UniqueIdentifier>{3db40b34-971a-44d1-8974-4feba0791229}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\memory">
+      <UniqueIdentifier>{ebee2943-0548-4022-927e-a3c3e69c68bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Documentation">
+      <UniqueIdentifier>{8ea723b4-653e-4aad-9e14-e8585ec6c5e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\logging">
+      <UniqueIdentifier>{eb28dd72-a392-46f9-9faf-3d1af0d5b5cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utf8">
+      <UniqueIdentifier>{bcce21f4-1a7c-4a5f-9ccf-206a67229440}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\strings">
+      <UniqueIdentifier>{820e9663-92b9-44f0-af14-c844fc566f54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\strings">
+      <UniqueIdentifier>{90461f9d-2843-49f3-864a-8bbf95e488c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\io">
+      <UniqueIdentifier>{a66dd1a6-81dc-42b5-b0c9-5ca238765b88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\rapidxml">
+      <UniqueIdentifier>{796a55eb-f9a6-4dbe-81e0-40889349fc2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\xml">
+      <UniqueIdentifier>{476e9021-0055-4b45-b5c6-92f3fa49edf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\functional">
+      <UniqueIdentifier>{496aadd8-b1dd-4259-99d6-5c7a2971ab9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\containers">
+      <UniqueIdentifier>{80228357-14f3-4861-8647-61504697e831}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\meta">
+      <UniqueIdentifier>{b43e9aa1-1708-4039-a31a-a0fa55a15676}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="doc\mainpage.h">
+      <Filter>Documentation</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header\lean\containers\containers.h">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\pimpl\pimpl.h">
+      <Filter>Header Files\pimpl</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\pimpl\pimpl_ptr.h">
+      <Filter>Header Files\pimpl</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\depconfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean_internal\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean_internal\targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\tags\noncopyable.h">
+      <Filter>Header Files\tags</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\cpp0x.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\tags\nonconstructible.h">
+      <Filter>Header Files\tags</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\pimpl\unsafe_pimpl_base.h">
+      <Filter>Header Files\pimpl</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\pimpl\safe_pimpl_base.h">
+      <Filter>Header Files\pimpl</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\meta\meta.h">
+      <Filter>Header Files\meta</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\tags\tags.h">
+      <Filter>Header Files\tags</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\pimpl\opaque_val.h">
+      <Filter>Header Files\pimpl</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\meta\dereference.h">
+      <Filter>Header Files\meta</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\meta\strip.h">
+      <Filter>Header Files\meta</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\smart\cloneable_obj.h">
+      <Filter>Header Files\smart</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\smart\smart.h">
+      <Filter>Header Files\smart</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\smart\cloneable.h">
+      <Filter>Header Files\smart</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\smart\ref_counter.h">
+      <Filter>Header Files\smart</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\memory\memory.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\lean.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\smart\resource_ptr.h">
+      <Filter>Header Files\smart</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\smart\resource.h">
+      <Filter>Header Files\smart</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\smart\weak_resource_ptr.h">
+      <Filter>Header Files\smart</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\smart\com_ptr.h">
+      <Filter>Header Files\smart</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\smart\auto_restore.h">
+      <Filter>Header Files\smart</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\properties\properties.h">
+      <Filter>Header Files\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\properties\property.h">
+      <Filter>Header Files\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\properties\property_collection.h">
+      <Filter>Header Files\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\logging\logging.h">
+      <Filter>Header Files\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\logging\log.h">
+      <Filter>Header Files\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\memory\alignment.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\memory\crt_heap.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\memory\heap_allocator.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\memory\aligned.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\properties\property_accessors.h">
+      <Filter>Header Files\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\containers\simple_vector.h">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\concurrent\concurrent.h">
+      <Filter>Header Files\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\concurrent\spin_lock.h">
+      <Filter>Header Files\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\concurrent\shareable_spin_lock.h">
+      <Filter>Header Files\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\smart\scoped_lock.h">
+      <Filter>Header Files\smart</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\concurrent\shareable_lock_policies.h">
+      <Filter>Header Files\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\io\wcharcvt.h">
+      <Filter>Header Files\io</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\io\io.h">
+      <Filter>Header Files\io</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\time\time.h">
+      <Filter>Header Files\time</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\time\timer.h">
+      <Filter>Header Files\time</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\concurrent\atomic.h">
+      <Filter>Header Files\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\io\endianness.h">
+      <Filter>Header Files\io</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\time\highres_timer.h">
+      <Filter>Header Files\time</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\config\faststl.h">
+      <Filter>Header Files\config</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\config\stdstd.h">
+      <Filter>Header Files\config</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\config\windows.h">
+      <Filter>Header Files\config</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\memory\win_heap.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\memory\heap_bound.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\memory\default_heap.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\memory\new_handler.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\utf8.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\utf8\checked.h">
+      <Filter>Header Files\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\utf8\core.h">
+      <Filter>Header Files\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\utf8\unchecked.h">
+      <Filter>Header Files\utf8</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\strings\strings.h">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\strings\char_traits.h">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\strings\nullterminated.h">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\strings\types.h">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\strings\nullterminated_range.h">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\strings\conversions.h">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\meta\type_traits.h">
+      <Filter>Header Files\meta</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\io\numeric.h">
+      <Filter>Header Files\io</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\logging\log_target.h">
+      <Filter>Header Files\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\logging\log_debugger.h">
+      <Filter>Header Files\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\logging\log_file.h">
+      <Filter>Header Files\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\logging\log_stream.h">
+      <Filter>Header Files\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\io\file.h">
+      <Filter>Header Files\io</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\io\win_types.h">
+      <Filter>Header Files\io</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\io\raw_file.h">
+      <Filter>Header Files\io</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\logging\win_errors.h">
+      <Filter>Header Files\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\strings\utility.h">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\io\mapped_file.h">
+      <Filter>Header Files\io</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\rapidxml\rapidxml.hpp">
+      <Filter>Header Files\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\rapidxml\rapidxml_iterators.hpp">
+      <Filter>Header Files\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\rapidxml\rapidxml_print.hpp">
+      <Filter>Header Files\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\rapidxml\rapidxml_utils.hpp">
+      <Filter>Header Files\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\xml\xml.h">
+      <Filter>Header Files\xml</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\xml\xml_file.h">
+      <Filter>Header Files\xml</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\io\raw_file_inserter.h">
+      <Filter>Header Files\io</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\strings\charstream.h">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\properties\property_types.h">
+      <Filter>Header Files\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\export_all.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\concurrent\critical_section.h">
+      <Filter>Header Files\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\smart\scope_guard.h">
+      <Filter>Header Files\smart</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\concurrent\event.h">
+      <Filter>Header Files\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\concurrent\semaphore.h">
+      <Filter>Header Files\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\containers\simple_hash_map.h">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\containers\simple_hash_map.h">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\smart\terminate_guard.h">
+      <Filter>Header Files\smart</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\functional\callable.h">
+      <Filter>Header Files\functional</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\functional\functional.h">
+      <Filter>Header Files\functional</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\functional\hashing.h">
+      <Filter>Header Files\functional</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\limits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\io\filesystem.h">
+      <Filter>Header Files\io</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\strings\range.h">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\smart\handle_guard.h">
+      <Filter>Header Files\smart</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\logging\streamconv.h">
+      <Filter>Header Files\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\logging\errors.h">
+      <Filter>Header Files\logging</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\xml\utility.h">
+      <Filter>Header Files\xml</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\containers\any.h">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\memory\chunk_heap.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\memory\object_pool.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\pimpl\forward_val.h">
+      <Filter>Header Files\pimpl</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\functional\algorithm.h">
+      <Filter>Header Files\functional</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\smart\scoped_ptr.h">
+      <Filter>Header Files\smart</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\tags\transitive_ptr.h">
+      <Filter>Header Files\tags</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\io\generic.h">
+      <Filter>Header Files\io</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\io\serializer.h">
+      <Filter>Header Files\io</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\strings\string_traits.h">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\functional\variadic.h">
+      <Filter>Header Files\functional</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\type_info.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\containers\dynamic_array.h">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\concurrent\thread.h">
+      <Filter>Header Files\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\xml\numeric.h">
+      <Filter>Header Files\xml</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\properties\property_type.h">
+      <Filter>Header Files\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\default.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\containers\static_array.h">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\functional\predicates.h">
+      <Filter>Header Files\functional</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\pimpl\forward_iterator.h">
+      <Filter>Header Files\pimpl</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\meta\math.h">
+      <Filter>Header Files\meta</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\containers\array.h">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\memory\chunk_pool.h">
+      <Filter>Header Files\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\containers\multi_vector.h">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\containers\construction.h">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\containers\vector_policies.h">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\containers\allocator_aware.h">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\smart\common.h">
+      <Filter>Header Files\smart</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\foreach.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\functional\bits.h">
+      <Filter>Header Files\functional</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\containers\strided_ptr.h">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\tags\forward_ref.h">
+      <Filter>Header Files\tags</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\meta\literal.h">
+      <Filter>Header Files\meta</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\meta\type.h">
+      <Filter>Header Files\meta</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\tags\handle.h">
+      <Filter>Header Files\tags</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\pimpl\static_pimpl.h">
+      <Filter>Header Files\pimpl</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\tags\move_ptr.h">
+      <Filter>Header Files\tags</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\config\fastlean.h">
+      <Filter>Header Files\config</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\containers\parallel_vector.h">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\strings\hashing.h">
+      <Filter>Header Files\strings</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\containers\simple_queue.h">
+      <Filter>Header Files\containers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\lean\logging\log_details.h">
+      <Filter>Header Files\logging</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="header\lean\time\source\highres_timer.cpp">
+      <Filter>Source Files\time</Filter>
+    </ClCompile>
+    <ClCompile Include="header\lean\memory\source\win_heap.cpp">
+      <Filter>Source Files\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="header\lean\memory\source\new_handler.cpp">
+      <Filter>Source Files\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="header\lean\strings\source\conversions.cpp">
+      <Filter>Source Files\strings</Filter>
+    </ClCompile>
+    <ClCompile Include="header\lean\logging\source\log.cpp">
+      <Filter>Source Files\logging</Filter>
+    </ClCompile>
+    <ClCompile Include="header\lean\logging\source\log_debugger.cpp">
+      <Filter>Source Files\logging</Filter>
+    </ClCompile>
+    <ClCompile Include="header\lean\logging\source\log_file.cpp">
+      <Filter>Source Files\logging</Filter>
+    </ClCompile>
+    <ClCompile Include="header\lean\io\source\file.cpp">
+      <Filter>Source Files\io</Filter>
+    </ClCompile>
+    <ClCompile Include="header\lean\io\source\raw_file.cpp">
+      <Filter>Source Files\io</Filter>
+    </ClCompile>
+    <ClCompile Include="header\lean\logging\source\win_errors.cpp">
+      <Filter>Source Files\logging</Filter>
+    </ClCompile>
+    <ClCompile Include="header\lean\io\source\mapped_file.cpp">
+      <Filter>Source Files\io</Filter>
+    </ClCompile>
+    <ClCompile Include="header\lean\containers\source\simple_hash_map.cpp">
+      <Filter>Source Files\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="header\lean\io\source\filesystem.cpp">
+      <Filter>Source Files\io</Filter>
+    </ClCompile>
+    <ClCompile Include="header\lean\io\source\common.cpp">
+      <Filter>Source Files\io</Filter>
+    </ClCompile>
+    <ClCompile Include="header\lean\logging\source\errors.cpp">
+      <Filter>Source Files\logging</Filter>
+    </ClCompile>
+    <ClCompile Include="source\inst_containers.cpp">
+      <Filter>Source Files\containers</Filter>
+    </ClCompile>
+    <ClCompile Include="header\lean\meta\source\support.cpp">
+      <Filter>Source Files\meta</Filter>
+    </ClCompile>
+    <ClCompile Include="header\lean\logging\source\assert.cpp">
+      <Filter>Source Files\logging</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MaterialLibraryPreset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Name>water</Name>
+	<MaterialProperty>
+		<Water>1</Water>
+		<Dirt>0</Dirt>
+		<Metal>0</Metal>
+		<Wood>0</Wood>
+		<Organic>0</Organic>
+		<Rust>0</Rust>
+		<Stone>0</Stone>
+		<Dummy>0</Dummy>
+	</MaterialProperty>
+	<CompositionParams>
+		<Water>
+			<DiffuseBaseStrength>0</DiffuseBaseStrength>
+			<DiffuseRandomVariation>0</DiffuseRandomVariation>
+			<SpecularBaseStrength>0</SpecularBaseStrength>
+			<SpecularRandomVariation>0</SpecularRandomVariation>
+		</Water>
+	</CompositionParams>
+</MaterialLibraryPreset>

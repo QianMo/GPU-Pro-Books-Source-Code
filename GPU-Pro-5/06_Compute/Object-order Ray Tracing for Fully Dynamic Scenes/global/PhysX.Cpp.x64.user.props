@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="UserMacros">
+    <BE_PHYSX_DIR>C:\SDKs\PhysX\3.2.3\</BE_PHYSX_DIR>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IncludePath>$(BE_PHYSX_DIR)Include;$(BE_PHYSX_DIR)Include\extensions;$(BE_PHYSX_DIR)Include\characterkinematic;$(BE_PHYSX_DIR)Include\foundation;$(BE_PHYSX_DIR)Include\pxtask;$(BE_PHYSX_DIR)Include\cooking;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LibraryPath>$(BE_PHYSX_DIR)Lib\win64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <BuildMacro Include="BE_PHYSX_DIR">
+      <Value>$(BE_PHYSX_DIR)</Value>
+    </BuildMacro>
+  </ItemGroup>
+  <ItemDefinitionGroup>
+    <ClCompile />
+    <Link>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+</Project>

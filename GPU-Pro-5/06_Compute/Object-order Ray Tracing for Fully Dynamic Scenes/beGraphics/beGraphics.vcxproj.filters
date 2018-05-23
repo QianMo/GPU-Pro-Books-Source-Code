@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\DX11">
+      <UniqueIdentifier>{f73c382e-e949-4cd4-b8d5-ff295ad0f090}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DX">
+      <UniqueIdentifier>{44382dd9-9f15-4580-83b4-5cb7dd00f988}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Any">
+      <UniqueIdentifier>{319feb2c-0fa9-45b6-9c0c-2ee062fcb10a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utility">
+      <UniqueIdentifier>{8c85618d-5198-4078-b78a-e74808637dd8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header\beGraphics\Any\beAdapters.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\Any\beAPI.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\Any\beBuffer.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\Any\beDevice.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\Any\beDeviceContext.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\Any\beEffect.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\Any\beEffectCache.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\Any\beEffectsAPI.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\Any\beFormat.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\Any\beGraphics.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\Any\beResourceViews.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\Any\beState.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\Any\beTexture.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\Any\beTextureTargetPool.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\Any\beStateManager.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beEnum.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\Any\beQuery.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="source\DX\dxerr.h">
+      <Filter>Source Files\DX</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX\beBlob.h">
+      <Filter>Source Files\DX</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX\beEffect.h">
+      <Filter>Source Files\DX</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX\beError.h">
+      <Filter>Source Files\DX</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX\beGraphics.h">
+      <Filter>Source Files\DX</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX\beIncludeManager.h">
+      <Filter>Source Files\DX</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX\beMemory.h">
+      <Filter>Source Files\DX</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beAdapters.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beBuffer.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beD3D11.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beD3DXEffects11.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beDevice.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beDeviceContext.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beEffect.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beEffectCache.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beFormat.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beGraphics.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beQuery.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beResourceViews.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beState.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beStateManager.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beTexture.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beTextureCache.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beTextureTargetPool.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beAdapters.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beBuffer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beDevice.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beDeviceContext.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beEffect.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beEffectCache.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beFormat.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beGraphics.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beMemory.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beStateManager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beTexture.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beTextureCache.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beTextureProvider.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beTextureTargetPool.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphicsInternal\stdafx.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphicsInternal\targetver.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\Any\beTextureCache.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beMaterial.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beMaterialConfig.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beEffectConfig.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beMaterialConfig.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beMaterial.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beMaterialConfigCache.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beMaterialConfigCache.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\DX11\beMaterialCache.h">
+      <Filter>Source Files\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beMaterialCache.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\Any\beMaterial.h">
+      <Filter>Source Files\Any</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beGraphics\beMaterialSerialization.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beAdapters.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beGraphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beEffectCache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beAdapters.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beDevice.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beBuffer.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beEffectCache.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beEffect.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beResourceViews.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beState.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beStateManager.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beTextureCache.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beTexture.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beTextureTargetPool.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX\beError.cpp">
+      <Filter>Source Files\DX</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beTextureProvider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beQuery.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beDeviceContext.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX\dxerr.cpp">
+      <Filter>Source Files\DX</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beMaterialConfig.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beMaterial.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beEffectConfig.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beMaterial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beMaterialConfigCache.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beMaterialCache.cpp">
+      <Filter>Source Files\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beMaterialSerialization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

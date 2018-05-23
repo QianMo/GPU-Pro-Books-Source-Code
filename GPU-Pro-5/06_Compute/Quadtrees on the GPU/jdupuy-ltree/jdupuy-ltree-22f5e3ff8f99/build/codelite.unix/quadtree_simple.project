@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeLite_Project Name="quadtree_simple">
+  <VirtualDirectory Name="src">
+    <File Name="../../src/affine.c"/>
+    <File Name="../../src/bstrlib.c"/>
+    <File Name="../../src/buf.c"/>
+    <File Name="../../src/frustum.c"/>
+    <File Name="../../src/ft.c"/>
+    <File Name="../../src/glload.c"/>
+    <File Name="../../src/image.c"/>
+    <File Name="../../src/program.c"/>
+    <File Name="../../src/quadtree.c"/>
+    <File Name="../../src/timer.c"/>
+  </VirtualDirectory>
+  <Settings Type="Executable">
+    <Configuration Name="debug" CompilerType="gnu gcc" DebuggerType="GNU gdb debugger" Type="Executable">
+      <General OutputFile="quadtree_simple" IntermediateDirectory="obj/debug/quadtree_simple" Command="./quadtree_simple" CommandArguments="" WorkingDirectory="." PauseExecWhenProcTerminates="yes"/>
+      <Compiler Required="yes" Options="-Wall;-msse;-msse2;-g">
+        <IncludePath Value="../../lib"/>
+        <Preprocessor Value="GLFW_NO_GLU"/>
+        <Preprocessor Value="DEBUG"/>
+        <Preprocessor Value="LINUX"/>
+      </Compiler>
+      <Linker Required="yes" Options="">
+        <Library Value="m" />
+        <Library Value="png" />
+        <Library Value="glfw3" />
+        <Library Value="GL" />
+        <Library Value="Xrandr" />
+        <Library Value="Xxf86vm" />
+        <Library Value="Xi" />
+        <Library Value="pthread" />
+        <Library Value="X11" />
+        <Library Value="rt" />
+      </Linker>
+      <ResourceCompiler Required="no" Options=""/>
+      <CustomBuild Enabled="no">
+        <CleanCommand></CleanCommand>
+        <BuildCommand></BuildCommand>
+        <SingleFileCommand></SingleFileCommand>
+        <MakefileGenerationCommand></MakefileGenerationCommand>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory></WorkingDirectory>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild></CustomPostBuild>
+        <CustomPreBuild></CustomPreBuild>
+      </AdditionalRules>
+    </Configuration>
+    <Configuration Name="release" CompilerType="gnu gcc" DebuggerType="GNU gdb debugger" Type="Executable">
+      <General OutputFile="quadtree_simple" IntermediateDirectory="obj/release/quadtree_simple" Command="./quadtree_simple" CommandArguments="" WorkingDirectory="." PauseExecWhenProcTerminates="yes"/>
+      <Compiler Required="yes" Options="-msse;-msse2;-O2">
+        <IncludePath Value="../../lib"/>
+        <Preprocessor Value="GLFW_NO_GLU"/>
+        <Preprocessor Value="NDEBUG"/>
+        <Preprocessor Value="LINUX"/>
+      </Compiler>
+      <Linker Required="yes" Options="-s">
+        <Library Value="m" />
+        <Library Value="png" />
+        <Library Value="glfw3" />
+        <Library Value="GL" />
+        <Library Value="Xrandr" />
+        <Library Value="Xxf86vm" />
+        <Library Value="Xi" />
+        <Library Value="pthread" />
+        <Library Value="X11" />
+        <Library Value="rt" />
+      </Linker>
+      <ResourceCompiler Required="no" Options=""/>
+      <CustomBuild Enabled="no">
+        <CleanCommand></CleanCommand>
+        <BuildCommand></BuildCommand>
+        <SingleFileCommand></SingleFileCommand>
+        <MakefileGenerationCommand></MakefileGenerationCommand>
+        <ThirdPartyToolName>None</ThirdPartyToolName>
+        <WorkingDirectory></WorkingDirectory>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild></CustomPostBuild>
+        <CustomPreBuild></CustomPreBuild>
+      </AdditionalRules>
+    </Configuration>
+  </Settings>
+  <Dependencies name="debug">
+  </Dependencies>
+  <Dependencies name="release">
+  </Dependencies>
+</CodeLite_Project>

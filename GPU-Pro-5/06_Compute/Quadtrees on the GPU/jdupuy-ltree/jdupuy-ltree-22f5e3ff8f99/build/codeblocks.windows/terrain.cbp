@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="terrain" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="debug">
+				<Option output="terrain.exe" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/debug/terrain" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-g" />
+					<Add option="-DGLFW_NO_GLU" />
+					<Add option="-DDEBUG" />
+					<Add option="-DWINDOWS" />
+					<Add option="-DTERRAIN_RENDERER" />
+					<Add directory="../../lib" />
+					<Add directory="../../lib/libpng" />
+					<Add directory="../../lib/GLFW" />
+				</Compiler>
+				<Linker>
+					<Add directory="C:/Users/jdup/Desktop/jdupuy-ltree-22f5e3ff8f99/lib/GLFW" />
+					<Add directory="C:/Users/jdup/Desktop/jdupuy-ltree-22f5e3ff8f99/lib/libpng" />
+					<Add library="C:/Users/jdup/Desktop/jdupuy-ltree-22f5e3ff8f99/lib/GLFW/libglfw3.a" />
+					<Add library="C:/Users/jdup/Desktop/jdupuy-ltree-22f5e3ff8f99/lib/libpng/zlib.lib" />
+					<Add library="C:/Users/jdup/Desktop/jdupuy-ltree-22f5e3ff8f99/lib/libpng/libpng14.lib" />
+					<Add library="opengl32" />
+					<Add library="gdi32" />
+					<Add library="user32" />
+					<Add library="kernel32" />
+				</Linker>
+			</Target>
+			<Target title="release">
+				<Option output="terrain.exe" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/release/terrain" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-O2" />
+					<Add option="-DGLFW_NO_GLU" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DWINDOWS" />
+					<Add option="-DTERRAIN_RENDERER" />
+					<Add directory="../../lib" />
+					<Add directory="../../lib/libpng" />
+					<Add directory="../../lib/GLFW" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add directory="C:/Users/jdup/Desktop/jdupuy-ltree-22f5e3ff8f99/lib/GLFW" />
+					<Add directory="C:/Users/jdup/Desktop/jdupuy-ltree-22f5e3ff8f99/lib/libpng" />
+					<Add library="C:/Users/jdup/Desktop/jdupuy-ltree-22f5e3ff8f99/lib/GLFW/libglfw3.a" />
+					<Add library="C:/Users/jdup/Desktop/jdupuy-ltree-22f5e3ff8f99/lib/libpng/zlib.lib" />
+					<Add library="C:/Users/jdup/Desktop/jdupuy-ltree-22f5e3ff8f99/lib/libpng/libpng14.lib" />
+					<Add library="opengl32" />
+					<Add library="gdi32" />
+					<Add library="user32" />
+					<Add library="kernel32" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="../../src/affine.c">
+		</Unit>
+		<Unit filename="../../src/bstrlib.c">
+		</Unit>
+		<Unit filename="../../src/buf.c">
+		</Unit>
+		<Unit filename="../../src/frustum.c">
+		</Unit>
+		<Unit filename="../../src/ft.c">
+		</Unit>
+		<Unit filename="../../src/glload.c">
+		</Unit>
+		<Unit filename="../../src/image.c">
+		</Unit>
+		<Unit filename="../../src/program.c">
+		</Unit>
+		<Unit filename="../../src/quadtree.c">
+		</Unit>
+		<Unit filename="../../src/timer.c">
+		</Unit>
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
+

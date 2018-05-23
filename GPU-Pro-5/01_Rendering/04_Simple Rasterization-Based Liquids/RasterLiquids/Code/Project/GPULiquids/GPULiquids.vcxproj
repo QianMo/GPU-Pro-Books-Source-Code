@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9D0BCFD6-5D52-4CBD-91ED-3D65ED990C34}</ProjectGuid>
+    <RootNamespace>GPULiquids</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\..\Bin\Debug\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IntDir>..\..\Bin\Debug\Temp\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\..\Bin\Release\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IntDir>..\..\Bin\Release\Temp\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\Src;..\..\External\DirectX\Include</AdditionalIncludeDirectories>
+      <UndefinePreprocessorDefinitions>_DEBUG</UndefinePreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>user32.lib;d3d11.lib;d3dx11d.lib;dinput8.lib;Fondation.lib;Dx11Renderer.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Bin\Debug\;..\..\External\DirectX\Lib\x86\</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\..\Src\;..\..\External\DirectX\Include\</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\..\Bin\Release\;..\..\External\DirectX\Lib\x86\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3dx11.lib;d3d11.lib;dinput8.lib;Fondation.lib;Dx11Renderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Src\Apps\GPULiquids\GPU2DParticleLiquids.cpp" />
+    <ClCompile Include="..\..\Src\Apps\GPULiquids\GPU3DParticleLiquids.cpp" />
+    <ClCompile Include="..\..\Src\Apps\GPULiquids\GPUShallowWaterSimulation.cpp" />
+    <ClCompile Include="..\..\Src\MainSimulations.cpp" />
+    <ClCompile Include="..\..\Src\Physics\GPUFluids\GPUSPH.cpp" />
+    <ClCompile Include="..\..\Src\Physics\GPUFluids\GPUSPH2D.cpp" />
+    <ClCompile Include="..\..\Src\Physics\GPUFluids\GPUSPHShallowWater.cpp" />
+    <ClCompile Include="..\..\Src\Physics\Terrain\Terrain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Src\Apps\GPULiquids\GPU2DParticleLiquids.hpp" />
+    <ClInclude Include="..\..\Src\Apps\GPULiquids\GPU3DParticleLiquids.hpp" />
+    <ClInclude Include="..\..\Src\Apps\GPULiquids\GPUShallowWaterSimulation.hpp" />
+    <ClInclude Include="..\..\Src\Physics\GPUFluids\GPUSPH.hpp" />
+    <ClInclude Include="..\..\Src\Physics\GPUFluids\GPUSPH2D.hpp" />
+    <ClInclude Include="..\..\Src\Physics\GPUFluids\GPUSPHShallowWater.hpp" />
+    <ClInclude Include="..\..\Src\Physics\Terrain\Terrain.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Src\Graphics\Shaders\Physics\SPH.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\Physics\SPH2D.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\Physics\SPHFLIP.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\Physics\SPHForces.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\Physics\SPHParams.hlsl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\Physics\SPHShallowWater.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\Physics\SPHSplatting.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\Physics\WaterSurfaceHF.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\RayCastLiquid.fx">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

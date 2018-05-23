@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E3806FF1-63DD-457C-8479-517C78134349}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>lean</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>$(ProjectName)_x64</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>$(ProjectName)_x64</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>LEAN_FAST_STL;LEAN_BUILD_LIB;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>lean_internal\StdAfx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)\source;$(ProjectDir)\header</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>LEAN_FAST_STL;LEAN_BUILD_LIB;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>lean_internal\StdAfx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)\source;$(ProjectDir)\header</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>LEAN_FAST_STL;LEAN_BUILD_LIB;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>lean_internal\StdAfx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)\source;$(ProjectDir)\header</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>LEAN_FAST_STL;LEAN_BUILD_LIB;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>lean_internal\StdAfx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)\source;$(ProjectDir)\header</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="doc\mainpage.h" />
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header\lean\concurrent\atomic.h" />
+    <ClInclude Include="header\lean\concurrent\concurrent.h" />
+    <ClInclude Include="header\lean\concurrent\critical_section.h" />
+    <ClInclude Include="header\lean\concurrent\event.h" />
+    <ClInclude Include="header\lean\concurrent\semaphore.h" />
+    <ClInclude Include="header\lean\concurrent\shareable_lock_policies.h" />
+    <ClInclude Include="header\lean\concurrent\shareable_spin_lock.h" />
+    <ClInclude Include="header\lean\concurrent\spin_lock.h" />
+    <ClInclude Include="header\lean\concurrent\thread.h" />
+    <ClInclude Include="header\lean\config\fastlean.h" />
+    <ClInclude Include="header\lean\config\faststl.h" />
+    <ClInclude Include="header\lean\config\stdstd.h" />
+    <ClInclude Include="header\lean\config\windows.h" />
+    <ClInclude Include="header\lean\containers\allocator_aware.h" />
+    <ClInclude Include="header\lean\containers\any.h" />
+    <ClInclude Include="header\lean\containers\array.h" />
+    <ClInclude Include="header\lean\containers\construction.h" />
+    <ClInclude Include="header\lean\containers\dynamic_array.h" />
+    <ClInclude Include="header\lean\containers\multi_vector.h" />
+    <ClInclude Include="header\lean\containers\parallel_vector.h" />
+    <ClInclude Include="header\lean\containers\simple_hash_map.h" />
+    <ClInclude Include="header\lean\containers\simple_queue.h" />
+    <ClInclude Include="header\lean\containers\simple_vector.h" />
+    <ClInclude Include="header\lean\containers\static_array.h" />
+    <ClInclude Include="header\lean\containers\strided_ptr.h" />
+    <ClInclude Include="header\lean\containers\vector_policies.h" />
+    <ClInclude Include="header\lean\default.h" />
+    <ClInclude Include="header\lean\export_all.h" />
+    <ClInclude Include="header\lean\foreach.h" />
+    <ClInclude Include="header\lean\functional\algorithm.h" />
+    <ClInclude Include="header\lean\functional\bits.h" />
+    <ClInclude Include="header\lean\functional\callable.h" />
+    <ClInclude Include="header\lean\functional\predicates.h" />
+    <ClInclude Include="header\lean\functional\variadic.h" />
+    <ClInclude Include="header\lean\functional\functional.h" />
+    <ClInclude Include="header\lean\functional\hashing.h" />
+    <ClInclude Include="header\lean\io\endianness.h" />
+    <ClInclude Include="header\lean\io\file.h" />
+    <ClInclude Include="header\lean\io\filesystem.h" />
+    <ClInclude Include="header\lean\io\generic.h" />
+    <ClInclude Include="header\lean\io\io.h" />
+    <ClInclude Include="header\lean\io\mapped_file.h" />
+    <ClInclude Include="header\lean\io\numeric.h" />
+    <ClInclude Include="header\lean\io\raw_file.h" />
+    <ClInclude Include="header\lean\io\raw_file_inserter.h" />
+    <ClInclude Include="header\lean\io\serializer.h" />
+    <ClInclude Include="header\lean\io\wcharcvt.h" />
+    <ClInclude Include="header\lean\io\win_types.h" />
+    <ClInclude Include="header\lean\limits.h" />
+    <ClInclude Include="header\lean\logging\errors.h" />
+    <ClInclude Include="header\lean\logging\log_debugger.h" />
+    <ClInclude Include="header\lean\logging\log_details.h" />
+    <ClInclude Include="header\lean\logging\log_file.h" />
+    <ClInclude Include="header\lean\logging\log_stream.h" />
+    <ClInclude Include="header\lean\logging\log_target.h" />
+    <ClInclude Include="header\lean\logging\streamconv.h" />
+    <ClInclude Include="header\lean\logging\win_errors.h" />
+    <ClInclude Include="header\lean\memory\aligned.h" />
+    <ClInclude Include="header\lean\memory\chunk_heap.h" />
+    <ClInclude Include="header\lean\memory\chunk_pool.h" />
+    <ClInclude Include="header\lean\memory\crt_heap.h" />
+    <ClInclude Include="header\lean\containers\containers.h" />
+    <ClInclude Include="header\lean\cpp0x.h" />
+    <ClInclude Include="header\lean\depconfig.h" />
+    <ClInclude Include="header\lean\lean.h" />
+    <ClInclude Include="header\lean\logging\log.h" />
+    <ClInclude Include="header\lean\logging\logging.h" />
+    <ClInclude Include="header\lean\macros.h" />
+    <ClInclude Include="header\lean\memory\alignment.h" />
+    <ClInclude Include="header\lean\memory\default_heap.h" />
+    <ClInclude Include="header\lean\memory\heap_allocator.h" />
+    <ClInclude Include="header\lean\memory\heap_bound.h" />
+    <ClInclude Include="header\lean\memory\new_handler.h" />
+    <ClInclude Include="header\lean\memory\object_pool.h" />
+    <ClInclude Include="header\lean\memory\win_heap.h" />
+    <ClInclude Include="header\lean\meta\dereference.h" />
+    <ClInclude Include="header\lean\meta\literal.h" />
+    <ClInclude Include="header\lean\meta\math.h" />
+    <ClInclude Include="header\lean\meta\type.h" />
+    <ClInclude Include="header\lean\meta\type_traits.h" />
+    <ClInclude Include="header\lean\meta\meta.h" />
+    <ClInclude Include="header\lean\meta\strip.h" />
+    <ClInclude Include="header\lean\pimpl\forward_iterator.h" />
+    <ClInclude Include="header\lean\pimpl\forward_val.h" />
+    <ClInclude Include="header\lean\pimpl\pimpl.h" />
+    <ClInclude Include="header\lean\pimpl\opaque_val.h" />
+    <ClInclude Include="header\lean\pimpl\static_pimpl.h" />
+    <ClInclude Include="header\lean\pimpl\unsafe_pimpl_base.h" />
+    <ClInclude Include="header\lean\pimpl\safe_pimpl_base.h" />
+    <ClInclude Include="header\lean\properties\properties.h" />
+    <ClInclude Include="header\lean\properties\property.h" />
+    <ClInclude Include="header\lean\properties\property_accessors.h" />
+    <ClInclude Include="header\lean\properties\property_collection.h" />
+    <ClInclude Include="header\lean\properties\property_type.h" />
+    <ClInclude Include="header\lean\properties\property_types.h" />
+    <ClInclude Include="header\lean\rapidxml\rapidxml.hpp" />
+    <ClInclude Include="header\lean\rapidxml\rapidxml_iterators.hpp" />
+    <ClInclude Include="header\lean\rapidxml\rapidxml_print.hpp" />
+    <ClInclude Include="header\lean\rapidxml\rapidxml_utils.hpp" />
+    <ClInclude Include="header\lean\smart\auto_restore.h" />
+    <ClInclude Include="header\lean\smart\cloneable_obj.h" />
+    <ClInclude Include="header\lean\smart\common.h" />
+    <ClInclude Include="header\lean\smart\com_ptr.h" />
+    <ClInclude Include="header\lean\smart\handle_guard.h" />
+    <ClInclude Include="header\lean\smart\ref_counter.h" />
+    <ClInclude Include="header\lean\smart\resource.h" />
+    <ClInclude Include="header\lean\smart\resource_ptr.h" />
+    <ClInclude Include="header\lean\smart\scoped_lock.h" />
+    <ClInclude Include="header\lean\smart\scoped_ptr.h" />
+    <ClInclude Include="header\lean\smart\scope_guard.h" />
+    <ClInclude Include="header\lean\smart\smart.h" />
+    <ClInclude Include="header\lean\smart\cloneable.h" />
+    <ClInclude Include="header\lean\smart\terminate_guard.h" />
+    <ClInclude Include="header\lean\smart\weak_resource_ptr.h" />
+    <ClInclude Include="header\lean\strings\charstream.h" />
+    <ClInclude Include="header\lean\strings\conversions.h" />
+    <ClInclude Include="header\lean\strings\hashing.h" />
+    <ClInclude Include="header\lean\strings\nullterminated.h" />
+    <ClInclude Include="header\lean\strings\char_traits.h" />
+    <ClInclude Include="header\lean\strings\nullterminated_range.h" />
+    <ClInclude Include="header\lean\strings\range.h" />
+    <ClInclude Include="header\lean\strings\strings.h" />
+    <ClInclude Include="header\lean\strings\string_traits.h" />
+    <ClInclude Include="header\lean\strings\types.h" />
+    <ClInclude Include="header\lean\strings\utility.h" />
+    <ClInclude Include="header\lean\tags\forward_ref.h" />
+    <ClInclude Include="header\lean\tags\handle.h" />
+    <ClInclude Include="header\lean\tags\move_ptr.h" />
+    <ClInclude Include="header\lean\tags\nonconstructible.h" />
+    <ClInclude Include="header\lean\tags\noncopyable.h" />
+    <ClInclude Include="header\lean\tags\tags.h" />
+    <ClInclude Include="header\lean\tags\transitive_ptr.h" />
+    <ClInclude Include="header\lean\time\highres_timer.h" />
+    <ClInclude Include="header\lean\time\time.h" />
+    <ClInclude Include="header\lean\time\timer.h" />
+    <ClInclude Include="header\lean\types.h" />
+    <ClInclude Include="header\lean\type_info.h" />
+    <ClInclude Include="header\lean\utf8.h" />
+    <ClInclude Include="header\lean\utf8\checked.h" />
+    <ClInclude Include="header\lean\utf8\core.h" />
+    <ClInclude Include="header\lean\utf8\unchecked.h" />
+    <ClInclude Include="header\lean\xml\numeric.h" />
+    <ClInclude Include="header\lean\xml\utility.h" />
+    <ClInclude Include="header\lean\xml\xml.h" />
+    <ClInclude Include="header\lean\xml\xml_file.h" />
+    <ClInclude Include="header\lean_internal\stdafx.h" />
+    <ClInclude Include="header\lean_internal\targetver.h" />
+    <ClInclude Include="header\lean\pimpl\pimpl_ptr.h" />
+    <ClInclude Include="header\lean\memory\memory.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="header\lean\containers\source\simple_hash_map.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="header\lean\io\source\common.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="header\lean\io\source\file.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="header\lean\io\source\filesystem.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="header\lean\io\source\mapped_file.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="header\lean\io\source\raw_file.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="header\lean\logging\source\assert.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="header\lean\logging\source\errors.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="header\lean\logging\source\log.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="header\lean\logging\source\log_debugger.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="header\lean\logging\source\log_file.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="header\lean\logging\source\win_errors.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="header\lean\memory\source\new_handler.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="header\lean\memory\source\win_heap.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="header\lean\meta\source\support.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="header\lean\strings\source\conversions.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="header\lean\time\source\highres_timer.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="source\inst_containers.cpp" />
+    <ClCompile Include="source\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

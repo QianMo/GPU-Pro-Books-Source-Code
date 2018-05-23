@@ -1,0 +1,379 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8EA08608-DE1D-4B10-87F3-EF1920401AFB}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>beScene</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\global\Platform.Cpp.$(Platform).user.props" />
+    <Import Project="..\global\Lean.Cpp.Win32.user.props" />
+    <Import Project="..\global\beCore.Cpp.Win32.props" />
+    <Import Project="..\global\beMath.Cpp.Win32.props" />
+    <Import Project="..\global\beEntitySystem.Cpp.Win32.props" />
+    <Import Project="..\global\Boost.Cpp.Win32.user.props" />
+    <Import Project="..\global\beGraphics.Cpp.Win32.props" />
+    <Import Project="..\global\DirectX.Effects11.Cpp.Win32.user.props" />
+    <Import Project="..\global\DirectX.Cpp.Win32.user.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\global\Platform.Cpp.$(Platform).user.props" />
+    <Import Project="..\global\Lean.Cpp.Win32.user.props" />
+    <Import Project="..\global\beCore.Cpp.Win32.props" />
+    <Import Project="..\global\beMath.Cpp.Win32.props" />
+    <Import Project="..\global\beEntitySystem.Cpp.Win32.props" />
+    <Import Project="..\global\Boost.Cpp.Win32.user.props" />
+    <Import Project="..\global\beGraphics.Cpp.Win32.props" />
+    <Import Project="..\global\DirectX.Effects11.Cpp.Win32.user.props" />
+    <Import Project="..\global\DirectX.Cpp.x64.user.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\global\Platform.Cpp.$(Platform).user.props" />
+    <Import Project="..\global\Lean.Cpp.Win32.user.props" />
+    <Import Project="..\global\beCore.Cpp.Win32.props" />
+    <Import Project="..\global\beMath.Cpp.Win32.props" />
+    <Import Project="..\global\beEntitySystem.Cpp.Win32.props" />
+    <Import Project="..\global\Boost.Cpp.Win32.user.props" />
+    <Import Project="..\global\beGraphics.Cpp.Win32.props" />
+    <Import Project="..\global\DirectX.Effects11.Cpp.Win32.user.props" />
+    <Import Project="..\global\DirectX.Cpp.Win32.user.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\global\Platform.Cpp.$(Platform).user.props" />
+    <Import Project="..\global\Lean.Cpp.Win32.user.props" />
+    <Import Project="..\global\beCore.Cpp.Win32.props" />
+    <Import Project="..\global\beMath.Cpp.Win32.props" />
+    <Import Project="..\global\beEntitySystem.Cpp.Win32.props" />
+    <Import Project="..\global\Boost.Cpp.Win32.user.props" />
+    <Import Project="..\global\beGraphics.Cpp.Win32.props" />
+    <Import Project="..\global\DirectX.Effects11.Cpp.Win32.user.props" />
+    <Import Project="..\global\DirectX.Cpp.x64.user.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)_d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)_x64d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_x64</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;BESCENE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>beSceneInternal/StdAfx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)header</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>beGraphics_d.lib;beEntitySystem_d.lib;beCore_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy    "$(TargetPath)"    "$(SolutionDir)Bin\$(TargetFileName)"
+copy    "$(TargetDir)$(TargetName).lib"    "$(SolutionDir)global\$(TargetName).lib"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;BESCENE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>beSceneInternal/StdAfx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)header</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>beGraphics_x64d.lib;beEntitySystem_x64d.lib;beCore_x64d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy    "$(TargetPath)"    "$(SolutionDir)Bin\$(TargetFileName)"
+copy    "$(TargetDir)$(TargetName).lib"    "$(SolutionDir)global\$(TargetName).lib"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;BESCENE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>beSceneInternal/StdAfx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)header</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>beGraphics.lib;beEntitySystem.lib;beCore.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy    "$(TargetPath)"    "$(SolutionDir)Bin\$(TargetFileName)"
+copy    "$(TargetDir)$(TargetName).lib"    "$(SolutionDir)global\$(TargetName).lib"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;BESCENE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>beSceneInternal/StdAfx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)header</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>beGraphics_x64.lib;beEntitySystem_x64.lib;beCore_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy    "$(TargetPath)"    "$(SolutionDir)Bin\$(TargetFileName)"
+copy    "$(TargetDir)$(TargetName).lib"    "$(SolutionDir)global\$(TargetName).lib"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header\beScene\beAbstractLightEffectDriver.h" />
+    <ClInclude Include="header\beScene\beAbstractProcessingEffectDriver.h" />
+    <ClInclude Include="header\beScene\beAbstractRenderableEffectDriver.h" />
+    <ClInclude Include="header\beScene\beAssembledMesh.h" />
+    <ClInclude Include="header\beScene\beBoundMaterial.h" />
+    <ClInclude Include="header\beScene\beBoundMaterialCache.h" />
+    <ClInclude Include="header\beScene\beCaching.h" />
+    <ClInclude Include="header\beScene\beCameraController.h" />
+    <ClInclude Include="header\beScene\beEffectBinder.h" />
+    <ClInclude Include="header\beScene\beEffectBinderCache.h" />
+    <ClInclude Include="header\beScene\beEffectDrivenRenderer.h" />
+    <ClInclude Include="header\beScene\beEffectDriver.h" />
+    <ClInclude Include="header\beScene\beEffectQueueSetup.h" />
+    <ClInclude Include="header\beScene\beGenericEffectDriverCache.h" />
+    <ClInclude Include="header\beScene\beInlineMaterialSerialization.h" />
+    <ClInclude Include="header\beScene\beInlineMeshSerialization.h" />
+    <ClInclude Include="header\beScene\beLight.h" />
+    <ClInclude Include="header\beScene\beLightControllers.h" />
+    <ClInclude Include="header\beScene\beLightEffectBinder.h" />
+    <ClInclude Include="header\beScene\beLightEffectData.h" />
+    <ClInclude Include="header\beScene\beLightEffectDriver.h" />
+    <ClInclude Include="header\beScene\beLightEffectDriverCache.h" />
+    <ClInclude Include="header\beScene\beLightingEffectBinder.h" />
+    <ClInclude Include="header\beScene\beLightMaterial.h" />
+    <ClInclude Include="header\beScene\beLightMaterialCache.h" />
+    <ClInclude Include="header\beScene\beMaterialDriven.h" />
+    <ClInclude Include="header\beScene\beMaterialSort.h" />
+    <ClInclude Include="header\beScene\beMesh.h" />
+    <ClInclude Include="header\beScene\beMeshCompound.h" />
+    <ClInclude Include="header\beScene\beMeshControllers.h" />
+    <ClInclude Include="header\beScene\beMeshGeneration.h" />
+    <ClInclude Include="header\beScene\beMeshCache.h" />
+    <ClInclude Include="header\beScene\beMeshSerialization.h" />
+    <ClInclude Include="header\beScene\bePassSequence.h" />
+    <ClInclude Include="header\beScene\bePerspective.h" />
+    <ClInclude Include="header\beScene\bePerspectiveEffectBinder.h" />
+    <ClInclude Include="header\beScene\bePerspectiveEffectBinderPool.h" />
+    <ClInclude Include="header\beScene\bePerspectiveHost.h" />
+    <ClInclude Include="header\beScene\bePerspectivePool.h" />
+    <ClInclude Include="header\beScene\bePerspectiveStatePool.h" />
+    <ClInclude Include="header\beScene\bePipe.h" />
+    <ClInclude Include="header\beScene\bePipeEffectBinder.h" />
+    <ClInclude Include="header\beScene\bePipelinePerspective.h" />
+    <ClInclude Include="header\beScene\bePipelineProcessor.h" />
+    <ClInclude Include="header\beScene\bePipePool.h" />
+    <ClInclude Include="header\beScene\beProcessingEffectDriver.h" />
+    <ClInclude Include="header\beScene\beProcessingEffectDriverCache.h" />
+    <ClInclude Include="header\beScene\beProcessingPipeline.h" />
+    <ClInclude Include="header\beScene\beProcessor.h" />
+    <ClInclude Include="header\beScene\beQuadProcessor.h" />
+    <ClInclude Include="header\beScene\beQueuedPass.h" />
+    <ClInclude Include="header\beScene\beQueueSetup.h" />
+    <ClInclude Include="header\beScene\beQueueStatePool.h" />
+    <ClInclude Include="header\beScene\beRenderable.h" />
+    <ClInclude Include="header\beScene\beRenderableEffectBinder.h" />
+    <ClInclude Include="header\beScene\beRenderableEffectData.h" />
+    <ClInclude Include="header\beScene\beRenderableEffectDriver.h" />
+    <ClInclude Include="header\beScene\beRenderableEffectDriverCache.h" />
+    <ClInclude Include="header\beScene\beRenderableHost.h" />
+    <ClInclude Include="header\beScene\beRenderableMaterial.h" />
+    <ClInclude Include="header\beScene\beRenderableMaterialCache.h" />
+    <ClInclude Include="header\beScene\beRenderableMesh.h" />
+    <ClInclude Include="header\beScene\beRenderableMeshCache.h" />
+    <ClInclude Include="header\beScene\beRenderableProcessingEffectDriver.h" />
+    <ClInclude Include="header\beScene\beRenderContext.h" />
+    <ClInclude Include="header\beScene\beRenderer.h" />
+    <ClInclude Include="header\beScene\beRenderingController.h" />
+    <ClInclude Include="header\beScene\beRenderingLimits.h" />
+    <ClInclude Include="header\beScene\beRenderingPipeline.h" />
+    <ClInclude Include="header\beScene\beResourceManager.h" />
+    <ClInclude Include="header\beScene\beScene.h" />
+    <ClInclude Include="header\beSceneInternal\stdafx.h" />
+    <ClInclude Include="header\beSceneInternal\targetver.h" />
+    <ClInclude Include="header\beScene\bePipelineEffectBinder.h" />
+    <ClInclude Include="header\beScene\beSerializationParameters.h" />
+    <ClInclude Include="header\beScene\beShaderDrivenPipeline.h" />
+    <ClInclude Include="header\beScene\beStateEffectBinder.h" />
+    <ClInclude Include="header\beScene\beStateQueueSetup.h" />
+    <ClInclude Include="header\beScene\DX11\beMesh.h" />
+    <ClInclude Include="header\beScene\DX11\beMeshGeneration.h" />
+    <ClInclude Include="header\beScene\DX11\bePipe.h" />
+    <ClInclude Include="source\beDirectionalLight.hpp" />
+    <ClInclude Include="source\bePointLight.hpp" />
+    <ClInclude Include="source\beSpotLight.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\beAssembledMesh.cpp" />
+    <ClCompile Include="source\beBoundMaterial.cpp" />
+    <ClCompile Include="source\beBoundMaterialCache.cpp" />
+    <ClCompile Include="source\beBoundMaterials.cpp" />
+    <ClCompile Include="source\beCameraController.cpp" />
+    <ClCompile Include="source\beEffectComponent.cpp" />
+    <ClCompile Include="source\beEffectDrivenRenderer.cpp" />
+    <ClCompile Include="source\beEffectQueueSetup.cpp" />
+    <ClCompile Include="source\beGenericEffectDriverCache.cpp" />
+    <ClCompile Include="source\beInlineMaterialSerialization.cpp" />
+    <ClCompile Include="source\beInlineMeshSerialization.cpp" />
+    <ClCompile Include="source\beInlineSerialization.cpp" />
+    <ClCompile Include="source\beLight.cpp" />
+    <ClCompile Include="source\beLightControllers.cpp" />
+    <ClCompile Include="source\beLightControllerSerialization.cpp" />
+    <ClCompile Include="source\beLightEffectBinder.cpp" />
+    <ClCompile Include="source\beLightEffectDriver.cpp" />
+    <ClCompile Include="source\beLightingEffectBinder.cpp" />
+    <ClCompile Include="source\beMaterialComponents.cpp" />
+    <ClCompile Include="source\beMesh.cpp" />
+    <ClCompile Include="source\beMeshCache.cpp" />
+    <ClCompile Include="source\beMeshComponent.cpp" />
+    <ClCompile Include="source\beMeshCompound.cpp" />
+    <ClCompile Include="source\beMeshControllers.cpp" />
+    <ClCompile Include="source\beMeshControllerSerializer.cpp" />
+    <ClCompile Include="source\beMeshGeneration.cpp" />
+    <ClCompile Include="source\beMeshSerialization.cpp" />
+    <ClCompile Include="source\bePerspective.cpp" />
+    <ClCompile Include="source\bePerspectiveEffectBinder.cpp" />
+    <ClCompile Include="source\bePerspectiveEffectBinderPool.cpp" />
+    <ClCompile Include="source\bePerspectiveHost.cpp" />
+    <ClCompile Include="source\bePerspectivePool.cpp" />
+    <ClCompile Include="source\bePipe.cpp" />
+    <ClCompile Include="source\bePipeEffectBinder.cpp" />
+    <ClCompile Include="source\bePipelineEffectBinder.cpp" />
+    <ClCompile Include="source\bePipelinePerspective.cpp" />
+    <ClCompile Include="source\bePipePool.cpp" />
+    <ClCompile Include="source\beProcessingEffectDriver.cpp" />
+    <ClCompile Include="source\beProcessingPipeline.cpp" />
+    <ClCompile Include="source\beQuadProcessor.cpp" />
+    <ClCompile Include="source\beRenderableEffectBinder.cpp" />
+    <ClCompile Include="source\beRenderableEffectDriver.cpp" />
+    <ClCompile Include="source\beRenderableHost.cpp" />
+    <ClCompile Include="source\beRenderableMesh.cpp" />
+    <ClCompile Include="source\beRenderableMeshCache.cpp" />
+    <ClCompile Include="source\beRenderableProcessingEffectDriver.cpp" />
+    <ClCompile Include="source\beRenderer.cpp" />
+    <ClCompile Include="source\beRenderingController.cpp" />
+    <ClCompile Include="source\beRenderingPipeline.cpp" />
+    <ClCompile Include="source\beResourceManager.cpp" />
+    <ClCompile Include="source\beScene.cpp" />
+    <ClCompile Include="source\beRenderContext.cpp" />
+    <ClCompile Include="source\beSerializationParameters.cpp" />
+    <ClCompile Include="source\beShaderDrivenPipeline.cpp" />
+    <ClCompile Include="source\beStateEffectBinder.cpp" />
+    <ClCompile Include="source\beStateQueueSetup.cpp" />
+    <ClCompile Include="source\beTextureComponent.cpp" />
+    <ClCompile Include="source\dllmain.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beMesh.cpp" />
+    <ClCompile Include="source\DX11\bePipe.cpp" />
+    <ClCompile Include="source\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

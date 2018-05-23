@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MaterialLibraryPreset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Name>copper</Name>
+	<MaterialProperty>
+		<Water>0</Water>
+		<Dirt>0</Dirt>
+		<Metal>1</Metal>
+		<Wood>0</Wood>
+		<Organic>0</Organic>
+		<Rust>0</Rust>
+		<Stone>0</Stone>
+		<Dummy>0</Dummy>
+	</MaterialProperty>
+	<ProbeMetal>blank_copper.png</ProbeMetal>
+	<ProbeRust>rust_selfmade.png</ProbeRust>
+	<CompositionParams>
+		<Rust>
+			<DiffuseBaseStrength>1</DiffuseBaseStrength>
+            <DiffuseRandomVariation>0.16</DiffuseRandomVariation>
+			<SpecularBaseStrength>-32</SpecularBaseStrength>
+            <SpecularRandomVariation>64</SpecularRandomVariation>
+			<HeightBaseStrength>0.1</HeightBaseStrength>
+			<HeightRandomVariation>0.05</HeightRandomVariation>
+		</Rust>
+	</CompositionParams>
+</MaterialLibraryPreset>

@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F253D2C7-593B-461F-81C4-1BE42D61B0B3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>RayTracing</RootNamespace>
+    <ProjectName>RayTracing</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(ProgramFiles)\MSBuild\Microsoft.Cpp\v4.0\BuildCustomizations\CUDA 5.5.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\global\Platform.Cpp.$(Platform).user.props" />
+    <Import Project="..\..\global\Lean.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\beCore.Cpp.Win32.props" />
+    <Import Project="..\..\global\beMath.Cpp.Win32.props" />
+    <Import Project="..\..\global\beEntitySystem.Cpp.Win32.props" />
+    <Import Project="..\..\global\beScene.Cpp.Win32.props" />
+    <Import Project="..\..\global\beLauncher.Cpp.Win32.props" />
+    <Import Project="..\..\global\beGraphics.Cpp.Win32.props" />
+    <Import Project="..\..\global\DirectX.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\DirectX.Effects11.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\AntTweakBar.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\CUDA.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\CUDA.CUDPP.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\CUDA.B40.Cpp.Win32.user.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\global\Platform.Cpp.$(Platform).user.props" />
+    <Import Project="..\..\global\Lean.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\beCore.Cpp.Win32.props" />
+    <Import Project="..\..\global\beMath.Cpp.Win32.props" />
+    <Import Project="..\..\global\beEntitySystem.Cpp.Win32.props" />
+    <Import Project="..\..\global\beScene.Cpp.Win32.props" />
+    <Import Project="..\..\global\beLauncher.Cpp.Win32.props" />
+    <Import Project="..\..\global\beGraphics.Cpp.Win32.props" />
+    <Import Project="..\..\global\DirectX.Cpp.x64.user.props" />
+    <Import Project="..\..\global\DirectX.Effects11.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\AntTweakBar.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\CUDA.Cpp.x64.user.props" />
+    <Import Project="..\..\global\CUDA.CUDPP.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\CUDA.B40.Cpp.Win32.user.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\global\Platform.Cpp.$(Platform).user.props" />
+    <Import Project="..\..\global\Lean.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\beCore.Cpp.Win32.props" />
+    <Import Project="..\..\global\beMath.Cpp.Win32.props" />
+    <Import Project="..\..\global\beEntitySystem.Cpp.Win32.props" />
+    <Import Project="..\..\global\beScene.Cpp.Win32.props" />
+    <Import Project="..\..\global\beLauncher.Cpp.Win32.props" />
+    <Import Project="..\..\global\beGraphics.Cpp.Win32.props" />
+    <Import Project="..\..\global\DirectX.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\DirectX.Effects11.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\AntTweakBar.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\CUDA.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\CUDA.CUDPP.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\CUDA.B40.Cpp.Win32.user.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\global\Platform.Cpp.$(Platform).user.props" />
+    <Import Project="..\..\global\Lean.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\beCore.Cpp.Win32.props" />
+    <Import Project="..\..\global\beMath.Cpp.Win32.props" />
+    <Import Project="..\..\global\beEntitySystem.Cpp.Win32.props" />
+    <Import Project="..\..\global\beScene.Cpp.Win32.props" />
+    <Import Project="..\..\global\beLauncher.Cpp.Win32.props" />
+    <Import Project="..\..\global\beGraphics.Cpp.Win32.props" />
+    <Import Project="..\..\global\DirectX.Cpp.x64.user.props" />
+    <Import Project="..\..\global\DirectX.Effects11.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\AntTweakBar.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\CUDA.Cpp.x64.user.props" />
+    <Import Project="..\..\global\CUDA.CUDPP.Cpp.Win32.user.props" />
+    <Import Project="..\..\global\CUDA.B40.Cpp.Win32.user.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)_d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)_d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)header</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>cudart.lib;beScene_d.lib;beGraphics_d.lib;beEntitySystem_d.lib;beCore_d.lib;beLauncher.res;beLauncher_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy    "$(TargetPath)"    "$(SolutionDir)Bin\$(TargetFileName)"</Command>
+    </PostBuildEvent>
+    <CudaCompile>
+      <Include>$(ProjectDir)header</Include>
+      <Defines>_HAS_ITERATOR_DEBUGGING=0</Defines>
+      <GPUDebugInfo>false</GPUDebugInfo>
+      <HostDebugInfo>false</HostDebugInfo>
+      <CodeGeneration>compute_20,sm_20</CodeGeneration>
+      <MaxRegCount>32</MaxRegCount>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)header</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>cudart.lib;beScene_x64d.lib;beGraphics_x64d.lib;beEntitySystem_x64d.lib;beCore_x64d.lib;beLauncher.res;beLauncher_x64d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy    "$(TargetPath)"    "$(SolutionDir)Bin\$(TargetFileName)"</Command>
+    </PostBuildEvent>
+    <CudaCompile>
+      <Defines>_HAS_ITERATOR_DEBUGGING=0</Defines>
+      <Include>$(ProjectDir)header</Include>
+      <CodeGeneration>compute_20,sm_20</CodeGeneration>
+      <MaxRegCount>32</MaxRegCount>
+      <HostDebugInfo>false</HostDebugInfo>
+      <GPUDebugInfo>false</GPUDebugInfo>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)header</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>cudart.lib;beScene.lib;beGraphics.lib;beEntitySystem.lib;beCore.lib;beLauncher.res;beLauncher.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy    "$(TargetPath)"    "$(SolutionDir)Bin\$(TargetFileName)"</Command>
+    </PostBuildEvent>
+    <CudaCompile>
+      <Include>$(ProjectDir)header</Include>
+      <Defines>_SECURE_SCL=0</Defines>
+      <CodeGeneration>compute_20,sm_20</CodeGeneration>
+      <MaxRegCount>32</MaxRegCount>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)header</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>cudart.lib;beScene_x64.lib;beGraphics_x64.lib;beEntitySystem_x64.lib;beCore_x64.lib;beLauncher.res;beLauncher_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy    "$(TargetPath)"    "$(SolutionDir)Bin\$(TargetFileName)"</Command>
+    </PostBuildEvent>
+    <CudaCompile>
+      <Include>$(ProjectDir)header</Include>
+      <Defines>_SECURE_SCL=0</Defines>
+      <CodeGeneration>compute_20,sm_20</CodeGeneration>
+      <MaxRegCount>32</MaxRegCount>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="..\..\Bin\Data\Effects\2.0\Atmospherics\Sky.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Atmospherics\SkyColor.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Atmospherics\Water.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\BindPoints.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\DirectionalLight.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\Feedback.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\Perspective.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\Pipe.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\Pipeline.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\PointLight.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\Renderable.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\Shadow.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\SpotLight.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Hooks\Transform.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Lights\DirectionalLight.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Lights\PointLight.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Lights\SpotLight.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Materials\Alpha.fx" />
+    <None Include="..\..\Bin\Data\Effects\2.0\Materials\Bump.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Materials\BumpTextured.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Materials\Simple.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Materials\SpecTextured.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Materials\Textured.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Modifiers\Wind.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Pipelines\LPR\Geometry.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Pipelines\LPR\Pipeline.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Pipelines\LPR\Scene.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Pipelines\Scene.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Processing\BilateralAverage.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Processing\FXAA.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Processing\SimpleTonemap.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Prototypes\Feedback.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Prototypes\Shadow.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Utility\Bits.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Utility\Color.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Utility\Hilbert.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Utility\Math.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Atmospherics\Sky.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Hardwired\RayGen.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Hardwired\RayGrid.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Hardwired\VoxelRep.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Lights\DirectionalLight.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Materials\Textured.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Pipelines\Tracing\CompactRay.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Pipelines\Tracing\Pipeline.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Pipelines\Tracing\Ray.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Pipelines\Tracing\RaySet.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Pipelines\Tracing\Scene.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Pipelines\Tracing\VoxelRep.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Prototypes\SceneApprox.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Utility\Conservative.fx">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="resource\Tracing.ico" />
+    <None Include="ReadMe.txt" />
+    <None Include="resource\small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Bin\Data\Effects\2.0\External\Fxaa3_11.h" />
+    <ClInclude Include="..\..\Bin\Data\Effects\2.0\External\Fxaa3_8.h" />
+    <ClInclude Include="header\App.h" />
+    <ClInclude Include="header\AppWindow.h" />
+    <ClInclude Include="header\B40Calls.h" />
+    <ClInclude Include="header\CUDAErrors.h" />
+    <ClInclude Include="header\CUDAUtils.h" />
+    <ClInclude Include="header\FreeCamera.h" />
+    <ClInclude Include="header\IncrementalGPUTimer.h" />
+    <ClInclude Include="header\Morton.h" />
+    <ClInclude Include="header\Tracing.h" />
+    <ClInclude Include="header\Resource.h" />
+    <ClInclude Include="header\Scene.h" />
+    <ClInclude Include="header\Stage.h" />
+    <ClInclude Include="header\stdafx.h" />
+    <ClInclude Include="header\targetver.h" />
+    <ClInclude Include="header\HLSLPacking.h" />
+    <ClInclude Include="header\RayTracing\LightEffectDriver.h" />
+    <ClInclude Include="header\RayTracing\LightEffectDriverCache.h" />
+    <ClInclude Include="header\RayTracing\Pipeline.h" />
+    <ClInclude Include="header\RayTracing\Ray.h" />
+    <ClInclude Include="header\RayTracing\RayGen.h" />
+    <ClInclude Include="header\RayTracing\RaySet.h" />
+    <ClInclude Include="header\RayTracing\RenderableEffectDriver.h" />
+    <ClInclude Include="header\RayTracing\RenderableEffectDriverCache.h" />
+    <ClInclude Include="header\RayTracing\TracingEffectBinder.h" />
+    <ClInclude Include="header\RayTracing\TracingEffectBinderPool.h" />
+    <ClInclude Include="header\RayTracing\VoxelRep.h" />
+    <ClInclude Include="header\Viewer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\App.cpp" />
+    <ClCompile Include="source\AppWindow.cpp" />
+    <ClCompile Include="source\FreeCamera.cpp" />
+    <ClCompile Include="source\Tracing.cpp" />
+    <ClCompile Include="source\Scene.cpp" />
+    <ClCompile Include="source\Stage.cpp" />
+    <ClCompile Include="source\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="source\RayTracing\LightEffectDriver.cpp" />
+    <ClCompile Include="source\RayTracing\Pipeline.cpp" />
+    <ClCompile Include="source\RayTracing\RayGen.cpp" />
+    <ClCompile Include="source\RayTracing\RayGrid.cpp" />
+    <ClCompile Include="source\RayTracing\RenderableEffectDriver.cpp" />
+    <ClCompile Include="source\RayTracing\TracingEffectBinder.cpp" />
+    <ClCompile Include="source\RayTracing\TracingEffectBinderPool.cpp" />
+    <ClCompile Include="source\RayTracing\VoxelRep.cpp" />
+    <ClCompile Include="source\Viewer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource\Tracing.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="source\B40Calls.cu">
+      <CodeGeneration Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">compute_20,sm_20</CodeGeneration>
+      <CodeGeneration Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">compute_20,sm_20</CodeGeneration>
+    </CudaCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(ProgramFiles)\MSBuild\Microsoft.Cpp\v4.0\BuildCustomizations\CUDA 5.5.targets" />
+  </ImportGroup>
+</Project>

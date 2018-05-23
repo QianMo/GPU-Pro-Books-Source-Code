@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header\beMath\beAAB.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beAABDef.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beAABFwd.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beComparisonOperators.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beConstants.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beMath.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beMatrix.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beMatrixDef.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beMatrixFwd.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\beCore\header\beCore\beOpaqueHandle.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\bePlane.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\bePlaneDef.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\bePlaneFwd.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beProjection.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beSphere.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beSphereDef.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beSphereFwd.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beTuple.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beTupleExpressions.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beTupleFwd.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beVector.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beVectorDef.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beVectorFwd.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMathInternal\stdafx.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMathInternal\targetver.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beUtility.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beIntersect.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beMath\beBits.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beMath.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

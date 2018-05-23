@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="opengl">
+		<Project filename="quadtree_simple.cbp" active="1">
+		</Project>
+		<Project filename="terrain.cbp">
+		</Project>
+		<Project filename="parametric.cbp">
+		</Project>
+	</Workspace>
+</CodeBlocks_workspace_file>

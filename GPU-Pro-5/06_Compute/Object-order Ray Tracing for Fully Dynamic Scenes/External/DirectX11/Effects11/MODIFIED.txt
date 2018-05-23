@@ -1,0 +1,1 @@
+This is a modified version of the original Effects11 library shipped with the last Microsoft DirectX SDK (June 2010). Modifications are marked MODIFIED in the source code.

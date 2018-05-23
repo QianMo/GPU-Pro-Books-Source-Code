@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Material xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Green</Name>
+  <DiffuseColor>
+    <Red>0.176774323</Red>
+    <Green>0.8122415</Green>
+    <Blue>0</Blue>
+    <Alpha>1</Alpha>
+  </DiffuseColor>
+  <SpecularColor>
+    <Red>0</Red>
+    <Green>0</Green>
+    <Blue>0</Blue>
+    <Alpha>1</Alpha>
+  </SpecularColor>
+  <SpecularPower>64</SpecularPower>
+  <SpecularStrength>1</SpecularStrength>
+  <Alpha>0.5</Alpha>
+  <Emission>0</Emission>
+  <UseColorMap>false</UseColorMap>
+  <UseSpecularMap>false</UseSpecularMap>
+  <UseLightMap>false</UseLightMap>
+  <UseNormalMap>false</UseNormalMap>
+  <UseHeightMap>false</UseHeightMap>
+  <UsedTexturesMask>None</UsedTexturesMask>
+</Material>

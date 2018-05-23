@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tex2", "tex2.vcxproj", "{19758CAC-9BD6-471F-94BC-E5CCA1BB137E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dxdemo", "dxdemo\dxdemo.vcxproj", "{8947A48F-33CF-4C6D-A92C-5210EC1B2A4D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19758CAC-9BD6-471F-94BC-E5CCA1BB137E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{19758CAC-9BD6-471F-94BC-E5CCA1BB137E}.Debug|Win32.Build.0 = Debug|Win32
+		{19758CAC-9BD6-471F-94BC-E5CCA1BB137E}.Release|Win32.ActiveCfg = Release|Win32
+		{19758CAC-9BD6-471F-94BC-E5CCA1BB137E}.Release|Win32.Build.0 = Release|Win32
+		{8947A48F-33CF-4C6D-A92C-5210EC1B2A4D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8947A48F-33CF-4C6D-A92C-5210EC1B2A4D}.Debug|Win32.Build.0 = Debug|Win32
+		{8947A48F-33CF-4C6D-A92C-5210EC1B2A4D}.Release|Win32.ActiveCfg = Release|Win32
+		{8947A48F-33CF-4C6D-A92C-5210EC1B2A4D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

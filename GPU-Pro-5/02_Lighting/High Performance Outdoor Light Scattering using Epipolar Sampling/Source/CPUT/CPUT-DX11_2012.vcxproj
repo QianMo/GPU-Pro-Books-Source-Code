@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|Win32">
+      <Configuration>Profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|x64">
+      <Configuration>Profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8B2DDEDC-A574-4B24-AEC5-03949B5F57BD}</ProjectGuid>
+    <RootNamespace>CPUTDX11</RootNamespace>
+    <ProjectName>CPUT-DX11</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LibraryPath>$(DXSDK_DIR)Lib\x64;$(LibraryPath);</LibraryPath>
+    <OutDir>$(SolutionDir)bin\lib\</OutDir>
+    <TargetName>$(ProjectName)_64D</TargetName>
+    <IntDir>bin\$(Configuration)\$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LibraryPath>$(DXSDK_DIR)Lib\x64;$(LibraryPath);</LibraryPath>
+    <OutDir>$(SolutionDir)bin\lib\</OutDir>
+    <TargetName>$(ProjectName)_64R</TargetName>
+    <IntDir>bin\$(Configuration)\$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <LibraryPath>$(DXSDK_DIR)Lib\x64;$(LibraryPath);</LibraryPath>
+    <OutDir>$(SolutionDir)bin\lib\</OutDir>
+    <TargetName>$(ProjectName)_64R</TargetName>
+    <IntDir>bin\$(Configuration)\$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(LibraryPath);</LibraryPath>
+    <OutDir>$(SolutionDir)bin\lib\</OutDir>
+    <TargetName>$(ProjectName)_32D</TargetName>
+    <IntDir>bin\$(Configuration)\$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
+    <IncludePath>$(IncludePath);$(DXSDK_DIR)Include;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(LibraryPath);</LibraryPath>
+    <OutDir>$(SolutionDir)bin\lib\</OutDir>
+    <TargetName>$(ProjectName)_32R</TargetName>
+    <IntDir>bin\$(Configuration)\$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;$(LibraryPath);</LibraryPath>
+    <OutDir>$(SolutionDir)bin\lib\</OutDir>
+    <TargetName>$(ProjectName)_32R</TargetName>
+    <IntDir>bin\$(Configuration)\$(Platform)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <OpenMPSupport>false</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <OpenMPSupport>false</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <OpenMPSupport>false</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <OpenMPSupport>false</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <OpenMPSupport>false</OpenMPSupport>
+      <StringPooling>true</StringPooling>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+      <BrowseInformation>true</BrowseInformation>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ProgramDataBaseFileName>$(IntDir)vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <OpenMPSupport>false</OpenMPSupport>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="CPUT\CPUTAssetLibrary.cpp" />
+    <ClCompile Include="CPUT\CPUTAssetLibraryDX11.cpp" />
+    <ClCompile Include="CPUT\CPUTAssetSet.cpp" />
+    <ClCompile Include="CPUT\CPUTAssetSetDX11.cpp" />
+    <ClCompile Include="CPUT\CPUTBuffer.cpp" />
+    <ClCompile Include="CPUT\CPUTBufferDX11.cpp" />
+    <ClCompile Include="CPUT\CPUTButton.cpp" />
+    <ClCompile Include="CPUT\CPUTCheckbox.cpp" />
+    <ClCompile Include="CPUT\CPUTComputeShaderDX11.cpp" />
+    <ClCompile Include="CPUT\CPUTControl.cpp" />
+    <ClCompile Include="CPUT\CPUTDomainShaderDX11.cpp" />
+    <ClCompile Include="CPUT\CPUTDropdown.cpp" />
+    <ClCompile Include="CPUT\CPUTFont.cpp" />
+    <ClCompile Include="CPUT\CPUTFontDX11.cpp" />
+    <ClCompile Include="CPUT\CPUTFrustum.cpp" />
+    <ClCompile Include="CPUT\CPUTGeometryShaderDX11.cpp" />
+    <ClCompile Include="CPUT\CPUTGuiController.cpp" />
+    <ClCompile Include="CPUT\CPUTGuiControllerDX11.cpp" />
+    <ClCompile Include="CPUT\CPUTHullShaderDX11.cpp" />
+    <ClCompile Include="CPUT\CPUTITTTaskMarker.cpp" />
+    <ClCompile Include="CPUT\CPUTMaterial.cpp" />
+    <ClCompile Include="CPUT\CPUTMaterialDX11.cpp" />
+    <ClCompile Include="CPUT\CPUTMeshDX11.cpp" />
+    <ClCompile Include="CPUT\CPUTModel.cpp" />
+    <ClCompile Include="CPUT\CPUTModelDX11.cpp" />
+    <ClCompile Include="CPUT\CPUTNullNode.cpp" />
+    <ClCompile Include="CPUT\CPUTConfigBlock.cpp" />
+    <ClCompile Include="CPUT\CPUTPerfTaskMarker.cpp" />
+    <ClCompile Include="CPUT\CPUTPixelShaderDX11.cpp" />
+    <ClCompile Include="CPUT\CPUTPostProcess.cpp" />
+    <ClCompile Include="CPUT\CPUTRenderNode.cpp" />
+    <ClCompile Include="CPUT\CPUTRenderStateBlock.cpp" />
+    <ClCompile Include="CPUT\CPUTRenderStateBlockDX11.cpp" />
+    <ClCompile Include="CPUT\CPUTOSServicesWin.cpp" />
+    <ClCompile Include="CPUT\CPUTCamera.cpp" />
+    <ClCompile Include="CPUT\CPUTLight.cpp" />
+    <ClCompile Include="CPUT\CPUTRenderTarget.cpp" />
+    <ClCompile Include="CPUT\CPUTShaderDX11.cpp" />
+    <ClCompile Include="CPUT\CPUTSlider.cpp" />
+    <ClCompile Include="CPUT\CPUTSprite.cpp" />
+    <ClCompile Include="CPUT\CPUTText.cpp" />
+    <ClCompile Include="CPUT\CPUTTexture.cpp" />
+    <ClCompile Include="CPUT\CPUTTextureDX11.cpp" />
+    <ClCompile Include="CPUT\CPUTTimerWin.cpp" />
+    <ClCompile Include="CPUT\CPUTInputLayoutCacheDX11.cpp" />
+    <ClCompile Include="CPUT\CPUTMesh.cpp" />
+    <ClCompile Include="CPUT\CPUTVertexShaderDX11.cpp" />
+    <ClCompile Include="CPUT\CPUT_DX11.cpp" />
+    <ClCompile Include="CPUT\CPUTWindowWin.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CPUT\CPUTAssetLibrary.h" />
+    <ClInclude Include="CPUT\CPUTAssetLibraryDX11.h" />
+    <ClInclude Include="CPUT\CPUTAssetSet.h" />
+    <ClInclude Include="CPUT\CPUTAssetSetDX11.h" />
+    <ClInclude Include="CPUT\CPUT.h" />
+    <ClInclude Include="CPUT\CPUTBuffer.h" />
+    <ClInclude Include="CPUT\CPUTBufferDX11.h" />
+    <ClInclude Include="CPUT\CPUTButton.h" />
+    <ClInclude Include="CPUT\CPUTCallbackHandler.h" />
+    <ClInclude Include="CPUT\CPUTCheckbox.h" />
+    <ClInclude Include="CPUT\CPUTComputeShaderDX11.h" />
+    <ClInclude Include="CPUT\CPUTControl.h" />
+    <ClInclude Include="CPUT\CPUTDomainShaderDX11.h" />
+    <ClInclude Include="CPUT\CPUTDropdown.h" />
+    <ClInclude Include="CPUT\CPUTEventHandler.h" />
+    <ClInclude Include="CPUT\CPUTFont.h" />
+    <ClInclude Include="CPUT\CPUTFontDX11.h" />
+    <ClInclude Include="CPUT\CPUTFrustum.h" />
+    <ClInclude Include="CPUT\CPUTGeometryShaderDX11.h" />
+    <ClInclude Include="CPUT\CPUTGuiController.h" />
+    <ClInclude Include="CPUT\CPUTGuiControllerDX11.h" />
+    <ClInclude Include="CPUT\CPUTHullShaderDX11.h" />
+    <ClInclude Include="CPUT\CPUTITTTaskMarker.h" />
+    <ClInclude Include="CPUT\CPUTMaterial.h" />
+    <ClInclude Include="CPUT\CPUTMaterialDX11.h" />
+    <ClInclude Include="CPUT\CPUTMath.h" />
+    <ClInclude Include="CPUT\CPUTMesh.h" />
+    <ClInclude Include="CPUT\CPUTMeshDX11.h" />
+    <ClInclude Include="CPUT\CPUTModel.h" />
+    <ClInclude Include="CPUT\CPUTModelDX11.h" />
+    <ClInclude Include="CPUT\CPUTNullNode.h" />
+    <ClInclude Include="CPUT\CPUTConfigBlock.h" />
+    <ClInclude Include="CPUT\CPUTPerfTaskMarker.h" />
+    <ClInclude Include="CPUT\CPUTPixelShaderDX11.h" />
+    <ClInclude Include="CPUT\CPUTPostProcess.h" />
+    <ClInclude Include="CPUT\CPUTRefCount.h" />
+    <ClInclude Include="CPUT\CPUTRenderNode.h" />
+    <ClInclude Include="CPUT\CPUTRenderParams.h" />
+    <ClInclude Include="CPUT\CPUTRenderParamsDX.h" />
+    <ClInclude Include="CPUT\CPUTRenderStateBlock.h" />
+    <ClInclude Include="CPUT\CPUTRenderStateBlockDX11.h" />
+    <ClInclude Include="CPUT\CPUTRenderStateMapsDX11.h" />
+    <ClInclude Include="CPUT\CPUTOSServicesWin.h" />
+    <ClInclude Include="CPUT\CPUTCamera.h" />
+    <ClInclude Include="CPUT\CPUTLight.h" />
+    <ClInclude Include="CPUT\CPUTRenderTarget.h" />
+    <ClInclude Include="CPUT\CPUTShaderDX11.h" />
+    <ClInclude Include="CPUT\CPUTSlider.h" />
+    <ClInclude Include="CPUT\CPUTSprite.h" />
+    <ClInclude Include="CPUT\CPUTText.h" />
+    <ClInclude Include="CPUT\CPUTTexture.h" />
+    <ClInclude Include="CPUT\CPUTTextureDX11.h" />
+    <ClInclude Include="CPUT\CPUTTimer.h" />
+    <ClInclude Include="CPUT\CPUTTimerWin.h" />
+    <ClInclude Include="CPUT\CPUTInputLayoutCache.h" />
+    <ClInclude Include="CPUT\CPUTInputLayoutCacheDX11.h" />
+    <ClInclude Include="CPUT\CPUTVertexShaderDX11.h" />
+    <ClInclude Include="CPUT\CPUT_DX11.h" />
+    <ClInclude Include="CPUT\CRTMemoryDebug.h" />
+    <ClInclude Include="CPUT\CPUTWindowWin.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

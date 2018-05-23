@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Project">
+      <UniqueIdentifier>{49f42b22-6c55-4d5d-a36c-0b0c6b0f5766}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries">
+      <UniqueIdentifier>{5984c7a5-2d69-4e92-b2cb-c2079b5bc8db}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Project</Filter>
+    </ClCompile>
+    <ClCompile Include="..\framework\base.cpp">
+      <Filter>Libraries</Filter>
+    </ClCompile>
+    <ClCompile Include="..\framework\dxfw.cpp">
+      <Filter>Libraries</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\framework\base.h">
+      <Filter>Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="..\framework\dxfw.h">
+      <Filter>Libraries</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="render.fx">
+      <Filter>Project</Filter>
+    </None>
+  </ItemGroup>
+</Project>

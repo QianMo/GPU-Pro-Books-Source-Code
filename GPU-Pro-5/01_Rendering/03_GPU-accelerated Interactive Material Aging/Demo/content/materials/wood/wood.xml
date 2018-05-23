@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MaterialLibraryPreset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Name>wood</Name>
+	<MaterialProperty>
+		<Water>0</Water>
+		<Dirt>0</Dirt>
+		<Metal>0</Metal>
+		<Wood>1</Wood>
+		<Organic>0</Organic>
+		<Rust>0</Rust>
+		<Stone>0</Stone>
+		<Dummy>0</Dummy>
+	</MaterialProperty>
+	<ProbeWood>SimpleWood.jpg</ProbeWood>
+	<CompositionParams>
+		<Wood>
+			<HeightBaseStrength>0</HeightBaseStrength>
+			<HeightRandomVariation>0.1</HeightRandomVariation>
+		</Wood>
+	</CompositionParams>
+</MaterialLibraryPreset>

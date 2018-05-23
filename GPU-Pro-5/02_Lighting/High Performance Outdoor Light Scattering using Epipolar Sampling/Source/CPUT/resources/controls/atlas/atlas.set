@@ -1,0 +1,12 @@
+[node 0]
+type = model
+name = polySurface1
+parent = -1
+matrixColumn0 = 1 0 -0 0
+matrixColumn1 = 0 1 -0 0
+matrixColumn2 = -0 -0 1 -0
+matrixColumn3 = 0 0 0 1
+BoundingBoxCenter = 0.0527344 0 -0 
+BoundingBoxHalf = 0.0527344 0 0 
+meshcount = 1 
+material0 = lambert1

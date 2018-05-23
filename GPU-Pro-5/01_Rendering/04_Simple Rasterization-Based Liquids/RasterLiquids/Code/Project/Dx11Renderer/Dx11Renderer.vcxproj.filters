@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\Src\Input\Keyboard.cpp" />
+    <ClCompile Include="..\..\Src\Input\MenuManager.cpp" />
+    <ClCompile Include="..\..\Src\Graphics\Camera\Camera.cpp">
+      <Filter>Src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Graphics\Dx11\Utility\Dx11Benchmarks.cpp">
+      <Filter>Src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Graphics\Camera\DX11Camera.cpp">
+      <Filter>Src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Graphics\Dx11\Dx11Renderer.cpp">
+      <Filter>Src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Graphics\Dx11\Utility\Dx11RendererStates.cpp">
+      <Filter>Src\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Graphics\Dx11\Post\FXAA.cpp">
+      <Filter>Src\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Graphics\Dx11\Shaders.cpp">
+      <Filter>Src\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Graphics\Dx11\Mesh.cpp">
+      <Filter>Src\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Graphics\MeshImport.cpp">
+      <Filter>Src\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Graphics\Dx11\CPUMeshes.cpp">
+      <Filter>Src\Mesh</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Src\Input\Keyboard.hpp" />
+    <ClInclude Include="..\..\Src\Input\MenuManager.hpp" />
+    <ClInclude Include="..\..\Src\Graphics\Camera\Camera.hpp">
+      <Filter>Src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Graphics\Dx11\Utility\Dx11Benchmarks.hpp">
+      <Filter>Src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Graphics\Camera\DX11Camera.hpp">
+      <Filter>Src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Graphics\Dx11\Dx11Renderer.hpp">
+      <Filter>Src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Graphics\Dx11\Utility\Dx11RendererStates.hpp">
+      <Filter>Src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Graphics\Dx11\Post\FXAA.hpp">
+      <Filter>Src\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Graphics\Dx11\Shaders.hpp">
+      <Filter>Src\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Graphics\Dx11\Mesh.hpp">
+      <Filter>Src\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Graphics\MeshImport.hpp">
+      <Filter>Src\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Graphics\VertexTraits.hpp">
+      <Filter>Src\Mesh</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Src\Graphics\Shaders\FXAA.fx">
+      <Filter>Src\Shader</Filter>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\Phong.fx">
+      <Filter>Src\Shader</Filter>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\CommonConstants.hlsl">
+      <Filter>Src\Shader</Filter>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\Raw.fx">
+      <Filter>Src\Shader</Filter>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\RawUV_Slice.fx">
+      <Filter>Src\Shader</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Src">
+      <UniqueIdentifier>{b44828db-4454-49a0-a0f3-2c800effad0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Core">
+      <UniqueIdentifier>{3c60b8d7-db98-4a25-87ce-e405a7ab3bdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Shader">
+      <UniqueIdentifier>{372735b3-f3e1-4323-bd2a-c85f9ea2ce17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Mesh">
+      <UniqueIdentifier>{4ddfb1b6-5228-4fc2-b231-d32223ef3fef}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

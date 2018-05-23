@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<Settings>
+    <WindowWidth>800</WindowWidth>
+    <WindowHeight>800</WindowHeight>
+    <DefaultScene>Hydrant</DefaultScene>
+    <SimulationEnabled>true</SimulationEnabled>
+    <AtlasResolution>1024</AtlasResolution>
+    <MinTessFactor>1</MinTessFactor>
+    <MaxTessFactor>6</MaxTessFactor>
+    <MinTessDistance>500</MinTessDistance>
+    <MaxTessDistance>10</MaxTessDistance>
+</Settings>

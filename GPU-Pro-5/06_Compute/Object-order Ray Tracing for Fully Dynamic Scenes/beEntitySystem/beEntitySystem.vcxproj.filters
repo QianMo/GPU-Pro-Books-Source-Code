@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Serialization">
+      <UniqueIdentifier>{eb9c9ddb-06b6-4dc9-90a4-44fb50c17515}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\State">
+      <UniqueIdentifier>{23b9f28a-36a2-4625-b6a1-52fcb92872ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controllers">
+      <UniqueIdentifier>{e7ef6f82-877b-43b6-b531-ea7f529a0259}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header\beEntitySystem\beStateSerializer.h">
+      <Filter>Source Files\State</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beControllerSerializer.h">
+      <Filter>Source Files\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beEntitySerializer.h">
+      <Filter>Source Files\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beSerializationParameters.h">
+      <Filter>Source Files\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beSerializationTasks.h">
+      <Filter>Source Files\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beAnimated.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beAnimatedHost.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beAsset.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beAttachable.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beEntityGroup.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beEntitySystem.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beRenderable.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beRenderableHost.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beSimulation.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beSynchronized.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beSynchronizedHost.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beWorld.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystemInternal\stdafx.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystemInternal\targetver.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beEntities.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beSerialization.h">
+      <Filter>Source Files\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beEntitySerialization.h">
+      <Filter>Source Files\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beAnimatedController.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beEntityController.h">
+      <Filter>Source Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beController.h">
+      <Filter>Source Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beEntityGroupController.h">
+      <Filter>Source Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beGenericControllerSerializer.h">
+      <Filter>Source Files\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beGenericGroupControllerSerializer.h">
+      <Filter>Source Files\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beWorldControllers.h">
+      <Filter>Source Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beEntitySystem\beSimulationController.h">
+      <Filter>Source Files\Controllers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beEntitySystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beWorld.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beSimulation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beEntitySerializer.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beControllerSerializer.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beSerializationParameters.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beAnimatedHost.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beRenderableHost.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beSynchronizedHost.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beEntityGroup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beAsset.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beEntities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beSerializationTasks.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beSerialization.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beEntitySerialization.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beAnimatedController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beEntityController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beEntityGroupController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beGenericControllerSerializer.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beWorldControllers.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beEntityGroupControllerSerializer.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

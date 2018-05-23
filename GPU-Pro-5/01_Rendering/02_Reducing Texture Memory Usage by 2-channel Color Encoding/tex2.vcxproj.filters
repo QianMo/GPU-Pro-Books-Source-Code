@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Libraries">
+      <UniqueIdentifier>{93228f10-5a78-4b18-bace-757a07dd096b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project">
+      <UniqueIdentifier>{4b3bf8ea-4138-48f4-89d6-d235688b0a85}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="framework\base.cpp">
+      <Filter>Libraries</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Project</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework\base.h">
+      <Filter>Libraries</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

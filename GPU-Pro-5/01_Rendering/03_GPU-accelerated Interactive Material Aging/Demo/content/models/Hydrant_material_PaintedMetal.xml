@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Material xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>PaintedMetal</Name>
+  <DiffuseColor>
+    <Red>1</Red>
+    <Green>1</Green>
+    <Blue>1</Blue>
+    <Alpha>1</Alpha>
+  </DiffuseColor>
+  <SpecularColor>
+    <Red>1</Red>
+    <Green>1</Green>
+    <Blue>1</Blue>
+    <Alpha>1</Alpha>
+  </SpecularColor>
+  <SpecularPower>256</SpecularPower>
+  <SpecularStrength>1</SpecularStrength>
+  <Alpha>1</Alpha>
+  <Emission>0</Emission>
+  <UseColorMap>true</UseColorMap>
+  <UseSpecularMap>true</UseSpecularMap>
+  <UseLightMap>false</UseLightMap>
+  <UseNormalMap>true</UseNormalMap>
+  <UseHeightMap>true</UseHeightMap>
+  <ColorMap>Textures/Hydrant_ColorMap.png</ColorMap>
+  <SpecularMap>Textures/Hydrant_SpecularMap.png</SpecularMap>
+  <NormalMap>Textures/Hydrant_NormalMap.png</NormalMap>
+  <HeightMap>Textures/Hydrant_HeightMap.png</HeightMap>
+  <UsedTexturesMask>Diffuse Specular Normal Height</UsedTexturesMask>
+  <SeamsMap>Textures/Hydrant_Seams.png</SeamsMap>
+</Material>

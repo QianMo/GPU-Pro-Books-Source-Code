@@ -1,0 +1,16 @@
+GPU Linear tree implementations
+===============================
+
+Hardware requirements
+---------------------
+OpenGL4.2 GPU
+
+Building the sources
+--------------------
+You will need premake4 and lua.
+Go to the tools folder and run
+> lua release.lua
+from a terminal.
+This will generate a build folder 
+which contains various solutions to 
+build the sources on windows and linux.

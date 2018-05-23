@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\Src\MainSimulations.cpp">
+      <Filter>Src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Apps\GPULiquids\GPU3DParticleLiquids.cpp">
+      <Filter>Src\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Apps\GPULiquids\GPU2DParticleLiquids.cpp">
+      <Filter>Src\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Apps\GPULiquids\GPUShallowWaterSimulation.cpp">
+      <Filter>Src\ShallowWater</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Physics\GPUFluids\GPUSPH.cpp">
+      <Filter>Src\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Physics\GPUFluids\GPUSPH2D.cpp">
+      <Filter>Src\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Physics\GPUFluids\GPUSPHShallowWater.cpp">
+      <Filter>Src\ShallowWater</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\Physics\Terrain\Terrain.cpp">
+      <Filter>Src\ShallowWater</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Src\Apps\GPULiquids\GPU3DParticleLiquids.hpp">
+      <Filter>Src\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Apps\GPULiquids\GPU2DParticleLiquids.hpp">
+      <Filter>Src\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Apps\GPULiquids\GPUShallowWaterSimulation.hpp">
+      <Filter>Src\ShallowWater</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Physics\GPUFluids\GPUSPH.hpp">
+      <Filter>Src\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Physics\GPUFluids\GPUSPH2D.hpp">
+      <Filter>Src\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Physics\GPUFluids\GPUSPHShallowWater.hpp">
+      <Filter>Src\ShallowWater</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Physics\Terrain\Terrain.hpp">
+      <Filter>Src\ShallowWater</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Src">
+      <UniqueIdentifier>{c3681ce8-9c7d-4968-ba10-6254c613fd29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\3D">
+      <UniqueIdentifier>{868c2da8-f310-42f7-87b0-4be2cb208daa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\2D">
+      <UniqueIdentifier>{d7d061e2-0160-4672-b20c-6495ba70d37b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\ShallowWater">
+      <UniqueIdentifier>{d73e1866-0558-47df-a2a2-5b93978a6573}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Shaders">
+      <UniqueIdentifier>{df78f656-30c8-4484-86fb-9cc1ce13bb09}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Src\Graphics\Shaders\RayCastLiquid.fx">
+      <Filter>Src\Shaders</Filter>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\Physics\SPH.fx">
+      <Filter>Src\Shaders</Filter>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\Physics\SPH2D.fx">
+      <Filter>Src\Shaders</Filter>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\Physics\SPHFLIP.hlsl">
+      <Filter>Src\Shaders</Filter>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\Physics\SPHForces.hlsl">
+      <Filter>Src\Shaders</Filter>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\Physics\SPHParams.hlsl">
+      <Filter>Src\Shaders</Filter>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\Physics\SPHShallowWater.fx">
+      <Filter>Src\Shaders</Filter>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\Physics\SPHSplatting.fx">
+      <Filter>Src\Shaders</Filter>
+    </None>
+    <None Include="..\..\Src\Graphics\Shaders\Physics\WaterSurfaceHF.fx">
+      <Filter>Src\Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Binary">
+      <UniqueIdentifier>{38ddeea0-c1f3-4644-8daf-a0324e788ed9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Binary\EffectBinaryFormat.h">
+      <Filter>Source Files\Binary</Filter>
+    </ClInclude>
+    <ClInclude Include="Binary\EffectStateBase11.h">
+      <Filter>Source Files\Binary</Filter>
+    </ClInclude>
+    <ClInclude Include="Binary\EffectStates11.h">
+      <Filter>Source Files\Binary</Filter>
+    </ClInclude>
+    <ClInclude Include="Binary\SOParser.h">
+      <Filter>Source Files\Binary</Filter>
+    </ClInclude>
+    <ClInclude Include="Allocator.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D3D11EffectsLite.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DEffectsLiteCommon.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D3DEffectsLiteHooks.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Errors.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Heap.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MemBlob.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Reflection.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StringHelper.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Range.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lexer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RefCounted.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Allocator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Reflection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Errors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Heap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Hooks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MemBlob.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lexer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

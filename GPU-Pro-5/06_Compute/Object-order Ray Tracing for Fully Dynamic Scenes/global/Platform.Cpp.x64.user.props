@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <WindowsSdkDir_80 Condition="'$(WindowsSdkDir_80)' == ''">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v8.0@InstallationFolder)</WindowsSdkDir_80>
+    <WindowsSdkDir_80 Condition="'$(WindowsSdkDir_80)' == ''">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Microsoft SDKs\Windows\v8.0@InstallationFolder)</WindowsSdkDir_80>
+    <IncludePath>$(WindowsSdkDir_80)Include\um;$(WindowsSdkDir_80)Include\shared;$(IncludePath)</IncludePath>
+    <LibraryPath>$(WindowsSdkDir_80)lib\win8\um\x64;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>$(ExecutablePath);$(WindowsSdkDir_80)bin\x64</ExecutablePath>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeLite_Workspace Name="opengl" Database="./opengl.tags">
+  <Project Name="quadtree_simple" Path="quadtree_simple.project" Active="Yes" />
+  <Project Name="terrain" Path="terrain.project" Active="No" />
+  <Project Name="parametric" Path="parametric.project" Active="No" />
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="debug" Selected="yes">
+      <Project Name="quadtree_simple" ConfigName="debug"/>
+      <Project Name="terrain" ConfigName="debug"/>
+      <Project Name="parametric" ConfigName="debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="release" Selected="yes">
+      <Project Name="quadtree_simple" ConfigName="release"/>
+      <Project Name="terrain" ConfigName="release"/>
+      <Project Name="parametric" ConfigName="release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

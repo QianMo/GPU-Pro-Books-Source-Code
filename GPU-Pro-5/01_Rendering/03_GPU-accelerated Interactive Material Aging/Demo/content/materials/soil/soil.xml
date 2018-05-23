@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MaterialLibraryPreset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Name>soil</Name>
+	<MaterialProperty>
+		<Water>0</Water>
+		<Dirt>1</Dirt>
+		<Metal>0</Metal>
+		<Wood>0</Wood>
+		<Organic>0</Organic>
+		<Rust>0</Rust>
+		<Stone>0</Stone>
+		<Dummy>0</Dummy>
+	</MaterialProperty>
+	<ProbeDirt>SimpleDirt.jpg</ProbeDirt>
+	<ProbeOrganic>Moss.jpg</ProbeOrganic>
+	<CompositionParams>
+		<Dirt>
+			<DiffuseBaseStrength>0.33</DiffuseBaseStrength>
+            <DiffuseRandomVariation>-0.33</DiffuseRandomVariation>
+			<SpecularBaseStrength>-64</SpecularBaseStrength>
+            <SpecularRandomVariation>32</SpecularRandomVariation>
+			<HeightBaseStrength>0.2</HeightBaseStrength>
+			<HeightRandomVariation>-0.2</HeightRandomVariation>
+		</Dirt>
+		<Organic>
+			<DiffuseBaseStrength>0.83</DiffuseBaseStrength>
+            <DiffuseRandomVariation>-0.13</DiffuseRandomVariation>
+			<SpecularBaseStrength>-64</SpecularBaseStrength>
+            <SpecularRandomVariation>32</SpecularRandomVariation>
+			<HeightBaseStrength>0</HeightBaseStrength>
+			<HeightRandomVariation>0.5</HeightRandomVariation>
+		</Organic>
+	</CompositionParams>
+</MaterialLibraryPreset>

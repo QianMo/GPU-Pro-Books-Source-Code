@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IncludePath>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LibraryPath>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\Win32;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin;$(ExecutablePath)</ExecutablePath>
+  </PropertyGroup>
+</Project>

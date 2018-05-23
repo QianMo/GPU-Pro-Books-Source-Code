@@ -1,0 +1,25 @@
+#version 430
+
+in vec4 mvf_vertex;      // LibSL takes care of vertex attributes 'mvf_*' (normal,color0,texcoord0,etc.)
+in vec3 mvf_normal; 
+in vec2 mvf_texcoord0;
+
+uniform mat4 u_Model;
+uniform mat4 u_View;
+uniform mat4 u_Projection;
+
+out vec4 v_Pos;
+out vec3 v_View;
+out vec3 v_Normal;
+out vec3 v_Vertex;
+out vec2 v_Tex;
+
+void main()
+{
+  v_Tex       = mvf_texcoord0;
+  v_Vertex    = (u_Model * mvf_vertex).xyz;
+  v_View      = (u_View * u_Model * mvf_vertex).xyz;
+  v_Normal    = (u_View * u_Model * vec4(mvf_normal,0)).xyz;
+  v_Pos       = u_Projection * u_View * u_Model * mvf_vertex;
+  gl_Position = u_Projection * u_View * u_Model * mvf_vertex;
+}

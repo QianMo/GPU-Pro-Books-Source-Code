@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{28C23B17-9B9B-4A11-82EB-53334DC20AAD}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>beEntitySystem</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\global\Platform.Cpp.$(Platform).user.props" />
+    <Import Project="..\global\Lean.Cpp.Win32.user.props" />
+    <Import Project="..\global\beCore.Cpp.Win32.props" />
+    <Import Project="..\global\beMath.Cpp.Win32.props" />
+    <Import Project="..\global\Boost.Cpp.Win32.user.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\global\Platform.Cpp.$(Platform).user.props" />
+    <Import Project="..\global\Lean.Cpp.Win32.user.props" />
+    <Import Project="..\global\beCore.Cpp.Win32.props" />
+    <Import Project="..\global\beMath.Cpp.Win32.props" />
+    <Import Project="..\global\Boost.Cpp.Win32.user.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\global\Platform.Cpp.$(Platform).user.props" />
+    <Import Project="..\global\Lean.Cpp.Win32.user.props" />
+    <Import Project="..\global\beCore.Cpp.Win32.props" />
+    <Import Project="..\global\beMath.Cpp.Win32.props" />
+    <Import Project="..\global\Boost.Cpp.Win32.user.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\global\Platform.Cpp.$(Platform).user.props" />
+    <Import Project="..\global\Lean.Cpp.Win32.user.props" />
+    <Import Project="..\global\beCore.Cpp.Win32.props" />
+    <Import Project="..\global\beMath.Cpp.Win32.props" />
+    <Import Project="..\global\Boost.Cpp.Win32.user.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)_d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)_x64d</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_x64</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;BEENTITYSYSTEM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>beEntitySystemInternal/StdAfx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)header</AdditionalIncludeDirectories>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>beCore_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy    "$(TargetPath)"    "$(SolutionDir)Bin\$(TargetFileName)"
+copy    "$(TargetDir)$(TargetName).lib"    "$(SolutionDir)global\$(TargetName).lib"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;BEENTITYSYSTEM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>beEntitySystemInternal/StdAfx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)header</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>beCore_x64d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy    "$(TargetPath)"    "$(SolutionDir)Bin\$(TargetFileName)"
+copy    "$(TargetDir)$(TargetName).lib"    "$(SolutionDir)global\$(TargetName).lib"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;BEENTITYSYSTEM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>beEntitySystemInternal/StdAfx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)header</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>beCore.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy    "$(TargetPath)"    "$(SolutionDir)Bin\$(TargetFileName)"
+copy    "$(TargetDir)$(TargetName).lib"    "$(SolutionDir)global\$(TargetName).lib"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;BEENTITYSYSTEM_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeaderFile>beEntitySystemInternal/StdAfx.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(ProjectDir)header</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>beCore_x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy    "$(TargetPath)"    "$(SolutionDir)Bin\$(TargetFileName)"
+copy    "$(TargetDir)$(TargetName).lib"    "$(SolutionDir)global\$(TargetName).lib"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header\beEntitySystem\beAnimatedController.h" />
+    <ClInclude Include="header\beEntitySystem\beEntities.h" />
+    <ClInclude Include="header\beEntitySystem\beAnimated.h" />
+    <ClInclude Include="header\beEntitySystem\beAnimatedHost.h" />
+    <ClInclude Include="header\beEntitySystem\beAsset.h" />
+    <ClInclude Include="header\beEntitySystem\beAttachable.h" />
+    <ClInclude Include="header\beEntitySystem\beController.h" />
+    <ClInclude Include="header\beEntitySystem\beControllerSerializer.h" />
+    <ClInclude Include="header\beEntitySystem\beEntityController.h" />
+    <ClInclude Include="header\beEntitySystem\beEntityGroup.h" />
+    <ClInclude Include="header\beEntitySystem\beEntityGroupController.h" />
+    <ClInclude Include="header\beEntitySystem\beEntitySerialization.h" />
+    <ClInclude Include="header\beEntitySystem\beEntitySerializer.h" />
+    <ClInclude Include="header\beEntitySystem\beEntitySystem.h" />
+    <ClInclude Include="header\beEntitySystemInternal\stdafx.h" />
+    <ClInclude Include="header\beEntitySystemInternal\targetver.h" />
+    <ClInclude Include="header\beEntitySystem\beGenericControllerSerializer.h" />
+    <ClInclude Include="header\beEntitySystem\beGenericGroupControllerSerializer.h" />
+    <ClInclude Include="header\beEntitySystem\beRenderable.h" />
+    <ClInclude Include="header\beEntitySystem\beRenderableHost.h" />
+    <ClInclude Include="header\beEntitySystem\beSerialization.h" />
+    <ClInclude Include="header\beEntitySystem\beSerializationParameters.h" />
+    <ClInclude Include="header\beEntitySystem\beSerializationTasks.h" />
+    <ClInclude Include="header\beEntitySystem\beSimulation.h" />
+    <ClInclude Include="header\beEntitySystem\beSimulationController.h" />
+    <ClInclude Include="header\beEntitySystem\beStateSerializer.h" />
+    <ClInclude Include="header\beEntitySystem\beSynchronized.h" />
+    <ClInclude Include="header\beEntitySystem\beSynchronizedHost.h" />
+    <ClInclude Include="header\beEntitySystem\beWorld.h" />
+    <ClInclude Include="header\beEntitySystem\beWorldControllers.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\beAnimatedController.cpp" />
+    <ClCompile Include="source\beAnimatedHost.cpp" />
+    <ClCompile Include="source\beAsset.cpp" />
+    <ClCompile Include="source\beControllerSerializer.cpp" />
+    <ClCompile Include="source\beEntities.cpp" />
+    <ClCompile Include="source\beEntityController.cpp" />
+    <ClCompile Include="source\beEntityGroup.cpp" />
+    <ClCompile Include="source\beEntityGroupController.cpp" />
+    <ClCompile Include="source\beEntityGroupControllerSerializer.cpp" />
+    <ClCompile Include="source\beEntitySerialization.cpp" />
+    <ClCompile Include="source\beEntitySerializer.cpp" />
+    <ClCompile Include="source\beEntitySystem.cpp" />
+    <ClCompile Include="source\beGenericControllerSerializer.cpp" />
+    <ClCompile Include="source\beRenderableHost.cpp" />
+    <ClCompile Include="source\beSerialization.cpp" />
+    <ClCompile Include="source\beSerializationParameters.cpp" />
+    <ClCompile Include="source\beSerializationTasks.cpp" />
+    <ClCompile Include="source\beSimulation.cpp" />
+    <ClCompile Include="source\beSynchronizedHost.cpp" />
+    <ClCompile Include="source\beWorld.cpp" />
+    <ClCompile Include="source\beWorldControllers.cpp" />
+    <ClCompile Include="source\dllmain.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="source\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

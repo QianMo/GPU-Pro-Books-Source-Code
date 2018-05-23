@@ -1,0 +1,187 @@
+<world name="Sponza.scene.xml" nextPersistentID="25">
+	<entities>
+		<e type="Entity" name="Sun" id="0">
+			<properties>
+				<p n="precise pos">0;0;0</p>
+				<p n="position">3.7252903e-009;1.86264515e-009;0</p>
+				<p n="angles (zxy)">29.8216;-56.0405502;-14.9754105</p>
+				<p n="scaling">1;1;1</p>
+				<p n="visible">1</p>
+			</properties>
+			<controllers>
+				<c type="DirectionalLightController" material="DirectionalLightController.DefaultMaterial">
+					<properties>
+						<p n="color">2.20000005;1.79999995;1.5;0.150000006</p>
+						<p n="indirect color">1;0.899999976;0.949999988;0</p>
+						<p n="shadow">1</p>
+						<p n="shadow resolution">1024</p>
+					</properties>
+				</c>
+			</controllers>
+		</e>
+		<e type="Entity" name="Sponza" id="1">
+			<properties>
+				<p n="precise pos">3000;-10229;0</p>
+				<p n="position">3;-10.2294922;0</p>
+				<p n="angles (zxy)">-0;0;0</p>
+				<p n="scaling">3;3;3</p>
+				<p n="visible">1</p>
+			</properties>
+			<controllers>
+				<c type="MeshController" mesh="Sibenik"/>
+			</controllers>
+		</e>
+		<e type="Entity" name="Sky" id="2">
+			<properties>
+				<p n="precise pos">0;0;0</p>
+				<p n="position">0;0;0</p>
+				<p n="angles (zxy)">-0;0;0</p>
+				<p n="scaling">10000;10000;10000</p>
+				<p n="visible">1</p>
+			</properties>
+			<controllers>
+				<c type="MeshController" mesh="Sphere"/>
+			</controllers>
+		</e>
+		<e type="Entity" name="Light" id="4">
+			<properties>
+				<p n="precise pos">-27196;49890;-44327</p>
+				<p n="position">-27.1965313;49.89048;-44.3274651</p>
+				<p n="angles (zxy)">-0;0;0</p>
+				<p n="scaling">50;50;50</p>
+				<p n="visible">1</p>
+			</properties>
+			<controllers>
+				<c type="PointLightController" material="PointLightController.DefaultMaterial">
+					<properties>
+						<p n="color">50;30;1;1</p>
+						<p n="indirect color">1;1;1;1</p>
+						<p n="attenuation">1</p>
+						<p n="attenuation offset">1</p>
+						<p n="range">50</p>
+						<p n="shadow">0</p>
+						<p n="shadow resolution">512</p>
+					</properties>
+				</c>
+			</controllers>
+		</e>
+	</entities>
+	<materials>
+		<m name="DirectionalLightController.DefaultMaterial">
+			<effect effect="Lights/DirectionalLight.fx"/>
+		</m>
+		<m name="Color">
+			<effect effect="Materials/Bump.fx"/>
+			<config name="Color"/>
+		</m>
+		<m name="Glass1">
+			<effect effect="Materials/Alpha.fx"/>
+			<config name="Glass1"/>
+		</m>
+		<m name="Bricks">
+			<effect effect="Materials/BumpTextured.fx"/>
+			<config name="Bricks"/>
+		</m>
+		<m name="Stup">
+			<effect effect="Materials/Textured.fx"/>
+			<config name="Stup"/>
+		</m>
+		<m name="PointLightController.DefaultMaterial">
+			<effect effect="Lights/PointLight.fx"/>
+		</m>
+		<m name="Sky">
+			<effect effect="Atmospherics/Sky.fx"/>
+			<config name="Sky"/>
+		</m>
+		<m name="Floor">
+			<effect effect="Materials/Textured.fx"/>
+			<config name="Floor"/>
+		</m>
+	</materials>
+	<renderablemeshes>
+		<m name="Sibenik" source="Sibenik">
+			<lod distance="0">
+				<s n="sprljci" material="Bricks"/>
+				<s n="staklo" material="Glass1"/>
+				<s n="kamen_zid" material="Bricks"/>
+				<s n="stupovi" material="Stup"/>
+				<s n="pod" material="Floor"/>
+				<s n="pod_tepih" material="Color"/>
+				<s n="pod_rub" material="Color"/>
+				<s n="kamen_zid_prozor" material="Stup"/>
+				<s n="zid_vani" material="Bricks"/>
+				<s n="kamen_zid_parapet" material="Bricks"/>
+				<s n="staklo_crveno" material="Bricks"/>
+				<s n="rozeta" material="Stup"/>
+				<s n="staklo_zeleno" material="Bricks"/>
+				<s n="staklo_plavo" material="Bricks"/>
+				<s n="staklo_zuto" material="Bricks"/>
+			</lod>
+		</m>
+		<m name="Sphere" source="Sphere">
+			<lod distance="0">
+				<s n="" material="Sky"/>
+			</lod>
+		</m>
+	</renderablemeshes>
+	<meshes>
+		<m name="Sibenik" file="Static/Test/Sibenik.mesh"/>
+		<m name="Sphere" file="Static/Default/Sphere.mesh"/>
+	</meshes>
+	<materialconfigs>
+		<m name="Sky">
+			<properties>
+				<p n="Ground" t="float" c="4">0.0399999991;0.122500002;0.0625;-1</p>
+				<p n="Haze" t="float" c="4">3.24000001;1.68438864;0.907480299;0</p>
+				<p n="Sky" t="float" c="4">0.393379837;0.645130098;1.2615782;0.899999976</p>
+			</properties>
+		</m>
+		<m name="Stup">
+			<properties>
+				<p n="Diffuse" t="float" c="4">1;0.977508187;0.945952535;0.1</p>
+				<p n="Specular" t="float" c="4">0.0500000007;0.0500000007;0.0500000007;0.899999976</p>
+			</properties>
+			<textures>
+				<t n="Diffuse" color="1" file="Sibenik/KAMEN-stup.png"/>
+			</textures>
+		</m>
+		<m name="Glass1">
+			<properties>
+				<p n="Diffuse" t="float" c="4">0.140459299;0.0938124657;0.217822537;0.13861388</p>
+			</properties>
+		</m>
+		<m name="Bricks">
+			<properties>
+				<p n="Normal Blend" t="float" c="4">0;0;0;0.025</p>
+				<p n="Diffuse" t="float" c="4">1;1;1;0.1</p>
+				<p n="Specular" t="float" c="4">0.0500000007;0.0500000007;0.0500000007;0.899999976</p>
+				<p n="Texture Repeat" t="float" c="2">1;1</p>
+				<p n="Reflectance" t="float" c="1">0.5</p>
+			</properties>
+			<textures>
+				<t n="Diffuse" color="1" file="Sibenik/kamen.png"/>
+				<t n="Normal" file="Sibenik/kamen-n.png"/>
+			</textures>
+		</m>
+		<m name="Color">
+			<properties>
+				<p n="Normal Blend" t="float" c="4">0;0;0;0</p>
+				<p n="Diffuse" t="float" c="4">1;0.185305566;0.0864881352;0.02</p>
+				<p n="Specular" t="float" c="4">0.0500000007;0.0500000007;0.0500000007;0.899999976</p>
+			</properties>
+			<textures>
+				<t n="Normal" file="Sibenik/kamen-n.png"/>
+			</textures>
+		</m>
+		<m name="Floor">
+			<properties>
+				<p n="Diffuse" t="float" c="4">1;1;1;0.15</p>
+				<p n="Specular" t="float" c="4">0.0500000007;0.0500000007;0.0500000007;0.899999976</p>
+			</properties>
+			<textures>
+				<t n="Diffuse" color="1" file="Sibenik/mramor6x6.png"/>
+			</textures>
+		</m>
+	</materialconfigs>
+</world>
+

@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx;h;hpp</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Ray Tracing">
+      <UniqueIdentifier>{9e68680b-8f75-415d-9608-fb776f87c839}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{a033f6d9-e9ee-41bb-a385-4f69a2b0da63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Ray Tracing">
+      <UniqueIdentifier>{828645e0-d94e-41be-9988-3e6f3923111c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Ray Tracing\Hardwired">
+      <UniqueIdentifier>{c3a72f5a-796a-4a04-91a5-be533a6a5be7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Ray Tracing\Materials">
+      <UniqueIdentifier>{a0c83718-59d9-4348-aaeb-50efa9f2b736}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Ray Tracing\Prototypes">
+      <UniqueIdentifier>{1e5036cf-66eb-42e9-83ce-674d7c784832}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Ray Tracing\Utility">
+      <UniqueIdentifier>{e9821d67-1dfb-4333-89e9-87061a6aa142}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Ray Tracing\Pipeline">
+      <UniqueIdentifier>{e30f865c-5294-42d8-994a-9673f8727b8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Ray Tracing\Atmospherics">
+      <UniqueIdentifier>{7abdaff4-07f4-41a2-b65c-1cddb559eecb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Ray Tracing\Lights">
+      <UniqueIdentifier>{b11c78bb-7144-4239-a86d-46aef4b05fc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Rasterization">
+      <UniqueIdentifier>{805aa864-6600-4d38-9582-ef2772c963e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Rasterization\Processing">
+      <UniqueIdentifier>{50cd409b-93ea-4fb9-a7c4-b53bd21fc345}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Rasterization\Lights">
+      <UniqueIdentifier>{cfa8a0ca-6e9d-44a5-a506-ca2070579660}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Rasterization\Materials">
+      <UniqueIdentifier>{238f7827-4bcb-4f09-8ef8-162fb5d23a86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Rasterization\Atmospherics">
+      <UniqueIdentifier>{d5b69a05-48fa-4a81-968d-8963388c11fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Rasterization\Prototypes">
+      <UniqueIdentifier>{6bb856e2-a8ab-47d5-b000-dbf37481cda5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Rasterization\Modifiers">
+      <UniqueIdentifier>{8f0902cb-27ac-4339-b82e-6c6a87baf35a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Rasterization\Hooks">
+      <UniqueIdentifier>{5e0a1074-ea85-450c-8b32-5a126b600f69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Header Files">
+      <UniqueIdentifier>{4c637380-4e57-4ed3-bfce-40c964d78093}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Header Files\Engine">
+      <UniqueIdentifier>{36131223-be09-4387-969f-a5db17a4b2af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Header Files\Pipelines">
+      <UniqueIdentifier>{cb13e12a-2c9b-4cae-8ed7-8973e227a3f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Header Files\Pipelines\LPR">
+      <UniqueIdentifier>{b0956c8e-d0ee-4d82-a346-c11b5f379c5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Header Files\Utility">
+      <UniqueIdentifier>{ef95eeb2-cb97-4b64-8ce5-408f4374c083}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders\Header Files\External">
+      <UniqueIdentifier>{9518f01d-5e71-4077-a2ee-dee211b7332c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="resource\Tracing.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\small.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Hardwired\RayGen.fx">
+      <Filter>Shaders\Ray Tracing\Hardwired</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Hardwired\RayGrid.fx">
+      <Filter>Shaders\Ray Tracing\Hardwired</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Hardwired\VoxelRep.fx">
+      <Filter>Shaders\Ray Tracing\Hardwired</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Materials\Textured.fx">
+      <Filter>Shaders\Ray Tracing\Materials</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Prototypes\SceneApprox.fx">
+      <Filter>Shaders\Ray Tracing\Prototypes</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Utility\Conservative.fx">
+      <Filter>Shaders\Ray Tracing\Utility</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Atmospherics\Sky.fx">
+      <Filter>Shaders\Ray Tracing\Atmospherics</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Lights\DirectionalLight.fx">
+      <Filter>Shaders\Ray Tracing\Lights</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Processing\FXAA.fx">
+      <Filter>Shaders\Rasterization\Processing</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Processing\SimpleTonemap.fx">
+      <Filter>Shaders\Rasterization\Processing</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Processing\BilateralAverage.fx">
+      <Filter>Shaders\Rasterization\Processing</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Lights\DirectionalLight.fx">
+      <Filter>Shaders\Rasterization\Lights</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Lights\PointLight.fx">
+      <Filter>Shaders\Rasterization\Lights</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Lights\SpotLight.fx">
+      <Filter>Shaders\Rasterization\Lights</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Materials\Bump.fx">
+      <Filter>Shaders\Rasterization\Materials</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Materials\BumpTextured.fx">
+      <Filter>Shaders\Rasterization\Materials</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Materials\Simple.fx">
+      <Filter>Shaders\Rasterization\Materials</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Materials\SpecTextured.fx">
+      <Filter>Shaders\Rasterization\Materials</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Materials\Textured.fx">
+      <Filter>Shaders\Rasterization\Materials</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Atmospherics\Sky.fx">
+      <Filter>Shaders\Rasterization\Atmospherics</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Atmospherics\SkyColor.fx">
+      <Filter>Shaders\Rasterization\Atmospherics</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Atmospherics\Water.fx">
+      <Filter>Shaders\Rasterization\Atmospherics</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Prototypes\Feedback.fx">
+      <Filter>Shaders\Rasterization\Prototypes</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Prototypes\Shadow.fx">
+      <Filter>Shaders\Rasterization\Prototypes</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Modifiers\Wind.fx">
+      <Filter>Shaders\Rasterization\Modifiers</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Hooks\Transform.fx">
+      <Filter>Shaders\Rasterization\Hooks</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\BindPoints.fx">
+      <Filter>Shaders\Header Files\Engine</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\DirectionalLight.fx">
+      <Filter>Shaders\Header Files\Engine</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\Perspective.fx">
+      <Filter>Shaders\Header Files\Engine</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\Pipe.fx">
+      <Filter>Shaders\Header Files\Engine</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\Pipeline.fx">
+      <Filter>Shaders\Header Files\Engine</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\PointLight.fx">
+      <Filter>Shaders\Header Files\Engine</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\Renderable.fx">
+      <Filter>Shaders\Header Files\Engine</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\Shadow.fx">
+      <Filter>Shaders\Header Files\Engine</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\SpotLight.fx">
+      <Filter>Shaders\Header Files\Engine</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Engine\Feedback.fx">
+      <Filter>Shaders\Header Files\Engine</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Pipelines\Scene.fx">
+      <Filter>Shaders\Header Files\Pipelines</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Pipelines\LPR\Geometry.fx">
+      <Filter>Shaders\Header Files\Pipelines\LPR</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Pipelines\LPR\Pipeline.fx">
+      <Filter>Shaders\Header Files\Pipelines\LPR</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Pipelines\LPR\Scene.fx">
+      <Filter>Shaders\Header Files\Pipelines\LPR</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Utility\Color.fx">
+      <Filter>Shaders\Header Files\Utility</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Utility\Hilbert.fx">
+      <Filter>Shaders\Header Files\Utility</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Utility\Bits.fx">
+      <Filter>Shaders\Header Files\Utility</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Utility\Math.fx">
+      <Filter>Shaders\Header Files\Utility</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Pipelines\Tracing\CompactRay.fx">
+      <Filter>Shaders\Ray Tracing\Pipeline</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Pipelines\Tracing\Pipeline.fx">
+      <Filter>Shaders\Ray Tracing\Pipeline</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Pipelines\Tracing\Ray.fx">
+      <Filter>Shaders\Ray Tracing\Pipeline</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Pipelines\Tracing\RaySet.fx">
+      <Filter>Shaders\Ray Tracing\Pipeline</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Pipelines\Tracing\Scene.fx">
+      <Filter>Shaders\Ray Tracing\Pipeline</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\RayTracing\Pipelines\Tracing\VoxelRep.fx">
+      <Filter>Shaders\Ray Tracing\Pipeline</Filter>
+    </None>
+    <None Include="..\..\Bin\Data\Effects\2.0\Materials\Alpha.fx">
+      <Filter>Shaders\Rasterization\Materials</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header\App.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\AppWindow.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\B40Calls.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\CUDAErrors.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\CUDAUtils.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\FreeCamera.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\HLSLPacking.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\IncrementalGPUTimer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\Morton.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\Resource.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\Scene.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\Stage.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\stdafx.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\targetver.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\Tracing.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\Viewer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\RayTracing\Pipeline.h">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClInclude>
+    <ClInclude Include="header\RayTracing\Ray.h">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClInclude>
+    <ClInclude Include="header\RayTracing\RayGen.h">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClInclude>
+    <ClInclude Include="header\RayTracing\RaySet.h">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClInclude>
+    <ClInclude Include="header\RayTracing\RenderableEffectDriver.h">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClInclude>
+    <ClInclude Include="header\RayTracing\RenderableEffectDriverCache.h">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClInclude>
+    <ClInclude Include="header\RayTracing\TracingEffectBinder.h">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClInclude>
+    <ClInclude Include="header\RayTracing\TracingEffectBinderPool.h">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClInclude>
+    <ClInclude Include="header\RayTracing\VoxelRep.h">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClInclude>
+    <ClInclude Include="header\RayTracing\LightEffectDriver.h">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClInclude>
+    <ClInclude Include="header\RayTracing\LightEffectDriverCache.h">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bin\Data\Effects\2.0\External\Fxaa3_11.h">
+      <Filter>Shaders\Header Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bin\Data\Effects\2.0\External\Fxaa3_8.h">
+      <Filter>Shaders\Header Files\External</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\Tracing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AppWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\App.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Stage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FreeCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Viewer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RayTracing\Pipeline.cpp">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RayTracing\RenderableEffectDriver.cpp">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RayTracing\TracingEffectBinder.cpp">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RayTracing\TracingEffectBinderPool.cpp">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RayTracing\VoxelRep.cpp">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RayTracing\RayGrid.cpp">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RayTracing\RayGen.cpp">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RayTracing\LightEffectDriver.cpp">
+      <Filter>Source Files\Ray Tracing</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource\Tracing.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="source\B40Calls.cu">
+      <Filter>Source Files</Filter>
+    </CudaCompile>
+  </ItemGroup>
+</Project>

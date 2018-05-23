@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Demo" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin\Debug\Demo" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Debug\" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="..\..\dependencies\SDL-1.2.15\SDL-1.2.15\include" />
+					<Add directory="..\..\include" />
+				</Compiler>
+				<Linker>
+					<Add library="libSDL.dll.a" />
+					<Add library="libopengl32.a" />
+					<Add library="libglu32.a" />
+					<Add directory="..\..\dependencies\SDL-1.2.15\SDL-1.2.15\lib" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin\Release\Demo" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj\Release\" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="..\..\include\essentials\string.hpp" />
+		<Unit filename="..\..\include\essentials\types.hpp" />
+		<Unit filename="..\..\include\math\common.hpp" />
+		<Unit filename="..\..\include\math\constants.hpp" />
+		<Unit filename="..\..\include\math\matrix.hpp" />
+		<Unit filename="..\..\include\math\plane.hpp" />
+		<Unit filename="..\..\include\math\quaternion.hpp" />
+		<Unit filename="..\..\include\math\vector.hpp" />
+		<Unit filename="..\..\include\node.hpp" />
+		<Unit filename="..\..\src\main.cpp" />
+		<Unit filename="..\..\src\math\common.cpp" />
+		<Unit filename="..\..\src\math\matrix.cpp" />
+		<Unit filename="..\..\src\math\plane.cpp" />
+		<Unit filename="..\..\src\math\vector.cpp" />
+		<Unit filename="..\..\src\node.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

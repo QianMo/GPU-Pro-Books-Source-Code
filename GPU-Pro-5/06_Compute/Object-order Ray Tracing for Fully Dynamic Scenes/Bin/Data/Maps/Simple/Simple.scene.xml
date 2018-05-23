@@ -1,0 +1,249 @@
+<world name="Simple.scene.xml" nextPersistentID="27">
+	<entities>
+		<e type="Entity" name="" id="0">
+			<properties>
+				<p n="precise pos">0;0;0</p>
+				<p n="position">3.7252903e-009;1.86264515e-009;0</p>
+				<p n="angles (zxy)">83.8173676;55.8463783;72.4499969</p>
+				<p n="scaling">1;1;1</p>
+				<p n="visible">1</p>
+			</properties>
+			<controllers>
+				<c type="DirectionalLightController" material="DirectionalLightController.DefaultMaterial">
+					<properties>
+						<p n="color">2.20000005;1.79999995;1.5;0.0350000001</p>
+						<p n="indirect color">1;1;1;1</p>
+						<p n="shadow">1</p>
+						<p n="shadow resolution">1024</p>
+					</properties>
+				</c>
+			</controllers>
+		</e>
+		<e type="Entity" name="" id="1">
+			<properties>
+				<p n="precise pos">0;-18918;0</p>
+				<p n="position">0;-18.91852;0</p>
+				<p n="angles (zxy)">-0;30.0000019;0</p>
+				<p n="scaling">50;10;50</p>
+				<p n="visible">1</p>
+			</properties>
+			<controllers>
+				<c type="MeshController" mesh="Cube"/>
+			</controllers>
+		</e>
+		<e type="Entity" name="Sky" id="2">
+			<properties>
+				<p n="precise pos">0;0;0</p>
+				<p n="position">0;0;0</p>
+				<p n="angles (zxy)">-0;0;0</p>
+				<p n="scaling">10000;10000;10000</p>
+				<p n="visible">1</p>
+			</properties>
+			<controllers>
+				<c type="MeshController" mesh="Sphere"/>
+			</controllers>
+		</e>
+		<e type="Entity" name="" id="5">
+			<properties>
+				<p n="precise pos">-18494;-6963;-6487</p>
+				<p n="position">-18.4942322;-6.9633975;-6.48754978</p>
+				<p n="angles (zxy)">-0;0;0</p>
+				<p n="scaling">2;2;2</p>
+				<p n="visible">1</p>
+			</properties>
+			<controllers>
+				<c type="MeshController" mesh="Cube.1"/>
+			</controllers>
+		</e>
+		<e type="Entity" name="" id="6">
+			<properties>
+				<p n="precise pos">7500;183;6012</p>
+				<p n="position">7.50006104;0.183593273;6.01285648</p>
+				<p n="angles (zxy)">-0;0;0</p>
+				<p n="scaling">10;10;10</p>
+				<p n="visible">1</p>
+			</properties>
+			<controllers>
+				<c type="MeshController" mesh="Sphere.1"/>
+			</controllers>
+		</e>
+		<e type="Entity" name="Stone1" id="7">
+			<properties>
+				<p n="precise pos">1153;-5666;-21013</p>
+				<p n="position">1.15341043;-5.66673613;-21.0131454</p>
+				<p n="angles (zxy)">-0;0;0</p>
+				<p n="scaling">4;4;4</p>
+				<p n="visible">1</p>
+			</properties>
+			<controllers>
+				<c type="MeshController" mesh="Stone1"/>
+			</controllers>
+		</e>
+		<e type="Entity" name="Cube" id="9">
+			<properties>
+				<p n="precise pos">-24704;-4719;14677</p>
+				<p n="position">-24.7042294;-4.71993828;14.6771202</p>
+				<p n="angles (zxy)">-0;63.0305099;0</p>
+				<p n="scaling">5;5;5</p>
+				<p n="visible">1</p>
+			</properties>
+			<controllers>
+				<c type="MeshController" mesh="Cube.2"/>
+			</controllers>
+		</e>
+		<e type="Entity" name="SmallTower" id="10">
+			<properties>
+				<p n="precise pos">-26006;-9056;-17144</p>
+				<p n="position">-26.0066185;-9.05623436;-17.1449165</p>
+				<p n="angles (zxy)">-0;0;0</p>
+				<p n="scaling">2;2;2</p>
+				<p n="visible">1</p>
+			</properties>
+			<controllers>
+				<c type="MeshController" mesh="Barn1"/>
+			</controllers>
+		</e>
+	</entities>
+	<materials>
+		<m name="Tiled">
+			<effect effect="Materials/Bump.fx"/>
+			<config name="Tiled"/>
+		</m>
+		<m name="Mirror">
+			<effect effect="Materials/Textured.fx"/>
+			<config name="Mirror"/>
+		</m>
+		<m name="DirectionalLightController.DefaultMaterial">
+			<effect effect="Lights/DirectionalLight.fx"/>
+		</m>
+		<m name="Sky">
+			<effect effect="Atmospherics/Sky.fx"/>
+			<config name="Sky"/>
+		</m>
+		<m name="Stone1">
+			<effect effect="Materials/Textured.fx"/>
+			<config name="Stone1"/>
+		</m>
+		<m name="Wood">
+			<effect effect="Materials/Textured.fx"/>
+			<config name="Wood"/>
+		</m>
+		<m name="Marble">
+			<effect effect="Materials/Textured.fx"/>
+			<config name="Marble"/>
+		</m>
+	</materials>
+	<renderablemeshes>
+		<m name="Stone1" source="Stone1">
+			<lod distance="0">
+				<s n="" material="Stone1"/>
+			</lod>
+		</m>
+		<m name="Cube" source="Cube">
+			<lod distance="0">
+				<s n="" material="Marble"/>
+			</lod>
+		</m>
+		<m name="Cube.1" source="Cube">
+			<lod distance="0">
+				<s n="" material="Wood"/>
+			</lod>
+		</m>
+		<m name="Sphere.1" source="Sphere">
+			<lod distance="0">
+				<s n="" material="Mirror"/>
+			</lod>
+		</m>
+		<m name="Cube.2" source="Cube">
+			<lod distance="0">
+				<s n="" material="Tiled"/>
+			</lod>
+		</m>
+		<m name="Sphere" source="Sphere">
+			<lod distance="0">
+				<s n="" material="Sky"/>
+			</lod>
+		</m>
+		<m name="Barn1" source="Barn1">
+			<lod distance="0">
+				<s n="" material="Wood"/>
+			</lod>
+		</m>
+	</renderablemeshes>
+	<meshes>
+		<m name="Stone1" file="Static/Nature/Stone1.mesh"/>
+		<m name="Sphere" file="Static/Default/Sphere.mesh"/>
+		<m name="Barn1" file="Static/Barn/Barn1.mesh"/>
+		<m name="Cube" file="Static/Default/Cube.mesh"/>
+	</meshes>
+	<materialconfigs>
+		<m name="Mirror">
+			<properties>
+				<p n="Diffuse" t="float" c="4">0.822781742;0.997756898;1;1</p>
+				<p n="Specular" t="float" c="4">0.867917895;0.60872817;0.0600442514;1</p>
+				<p n="Texture Repeat" t="float" c="2">1;1</p>
+				<p n="Metalness" t="float" c="1">0.899999976</p>
+				<p n="Roughness" t="float" c="1">0.0199999996</p>
+				<p n="Metal Fresnel" t="float" c="1">0.899999976</p>
+			</properties>
+			<textures>
+				<t n="Diffuse" color="1" file="nw.png"/>
+			</textures>
+		</m>
+		<m name="Stone1">
+			<properties>
+				<p n="Diffuse" t="float" c="4">1;1;1;0</p>
+				<p n="Specular" t="float" c="4">0.367086291;0.367086291;0.367086291;0.373417735</p>
+				<p n="Texture Repeat" t="float" c="2">1;1</p>
+				<p n="Roughness" t="float" c="1">0.5</p>
+			</properties>
+			<textures>
+				<t n="Diffuse" color="1" file="Stone/Stone1.dds"/>
+			</textures>
+		</m>
+		<m name="Sky">
+			<properties>
+				<p n="Ground" t="float" c="4">0.0399999991;0.122500002;0.0625;-1</p>
+				<p n="Haze" t="float" c="4">3.24000001;1.68438864;0.907480299;0</p>
+				<p n="Sky" t="float" c="4">0.393379837;0.645130098;1.2615782;0.899999976</p>
+			</properties>
+		</m>
+		<m name="Marble">
+			<properties>
+				<p n="Diffuse" t="float" c="4">1;1;1;0.140000001</p>
+				<p n="Specular" t="float" c="4">0.699999988;0.699999988;0.699999988;1</p>
+				<p n="Texture Repeat" t="float" c="2">5;5</p>
+				<p n="Roughness" t="float" c="1">0.129999995</p>
+			</properties>
+			<textures>
+				<t n="Diffuse" color="1" file="Ground/Marble.dds"/>
+			</textures>
+		</m>
+		<m name="Tiled">
+			<properties>
+				<p n="Normal Blend" t="float" c="4">0.25;0.25;0.25;0.300000012</p>
+				<p n="Diffuse" t="float" c="4">1;0.800000012;0.699999988;0.400000006</p>
+				<p n="Specular" t="float" c="4">0.300000012;0.300000012;0.300000012;0.803797483</p>
+				<p n="Texture Repeat" t="float" c="2">5;5</p>
+				<p n="PremultipliedNormal" t="int" c="1">1</p>
+				<p n="Roughness" t="float" c="1">0.300000012</p>
+				<p n="Metalness" t="float" c="1">0.400000006</p>
+			</properties>
+			<textures>
+				<t n="Normal" file="Tiles/Tiles1.dds"/>
+			</textures>
+		</m>
+		<m name="Wood">
+			<properties>
+				<p n="Diffuse" t="float" c="4">1;1;1;0</p>
+				<p n="Specular" t="float" c="4">0.202532992;0.202532992;0.202532992;0.537974715</p>
+				<p n="Texture Repeat" t="float" c="2">1;1</p>
+				<p n="Roughness" t="float" c="1">0.800000012</p>
+			</properties>
+			<textures>
+				<t n="Diffuse" color="1" file="Wood/Plank1.dds"/>
+			</textures>
+		</m>
+	</materialconfigs>
+</world>
+

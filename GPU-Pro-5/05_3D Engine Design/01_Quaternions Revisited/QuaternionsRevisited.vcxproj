@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{16A2122B-6B61-4512-9341-419EC066F61E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>QuaternionsRevisited</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)\Source\DXUT\Optional;$(SolutionDir)\Source\DXUT\Core;$(FBX_SDK)\Include;$(DXSDK_DIR)\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(FBX_SDK)\lib\vs2010\x86\debug;$(DXSDK_DIR)\Lib\x86;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Bin-Debug\</OutDir>
+    <IntDir>Temp\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)\Source\DXUT\Optional;$(SolutionDir)\Source\DXUT\Core;$(FBX_SDK)\Include;$(DXSDK_DIR)\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(FBX_SDK)\lib\vs2010\x86\release;$(DXSDK_DIR)\Lib\x86;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Bin\</OutDir>
+    <IntDir>Temp\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>libfbxsdk-mt.lib;libfbxsdk.lib;dxerr.lib;dxguid.lib;comctl32.lib;d3dx10d.lib;d3dx9d.lib;d3d9.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>libfbxsdk-mt.lib;libfbxsdk.lib;dxerr.lib;dxguid.lib;comctl32.lib;d3dx10.lib;d3dx9.lib;d3d9.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Assert.cpp" />
+    <ClCompile Include="Source\Camera.cpp" />
+    <ClCompile Include="Source\D3DAnimation.cpp" />
+    <ClCompile Include="Source\D3DFloor.cpp" />
+    <ClCompile Include="Source\D3DMesh.cpp" />
+    <ClCompile Include="Source\DXUT\Core\DXUT.cpp" />
+    <ClCompile Include="Source\DXUT\Core\DXUTenum.cpp" />
+    <ClCompile Include="Source\DXUT\Core\DXUTmisc.cpp" />
+    <ClCompile Include="Source\DXUT\Optional\DXUTcamera.cpp" />
+    <ClCompile Include="Source\DXUT\Optional\DXUTgui.cpp" />
+    <ClCompile Include="Source\DXUT\Optional\DXUTres.cpp" />
+    <ClCompile Include="Source\DXUT\Optional\DXUTsettingsdlg.cpp" />
+    <ClCompile Include="Source\DXUT\Optional\SDKmesh.cpp" />
+    <ClCompile Include="Source\DXUT\Optional\SDKmisc.cpp" />
+    <ClCompile Include="Source\FBXImport.cpp" />
+    <ClCompile Include="Source\PixelShader.cpp" />
+    <ClCompile Include="Source\QuaternionsRevisited.cpp" />
+    <ClCompile Include="Source\Shader.cpp" />
+    <ClCompile Include="Source\Utils.cpp" />
+    <ClCompile Include="Source\VertexShader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\AdjacencyTreeBuilder.h" />
+    <ClInclude Include="Source\Assert.h" />
+    <ClInclude Include="Source\Camera.h" />
+    <ClInclude Include="Source\Convertors.h" />
+    <ClInclude Include="Source\D3DAnimation.h" />
+    <ClInclude Include="Source\D3DFloor.h" />
+    <ClInclude Include="Source\D3DMesh.h" />
+    <ClInclude Include="Source\DXUT\Core\DXUT.h" />
+    <ClInclude Include="Source\DXUT\Core\DXUTenum.h" />
+    <ClInclude Include="Source\DXUT\Core\DXUTmisc.h" />
+    <ClInclude Include="Source\DXUT\Optional\DXUTcamera.h" />
+    <ClInclude Include="Source\DXUT\Optional\DXUTgui.h" />
+    <ClInclude Include="Source\DXUT\Optional\DXUTres.h" />
+    <ClInclude Include="Source\DXUT\Optional\DXUTsettingsdlg.h" />
+    <ClInclude Include="Source\DXUT\Optional\SDKmesh.h" />
+    <ClInclude Include="Source\DXUT\Optional\SDKmisc.h" />
+    <ClInclude Include="Source\FBXImport.h" />
+    <ClInclude Include="Source\Math.h" />
+    <ClInclude Include="Source\MeshIndexer.h" />
+    <ClInclude Include="Source\PixelShader.h" />
+    <ClInclude Include="Source\Resource.h" />
+    <ClInclude Include="Source\Shader.h" />
+    <ClInclude Include="Source\Utils.h" />
+    <ClInclude Include="Source\VertexShader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="readme.txt" />
+    <None Include="Shaders\Shaders.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Source\QuaternionsRevisited.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

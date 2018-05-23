@@ -1,0 +1,86 @@
+<filesystem>
+	<location name="Effects">
+		<path>Data/Effects/Tracing</path>
+		<path>Data/Effects/2.0</path>
+		<path>Data/Effects</path>
+	</location>
+	<location name="EffectCache">
+		<path>Data/Effects/Cache/Tracing</path>
+	</location>
+	<location name="TracingEffectCache">
+		<path>Data/Effects/Cache/Tracing</path>
+	</location>
+	<location name="Textures">
+		<path>Data/Textures</path>
+	</location>
+	<location name="OrthoCastingEffectCache">
+		<path>Data/Effects/Cache/OrthoCasting</path>
+	</location>
+	<location name="TracingEffects">
+		<path>Data/Effects/Tracing</path>
+		<path>Data/Effects/2.0</path>
+		<path>Data/Effects</path>
+	</location>
+	<location name="Meshes">
+		<path>Data/Meshes</path>
+	</location>
+	<location name="EffectCacheDebug">
+		<path>Data/Effects/Cache/Debug/Tracing</path>
+	</location>
+	<location name="CastingEffects">
+		<path>Data/Effects/Casting</path>
+		<path>Data/Effects/2.0</path>
+		<path>Data/Effects</path>
+	</location>
+	<location name="MultigridCastingEffectCacheDebug">
+		<path>Data/Effects/Cache/Debug/MultigridCasting</path>
+	</location>
+	<location name="TracingEffectCacheDebug">
+		<path>Data/Effects/Cache/Debug/Tracing</path>
+	</location>
+	<location name="CastingEffectCache">
+		<path>Data/Effects/Cache/Casting</path>
+	</location>
+	<location name="CastingEffectCacheDebug">
+		<path>Data/Effects/Cache/Debug/Casting</path>
+	</location>
+	<location name="UniformCastingEffects">
+		<path>Data/Effects/UniformCasting</path>
+		<path>Data/Effects/2.0</path>
+		<path>Data/Effects</path>
+	</location>
+	<location name="UniformCastingEffectCache">
+		<path>Data/Effects/Cache/UniformCasting</path>
+	</location>
+	<location name="UniformCastingEffectCacheDebug">
+		<path>Data/Effects/Cache/Debug/UniformCasting</path>
+	</location>
+	<location name="OrthoCastingEffects">
+		<path>Data/Effects/OrthoCasting</path>
+		<path>Data/Effects/2.0</path>
+		<path>Data/Effects</path>
+	</location>
+	<location name="OrthoCastingEffectCacheDebug">
+		<path>Data/Effects/Cache/Debug/OrthoCasting</path>
+	</location>
+	<location name="MultigridCastingEffects">
+		<path>Data/Effects/MultigridCasting</path>
+		<path>Data/Effects/2.0</path>
+		<path>Data/Effects</path>
+	</location>
+	<location name="MultigridCastingEffectCache">
+		<path>Data/Effects/Cache/MultigridCasting</path>
+	</location>
+	<location name="RayTracingEffects">
+		<path>Data/Effects/RayTracing</path>
+		<path>Data/Effects/2.0</path>
+		<path>Data/Effects</path>
+	</location>
+	<location name="RayTracingEffectCache">
+		<path>Data/Effects/Cache/RayTracing</path>
+	</location>
+	<location name="RayTracingEffectCacheDebug">
+		<path>Data/Effects/Cache/Debug/RayTracing</path>
+	</location>
+</filesystem>
+

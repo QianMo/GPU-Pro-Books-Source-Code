@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="parametric" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="debug">
+				<Option output="parametric" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/debug/parametric" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-g" />
+					<Add option="-DGLFW_NO_GLU" />
+					<Add option="-DDEBUG" />
+					<Add option="-DLINUX" />
+					<Add option="-DPARAMETRIC_RENDERER" />
+					<Add directory="../../lib" />
+				</Compiler>
+				<Linker>
+					<Add library="m" />
+					<Add library="png" />
+					<Add library="glfw3" />
+					<Add library="GL" />
+					<Add library="Xrandr" />
+					<Add library="Xxf86vm" />
+					<Add library="Xi" />
+					<Add library="pthread" />
+					<Add library="X11" />
+					<Add library="rt" />
+				</Linker>
+			</Target>
+			<Target title="release">
+				<Option output="parametric" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/release/parametric" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-msse" />
+					<Add option="-msse2" />
+					<Add option="-O2" />
+					<Add option="-DGLFW_NO_GLU" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DLINUX" />
+					<Add option="-DPARAMETRIC_RENDERER" />
+					<Add directory="../../lib" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="m" />
+					<Add library="png" />
+					<Add library="glfw3" />
+					<Add library="GL" />
+					<Add library="Xrandr" />
+					<Add library="Xxf86vm" />
+					<Add library="Xi" />
+					<Add library="pthread" />
+					<Add library="X11" />
+					<Add library="rt" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="../../src/affine.c">
+		</Unit>
+		<Unit filename="../../src/bstrlib.c">
+		</Unit>
+		<Unit filename="../../src/buf.c">
+		</Unit>
+		<Unit filename="../../src/frustum.c">
+		</Unit>
+		<Unit filename="../../src/ft.c">
+		</Unit>
+		<Unit filename="../../src/glload.c">
+		</Unit>
+		<Unit filename="../../src/image.c">
+		</Unit>
+		<Unit filename="../../src/program.c">
+		</Unit>
+		<Unit filename="../../src/quadtree.c">
+		</Unit>
+		<Unit filename="../../src/timer.c">
+		</Unit>
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
+

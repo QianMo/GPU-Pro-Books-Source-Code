@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MaterialLibraryPreset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Name>plant</Name>
+	<MaterialProperty>
+		<Water>0</Water>
+		<Dirt>0.1</Dirt>
+		<Metal>0</Metal>
+		<Wood>0</Wood>
+		<Organic>0.9</Organic>
+		<Rust>0</Rust>
+		<Stone>0</Stone>
+		<Dummy>0</Dummy>
+	</MaterialProperty>
+	<ProbeOrganic>Moss.jpg</ProbeOrganic>
+	<CompositionParams>
+		<Organic>
+			<DiffuseBaseStrength>1</DiffuseBaseStrength>
+			<DiffuseRandomVariation>0.5</DiffuseRandomVariation>
+			<SpecularBaseStrength>16</SpecularBaseStrength>
+			<SpecularRandomVariation>0</SpecularRandomVariation>
+			<HeightBaseStrength>0</HeightBaseStrength>
+			<HeightRandomVariation>0.5</HeightRandomVariation>
+		</Organic>
+	</CompositionParams>
+</MaterialLibraryPreset>

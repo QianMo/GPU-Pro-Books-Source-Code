@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Pipeline">
+      <UniqueIdentifier>{1fff0fd9-7047-4d1a-acae-62ba36b2db0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Effect Binders">
+      <UniqueIdentifier>{8e589eb3-6487-4fbc-940c-2cb1b4cdc5d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Meshes">
+      <UniqueIdentifier>{93257d37-4304-428e-8536-01e5f6090e3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Processing">
+      <UniqueIdentifier>{f018b3ea-c054-4b1d-b601-e68ac20a627f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Serialization">
+      <UniqueIdentifier>{4218c0ba-f76e-40c7-8482-fde3e4db6526}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Meshes\DX11">
+      <UniqueIdentifier>{17f53dd3-4dd6-47c5-9dec-6e31952ab59a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Material">
+      <UniqueIdentifier>{9792cbff-f8d3-45e9-b7d3-6cb91a446e9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Pipeline\DX11">
+      <UniqueIdentifier>{5f5b9c46-8c81-4554-a151-3ab7b34dfccb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Effect Binders\Drivers">
+      <UniqueIdentifier>{df6456e2-7777-4553-9855-3f37d98f7474}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Effect Binders\Binders">
+      <UniqueIdentifier>{141a845d-a628-437f-a158-3309f8b5f3a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controllers">
+      <UniqueIdentifier>{51c1b231-6acc-4a52-b0f3-45c68cb1723a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header\beScene\beRenderContext.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beResourceManager.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beScene.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beSceneInternal\stdafx.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beSceneInternal\targetver.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beEffectBinder.h">
+      <Filter>Source Files\Effect Binders</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beEffectBinderCache.h">
+      <Filter>Source Files\Effect Binders</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beEffectDriver.h">
+      <Filter>Source Files\Effect Binders</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\bePassSequence.h">
+      <Filter>Source Files\Effect Binders</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beQueuedPass.h">
+      <Filter>Source Files\Effect Binders</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beShaderDrivenPipeline.h">
+      <Filter>Source Files\Effect Binders</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beMaterialDriven.h">
+      <Filter>Source Files\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beRenderableMaterial.h">
+      <Filter>Source Files\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beRenderableMaterialCache.h">
+      <Filter>Source Files\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beMesh.h">
+      <Filter>Source Files\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beMeshCache.h">
+      <Filter>Source Files\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beMeshCompound.h">
+      <Filter>Source Files\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beMeshGeneration.h">
+      <Filter>Source Files\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\DX11\beMesh.h">
+      <Filter>Source Files\Meshes\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\DX11\beMeshGeneration.h">
+      <Filter>Source Files\Meshes\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beEffectDrivenRenderer.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beEffectQueueSetup.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beLight.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\bePerspective.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\bePipe.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\bePipelinePerspective.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\bePipelineProcessor.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\bePipePool.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beQueueSetup.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beRenderable.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beRenderer.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beRenderingLimits.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beRenderingPipeline.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beStateQueueSetup.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\DX11\bePipe.h">
+      <Filter>Source Files\Pipeline\DX11</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beProcessingPipeline.h">
+      <Filter>Source Files\Processing</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beQuadProcessor.h">
+      <Filter>Source Files\Processing</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beSerializationParameters.h">
+      <Filter>Source Files\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beAssembledMesh.h">
+      <Filter>Source Files\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beRenderableMesh.h">
+      <Filter>Source Files\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beRenderableHost.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\bePerspectiveHost.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beCaching.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\bePerspectivePool.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beLightControllers.h">
+      <Filter>Source Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\beDirectionalLight.hpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\bePointLight.hpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\beSpotLight.hpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beBoundMaterial.h">
+      <Filter>Source Files\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beGenericEffectDriverCache.h">
+      <Filter>Source Files\Effect Binders</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beBoundMaterialCache.h">
+      <Filter>Source Files\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beAbstractProcessingEffectDriver.h">
+      <Filter>Source Files\Effect Binders\Drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beAbstractRenderableEffectDriver.h">
+      <Filter>Source Files\Effect Binders\Drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beLightEffectBinder.h">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beLightingEffectBinder.h">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\bePerspectiveEffectBinder.h">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\bePerspectiveEffectBinderPool.h">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\bePipeEffectBinder.h">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\bePipelineEffectBinder.h">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beProcessingEffectDriver.h">
+      <Filter>Source Files\Effect Binders\Drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beProcessingEffectDriverCache.h">
+      <Filter>Source Files\Effect Binders\Drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beRenderableEffectBinder.h">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beRenderableEffectData.h">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beRenderableEffectDriver.h">
+      <Filter>Source Files\Effect Binders\Drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beRenderableEffectDriverCache.h">
+      <Filter>Source Files\Effect Binders\Drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beRenderableProcessingEffectDriver.h">
+      <Filter>Source Files\Effect Binders\Drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beStateEffectBinder.h">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beLightEffectDriver.h">
+      <Filter>Source Files\Effect Binders\Drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beLightEffectDriverCache.h">
+      <Filter>Source Files\Effect Binders\Drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beAbstractLightEffectDriver.h">
+      <Filter>Source Files\Effect Binders\Drivers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beLightEffectData.h">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beLightMaterial.h">
+      <Filter>Source Files\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beLightMaterialCache.h">
+      <Filter>Source Files\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beRenderableMeshCache.h">
+      <Filter>Source Files\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beInlineMaterialSerialization.h">
+      <Filter>Source Files\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beMeshSerialization.h">
+      <Filter>Source Files\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beInlineMeshSerialization.h">
+      <Filter>Source Files\Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beMeshControllers.h">
+      <Filter>Source Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beRenderingController.h">
+      <Filter>Source Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beCameraController.h">
+      <Filter>Source Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\bePerspectiveStatePool.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beQueueStatePool.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beMaterialSort.h">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="header\beScene\beProcessor.h">
+      <Filter>Source Files\Processing</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beRenderingPipeline.cpp">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="source\bePipelinePerspective.cpp">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beMeshGeneration.cpp">
+      <Filter>Source Files\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\bePipe.cpp">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beRenderer.cpp">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beEffectDrivenRenderer.cpp">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beRenderContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beStateQueueSetup.cpp">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beEffectQueueSetup.cpp">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beShaderDrivenPipeline.cpp">
+      <Filter>Source Files\Effect Binders</Filter>
+    </ClCompile>
+    <ClCompile Include="source\bePipePool.cpp">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beQuadProcessor.cpp">
+      <Filter>Source Files\Processing</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beProcessingPipeline.cpp">
+      <Filter>Source Files\Processing</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beResourceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beMeshCompound.cpp">
+      <Filter>Source Files\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beSerializationParameters.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\beMesh.cpp">
+      <Filter>Source Files\Meshes\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DX11\bePipe.cpp">
+      <Filter>Source Files\Pipeline\DX11</Filter>
+    </ClCompile>
+    <ClCompile Include="source\bePerspective.cpp">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beLight.cpp">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beMaterialComponents.cpp">
+      <Filter>Source Files\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beEffectComponent.cpp">
+      <Filter>Source Files\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beTextureComponent.cpp">
+      <Filter>Source Files\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beMeshComponent.cpp">
+      <Filter>Source Files\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beMesh.cpp">
+      <Filter>Source Files\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beAssembledMesh.cpp">
+      <Filter>Source Files\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beRenderableMesh.cpp">
+      <Filter>Source Files\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beRenderableHost.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\bePerspectiveHost.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\bePerspectivePool.cpp">
+      <Filter>Source Files\Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beLightControllers.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beBoundMaterial.cpp">
+      <Filter>Source Files\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beGenericEffectDriverCache.cpp">
+      <Filter>Source Files\Effect Binders</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beBoundMaterials.cpp">
+      <Filter>Source Files\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beBoundMaterialCache.cpp">
+      <Filter>Source Files\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beLightEffectBinder.cpp">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beLightingEffectBinder.cpp">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClCompile>
+    <ClCompile Include="source\bePerspectiveEffectBinder.cpp">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClCompile>
+    <ClCompile Include="source\bePerspectiveEffectBinderPool.cpp">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClCompile>
+    <ClCompile Include="source\bePipeEffectBinder.cpp">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClCompile>
+    <ClCompile Include="source\bePipelineEffectBinder.cpp">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beProcessingEffectDriver.cpp">
+      <Filter>Source Files\Effect Binders\Drivers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beRenderableEffectBinder.cpp">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beRenderableEffectDriver.cpp">
+      <Filter>Source Files\Effect Binders\Drivers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beRenderableProcessingEffectDriver.cpp">
+      <Filter>Source Files\Effect Binders\Drivers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beStateEffectBinder.cpp">
+      <Filter>Source Files\Effect Binders\Binders</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beLightEffectDriver.cpp">
+      <Filter>Source Files\Effect Binders\Drivers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beMeshCache.cpp">
+      <Filter>Source Files\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beRenderableMeshCache.cpp">
+      <Filter>Source Files\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beInlineMaterialSerialization.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beMeshSerialization.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beInlineMeshSerialization.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beInlineSerialization.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beMeshControllers.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beRenderingController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beCameraController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beLightControllerSerialization.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="source\beMeshControllerSerializer.cpp">
+      <Filter>Source Files\Serialization</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

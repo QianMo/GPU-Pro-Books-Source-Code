@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="QuaternionsRevisited">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="DXUT">
+      <UniqueIdentifier>{ec1166eb-e238-4855-b0c7-081c6bae174e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DXUT\Core">
+      <UniqueIdentifier>{fbe99d96-92e0-44b0-8358-4835c6f08131}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DXUT\Optional">
+      <UniqueIdentifier>{9c5d818c-bd61-4632-8d32-c39cc4baaaed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QuaternionsRevisited\FBXImport">
+      <UniqueIdentifier>{8d5237bc-732b-46b8-aca0-a34916373d0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QuaternionsRevisited\Mesh">
+      <UniqueIdentifier>{579ec702-f5cb-437d-84e1-8960acd238df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QuaternionsRevisited\Shaders">
+      <UniqueIdentifier>{f9471acd-f19b-497f-8d77-a7defce3de8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QuaternionsRevisited\HLSL">
+      <UniqueIdentifier>{9b1d614b-9e80-4e43-a756-49edcdcba1c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QuaternionsRevisited\Camera">
+      <UniqueIdentifier>{e147c89a-fe7b-4a27-aff4-ab1dc3bbe3cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QuaternionsRevisited\Utils">
+      <UniqueIdentifier>{65d0849a-1e05-4a8e-836b-6cd873d25b2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QuaternionsRevisited\Math">
+      <UniqueIdentifier>{da4e9066-d216-42db-bad1-8f13dab295f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QuaternionsRevisited\Floor">
+      <UniqueIdentifier>{79cb6624-3d2f-4507-896f-36c2963b7429}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QuaternionsRevisited\Animation">
+      <UniqueIdentifier>{80f1fcd9-1462-4fdb-98d5-31e75ae4e2a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QuaternionsRevisited\Assert">
+      <UniqueIdentifier>{21f6a87b-9d10-4211-8dcd-8ab9819c594e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\D3DAnimation.cpp">
+      <Filter>QuaternionsRevisited\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Assert.cpp">
+      <Filter>QuaternionsRevisited\Assert</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Camera.cpp">
+      <Filter>QuaternionsRevisited\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\FBXImport.cpp">
+      <Filter>QuaternionsRevisited\FBXImport</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\D3DFloor.cpp">
+      <Filter>QuaternionsRevisited\Floor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\D3DMesh.cpp">
+      <Filter>QuaternionsRevisited\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PixelShader.cpp">
+      <Filter>QuaternionsRevisited\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Shader.cpp">
+      <Filter>QuaternionsRevisited\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\VertexShader.cpp">
+      <Filter>QuaternionsRevisited\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utils.cpp">
+      <Filter>QuaternionsRevisited\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\QuaternionsRevisited.cpp">
+      <Filter>QuaternionsRevisited</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DXUT\Core\DXUT.cpp">
+      <Filter>DXUT\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DXUT\Core\DXUTenum.cpp">
+      <Filter>DXUT\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DXUT\Core\DXUTmisc.cpp">
+      <Filter>DXUT\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DXUT\Optional\DXUTcamera.cpp">
+      <Filter>DXUT\Optional</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DXUT\Optional\DXUTgui.cpp">
+      <Filter>DXUT\Optional</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DXUT\Optional\DXUTres.cpp">
+      <Filter>DXUT\Optional</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DXUT\Optional\DXUTsettingsdlg.cpp">
+      <Filter>DXUT\Optional</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DXUT\Optional\SDKmesh.cpp">
+      <Filter>DXUT\Optional</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DXUT\Optional\SDKmisc.cpp">
+      <Filter>DXUT\Optional</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\D3DAnimation.h">
+      <Filter>QuaternionsRevisited\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Assert.h">
+      <Filter>QuaternionsRevisited\Assert</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Camera.h">
+      <Filter>QuaternionsRevisited\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AdjacencyTreeBuilder.h">
+      <Filter>QuaternionsRevisited\FBXImport</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\FBXImport.h">
+      <Filter>QuaternionsRevisited\FBXImport</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MeshIndexer.h">
+      <Filter>QuaternionsRevisited\FBXImport</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\D3DFloor.h">
+      <Filter>QuaternionsRevisited\Floor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Convertors.h">
+      <Filter>QuaternionsRevisited\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Math.h">
+      <Filter>QuaternionsRevisited\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\D3DMesh.h">
+      <Filter>QuaternionsRevisited\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PixelShader.h">
+      <Filter>QuaternionsRevisited\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Shader.h">
+      <Filter>QuaternionsRevisited\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\VertexShader.h">
+      <Filter>QuaternionsRevisited\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils.h">
+      <Filter>QuaternionsRevisited\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Resource.h">
+      <Filter>QuaternionsRevisited</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DXUT\Core\DXUT.h">
+      <Filter>DXUT\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DXUT\Core\DXUTenum.h">
+      <Filter>DXUT\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DXUT\Core\DXUTmisc.h">
+      <Filter>DXUT\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DXUT\Optional\DXUTcamera.h">
+      <Filter>DXUT\Optional</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DXUT\Optional\DXUTgui.h">
+      <Filter>DXUT\Optional</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DXUT\Optional\DXUTres.h">
+      <Filter>DXUT\Optional</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DXUT\Optional\DXUTsettingsdlg.h">
+      <Filter>DXUT\Optional</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DXUT\Optional\SDKmesh.h">
+      <Filter>DXUT\Optional</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DXUT\Optional\SDKmisc.h">
+      <Filter>DXUT\Optional</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\Shaders.hlsl">
+      <Filter>QuaternionsRevisited\HLSL</Filter>
+    </None>
+    <None Include="readme.txt">
+      <Filter>QuaternionsRevisited</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Source\QuaternionsRevisited.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

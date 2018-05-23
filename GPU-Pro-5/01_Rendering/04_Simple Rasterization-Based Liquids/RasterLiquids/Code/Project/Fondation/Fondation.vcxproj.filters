@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="..\..\Src\Common\Assert.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\Common.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\Incopiable.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\Utils\String.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\Utils\Timer\Timer.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Common\Types.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Math\Math.hpp">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Math\Matrix\Matrix.hpp">
+      <Filter>Math\Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Math\Vector\Vector.hpp">
+      <Filter>Math\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Src\Math\Quaternion\Quaternion.hpp">
+      <Filter>Math\Quaternion</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Src\Math\Matrix\Matrix.inl">
+      <Filter>Math\Matrix</Filter>
+    </None>
+    <None Include="..\..\Src\Math\Vector\Vector.inl">
+      <Filter>Math\Vector</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{52711fd6-17db-4565-8918-11e69986f1fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{e4d8af1d-5d33-4819-8824-c5b89d2d532b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Vector">
+      <UniqueIdentifier>{34ed7f32-5f8f-407f-96ea-014d4a5f512c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Matrix">
+      <UniqueIdentifier>{574760f3-0b44-4960-9cdb-8a24ec7e5846}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Quaternion">
+      <UniqueIdentifier>{1a4049af-2573-400e-a729-ee75474d5a79}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Src\Common\Utils\Timer\Timer.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
