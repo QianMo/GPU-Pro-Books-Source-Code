@@ -1,7 +1,9 @@
 ![](Media/cover.jpg)
 
 # GPU-Pro-Book-Source-Code
-This Repo is a collecntion of Source Code of Books < GPU Pro > 1~7 and < GPU Zen >:
+This Repo is a collecntion of Source Code of Books < GPU Pro > 1~7 and < GPU Zen >.
+
+The Quick Link:
   
 * [ Source Code of Book <GPU Pro 1>](/GPU-Pro-1)
 * [ Source Code of Book <GPU Pro 2>](/GPU-Pro-2)
