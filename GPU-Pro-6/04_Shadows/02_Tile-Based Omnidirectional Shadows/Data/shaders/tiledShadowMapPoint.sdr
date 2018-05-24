@@ -1,0 +1,9 @@
+VertexShader
+{
+  tiledShadowMapPoint.vsh
+}
+GeometryShader
+{
+  tiledShadowMapPoint.gsh
+}
+

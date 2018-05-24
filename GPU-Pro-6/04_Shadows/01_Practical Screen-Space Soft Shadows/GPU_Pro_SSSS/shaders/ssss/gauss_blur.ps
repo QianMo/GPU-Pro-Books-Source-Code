@@ -1,0 +1,116 @@
+//#version 430 core
+
+//#define GAUSS_SUPERSAMPLE
+//#define EXPONENTIAL_SHADOWS
+
+layout(binding=0) uniform sampler2D normal_tex;
+layout(binding=1) uniform sampler2D depth_tex;
+layout(binding=2) uniform sampler2D layered_penumbra_tex;
+layout(binding=3) uniform sampler2D layered_shadow_tex;
+//layout(binding=4) uniform sampler2DArray spot_shadow_minfilter_tex;
+//layout(binding=5) uniform samplerCubeArray point_shadow_minfilter_tex;
+//layout(binding=6) uniform usampler2D layered_translucency_tex;
+
+//catalyst driver bug fix: no explicit uniform locations (here)
+uniform mat4 mvp;
+uniform mat4 mv;
+uniform vec2 nearfar; //2.5, 1000
+uniform mat4 inv_view;
+uniform mat4 inv_mv;
+uniform float err_depth;
+uniform float aniso_threshold = 0.25;
+
+in vec2 tex_coord;
+in vec4 vs_pos;
+
+layout(location=0) out vec4 color;
+//layout(location=1) out uvec4 color2;
+
+//rotated grid pattern:
+//26.5650512 degrees rotated
+//1.11803398875 stretched
+
+//const vec2 direction = vec2(1, 0);
+const vec2 direction = vec2(0.89442719082100156952748325334158, 0.44721359585778655717526397765935) * 1.11803398875;
+ 
+#include "common.h"
+ 
+float unpack_shadow( vec4 shadow, int layer )
+{
+#ifdef GAUSS_SUPERSAMPLE
+  #ifdef EXPONENTIAL_SHADOWS
+    return avg(shadow);
+  #else
+    uvec4 sample0 = uvec4(16.0 * shadow);
+    vec4 sample0_res = ((sample0 & (uint(1) << uint(layer))) >> uint(layer));
+    return avg(sample0_res);
+  #endif
+#else
+  #ifdef EXPONENTIAL_SHADOWS
+    return shadow[layer];
+  #else
+    uint sample0 = uint(16.0 * shadow);
+    return ((sample0 & (uint(1) << uint(layer))) >> uint(layer));
+  #endif
+#endif
+}
+
+#include "gauss_blur_common.h"
+
+void main()
+{	
+	vec4 penumbra = texture(layered_penumbra_tex, tex_coord);
+  
+#ifdef GAUSS_SUPERSAMPLE
+  #ifdef EXPONENTIAL_SHADOWS
+    vec4 hard_shadow0 = textureGather(layered_shadow_tex, tex_coord, 0);
+    vec4 hard_shadow1 = textureGather(layered_shadow_tex, tex_coord, 1);
+    vec4 hard_shadow2 = textureGather(layered_shadow_tex, tex_coord, 2);
+    vec4 hard_shadow3 = textureGather(layered_shadow_tex, tex_coord, 3);
+  #else
+    vec4 hard_shadow = textureGather(layered_shadow_tex, tex_coord, 0);
+  #endif
+#else
+  vec4 hard_shadow = texture(layered_shadow_tex, tex_coord);
+#endif
+  
+	vec3 n = normalize(texture(normal_tex, tex_coord).xyz * 2 - 1);
+	float depth = texture( depth_tex, tex_coord ).x;
+  
+  float near = nearfar.x; //-2.5
+  float far = nearfar.y; //-1000
+  float proj_a = -(far + near) / (far - near);
+  float proj_b = (-2 * far * near) / (far - near);
+  float linear_depth = -proj_b / (depth * 2 - 1 + proj_a) / -far;
+  
+	vec2 step_size = get_step_size( direction, n, linear_depth, aniso_threshold ) / -far;
+  //vec2 step_size = get_step_size( direction, n, linear_depth, aniso_threshold ) / vec2(1280,720);
+  
+#if defined EXPONENTIAL_SHADOWS && defined GAUSS_SUPERSAMPLE 
+  //blur each layer
+  color.x = blur( layered_shadow_tex, unpack_shadow(hard_shadow0, 0), step_size, depth, penumbra.x, 0 );
+  color.y = blur( layered_shadow_tex, unpack_shadow(hard_shadow1, 1), step_size, depth, penumbra.y, 1 );
+  color.z = blur( layered_shadow_tex, unpack_shadow(hard_shadow2, 2), step_size, depth, penumbra.z, 2 );
+  color.w = blur( layered_shadow_tex, unpack_shadow(hard_shadow3, 3), step_size, depth, penumbra.w, 3 );
+#else
+  //blur each layer
+  color.x = blur( layered_shadow_tex, unpack_shadow(hard_shadow, 0), step_size, depth, penumbra.x, 0 );
+  color.y = blur( layered_shadow_tex, unpack_shadow(hard_shadow, 1), step_size, depth, penumbra.y, 1 );
+  color.z = blur( layered_shadow_tex, unpack_shadow(hard_shadow, 2), step_size, depth, penumbra.z, 2 );
+  color.w = blur( layered_shadow_tex, unpack_shadow(hard_shadow, 3), step_size, depth, penumbra.w, 3 );
+#endif
+
+  //should be a separate layer, but I solved it this way
+  //we can get the penumbra from layerd 3, but later for that particular light use this layer...
+  //we should create a dedicated layer for these type of shadows
+  //color2.x = rgba8_to_uint( blur_translucency( layered_translucency_tex, uint_to_rgba8( texture( layered_translucency_tex, tex_coord ).x ), step_size, depth, penumbra.w, 4 ) );
+  
+  //color = texture( layered_translucency_tex, tex_coord );
+  //color = uint_to_rgba8( texture( layered_translucency_tex, tex_coord ).x );
+  
+  //color.xyz = vec3( (1-unpack_shadow(hard_shadow, 0)) * n );
+  //color.xyz = vec3( (1-color.x) * n );
+  //color.xyz = vec3( linear_depth );
+  //color = vec4( vec3(penumbra), 1 );
+  //color = vec4( step_size * penumbra.x, 0, 1 );
+}

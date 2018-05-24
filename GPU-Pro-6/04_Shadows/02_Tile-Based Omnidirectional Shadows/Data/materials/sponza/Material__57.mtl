@@ -1,0 +1,15 @@
+Textures
+{
+  ColorTexture          textures/sponza/vase_plant_diff.dds
+  NormalTexture         textures/sponza/vase_plant_ddn.dds
+  SpecularTexture       textures/sponza/vase_plant_spec.dds
+}
+RenderStates
+{
+  cull                  NONE_CULL     
+}
+Shader
+{
+  permutation           1
+  file                  shaders/base.sdr
+}

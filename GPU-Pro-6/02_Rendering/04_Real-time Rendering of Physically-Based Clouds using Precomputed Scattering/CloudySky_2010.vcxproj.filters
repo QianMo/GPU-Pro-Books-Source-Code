@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Sample Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{c95fe20e-27c4-40a1-8a03-55ccad7902ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sample Files\Terrain">
+      <UniqueIdentifier>{95d79d31-6ee9-4479-9563-d42d7b270e31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sample Files\Terrain\fx">
+      <UniqueIdentifier>{02e11d75-b0cc-4ec1-b99a-daa6c657d6c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sample Files\Terrain\Source">
+      <UniqueIdentifier>{b001a578-6ac0-43ae-962b-0403aea00dc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sample Files\Terrain\Include">
+      <UniqueIdentifier>{60d679d6-0738-4634-a1b4-4072d0924537}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IGFXExtensions">
+      <UniqueIdentifier>{887d9c25-2154-4eeb-b51f-bef3fd2843d7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CloudySky.cpp">
+      <Filter>Sample Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LightSctrPostProcess.cpp">
+      <Filter>Sample Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderTechnique.cpp">
+      <Filter>Sample Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain\stdafx.cpp">
+      <Filter>Sample Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain\ConfigFile.cpp">
+      <Filter>Sample Files\Terrain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain\ElevationDataSource.cpp">
+      <Filter>Sample Files\Terrain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain\EarthHemisphere.cpp">
+      <Filter>Sample Files\Terrain\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CloudsController.cpp">
+      <Filter>Sample Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IGFXExtensions\IGFXExtensionsHelper.cpp">
+      <Filter>IGFXExtensions</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CloudySky.h">
+      <Filter>Sample Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LightSctrPostProcess.h">
+      <Filter>Sample Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderTechnique.h">
+      <Filter>Sample Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderMacroHelper.h">
+      <Filter>Sample Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain\ElevationDataSource.h">
+      <Filter>Sample Files\Terrain\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain\Errors.h">
+      <Filter>Sample Files\Terrain\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain\EarthHemisphere.h">
+      <Filter>Sample Files\Terrain\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain\HierarchyArray.h">
+      <Filter>Sample Files\Terrain\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain\DynamicQuadTreeNode.h">
+      <Filter>Sample Files\Terrain\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="CloudsController.h">
+      <Filter>Sample Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain\Visibility.h">
+      <Filter>Sample Files\Terrain\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="IGFXExtensions\IGFXExtensionsHelper.h">
+      <Filter>IGFXExtensions</Filter>
+    </ClInclude>
+    <ClInclude Include="IGFXExtensions\ID3D10Extensions.h">
+      <Filter>IGFXExtensions</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="small.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="CloudySky.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="fx\TerrainStructs.fxh">
+      <Filter>Sample Files\Terrain\fx</Filter>
+    </None>
+    <None Include="fx\Structures.fxh">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="fx\Common.fxh">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="fx\IntelExtensions.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="fx\CloudsCommon.fxh">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="fx\Preprocessing.fx">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CloudySky_2010.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="fx\LightScattering.fx">
+      <Filter>Shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="fx\Terrain.fx">
+      <Filter>Sample Files\Terrain\fx</Filter>
+    </CustomBuild>
+    <CustomBuild Include="fx\RefineSampleLocations.fx">
+      <Filter>Shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="fx\Clouds.fx">
+      <Filter>Shaders</Filter>
+    </CustomBuild>
+    <CustomBuild Include="fx\Sort.fx">
+      <Filter>Shaders</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

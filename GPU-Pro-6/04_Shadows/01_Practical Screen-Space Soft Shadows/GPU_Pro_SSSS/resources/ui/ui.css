@@ -1,0 +1,100 @@
+/*demo page css*/
+body
+{ 
+  font: 62.5% "Trebuchet MS", sans-serif;
+  margin: 1px;
+  -webkit-user-select: none;
+  background-color: black;
+  color: white;
+  font-size: 14px;
+}
+
+#intro
+{
+  width: 100%;
+  min-height: 700px;
+  display: none;
+}
+
+#intro_text
+{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  top: 100px;
+  color: white;
+  font-size: 36px;
+  text-align: center;
+  text-shadow: 0px 0px 10px #ffffff;
+}
+
+#content
+{
+  width: 99%;
+  min-height: 700px;
+  display: none;
+}
+
+fieldset
+{
+  border: 0;
+}
+
+label
+{
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 3px;
+  font-size: 14px;
+}
+
+select
+{
+  width: 200px;
+}
+
+.overflow
+{
+  height: 200px;
+}
+
+#showui
+{
+  display: none;
+}
+
+.camera_container
+{
+  width: 250px;
+}
+
+.camera_container_left
+{
+  width: 20%;
+  float: left;
+}
+
+.camera_container_left p
+{
+  margin: 5px;
+  padding-bottom: 5px;
+  line-height: 15px;
+}
+
+.camera_container_right
+{
+  width: 80%;
+  float: left;
+}
+
+.camera_container_right input
+{
+  width: 200px;
+  float: left;
+}
+
+#resolution_selector
+{
+  width: 170px;
+  z-index: 9999;
+}

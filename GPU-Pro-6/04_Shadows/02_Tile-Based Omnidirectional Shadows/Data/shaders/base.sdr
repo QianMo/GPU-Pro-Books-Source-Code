@@ -1,0 +1,13 @@
+Defines
+{
+  ALPHA_TEST
+}
+VertexShader
+{
+  base.vsh
+}
+FragmentShader
+{ 
+  base.fsh
+}
+

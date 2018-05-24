@@ -1,0 +1,14 @@
+Textures
+{
+  ColorTexture          textures/sponza/sponza_arch_diff.dds
+  NormalTexture         textures/sponza/sponza_arch_ddn.dds
+  SpecularTexture       textures/sponza/sponza_arch_spec.dds
+}
+RenderStates
+{
+  cull                  BACK_CULL     
+}
+Shader
+{
+  file                  shaders/base.sdr
+}

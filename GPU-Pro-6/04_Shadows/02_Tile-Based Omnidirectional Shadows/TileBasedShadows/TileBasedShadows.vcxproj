@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug OGL|Win32">
+      <Configuration>Debug OGL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release OGL|Win32">
+      <Configuration>Release OGL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{09438F16-AB1E-4D68-B43F-D2C2C444036D}</ProjectGuid>
+    <RootNamespace>TileBasedShadows</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release OGL|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug OGL|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release OGL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug OGL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug OGL|Win32'">..\bin100oglx86d\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug OGL|Win32'">output\100oglx86d\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug OGL|Win32'" />
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release OGL|Win32'">..\bin100oglx86\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release OGL|Win32'">output\100oglx86\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release OGL|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug OGL|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\includes;..\External\OpenGL\includes;..\External\AntTweakBar\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <StringPooling>false</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <OpenMPSupport>false</OpenMPSupport>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ErrorReporting>None</ErrorReporting>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>winmm.lib;glew32d.lib;opengl32.lib;AntTweakBar.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\External\OpenGL\lib\x86;..\External\AntTweakBar\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>output\100oglx86d\$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
+      <LinkErrorReporting>NoErrorReport</LinkErrorReporting>
+    </Link>
+    <Manifest>
+      <VerboseOutput>false</VerboseOutput>
+    </Manifest>
+    <PostBuildEvent>
+      <Command>xcopy /Y /D /C "$(SolutionDir)..\External\OpenGL\bin\glew32d.dll" "$(TargetDir)"
+xcopy /Y /D /C "$(SolutionDir)..\External\AntTweakBar\bin\AntTweakBar.dll" "$(TargetDir)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release OGL|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>.\includes;..\External\OpenGL\includes;..\External\AntTweakBar\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <StringPooling>false</StringPooling>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <OpenMPSupport>false</OpenMPSupport>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ErrorReporting>None</ErrorReporting>
+    </ClCompile>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>.\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>winmm.lib;glew32.lib;opengl32.lib;AntTweakBar.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\External\OpenGL\lib\x86;..\External\AntTweakBar\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>output\100oglx86\$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention>
+      </DataExecutionPrevention>
+      <TargetMachine>MachineX86</TargetMachine>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <LinkErrorReporting>NoErrorReport</LinkErrorReporting>
+    </Link>
+    <Manifest>
+      <VerboseOutput>false</VerboseOutput>
+    </Manifest>
+    <PostBuildEvent>
+      <Command>xcopy /Y /D /C "$(SolutionDir)..\External\OpenGL\bin\glew32.dll" "$(TargetDir)"
+xcopy /Y /D /C "$(SolutionDir)..\External\AntTweakBar\bin\AntTweakBar.dll" "$(TargetDir)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="includes\Aabb.h" />
+    <ClInclude Include="includes\Color.h" />
+    <ClInclude Include="includes\Frustum.h" />
+    <ClInclude Include="includes\Image.h" />
+    <ClInclude Include="includes\maths.h" />
+    <ClInclude Include="includes\Matrix4.h" />
+    <ClInclude Include="includes\OGL_TimerQueryObject.h" />
+    <ClInclude Include="includes\OGL_VertexLayout.h" />
+    <ClInclude Include="includes\Plane.h" />
+    <ClInclude Include="includes\TileMap.h" />
+    <ClInclude Include="includes\Vector2.h" />
+    <ClInclude Include="includes\Vector3.h" />
+    <ClInclude Include="includes\Vector4.h" />
+    <ClInclude Include="includes\Camera.h" />
+    <ClInclude Include="includes\PointLight.h" />
+    <ClInclude Include="includes\render_states.h" />
+    <ClInclude Include="includes\RenderTargetConfig.h" />
+    <ClInclude Include="includes\GpuCmd.h" />
+    <ClInclude Include="includes\vertex_types.h" />
+    <ClInclude Include="includes\OGL_BlendState.h" />
+    <ClInclude Include="includes\OGL_DepthStencilState.h" />
+    <ClInclude Include="includes\OGL_IndexBuffer.h" />
+    <ClInclude Include="includes\OGL_RasterizerState.h" />
+    <ClInclude Include="includes\OGL_RenderTarget.h" />
+    <ClInclude Include="includes\OGL_Renderer.h" />
+    <ClInclude Include="includes\OGL_Sampler.h" />
+    <ClInclude Include="includes\OGL_StructuredBuffer.h" />
+    <ClInclude Include="includes\OGL_UniformBuffer.h" />
+    <ClInclude Include="includes\OGL_VertexBuffer.h" />
+    <ClInclude Include="includes\TiledDeferred.h" />
+    <ClInclude Include="includes\FinalProcessor.h" />
+    <ClInclude Include="includes\IPostProcessor.h" />
+    <ClInclude Include="includes\Sky.h" />
+    <ClInclude Include="includes\Application.h" />
+    <ClInclude Include="includes\PathPointLight.h" />
+    <ClInclude Include="includes\stdafx.h" />
+    <ClInclude Include="includes\DemoMesh.h" />
+    <ClInclude Include="includes\Font.h" />
+    <ClInclude Include="includes\Material.h" />
+    <ClInclude Include="includes\ResourceManager.h" />
+    <ClInclude Include="includes\OGL_Shader.h" />
+    <ClInclude Include="includes\OGL_Texture.h" />
+    <ClInclude Include="includes\Demo.h" />
+    <ClInclude Include="includes\FileManager.h" />
+    <ClInclude Include="includes\InputManager.h" />
+    <ClInclude Include="includes\List.h" />
+    <ClInclude Include="includes\TimeManager.h" />
+    <ClInclude Include="includes\wglExtensions.h" />
+    <ClInclude Include="includes\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Aabb.cpp" />
+    <ClCompile Include="src\Camera.cpp" />
+    <ClCompile Include="src\Frustum.cpp" />
+    <ClCompile Include="src\Image.cpp" />
+    <ClCompile Include="src\OGL_TimerQueryObject.cpp" />
+    <ClCompile Include="src\OGL_VertexLayout.cpp" />
+    <ClCompile Include="src\PointLight.cpp" />
+    <ClCompile Include="src\OGL_BlendState.cpp" />
+    <ClCompile Include="src\OGL_DepthStencilState.cpp" />
+    <ClCompile Include="src\OGL_IndexBuffer.cpp" />
+    <ClCompile Include="src\OGL_RasterizerState.cpp" />
+    <ClCompile Include="src\OGL_RenderTarget.cpp" />
+    <ClCompile Include="src\OGL_Renderer.cpp" />
+    <ClCompile Include="src\OGL_Sampler.cpp" />
+    <ClCompile Include="src\OGL_StructuredBuffer.cpp" />
+    <ClCompile Include="src\OGL_UniformBuffer.cpp" />
+    <ClCompile Include="src\OGL_VertexBuffer.cpp" />
+    <ClCompile Include="src\TiledDeferred.cpp" />
+    <ClCompile Include="src\FinalProcessor.cpp" />
+    <ClCompile Include="src\Sky.cpp" />
+    <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\PathPointLight.cpp" />
+    <ClCompile Include="src\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug OGL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release OGL|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\DemoMesh.cpp" />
+    <ClCompile Include="src\Font.cpp" />
+    <ClCompile Include="src\Material.cpp" />
+    <ClCompile Include="src\ResourceManager.cpp" />
+    <ClCompile Include="src\OGL_Shader.cpp" />
+    <ClCompile Include="src\OGL_Texture.cpp" />
+    <ClCompile Include="src\Demo.cpp" />
+    <ClCompile Include="src\FileManager.cpp" />
+    <ClCompile Include="src\InputManager.cpp" />
+    <ClCompile Include="src\TileMap.cpp" />
+    <ClCompile Include="src\TimeManager.cpp" />
+    <ClCompile Include="src\wglExtensions.cpp" />
+    <ClCompile Include="src\Window.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

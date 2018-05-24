@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Maths">
+      <UniqueIdentifier>{b5873c21-79d2-42af-92cc-463f16b04bdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Maths\Header Files">
+      <UniqueIdentifier>{81290bf5-0682-4e50-8b35-4df4c514e913}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{7e1031a2-b683-414e-878c-8914d171d17c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Header Files">
+      <UniqueIdentifier>{6dd71744-19f0-45b7-a1a6-ffac348b01f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Header Files\Postprocessors">
+      <UniqueIdentifier>{444acad4-1f6d-4001-9335-716a0ec1e95c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Source Files">
+      <UniqueIdentifier>{a1e650c6-827e-412d-a723-53b535d4c95a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Source Files\Postprocessors">
+      <UniqueIdentifier>{b27bdf28-2c3f-4e5e-a2ae-bd0f1ae8f7c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application">
+      <UniqueIdentifier>{32a66607-d713-4210-94b7-b0437afbc841}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Header Files">
+      <UniqueIdentifier>{79457da6-1ece-42d8-b95d-845f82be9530}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Source Files">
+      <UniqueIdentifier>{e6d09c0b-d014-4f5b-9a60-ea85ac3ad38c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{69126789-3317-4b94-9e63-fb66f20e2bcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Header Files">
+      <UniqueIdentifier>{2a632822-eb49-4209-853a-26ef2a1619d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Source Files">
+      <UniqueIdentifier>{fa0254f8-37b3-4eb8-a15f-56251b350c76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{ca3cd04a-3e9c-4542-831f-5391c46d74fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Header Files">
+      <UniqueIdentifier>{5aa0e72b-daea-40a9-bb2a-ab33d4fc3cb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Source Files">
+      <UniqueIdentifier>{58ca7402-597f-4467-ad38-f33e1b188e94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Header Files\OpenGL">
+      <UniqueIdentifier>{381021c9-13df-42d8-bc55-97a7d1b4e4ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Source Files\OpenGL">
+      <UniqueIdentifier>{e975271a-acc8-491e-90f1-329abee9a19a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Header Files\OpenGL">
+      <UniqueIdentifier>{96f4b228-6f55-42cb-b2eb-b73c5a2695c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Source Files\OpenGL">
+      <UniqueIdentifier>{90c7743f-d40a-40dc-af4d-e5347607de36}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="includes\maths.h">
+      <Filter>Maths\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\render_states.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\vertex_types.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\stdafx.h">
+      <Filter>Application\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\PathPointLight.h">
+      <Filter>Application\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Application.h">
+      <Filter>Application\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Demo.h">
+      <Filter>Core\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\FileManager.h">
+      <Filter>Core\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\InputManager.h">
+      <Filter>Core\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\List.h">
+      <Filter>Core\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\TimeManager.h">
+      <Filter>Core\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Window.h">
+      <Filter>Core\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Matrix4.h">
+      <Filter>Maths\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Vector2.h">
+      <Filter>Maths\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Vector3.h">
+      <Filter>Maths\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Vector4.h">
+      <Filter>Maths\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Camera.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\PointLight.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\RenderTargetConfig.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\FinalProcessor.h">
+      <Filter>Renderer\Header Files\Postprocessors</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\IPostProcessor.h">
+      <Filter>Renderer\Header Files\Postprocessors</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Sky.h">
+      <Filter>Renderer\Header Files\Postprocessors</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DemoMesh.h">
+      <Filter>Resources\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Font.h">
+      <Filter>Resources\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Material.h">
+      <Filter>Resources\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\ResourceManager.h">
+      <Filter>Resources\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\OGL_BlendState.h">
+      <Filter>Renderer\Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\OGL_DepthStencilState.h">
+      <Filter>Renderer\Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\OGL_IndexBuffer.h">
+      <Filter>Renderer\Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\OGL_RasterizerState.h">
+      <Filter>Renderer\Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\OGL_Renderer.h">
+      <Filter>Renderer\Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\OGL_RenderTarget.h">
+      <Filter>Renderer\Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\OGL_Sampler.h">
+      <Filter>Renderer\Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\OGL_StructuredBuffer.h">
+      <Filter>Renderer\Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\OGL_UniformBuffer.h">
+      <Filter>Renderer\Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\OGL_VertexBuffer.h">
+      <Filter>Renderer\Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\OGL_Shader.h">
+      <Filter>Resources\Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\OGL_Texture.h">
+      <Filter>Resources\Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\wglExtensions.h">
+      <Filter>Renderer\Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Image.h">
+      <Filter>Resources\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\OGL_VertexLayout.h">
+      <Filter>Renderer\Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Frustum.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Plane.h">
+      <Filter>Maths\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\TileMap.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Color.h">
+      <Filter>Maths\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\TiledDeferred.h">
+      <Filter>Renderer\Header Files\Postprocessors</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\OGL_TimerQueryObject.h">
+      <Filter>Renderer\Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Aabb.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\GpuCmd.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Application\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stdafx.cpp">
+      <Filter>Application\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PathPointLight.cpp">
+      <Filter>Application\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Application.cpp">
+      <Filter>Application\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Demo.cpp">
+      <Filter>Core\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FileManager.cpp">
+      <Filter>Core\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InputManager.cpp">
+      <Filter>Core\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TimeManager.cpp">
+      <Filter>Core\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Window.cpp">
+      <Filter>Core\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Camera.cpp">
+      <Filter>Renderer\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PointLight.cpp">
+      <Filter>Renderer\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FinalProcessor.cpp">
+      <Filter>Renderer\Source Files\Postprocessors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Sky.cpp">
+      <Filter>Renderer\Source Files\Postprocessors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DemoMesh.cpp">
+      <Filter>Resources\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Font.cpp">
+      <Filter>Resources\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Material.cpp">
+      <Filter>Resources\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ResourceManager.cpp">
+      <Filter>Resources\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OGL_BlendState.cpp">
+      <Filter>Renderer\Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OGL_DepthStencilState.cpp">
+      <Filter>Renderer\Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OGL_IndexBuffer.cpp">
+      <Filter>Renderer\Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OGL_RasterizerState.cpp">
+      <Filter>Renderer\Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OGL_Renderer.cpp">
+      <Filter>Renderer\Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OGL_RenderTarget.cpp">
+      <Filter>Renderer\Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OGL_Sampler.cpp">
+      <Filter>Renderer\Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OGL_StructuredBuffer.cpp">
+      <Filter>Renderer\Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OGL_UniformBuffer.cpp">
+      <Filter>Renderer\Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OGL_VertexBuffer.cpp">
+      <Filter>Renderer\Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OGL_Shader.cpp">
+      <Filter>Resources\Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OGL_Texture.cpp">
+      <Filter>Resources\Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\wglExtensions.cpp">
+      <Filter>Renderer\Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Image.cpp">
+      <Filter>Resources\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OGL_VertexLayout.cpp">
+      <Filter>Renderer\Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Frustum.cpp">
+      <Filter>Renderer\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TileMap.cpp">
+      <Filter>Renderer\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TiledDeferred.cpp">
+      <Filter>Renderer\Source Files\Postprocessors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OGL_TimerQueryObject.cpp">
+      <Filter>Renderer\Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Aabb.cpp">
+      <Filter>Renderer\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,44 @@
+#version 430 core
+
+layout(binding=0) uniform sampler2D shadow_tex;
+
+uniform mat4 mvp;
+uniform int light_index;
+uniform int cubemap_face;
+uniform vec2 dir;
+
+in vec2 tex_coord;
+
+layout(location=0) out vec4 color;
+
+uniform float light_size_data[16];
+
+#include "common.h"
+
+void main()
+{
+  float sample_step = light_size_data[light_index] * 0.065; //magic constant?
+  
+  float offsets[10] = 
+  {
+    5.0 * sample_step,
+    4.0 * sample_step,
+    3.0 * sample_step,
+    2.0 * sample_step,
+    sample_step,
+		-5.0 * sample_step,
+    -4.0 * sample_step,
+    -3.0 * sample_step,
+    -2.0 * sample_step,
+    -sample_step
+  };
+  
+  float minz = texture( shadow_tex, tex_coord ).x;  //sample at the center	
+
+  for( int i = 0; i < 10; ++i )
+  {
+    minz = min( minz, texture( shadow_tex, tex_coord + offsets[i] * dir ).x );
+  }
+  
+  color = vec4( minz );
+}

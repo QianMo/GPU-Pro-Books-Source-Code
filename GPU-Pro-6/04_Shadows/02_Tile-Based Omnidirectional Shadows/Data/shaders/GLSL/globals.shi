@@ -1,0 +1,107 @@
+#define POSITION_ATTRIB 0
+#define TEXCOORDS_ATTRIB 1
+#define NORMAL_ATTRIB 2
+#define TANGENT_ATTRIB 3
+#define COLOR_ATTRIB 4
+
+#define CAMERA_UB_BP 0
+#define CUSTOM0_UB_BP 1
+#define CUSTOM1_UB_BP 2
+
+#ifdef AMD_GPU
+#define UB_LAYOUT(x) layout(std140, align=4, binding = x)
+#define SB_LAYOUT(x) layout(std430, align=4, binding = x)
+#else
+#define UB_LAYOUT(x) layout(binding = x)
+#define SB_LAYOUT(x) layout(binding = x) 
+#endif
+
+#define GLOBAL_CAMERA_UB(x) \
+  UB_LAYOUT(CAMERA_UB_BP) uniform CameraUB \
+  { \
+    mat4 viewMatrix; \
+    mat4 projMatrix; \
+    mat4 viewProjMatrix; \
+    mat4 invViewProjMatrix; \
+    vec3 position; \
+    float aspectRatio;\
+    float nearClipDistance; \
+    float farClipDistance; \
+    float nearFarClipDistance; \
+  }x
+ 
+#define CUSTOM0_SB_BP 0
+#define CUSTOM1_SB_BP 1
+#define CUSTOM2_SB_BP 2
+
+#define COLOR_TEX_BP 0
+#define NORMAL_TEX_BP 1
+#define SPECULAR_TEX_BP 2
+#define CUSTOM0_TEX_BP 3
+#define CUSTOM1_TEX_BP 4
+#define CUSTOM2_TEX_BP 5
+#define CUSTOM3_TEX_BP 6
+#define CUSTOM4_TEX_BP 7
+#define CUSTOM5_TEX_BP 8
+
+struct MeshInfo
+{
+  vec3 mins;
+  uint firstIndex;
+  vec3 maxes;
+  uint numIndices;
+};
+
+struct TileInfo
+{
+  uint startLightIndex;
+  uint endLightIndex;
+};
+
+struct DrawIndirectCmd
+{
+  uint count;
+  uint instanceCount;
+  uint firstIndex;
+  int baseVertex;
+  uint baseInstance;
+};
+
+struct Light
+{
+  vec3 position;
+  float radius;
+  vec4 color;
+  vec4 mins;
+  vec4 maxes;
+};
+
+struct CubeShadowLight
+{
+  vec3 position;
+  float radius;
+  vec4 color;
+  vec4 mins;
+  vec4 maxes;
+  mat4 shadowViewProjMatrices[6];
+};
+
+struct TiledShadowLight
+{
+  vec3 position;
+  float radius;
+  vec4 color;
+  vec4 mins;
+  vec4 maxes;
+  mat4 shadowViewProjTexMatrices[4];
+};
+
+vec3 SrgbToLinear(in vec3 color)
+{
+  vec3 result;
+  result.r = (color.r <= 0.04045) ? (color.r/12.92) : pow((color.r + 0.055)/1.055, 2.4);
+  result.g = (color.g <= 0.04045) ? (color.g/12.92) : pow((color.g + 0.055)/1.055, 2.4);
+  result.b = (color.b <= 0.04045) ? (color.b/12.92) : pow((color.b + 0.055)/1.055, 2.4);
+  return result;
+}
+

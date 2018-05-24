@@ -1,0 +1,10 @@
+Defines
+{
+  TILED_SHADOW
+  CUBE_SHADOW
+}
+ComputeShader
+{
+  tileInfoGen.csh
+}
+

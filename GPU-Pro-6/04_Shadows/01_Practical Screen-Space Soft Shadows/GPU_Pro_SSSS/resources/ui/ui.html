@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title>LGE</title>
+  <link type="text/css" href="css/custom-theme/jquery-ui.min.css" rel="stylesheet" />	
+  <link type="text/css" href="css/farbtastic.css" rel="stylesheet" />
+  
+  <link type="text/css" href="ui.css" rel="stylesheet" />
+  
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery-ui.js"></script>
+  <script type="text/javascript" src="js/farbtastic.js"></script>
+  
+  <script type="text/javascript" src="callbacks.js"></script>
+  <script type="text/javascript" src="callables.js"></script>
+  <script type="text/javascript" src="ui.js"></script>
+</head>
+<body>
+  <div id="intro">
+    <div id="intro_text">
+      <span>
+        Practical Screen Space Soft Shadows<br>
+        by<br>
+        Marton Tamas<br>
+        and<br>
+        Viktor Heisenberger
+      </span>
+    </div>
+  </div>
+  
+  <div id="content">
+    <button id="hideui">Hide UI</button>
+  
+    <button id="about_button">about</button>
+    <div id="about_dialog" title="About">
+        Practical Screen Space Soft Shadows<br>
+        by<br>
+        Marton Tamas<br>
+        and<br>
+        Viktor Heisenberger<br>
+        <br>
+        Move by right mouse click + WASD<br>
+        The light denoted by the green box is selected<br>
+        You can adjust the light size and radius<br>
+        You can adjust light color<br>
+        You can go to 9 preselected locations<br>
+        You can reload all the shaders<br>
+        You can switch between the techniques<br>
+        You can select a light by left clicking on it<br>
+        You can move a light by pressing T and moving the cursor<br>
+        You can add a light by pressing the + button<br>
+        You can remove a light by pressing the - button<br>
+        <br>
+        Use the command line to change resolution:<br>
+        (1920x1080, fullscreen)<br>
+        SSSS.exe --screenx 1920 --screeny 1080 --fullscreen<br>
+        <br>
+        (1280x720, windowed)<br>
+        SSSS.exe --screenx 1280 --screeny 720
+    </div>
+    
+    <button id="options_button">options</button>
+    <div id="options_dialog" title="Options">
+      <fieldset>
+        <div class="ui-widget">
+          <label for="resolution_selector">Resolutions: </label>
+          <input id="resolution_selector"/>
+          <button disabled="disabled" id="set_resolution" title="Start typing the resolution!">Set</button>
+        </div>
+      
+        <label for="technique_selector">Select a technique</label>
+        <select name="technique_selector" id="technique_selector">
+          <option selected="selected">SSSS minfilter</option>
+          <option>SSSS blocker search</option>
+          <option>PCSS</option>
+          <option>PCF</option>
+          <option>Hard Shadows</option>
+          <option>Lighting only</option>
+        </select>
+        
+        <div id="blur_radio">
+          <label>Gauss blur resolution</label>
+          <input type="radio" id="blur_radio_full" name="blur_radio"><label for="blur_radio_full">Full res</label>
+          <input checked="checked" type="radio" id="blur_radio_half" name="blur_radio"><label for="blur_radio_half">Half res</label>
+        </div>
+        
+        <div id="penumbra_radio">
+          <label>Penumbra resolution</label>
+          <input checked="checked" type="radio" id="penumbra_radio_full" name="penumbra_radio"><label for="penumbra_radio_full">Full res</label>
+          <input type="radio" id="penumbra_radio_half" name="penumbra_radio"><label for="penumbra_radio_half">Half res</label>
+        </div>
+        
+        <div id="supersampling_radio">
+          <label>Gauss Blur Supersampling</label>
+          <input checked="checked" type="radio" id="supersampling_radio_on" name="supersampling_radio"><label for="supersampling_radio_on">On</label>
+          <input type="radio" id="supersampling_radio_off" name="supersampling_radio"><label for="supersampling_radio_off">Off</label>
+        </div>
+        
+        <div id="exponential_radio">
+          <label>Exponential shadows</label>
+          <input type="radio" id="exponential_radio_on" name="exponential_radio"><label for="exponential_radio_on">On</label>
+          <input checked="checked" type="radio" id="exponential_radio_off" name="exponential_radio"><label for="exponential_radio_off">Off</label>
+        </div>
+      </fieldset>
+      
+      <br>
+    </div>
+    
+    <button id="add_light">Add light</button>
+    <button id="remove_light">Remove light</button>
+    
+    <button id="light_properties_button">Light properties</button>
+    <div id="light_properties_dialog" title="Light properties">
+      <fieldset>
+        <label>Light camera:</label>
+        <div class="camera_container">
+          <div class="camera_container_left">
+            <p>Pos:</p>
+            <p>View:</p>
+            <p>Up:</p>
+          </div>
+          <div class="camera_container_right">
+            <input id="light_cam_pos" type="text" disabled="disabled" value="0">
+            <input id="light_cam_view" type="text" disabled="disabled" value="0">
+            <input id="light_cam_up" type="text" disabled="disabled" value="0">
+          </div>
+        </div>
+        
+        <br clear="all">
+        
+        Light color: <input type="text" id="light_color" name="color" value="#ffffff"></input>
+        <div id="colorpicker_dialog" title="Colorpicker">
+          <div id="colorpicker"></div> 
+        </div>  
+        
+        <br clear="all">
+        
+        <label>Light radius:</label><input type="text" disabled="disabled" id="light_radius_slider_value">
+        <div id="light_radius_slider"></div>
+        
+        <br>
+        
+        <label>Light size:</label><input type="text" disabled="disabled" id="light_size_slider_value">
+        <div id="light_size_slider"></div>
+      </fieldset>
+      
+      <br>
+    </div>
+    
+    <button id="reload_shaders_button">Reload shaders</button>
+    
+    <br>
+    
+    <label>Go to fixed position:</label>
+    <button id="fixed_position0">Pos 0</button>
+    <button id="fixed_position1">Pos 1</button>
+    <button id="fixed_position2">Pos 2</button>
+    <button id="fixed_position3">Pos 3</button>
+    <button id="fixed_position4">Pos 4</button>
+    <button id="fixed_position5">Pos 5</button>
+    <button id="fixed_position6">Pos 6</button>
+    <button id="fixed_position7">Pos 7</button>
+    <button id="fixed_position8">Pos 8</button>
+    
+    <label>User camera:</label>
+    <div class="camera_container">
+      <div class="camera_container_left">
+        <p>Pos:</p>
+        <p>View:</p>
+        <p>Up:</p>
+      </div>
+      <div class="camera_container_right">
+        <input id="user_cam_pos" type="text" disabled="disabled" value="0">
+        <input id="user_cam_view" type="text" disabled="disabled" value="0">
+        <input id="user_cam_up" type="text" disabled="disabled" value="0">
+      </div>
+    </div>
+    
+    <br clear="all">
+    
+  </div>
+  
+  <button id="showui">Show UI</button>
+  
+</body>
+</html>

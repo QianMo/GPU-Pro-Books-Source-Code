@@ -1,0 +1,13 @@
+VertexShader
+{
+  cubeShadowMapPoint.vsh
+}
+GeometryShader
+{
+  cubeShadowMapPoint.gsh
+}
+FragmentShader
+{
+  cubeShadowMapPoint.fsh
+}
+

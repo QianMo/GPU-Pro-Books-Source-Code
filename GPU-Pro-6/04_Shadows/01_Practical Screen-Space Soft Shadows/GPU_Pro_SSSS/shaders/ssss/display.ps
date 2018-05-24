@@ -1,0 +1,15 @@
+#version 430 core
+
+//layout(binding=0) uniform samplerCubeArray result;
+layout(binding=0) uniform sampler2D result;
+
+in vec2 tex_coord;
+
+layout(location=0) out vec4 color;
+
+void main()
+{
+  //color = vec4(tex_coord, 0, 1);
+  //color = texture( result, vec4(tex_coord, 2, 0) );
+  color = texture( result, tex_coord );
+}

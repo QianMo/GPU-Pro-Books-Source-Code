@@ -1,0 +1,14 @@
+Textures
+{
+  ColorTexture          textures/sponza/vase_hanging.dds
+  NormalTexture         textures/sponza/vase_hanging_ddn.dds
+  SpecularTexture       textures/defaults/black.dds
+}
+RenderStates
+{
+  cull                  BACK_CULL     
+}
+Shader
+{
+  file                  shaders/base.sdr
+}

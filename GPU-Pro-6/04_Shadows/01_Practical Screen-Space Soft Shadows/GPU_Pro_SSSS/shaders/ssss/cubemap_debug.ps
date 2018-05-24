@@ -1,0 +1,17 @@
+#version 430 core
+
+layout(binding=0) uniform samplerCubeArray cubetex;
+
+uniform int layer;
+uniform vec3 tint;
+
+in vec3 pos;
+
+out vec4 color;
+
+void main()
+{
+  vec3 texcoord = normalize(pos);
+  color = vec4(texture(cubetex, vec4(texcoord, layer)).x * tint, 1);
+  //color = vec4( pos, 1 );
+}

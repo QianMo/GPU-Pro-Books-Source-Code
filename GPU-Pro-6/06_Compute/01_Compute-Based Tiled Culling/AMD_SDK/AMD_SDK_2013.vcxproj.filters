@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Geometry.cpp" />
+    <ClCompile Include="HelperFunctions.cpp" />
+    <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="LineRender.cpp" />
+    <ClCompile Include="Magnify.cpp" />
+    <ClCompile Include="MagnifyTool.cpp" />
+    <ClCompile Include="ShaderCache.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="ShaderCacheSampleHelper.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AMD_SDK.h" />
+    <ClInclude Include="Geometry.h" />
+    <ClInclude Include="HelperFunctions.h" />
+    <ClInclude Include="HUD.h" />
+    <ClInclude Include="LineRender.h" />
+    <ClInclude Include="Magnify.h" />
+    <ClInclude Include="MagnifyTool.h" />
+    <ClInclude Include="ShaderCache.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="ShaderCacheSampleHelper.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\SeparableFilter\FilterCommon.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\SeparableFilter\FilterKernel.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\SeparableFilter\HorizontalFilter.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\Line.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\Sprite.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\SeparableFilter\VerticalFilter.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{cf291593-9591-49e8-a273-1b43b1d68e11}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

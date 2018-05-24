@@ -1,0 +1,16 @@
+#version 430 core
+
+layout(binding=0) uniform sampler2D texture0;
+
+in cross_shader_data
+{
+  vec2 tex_coord;
+} i;
+
+out vec4 color;
+
+void main()
+{
+  color = texture(texture0, vec2(i.tex_coord.x, 1 - i.tex_coord.y) );
+  //color = vec4( 1 );
+}

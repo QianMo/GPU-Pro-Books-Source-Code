@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{6d40219a-053d-4a40-80c4-b01ca042b427}</UniqueIdentifier>
+      <Extensions>h;fx;fxh;hlsl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{02e2779c-524e-4cb7-a350-f6cfba260235}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\Source\Common.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\Source\DebugDraw.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\Source\Deferred.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\Source\Forward.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\Source\ParallelReduction.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\Source\TilingDeferred.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Shaders\Source\TilingForward.hlsl">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="..\DXUT\Core\dpiaware.manifest">
+      <Filter>Resource Files</Filter>
+    </Manifest>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ForwardPlusUtil.h" />
+    <ClInclude Include="TiledDeferredUtil.h" />
+    <ClInclude Include="CommonUtil.h" />
+    <ClInclude Include="LightUtil.h" />
+    <ClInclude Include="Shaders\Source\CommonHeader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Shaders\Source\TilingCommonHeader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="CommonConstants.h" />
+    <ClInclude Include="Shaders\Source\LightingCommonHeader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ComputeBasedTiledCulling.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ComputeBasedTiledCulling.cpp" />
+    <ClCompile Include="ForwardPlusUtil.cpp" />
+    <ClCompile Include="TiledDeferredUtil.cpp" />
+    <ClCompile Include="CommonUtil.cpp" />
+    <ClCompile Include="LightUtil.cpp" />
+  </ItemGroup>
+</Project>

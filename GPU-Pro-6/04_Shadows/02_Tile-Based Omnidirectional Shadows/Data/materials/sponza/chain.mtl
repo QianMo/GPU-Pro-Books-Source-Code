@@ -1,0 +1,15 @@
+Textures
+{
+  ColorTexture          textures/sponza/chain_texture.dds
+  NormalTexture         textures/sponza/chain_texture_ddn.dds
+  SpecularTexture       textures/defaults/black.dds 
+}
+RenderStates
+{
+  cull                  NONE_CULL     
+}
+Shader
+{
+  permutation           1
+  file                  shaders/base.sdr
+}

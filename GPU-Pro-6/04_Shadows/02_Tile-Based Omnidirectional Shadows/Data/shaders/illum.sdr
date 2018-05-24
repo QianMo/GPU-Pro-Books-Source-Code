@@ -1,0 +1,14 @@
+Defines
+{
+  TILED_SHADOW
+  CUBE_SHADOW
+}
+VertexShader
+{
+  illum.vsh
+}
+FragmentShader
+{ 
+  illum.fsh
+}
+
