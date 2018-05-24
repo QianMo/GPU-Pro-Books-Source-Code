@@ -1,0 +1,5 @@
+float4 main(float4 position : SV_Position, float4 wpos : WPOS, float3 color : COLOR) : SV_TARGET
+{
+	float3 normal = normalize(cross(ddx(wpos.xyz), ddy(wpos.xyz)));
+    return float4(color*saturate(abs(dot(normal, normalize(float3(-1,-1,-1))))), 0.7f);
+}

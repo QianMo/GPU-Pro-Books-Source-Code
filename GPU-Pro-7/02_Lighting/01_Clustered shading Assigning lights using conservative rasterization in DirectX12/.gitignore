@@ -1,0 +1,8 @@
+build/
+bin/
+
+*.sdf
+*.suo
+*.opensdf
+*.user
+*.db

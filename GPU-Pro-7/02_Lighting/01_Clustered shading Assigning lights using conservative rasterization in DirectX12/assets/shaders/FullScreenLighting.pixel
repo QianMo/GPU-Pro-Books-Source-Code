@@ -1,0 +1,161 @@
+#include "LightHelper.h"
+#include "ShaderCommon.h"
+
+Texture2D<float4> diffuse : register(t0);
+Texture2D<float4> normal : register(t1);
+Texture2D<float4> wpos : register(t2);
+Texture2D<float> depthTex : register(t3);
+StructuredBuffer<PointLight> pointLights : register(t4);
+StructuredBuffer<SpotLight> spotLights : register(t5);
+RWByteAddressBuffer start_offset_buffer : register(u1);
+StructuredBuffer<LinkedLightID> light_linked_list : register(t6);
+
+static const float4 kRadarColors[14] = 
+{
+    {0,0.9255,0.9255,1},   // cyan
+    {0,0.62745,0.9647,1},  // light blue
+    {0,0,0.9647,1},        // blue
+    {0,1,0,1},             // bright green
+    {0,0.7843,0,1},        // green
+    {0,0.5647,0,1},        // dark green
+    {1,1,0,1},             // yellow
+    {0.90588,0.75294,0,1}, // yellow-orange
+    {1,0.5647,0,1},        // orange
+    {1,0,0,1},             // bright red
+    {0.8392,0,0,1},        // red
+    {0.75294,0,0,1},       // dark red
+    {1,0,1,1},             // magenta
+    {0.6,0.3333,0.7882,1}, // purple
+};
+
+float4 DebugDrawNumLightsPerTileRadarColors(uint nNumLightsInThisTile)
+{
+	const uint g_uMaxNumLightsPerTile = 352;
+	
+    // black for no lights
+    if( nNumLightsInThisTile == 0 ) return float4(0,0,0,1);
+    // light purple for reaching the max
+    else if( nNumLightsInThisTile == g_uMaxNumLightsPerTile ) return float4(0.847,0.745,0.921,1);
+    // white for going over the max
+    else if ( nNumLightsInThisTile > g_uMaxNumLightsPerTile ) return float4(1,1,1,1);
+    // else use weather radar colors
+    else
+    {
+        // use a log scale to provide more detail when the number of lights is smaller
+
+        // want to find the base b such that the logb of g_uMaxNumLightsPerTile is 14
+        // (because we have 14 radar colors)
+        float fLogBase = exp2(0.07142857f*log2((float)g_uMaxNumLightsPerTile));
+
+        // change of base
+        // logb(x) = log2(x) / log2(b)
+        uint nColorIndex = floor(log2((float)nNumLightsInThisTile) / log2(fLogBase));
+        return kRadarColors[nColorIndex];
+    }
+}
+
+float4 main(float4 position : SV_POSITION) : SV_TARGET
+{
+	int3 screenPos = int3(position.xy, 0);
+	float4 diff = diffuse.Load(screenPos);
+	float4 norm = normal.Load(screenPos);
+	float4 pos = wpos.Load(screenPos);
+
+#ifdef LINEAR_DEPTH_DIST
+
+	const float depth = LinearDepthOne(depthTex.Load(screenPos));
+	if(depth == 1.0f)
+		return float4(1,1,1,1);
+	int dep = int(depth * CLUSTERSZ);
+
+#else
+	// Look up the light list for the cluster
+	const float min_depth = log2(NEAR_CLUST);
+	const float max_depth = log2(FARZ);
+
+	const float scale = 1.0f / (max_depth - min_depth) * (CLUSTERSZ - 1.0f);
+	const float bias = 1.0f - min_depth * scale;
+	const float depth = LinearDepth(depthTex.Load(screenPos));
+
+	if(depth == FARZ)
+		return float4(1,1,1,1);
+	int dep = int(max(log2(depth) * scale + bias, 0.0f));
+#endif
+
+	int2 clusterPos = int2( screenPos.xy >> LOG2_TILE);
+	uint light_index = (start_offset_buffer.Load((clusterPos.x + CLUSTERSX * clusterPos.y + CLUSTERSX * CLUSTERSY * dep) * 4) & 0x3FFFFFFF);
+	uint shade_bit = 1;
+	uint setindex = (shade_bit << 30) | (light_index & 0x3FFFFFFF);
+	uint temp;
+	start_offset_buffer.InterlockedExchange((clusterPos.x + CLUSTERSX * clusterPos.y + CLUSTERSX * CLUSTERSY * dep) * 4, setindex, temp);
+	
+	float3 diffuse_color = float3(0,0,0);
+	
+	LinkedLightID linked_light;
+#ifdef SHOW_LIGHTS_PER_PIXEL
+	uint num_lights = 0;
+#endif
+	if(light_index != 0x3FFFFFFF)
+	{
+		linked_light = light_linked_list[light_index];
+
+		//Spot light
+		while((linked_light.lightID >> 24) == 1)
+		{
+			uint lightID = (linked_light.lightID & 0xFFFFFF);
+			
+			diffuse_color += SpotLightCalc(pos, norm, spotLights[lightID]);
+#ifdef SHOW_LIGHTS_PER_PIXEL
+			++num_lights;
+#endif
+			light_index = linked_light.link;
+
+			if(light_index == 0x3FFFFFFF)
+				break;
+
+			linked_light = light_linked_list[light_index];
+		}
+
+		//Point light
+		while((linked_light.lightID >> 24) == 0)
+		{
+			uint lightID = (linked_light.lightID & 0xFFFFFF);
+			
+			diffuse_color += PointLightCalc(pos, norm, pointLights[lightID]);
+#ifdef SHOW_LIGHTS_PER_PIXEL			
+			++num_lights;
+#endif
+
+			light_index = linked_light.link;
+
+			if(light_index == 0x3FFFFFFF)
+				break;
+
+			linked_light = light_linked_list[light_index];
+		}		
+	}
+#ifdef SHOW_LIGHTS_PER_PIXEL
+	/*float3 num_lights_col = float3(1,0,0);
+	if(num_lights == 0)
+		num_lights_col = float3(0,0.3,0);
+	else if(num_lights < 35)
+		num_lights_col = lerp(float3(0,1,0), float3(0,0,1), saturate(num_lights / 34.0f));
+	else if(num_lights < 70)
+		num_lights_col = lerp(float3(0,0,1), float3(1,0,0), saturate((num_lights - 35) / 34.0f));
+   	return float4(num_lights_col, 1.0);*/
+	   
+	return DebugDrawNumLightsPerTileRadarColors(num_lights);	
+#else
+	
+   //Boost color
+   diffuse_color *= 1.5f;
+
+   //Ambient
+   float ambient_factor = 0.5f * norm.y + 0.5f;
+   float3 ambient_color = float3(0.013f, 0.015f, 0.050f) * ambient_factor + float3(0.0013f, 0.0015f, 0.0050f) * (1.0f - ambient_factor);
+  
+   return float4(diff.xyz * (diffuse_color + ambient_color * 5.0f), 1.0f);
+
+#endif
+    //return diff;
+}

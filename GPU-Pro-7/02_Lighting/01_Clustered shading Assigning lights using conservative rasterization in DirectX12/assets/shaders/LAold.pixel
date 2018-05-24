@@ -1,0 +1,31 @@
+#include "ShaderCommon.h"
+#include "LightHelper.h"
+
+struct PS_INPUT
+{
+	float4 pos : SV_Position;
+	nointerpolation float2 slices : SLICE;
+	nointerpolation uint rtArrayIndex : SV_RenderTargetArrayIndex;
+};
+
+float2 main(PS_INPUT input, bool is_front_face : SV_IsFrontFace) : SV_TARGET
+{
+	float depthMin = input.pos.z - 0.5f * (abs(ddx(input.pos.z)) + abs(ddy(input.pos.z)));
+	float depthMax = input.pos.z + 0.5f * (abs(ddx(input.pos.z)) + abs(ddy(input.pos.z)));
+
+#ifdef LINEAR_DEPTH_DIST
+	return is_front_face ? float2(1.0f, (CLUSTERSZ - 1.0f) / 255.0f - floor(max(CLUSTERSZ * (LinearDepthOne(min(depthMax, input.slices.y))), 0.0f)) / 255.0f)
+	: float2(floor(max(CLUSTERSZ * (LinearDepthOne(max(depthMin, input.slices.x))), 0.0f)) / 255.0f, 1.0f);
+#else
+	// Look up the light list for the cluster
+	const float min_depth = log2(NEAR_CLUST);
+	const float max_depth = log2(FARZ);
+
+	const float scale = 1.0f / (max_depth - min_depth) * (CLUSTERSZ - 1.0f);
+	const float bias = 1.0f - min_depth * scale;
+
+	//Wrong winding order on triangles, should be the other way around.
+	return is_front_face ? float2(1.0f, (CLUSTERSZ - 1.0f) / 255.0f - floor(max(log2(LinearDepthOne(min(depthMax, input.slices.y)) * FARZ) * scale + bias, 0.0f)) / 255.0f)
+	: float2(floor(max(log2(LinearDepthOne(max(depthMin, input.slices.x)) * FARZ) * scale + bias, 0.0f)) / 255.0f, 1.0f);
+#endif
+}

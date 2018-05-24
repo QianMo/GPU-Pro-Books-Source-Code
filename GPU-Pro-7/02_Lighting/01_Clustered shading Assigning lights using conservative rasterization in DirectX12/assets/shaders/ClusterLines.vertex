@@ -1,0 +1,23 @@
+#include "LightHelper.h"
+
+struct VSOut
+{
+	float4 position : SV_Position;
+};
+
+cbuffer CameraBuffer : register(b0)
+{
+	float4x4 viewProjMat;
+	float4x4 viewMat;
+	float4x4 projMat;
+}
+
+Buffer<float3> lines : register(t0);
+
+VSOut main(uint vertID : SV_VertexID)
+{
+	VSOut vsout;
+	float4 position = float4(lines[vertID], 1);
+	vsout.position = mul(viewProjMat, position);
+    return vsout;
+}

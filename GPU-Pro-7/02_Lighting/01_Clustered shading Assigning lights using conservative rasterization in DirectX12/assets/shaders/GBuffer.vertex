@@ -1,0 +1,25 @@
+struct VSout
+{
+	float4 position : SV_POSITION;
+    float3 wpos : POSITION;
+    float3 normal : NORMAL;
+    float2 texc : TEXCOORD;
+};
+
+cbuffer CameraBuffer : register(b0)
+{
+	float4x4 viewProjMat;
+    float4x4 viewMat;
+    float4x4 projMat;
+}
+
+VSout main(float3 position : POSITION, float3 normal : NORMAL, float2 texc : TEXCOORD)
+{
+	VSout output;
+    output.position = mul( viewProjMat, float4(position, 1));
+    output.wpos = position;
+    output.normal = normal;
+    output.texc = texc;
+
+    return output;
+}

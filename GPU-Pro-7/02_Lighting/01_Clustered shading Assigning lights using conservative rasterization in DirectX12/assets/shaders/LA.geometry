@@ -1,0 +1,47 @@
+cbuffer CameraBuffer : register(b0)
+{
+	float4x4 viewProjMat;
+	float4x4 viewMat;
+	float4x4 projMat;
+}
+
+struct GS_OUTPUT
+{
+	float4 pos : SV_Position;
+	nointerpolation uint4 vertPos : VERTPOS;
+	nointerpolation uint vertPosv2z : VERTPOSZ;
+	nointerpolation uint rtArrayIndex : SV_RenderTargetArrayIndex;
+};
+
+struct GS_INPUT
+{
+	float3 viewPos : VIEW_POS;
+	uint lightID : LIGHTID;
+};
+
+[maxvertexcount(3)]
+void main(triangle GS_INPUT input[3], inout TriangleStream<GS_OUTPUT> stream)
+{
+	GS_OUTPUT out_struct;
+	
+	//Set render target array index to the lightID(instanceID from vertex shader)
+	out_struct.rtArrayIndex = input[0].lightID;
+
+	//Send packed viewspace pos
+	uint3 pack_value0 = f32tof16(float3(input[0].viewPos.xy, -input[0].viewPos.z));
+	uint3 pack_value1 = f32tof16(float3(input[1].viewPos.xy, -input[1].viewPos.z));
+	uint3 pack_value2 = f32tof16(float3(input[2].viewPos.xy, -input[2].viewPos.z));
+
+	out_struct.vertPos.x = (pack_value0.x << 16) | (pack_value0.y);
+	out_struct.vertPos.y = (pack_value0.z << 16) | (pack_value1.x);
+	out_struct.vertPos.z = (pack_value1.y << 16) | (pack_value1.z);
+	out_struct.vertPos.w = (pack_value2.x << 16) | (pack_value2.y);
+	out_struct.vertPosv2z = (pack_value2.z);
+
+	out_struct.pos = mul(projMat, float4(input[0].viewPos, 1.0f));
+	stream.Append(out_struct);
+	out_struct.pos = mul(projMat, float4(input[1].viewPos, 1.0f));
+	stream.Append(out_struct);
+	out_struct.pos = mul(projMat, float4(input[2].viewPos, 1.0f));
+	stream.Append(out_struct);
+}

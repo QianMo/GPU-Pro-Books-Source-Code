@@ -1,0 +1,50 @@
+cbuffer CameraBuffer : register(b0)
+{
+	float4x4 viewProjMat;
+	float4x4 viewMat;
+	float4x4 projMat;
+}
+
+struct GS_OUTPUT
+{
+	float4 pos : SV_Position;
+	nointerpolation float2 slices : SLICE;
+	nointerpolation uint rtArrayIndex : SV_RenderTargetArrayIndex;
+};
+
+struct GS_INPUT
+{
+	float3 viewPos : VIEW_POS;
+	uint lightID : LIGHTID;
+};
+
+[maxvertexcount(3)]
+void main(triangle GS_INPUT input[3], inout TriangleStream<GS_OUTPUT> stream)
+{
+	GS_OUTPUT out_struct;
+	
+	//Set render target array index to the lightID(instanceID from vertex shader)
+	out_struct.rtArrayIndex = input[0].lightID;
+
+	float4 pos0 = mul(projMat, float4(input[0].viewPos, 1.0f));
+	float4 pos1 = mul(projMat, float4(input[1].viewPos, 1.0f));
+	float4 pos2 = mul(projMat, float4(input[2].viewPos, 1.0f));
+
+	//Get NDC depth for every vertex. If it's behind the camera, set it to 0.
+	float depth_vert_0 = (pos0.z < 0.0f) ? 0.0f : pos0.z/pos0.w;
+	float depth_vert_1 = (pos1.z < 0.0f) ? 0.0f : pos1.z/pos1.w;
+	float depth_vert_2 = (pos2.z < 0.0f) ? 0.0f : pos2.z/pos2.w;
+
+	//Find the vertex closest to the camera and store its NDC depth in x 
+	//Find the vertex furthest from the camera and store its NDC depth in y  
+	out_struct.slices.x = min(min(depth_vert_0, depth_vert_1), depth_vert_2);
+	out_struct.slices.y = max(max(depth_vert_0, depth_vert_1), depth_vert_2);
+
+	//Pass through the unchanged clip space coords for the fragment shader
+	out_struct.pos = pos0;
+	stream.Append(out_struct);
+	out_struct.pos = pos1;
+	stream.Append(out_struct);
+	out_struct.pos = pos2;
+	stream.Append(out_struct);
+}

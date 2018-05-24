@@ -1,0 +1,24 @@
+Texture2D<float4> diffuse : register(t0);
+
+SamplerState LinearSampler : register(s0);
+
+struct MRT_OUT 
+{
+    float4 diff : SV_TARGET0;
+    float3 norm : SV_TARGET1;
+    float3 pos  : SV_TARGET2;
+};
+
+MRT_OUT main(float4 position : SV_POSITION, float3 wpos : POSITION, float3 normal : NORMAL, float2 texc : TEXCOORD)
+{
+	MRT_OUT output;
+
+	float4 color = diffuse.Sample(LinearSampler, texc);
+	
+	clip(color.a - 0.4);
+
+	output.diff = color;
+	output.norm = normal;
+	output.pos = wpos;
+    return output;
+}

@@ -1,0 +1,26 @@
+#include "LightHelper.h"
+
+cbuffer CameraBuffer : register(b0)
+{
+	float4x4 viewProjMat;
+	float4x4 viewMat;
+	float4x4 projMat;
+}
+
+struct VSOUT
+{
+	float3 viewPos : VIEW_POS;
+	uint lightID : LIGHTID;
+};
+
+StructuredBuffer<PointLight> lights : register(t0);
+
+VSOUT main(float4 position : POSITION, uint ID : SV_InstanceID)
+{
+	VSOUT vout;
+	float4 worldPos = float4(position.xyz * lights[ID].pos.w * 1.08f + lights[ID].pos.xyz , 1);
+    vout.viewPos = mul(viewMat, worldPos);
+	vout.lightID = ID;
+
+	return vout;
+}

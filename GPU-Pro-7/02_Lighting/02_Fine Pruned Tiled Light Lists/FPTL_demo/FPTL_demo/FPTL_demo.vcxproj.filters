@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="geommath">
+      <UniqueIdentifier>{a7cbe733-665e-4656-b992-5d015c0e641d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DXUT">
+      <UniqueIdentifier>{e91495e5-271e-4b1f-b3fe-2143bfd18ffe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lighting">
+      <UniqueIdentifier>{4c265372-56ac-42ff-8c29-28bda631a0dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{19283395-e7b4-42fa-bf47-11373b3f3724}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mesh">
+      <UniqueIdentifier>{057783ea-eb52-40ab-99f6-1b71f2242bb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{afd64b86-7a17-468e-b2bf-75b7c6cccb81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QuadTree">
+      <UniqueIdentifier>{2b4b78bd-cce3-4daf-997c-781646a43c99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderUtils">
+      <UniqueIdentifier>{9d21d177-131b-4597-97d2-fad5c793fbc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Texture">
+      <UniqueIdentifier>{2446acf0-8f60-47df-8fcc-1bc7b2f8a695}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="geommath\geommath.h">
+      <Filter>geommath</Filter>
+    </ClInclude>
+    <ClInclude Include="geommath\mat33.h">
+      <Filter>geommath</Filter>
+    </ClInclude>
+    <ClInclude Include="geommath\mat44.h">
+      <Filter>geommath</Filter>
+    </ClInclude>
+    <ClInclude Include="geommath\quaternion.h">
+      <Filter>geommath</Filter>
+    </ClInclude>
+    <ClInclude Include="geommath\vec3.h">
+      <Filter>geommath</Filter>
+    </ClInclude>
+    <ClInclude Include="geommath\vec4.h">
+      <Filter>geommath</Filter>
+    </ClInclude>
+    <ClInclude Include="LightTiling.h">
+      <Filter>lighting</Filter>
+    </ClInclude>
+    <ClInclude Include="mesh_fil.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="quadtree.h">
+      <Filter>QuadTree</Filter>
+    </ClInclude>
+    <ClInclude Include="texture_rt.h">
+      <Filter>Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="shader.h">
+      <Filter>ShaderUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="shaderpipeline.h">
+      <Filter>ShaderUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="shaderutils.h">
+      <Filter>ShaderUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="illum.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="light_definitions.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="shader_base.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="std_cbuffer.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT11\Core\DDSTextureLoader.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT11\Core\dxerr.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT11\Core\DXUT.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT11\Core\DXUTDevice11.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT11\Core\DXUTmisc.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT11\Core\ScreenGrab.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT11\Core\WICTextureLoader.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT11\Optional\DXUTcamera.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT11\Optional\DXUTgui.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT11\Optional\DXUTguiIME.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT11\Optional\DXUTLockFreePipe.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT11\Optional\DXUTres.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT11\Optional\DXUTsettingsdlg.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT11\Optional\ImeUi.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT11\Optional\SDKmesh.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+    <ClInclude Include="DXUT11\Optional\SDKmisc.h">
+      <Filter>DXUT</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="geommath\mat33.cpp">
+      <Filter>geommath</Filter>
+    </ClCompile>
+    <ClCompile Include="geommath\mat44.cpp">
+      <Filter>geommath</Filter>
+    </ClCompile>
+    <ClCompile Include="geommath\quaternion.cpp">
+      <Filter>geommath</Filter>
+    </ClCompile>
+    <ClCompile Include="geommath\vec3.cpp">
+      <Filter>geommath</Filter>
+    </ClCompile>
+    <ClCompile Include="geommath\vec4.cpp">
+      <Filter>geommath</Filter>
+    </ClCompile>
+    <ClCompile Include="LightTiling.cpp">
+      <Filter>lighting</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="mesh_fil.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="quadtree.cpp">
+      <Filter>QuadTree</Filter>
+    </ClCompile>
+    <ClCompile Include="texture_rt.cpp">
+      <Filter>Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="shader.cpp">
+      <Filter>ShaderUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="shaderpipeline.cpp">
+      <Filter>ShaderUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="shaderutils.cpp">
+      <Filter>ShaderUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT11\Core\DDSTextureLoader.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT11\Core\dxerr.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT11\Core\DXUT.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT11\Core\DXUTDevice11.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT11\Core\DXUTmisc.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT11\Core\ScreenGrab.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT11\Core\WICTextureLoader.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT11\Optional\DXUTcamera.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT11\Optional\DXUTgui.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT11\Optional\DXUTguiIME.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT11\Optional\DXUTres.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT11\Optional\DXUTsettingsdlg.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT11\Optional\ImeUi.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT11\Optional\SDKmesh.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+    <ClCompile Include="DXUT11\Optional\SDKmisc.cpp">
+      <Filter>DXUT</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="lightlist_cs.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="scrbound_cs.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shader_basic.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="shader_lighting.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

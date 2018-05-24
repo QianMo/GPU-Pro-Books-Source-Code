@@ -1,0 +1,50 @@
+#include "ShaderCommon.h"
+
+//Root constant that tells the compute shader what light type is being computed. Set this to the light type ID before each light type pass.
+cbuffer lightTypeBuffer : register(b0)
+{
+	uint light_type;
+}
+
+//This array has NUM_LIGHTS slices and contains the near and far cluster z for each tile
+Texture2DArray<float2> conservativeRTs : register(t0);
+
+//Linked list of light IDs.
+//See "OIT and Indirect Illumination using DX11 Linked Lists" from GDC 10 and "Light Linked List" from Insomniac Games
+RWByteAddressBuffer StartOffsetBuffer : register(u0);
+RWStructuredBuffer<LinkedLightID> LinkedLightList : register(u1);
+
+//CLUSTERSX, CLUSTERSY, CLUSTERSZ are defines provided in the compilation step
+[numthreads(24, 12, 1)]
+void main( uint3 thread_ID : SV_DispatchThreadID )
+{
+	//Load near and far values(x is near and y is far)
+	float2 near_and_far = conservativeRTs.Load(int4(thread_ID, 0));
+
+	//Inactive tile, return
+	if(near_and_far.x == 1.0f && near_and_far.y == 1.0f)
+		return;
+
+	//Unpack to clusterZ space([0,1] to [0,255]). Also handle cases where no near of far cluster was written.
+	uint near = (near_and_far.x == 1.0f) ? 0 : uint(near_and_far.x * 255.0f + 0.5f);
+	uint far  = (near_and_far.y == 1.0f) ? (CLUSTERSZ - 1) : uint(((CLUSTERSZ - 1.0f) / 255.0f - near_and_far.y) * 255.0f + 0.5f);
+
+	//Loop through near to far and fill the light linked list
+	uint offset_index_base = 4 * (thread_ID.x + CLUSTERSX * thread_ID.y);
+	uint offset_index_step = 4 * CLUSTERSX * CLUSTERSY;
+	uint type = light_type;
+	for(uint i = near; i <= far; ++i)
+	{
+		uint index_count = LinkedLightList.IncrementCounter();
+		uint start_offset_address = offset_index_base + offset_index_step * i;
+
+		uint prev_offset;
+		StartOffsetBuffer.InterlockedExchange(start_offset_address, index_count, prev_offset);
+
+		LinkedLightID linked_node;
+		linked_node.lightID = (type << 24) | (thread_ID.z & 0xFFFFFF); //Light type is encoded in the last 8bit of the node.lightID and lightID in the first 24bits.
+		linked_node.link = prev_offset;
+
+		LinkedLightList[index_count] = linked_node;
+	}
+}

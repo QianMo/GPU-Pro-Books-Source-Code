@@ -1,0 +1,46 @@
+#include "LightHelper.h"
+
+cbuffer CameraBuffer : register(b0)
+{
+	float4x4 viewProjMat;
+	float4x4 viewMat;
+	float4x4 projMat;
+}
+
+struct VSOUT
+{
+	float4 position : SV_Position;
+	float4 wpos : WPOS;
+	float3 color : COLOR;
+};
+
+StructuredBuffer<SpotLight> lights : register(t0);
+
+VSOUT main(float4 position : POSITION,  uint ID : SV_InstanceID) 
+{
+	VSOUT vout;
+
+	float3 pos = position.xyz;
+	float range = 40.0f;//lights[ID].pos.w * 1.025f;
+
+	float XZscale = sin(lights[ID].dir_angle.w)/sin(PI*0.5f - lights[ID].dir_angle.w);
+
+   	pos.xz *= XZscale;
+
+   	pos *= range;
+
+   	if(length(pos) > range)
+		pos = normalize(pos) * range;
+
+	//rotate
+	float3 dir = lights[ID].dir_angle.xyz;
+	float3 k = normalize(cross(float3(0,-1,0), dir));
+	float rot_angle = acos(dot(float3(0,-1,0), dir));
+
+	pos = pos*cos(rot_angle) + cross(k, pos)*sin(rot_angle)+k*dot(k, pos)*(1.0f-cos(rot_angle));
+
+	vout.wpos = float4(pos + lights[ID].pos.xyz , 1);
+	vout.position = mul(viewProjMat, vout.wpos); 
+	vout.color = lights[ID].color.xyz;
+    return vout;
+}
