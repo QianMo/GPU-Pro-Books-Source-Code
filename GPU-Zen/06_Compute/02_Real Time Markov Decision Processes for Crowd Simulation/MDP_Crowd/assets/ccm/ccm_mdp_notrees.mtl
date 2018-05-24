@@ -1,0 +1,454 @@
+# 
+# Wavefront material file
+# Converted by the DEEP Exploration  Deep Exploration 6.5 x64 6.5.0.9182
+# Right Hemisphere, LTD
+# http://www.righthemisphere.com/
+# 
+
+newmtl m_biblioteca
+Ka 0.0588235 0.0588235 0.0588235
+Kd 1 1 1
+Ks 0.2 0.2 0.2
+illum 2
+Ns 4
+map_Kd biblioteca.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl m_aulas4
+Ka 0.0901961 0.0901961 0.0901961
+Kd 1 1 1
+Ks 0.219608 0.219608 0.219608
+illum 2
+Ns 4
+map_Kd aulas4.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl m_aulas3
+Ka 0.0392157 0.0392157 0.0392157
+Kd 1 1 1
+Ks 0.160784 0.160784 0.160784
+illum 2
+Ns 4
+map_Kd aulas3.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl m_cedetec
+Ka 0.121569 0.121569 0.121569
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd cedetec.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl ccm_floor_earth1
+Ka 0.0588235 0.0588235 0.0588235
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd ccm_mdp.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl m_oficinas4
+Ka 0.121569 0.121569 0.121569
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd oficinas4.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl m_aulas2
+Ka 0.121569 0.121569 0.121569
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd aulas2.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl m_cafeteria
+Ka 0.121569 0.121569 0.121569
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd cafeteria.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl m_oficinas5
+Ka 0.121569 0.121569 0.121569
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd oficinas5.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl m_aulas1
+Ka 0.121569 0.121569 0.121569
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd aulas1.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl m_dae
+Ka 0.121569 0.121569 0.121569
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd dae.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl m_oficinas2
+Ka 0.121569 0.121569 0.121569
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd oficinas2.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl m_oficinas1
+Ka 0.121569 0.121569 0.121569
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd oficinas1.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl m_oficinas3
+Ka 0.121569 0.121569 0.121569
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd oficinas3.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl m_estacionamiento
+Ka 0.121569 0.121569 0.121569
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd estacionamiento.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl dacia_low
+Ka 0.0509804 0.0509804 0.0509804
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd dacia_low_black.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl dacia_low0
+Ka 0.0509804 0.0509804 0.0509804
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd dacia_low_blue.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl dacia_low1
+Ka 0.0509804 0.0509804 0.0509804
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd dacia_low_brown.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl dacia_low2
+Ka 0.0509804 0.0509804 0.0509804
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd dacia_low_red.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl dacia_low3
+Ka 0.0509804 0.0509804 0.0509804
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd dacia_low_white.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl dacia_low4
+Ka 0.0509804 0.0509804 0.0509804
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd dacia_low_green.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Explorer_Default
+Ka 0.117647 0.117647 0.117647
+Kd 0.752941 0.752941 0.752941
+Ks 0.752941 0.752941 0.752941
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl car_low
+Ka 0.06 0.06 0.06
+Kd 1 1 1
+Ks 0 0 0
+illum 2
+Ns 2
+map_Kd car_videogame_texture.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl nissan_cube_low
+Ka 0.0588235 0.0588235 0.0588235
+Kd 1 1 1
+Ks 0.109804 0.109804 0.109804
+illum 2
+Ns 2
+map_Kd nissan_cube_orange.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl nissan_cube_low0
+Ka 0.0588235 0.0588235 0.0588235
+Kd 1 1 1
+Ks 0.109804 0.109804 0.109804
+illum 2
+Ns 2
+map_Kd nissan_cube_purple.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl nissan_cube_low1
+Ka 0.0588235 0.0588235 0.0588235
+Kd 1 1 1
+Ks 0.109804 0.109804 0.109804
+illum 2
+Ns 2
+map_Kd nissan_cube_red.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl nissan_cube_low2
+Ka 0.0588235 0.0588235 0.0588235
+Kd 1 1 1
+Ks 0.109804 0.109804 0.109804
+illum 2
+Ns 2
+map_Kd nissan_cube_silver.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl nissan_cube_low3
+Ka 0.0588235 0.0588235 0.0588235
+Kd 1 1 1
+Ks 0.109804 0.109804 0.109804
+illum 2
+Ns 2
+map_Kd nissan_cube_yellow.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 

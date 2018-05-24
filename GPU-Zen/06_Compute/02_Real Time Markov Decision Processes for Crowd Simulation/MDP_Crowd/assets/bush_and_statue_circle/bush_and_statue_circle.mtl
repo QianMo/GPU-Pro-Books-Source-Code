@@ -1,0 +1,22 @@
+# 
+# Wavefront material file
+# Converted by the DEEP Exploration  Deep Exploration 6.5 x64 6.5.0.9182
+# Right Hemisphere, LTD
+# http://www.righthemisphere.com/
+# 
+
+newmtl bush_and_statue_circle
+Ka 0.64 0.64 0.64
+Kd 0.658824 0.658824 0.658824
+Ks 0.5 0.5 0.5
+illum 2
+Ns 18
+map_Kd bush_and_statue_circle.tga
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 

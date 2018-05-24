@@ -1,0 +1,103 @@
+# 
+# Wavefront material file
+# Converted by the DEEP Exploration  Deep Exploration 6.5 x64 6.5.0.9182
+# Right Hemisphere, LTD
+# http://www.righthemisphere.com/
+# 
+
+newmtl o1p2_Carpet
+Ka 0 0 0
+Kd 1 1 1
+Ks 0.5 0.5 0.5
+illum 2
+Ns 8
+map_Kd Carpet.tga
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl o1p2_Floor
+Ka 0.117647 0.117647 0.117647
+Kd 1 1 1
+Ks 0.752941 0.752941 0.752941
+illum 2
+Ns 8
+map_Kd LightningRock.tga
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl o1p2_Wood_Cherry
+Ka 0 0 0
+Kd 0.658824 0.658824 0.658824
+Ks 0.5 0.5 0.5
+illum 2
+Ns 8
+map_Kd Wood_Cherry_Original.tga
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl o1p2_FrontColor
+Ka 0 0 0
+Kd 0.670588 0.670588 0.670588
+Ks 0.2 0.2 0.2
+illum 2
+Ns 8
+map_Kd ccm_cubiculo.tga
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl o1p2_Material2
+Ka 0 0 0
+Kd 0.85098 0.854902 0.858824
+Ks 0.5 0.5 0.5
+illum 2
+Ns 8
+map_Kd ccm_cubiculo.tga
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl o1p2_Glass
+Ka 0 0 0
+Kd 0.623529 0.678431 0.788235
+Ks 0.5 0.5 0.5
+illum 2
+Ns 8
+d 0.3
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 

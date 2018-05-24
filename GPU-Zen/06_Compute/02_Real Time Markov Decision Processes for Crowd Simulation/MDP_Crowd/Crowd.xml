@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<crowds xmlns="CASIM.xsd">
+
+  <!-- CLOTHING PROPS -->
+  <model_props type="clothing" name="clothing_male" sex="male">  
+
+    <!-- BEGIN ALL ASSETS -->
+    <prop type="atlas"    subtype="skin"            name="skin_atlas"                     file="assets/textures/black.tga"	/>
+    <prop type="atlas"    subtype="hair"            name="hair_atlas"                     file="assets/textures/black.tga"	/>
+    <prop type="wrinkles" subtype="torso"           name="jacket_closed_wrinkles"         file="assets/textures/black.tga"       />
+    <prop type="pattern"  subtype="torso"           name="jacket_closed_pattern"          file="assets/textures/black.tga"       />
+    <prop type="pattern"  subtype="legs"            name="pants_wrinkles"                 file="assets/textures/black.tga"       />
+    <prop type="pattern"  subtype="legs"            name="pants_pattern"                  file="assets/textures/black.tga"       />
+
+    <prop type="atlas"    subtype="skin"            name="skin_atlas"                     file="assets/textures/black.tga"	/>
+
+    <!-- END ALL ASSETS -->
+
+    <!-- BEGIN ALL GEOMETRY -->
+    <prop type="head"     subtype="head"  name="bald"                   file="assets/models/bald_high.obj">
+      <atlas    ref="skin_atlas" />
+      <!--atlas    ref="hair_atlas" /-->
+    </prop>
+
+    <prop type="torso"    subtype="torso" name="jacket_closed"          file="assets/models/jacket_closed_high.obj" >
+      <wrinkles ref="jacket_closed_wrinkles"/>
+      <pattern  ref="jacket_closed_pattern"/>
+    </prop>
+
+    <prop type="legs"     subtype="legs"  name="pants"                  file="assets/models/pants_high.obj">
+      <wrinkles ref="pants_wrinkles"/>
+      <pattern  ref="pants_pattern"/>
+    </prop>
+    <!-- END ALL GEOMETRY -->
+  </model_props>
+
+
+  <!-- FACIAL PROPS -->
+  <model_props type="facial" name="facial_male" sex="male">
+    <prop type="facial_wrinkles"      subtype="face"  name="wrinkles"     file="assets/textures/black.tga"/>
+    <prop type="facial_eye_sockets"   subtype="face"  name="eye_sockets"  file="assets/textures/black.tga"/>
+    <prop type="facial_spots"         subtype="face"  name="spots"        file="assets/textures/black.tga"/>
+    <prop type="facial_beard"         subtype="face"  name="beard"        file="assets/textures/black.tga"/>
+    <prop type="facial_moustache"     subtype="face"  name="moustache"    file="assets/textures/black.tga"/>
+    <prop type="facial_makeup"        subtype="face"  name="makeup"       file="assets/textures/black.tga"/>
+  </model_props>
+
+
+  <!-- RIGGING PROPS -->
+  <model_props type="rigging" name="rigging_male" sex="male">
+    <prop type="rigging_zones"        subtype="rig"   name="zones"        file="assets/male/rigging/varied_man_zones.tga"/>
+    <prop type="rigging_weights"      subtype="rig"   name="weights"      file="assets/male/rigging/varied_man_weights.tga"/>
+    <prop type="rigging_displacement" subtype="rig"   name="displacement" file="assets/male/rigging/displacement.tga"/>
+  </model_props>
+
+
+  <!-- GROUP 1 -->
+  <group name="male_black" clothing_props="clothing_male" facial_props="facial_male" rigging_props="rigging_male" sex="male" type="human" >
+    <outfit       ref_head    ="bald" 	    ref_hair        =""             ref_legs          ="pants"        ref_torso     ="jacket_closed"  ref_palette   ="winter_1"                         />
+    <face         ref_wrinkles="wrinkles"   ref_eye_sockets ="eye_sockets"  ref_spots         ="spots"        ref_beard     ="beard"        ref_moustache ="moustache"  ref_makeup  ="makeup" />
+    <rig          ref_zones   ="zones"      ref_weights     ="weights"      ref_displacement  ="displacement" ref_animation ="animation"                                                      />
+    <weight_size  fat         ="0.2"        average         ="0.4"          thin              ="0.1"          strong        ="0.3"                                                            />
+    <height_size  min         ="1.60"       max             ="1.85"                                                                                                                           />
+  </group>
+
+
+  
+  <!-- CROWD_1: HUMANS -->
+  
+  <crowd name="crowd1" width="64" height="64">
+      <add_group ref="male_black"    percentage="100"   animation="assets/male/rigging/man_walk_inplace"        animation_frames="31"  animation_duration="60" /> 
+  </crowd>
+  
+</crowds>

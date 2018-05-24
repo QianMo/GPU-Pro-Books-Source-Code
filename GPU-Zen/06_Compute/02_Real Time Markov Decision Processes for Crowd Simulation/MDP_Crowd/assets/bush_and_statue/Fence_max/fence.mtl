@@ -1,0 +1,22 @@
+# 
+# Wavefront material file
+# Converted by the DEEP Exploration  Deep Exploration 6.5 x64 6.5.0.9182
+# Right Hemisphere, LTD
+# http://www.righthemisphere.com/
+# 
+
+newmtl fence
+Ka 0.588235 0.588235 0.588235
+Kd 0.639216 0.639216 0.639216
+Ks 0.35 0.35 0.35
+illum 2
+Ns 32
+map_Kd fence.tga
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 

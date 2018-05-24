@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug_OpenGL|Win32">
+      <Configuration>Debug_OpenGL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_OpenGL|Win32">
+      <Configuration>Release_OpenGL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\common\jobs.h" />
+    <ClInclude Include="..\..\include\common\main.h" />
+    <ClInclude Include="..\..\include\common\packet_manager.h" />
+    <ClInclude Include="..\..\include\common\web_socket.h" />
+    <ClInclude Include="..\..\include\essentials\assert.h" />
+    <ClInclude Include="..\..\include\essentials\macros.h" />
+    <ClInclude Include="..\..\include\essentials\main.h" />
+    <ClInclude Include="..\..\include\essentials\stl.h" />
+    <ClInclude Include="..\..\include\essentials\string.h" />
+    <ClInclude Include="..\..\include\essentials\types.h" />
+    <ClInclude Include="..\..\include\gpu\d3d11.h" />
+    <ClInclude Include="..\..\include\gpu\main.h" />
+    <ClInclude Include="..\..\include\gpu\profiler.h" />
+    <ClInclude Include="..\..\include\gpu\types.h" />
+    <ClInclude Include="..\..\include\gpu\utils.h" />
+    <ClInclude Include="..\..\include\image\fourier.h" />
+    <ClInclude Include="..\..\include\image\image.h" />
+    <ClInclude Include="..\..\include\image\main.h" />
+    <ClInclude Include="..\..\include\image\types.h" />
+    <ClInclude Include="..\..\include\main.h" />
+    <ClInclude Include="..\..\include\math\camera.h" />
+    <ClInclude Include="..\..\include\math\common.h" />
+    <ClInclude Include="..\..\include\math\constants.h" />
+    <ClInclude Include="..\..\include\math\conversion.h" />
+    <ClInclude Include="..\..\include\math\distance.h" />
+    <ClInclude Include="..\..\include\math\intersection.h" />
+    <ClInclude Include="..\..\include\math\io.h" />
+    <ClInclude Include="..\..\include\math\main.h" />
+    <ClInclude Include="..\..\include\math\matrix.h" />
+    <ClInclude Include="..\..\include\math\plane.h" />
+    <ClInclude Include="..\..\include\math\polygon.h" />
+    <ClInclude Include="..\..\include\math\quaternion.h" />
+    <ClInclude Include="..\..\include\math\random.h" />
+    <ClInclude Include="..\..\include\math\samples.h" />
+    <ClInclude Include="..\..\include\math\solver.h" />
+    <ClInclude Include="..\..\include\math\transform.h" />
+    <ClInclude Include="..\..\include\math\types.h" />
+    <ClInclude Include="..\..\include\math\vector.h" />
+    <ClInclude Include="..\..\include\mesh\main.h" />
+    <ClInclude Include="..\..\include\mesh\mesh.h" />
+    <ClInclude Include="..\..\include\mesh\types.h" />
+    <ClInclude Include="..\..\include\namespaces.h" />
+    <ClInclude Include="..\..\include\system\application.h" />
+    <ClInclude Include="..\..\include\system\file.h" />
+    <ClInclude Include="..\..\include\system\keys.h" />
+    <ClInclude Include="..\..\include\system\main.h" />
+    <ClInclude Include="..\..\include\system\screen.h" />
+    <ClInclude Include="..\..\include\system\sockets.h" />
+    <ClInclude Include="..\..\include\system\threads.h" />
+    <ClInclude Include="..\..\include\system\time.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\common\jobs.cpp" />
+    <ClCompile Include="..\..\src\gpu\d3d11.cpp" />
+    <ClCompile Include="..\..\src\gpu\profiler.cpp" />
+    <ClCompile Include="..\..\src\gpu\utils.cpp" />
+    <ClCompile Include="..\..\src\image\fourier.cpp" />
+    <ClCompile Include="..\..\src\image\image.cpp" />
+    <ClCompile Include="..\..\src\image\main.cpp" />
+    <ClCompile Include="..\..\src\math\matrix.cpp" />
+    <ClCompile Include="..\..\src\math\polygon.cpp" />
+    <ClCompile Include="..\..\src\mesh\mesh.cpp" />
+    <ClCompile Include="..\..\src\mesh\mesh_ase.cpp" />
+    <ClCompile Include="..\..\src\mesh\mesh_obj.cpp" />
+    <ClCompile Include="..\..\src\system\application.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E38DE4AA-032D-491B-A307-98DA4CC6332B}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>framework</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_OpenGL|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_OpenGL|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_OpenGL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_OpenGL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <TargetName>$(ProjectName)_$(Configuration)</TargetName>
+    <OutDir>$(ProjectDir)</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_OpenGL|Win32'">
+    <TargetName>$(ProjectName)_$(Configuration)</TargetName>
+    <OutDir>$(ProjectDir)</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(ProjectDir)</OutDir>
+    <TargetName>$(ProjectName)_$(Configuration)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_OpenGL|Win32'">
+    <OutDir>$(ProjectDir)</OutDir>
+    <TargetName>$(ProjectName)_$(Configuration)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>MAXEST_FRAMEWORK_DEBUG;MAXEST_FRAMEWORK_WINDOWS;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\include;..\..\dependencies\SDL-2.0.4;..\..\dependencies\SDL_net-2.0.1;..\..\dependencies\GL;..\..\dependencies\FreeImage\windows;..\..\dependencies\squish-1.10\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName>$(IntDir)\dummy\dummy\%(RelativeDir)\</ObjectFileName>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_OpenGL|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>MAXEST_FRAMEWORK_DEBUG;MAXEST_FRAMEWORK_WINDOWS;MAXEST_FRAMEWORK_SYSTEM_APPLICATION_OPENGL;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\include;..\..\dependencies\SDL-2.0.4;..\..\dependencies\SDL_net-2.0.1;..\..\dependencies\GL;..\..\dependencies\FreeImage\windows;..\..\dependencies\squish-1.10\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName>$(IntDir)\dummy\dummy\%(RelativeDir)\</ObjectFileName>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>MAXEST_FRAMEWORK_WINDOWS;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\include;..\..\dependencies\SDL-2.0.4;..\..\dependencies\SDL_net-2.0.1;..\..\dependencies\GL;..\..\dependencies\FreeImage\windows;..\..\dependencies\squish-1.10\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName>$(IntDir)\dummy\dummy\%(RelativeDir)\</ObjectFileName>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_OpenGL|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>MAXEST_FRAMEWORK_WINDOWS;MAXEST_FRAMEWORK_SYSTEM_APPLICATION_OPENGL;WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\include;..\..\dependencies\SDL-2.0.4;..\..\dependencies\SDL_net-2.0.1;..\..\dependencies\GL;..\..\dependencies\FreeImage\windows;..\..\dependencies\squish-1.10\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ObjectFileName>$(IntDir)\dummy\dummy\%(RelativeDir)\</ObjectFileName>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

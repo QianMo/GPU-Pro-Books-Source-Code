@@ -1,0 +1,874 @@
+# 
+# Wavefront material file
+# Converted by the DEEP Exploration  Deep Exploration 6.5 x64 6.5.0.9182
+# Right Hemisphere, LTD
+# http://www.righthemisphere.com/
+# 
+
+newmtl town2_initialShadingGroup
+Ka 0 0 0
+Kd 1 1 1
+Ks 0.5 0.5 0.5
+illum 2
+Ns 8
+map_Kd base.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Sky_
+Ka 0 0 0
+Kd 0.380392 0.576471 0.803922
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Celery_
+Ka 0 0 0
+Kd 0.945098 0.92549 0.709804
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _CoolGray4_
+Ka 0 0 0
+Kd 0.882353 0.886275 0.901961
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _DarkGray_
+Ka 0 0 0
+Kd 0.317647 0.317647 0.317647
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Beige_
+Ka 0 0 0
+Kd 0.960784 0.960784 0.862745
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+d 0
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Gray8_
+Ka 0 0 0
+Kd 0.266667 0.266667 0.266667
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Wood_Lumber_ButtJoined
+Ka 0 0 0
+Kd 0.643137 0.596078 0.439216
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd Wood_Lumber_ButtJoined.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Terrazzo_4
+Ka 0 0 0
+Kd 0.356863 0.356863 0.356863
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Terrazzo_4.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Siding3_5
+Ka 0 0 0
+Kd 1 1 1
+Ks 0.5 0.5 0.5
+illum 2
+Ns 8
+map_Kd _Siding3_4.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Wood_cherry_
+Ka 0 0 0
+Kd 0.529412 0.388235 0.309804
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Wood_cherry_.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Siding3_2
+Ka 0 0 0
+Kd 0.639216 0.517647 0.419608
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Siding3_2.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Stone_rough_2
+Ka 0 0 0
+Kd 0.666667 0.635294 0.545098
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Stone_rough_2.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Wood_cherry_2
+Ka 0 0 0
+Kd 0.529412 0.415686 0.32549
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Wood_cherry_2.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Stone_rough_4
+Ka 0 0 0
+Kd 1 1 1
+Ks 0.5 0.5 0.5
+illum 2
+Ns 8
+map_Kd _Stone_rough_2.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Brick_CopperSand
+Ka 0 0 0
+Kd 0.576471 0.545098 0.494118
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd Brick_CopperSand.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Plaster_1
+Ka 0 0 0
+Kd 0.823529 0.847059 0.823529
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Plaster_1.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Tile02_
+Ka 0 0 0
+Kd 0.286275 0.286275 0.282353
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Tile02_.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Wood_cherry_4
+Ka 0 0 0
+Kd 1 1 1
+Ks 0.5 0.5 0.5
+illum 2
+Ns 8
+map_Kd _Wood_cherry_.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl map2
+Ka 0 0 0
+Kd 1 1 1
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd map2.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Brick_CopperSand2
+Ka 0 0 0
+Kd 1 1 1
+Ks 0.5 0.5 0.5
+illum 2
+Ns 8
+map_Kd Brick_CopperSand1.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Terrazzo_3
+Ka 0 0 0
+Kd 0.878431 0.878431 0.878431
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Terrazzo_3.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material6
+Ka 0 0 0
+Kd 0.756863 0.752941 0.737255
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+d 0.6
+map_Kd Material6.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _PowderBlue_3
+Ka 0 0 0
+Kd 0.901961 0.713725 0.690196
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _PowderBlue_5
+Ka 0 0 0
+Kd 1 1 1
+Ks 0.5 0.5 0.5
+illum 2
+Ns 8
+d 0.8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _PowderBlue_2
+Ka 0 0 0
+Kd 0.647059 0.901961 0.768627
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _PowderBlue_1
+Ka 0 0 0
+Kd 0.901961 0.760784 0.6
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _PowderBlue_
+Ka 0 0 0
+Kd 0.690196 0.878431 0.901961
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Brick_Rough_Dark
+Ka 0 0 0
+Kd 0.368627 0.301961 0.207843
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd Brick_Rough_Dark.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Maroon_
+Ka 0 0 0
+Kd 0.501961 0 0
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Cobalt_
+Ka 0 0 0
+Kd 0.235294 0.407843 0.556863
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _DarkOliveGreen_
+Ka 0 0 0
+Kd 0.333333 0.419608 0.184314
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Paper2_
+Ka 0 0 0
+Kd 0.92549 0.92549 0.964706
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Paper2_.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Paper_
+Ka 0 0 0
+Kd 0.960784 0.941176 0.929412
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Paper_.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Stucco_
+Ka 0 0 0
+Kd 0.890196 0.858824 0.847059
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Stucco_.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Chalk_
+Ka 0 0 0
+Kd 0.905882 0.901961 0.921569
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Chalk_.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Pool_Water_
+Ka 0 0 0
+Kd 0.243137 0.584314 0.65098
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+d 0.4
+map_Kd _Pool_Water_.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Linen_
+Ka 0 0 0
+Kd 0.980392 0.941176 0.901961
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Snow_
+Ka 0 0 0
+Kd 1 0.980392 0.980392
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _LightYellow_
+Ka 0 0 0
+Kd 1 1 0.878431
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _AliceBlue_
+Ka 0 0 0
+Kd 0.941176 0.972549 1
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Beige_4
+Ka 0 0 0
+Kd 1 1 1
+Ks 0.5 0.5 0.5
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _LightCyan_
+Ka 0 0 0
+Kd 0.878431 1 1
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Shingles_Asphalt01_
+Ka 0 0 0
+Kd 0.458824 0.423529 0.396078
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Shingles_Asphalt01_.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Siding3_
+Ka 0 0 0
+Kd 0.447059 0.423529 0.360784
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Siding3_.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Siding3_3
+Ka 0 0 0
+Kd 0.588235 0.478431 0.388235
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Siding3_3.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl FrontColor
+Ka 0 0 0
+Kd 1 1 1
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Stone_rough_
+Ka 0 0 0
+Kd 0.666667 0.666667 0.666667
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Stone_rough_.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Material1
+Ka 0 0 0
+Kd 0.792157 0.713725 0.576471
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd Material1.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Safety_Glass_
+Ka 0 0 0
+Kd 0.858824 0.835294 0.72549
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Safety_Glass_.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Tile02_1
+Ka 0 0 0
+Kd 0.517647 0.513725 0.423529
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Tile02_1.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _2
+Ka 0 0 0
+Kd 0.458824 0.423529 0.396078
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _2.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _Water_pool_
+Ka 0 0 0
+Kd 0.223529 0.576471 0.647059
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _Water_pool_.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Explorer_Default
+Ka 0.117647 0.117647 0.117647
+Kd 0.752941 0.752941 0.752941
+Ks 0.752941 0.752941 0.752941
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 

@@ -1,0 +1,246 @@
+# 
+# Wavefront material file
+# Converted by the DEEP Exploration  Deep Exploration 6.5 x64 6.5.0.9182
+# Right Hemisphere, LTD
+# http://www.righthemisphere.com/
+# 
+
+newmtl initialShadingGroup
+Ka 0 0 0
+Kd 1 1 1
+Ks 0.5 0.5 0.5
+illum 2
+Ns 8
+map_Kd map2.tga
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Color_006
+Ka 0 0 0
+Kd 0.282353 0.34902 0.486275
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd Color_006.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _2
+Ka 0 0 0
+Kd 0.2 0.176471 0.145098
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _2.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Google_Earth_Snapshot_1
+Ka 0 0 0
+Kd 0.364706 0.415686 0.415686
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd Google_Earth_Snapshot_1.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Color_002
+Ka 0 0 0
+Kd 0.341176 0.45098 0.52549
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd Color_002.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Asphalt_New
+Ka 0 0 0
+Kd 0.705882 0.627451 0.517647
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd Asphalt_New.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _1
+Ka 0 0 0
+Kd 0.576471 0.513725 0.423529
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _1.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _4
+Ka 0 0 0
+Kd 0.356863 0.313725 0.258824
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _4.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _3
+Ka 0 0 0
+Kd 0.266667 0.235294 0.192157
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _3.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _7
+Ka 0 0 0
+Kd 0 0 0
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _7.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Brick_Basket_Two
+Ka 0 0 0
+Kd 0.341176 0.360784 0.364706
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd Brick_Basket_Two.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Brick_Antique
+Ka 0 0 0
+Kd 0.4 0.364706 0.329412
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd Brick_Antique.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl M_01
+Ka 0 0 0
+Kd 0.490196 0.490196 0.423529
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd M_01.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl _6
+Ka 0 0 0
+Kd 0.4 0.364706 0.329412
+Ks 0.33 0.33 0.33
+illum 2
+Ns 8
+map_Kd _6.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Explorer_Default
+Ka 0.117647 0.117647 0.117647
+Kd 0.752941 0.752941 0.752941
+Ks 0.752941 0.752941 0.752941
+illum 2
+Ns 8
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 

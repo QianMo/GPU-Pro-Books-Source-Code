@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="math">
+      <UniqueIdentifier>{5950dad1-118f-4cb7-b1d3-7fc63ca57423}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="essentials">
+      <UniqueIdentifier>{22e3d93a-f065-40dd-8a55-478372a549c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="image">
+      <UniqueIdentifier>{d5e3eb95-762f-4749-b877-563208794f12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system">
+      <UniqueIdentifier>{2e8f0fbb-950a-454f-be5e-77cc1a32f6ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mesh">
+      <UniqueIdentifier>{ee51bd32-440c-4674-beea-17a3cafe94eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gpu">
+      <UniqueIdentifier>{96710ab5-6685-4d76-9c0f-79a90cfae812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{ea8bd257-a8e6-4229-ab24-940742a5cfa7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\essentials\macros.h">
+      <Filter>essentials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\essentials\main.h">
+      <Filter>essentials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\essentials\types.h">
+      <Filter>essentials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\image\fourier.h">
+      <Filter>image</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\image\image.h">
+      <Filter>image</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\image\main.h">
+      <Filter>image</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\image\types.h">
+      <Filter>image</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\common.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\constants.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\conversion.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\distance.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\intersection.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\main.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\matrix.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\plane.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\polygon.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\quaternion.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\random.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\solver.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\transform.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\types.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\vector.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\system\main.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\system\threads.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\system\time.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\essentials\assert.h">
+      <Filter>essentials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\mesh\main.h">
+      <Filter>mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\mesh\types.h">
+      <Filter>mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\mesh\mesh.h">
+      <Filter>mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\essentials\stl.h">
+      <Filter>essentials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\system\screen.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\system\file.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\essentials\string.h">
+      <Filter>essentials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\system\application.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\system\keys.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\gpu\d3d11.h">
+      <Filter>gpu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\gpu\main.h">
+      <Filter>gpu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\gpu\profiler.h">
+      <Filter>gpu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\gpu\types.h">
+      <Filter>gpu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\camera.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\gpu\utils.h">
+      <Filter>gpu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\samples.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\common\main.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\common\web_socket.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\common\jobs.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\system\sockets.h">
+      <Filter>system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\namespaces.h" />
+    <ClInclude Include="..\..\include\main.h" />
+    <ClInclude Include="..\..\include\common\packet_manager.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\math\io.h">
+      <Filter>math</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\math\matrix.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\math\polygon.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\image\fourier.cpp">
+      <Filter>image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\image\image.cpp">
+      <Filter>image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\image\main.cpp">
+      <Filter>image</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\mesh\mesh_ase.cpp">
+      <Filter>mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\mesh\mesh.cpp">
+      <Filter>mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\mesh\mesh_obj.cpp">
+      <Filter>mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\system\application.cpp">
+      <Filter>system</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gpu\d3d11.cpp">
+      <Filter>gpu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gpu\profiler.cpp">
+      <Filter>gpu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gpu\utils.cpp">
+      <Filter>gpu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\common\jobs.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

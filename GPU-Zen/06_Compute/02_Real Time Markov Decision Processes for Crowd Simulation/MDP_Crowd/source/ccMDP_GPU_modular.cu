@@ -1,0 +1,574 @@
+/*
+
+Copyright 2013,2014 Sergio Ruiz, Benjamin Hernandez
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>
+
+In case you, or any of your employees or students, publish any article or
+other material resulting from the use of this  software, that publication
+must cite the following references:
+
+Sergio Ruiz, Benjamin Hernandez, Adriana Alvarado, and Isaac Rudomin. 2013.
+Reducing Memory Requirements for Diverse Animated Crowds. In Proceedings of
+Motion on Games (MIG '13). ACM, New York, NY, USA, , Article 55 , 10 pages.
+DOI: http://dx.doi.org/10.1145/2522628.2522901
+
+Sergio Ruiz and Benjamin Hernandez. 2015. A Parallel Solver for Markov Decision Process
+in Crowd Simulations. Fourteenth Mexican International Conference on Artificial
+Intelligence (MICAI), Cuernavaca, 2015, pp. 107-116.
+DOI: 10.1109/MICAI.2015.23
+
+*/
+#include "ccMDP_GPU_modular.h"
+
+#include <thrust/host_vector.h>
+#include <thrust/device_vector.h>
+#include <thrust/binary_search.h>
+#include <thrust/sort.h>
+#include <thrust/count.h>
+#include <thrust/copy.h>
+#include <thrust/tuple.h>
+#include <thrust/iterator/zip_iterator.h>
+#include <thrust/execution_policy.h>
+#include "ccThrustUtil.h"
+
+// k, NQ, mdp_size, mdp_sizeNQ, mdp_sizeNQxNQ, rows, columns
+#define	I_K				0
+#define I_NQ			1
+#define I_MDP_SIZE		2
+#define I_C_SIZE		3
+#define I_MDP_SIZENQ	4
+#define I_MDP_SIZENQxNQ	5
+#define I_ROWS			6
+#define	I_COLUMNS		7
+
+
+
+struct CopyFunctor : thrust::unary_function<int, int>
+{
+	CopyFunctor(){}
+
+	__device__ int operator()(int i)
+	{
+		return i;
+	}
+};
+
+struct false_prob : thrust::unary_function<float, float>
+{
+	const float p;
+	false_prob(float _p) : p(_p) {}
+	__device__ float operator()(int reachable) const
+	{
+		float frc = (float)reachable - 1.0f;
+		if (frc > 0.0f)
+		{
+			return p / frc;
+		}
+		else
+		{
+			return 0.0f;
+		}
+	}
+};
+
+struct true_prob : thrust::unary_function<float, float>
+{
+	const float p;
+	true_prob(float _p) : p(_p) {}
+	__device__ float operator()(int reachable) const
+	{
+		if (reachable > 1)
+		{
+			return p;
+		}
+		else
+		{
+			return 1.0f;
+		}
+	}
+};
+
+struct index_diag : thrust::unary_function<int, int>
+{
+	const int NQ;
+	index_diag(int _nq) : NQ(_nq) {}
+	__device__ float operator()(int index) const
+	{
+		int col = index % NQ;
+		int row = ((index - col) / NQ) % NQ;
+		if (row == col)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+};
+
+
+
+
+//=======================================================================================
+//
+
+//->SHORT-HAND_FOR_THRUST_OPERATORS
+thrust::multiplies<float>						op_mult_float;
+thrust::plus<float>								op_plus_float;
+thrust::minus<int>								op_minus_int;
+thrust::divides<int>							op_div_int;
+//<-SHORT-HAND_FOR_THRUST_OPERATORS
+//->SHORT-HAND_FOR_THRUST_ITERATORS
+thrust::device_vector<float>::iterator			iterT;
+thrust::device_vector<float>::iterator			iterQ;
+thrust::device_vector<float>::iterator			iterV;
+thrust::device_vector<int>::iterator			iterS;
+thrust::device_vector<int>::iterator			iterP;
+//<-SHORT-HAND_FOR_THRUST_ITERATORS
+//->VARIABLES_FOR_THRUST_ZIP_ITERATOR
+typedef thrust::device_vector<int>::iterator	IntIter;
+typedef thrust::device_vector<float>::iterator	FloatIter;
+typedef thrust::tuple<FloatIter, IntIter>		IteratorTuple;
+typedef thrust::zip_iterator<IteratorTuple>		ZipIterator;
+thrust::maximum< thrust::tuple<float,int> >		zi_binary_op;		// Binary Operator for key-reduction.
+thrust::equal_to<int>							zi_binary_pred;		// Binary Predicate for key-reduction.
+//<-VARIABLES_FOR_THRUST_ZIP_ITERATOR
+//->GLOBAL_VECTORS
+thrust::device_vector<float>					dev_permutations;
+thrust::device_vector<int>						dev_vicinityNQ;
+thrust::device_vector<float>					dev_dir_rwNQ;
+thrust::device_vector<float>					dev_dir_pvNQ;
+thrust::device_vector<int>						dev_P;
+thrust::device_vector<int>						dev_prev_P;
+thrust::device_vector<float>					dev_Q;
+thrust::device_vector<float>					dev_V;
+
+
+thrust::device_vector<int>						dev_result;
+thrust::device_vector<float>					dev_prob_tables;
+thrust::device_vector<float>					dev_discountNQxNQ;
+thrust::device_vector<int>						seq_indicesQ;		// Helper for key-reduction.
+thrust::device_vector<int>						indicesNQxNQ;		// Helper for key-reduction.
+thrust::device_vector<int>						indicesNQ;			// Helper for key-reduction.
+thrust::device_vector<int>						indices_outNQxNQ;	// Helper for key-reduction.
+thrust::device_vector<int>						indices_outNQ;		// Helper for key-reduction.
+thrust::device_vector<int>						nqs_NQ;				// Helper for filling "indicesNQ"
+thrust::device_vector<int>						nqs_NQxNQ;			// Helper for filling "indicesNQxNQ"
+
+//<-GLOBAL_VECTORS
+thrust::device_vector<int>						vars;				// k, NQ, mdp_size, mdp_sizeNQ, mdp_sizeNQxNQ, rows, columns
+
+//
+//=======================================================================================
+//
+void mmdp_init_permutations_on_device(	const int				_rows,
+										const int				_columns,
+										const int				_NQ,
+										std::vector<int>&		host_dir_ib_iwNQ,
+										std::vector<int>&		host_dir_ib_iwNQ_inv,
+										std::vector<float>&		host_probability1,
+										std::vector<float>&		host_probability2,
+										std::vector<float>&		host_permutations	)
+{
+//->INIT_VARIABLES
+	host_permutations.clear();
+	vars.clear();
+	vars.push_back( 0 );
+	vars.push_back(_NQ );
+	vars.push_back( _rows * _columns );
+	vars.push_back( _rows * _columns );
+	vars.push_back( _rows * _columns * _NQ );
+	vars.push_back( _rows * _columns * _NQ * _NQ );
+	vars.push_back( _rows );
+	vars.push_back( _columns );
+
+	float											T1				= 0.0f;
+	float											T2				= 0.0f;
+	int												i				= 0;
+	int												r				= 0;
+	int												c				= 0;
+	int												indexNQxNQ		= 0;
+	int												NQ2				= vars[I_NQ] * vars[I_NQ];
+	thrust::device_vector<int>						dev_dir_ib_iwNQ		( vars[I_ROWS] * vars[I_COLUMNS] * NQ2	);
+	thrust::device_vector<int>						dev_dir_ib_iwNQ_inv	( vars[I_ROWS] * vars[I_COLUMNS] * NQ2	);
+	thrust::device_vector<float>					temp_table			( NQ2					);
+	thrust::device_vector<float>					diagonal_1			( NQ2					);
+	thrust::device_vector<float>					diagonal_1_inv		( NQ2					);
+	thrust::device_vector<float>					diagonal_T1			( NQ2					);
+	thrust::device_vector<float>					full_T1				( NQ2					);
+//->TRANSFER_DATA_TO_DEVICE
+	thrust::copy(	host_dir_ib_iwNQ.begin(),
+					host_dir_ib_iwNQ.end(),
+					dev_dir_ib_iwNQ.begin()			);
+	thrust::copy(	host_dir_ib_iwNQ_inv.begin(),
+					host_dir_ib_iwNQ_inv.end(),
+					dev_dir_ib_iwNQ_inv.begin()		);
+//<-TRANSFER_DATA_TO_DEVICE
+//->PREPARE_DIAGONAL_MATRICES
+	for( r = 0; r < vars[I_NQ]; r++ )
+	{
+		for( c = 0; c < vars[I_NQ]; c++ )
+		{
+			i = r * vars[I_NQ] + c;
+			if( r == c )
+			{
+				diagonal_1[i]		= 1.0f;
+				diagonal_1_inv[i]	= 0.0f;
+			}
+			else
+			{
+				diagonal_1[i]		= 0.0f;
+				diagonal_1_inv[i]	= 1.0f;
+			}
+		}
+	}
+//<-PREPARE_DIAGONAL_MATRICES
+	host_permutations.resize( vars[I_ROWS] * vars[I_COLUMNS] * NQ2 );
+//<-INIT_VARIABLES
+	for( r = 0; r < vars[I_ROWS]; r++ )
+	{
+		for( c = 0; c < vars[I_COLUMNS]; c++ )
+		{
+			i				= r * vars[I_COLUMNS];
+			T1				= host_probability1[ i + c ];
+			// Obtain a diagonal matrix with T1:
+			thrust::fill		(	full_T1.begin(),
+									full_T1.end(),
+									T1											);
+			thrust::transform	(	full_T1.begin(),
+									full_T1.end(),
+									diagonal_1.begin(),
+									diagonal_T1.begin(),
+									op_mult_float								);
+			T2				= host_probability2[ i + c ];
+			indexNQxNQ		= (i * NQ2) + (c * NQ2);	// Index of the permutation table.
+			// 1.A. Fill table with T2:
+			thrust::fill		(	temp_table.begin(),
+									temp_table.end(),
+									T2											);
+			// 1.B. Fill diagonal with T1:
+			thrust::transform	(	temp_table.begin(),
+									temp_table.end(),
+									diagonal_1_inv.begin(),
+									temp_table.begin(),
+									op_mult_float								);
+			thrust::transform	(	temp_table.begin(),
+									temp_table.end(),
+									diagonal_T1.begin(),
+									temp_table.begin(),
+									op_plus_float								);
+			// At this time, "temp_table" has a diagonal filled with T1, every other cell holds T2.
+			// 2.A. Clean table (horizontal):
+			thrust::transform	(	temp_table.begin(),
+									temp_table.end(),
+									dev_dir_ib_iwNQ.begin() + indexNQxNQ,
+									temp_table.begin(),
+									op_mult_float								);
+			// 2.B. Clean table (vertical):
+			thrust::transform	(	temp_table.begin(),
+									temp_table.end(),
+									dev_dir_ib_iwNQ_inv.begin() + indexNQxNQ,
+									temp_table.begin(),
+									op_mult_float								);
+			// 3. Transfer back to host (i.e. append 'temp_table' to 'host_permutations'):
+			thrust::copy		(	temp_table.begin(),
+									temp_table.end(),
+									host_permutations.begin() + indexNQxNQ		);
+		}
+	}
+}
+//
+//=======================================================================================
+//
+void mmdp_init_permutations_on_device2(	const int				rows,
+										const int				columns,
+										const int				NQ,
+										const float				probability1,
+										const float				probability2,
+										std::vector<int>&		host_dir_ib_iw,
+										std::vector<int>&		host_dir_ib_iw_trans,
+										std::vector<float>&		host_permutations		)
+{
+	//->INIT_VARIABLES
+#ifdef DEBUG_TIME
+	cudaEvent_t										start;
+	cudaEvent_t										stop;
+	float											elapsedTime = 0.0f;
+#endif
+
+	host_permutations.clear();
+	vars.clear();
+	vars.push_back( 0 );
+	vars.push_back( NQ );
+	vars.push_back( rows *  columns );
+	vars.push_back( rows *  columns );
+	vars.push_back( rows *  columns * NQ );
+	vars.push_back( rows *  columns * NQ * NQ );
+	vars.push_back( rows );
+	vars.push_back( columns );
+
+
+	// AUXILIARY STRUCTURES:
+	thrust::minus<float>							op_minus_float;
+	thrust::plus<float>								op_plus_float;
+	thrust::multiplies<float>						op_mult_float;
+	thrust::divides<int>							op_div_int;
+	thrust::device_vector<int>::iterator			iterS;
+	typedef thrust::device_vector<int>::iterator	Int_Iterator;
+	int												NQ2 = NQ * NQ;
+	float											prob_t = probability1;
+	float											prob_f = probability2;
+
+	thrust::device_vector<int>						indices_out(rows * columns);
+	thrust::device_vector<int>						nqs_NQ(rows * columns * NQ);
+	thrust::device_vector<int>						indices_NQ(rows * columns * NQ);
+	thrust::device_vector<int>						indices_out_NQ(rows * columns * NQ);
+	thrust::device_vector<int>						seq_indices_NQ(rows * columns * NQ);
+	thrust::device_vector<int>						reachable_temp(rows * columns * NQ);
+
+	thrust::device_vector<int>						nqs_NQ2(rows * columns * NQ2);
+	thrust::device_vector<int>						ones(rows * columns * NQ2);
+	thrust::device_vector<int>						seq_indices(rows * columns * NQ2);
+	thrust::device_vector<int>						indices_NQ2(rows * columns * NQ2);
+
+	thrust::device_vector<int>						in_bounds_is_wall(rows * columns * NQ2);
+	thrust::device_vector<int>						in_bounds_is_wall_trans(rows * columns * NQ2);
+	thrust::device_vector<int>						reachable(rows * columns * NQ2);
+
+	thrust::device_vector<float>					permutations(rows * columns * NQ2);
+	thrust::device_vector<float>					temp_table(rows * columns * NQ2);
+	thrust::device_vector<float>					diagonal(rows * columns * NQ2);
+	thrust::device_vector<float>					diagonal_neg(rows * columns * NQ2);
+	thrust::device_vector<float>					diagonal_T1(rows * columns * NQ2);
+	thrust::device_vector<float>					full_T1(rows * columns * NQ2);
+
+#ifdef DEBUG_TIME
+	cudaEventCreate(&start);
+	cudaEventCreate(&stop);
+	cudaEventRecord(start, 0);
+#endif
+
+	host_permutations.resize(rows * columns * NQ2);
+	thrust::fill(ones.begin(), ones.end(), 1);
+	thrust::fill(nqs_NQ2.begin(), nqs_NQ2.end(), NQ);
+	thrust::fill(nqs_NQ.begin(), nqs_NQ.end(), NQ);
+	thrust::sequence(seq_indices.begin(), seq_indices.end());
+	thrust::sequence(indices_NQ.begin(), indices_NQ.end());
+	thrust::transform(seq_indices.begin(), seq_indices.end(), nqs_NQ2.begin(), indices_NQ2.begin(), op_div_int);
+	thrust::transform(indices_NQ.begin(), indices_NQ.end(), nqs_NQ.begin(), indices_NQ.begin(), op_div_int);
+
+	for (iterS = seq_indices_NQ.begin(); iterS < seq_indices_NQ.end(); iterS += NQ)
+	{
+		thrust::sequence(iterS, iterS + NQ);
+	}
+
+	// COLLECT STATE BOUNDARY DATA (COMPUTED IN HOST, COPIED TO DEVICE):
+	thrust::copy(host_dir_ib_iw.begin(), host_dir_ib_iw.end(), in_bounds_is_wall.begin());
+	thrust::copy(host_dir_ib_iw_trans.begin(), host_dir_ib_iw_trans.end(), in_bounds_is_wall_trans.begin());
+
+	// PREPARE PERMUTATIONS MATRIX:
+	thrust::reduce_by_key(indices_NQ2.begin(), indices_NQ2.end(), in_bounds_is_wall.begin(), indices_out_NQ.begin(), reachable_temp.begin());
+	repeated_range<Int_Iterator> reachable_range(reachable_temp.begin(), reachable_temp.end(), NQ);
+	thrust::copy(reachable_range.begin(), reachable_range.end(), reachable.begin());
+	thrust::transform(reachable.begin(), reachable.end(), temp_table.begin(), false_prob(prob_f));
+	thrust::transform(seq_indices.begin(), seq_indices.end(), diagonal.begin(), index_diag(NQ));
+	thrust::transform(ones.begin(), ones.end(), diagonal.begin(), diagonal_neg.begin(), op_minus_float);
+	thrust::transform(reachable.begin(), reachable.end(), full_T1.begin(), true_prob(prob_t));
+	thrust::transform(full_T1.begin(), full_T1.end(), diagonal.begin(), diagonal_T1.begin(), op_mult_float);
+	thrust::transform(temp_table.begin(), temp_table.end(), diagonal_neg.begin(), temp_table.begin(), op_mult_float);
+	thrust::transform(temp_table.begin(), temp_table.end(), diagonal_T1.begin(), permutations.begin(), op_plus_float);
+	thrust::transform(permutations.begin(), permutations.end(), in_bounds_is_wall.begin(), permutations.begin(), op_mult_float);			// CLEAN HORIZONTAL
+	thrust::transform(permutations.begin(), permutations.end(), in_bounds_is_wall_trans.begin(), permutations.begin(), op_mult_float);		// CLEAN VERTICAL
+
+	// TRANSFER BACK TO DEVICE:
+	thrust::copy(permutations.begin(), permutations.end(), host_permutations.begin());
+
+#ifdef DEBUG_TIME
+	cudaEventRecord(stop, 0);
+	cudaEventSynchronize(stop);
+	cudaEventElapsedTime(&elapsedTime, start, stop);
+	printf("PERM_TABLES_CALC_TIME:  %010.6f(s)\n", elapsedTime / 1000.0f);
+	//->CLEAN_UP
+	cudaEventDestroy(start);
+	cudaEventDestroy(stop);
+	//<-CLEAN_UP
+#endif
+}
+//
+//=======================================================================================
+//
+void mmdp_upload_to_device( 	std::vector<int>&		P,
+								std::vector<float>&		Q,
+								std::vector<float>&		V,
+								std::vector<int>&		host_vicinityNQ,
+								std::vector<float>&		host_dir_rwNQ,
+								std::vector<float>&		host_dir_pvNQ,
+								std::vector<float>&		host_permutations	)
+{
+	dev_P.clear();
+	dev_Q.clear();
+	dev_V.clear();
+	dev_vicinityNQ.clear();
+	dev_dir_rwNQ.clear();
+	dev_dir_pvNQ.clear();
+	dev_permutations.clear();
+
+	dev_P.resize( P.size() );
+	dev_prev_P.resize( P.size() );
+	dev_Q.resize( Q.size() );
+	dev_V.resize( V.size() );
+	dev_vicinityNQ.resize( host_vicinityNQ.size() );
+	dev_dir_rwNQ.resize( host_dir_rwNQ.size() );
+	dev_dir_pvNQ.resize( host_dir_pvNQ.size() );
+	dev_permutations.resize( host_permutations.size() );
+
+	thrust::copy( P.begin(),					P.end(),					dev_P.begin()				);
+	thrust::copy( Q.begin(),					Q.end(),					dev_Q.begin()				);
+	thrust::copy( V.begin(),					V.end(),					dev_V.begin()				);
+	thrust::copy( host_vicinityNQ.begin(),		host_vicinityNQ.end(),		dev_vicinityNQ.begin()		);
+	thrust::copy( host_dir_rwNQ.begin(),		host_dir_rwNQ.end(),		dev_dir_rwNQ.begin()		);
+	thrust::copy( host_dir_pvNQ.begin(),		host_dir_pvNQ.end(),		dev_dir_pvNQ.begin()		);
+	thrust::copy( host_permutations.begin(),	host_permutations.end(),	dev_permutations.begin()	);
+
+	int	mdp_size		= vars[I_MDP_SIZE];
+	int	mdp_sizeNQxNQ	= vars[I_MDP_SIZENQxNQ];
+	int	mdp_sizeNQ		= vars[I_MDP_SIZENQ];
+	dev_result.resize		( mdp_size						);
+	dev_prob_tables.resize	( mdp_sizeNQxNQ					);
+	dev_discountNQxNQ.resize( mdp_sizeNQxNQ					);
+	seq_indicesQ.resize		( mdp_sizeNQ					);		// Helper for key-reduction.
+	indicesNQxNQ.resize		( mdp_sizeNQxNQ					);		// Helper for key-reduction.
+	indicesNQ.resize		( mdp_sizeNQ					);		// Helper for key-reduction.
+	indices_outNQxNQ.resize	( dev_Q.size()					);		// Helper for key-reduction.
+	indices_outNQ.resize	( mdp_size						);		// Helper for key-reduction.
+	nqs_NQ.resize			( mdp_sizeNQ					);		// Helper for filling "indicesNQ"
+	nqs_NQxNQ.resize		( mdp_sizeNQxNQ					);		// Helper for filling "indicesNQxNQ"
+
+}
+//
+//=======================================================================================
+//
+int	mmdp_iterate_on_device(	float					discount,
+							bool&					convergence		)
+{
+//->INIT_VARIABLES
+	int	mdp_size		= vars[I_MDP_SIZE];
+	int	NQ				= vars[I_NQ];
+//->FILL_KEY_REDUCTION_HELPERS
+	if(vars[I_K]==0)
+	{
+		thrust::fill		(	dev_discountNQxNQ.begin(),	dev_discountNQxNQ.end(),	discount			);
+		thrust::fill		(	nqs_NQxNQ.begin(),			nqs_NQxNQ.end(),			NQ					);
+		thrust::fill		(	nqs_NQ.begin(),				nqs_NQ.end(),				NQ					);
+		thrust::sequence	(	indicesNQxNQ.begin(),		indicesNQxNQ.end()								);
+		thrust::sequence	(	indicesNQ.begin(),			indicesNQ.end()									);
+		thrust::transform	(	indicesNQxNQ.begin(),
+								indicesNQxNQ.end(),
+								nqs_NQxNQ.begin(),
+								indicesNQxNQ.begin(),
+								op_div_int																	);
+		thrust::transform	(	indicesNQ.begin(),
+								indicesNQ.end(),
+								nqs_NQ.begin(),
+								indicesNQ.begin(),
+								op_div_int																	);
+		for( iterS = seq_indicesQ.begin(); iterS < seq_indicesQ.end(); iterS += NQ  )
+		{
+			thrust::sequence( iterS, iterS + NQ );
+		}
+	}
+	thrust::copy(dev_P.begin(), dev_P.end(), dev_prev_P.begin());
+//<-FILL_KEY_REDUCTION_HELPERS
+//<-INIT_VARIABLES
+
+//->PERMUTATIONS_VS_PREV_VALUES_MULTIPLICATION
+	// With these 3 operations most of the MDP is actually solved (and really fast!):
+	thrust::transform(	dev_permutations.begin(),
+						dev_permutations.end(),
+						dev_dir_pvNQ.begin(),
+						dev_prob_tables.begin(),
+						op_mult_float				);
+	thrust::transform(	dev_prob_tables.begin(),
+						dev_prob_tables.end(),
+						dev_discountNQxNQ.begin(),
+						dev_prob_tables.begin(),
+						op_mult_float				);
+	thrust::transform(	dev_prob_tables.begin(),
+						dev_prob_tables.end(),
+						dev_dir_rwNQ.begin(),
+						dev_prob_tables.begin(),
+						op_plus_float				);
+//<-PERMUTATIONS_VS_PREV_VALUES_MULTIPLICATION
+//->OBTAINING_QS
+	thrust::reduce_by_key	(	indicesNQxNQ.begin(),
+								indicesNQxNQ.end(),
+								dev_prob_tables.begin(),
+								indices_outNQxNQ.begin(),
+								dev_Q.begin()				);
+	thrust::replace			(	dev_Q.begin(),
+								dev_Q.end(),
+								0.0f,
+								-100.0f						);
+//<-OBTAINING_QS
+//->OBTAINING_BEST_QS
+	ZipIterator firstIn  = thrust::make_zip_iterator( thrust::make_tuple(	dev_Q.begin(),
+																			seq_indicesQ.begin()	) );
+	ZipIterator firstOut = thrust::make_zip_iterator( thrust::make_tuple(	dev_V.begin(),
+																			dev_P.begin()			) );
+	thrust::reduce_by_key(	indicesNQ.begin(),
+							indicesNQ.end(),
+							firstIn,
+							indices_outNQ.begin(),
+							firstOut,
+							zi_binary_pred,
+							zi_binary_op			);
+//<-OBTAINING_BEST_QS
+//->CHECK_CONVERGENCE
+	thrust::transform(	dev_P.begin(),
+						dev_P.end(),
+						dev_prev_P.begin(),
+						dev_result.begin(),
+						op_minus_int		);
+	if( thrust::count( dev_result.begin(), dev_result.end(), 0 ) == mdp_size )
+	{
+		convergence = true;
+	}
+	else
+	{
+//->UPDATE_DEV_DIR_PV
+		// Perform the update with a map-value operation:
+		thrust::gather( dev_vicinityNQ.begin(),	// map_begins
+						dev_vicinityNQ.end(),	// map_ends
+						dev_V.begin(),			// values
+						dev_dir_pvNQ.begin()	);
+//<-UPDATE_DEV_DIR_PV
+		vars[I_K]++;
+	}
+//<-CHECK_CONVERGENCE
+	return vars[I_K];
+}
+//
+//=======================================================================================
+//
+void mmdp_download_to_host(	std::vector<int>&		P,
+							std::vector<float>&		V	)
+{
+	P.resize( dev_P.size() );
+	thrust::copy( dev_P.begin(), dev_P.end(), P.begin() );
+	thrust::copy( dev_V.begin(), dev_V.end(), V.begin() );
+}
+//
+//=======================================================================================

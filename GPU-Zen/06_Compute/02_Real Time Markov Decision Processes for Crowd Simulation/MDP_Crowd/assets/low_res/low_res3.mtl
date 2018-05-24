@@ -1,0 +1,9 @@
+newmtl Explorer_Default
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.12 0.12 0.12
+Tf 1.00 1.00 1.00
+map_Kd FEMALE_SUMMER_1_LOD_0.tga
+Ni 1.00
+Ks 0.75 0.75 0.75
+Ns 8.00
