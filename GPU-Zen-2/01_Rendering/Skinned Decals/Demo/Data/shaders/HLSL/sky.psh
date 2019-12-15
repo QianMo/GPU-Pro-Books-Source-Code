@@ -1,0 +1,18 @@
+struct VS_Output
+{
+	float4 position: SV_POSITION;
+};
+
+struct PS_Output
+{
+  float4 fragColor: SV_TARGET;
+};
+
+#define SKY_COLOR float4(0.15f, 0.15f, 0.15f, 1.0f)
+
+PS_Output main(VS_Output input) 
+{
+  PS_Output output;
+  output.fragColor = SKY_COLOR;
+	return output;
+}

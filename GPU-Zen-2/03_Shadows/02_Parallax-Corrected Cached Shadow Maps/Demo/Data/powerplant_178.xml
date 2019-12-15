@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Material Geometry="powerplant_178_68.geometry" DiffuseMap="wall_tex_b.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_178_69.geometry" DiffuseMap="ele_track_a.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_178_70.geometry" DiffuseMap="tow_rib_c.dds" NormalMap="default-normalmap.dds"/>
+<AABB Min="107.7669982910 -7.3879098892 -33.8527984619" Max="122.6460037231 22.9799995422 -21.0032997131"/>
+

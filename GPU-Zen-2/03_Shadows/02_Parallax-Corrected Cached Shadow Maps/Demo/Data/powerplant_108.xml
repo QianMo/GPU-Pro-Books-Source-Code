@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Material Geometry="powerplant_108_29.geometry" DiffuseMap="gravel_c.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_108_30.geometry" DiffuseMap="test_ground_b.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_108_31.geometry" DiffuseMap="pad_big_b.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_108_32.geometry" DiffuseMap="gravel_a.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_108_33.geometry" DiffuseMap="pad_pan_a.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_108_34.geometry" DiffuseMap="hill_mound_b.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_108_35.geometry" DiffuseMap="road_loop_a.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_108_36.geometry" DiffuseMap="trench_surround.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_108_37.geometry" DiffuseMap="trench_b.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_108_38.geometry" DiffuseMap="road_end.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_108_39.geometry" DiffuseMap="road_end_b.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_108_40.geometry" DiffuseMap="road_end_a.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_108_41.geometry" DiffuseMap="road_st_a.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_108_42.geometry" DiffuseMap="con_edge.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_108_43.geometry" DiffuseMap="trench_end.dds" NormalMap="default-normalmap.dds"/>
+<AABB Min="-109.7860031128 -15.2009000778 -46.5274009705" Max="107.7939987183 8.0702695847 55.7705993652"/>
+

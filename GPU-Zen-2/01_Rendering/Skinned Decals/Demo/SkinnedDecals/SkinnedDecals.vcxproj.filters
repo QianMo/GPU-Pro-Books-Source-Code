@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{a6fc8ba8-abd9-4e81-b868-3823c527b80b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Header Files">
+      <UniqueIdentifier>{8572c183-d3e9-4324-b251-e1df16263753}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Source Files">
+      <UniqueIdentifier>{d85bcec3-493b-4846-8e28-f82143e72889}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Maths">
+      <UniqueIdentifier>{2e632f7f-5f9f-48f2-8002-18aa8e116483}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Maths\Header Files">
+      <UniqueIdentifier>{8f02fa7d-57f5-4416-87bd-2fbdcf024b42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer">
+      <UniqueIdentifier>{50731e9c-aee3-4cdf-b20f-1830cfab927c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Header Files">
+      <UniqueIdentifier>{409c4aff-ff97-4f6b-b5cd-de5e7816b5d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Source Files">
+      <UniqueIdentifier>{1cb32f43-6878-4bd1-9cea-732e983556b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{1067ee76-26e8-4909-88cc-eace44cbe015}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Header Files">
+      <UniqueIdentifier>{a5f4e52b-083a-435c-a05a-2fe5eb366e21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Source Files">
+      <UniqueIdentifier>{611ade97-d553-42a5-a7c1-707d1367fd4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Header Files\DX12">
+      <UniqueIdentifier>{d38ce64b-155c-4657-a3b6-ee734c257a3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Header Files\DX12">
+      <UniqueIdentifier>{6af33cba-2236-4827-8e46-fa17c54da978}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Source Files\DX12">
+      <UniqueIdentifier>{ac15e9a4-9ed8-4002-aaa1-037d2981de9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Header Files\Postprocessors">
+      <UniqueIdentifier>{4ff88f4e-b3d5-42a7-aed7-4a6585a2b6a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Source Files\Postprocessors">
+      <UniqueIdentifier>{5c5c4f71-26b7-43e8-b6b8-6e7e45de96b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Renderer\Source Files\DX12">
+      <UniqueIdentifier>{24bf6df4-aec9-41b9-a22d-37fd5b1c31a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application">
+      <UniqueIdentifier>{830863e2-f3a8-4f45-bc38-4ff5e2b4c577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Header Files">
+      <UniqueIdentifier>{c74ef6bd-5c57-44f9-8498-4afd9d5dfb35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Source Files">
+      <UniqueIdentifier>{8bb45903-bd87-4a63-9acd-14d4542fdc12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{0e40db5d-870d-4610-9af3-33c5e100f2f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Header Files">
+      <UniqueIdentifier>{1596071d-3a77-4769-a692-107201dc2b7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Source Files">
+      <UniqueIdentifier>{9ec11d9e-a525-446d-92a8-157dc1e9336e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Header Files\imgui">
+      <UniqueIdentifier>{62c81b2a-c790-4be6-9c42-9d1d5143d2b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\Source Files\imgui">
+      <UniqueIdentifier>{28fbd7b5-6a26-44c5-b6a6-788ddd1dfba0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="includes\Application.h">
+      <Filter>Application\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Demo.h">
+      <Filter>Core\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\FileManager.h">
+      <Filter>Core\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\InputManager.h">
+      <Filter>Core\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\List.h">
+      <Filter>Core\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\TimeManager.h">
+      <Filter>Core\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Window.h">
+      <Filter>Core\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Color.h">
+      <Filter>Maths\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\maths.h">
+      <Filter>Maths\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Matrix4.h">
+      <Filter>Maths\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Plane.h">
+      <Filter>Maths\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Vector2.h">
+      <Filter>Maths\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Vector3.h">
+      <Filter>Maths\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Vector4.h">
+      <Filter>Maths\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Aabb.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Camera.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Frustum.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Image.h">
+      <Filter>Resources\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\ResourceManager.h">
+      <Filter>Resources\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\stdafx.h">
+      <Filter>Application\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DX12_Renderer.h">
+      <Filter>Renderer\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DX12_RenderTarget.h">
+      <Filter>Renderer\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\render_states.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DX12_Texture.h">
+      <Filter>Resources\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DX12_DescHeap.h">
+      <Filter>Renderer\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DX12_Shader.h">
+      <Filter>Resources\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DX12_RootSignature.h">
+      <Filter>Renderer\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DX12_PipelineState.h">
+      <Filter>Renderer\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DX12_IResource.h">
+      <Filter>Renderer\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DX12_CmdList.h">
+      <Filter>Renderer\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\GpuCmd.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DX12_Fence.h">
+      <Filter>Renderer\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\ScissorRectSet.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\ViewportSet.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\IPostProcessor.h">
+      <Filter>Renderer\Header Files\Postprocessors</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\FinalProcessor.h">
+      <Filter>Renderer\Header Files\Postprocessors</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\d3dx12.h">
+      <Filter>Renderer\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Material.h">
+      <Filter>Resources\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Font.h">
+      <Filter>Resources\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Shading.h">
+      <Filter>Renderer\Header Files\Postprocessors</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DX12_TimerQuery.h">
+      <Filter>Renderer\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DX12_DepthStencilTarget.h">
+      <Filter>Renderer\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Sky.h">
+      <Filter>Renderer\Header Files\Postprocessors</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\ThreadedTask.h">
+      <Filter>Core\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\ThreadManager.h">
+      <Filter>Core\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DX12_CmdSignature.h">
+      <Filter>Renderer\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Quat.h">
+      <Filter>Maths\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\imgui\includes\imconfig.h">
+      <Filter>GUI\Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\imgui\includes\imgui.h">
+      <Filter>GUI\Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\imgui\includes\imgui_internal.h">
+      <Filter>GUI\Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\imgui\includes\stb_rect_pack.h">
+      <Filter>GUI\Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\imgui\includes\stb_textedit.h">
+      <Filter>GUI\Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\imgui\includes\stb_truetype.h">
+      <Filter>GUI\Header Files\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\GuiManager.h">
+      <Filter>GUI\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DirectionalLight.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DemoModel.h">
+      <Filter>Resources\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Timer.h">
+      <Filter>Core\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DX12_Buffer.h">
+      <Filter>Renderer\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DX12_Helpers.h">
+      <Filter>Renderer\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DX12_ResourceDescTable.h">
+      <Filter>Renderer\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\DX12_SamplerDescTable.h">
+      <Filter>Renderer\Header Files\DX12</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\LogManager.h">
+      <Filter>Core\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\SkinnedDecals.h">
+      <Filter>Resources\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\RenderFormat.h">
+      <Filter>Renderer\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Application.cpp">
+      <Filter>Application\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Application\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Demo.cpp">
+      <Filter>Core\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FileManager.cpp">
+      <Filter>Core\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InputManager.cpp">
+      <Filter>Core\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TimeManager.cpp">
+      <Filter>Core\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Window.cpp">
+      <Filter>Core\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Aabb.cpp">
+      <Filter>Renderer\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Camera.cpp">
+      <Filter>Renderer\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Frustum.cpp">
+      <Filter>Renderer\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Image.cpp">
+      <Filter>Resources\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stdafx.cpp">
+      <Filter>Application\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ResourceManager.cpp">
+      <Filter>Resources\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DX12_Renderer.cpp">
+      <Filter>Renderer\Source Files\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DX12_RenderTarget.cpp">
+      <Filter>Renderer\Source Files\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DX12_Texture.cpp">
+      <Filter>Resources\Source Files\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DX12_DescHeap.cpp">
+      <Filter>Renderer\Source Files\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DX12_Shader.cpp">
+      <Filter>Resources\Source Files\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DX12_RootSignature.cpp">
+      <Filter>Renderer\Source Files\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DX12_PipelineState.cpp">
+      <Filter>Renderer\Source Files\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DX12_CmdList.cpp">
+      <Filter>Renderer\Source Files\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DX12_Fence.cpp">
+      <Filter>Renderer\Source Files\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FinalProcessor.cpp">
+      <Filter>Renderer\Source Files\Postprocessors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Material.cpp">
+      <Filter>Resources\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Font.cpp">
+      <Filter>Resources\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Shading.cpp">
+      <Filter>Renderer\Source Files\Postprocessors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DX12_TimerQuery.cpp">
+      <Filter>Renderer\Source Files\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DX12_DepthStencilTarget.cpp">
+      <Filter>Renderer\Source Files\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Sky.cpp">
+      <Filter>Renderer\Source Files\Postprocessors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ThreadManager.cpp">
+      <Filter>Core\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DX12_CmdSignature.cpp">
+      <Filter>Renderer\Source Files\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="..\External\imgui\src\imgui.cpp">
+      <Filter>GUI\Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\External\imgui\src\imgui_draw.cpp">
+      <Filter>GUI\Source Files\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GuiManager.cpp">
+      <Filter>GUI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DirectionalLight.cpp">
+      <Filter>Renderer\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DemoModel.cpp">
+      <Filter>Resources\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Timer.cpp">
+      <Filter>Core\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DX12_Buffer.cpp">
+      <Filter>Renderer\Source Files\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DX12_ResourceDescTable.cpp">
+      <Filter>Renderer\Source Files\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DX12_SamplerDescTable.cpp">
+      <Filter>Renderer\Source Files\DX12</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LogManager.cpp">
+      <Filter>Core\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SkinnedDecals.cpp">
+      <Filter>Resources\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RenderFormat.cpp">
+      <Filter>Renderer\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

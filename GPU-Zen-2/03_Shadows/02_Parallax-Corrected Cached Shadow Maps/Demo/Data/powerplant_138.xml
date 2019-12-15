@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Material Geometry="powerplant_138_45.geometry" DiffuseMap="fan_housing_b.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_138_46.geometry" DiffuseMap="fan_blde.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_138_47.geometry" DiffuseMap="fan_hub.dds" NormalMap="default-normalmap.dds"/>
+<AABB Min="-15.8350000381 -13.2126998901 -15.0380001068" Max="14.7096996307 -2.2473199368 15.0771999359"/>
+

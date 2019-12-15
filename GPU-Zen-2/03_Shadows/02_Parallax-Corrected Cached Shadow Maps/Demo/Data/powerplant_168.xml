@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Material Geometry="powerplant_168_57.geometry" DiffuseMap="ele_floor.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_168_58.geometry" DiffuseMap="yellow_girder_a.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_168_59.geometry" DiffuseMap="ele_bot.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_168_60.geometry" DiffuseMap="ele_support.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_168_61.geometry" DiffuseMap="crane_light.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_168_62.geometry" DiffuseMap="rail.dds" NormalMap="default-normalmap.dds"/>
+<AABB Min="104.5049972534 -5.5541300774 -33.8527984619" Max="119.3880004883 1.6245000362 -21.0571994781"/>
+

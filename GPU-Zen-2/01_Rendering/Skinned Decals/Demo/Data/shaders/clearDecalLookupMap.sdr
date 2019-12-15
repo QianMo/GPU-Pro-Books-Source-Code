@@ -1,0 +1,9 @@
+Defines
+{
+  TYPED_UAV_LOADS
+}
+ComputeShader
+{
+  clearDecalLookupMap.csh
+}
+

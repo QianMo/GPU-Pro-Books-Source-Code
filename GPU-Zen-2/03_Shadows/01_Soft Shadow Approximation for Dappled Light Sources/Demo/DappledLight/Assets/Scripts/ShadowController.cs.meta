@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 61501e721b84876489fcb54f37d51efa
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - treeTransform: {instanceID: 0}
+  - bokehDebugRenderer: {instanceID: 0}
+  - shadowReceiver: {instanceID: 0}
+  - shadowBokehPass: {instanceID: 0}
+  - debugger: {instanceID: 0}
+  - shadowPassShader: {instanceID: 0}
+  - sourceLight: {instanceID: 0}
+  - planeRenderer: {instanceID: 0}
+  - shadowMap: {instanceID: 0}
+  - bokehMap: {instanceID: 0}
+  - computePinholes: {fileID: 7200000, guid: bbfeb16d0f681fc49a53f72185fff54d, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

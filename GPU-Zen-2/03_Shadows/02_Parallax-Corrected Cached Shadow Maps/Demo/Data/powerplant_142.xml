@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Material Geometry="powerplant_142_27.geometry" DiffuseMap="grt_sm_a.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_142_12.geometry" DiffuseMap="hz_a.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_142_13.geometry" DiffuseMap="grt_sm_b.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_142_14.geometry" DiffuseMap="tw_tex_a.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_142_15.geometry" DiffuseMap="ring_a.dds" NormalMap="default-normalmap.dds"/>
+<AABB Min="-20.1954002380 -16.0158996582 -19.3192996979" Max="19.0277996063 1.1115599871 19.9043006897"/>
+

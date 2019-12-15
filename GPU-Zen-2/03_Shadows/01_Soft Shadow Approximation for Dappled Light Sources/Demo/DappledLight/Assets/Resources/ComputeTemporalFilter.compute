@@ -1,0 +1,150 @@
+﻿#pragma kernel ComputeTemporalFilter
+
+struct PinholeLink
+{
+	float2 position; // The uv position of the pinhole in the shadowmap
+	float meanDepth; // The depth of the pinhole in the shadowmap
+	float rawDepth; // The estimated depth of the neighborhood
+	float intensity; // The pinhole intensity
+	uint next;
+}; 
+
+struct PinholeData
+{
+	float2 position; // The uv position of the pinhole in the shadowmap
+	float meanDepth; // The depth of the pinhole in the shadowmap
+	float rawDepth; // The estimated depth of the neighborhood
+	float intensity; // The pinhole intensity
+	uint next;
+}; 
+
+// The input buffer with indirection offsets
+uniform RWStructuredBuffer<PinholeLink> g_PinholeLinkBuffer : register(u1); // All entries
+uniform RWByteAddressBuffer g_PinholeOffsetBuffer : register(u2); // Head entry at each cell
+ 
+uniform RWStructuredBuffer<PinholeData> g_TemporalPinholesBuffer : register(u3); // All entries
+uniform RWStructuredBuffer<uint> g_TemporalPinholesCountBuffer : register(u4);
+
+uniform uint PinholesPerCell;
+uniform uint PinholeGridSize;
+
+#define MAX_PINHOLES 64
+#define PINHOLE_DATA_SIZE_BYTES (4*5)
+
+[numthreads(32,32,1)]
+void ComputeTemporalFilter(uint2 id : SV_DispatchThreadID)
+{
+	uint2 cellIndex = id.xy;
+
+	if(cellIndex.x >= PinholeGridSize || cellIndex.y >= PinholeGridSize)
+		return;
+
+	uint bufferIndex = cellIndex.y * PinholeGridSize + cellIndex.x;
+	uint index = g_PinholeOffsetBuffer.Load(bufferIndex * 4);
+
+	int temporalBufferOffset = cellIndex.y * PinholeGridSize + cellIndex.x;
+
+	PinholeLink link = g_PinholeLinkBuffer[index];
+
+	float intensityIncrement = 0.005;
+	float pinholeDistanceThreshold = 0.05;
+
+	int currentIndex = 0;
+	PinholeData resultArray[MAX_PINHOLES];
+
+	int effectiveMax = min(MAX_PINHOLES, PinholesPerCell);
+	int currentCount = g_TemporalPinholesCountBuffer.Load(temporalBufferOffset);
+
+	[loop]
+	for(int i = 0; i < effectiveMax; ++i)
+	{
+		if(index == uint(4294967295))
+			break;
+
+		link = g_PinholeLinkBuffer[index];
+		index = link.next;
+
+		float pinholeDepth = link.meanDepth;
+		float2 pinholePosition = link.position;
+
+		int closestPinholeIndex = -1;
+		float closestDistance = 1000.0;
+
+		[loop]
+		for(int j = 0; j < currentCount; ++j)
+		{
+			int temporalIndex = temporalBufferOffset * PinholesPerCell + j;
+			PinholeData prevPinhole = g_TemporalPinholesBuffer[temporalIndex];
+
+			float dist = distance(prevPinhole.position, pinholePosition) + abs(prevPinhole.meanDepth - pinholeDepth);
+
+			// The element is close AND is not marked
+			if(dist < closestDistance && dist < pinholeDistanceThreshold && prevPinhole.next == 0)
+			{
+				closestDistance = dist;
+				closestPinholeIndex = j;
+			}
+		}
+
+		// If there's a close pinhole, we merge them, else we accept the pinhole as new
+		if(closestPinholeIndex >= 0)
+		{
+			PinholeData pinholeToMerge = g_TemporalPinholesBuffer[temporalBufferOffset * PinholesPerCell + closestPinholeIndex];
+
+			float diff = distance(link.position, pinholeToMerge.position);
+			float similarity = (1.0 - saturate(diff / pinholeDistanceThreshold)) * 2.0 - 1.0;
+
+			link.position = lerp(link.position, pinholeToMerge.position, .9);
+			link.meanDepth = lerp(link.meanDepth, pinholeToMerge.meanDepth, .75);
+			link.intensity = min(1.0, pinholeToMerge.intensity + intensityIncrement * similarity);
+
+			// Mark the pinhole as used
+			pinholeToMerge.next = 1;
+			g_TemporalPinholesBuffer[temporalBufferOffset * PinholesPerCell + closestPinholeIndex] = pinholeToMerge;
+		}
+		else
+		{
+			// New pinhole, small intensity
+			link.intensity = intensityIncrement;
+		}
+
+		PinholeData resultP;
+		resultP.position = link.position;
+		resultP.next = link.next;
+		resultP.meanDepth = link.meanDepth;
+		resultP.rawDepth = link.rawDepth;
+		resultP.intensity = link.intensity;
+
+		resultArray[currentIndex] = resultP;
+		currentIndex++;
+	}
+
+	// Now iterate over all previous pinholes that are not marked on the bitmap, and decrease
+	[loop]
+	for(int x = 0; x < currentCount; ++x)
+	{
+		if(currentIndex >= effectiveMax)
+			break;
+
+		int temporalIndex = temporalBufferOffset * PinholesPerCell + x;
+		PinholeData prevPinhole = g_TemporalPinholesBuffer[temporalIndex];
+
+		// If we haven't replaced this element and falls withing threshold, then just add it with decreasing intensity
+		if(prevPinhole.next == 0 && prevPinhole.intensity > intensityIncrement)
+		{
+			prevPinhole.intensity -= intensityIncrement;
+			resultArray[currentIndex] = prevPinhole;
+			currentIndex++;
+		}
+	}
+
+	[loop]
+	for(int k = 0; k < currentIndex; ++k)
+	{
+		PinholeData pinhole = resultArray[k];
+		pinhole.next = 0;
+		g_TemporalPinholesBuffer[temporalBufferOffset * PinholesPerCell + k] = pinhole;
+	}
+	
+	g_TemporalPinholesCountBuffer[temporalBufferOffset] = currentIndex;
+}

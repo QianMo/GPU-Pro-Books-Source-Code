@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{CC2873E2-5988-4A14-B141-093FFE42D141}") = "SkinnedDecals", "SkinnedDecals.vcxproj", "{D61AFEB4-42C0-4254-885A-E863E290831C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug DX12|x64 = Debug DX12|x64
+		Release DX12|x64 = Release DX12|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D61AFEB4-42C0-4254-885A-E863E290831C}.Debug DX12|x64.ActiveCfg = Debug|x64
+		{D61AFEB4-42C0-4254-885A-E863E290831C}.Debug DX12|x64.Build.0 = Debug|x64
+		{D61AFEB4-42C0-4254-885A-E863E290831C}.Release DX12|x64.ActiveCfg = Release|x64
+		{D61AFEB4-42C0-4254-885A-E863E290831C}.Release DX12|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

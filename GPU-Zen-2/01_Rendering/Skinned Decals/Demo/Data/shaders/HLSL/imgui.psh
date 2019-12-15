@@ -1,0 +1,21 @@
+Texture2D	textureMap: register(t0, space0);
+SamplerState textureSampler: register(s0, space0);
+
+struct VS_Output
+{
+  float4 position: SV_POSITION;
+  float2 texCoords: TEXCOORD;
+  float4 color: COLOR;
+};
+
+struct PS_Output
+{
+  float4 fragColor: SV_TARGET;
+};
+
+PS_Output main(VS_Output input)
+{
+  PS_Output output;
+  output.fragColor = textureMap.Sample(textureSampler, input.texCoords) * input.color;
+  return output;
+}

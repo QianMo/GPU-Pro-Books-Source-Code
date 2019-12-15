@@ -1,0 +1,47 @@
+Texture2D colorMap: register(t0, space0);
+
+struct VS_Output
+{
+	float4 position: SV_POSITION;
+};
+
+struct PS_Output
+{
+  float4 fragColor: SV_TARGET;
+};
+
+#define A  0.4f            // shoulderStrength
+#define B  0.3f            // linearStrength
+#define C  0.1f            // linearAngle
+#define D  0.2f            // toeStrength
+#define E  0.01f           // toeNumerator
+#define F  0.3f            // toeDenominator
+#define LINEAR_WHITE 11.2f 
+
+float3 FilmicFunc(in float3 x)
+{
+  return ((x * (A * x + C * B) + D * E) / (x * (A * x + B) + D * F)) - E / F;
+}
+
+float3 TonemapFilmic(in float3 color)
+{
+  float3 numerator = FilmicFunc(color);
+  float3 denominator = FilmicFunc(float3(LINEAR_WHITE, LINEAR_WHITE, LINEAR_WHITE));
+  return numerator / denominator;
+}
+
+PS_Output main(VS_Output input) 
+{
+  PS_Output output;
+
+  float4 color = colorMap.Load(int3(input.position.xy, 0));
+
+  // perform filmic tone-mapping with constant exposure
+  const float exposure = 1.2f;
+  color.rgb *= exposure;
+  color.rgb = TonemapFilmic(color.rgb);
+
+  output.fragColor = color;
+
+	return output;
+}

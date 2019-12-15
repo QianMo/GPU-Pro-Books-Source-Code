@@ -1,0 +1,16 @@
+Textures
+{
+  ColorTexture          textures/decals/star.dds
+  NormalTexture         textures/decals/checker_ddn.dds
+  SpecularTexture       textures/decals/checker_spec.dds
+}
+RenderStates
+{
+  cull                  NONE_CULL  
+  noDepthMask    
+  noDepthTest
+}
+Shader
+{
+  file                  shaders/baseDecal.sdr
+}

@@ -1,0 +1,14 @@
+Defines
+{
+  TYPED_UAV_LOADS
+}
+VertexShader
+{
+  baseDecal.vsh
+}
+PixelShader
+{ 
+  baseDecal.psh
+}
+
+

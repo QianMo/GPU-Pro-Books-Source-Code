@@ -1,0 +1,80 @@
+#ifndef RENDER_FORMAT_H
+#define RENDER_FORMAT_H
+
+enum renderFormats
+{
+  NONE_RENDER_FORMAT=0,
+  R8_RENDER_FORMAT,
+  RG8_RENDER_FORMAT,
+  BGR8_RENDER_FORMAT,
+  BGR8_SRGB_RENDER_FORMAT,
+  BGRA8_RENDER_FORMAT,
+  BGRA8_SRGB_RENDER_FORMAT,
+  RGB8_RENDER_FORMAT,
+  RGB32UI_RENDER_FORMAT,
+  RGBA8_RENDER_FORMAT,
+  RGBA8_SRGB_RENDER_FORMAT,
+  RGBA32UI_RENDER_FORMAT,
+  R16UI_RENDER_FORMAT,
+  RG16_RENDER_FORMAT,
+  RG16UI_RENDER_FORMAT,
+  R32UI_RENDER_FORMAT,
+  RGB16_RENDER_FORMAT,
+  RGBA16_RENDER_FORMAT,
+  RGBA8S_RENDER_FORMAT,
+  RG16S_RENDER_FORMAT,
+  RGB16F_RENDER_FORMAT,
+  RGBA16F_RENDER_FORMAT,
+  RGB32F_RENDER_FORMAT,
+  RGBA32F_RENDER_FORMAT,
+  R16F_RENDER_FORMAT,
+  RG16F_RENDER_FORMAT,
+  R32F_RENDER_FORMAT,
+  RG32F_RENDER_FORMAT,
+  DEPTH16_RENDER_FORMAT,
+  DEPTH24_STENCIL8_RENDER_FORMAT,
+  DEPTH32_RENDER_FORMAT,
+  RGB565_RENDER_FORMAT,
+  RGB5A1_RENDER_FORMAT,
+  RGB10A2_RENDER_FORMAT,
+  RG11B10F_RENDER_FORMAT,
+  BC1_RENDER_FORMAT,
+  BC1_SRGB_RENDER_FORMAT,
+  BC2_RENDER_FORMAT,
+  BC2_SRGB_RENDER_FORMAT,
+  BC3_RENDER_FORMAT,
+  BC3_SRGB_RENDER_FORMAT,
+  BC4_RENDER_FORMAT,
+  BC5_RENDER_FORMAT,
+  BC7_RENDER_FORMAT,
+  BC7_SRGB_RENDER_FORMAT
+};
+
+struct DX12_RenderFormat
+{
+  DXGI_FORMAT resourceFormat;
+  DXGI_FORMAT srvFormat;
+  DXGI_FORMAT rtvFormat;
+};
+
+class RenderFormat
+{
+public:
+  static UINT GetBytesPerPixel(renderFormats renderFormat);
+
+  static UINT GetBytesPerChannel(renderFormats renderFormat);
+
+  static UINT GetChannelCount(renderFormats renderFormat);
+
+  static bool RenderFormat::IsCompressed(renderFormats renderFormat);
+
+  static bool IsSrgbFormat(renderFormats renderFormat);
+
+  static renderFormats ConvertToSrgbFormat(renderFormats renderFormat);
+
+  static renderFormats ConvertFromSrgbFormat(renderFormats renderFormat);
+
+  static const DX12_RenderFormat& GetDx12RenderFormat(renderFormats renderFormat);
+};
+
+#endif

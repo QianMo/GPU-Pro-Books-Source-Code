@@ -1,0 +1,16 @@
+Textures
+{
+  ColorTexture          textures/bob/lantern.dds
+  NormalTexture         textures/bob/lantern_ddn.dds
+  SpecularTexture       textures/defaults/white.dds
+}
+RenderStates
+{
+  cull                  NONE_CULL   
+  alphaTested 
+}
+Shader
+{
+  permutation           1
+  file                  shaders/base.sdr
+}

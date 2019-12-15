@@ -1,0 +1,14 @@
+Textures
+{
+  ColorTexture          textures/bob/lantern_top.dds
+  NormalTexture         textures/bob/lantern_top_ddn.dds
+  SpecularTexture       textures/defaults/white.dds
+}
+RenderStates
+{
+  cull                  NONE_CULL    
+}
+Shader
+{
+  file                  shaders/base.sdr
+}

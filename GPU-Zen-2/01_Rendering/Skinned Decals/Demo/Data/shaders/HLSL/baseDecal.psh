@@ -1,0 +1,59 @@
+#include "globals.shi"
+
+StructuredBuffer<DecalInfo> decalInfoBuffer: register(t3, space0);
+
+RWStructuredBuffer<uint> decalValidityBuffer: register(u1, space0);
+
+#ifdef TYPED_UAV_LOADS
+RWTexture2D<float4> decalLookupMaps[MAX_NUM_SUBMODELS]: register(u2, space0);
+#else
+RWTexture2D<uint> decalLookupMaps[MAX_NUM_SUBMODELS]: register(u2, space0);
+#endif
+
+struct VS_Output
+{
+  float4 position: SV_POSITION;
+  float2 decalTC: DECAL_TEXCOORDS;
+	float3 normal: NORMAL;
+  float4 clipDistances: SV_ClipDistance;
+};
+
+void main(VS_Output input) 
+{ 
+  uint decalMeshIndex = (decalInfoBuffer[0].decalHitMask >> 20u) & 0xf;
+
+  int2 outputPos = int2(input.position.xy);
+
+#ifdef TYPED_UAV_LOADS
+  uint prevDecalIndex = uint(decalLookupMaps[decalMeshIndex].Load(outputPos).w * 255.0f + 0.0001f);
+#else
+  uint prevDecalIndex = GetDecalIndex(decalLookupMaps[decalMeshIndex][outputPos]);
+#endif
+
+  if((prevDecalIndex > 0) && (prevDecalIndex != decalInfoBuffer[0].decalIndex) && (decalValidityBuffer[prevDecalIndex] == 0))
+  {
+    decalValidityBuffer[decalInfoBuffer[0].decalIndex] = 1;
+    return;
+  }
+  
+  // Fade out fragments which have an angle greater than 60 degrees to surface normal
+  // to avoid projection artifacts.
+  float cosAngle = dot(decalInfoBuffer[0].decalNormal, normalize(input.normal));
+  float angleFade = saturate(cosAngle - 0.5f) * 2.0f;
+
+  // Fade out fragments towards near/ far clip plane to avoid clipping artifacts.
+  float distFade = abs(0.5f - input.position.z) * 2.0f;
+  distFade = 1.0f - pow(distFade, 4.0f);
+
+  float fade = distFade * angleFade;
+
+#ifdef TYPED_UAV_LOADS
+  // store decal UVs, fade and decal ID as DXGI_FORMAT_R8G8B8A8_UNORM
+  decalLookupMaps[decalMeshIndex][outputPos] = float4(input.decalTC, fade, float(decalInfoBuffer[0].decalIndex) / 255.0f);
+#else
+  // pack decal UVs, fade and decal ID into DXGI_FORMAT_R32_UINT
+  decalLookupMaps[decalMeshIndex][outputPos] = EncodeDecalInfo(input.decalTC, fade, decalInfoBuffer[0].decalIndex);
+#endif
+}
+
+

@@ -1,0 +1,15 @@
+Textures
+{
+  ColorTexture          textures/bob/bob_helmet.dds
+  NormalTexture         textures/bob/bob_helmet_ddn.dds
+  SpecularTexture       textures/bob/bob_helmet_spec.dds
+}
+RenderStates
+{
+  cull                  NONE_CULL 
+  receiveDecals
+}
+Shader
+{
+  file                  shaders/base.sdr
+}

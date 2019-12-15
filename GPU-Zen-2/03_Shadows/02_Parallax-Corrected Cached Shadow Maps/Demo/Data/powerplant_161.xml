@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Material Geometry="powerplant_161_54.geometry" DiffuseMap="container_grn_num.dds" NormalMap="default-normalmap.dds"/>
+<AABB Min="80.9320983887 -0.1246540025 53.8264999390" Max="90.4300003052 4.3732900620 59.3245010376"/>
+

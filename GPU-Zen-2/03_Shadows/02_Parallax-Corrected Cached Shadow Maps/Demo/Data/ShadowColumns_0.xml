@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Material Geometry="ShadowColumns_0_0.geometry" ConvertToDepthOnly="0" />
+<Material Geometry="ShadowColumns_0_0_shadow.geometry" Type="1"/>
+<AABB Min="-814.0380249023 -0.0000365452 -58.8111991882" Max="110.9680023193 0.0000000000 59.3949012756"/>

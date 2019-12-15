@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Material Geometry="powerplant_190_72.geometry" DiffuseMap="crane_wheel.dds" NormalMap="default-normalmap.dds"/>
+<AABB Min="-18.1037998199 32.4642982483 46.7072982788" Max="-14.3001003265 34.0253982544 50.5110015869"/>
+

@@ -1,0 +1,244 @@
+﻿#pragma kernel ComputePinholes
+
+struct PinholeLink
+{
+	float2 position; // The uv position of the pinhole in the shadowmap
+	float meanDepth; // The depth of the pinhole in the shadowmap
+	float rawDepth; // The estimated depth of the neighborhood
+	float intensity; // The pinhole intensity
+	uint next;
+}; 
+
+uniform RWTexture2D<float4> BokehMap; // Just for testing
+uniform SamplerState samplerBokehMap;
+
+uniform Texture2D<float4> ShadowMap;
+uniform SamplerState samplerShadowMap;
+ 
+uniform uint ShadowMapWidth;
+uniform uint ShadowMapHeight;
+
+uniform float NeighborVarianceThreshold;
+uniform float VarianceThreshold;
+uniform float WeightThreshold;
+
+uniform uint PinholeGridSize;
+uniform uint PinholesPerCell;
+uniform uint TotalMaxPinholeCount;
+
+uniform RWStructuredBuffer<PinholeLink> g_PinholeLinkBuffer : register(u1); // All entries
+uniform RWByteAddressBuffer g_PinholeOffsetBuffer : register(u2); // Head entry at each cell
+
+#define MIPMAP_LEVEL 0
+
+float ComputeVariance(int2 pos, int kernelHalfSize, float mean, float radius)
+{
+	float variance = 0.0;
+	float total = 0.0;
+
+	int2 from = clamp(pos - int2(kernelHalfSize, kernelHalfSize), int2(0, 0), int2(ShadowMapWidth, ShadowMapHeight));
+	int2 to = clamp(pos + int2(kernelHalfSize, kernelHalfSize), int2(0, 0), int2(ShadowMapWidth, ShadowMapHeight));
+	 
+	for(int x = from.x; x <= to.x; x++)
+	{
+		for(int y = from.y; y <= to.y; y++) 
+		{
+			if(length(float2(x,y) - pos) > radius)
+			{
+				float d = ShadowMap.Load(uint3(x, y, MIPMAP_LEVEL)).r;
+				d -= mean;
+				variance += d*d;
+				total += 1.0;
+			}
+		}
+	}
+	
+	return variance / total;
+}
+
+float ComputeMeanOutside(int2 pos, int kernelHalfSize, float radius)
+{
+	float mean = 0.0;
+	int total = 0;
+
+	int2 from = clamp(pos - int2(kernelHalfSize, kernelHalfSize), int2(0, 0), int2(ShadowMapWidth, ShadowMapHeight));
+	int2 to = clamp(pos + int2(kernelHalfSize, kernelHalfSize), int2(0, 0), int2(ShadowMapWidth, ShadowMapHeight));
+	 
+	for(int x = from.x; x <= to.x; x++)
+	{
+		for(int y = from.y; y <= to.y; y++) 
+		{
+			if(length(float2(x,y) - pos) > radius)
+			{
+				mean += ShadowMap.Load(uint3(x,y, MIPMAP_LEVEL)).r;
+				total++;
+			}
+		}
+	}
+
+	if(total > 0)
+		return mean / total;
+
+	return 0.0;
+}
+
+float ComputeMeanInside(int2 pos, int kernelHalfSize, float radius)
+{
+	float mean = 0.0;
+	int total = 0;
+
+	int2 from = clamp(pos - int2(kernelHalfSize, kernelHalfSize), int2(0, 0), int2(ShadowMapWidth, ShadowMapHeight));
+	int2 to = clamp(pos + int2(kernelHalfSize, kernelHalfSize), int2(0, 0), int2(ShadowMapWidth, ShadowMapHeight));
+	 
+	for(int x = from.x; x <= to.x; x++)
+	{
+		for(int y = from.y; y <= to.y; y++) 
+		{
+			if(length(float2(x,y) - pos) < radius)
+			{
+				mean += ShadowMap.Load(uint3(x,y, MIPMAP_LEVEL)).r;
+				total++;
+			}
+		}
+	}
+
+	if(total > 0)
+		return mean / total;
+
+	return 0.0;
+}
+
+bool FindPinholeWithSize(int2 pos, int kernelHalfSize, float radius)
+{
+    int lodLevel = 0;
+	float centerDepth = ShadowMap.Load(uint3(pos, 0)).r;
+
+	float meanB = ComputeMeanOutside(pos, kernelHalfSize, radius);
+	float varianceB = ComputeVariance(pos, kernelHalfSize, meanB, radius);
+
+	float stdB = sqrt(varianceB);
+
+	// Early rejection, the plane is not similar enough
+	if(stdB > NeighborVarianceThreshold)// || centerDepth < meanB + stdB * VarianceThreshold)
+		return 0.0;
+
+	float pinholeWeight = 0.0;
+	float meanA = 0.0;
+	float totalA = 0.0;
+	
+	int2 from = clamp(pos - int2(kernelHalfSize, kernelHalfSize), int2(0, 0), int2(ShadowMapWidth, ShadowMapHeight));
+	int2 to = clamp(pos + int2(kernelHalfSize, kernelHalfSize), int2(0, 0), int2(ShadowMapWidth, ShadowMapHeight));
+	 
+	for(int x = from.x; x <= to.x; x++)
+	{
+		for(int y = from.y; y <= to.y; y++) 
+		{
+			if(length(float2(x,y) - pos) < radius)
+			{
+				float d = ShadowMap.Load(uint3(x, y, MIPMAP_LEVEL)).r;
+
+				if(d > meanB + stdB * VarianceThreshold)
+					pinholeWeight += 1.0;
+
+				meanA += d;
+				totalA += 1.0;
+			}
+		}
+	}
+
+	meanA /= totalA;
+	pinholeWeight /= totalA;
+
+	return abs(pinholeWeight - 1.0) < WeightThreshold && meanA > meanB + stdB * 3.5;
+}
+
+bool FindPinhole(float2 uv, uint2 pos, out float meanDepth, out float rawDepth)
+{
+	float texSize = 1.0 / float(ShadowMapWidth);
+	float3 offset = float3(1.0, -1.0, 0.0) * texSize;
+
+	float depths[9];
+	float centerDepth = ShadowMap.SampleLevel(samplerShadowMap, uv, MIPMAP_LEVEL).r;
+
+	depths[0] = ShadowMap.SampleLevel(samplerShadowMap, uv + offset.xx, MIPMAP_LEVEL).r;
+	depths[1] = ShadowMap.SampleLevel(samplerShadowMap, uv + offset.xy, MIPMAP_LEVEL).r;
+
+	depths[3] = ShadowMap.SampleLevel(samplerShadowMap, uv + offset.yx, MIPMAP_LEVEL).r;
+	depths[4] = ShadowMap.SampleLevel(samplerShadowMap, uv + offset.yy, MIPMAP_LEVEL).r;
+
+	depths[2] = ShadowMap.SampleLevel(samplerShadowMap, uv + offset.xz, MIPMAP_LEVEL).r;
+	depths[5] = ShadowMap.SampleLevel(samplerShadowMap, uv + offset.yz, MIPMAP_LEVEL).r;
+	depths[6] = ShadowMap.SampleLevel(samplerShadowMap, uv + offset.zx, MIPMAP_LEVEL).r;
+	depths[7] = ShadowMap.SampleLevel(samplerShadowMap, uv + offset.zy, MIPMAP_LEVEL).r;
+	
+	float averageDepth = 0.0f;
+	for(int i = 0; i < 8; ++i)
+		averageDepth += depths[i];
+	averageDepth /= 8.;
+
+	float std = 0.0;
+	for(int j = 0; j < 8; ++j)
+		std += pow(depths[j].x - averageDepth.x, 2.0f);
+
+	float stdCenter = std;
+	stdCenter += pow(centerDepth - averageDepth.x, 2.0f);
+
+    if(std > 0.0)
+	    std = sqrt(std / 8.0);
+	
+	if(stdCenter > 0.0)
+		stdCenter = sqrt(stdCenter / 9.0);
+
+    if(averageDepth.x > 0.0)
+	{
+	    std /= averageDepth.x;
+		stdCenter /= (averageDepth.x * 8.0 + centerDepth) / 9.0;
+	}
+
+	meanDepth = averageDepth.x;
+	rawDepth = centerDepth.x;
+					
+	return stdCenter > 0.1 && std < 0.1;
+}
+
+#define DEBUG
+
+[numthreads(32,32,1)]
+void ComputePinholes (uint2 id : SV_DispatchThreadID)
+{
+	float2 uv = float2(float(id.x) / float(ShadowMapWidth), float(id.y)  / float(ShadowMapHeight));
+	float meanDepth = 0.0;
+	float rawDepth = 0.0;
+	bool pinhole = FindPinhole(uv, id, meanDepth, rawDepth);
+	// bool pinhole = FindPinholeWithSize(id, 4, 3.0);
+	
+#ifdef DEBUG
+	BokehMap[id] = pinhole ? 1.0 : 0.0;
+#endif
+
+	if(pinhole)
+	{
+		uint newPinholeLinkIndex = g_PinholeLinkBuffer.IncrementCounter();
+
+		if(newPinholeLinkIndex >= TotalMaxPinholeCount)
+			return;
+
+		uint2 p2 = uint2(uint(uv.x * PinholeGridSize), uint(uv.y * PinholeGridSize));
+
+ 		// This is the grid cell index
+		uint offset = p2.y * PinholeGridSize + p2.x;
+		uint prevPinholeLinkIndex;
+ 
+		// Atomic swapping
+		g_PinholeOffsetBuffer.InterlockedExchange(offset * 4, newPinholeLinkIndex, prevPinholeLinkIndex);
+ 
+		PinholeLink link;
+		link.position = uv;
+		link.next = prevPinholeLinkIndex;
+		link.rawDepth = rawDepth;
+		link.meanDepth = meanDepth;
+		link.intensity = 0.0;
+	
+		g_PinholeLinkBuffer[newPinholeLinkIndex] = link;
+	}
+}

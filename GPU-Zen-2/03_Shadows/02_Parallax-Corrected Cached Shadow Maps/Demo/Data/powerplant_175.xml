@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Material Geometry="powerplant_175_66.geometry" DiffuseMap="walkway_a.dds" NormalMap="default-normalmap.dds"/>
+<AABB Min="-61.0119018555 -0.7362560034 6.7949099541" Max="-58.2318992615 -0.0841588974 17.4636993408"/>
+

@@ -1,0 +1,175 @@
+#include "globals.shi"
+
+Texture2D	colorMap: register(t0, space1);
+Texture2D	normalMap: register(t1, space1);
+Texture2D	specularMap: register(t2, space1);
+SamplerState textureSampler: register(s0, space1);
+
+ConstantBuffer<CameraConstData> cameraCB: register(b0, space0);
+ConstantBuffer<LightingConstData> lightingCB: register(b1, space0);
+ConstantBuffer<ModelConstData> modelCB: register(b2, space0);
+
+#ifdef RECEIVE_DECALS
+StructuredBuffer<DecalInfo> decalInfoBuffer: register(t0, space2);
+StructuredBuffer<uint> decalValidityBuffer: register(t1, space2);
+#ifdef TYPED_UAV_LOADS
+Texture2D<float4>	decalLookupMaps[MAX_NUM_SUBMODELS]: register(t2, space2);
+#else
+Texture2D<uint>	decalLookupMaps[MAX_NUM_SUBMODELS]: register(t2, space2);
+#endif
+Texture2D	decalMaps[MAX_NUM_DECAL_TEXTURES]: register(t0, space3);
+SamplerState decalLookupMapSampler: register(s1, space1);
+ConstantBuffer<DecalMeshInfo> decalMeshInfoCB: register(b3, space0);
+ConstantBuffer<DecalConstData> decalCB: register(b4, space0);
+#endif
+
+struct VS_Output
+{
+  float4 position: SV_POSITION;
+  float2 texCoords: TEXCOORD;
+  float3 normal: NORMAL;
+  float3 tangent: TANGENT;
+  float3 bitangent: BITANGENT;
+  float3 positionWS: POSITION_WS;
+#ifdef ALPHA_TEST
+  bool isFrontFace: SV_IsFrontFace;
+#endif
+};
+
+struct PS_Output
+{
+  float4 fragColor: SV_TARGET;
+};
+
+float3 CalcSpecularTerm(in float3 normal, in float3 viewVecN, in float3 lightVecN, in float nDotL, in float3 specular, in float roughness)
+{
+  // calculate Fresnel term (Schlick)
+  float3 halfVecN = normalize(lightVecN + viewVecN);
+  float vDotH = saturate(dot(viewVecN, halfVecN));
+  float3 F = specular + (1.0f - specular) * pow(1.0f - vDotH, 5.0f);
+
+  // calculate D term (GTR2)
+  float nDotH = saturate(dot(normal, halfVecN));
+  float roughness2 = roughness * roughness;
+  float t = 1.0f + (roughness2 - 1.0f) * nDotH * nDotH;
+  float D = roughness2 / (PI * t * t);
+
+  // calculate G term (Smith)
+  float nDotV = saturate(dot(normal, viewVecN));
+  float a = roughness2;
+  float b = nDotL * nDotL;
+  float c = nDotV * nDotV;
+  float GL = 1.0f / (nDotL + sqrt(a + b - a * b));
+  float GV = 1.0f / (nDotV + sqrt(a + c - a * c));
+  float G = GL * GV;
+
+  return (F * D * G);
+}
+
+#define ALPHA_THRESHOLD 0.3f
+
+PS_Output main(VS_Output input)
+{
+  PS_Output output;
+
+  float4 albedo = colorMap.Sample(textureSampler, input.texCoords);
+
+  float3 normal = normalize(input.normal);
+  #ifdef ALPHA_TEST
+    if(albedo.a < ALPHA_THRESHOLD)
+      discard;
+
+    // double-sided lighting
+    normal = input.isFrontFace ? normal : -normal;
+  #endif
+
+  float3 bump = normalize(normalMap.Sample(textureSampler, input.texCoords).xyz * 2.0f - 1.0f);
+  float3 specularColor = specularMap.Sample(textureSampler, input.texCoords).rrr;
+
+#ifdef RECEIVE_DECALS
+  uint decalMeshIndex = decalMeshInfoCB.decalMeshIndex;
+
+  #ifdef TYPED_UAV_LOADS
+    float3 decalTCFade = decalLookupMaps[decalMeshIndex].SampleLevel(decalLookupMapSampler, input.texCoords, 0.0f).xyz;
+    float4 decalIndices = decalLookupMaps[decalMeshIndex].GatherAlpha(decalLookupMapSampler, input.texCoords); 
+    uint decalIndex = uint(decalIndices[0] * 255.0f + 0.0001f);
+  #else
+    float2 texSize;
+    texSize.x = decalCB.subModelInfos[decalMeshIndex].decalLookupMapWidth;
+    texSize.y = decalCB.subModelInfos[decalMeshIndex].decalLookupMapHeight;
+    float2 sampleCoords = input.texCoords * texSize - 0.5f;
+
+    // fetch decal infos
+    int2 iNewCoord = int2(sampleCoords);
+    float3 decalTCFades[4];
+    uint decalIndices[4];
+    DecodeDecalInfo(decalLookupMaps[decalMeshIndex].Load(int3(iNewCoord, 0)).x, decalTCFades[0], decalIndices[0]);
+    DecodeDecalInfo(decalLookupMaps[decalMeshIndex].Load(int3(iNewCoord + int2(1, 0), 0)).x, decalTCFades[1], decalIndices[1]);
+    DecodeDecalInfo(decalLookupMaps[decalMeshIndex].Load(int3(iNewCoord + int2(0, 1), 0)).x, decalTCFades[2], decalIndices[2]);
+    DecodeDecalInfo(decalLookupMaps[decalMeshIndex].Load(int3(iNewCoord + int2(1, 1), 0)).x, decalTCFades[3], decalIndices[3]);
+    uint decalIndex = decalIndices[0];
+
+    // perform bilinear interpolation of decal UV and fade
+    float2 lerpFactor = frac(sampleCoords);
+    float3 up = lerp(decalTCFades[0], decalTCFades[1], lerpFactor.x);
+    float3 down = lerp(decalTCFades[2], decalTCFades[3], lerpFactor.x);
+    float3 decalTCFade = lerp(up, down, lerpFactor.y);
+  #endif
+
+  // calculate decal UV derivatives 
+  float2 derivX = ddx(decalTCFade.xy);
+  float2 derivY = ddy(decalTCFade.xy);
+
+  // determine if valid decal info can be retrieved for processed fragment
+  float valid = ((decalIndex > 0) && (decalIndices[0] == decalIndices[1]) && (decalIndices[0] == decalIndices[2]) &&
+                 (decalIndices[0] == decalIndices[3]) && (decalValidityBuffer[decalIndex] == 0)) ? 1.0f : 0.0f;
+
+  // only add decal when all fragments of processed quad have valid decal info to ensure correct UV derivatives
+  [branch]
+  if((valid == 1.0f) && (ddx(valid) == 0.0f) && (ddy(valid) == 0.0f))
+  {
+    uint decalMaterialIndex = decalInfoBuffer[0].decalMaterialIndices[decalIndex].value;
+    float4 decalAlbedo = decalMaps[NonUniformResourceIndex(decalMaterialIndex * 3)].SampleGrad(textureSampler, decalTCFade.xy, derivX, derivY);
+    float lerpFactor = decalAlbedo.a * decalTCFade.z * albedo.a;
+    albedo.rgb = lerp(albedo.rgb, decalAlbedo.rgb, lerpFactor);
+    float3 decalBump = normalize(decalMaps[NonUniformResourceIndex(decalMaterialIndex * 3 + 1)].SampleGrad(textureSampler, decalTCFade.xy, derivX, derivY).xyz * 2.0f - 1.0f);
+    bump = normalize(float3(bump.xy + decalBump.xy * lerpFactor, bump.z));
+    float3 decalSpecular = decalMaps[NonUniformResourceIndex(decalMaterialIndex * 3 + 2)].SampleGrad(textureSampler, decalTCFade.xy, derivX, derivY).rrr;
+    specularColor = lerp(specularColor, decalSpecular, lerpFactor);
+  }
+#endif
+
+  float3x3 tangentMatrix;
+  tangentMatrix[0] = normalize(input.tangent);
+  tangentMatrix[1] = normalize(input.bitangent);
+  tangentMatrix[2] = normal;
+  bump = mul(bump, tangentMatrix);
+
+  const float shininess = 150.0f;
+  const float roughness = sqrt(2.0f / (shininess + 2.0f));
+
+  // apply ambient term
+  float3 outputColor = albedo.rgb * 0.15f;
+
+  // apply directional light
+  float3 viewVecN = normalize(cameraCB.position - input.positionWS);
+  float3 lightVecN = -lightingCB.dirLightDirection.xyz;
+  float nDotL = saturate(dot(lightVecN, bump));
+  float3 diffuseTerm = albedo.rgb; 
+  float3 specularTerm = CalcSpecularTerm(bump, viewVecN, lightVecN, nDotL, specularColor, roughness);
+  float3 directIllum = (diffuseTerm + specularTerm) * lightingCB.dirLightColor.rgb * nDotL;
+  outputColor += directIllum;
+
+  if(modelCB.debugDecalMask > 0)
+  {
+   #ifdef ALPHA_TEST
+     outputColor = float3(0.0f, 0.0f, 0.0f);
+   #else
+     outputColor = albedo.aaa;
+   #endif
+  }
+
+  output.fragColor = float4(outputColor, 1.0f);
+ 
+  return output;
+}

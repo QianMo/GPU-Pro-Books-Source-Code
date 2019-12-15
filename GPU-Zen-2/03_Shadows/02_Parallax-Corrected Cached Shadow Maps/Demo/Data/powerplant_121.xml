@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Material Geometry="powerplant_121_44.geometry" DiffuseMap="truss_a.dds" NormalMap="default-normalmap.dds"/>
+<AABB Min="51.6407012939 19.4536991119 -59.2537002563" Max="52.6643981934 32.2596015930 -41.5079002380"/>
+

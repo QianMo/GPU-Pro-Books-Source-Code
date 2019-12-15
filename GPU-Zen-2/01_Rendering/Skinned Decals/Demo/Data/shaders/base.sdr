@@ -1,0 +1,15 @@
+Defines
+{
+  ALPHA_TEST
+  RECEIVE_DECALS
+  TYPED_UAV_LOADS
+}
+VertexShader
+{
+  base.vsh
+}
+PixelShader
+{ 
+  base.psh
+}
+

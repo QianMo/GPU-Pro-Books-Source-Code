@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Material Geometry="powerplant_49_2.geometry" DiffuseMap="mav_b_body.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_49_3.geometry" DiffuseMap="mav_b_lit.dds" NormalMap="default-normalmap.dds"/>
+<Material Geometry="powerplant_49_4.geometry" DiffuseMap="mav_a_ring.dds" NormalMap="default-normalmap.dds"/>
+<AABB Min="-1.7174600363 -0.1432790011 -1.8851499557" Max="1.7178000212 1.9497300386 1.8851499557"/>
+

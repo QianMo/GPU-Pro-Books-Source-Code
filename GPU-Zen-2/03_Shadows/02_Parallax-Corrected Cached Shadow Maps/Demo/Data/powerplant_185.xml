@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Material Geometry="powerplant_185_71.geometry" DiffuseMap="crn_clamp_a.dds" NormalMap="default-normalmap.dds"/>
+<AABB Min="-24.8952999115 31.5074005127 44.4880981445" Max="-18.7178001404 34.0443992615 48.6310005188"/>
+
