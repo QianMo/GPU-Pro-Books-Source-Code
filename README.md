@@ -13,4 +13,4 @@ The Quick Link:
 * [ Source Code of Book <GPU Pro 6>](/GPU-Pro-6)
 * [ Source Code of Book <GPU Pro 7>](/GPU-Pro-7)
 * [ Source Code of Book <  GPU Zen >](/GPU-Zen)
-* [ Source Code of Book <  GPU Zen >](/GPU-Zen-2)
+* [ Source Code of Book <  GPU Zen 2>](/GPU-Zen-2)
